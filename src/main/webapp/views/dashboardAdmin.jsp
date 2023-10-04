@@ -2724,7 +2724,7 @@ z-index: 1000;
                     </h3>
                   </a>
                 </div>
-                 <div
+                 <!-- <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-4'"
                 >
@@ -2741,7 +2741,7 @@ z-index: 1000;
                       ReLearning
                     </h3>
                   </a>
-                </div>
+                </div> -->
                 <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-1'"
