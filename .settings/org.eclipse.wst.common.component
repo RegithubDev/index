@@ -35,7 +35,7 @@
         
         
         
-        <property name="java-output-path" value="/brainbox/build/classes"/>
+        <property name="java-output-path" value="/index/build/classes"/>
         <property name="context-root" value="index"/>
                                             
     
