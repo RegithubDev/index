@@ -25,8 +25,8 @@ public class DepartmentDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	@Autowired
-	DataSource dataSource;
+	@Autowired 
+	DataSource dataSource; 
 
 	@Autowired
 	DataSourceTransactionManager transactionManager;
@@ -37,11 +37,11 @@ public class DepartmentDao {
 			String qry = "select sbu_code,sbu_name from [sbu] where status <> 'Inactive' ";
 			menuList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<Department>(Department.class));
 			
-		}catch(Exception e){ 
+		}catch(Exception e){  
 			e.printStackTrace();
 			throw new SQLException(e.getMessage());
-		}
-		return menuList;
+		} 
+		return menuList; 
 	}
 
 	public List<Department> getDepartmentsList(Department obj) throws Exception {
