@@ -63,7 +63,7 @@ public class HomeController {
 		ModelAndView model = new ModelAndView(PageConstants.user);
 		try {
 			 
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			e.printStackTrace(); 
 		}
 		return model;
