@@ -58,6 +58,16 @@ public class HomeController {
 	public String invalidUserName;
 
 
+	@RequestMapping(value = "/hr", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView hr(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.user);
+		try {
+			 
+		} catch (Exception e) {
+			e.printStackTrace(); 
+		}
+		return model;
+	}
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView user(@ModelAttribute User user,IRM obj, HttpSession session) {
