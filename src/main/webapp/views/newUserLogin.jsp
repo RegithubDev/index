@@ -120,7 +120,9 @@ License: You must have a valid license purchased only from themeforest(the above
                   </defs>
                   <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Artboard" transform="translate(-400.000000, -178.000000)">
-			         <img src="<%=request.getContextPath() %>/resources/images/app-logo.png" width="" height="65" class="card-imgs" >
+			         <img src="<%=request.getContextPath() %>/resources/images/app-logo.svg" width="" height="65" class="card-imgs" style="
+    margin-left: 45%;
+" >
                     </g>
                   </g>
                 </svg>
@@ -133,7 +135,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <input name="newUser" type="hidden" value="new"/>
           <div class="col-12 col-md-6">
             <label class="form-label" for="modalEditUserLastName">User id</label><span class="required"> *</span>
-            <input
+            <input onkeyup="findUniqueEMPCode(this.value);"
               type="text"
               id="user_id_add"
               name="user_id"
@@ -141,7 +143,7 @@ License: You must have a valid license purchased only from themeforest(the above
               placeholder="EMP ID"
               value=""
             />
-             <span id="user_id_addError" class="error-msg" ></span>
+             <span id="user_id_addError" class="my-error-class" ></span>
           </div>
 		<div class="col-12 col-md-6">
             <label class="form-label" for="modalEditUserFirstName">User Name</label><span class="required"> *</span>
@@ -249,7 +251,7 @@ License: You must have a valid license purchased only from themeforest(the above
           
           
           <div class="col-12 text-center mt-2 pt-50">
-            <a class="btn btn-primary me-1" onclick="addUser();">Sign Up</a>
+            <a class="btn btn-primary me-1" id="btnId" onclick="addUser();">Sign Up</a>
           </div>
 
         </form>
@@ -428,6 +430,31 @@ License: You must have a valid license purchased only from themeforest(the above
 	    	        $(this).valid();
 	    	    }
 	    	});
+	    	
+	    	function findUniqueEMPCode(user_id){
+		        if ($.trim(user_id) != "") {
+		        	var myParams = { user_id: user_id };
+		            $.ajax({
+		                url: "<%=request.getContextPath()%>/ajax/findUniqueEMPCode",
+		                data: myParams, cache: false,async: false,
+		                success: function (data) {
+		                    if (data.length > 0) {
+		                        $.each(data, function (i, val) {
+		                             $("#user_id_addError").html('Duplicate Employee ID Found, This Employee ID is Already Registered! <br> <a href="https://ithelpdesk.resustainability.com/app/itdesk/ui/requests/add?reqTemplate=127594000003785173" target="_blank" style=" color: blue !important;" title="Click here">Click here</a> to Raise a Ticket at IT Helpdesk.');
+		                             $('#btnId').hide();
+		                        });
+		                    }else{
+		                    	 $("#user_id_addError").html("");
+		                    	 $('#btnId').show();
+		                    }
+		                },error: function (jqXHR, exception) {
+		    	   			      $(".page-loader").hide();
+		       	          	  getErrorMessage(jqXHR, exception);
+		       	     	  }
+		            });
+		        }
+		    }
+	    	
 	    	
 	    	function setProjectDD(){
 	    		var base_sbu = $("#select2-base_sbu-container").val();

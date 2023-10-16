@@ -1634,4 +1634,22 @@ public class UserDao {
 		return flag;
 	}
 
+	public List<User> findUniqueEMPCode(IRM obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		boolean flag = false ;
+		try {
+			String qry = "SELECT  [user_id] FROM [user_profile] where [user_id] ='"+obj.getUser_id()+"'";
+		
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+			if(objsList.size() > 0) {
+				flag = true ;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
 }

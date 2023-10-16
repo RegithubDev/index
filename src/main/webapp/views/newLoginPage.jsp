@@ -18,6 +18,7 @@
     <title>Re - Sign In</title>
     <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
   <script src="/index/resources/js/jQuery-v.3.5.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <!-- CSS Assets -->
     <link rel="stylesheet" href="/index/resources/css/app.css" />
  <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -30,6 +31,7 @@
          <script src="/index/resources/js/dataTables.material.min.js"  ></script> 
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
              <script src="https://www.youtube.com/iframe_api"></script>
+    	
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -39,6 +41,12 @@
       rel="stylesheet"
     />
     <style>
+     #qrcode {
+            margin: 20px;
+        }
+        #shareButton {
+            display: none;
+        }
     .text-secondary {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
@@ -249,6 +257,7 @@ img, video {
             Re Sustainability
           </p>
         </a>
+        
       </div>
       <div class="hidden w-full place-items-center lg:grid"> 
        <div class="card  p-5 container">
@@ -334,10 +343,11 @@ img, video {
           </div>
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-2">
                <!-- Login basic -->
-				 	
+
+	
                 <div class="col-12 col-sm-8 col-md-6 mt-1 col-lg-12 px-xl-2 mx-auto">
 <%-- 				<img src="<c:url value="/resources/images/logo/logo-scs-key523173.png"/>" href="#"  alt="logo" class="mb-2 ms-2">
- --%>                <div style="color: red;" >${invalidEmail} ${multipleLoginFound}</div>
+ --%>                <div style="color: red;" >${invalidEmail} ${multipleLoginFound}${duplicate }</div>
                <!--  <h3><strong>Welcome to</strong></h3> -->
               
                  <!--  <h4 class="mb-2 text-center"> Enterprise Portal</h4> -->
@@ -425,7 +435,30 @@ img, video {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       
-   
+      $(document).ready(function() {
+          var employeeCode = "2200110"; // Replace with the actual employee code
+
+          var qrcode = new QRCode(document.getElementById("qrcode"), {
+              text: employeeCode,
+              width: 200,
+              height: 200
+          });
+          
+          // Check if the browser supports the share API
+          if (navigator.share) {
+              $('#shareButton').show();
+              $('#shareButton').on('click', function() {
+                  navigator.share({
+                      title: 'Employee QR Code',
+                      text: 'Scan this QR code to view employee information.',
+                      url: window.location.href
+                  })
+                  .then(() => console.log('Shared successfully'))
+                  .catch((error) => console.error('Error sharing:', error));
+              });
+          }
+      });
+
     	 var client;
          var access_token;
 

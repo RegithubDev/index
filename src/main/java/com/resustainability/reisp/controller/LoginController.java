@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,12 +21,14 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.resustainability.reisp.common.CommonMethods;
 import com.resustainability.reisp.common.DateForUser;
 import com.resustainability.reisp.constants.PageConstants;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.Project;
 import com.resustainability.reisp.model.ProjectLocation;
 import com.resustainability.reisp.model.RoleMapping;
@@ -267,6 +270,28 @@ public class LoginController {
 		}
 		return model;
 	}
+	
+	@RequestMapping(value = "/ajax/findUniqueEMPCode", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> findUniqueEMPCode(@ModelAttribute IRM obj,HttpSession session) {
+		List<User> departments = null;
+		String userId = null;
+		String userName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setUser(userId);
+			obj.setRole(role);
+			departments = service.findUniqueEMPCode(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getSBUFilterListFromIRM : " + e.getMessage());
+		}
+		return departments;
+	}
+	
 	
 	@RequestMapping(value = "/logout", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView logout(HttpSession session,HttpServletRequest request,HttpServletResponse response,RedirectAttributes attributes){

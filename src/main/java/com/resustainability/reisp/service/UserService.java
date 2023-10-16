@@ -127,4 +127,8 @@ public class UserService {
 	public boolean verifyOtp(IRM irm) throws Exception {
 		return dao.verifyOtp(irm);
 	}
+
+	public List<User> findUniqueEMPCode(IRM obj) throws Exception {
+		return dao.findUniqueEMPCode(obj);
+	}
 }
