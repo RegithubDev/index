@@ -33,6 +33,10 @@
       rel="stylesheet"
     />
     <style>
+    .pt-8{
+    	    padding-top: 9%;
+    	    padding-left: 3.25rem!important;
+    }
     @media (min-width: 640px){
     .max-w-lg2{
     	max-width: 65rem;
@@ -400,7 +404,15 @@ z-index: 1000;
                   alt="logo"
                 />
               </a>
+              
+              
             </div>
+            
+            
+            
+            
+            
+            
 
             <!-- Main Sections Links -->
  			<jsp:include page="../views/layout/header.jsp"></jsp:include> 
@@ -547,7 +559,7 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                Text
+                All Functions
               </p>
               <button @click="$store.global.isSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -601,7 +613,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/hr"
+                          href="<%=request.getContextPath() %>/user"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -617,7 +629,7 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>HR</span>
+                          <span>Administrator</span>
                         </a>
                       </li>
                       <li>
@@ -639,7 +651,7 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Admin</span>
+                          <span>Business Development</span>
                         </a>
                       </li>
                       <li>
@@ -661,7 +673,7 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Finance</span>
+                          <span>Bio Medical Wastage<br>(BMW)</span>
                         </a>
                       </li>
                       <li>
@@ -683,75 +695,53 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>IT</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>SCM</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>corporate comunity</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
                           <span>Contracts</span>
                         </a>
                       </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Corp. Communication</span>
+                        </a>
+                      </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Equipment resouce management<br>(ERM)</span>
+                        </a>
+                      </li>
                               <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
@@ -771,10 +761,120 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Legal</span>
+                          <span>Finance&Accounts</span>
                         </a>
                       </li>
                               <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Human Resource</span>
+                        </a>
+                      </li>
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Information Technology</span>
+                        </a>
+                      </li>
+                         <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Industrail Waste Management<br>IWM</span>
+                        </a>
+                      </li>
+                         <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Legal&Secratarial</span>
+                        </a>
+                      </li>
+                       <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Muncipal Solid Wastage<br>(MSW)</span>
+                        </a>
+                      </li>
+                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                           href="#"
@@ -796,7 +896,94 @@ z-index: 1000;
                           <span>Projects</span>
                         </a>
                       </li>
-                      
+                       <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Recycling</span>
+                        </a>
+                      </li>
+                       <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Safety&EHS</span>
+                        </a>
+                      </li>
+                       <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Supply chain Management<br>(SCM)</span>
+                        </a>
+                      </li>
+                       <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Waste to Energy</span>
+                        </a>
+                      </li>
                       
                     </ul>
                     
@@ -804,15 +991,6 @@ z-index: 1000;
                 </div>
                 
              
-                
-
-          
-              
-             
-            
-               
-
-               
               </div>
 
               <div class="flex items-center spacex-3 p-4">
@@ -820,6 +998,14 @@ z-index: 1000;
                
               </div>
             </div>
+            
+            
+            
+            
+            
+            
+            
+            
           </div>
         </div>
       </div>
@@ -1807,7 +1993,7 @@ z-index: 1000;
           <div class="flex w-full items-center justify-between">
             <!-- Left: Sidebar Toggle Button -->
             <div class="h-7 w-7">
-          <!--   <button
+            <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
                 :class="$store.global.isSidebarExpanded && 'active'"
                 @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded"
@@ -1815,7 +2001,7 @@ z-index: 1000;
                 <span></span>
                 <span></span>
                 <span></span>
-              </button>  -->
+              </button> 
             </div>
 
             <!-- Right: Header buttons -->
@@ -1881,7 +2067,7 @@ z-index: 1000;
                 </svg>
               </button>
               <!-- Notification-->
-              <!-- <div x-effect="if($store.global.isSearchbarActive) isShowPopper = false" x-data="usePopper({placement:'bottom-end',offset:12})" @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="flex">
+              <div x-effect="if($store.global.isSearchbarActive) isShowPopper = false" x-data="usePopper({placement:'bottom-end',offset:12})" @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="flex">
                 <button @click="isShowPopper = !isShowPopper" x-ref="popperRef" class="btn relative h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-500 dark:text-navy-100" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.375 17.556h-6.75m6.75 0H21l-1.58-1.562a2.254 2.254 0 01-.67-1.596v-3.51a6.612 6.612 0 00-1.238-3.85 6.744 6.744 0 00-3.262-2.437v-.379c0-.59-.237-1.154-.659-1.571A2.265 2.265 0 0012 2c-.597 0-1.169.234-1.591.65a2.208 2.208 0 00-.659 1.572v.38c-2.621.915-4.5 3.385-4.5 6.287v3.51c0 .598-.24 1.172-.67 1.595L3 17.556h12.375zm0 0v1.11c0 .885-.356 1.733-.989 2.358A3.397 3.397 0 0112 22a3.397 3.397 0 01-2.386-.976 3.313 3.313 0 01-.989-2.357v-1.111h6.75z"></path>
@@ -2004,7 +2190,7 @@ z-index: 1000;
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
               
               
               
@@ -2565,22 +2751,12 @@ z-index: 1000;
 	                                    </p>
 	                                    <p class="text-xs text-success">Rewards</p>
                   </a>
-                <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
-				    margin-top: 2rem; " id="mobileClass2"
-				"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
-				                   
-                  </a>
-                </div>
                 
-           <%--  <div class="childs" style="margin-right: 16px;    margin-top: 2rem;" id="rewards">
-                      <img class="h-10 w-1w" src="/index/resources/images/avatar/tropy icon.svg" alt="image">
-                    <p class="text-3xl font-medium text-slate-700 dark:text-navy-100">
-	                                      ${sessionScope.REWARDS }
-	                                    </p>
-	                                    <p class="text-xs text-success">Rewards</p>
-                  </a>
-                </div> --%>
+                </div>
+
           </div>
+          
+          
           <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
             
               <div class="flex items-center justify-between">
@@ -2618,62 +2794,75 @@ z-index: 1000;
                    
                   </a>
           </div>
-          <div class="card flex-row justify-between space-x-2 p-2.5">
-            <div class="qutt" style="
-    width: 21rem;
-">
-             <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
-                    <div class="swiper-wrapper" id="swiper-wrapper-4195075cc87610238" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-519px, 0px, 0px);">
-                      <div class="swiper-slide swiper-slide-prev sld" role="group" aria-label="1 / 3" style="width: 519px;">
-                       <div class="rounded-lg bg-gradient-to-r from-green-400 to-fuchsia-400 p-1">
-				            <div class="rounded-lg bg-slate-50 px-4 py-4 dark:bg-navy-900 sm:px-5 slm">
-				              <div class="pt-2">
-				                <p>
-				                 "In God we trust, everyone else brings data" - W. Edwards Deming
-				                </p>
-				              </div>
-				            </div>
-				          </div>
-                      </div>
-                      <div class="swiper-slide swiper-slide-active sld" role="group" aria-label="2 / 3" style="width: 519px;">
-                       <div class="rounded-lg bg-gradient-to-r from-green-400 to-fuchsia-400 p-1">
-				            <div class="rounded-lg bg-slate-50 px-4 py-4 dark:bg-navy-900 sm:px-5 slm">
-				              <div class="pt-2">
-				                <p>
-				                "There is never a best, there is always a better" - Anonymous
-				                </p>
-				              </div>
-				            </div>
-				          </div>
-                      </div>
-                      <div class="swiper-slide swiper-slide-next sld" role="group" aria-label="3 / 3" style="width: 519px; ">
-                        <div class="rounded-lg bg-gradient-to-r from-green-400 to-fuchsia-400 p-1">
-				            <div class="rounded-lg bg-slate-50 px-4 py-4 dark:bg-navy-900 sm:px-5 slm">
-				              <div class="pt-2">
-				                <p>
-				                "What got you here, won't get you there " - Marshall Goldsmith
-				                </p>
-				              </div>
-				            </div>
-				          </div>
-                      </div>
-                    
-                    </div>
-                    <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(127px, 0px, 0px); transition-duration: 0ms; width: 127px;"></div></div>
-                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-4195075cc87610238" aria-disabled="false"></div>
-                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-4195075cc87610238" aria-disabled="false"></div>
-                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        
+        
+        
+        
+        
+          <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
+            
+           <div class="flex">
+          <div class="flex flex-col" style="
+    width: 10rem;">
+              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 text-center">
+                <p class="text-xl">Information Technology</p>
               </div>
+              
+              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
+                <p class="text-xs text-success">My Department</p>
+              </div>
+            </div>
+           
+           <%--    <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
+                <p class="text-xl">${sessionScope.BASE_DEPARTMENT }</p>
+              </button> --%>
+              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
+             <button class="flex flex-col">
+              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
+                <p class="text-xl">Happenings @</p>
+              </div>
+              
+              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
+                <p class="text-xs text-success">Other Department</p>
+              </div>
+            </button>
+              
+            <!--   <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500"  :class="$store.global.isSidebarExpanded && 'active'"
+                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
+                <p class="text-xl">All Functions</p>
+              </button> -->
+            </div>
+                  
+                  
           </div>
-          
-          
-          
-          
-          
-          
-          
-          
-          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         
+            
+        
         </div>
         <div class="mt-5 grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
           <div class="col-span-12 sm:col-span-12 lg:col-span-12">
@@ -2767,6 +2956,24 @@ z-index: 1000;
                     </h3>
                   </a>
                 </div>
+                   <div
+            class="card swiper-slide w-24 shrink-0 cursor-pointer"
+            @click="selected = 'slide-12'"
+          >
+            <a href="https://accounts.zoho.com/signin?servicename=SDPOnDemand&hide_title=true&hideyahoosignin=true&hidefbconnect=true&hide_secure=true&serviceurl=https%3A%2F%2Fithelpdesk.resustainability.com%2Fjsp%2Findex.jsp&signupurl=https://ithelpdesk.resustainability.com/AccountCreation.do&portal_id=784502603&hide_signup=true" target="_blank"
+              class="flex flex-col items-center rounded-lg px-2 py-4"
+              :class="selected === 'slide-12' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
+            >
+              <img
+                class="w-12"
+                src="/index/resources/images/icons/ithealpdesk-01.svg"
+                alt="image"
+              />
+              <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
+                ITHelpdesk
+              </h3>
+            </a>
+          </div>
                  <!-- <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-3'"
@@ -2785,25 +2992,6 @@ z-index: 1000;
                     </h3>
                   </a>
                 </div> -->
-                     
-            <div
-            class="card swiper-slide w-24 shrink-0 cursor-pointer"
-            @click="selected = 'slide-12'"
-          >
-            <a href="https://accounts.zoho.com/signin?servicename=SDPOnDemand&hide_title=true&hideyahoosignin=true&hidefbconnect=true&hide_secure=true&serviceurl=https%3A%2F%2Fithelpdesk.resustainability.com%2Fjsp%2Findex.jsp&signupurl=https://ithelpdesk.resustainability.com/AccountCreation.do&portal_id=784502603&hide_signup=true" target="_blank"
-              class="flex flex-col items-center rounded-lg px-2 py-4"
-              :class="selected === 'slide-12' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
-            >
-              <img
-                class="w-12"
-                src="/index/resources/images/icons/ithealpdesk-01.svg"
-                alt="image"
-              />
-              <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
-                Helpdesk
-              </h3>
-            </a>
-          </div>
                 <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-4'"
@@ -2949,25 +3137,8 @@ z-index: 1000;
                 --%>
                
               
-        <!--      
-            <div
-            class="card swiper-slide w-24 shrink-0 cursor-pointer"
-            @click="selected = 'slide-12'"
-          >
-            <a href="https://accounts.zoho.com/signin?servicename=SDPOnDemand&hide_title=true&hideyahoosignin=true&hidefbconnect=true&hide_secure=true&serviceurl=https%3A%2F%2Fithelpdesk.resustainability.com%2Fjsp%2Findex.jsp&signupurl=https://ithelpdesk.resustainability.com/AccountCreation.do&portal_id=784502603&hide_signup=true" target="_blank"
-              class="flex flex-col items-center rounded-lg px-2 py-4"
-              :class="selected === 'slide-12' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
-            >
-              <img
-                class="w-12"
-                src="/index/resources/images/icons/ithealpdesk-01.svg"
-                alt="image"
-              />
-              <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
-                ITHelpdesk
-              </h3>
-            </a>
-          </div> -->
+             
+           
 		<div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-13'" title="Payment Gateway"
@@ -3551,7 +3722,7 @@ z-index: 1000;
                     </div>
                   </div>
 
-<!--                   <div class="w-56 h-40 shrink-0 rounded-xl bg-slate-50  dark:bg-navy-600">
+                 <!--  <div class="w-56 h-40 shrink-0 rounded-xl bg-slate-50  dark:bg-navy-600">
                                 
                     <div class="mt-4 flex justify-center space-x-2">
                                   
@@ -3892,8 +4063,11 @@ z-index: 1000;
                 </template>
               </div>
                     </div>
-                  </div>
- -->
+                    
+                    
+                    
+                  </div> -->
+
                   <div class="w-56 h-40 shrink-0 rounded-xl bg-slate-50 dark:bg-navy-600">
                                   
                     <div class="mt-4 flex justify-center space-x-2">
@@ -5416,7 +5590,7 @@ z-index: 1000;
                   </div>
                 </div>
   </main>
-      <div class="mt-5" x-data="{showModal:true}">
+      <div class="mt-5" x-data="{showModal:false}">
                
                 <template x-teleport="#x-teleport-target">
                   <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
