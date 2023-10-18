@@ -1,1 +1,5 @@
 /com/
+/database.properties
+/index.ftl
+/log4j.properties
+/templates/

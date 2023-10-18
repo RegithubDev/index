@@ -2785,6 +2785,25 @@ z-index: 1000;
                     </h3>
                   </a>
                 </div> -->
+                     
+            <div
+            class="card swiper-slide w-24 shrink-0 cursor-pointer"
+            @click="selected = 'slide-12'"
+          >
+            <a href="https://accounts.zoho.com/signin?servicename=SDPOnDemand&hide_title=true&hideyahoosignin=true&hidefbconnect=true&hide_secure=true&serviceurl=https%3A%2F%2Fithelpdesk.resustainability.com%2Fjsp%2Findex.jsp&signupurl=https://ithelpdesk.resustainability.com/AccountCreation.do&portal_id=784502603&hide_signup=true" target="_blank"
+              class="flex flex-col items-center rounded-lg px-2 py-4"
+              :class="selected === 'slide-12' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
+            >
+              <img
+                class="w-12"
+                src="/index/resources/images/icons/ithealpdesk-01.svg"
+                alt="image"
+              />
+              <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
+                Helpdesk
+              </h3>
+            </a>
+          </div>
                 <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-4'"
@@ -2930,7 +2949,7 @@ z-index: 1000;
                 --%>
                
               
-             
+        <!--      
             <div
             class="card swiper-slide w-24 shrink-0 cursor-pointer"
             @click="selected = 'slide-12'"
@@ -2948,7 +2967,7 @@ z-index: 1000;
                 ITHelpdesk
               </h3>
             </a>
-          </div>
+          </div> -->
 		<div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
                   @click="selected = 'slide-13'" title="Payment Gateway"
@@ -3532,7 +3551,7 @@ z-index: 1000;
                     </div>
                   </div>
 
-                  <div class="w-56 h-40 shrink-0 rounded-xl bg-slate-50  dark:bg-navy-600">
+<!--                   <div class="w-56 h-40 shrink-0 rounded-xl bg-slate-50  dark:bg-navy-600">
                                 
                     <div class="mt-4 flex justify-center space-x-2">
                                   
@@ -3874,7 +3893,7 @@ z-index: 1000;
               </div>
                     </div>
                   </div>
-
+ -->
                   <div class="w-56 h-40 shrink-0 rounded-xl bg-slate-50 dark:bg-navy-600">
                                   
                     <div class="mt-4 flex justify-center space-x-2">
