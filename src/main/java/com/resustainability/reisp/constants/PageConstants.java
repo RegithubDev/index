@@ -1,5 +1,4 @@
 package com.resustainability.reisp.constants;
-
 public class PageConstants {
 
 	public static final String login = "newLoginPage";   
@@ -46,6 +45,12 @@ public class PageConstants {
 	public static final String department = "department";
 	public static final String location = "location";
 	public static final String user = "users"; 
+	public static final String hrPage = "hr"; 
+	public static final String itPage = "it";
+	public static final String scmPage = "SCM";
+	public static final String projectsPage = "Projects";
+	public static final String AdminPage = "Admin";
+	public static final String FinancePage = "Finance";
 	public static final String updateSelfUser = "updateSelfUser";
 	public static final String roleMapping = "roleMapping";
 	public static final String role_master = "roleMaster";

@@ -116,6 +116,7 @@ public class LoginController {
 						session.setAttribute("BASE_SBU", userDetails.getBase_sbu());
 						session.setAttribute("BASE_PROJECT", userDetails.getProject_name());
 						session.setAttribute("BASE_DEPARTMENT", userDetails.getBase_department());
+						session.setAttribute("DEPARTMENT_NAME", userDetails.getDepartment_name());
 						session.setAttribute("REWARDS", userDetails.getReward_points());
 						session.setAttribute("BASE_PROJECT_CODE", userDetails.getBase_project());
 						session.setAttribute("CURRENT_PROJECT", user.getCurrent_project());

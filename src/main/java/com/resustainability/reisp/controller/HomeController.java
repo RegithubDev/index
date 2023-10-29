@@ -58,21 +58,77 @@ public class HomeController {
 	public String invalidUserName;
 
 
-	@RequestMapping(value = "/hrs", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/HR", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView hr(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.user);
+		ModelAndView model = new ModelAndView(PageConstants.hrPage);
 		try {
 			 
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
-		return model;
+		return model; 
 	}
+	
+	@RequestMapping(value = "/IT", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView it(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.itPage);
+		try {
+			 
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/SCM", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView scm(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.scmPage);
+		try {
+			 
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/Projects", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView projects(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.projectsPage);
+	try {
+			 
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+
+	@RequestMapping(value = "/Admin", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView admin(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.AdminPage);
+		try {
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		}  
+		return model; 
+	} 
+	
+
+	@RequestMapping(value = "/F&A", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView finance(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.FinancePage);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView user(@ModelAttribute User user,IRM obj, HttpSession session) {
 		ModelAndView model = null;
-		String userId = null;
+		String userId=null;
 		String userName = null;
 		String role = null;
 		List<IRM> companiesList = null;
