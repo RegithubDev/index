@@ -33,18 +33,10 @@
       rel="stylesheet"
     />
     <style>
-    .text-xlnew{
-    	    font-size: 1rem;
-    		line-height: 1.75rem;
+    .w-50{
+    	    width: 12rem;
+    	
     }
-    .left-6{
-    	    left: 6%;
-    }
-    @media (min-width: 640px){
-	.sm\:w-60 {
-	    width: 16rem;
-	}
-	}
     .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
@@ -386,7 +378,7 @@ z-index: 1000;
     </script>
   </head>
 
-  <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
+  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
     <!-- App preloader-->
     <div
       class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
@@ -432,8 +424,8 @@ z-index: 1000;
             <!-- Bottom Links -->
             <div class="flex flex-col items-center space-y-3 py-3">
               <!-- Settings -->
-           <!--    <a
-                href="form-layout-5.html"
+             <a
+               href="<%=request.getContextPath() %>/settings"
                 class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
               >
                 <svg
@@ -452,7 +444,7 @@ z-index: 1000;
                     d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
                   />
                 </svg>
-              </a> -->
+              </a> 
 
               <!-- Profile -->
               <div
@@ -563,270 +555,6 @@ z-index: 1000;
 
 
 
-        <div class="sidebar-panel">
-          <div
-            class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
-          >
-            <!-- Sidebar Panel Header -->
-            <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
-              <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                All Functions1
-              </p>
-              <button @click="$store.global.isRightSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-              </button>
-            </div>
-            
-            
-          
-            
-
-            <!-- Sidebar Panel Body -->
-            <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
-              <div class="is-scrollbar-hidden grow overflow-y-auto">
-                <div class="mt-2 px-4">
-                 
-                </div>
-
-                <div x-data="{expanded:true}">
-                  <div class="mt-4 flex items-center justify-between px-4">
-                    <span class="text-xs font-medium uppercase">Departments </span>
-                    <div class="-mr-1.5 flex">
-                      <button
-                        @click="expanded =! expanded"
-                        class="btn h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          :class="expanded && 'rotate-180'"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="#e21e26"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <div x-show="expanded" x-collapse>
-                    <ul
-                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
-                    >
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/Admin"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Dashboard</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/ "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-warning"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Policies</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/ "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-info"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Procedures</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                         href="<%=request.getContextPath() %>/ Incin-BMW
-                         "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Forms</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>User manual</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Trainig calender</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                             href="<%=request.getContextPath() %>/F&A"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Finance&Accounts</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/HR"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Topics/Blogs</span>
-                        </a>
-                      </li>
-                              
-                        
-                       
-                
-                      
-                    </ul>
-                    
-                  </div>
-                </div>
-                
-             
-              </div>
-
-              <div class="flex items-center spacex-3 p-4">
-                
-               
-              </div>
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
         <!-- Sidebar Panel -->
         <div class="sidebar-panel">
           <div
@@ -835,9 +563,9 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                IT Functions
+                All Functions
               </p>
-              <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+              <button @click="$store.global.isSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -850,314 +578,6 @@ z-index: 1000;
 
             <!-- Sidebar Panel Body -->
             <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
-              <div class="is-scrollbar-hidden grow overflow-y-auto">
-                <div class="mt-2 px-4">
-                 
-                </div>
-
-                <div x-data="{expanded:true}">
-                  <div class="mt-4 flex items-center justify-between px-4">
-                    <span class="text-xs font-medium uppercase"> </span>
-                   
-                  </div>
-                  <div x-show="expanded" x-collapse>
-                    <ul
-                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
-                    >
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/Admin"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Dashboard</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/ "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-warning"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Policies</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/ "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-info"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Procedures</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                         href="<%=request.getContextPath() %>/ Incin-BMW
-                         "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Forms</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>User manual</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Trainig calender</span>
-                        </a>
-                      </li>
-                              
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/HR"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Topics/Blogs</span>
-                        </a>
-                      </li>
-                              
-                        
-                       
-                
-                      
-                    </ul>
-                    
-                  </div>
-                </div>
-                
-             
-              </div>
-
-              <div class="flex items-center spacex-3 p-4">
-                
-               
-              </div>
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Sidebar -->
-      <div
-        x-show="$store.global.isRightSidebarExpanded"
-        @keydown.window.escape="$store.global.isRightSidebarExpanded = false"
-      >
-        <div
-          class="fixed inset-0 z-[150] transition-opacity duration-200"
-          @click="$store.global.isRightSidebarExpanded = false"
-          x-show="$store.global.isRightSidebarExpanded"
-          x-transition:enter="ease-out"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="ease-in"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-        ></div>
-        <div class="fixed left-6 top-0 z-[151] h-full w-full sm:w-60">
-          <div
-            x-data="{activeTab:'tabHome'}"
-            class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
-            x-show="$store.global.isRightSidebarExpanded"
-            x-transition:enter="ease-out"
-            x-transition:enter-start="translate-x-full"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="ease-in"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="translate-x-full"
-          >
-            <div class="flex items-center justify-between py-2 px-4">
-         <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
-              <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                All Functions
-              </p>
-              <button @click="$store.global.isRightSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-              </button>
-            </div>
-              <p
-                x-show="activeTab === 'tabProjects'"
-                class="flex shrink-0 items-center space-x-1.5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#e21e26"
-                  stroke-width="1.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                  />
-                </svg>
-                <span class="text-xs">Projects</span>
-              </p>
-              
-              <p
-                x-show="activeTab === 'tabActivity'"
-                class="flex shrink-0 items-center space-x-1.5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#e21e26"
-                  stroke-width="1.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span class="text-xs">Activity</span>
-              </p>
-              
-
-              <button
-                @click="$store.global.isRightSidebarExpanded=false"
-                class="btn -mr-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#e21e26"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-
-
-
-
- <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
               <div class="is-scrollbar-hidden grow overflow-y-auto">
                 <div class="mt-2 px-4">
                  
@@ -1368,10 +788,33 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
+                          <span>Human Resource</span>
+                        </a>
+                      </li>
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                         href="<%=request.getContextPath() %>/IT
+                         "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
                           <span>Information Technology</span>
                         </a>
                       </li>
-                        <li>
+                         <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                          
@@ -1394,10 +837,10 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Industrail Waste Management<br>(IWM)</span>
+                          <span>Industrail Waste Management<br>IWM</span>
                         </a>
                       </li>
-                       <li>
+                         <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                           href="#"
@@ -1511,7 +954,7 @@ z-index: 1000;
                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                        href="<%=request.getContextPath() %>/SCM"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1533,7 +976,7 @@ z-index: 1000;
                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/SCM"
+                           href="<%=request.getContextPath() %>/"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1553,11 +996,6 @@ z-index: 1000;
                         </a>
                       </li>
                       
-                              
-                        
-                       
-                
-                      
                     </ul>
                     
                   </div>
@@ -1570,6 +1008,128 @@ z-index: 1000;
                 
                
               </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div
+        x-show="$store.global.isRightSidebarExpanded"
+        @keydown.window.escape="$store.global.isRightSidebarExpanded = false"
+      >
+        <div
+          class="fixed inset-0 z-[150] bg-slate-900/60 transition-opacity duration-200"
+          @click="$store.global.isRightSidebarExpanded = false"
+          x-show="$store.global.isRightSidebarExpanded"
+          x-transition:enter="ease-out"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        ></div>
+        <div class="fixed right-0 top-0 z-[151] h-full w-full sm:w-80">
+          <div
+            x-data="{activeTab:'tabHome'}"
+            class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
+            x-show="$store.global.isRightSidebarExpanded"
+            x-transition:enter="ease-out"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="ease-in"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+          >
+            <div class="flex items-center justify-between py-2 px-4">
+              <p
+                x-show="activeTab === 'tabHome'"
+                class="flex shrink-0 items-center space-x-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <span class="text-xs">25 May, 2022</span>
+              </p>
+              <p
+                x-show="activeTab === 'tabProjects'"
+                class="flex shrink-0 items-center space-x-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                  />
+                </svg>
+                <span class="text-xs">Projects</span>
+              </p>
+              <p
+                x-show="activeTab === 'tabActivity'"
+                class="flex shrink-0 items-center space-x-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-xs">Activity</span>
+              </p>
+
+              <button
+                @click="$store.global.isRightSidebarExpanded=false"
+                class="btn -mr-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
 
 
@@ -2324,6 +1884,111 @@ z-index: 1000;
             <div
               class="pointer-events-none absolute bottom-4 flex w-full justify-center"
             >
+              <div
+                class="pointer-events-auto mx-auto flex space-x-1 rounded-full border border-slate-150 bg-white px-4 py-0.5 shadow-lg dark:border-navy-700 dark:bg-navy-900"
+              >
+                <button
+                  @click="activeTab = 'tabHome'"
+                  :class="activeTab === 'tabHome' && 'text-re dark:text-accent'"
+                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    x-show="activeTab === 'tabHome'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="#e21e26"
+                  >
+                    <path
+                      d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                    />
+                  </svg>
+                  <svg
+                    x-show="activeTab !== 'tabHome'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                  </svg>
+                </button>
+                <button
+                  @click="activeTab = 'tabProjects'"
+                  :class="activeTab === 'tabProjects' && 'text-re dark:text-accent'"
+                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    x-show="activeTab === 'tabProjects'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="#e21e26"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="activeTab !== 'tabProjects'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  @click="activeTab = 'tabActivity'"
+                  :class="activeTab === 'tabActivity' && 'text-re dark:text-accent'"
+                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    x-show="activeTab ===  'tabActivity'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="#e21e26"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <svg
+                    x-show="activeTab !==  'tabActivity'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2341,8 +2006,8 @@ z-index: 1000;
             <div class="h-7 w-7">
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
-                :class="$store.global.isSidebarExpanded   && 'active'"
-                @click="$store.global.isSidebarExpanded   = !$store.global.isSidebarExpanded  "
+                :class="$store.global.isSidebarExpanded && 'active'"
+                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded"
               >
                 <span></span>
                 <span></span>
@@ -2704,8 +2369,11 @@ z-index: 1000;
                   </svg>
                 </div>
               </div>
-              <p class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100" > Analytics   </p>
-           
+              <p
+                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
+              >
+                Analytics
+              </p>
             </a>
             <a href="apps-chat.html" class="w-14 text-center">
               <div class="avatar h-12 w-12">
@@ -3075,114 +2743,25 @@ z-index: 1000;
       </div>
 
       <!-- Main Content Wrapper -->
-      <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
-      >
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
-          <div class="card flex-row justify-between space-x-2 ">
-            <div class="flex flex-1 flex-col justify-between"  id="clock">
-            
-            </div>
-            <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <div class=" swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-active" @click="selected = 'slide-8'" role="group" aria-label="1 / 16" style="margin-right: 14px;">
-                  <a id="iconsCLass" href="#"  class="flex flex-col items-center rounded-lg px-2 py-4 text-slate-600 dark:text-navy-100" :class="selected === 'slide-8' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' ">
-                  <img class="h-11 w-1w" src="/index/resources/images/avatar/tropy icon.svg" alt="image" style="
-    margin-top: 1rem;
-">
-                   <p class="text-3xl font-medium text-slate-700 dark:text-navy-100">
-	                                      ${sessionScope.REWARDS }
-	                                    </p>
-	                                    <p class="text-xs text-success">Rewards</p>
-                  </a>
+     
+     <main class="main-content w-full px-[var(--margin-x)] pb-8">
+      
+ 
+ 
+
+              
+
                 
-                </div>
-
-          </div>
-          
-          
-          <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
-            
-              <div class="flex items-center justify-between">
-                <div style="
-    left: -1rem;
-"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
-                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
-				      <div class="container"
-   style="
-    top: -0.5rem;
-    right: -0.5rem;
-    height: 7.2rem;
-
-">
-				    <div class="background">
-				      <div class="Circle1"></div>
-				      <div class="Circle2"></div>
-				      <div class="Circle3"></div>
-				      <div class="content">
-				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
-				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
-				        <h3 class="Temp" id="temperature"></h3>
-				        <h1 class="Time" id="wind-speed"></h1>
-				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
-				      </div>
-				    </div>
-                  </div>
-                  </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+             
+   
+                
               </div>
-              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
-    margin-top: 2rem;
-"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
-                   
-                  </a>
-          </div>
+         
         
-        
-        
-        
-        
-          <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
-            
-           <div class="flex">
-          <div class="flex flex-col justify-center" style="
-    width: 18rem;">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 text-center">
-                <p class="text-xlnew">${sessionScope.DEPARTMENT_NAME }</p>
-              </div>
-              
-             <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
-                <a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>
-             </div>
-            </div>
+      </main>
+          
            
-           <%--    <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
-                <p class="text-xl">${sessionScope.BASE_DEPARTMENT }</p>
-              </button> --%>
-              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
-             <button class="flex flex-col  justify-center">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xlnew">Happenings @ Information Technology</p>
-              </div>
-              
-              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xs text-success">Other Department</p>
-              </div> <br>
-            </button>
-              
-            <!--   <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500"  :class="$store.global.isSidebarExpanded && 'active'"
-                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
-                <p class="text-xl">All Functions</p>
-              </button> -->
-            </div>
-                  
-                  
-          </div>
-        
-        </div>
-        </div>
-
-  </main>
+  
       <div class="mt-5" x-data="{showModal:false}">
                
                 <template x-teleport="#x-teleport-target">

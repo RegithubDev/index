@@ -48,8 +48,15 @@ public class PageConstants {
 	public static final String hrPage = "hr"; 
 	public static final String itPage = "it";
 	public static final String scmPage = "SCM";
+	public static final String iwmPage = "IWM";
+	public static final String deps = "deps";
+	public static final String settings = "settings";
 	public static final String projectsPage = "Projects";
 	public static final String AdminPage = "Admin";
+	public static final String departmentsMaster = "departmentsMaster";
+	public static final String company2 = "company2";
+
+	
 	public static final String FinancePage = "Finance";
 	public static final String updateSelfUser = "updateSelfUser";
 	public static final String roleMapping = "roleMapping";
@@ -61,5 +68,7 @@ public class PageConstants {
 	public static final String test = "test";
 	public static final String bbForm = "bbForm";
 	public static final String helpCenter = "helpCenter";
+	
+	
 	
 }

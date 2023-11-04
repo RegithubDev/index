@@ -72,39 +72,39 @@ body {
     <meta name="keywords" content="admin template,Company, Safety admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
   <title>Company</title>
-        <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/protect-favicon.png" >
+        <link rel="icon" type="image/png" sizes="96x96" href="/index/resources/images/protect-favicon.png" >
 
-	<script src="/reirm/resources/js/jQuery-v.3.5.min.js"  ></script>
+	<script src="/index/resources/js/jQuery-v.3.5.min.js"  ></script>
     <!-- BEGIN: Vendor CSS-->
-      <link rel="apple-touch-icon" href="/reirm/resources/images/ico/apple-icon-120.html">
+      <link rel="apple-touch-icon" href="/index/resources/images/ico/apple-icon-120.html">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/tables/datatable/buttons.bootstrap5.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/pickers/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/tables/datatable/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 	  <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome-v.4.7.css" />">
     <!-- BEGIN: Theme CSS-->
-            <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/extensions/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/plugins/extensions/ext-component-toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/bootstrap-extended.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/colors.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/components.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/themes/dark-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/themes/bordered-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/themes/semi-dark-layout.min.css">
-   <link rel="stylesheet" type="text/css" href="/reirm/resources/vendors/css/forms/select/select2.min.css">
+            <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/plugins/extensions/ext-component-toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/components.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/themes/dark-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/themes/bordered-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/themes/semi-dark-layout.min.css">
+   <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/core/menu/menu-types/horizontal-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/core/menu/menu-types/horizontal-menu.min.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="/reirm/resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/index/resources/css/style.css">
     <!-- END: Custom CSS-->
 
   </head>
@@ -114,12 +114,12 @@ body {
   <body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
 
     <!-- BEGIN: Header-->
-	<jsp:include page="../views/layout/header.jsp"></jsp:include> 
+	<%-- <jsp:include page="../views/layout/header.jsp"></jsp:include>  --%>
 
 
     <!-- END: Header-->
     <!-- BEGIN: Main Menu-->
-    <div class="horizontal-menu-wrapper">
+<%--     <div class="horizontal-menu-wrapper">
       <div class="header-navbar navbar-expand-sm navbar navbar-horizontal floating-nav navbar-light navbar-shadow menu-border container-xxl" role="navigation" data-menu="menu-wrapper" data-menu-type="floating-nav">
         <div class="navbar-header">
           <ul class="nav navbar-nav flex-row">
@@ -151,13 +151,16 @@ body {
  			<jsp:include page="../views/layout/menu.jsp"></jsp:include> 
       </div>
     </div>
-    <!-- END: Main Menu-->
+ --%>    <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
     <div class="app-content content ">
       <div class="content-overlay"></div>
-      <div class="header-navbar-shadow"></div>
-      <div class="content-wrapper container-xxl p-0">
+      <div class="content-wrapper container-xxl p-0" style="
+    position: absolute;
+  top: 6%;
+    left: 2%;
+">
         <div class="content-header row">
               <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -624,43 +627,43 @@ body {
 
  
     <!-- BEGIN: Vendor JS-->
-    <script src="/reirm/resources/vendors/js/vendors.min.js"></script>
+    <script src="/index/resources/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="/reirm/resources/vendors/js/ui/jquery.sticky.js"></script>
-    <script src="/reirm/resources/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="/reirm/resources/vendors/js/charts/apexcharts.min.js"></script>
-    <script src="/reirm/resources/vendors/js/extensions/toastr.min.js"></script>
-    <script src="/reirm/resources/vendors/js/extensions/moment.min.js"></script>
-    <script src="/reirm/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-    <script src="/reirm/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="/reirm/resources/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-    <script src="/reirm/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-    <script src="/reirm/resources/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
+    <script src="/index/resources/vendors/js/ui/jquery.sticky.js"></script>
+    <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="/index/resources/vendors/js/charts/apexcharts.min.js"></script>
+    <script src="/index/resources/vendors/js/extensions/toastr.min.js"></script>
+    <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
     <!-- END: Page Vendor JS-->
- <script src="/reirm/resources/js/materialize-v.1.0.min.js "  ></script>
-    <script src="/reirm/resources/js/jquery-validation-1.19.1.min.js"  ></script>
-    <script src="/reirm/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
-     <script src="/reirm/resources/js/datetime-moment-v1.10.12.js"  ></script>
-         <script src="/reirm/resources/js/dataTables.material.min.js"  ></script>
-      <script src="/reirm/resources/js/moment-v2.8.4.min.js"  ></script>
+ <script src="/index/resources/js/materialize-v.1.0.min.js "  ></script>
+    <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+    <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
+      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
     <!-- BEGIN: Theme JS-->
-    <script src="/reirm/resources/js/core/app-menu.min.js"></script>
-    <script src="/reirm/resources/js/core/app.min.js"></script>
-    <script src="/reirm/resources/js/scripts/customizer.min.js"></script>
-     <script src="/reirm/resources/js/scripts/forms/form-select2.min.js"></script>
+    <script src="/index/resources/js/core/app-menu.min.js"></script>
+    <script src="/index/resources/js/core/app.min.js"></script>
+    <script src="/index/resources/js/scripts/customizer.min.js"></script>
+     <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
     <!-- END: Theme JS-->
-   <script src="/reirm/resources/js/scripts/pages/modal-add-new-cc.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/page-pricing.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/modal-add-new-address.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/modal-create-app.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/modal-two-factor-auth.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/modal-edit-user.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/modal-share-project.min.js"></script>
+   <script src="/index/resources/js/scripts/pages/modal-add-new-cc.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/page-pricing.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/modal-add-new-address.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/modal-create-app.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/modal-two-factor-auth.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/modal-edit-user.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/modal-share-project.min.js"></script>
     <!-- BEGIN: Page JS-->
-     <script src="/reirm/resources/js/scripts/pages/dashboard-analytics.min.js"></script>
-    <script src="/reirm/resources/js/scripts/pages/app-invoice-list.min.js"></script>
+     <script src="/index/resources/js/scripts/pages/dashboard-analytics.min.js"></script>
+    <script src="/index/resources/js/scripts/pages/app-invoice-list.min.js"></script>
     <!-- END: Page JS-->
     
   <form action="<%=request.getContextPath()%>/export-company" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">	
@@ -683,6 +686,7 @@ body {
             });
         });
     });
+    
       $(window).on("load",(function(){
     	  
           if (feather) {

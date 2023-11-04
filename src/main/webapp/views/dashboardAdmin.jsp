@@ -420,8 +420,8 @@ z-index: 1000;
             <!-- Bottom Links -->
             <div class="flex flex-col items-center space-y-3 py-3">
               <!-- Settings -->
-           <!--    <a
-                href="form-layout-5.html"
+             <a
+               href="<%=request.getContextPath() %>/departments-master"
                 class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
               >
                 <svg
@@ -440,7 +440,7 @@ z-index: 1000;
                     d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
                   />
                 </svg>
-              </a> -->
+              </a> 
 
               <!-- Profile -->
               <div
@@ -2980,13 +2980,31 @@ z-index: 1000;
               </h3>
             </a>
           </div>
+                <div
+            class="card swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-next"
+            @click="selected = 'slide-00'"
+          >
+            <a href="https://appmint.resustainability.com/reweighbridges/" target="_blank"
+              class="flex flex-col items-center rounded-lg px-2 py-4"
+              :class="selected === 'slide-00' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
+            >
+              <img
+                class="w-12"
+                src="/index/resources/images/icons/WEIGH BRIDGE-01.svg"
+                alt="image"
+              />
+              <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
+                CWMS
+              </h3>
+            </a>
+          </div>
                  <!-- <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
-                  @click="selected = 'slide-3'"
+                  @click="selected = 'slide-03'"
                 >
                   <a href="https://relearning.resustainability.com/resustainability/login/resustainability.jsp" target="_blank"
                     class="flex flex-col items-center rounded-lg px-2 py-4"
-                    :class="selected === 'slide-3' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
+                    :class="selected === 'slide-03' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
                   >
                     <img
                       class="w-12"
@@ -3012,7 +3030,9 @@ z-index: 1000;
                       alt="image"
                     />
                     <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
-                      Email
+                    <c:if test="${sessionScope.USER_ID == '22014182'}">SS </c:if>
+                     <c:if test="${sessionScope.USER_ID != '22014182'}">Email </c:if>
+                      
                     </h3>
                   </a>
                 </div>

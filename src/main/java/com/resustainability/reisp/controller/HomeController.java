@@ -121,8 +121,64 @@ public class HomeController {
 			e.printStackTrace();  
 		} 
 		return model; 
+	} 
+	 
+	@RequestMapping(value = "/Incin-IWM", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView iwm(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.iwmPage);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
 	}
 	
+	@RequestMapping(value = "/departments-master", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView departmentsMaster(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.departmentsMaster);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	}
+	
+	
+	@RequestMapping(value = "/settings", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView settings(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.settings);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();    
+		} 
+		return model; 
+	}
+	
+	
+	@RequestMapping(value = "/deps", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView deps(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.deps);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();    
+		} 
+		return model; 
+	}
+	
+	@RequestMapping(value = "/company2", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView company2(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.company2);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();    
+		} 
+		return model; 
+	}
 	
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})

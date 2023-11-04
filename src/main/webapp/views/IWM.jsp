@@ -835,9 +835,9 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                IT Functions
+                IWM Functions
               </p>
-              <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+              <button @click="$store.global.isRightSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -857,8 +857,30 @@ z-index: 1000;
 
                 <div x-data="{expanded:true}">
                   <div class="mt-4 flex items-center justify-between px-4">
-                    <span class="text-xs font-medium uppercase"> </span>
-                   
+                    <span class="text-xs font-medium uppercase">Departments </span>
+                    <div class="-mr-1.5 flex">
+                      <button
+                        @click="expanded =! expanded"
+                        class="btn h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          :class="expanded && 'rotate-180'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#e21e26"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                   <div x-show="expanded" x-collapse>
                     <ul
@@ -2342,7 +2364,7 @@ z-index: 1000;
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
                 :class="$store.global.isSidebarExpanded   && 'active'"
-                @click="$store.global.isSidebarExpanded   = !$store.global.isSidebarExpanded  "
+                @click="$store.global.isSidebarExpanded   = !$store.global.isRightSidebarExpanded  "
               >
                 <span></span>
                 <span></span>
@@ -3162,7 +3184,7 @@ z-index: 1000;
               <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
              <button class="flex flex-col  justify-center">
               <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xlnew">Happenings @ Information Technology</p>
+                <p class="text-xlnew">Happenings @ Industrial Waste Management</p>
               </div>
               
               <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
