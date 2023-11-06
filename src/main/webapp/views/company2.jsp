@@ -2761,13 +2761,13 @@ z-index: 1000;
                 <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select x-model="selectedItem" id="select2-company_filter-container" name="company_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select x-model="selectedItem" id="select2-status_filter-container" name="status" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2988,9 +2988,13 @@ z-index: 1000;
          
         
       </main>
-          <div x-data="{showModal:true}">
-      
-                  <template x-teleport="#x-teleport-target1" data-teleport-template="true">
+       
+     <div x-data="{showModal:false}">
+       <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
                     <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
                       <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
                       <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
@@ -3040,18 +3044,18 @@ z-index: 1000;
                   </select>
                   </label>
                 </div>
-                </form>
+              
                 <div class="flex justify-center space-x-2 pt-4">
                  <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
                     <span>update </span>
                    
                   </button>
-                  <button @click="showModal = false" id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
                         </button>
                  
                 </div>
-                
+                  </form>
               </div>
             </div>
           </div>
@@ -3062,7 +3066,6 @@ z-index: 1000;
                   </template>
                 </div>
            
-  
       
 
 
@@ -3082,20 +3085,19 @@ z-index: 1000;
         @see https://alpinejs.dev/directives/teleport
       -->
     <div id="x-teleport-target"></div>
-     <div id="x-teleport-target1"  style="display:none;"></div>
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
 	 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
     <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-
+ <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
      <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
        <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
     <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
     <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
       <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
      <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
-       <script src="/reirm/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+       <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
          <script src="/index/resources/js/dataTables.material.min.js"  ></script>
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
@@ -3105,9 +3107,12 @@ z-index: 1000;
      
         <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
+	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
+	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
  $(window).on("load",(function(){
+		 // $("#x-teleport-target").hide();
           getCompanyList();
          }));
       
@@ -3199,29 +3204,7 @@ z-index: 1000;
 	            "sScrollXInner": "100%",
 	            "bScrollCollapse": true,
 	            "initComplete" : function() {
-				/* 		$('.dataTables_filter input[type="search"]')
-								.attr('placeholder', 'Search')
-								.css({
-									'width' : '300px ',
-									'display' : 'inline-block'
-								});
-						var input = $('.dataTables_filter input')
-								.unbind()
-								.bind('keyup',function(e){
-							    if (e.which == 13){
-							    	self.search(input.val()).draw();
-							    }
-							}), self = this.api(), $searchButton = $('<i class="fa fa-search" title="Go" >')
-						.click(function() {
-							self.search(input.val()).draw();
-						}), 
-						$clearButton = $('<i class="fa fa-close" title="Reset">')
-						.click(function() {
-							input.val('');
-							$searchButton.click();
-						})
-						$('.dataTables_filter').append( '<div class="right-btns"></div>');
-						$('.dataTables_filter div').append( $searchButton, $clearButton); */ 					
+									
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
@@ -3230,7 +3213,8 @@ z-index: 1000;
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
 		         			var company_data = "'"+val.company_code+"','"+val.status+"','"+val.company_name+"','"+val.id+"'";
-		                    var actions = '<a href="javascript:void(0);"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
+		                    var actions = '<a href="javascript:void(0);" @click="showModal = true"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
+                  	
 		                   	var rowArray = [];    	                 
 		            		$('#allCompanies').html(val.all_companies)
 		            		$('#activeCompanies').html(val.active_companies)
@@ -3253,21 +3237,23 @@ z-index: 1000;
 	    } 
 	    
 	    $("#toggleElementButton").click(function() {
-	    	 $("#x-teleport-target1").css("display","none");
+	    	 $("#x-teleport-target").css("display","none");
 	      });
 	    
 	    function getCompany(company_code,status,company_name,id){
-	    	 $('#company_name_edit').val('');
-			 $('#company_code_edit').val('');
-			 $('select[name^="status"] option:selected').removeAttr("selected");
-			 $("#x-teleport-target1").css("display","block");
-		      $('#id').val($.trim(id));
-		      $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
-		      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
-		      if(status != null && status != ''  && status != "undefined"){
-		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-		    	 // $('select').select2();
-		      }
+	    	   $("#updateModal").click();
+	    	   $('#company_name_edit').val('');
+				 $('#company_code_edit').val('');
+				 $('select[name^="status"] option:selected').removeAttr("selected");
+				 $("#x-teleport-target1").css("display","none");
+				// $("#x-teleport-target1").css("display","block");
+			      $('#id').val($.trim(id));
+			      $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
+			      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
+			      if(status != null && status != ''  && status != "undefined"){
+			    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
+			    	 // $('select').select2();
+			      }
 	   }
 	    
 	    function getErrorMessage(jqXHR, exception) {

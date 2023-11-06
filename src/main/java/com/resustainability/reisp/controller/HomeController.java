@@ -169,16 +169,6 @@ public class HomeController {
 		return model; 
 	}
 	
-	@RequestMapping(value = "/company2", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView company2(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.company2);
-		try { 
-			  
-		} catch (Exception e) { 
-			e.printStackTrace();    
-		} 
-		return model; 
-	}
 	
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})

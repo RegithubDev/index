@@ -82,20 +82,14 @@ public class CompanyController {
 	public String uploadformatError;
 	
 	@RequestMapping(value = "/company", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView company(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.company);
-		Company obj = null;
-		try {
-			 obj = service.getStacksDetails(obj);
-			 if(!StringUtils.isEmpty(obj)) {
-				session.setAttribute("ALL_COMPANIES", obj.getAll_companies());
-				session.setAttribute("ACTIVE_COMPANIES", obj.getActive_companies());
-				session.setAttribute("INACTIVE_COMPANIES", obj.getInActive_companies());
-			 }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return model;
+	public ModelAndView company2(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.company2);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();    
+		} 
+		return model; 
 	}
 	
 	
