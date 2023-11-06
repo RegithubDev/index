@@ -248,7 +248,7 @@ public class CompanyDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String updateQry = "UPDATE [company] set company_name= :company_name,company_code= :company_code,status=:status,modified_by= :modified_by "
+			String updateQry = "UPDATE [company] set company_name= :company_name,company_code= :company_code,status=:status,modified_by= :modified_by,modified_date= getdate() "
 					+ " where id= :id ";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(updateQry, paramSource);

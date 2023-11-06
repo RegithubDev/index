@@ -31,354 +31,113 @@
       rel="stylesheet"
     />
     <style>
-    .required{
-    	color: red;
-    }
-     .mdl-grid{
+    
+    .pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination button {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.pagination .mdl-button--raised {
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+}
+
+.pagination .active button {
+  background-color: #333;
+  color: #fff;
+}
+    
+    
+   .mdl-grid{
 	display: flex !important;
     padding: 4px;
     justify-content: space-between;
     height: 4.5rem;
-	} 
-	.dt-table{
-	display: block !important;
-	height: 100%;
-	}
-    .w-50{
-    	    width: 12rem;
-    	
-    }
-    .pt-8{
-    	    padding-top: 9%;
-    	    padding-left: 3.25rem!important;
-    }
-    @media (min-width: 640px){
-    .max-w-lg2{
-    	max-width: 65rem;
-    }
-    .slm {
-		    padding-left: 2.25rem!important;
-		    padding-right: 1.25rem!important;
-		}
-	}
-	  @media (max-width: 767px) {
-    .sld {
-		    padding: 2rem!important;
-		}
-	}
-    .swiper-scrollbar-drag {
-    background: transparent!important;
-    border-radius: var(--swiper-scrollbar-border-radius,10px);
-    height: 100%;
-    left: 0;
-    position: relative;
-    top: 0;
-    width: 100%;
+} 
+.dt-table{
+display: block !important;
+height: 100%;
 }
-    
-       @media (min-width: 766px) and (max-width: 1200px){
-      .qutt{
-          width: 40rem!important;
-      }
-      
-      }
-       @media (min-width: 600px) and (max-width: 1200px){
-      .qutt{
-          width: 34rem!important;
-      }
-      
-      } 
-    .mgi{
-     width: 43px; /* Set the desired width for the image */
-  	height: auto;
-    }
-    .parent1 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Display two items in each row */
-  justify-content: center; /* Optional, to center the items horizontally */
-  grid-gap: 10px; /* Add some spacing between the items */
+.modal {
+    width: 100% !important;
+}
+.required{
+	color:red;
+}
+.my-error-class {
+ 	 color:red;
+}
+.my-valid-class {
+ 	 color:green;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+     left: -25% !important;
+    margin-top: 1p% !important;
+}
+body {
+    font-family: var(--bs-body-font-family) !important;
+}
+.dark-layout h1, .dark-layout h2, .dark-layout h3, .dark-layout h4, .dark-layout h5, .dark-layout h6, .dark-layout span  {
+    color: #D0D2D6;
+}
+.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
+    background-size: 18px 14px,18px 14px !important;
+    background-repeat: no-repeat !important;
+    height: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    left: -8px !important;
+    border-style: none !important;
 }
 
-.child1 {
-  background-color: #f0f0f0; /* Optional, add background color to the items */
+button.disabled {
+  pointer-events: none; /* Disable pointer events to prevent interaction */
+  background-color: #e1dcdc; /* Change background color to a muted color */
+  color: #666; /* Change text color to a muted color */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
+  /* Add any other styles as needed */
 }
 
-   .parents {
- display: flex;
-  justify-content: center;
-}
-#rewards{
-width: 142px!important;
-}
-#news{
-width: 123px!important;
-}
-.childs {
-  display: inline-block;
-  width: 221px; /* Optional, set a fixed width for child divs if needed */
-  height: 100px; /* Optional, set a fixed height for child divs if needed */
-  margin: 10px; /* Optional, add some spacing between the child divs */
-}
-    .cardT {
-   	 box-shadow: none !important; 
-   	 background-color: transparent!important;
-   	 
-   	 
-	}
-     @media (min-width: 1024px) {
-     .pc{
-         height: 34rem;
-     }
-     #mobileClass2{
-    	display:none;
-    }
-     .h-custom{
-      	height: 5rem;
-      }
-      .qut{
-        position: absolute;
-    top: -1rem;
-    width: 22rem;
-    right: 0rem;
-    }
-     #qut{
-         padding-bottom: 1rem !important;
-    	 padding-top: 1rem !important;
-     }
-     }
-   
-    .bg-slate-2000 {
-    background-color: #ffffff;
-}
-    .cardsRight{
-    	    right: -2rem ;
-    	    height: 6rem;
-    }
-    .containers {
-  display: flex;
-  justify-content: center; /* Optional, to center the spans horizontally */
+.input-sm {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  margin-left: 0.3rem;
 }
 
-.side-by-side {
-  margin: 5px; /* Optional, add some spacing between the spans */
-}
-    .max-w-xl {
-    max-width: 60rem!important;
-}
-    #mobileClass{
-  	display: none;
-  }
-    .w-208{
-    	width: 9rem !important;
-    }
-    @media (max-width: 767px) {
-    #mobileClass2{
-    	display:block;
-    }
-      .h-custom{
-      	height: 0.25rem;
-      }
-    .cardsRight{
-    	    right: 0rem;
-    }
-	  .reimagining {
-	     
-	    display: flex;
-	    align-items: center;
-	
-	  }
-	  #iconsCLass {
-    display: none;
-  }
-  #mobileClass{
-  	display: block;
-  	width: 92% !important;
-    height: 92% !important;
-    padding-bottom: 0.5rem !important;
-    padding-top: 0.5rem !important;
-    padding-left: 3rem;
-    left: 1rem !important;
-}
-.mblview{
-  		width:100% !important;
-  }
-  }
-  
-  }
- .w-1w{
-     width: 5.5rem !important;
- }
-  
-    .text-re{
-    	color:#e21e26;
-    }
-    #clock {
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      text-align: center;
-      padding: 6px;
-      color: #333;
-    }
-    .content{
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    a {
-    color: blue;
-    text-decoration: inherit;
-}
-  .container{
-    overflow: hidden;
-    z-index: 10;
-    position: relative;
-    height: 90px;
-    width: 300px;
-    background-color: #3935e2;
-    border-radius: 10px;
-    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
-}
-   #player-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-    }
-
-    #player {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
- .loading-dots {
-      font-size: 36px;
-      text-align: center;
-      animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-      0% { content: ". "; }
-      33% { content: ". . "; }
-      66% { content: ". . . "; }
-    }
-/*  BACKGROUND  */
-
-.Circle1{
-    z-index: 100;
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    right: -20px;
-    top: -30px;
-    border-radius: 50%;
-    background-color: rgba(253,184,19,1);
-    animation: enlarge;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-}
-
-.Circle2{
-    z-index: 80;
-    position: absolute;
-    height: 150px;
-    width: 150px;
-    right: -50px;
-    top: -70px;
-    border-radius: 50%;
-    background-color: rgba(246,140,31,0.7);
-    
-    animation: enlarge;
-    animation-duration: 7s;
-    animation-iteration-count: infinite;
-}
-
-.Circle3{
-    z-index: 50;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    right: -50px;
-    top: -100px;
-    border-radius: 50%;
-    background-color: rgba(241,125,45,0.7);
-    
-    animation: enlarge;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
+.input-sm::after {
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
 }
 
 
 
-/*  CONTENT  */
-
-.sun{
-    z-index: 1000;
-    font-size: 15px !important;
-}
-
-.Condition{
-z-index: 1000;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-size: 20px;
-    left: 54px;
-    top: 9px;
-}
-
-.Temp{
-   
-        z-index: 1000;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-size: 27px;
-    font-weight: 400;
-    left: 20px;
-    bottom: 19px;
-}
-
-#F{
-    z-index: 1000;
-    font-family: "Roboto",sans-serif;
-    font-weight: 100;
-    font-size: 30px;
-}
-
-
-.Time{
-     z-index: 1000;
-    position: absolute;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 200;
-    right: 9px;
-    top: 30px;
-}
-
-.locationIcon{
-    z-index: 1000;
-    font-size: 10px !important;
-}
-
-.Location{
-    z-index: 1000;
-    position: absolute;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 12px;
-    font-weight: 200;
-    right: 20px;
-    bottom: 15px;
-}
-
-@keyframes enlarge{
-    50%{
-        transform: scale(1.2);
-    }
-}
-
-    .mb-4 {
-    margin-bottom: 1.25rem;
-}
   </style>
     <script>
       /**
@@ -2873,55 +2632,38 @@ z-index: 1000;
               </div>
 		<br>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          <div class="card flex-row justify-between space-x-2 p-4 sm:p-5">
-            <div>
-              <div class="flex space-x-1">
-                <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
-                  Total Companies
-                </h4>
-                <button class="btn h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
-                <span id= "allCompanies">
-                </button>
-              </div>
-             
-            </div>
-            <div class="avatar h-10 w-10">
-             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-          </div>
-          <div class="card flex-row justify-between space-x-2 p-4 sm:p-5">
-            <div>
-              <div class="flex space-x-1">
-                <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
-                 Active Companies
-                </h4>
-                <button class="btn h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
-                  <span id= "activeCompanies">
-                </button>
-              </div>
-             
-            </div>
-            <div class="avatar h-10 w-10">
+	
+          <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
+                <div class="flex justify-between space-x-1">
+                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                   <span id= "allCompanies"></span>
+                  </p>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+
+                </div>
+                <p class="mt-1 text-xs+">Total Companies</p>
+           </div>
+            <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
+                <div class="flex justify-between space-x-1">
+                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                   <span id= "activeCompanies"></span>
+                  </p>
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
-            </div>
-          </div>
-          <div class="card flex-row justify-between space-x-2 p-4 sm:p-5">
-            <div>
-              <div class="flex space-x-1">
-                <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
-                  Inactive Companies
-                </h4>
-                <button class="btn h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
-                  <span id= "inActiveCompanies">
-                </button>
-              </div>
-           
-            </div>
-            <div class="avatar h-10 w-10">
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>            </div>
-          </div>
+
+                </div>
+                <p class="mt-1 text-xs+"> Active Companies</p>
+           </div>
+           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
+                <div class="flex justify-between space-x-1">
+                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                   <span id= "inActiveCompanies"></span>
+                  </p>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                </div>
+                <p class="mt-1 text-xs+"> Inactive Companies</p>
+           </div>
           
-        
+          
         </div>
               
 
