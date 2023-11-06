@@ -25,14 +25,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-           <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
-         <script src="https://www.youtube.com/iframe_api"></script>
-       
+          <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
     <style>
+    .required{
+    	color: red;
+    }
+     .mdl-grid{
+	display: flex !important;
+    padding: 4px;
+    justify-content: space-between;
+    height: 4.5rem;
+	} 
+	.dt-table{
+	display: block !important;
+	height: 100%;
+	}
     .w-50{
     	    width: 12rem;
     	
@@ -2745,12 +2756,230 @@ z-index: 1000;
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
-      
- 
- 
-
+      <div class="p-4 sm:p-5">
+                
+                <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                  <label class="block">
+                  <select x-model="selectedItem" id="select2-company_filter-container" name="company_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Company</option>
+                   
+                  </select>
+                </label>
+                  <label class="block">
+                  <select x-model="selectedItem" id="select2-status_filter-container" name="status" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Status</option>
+                    
+                  </select>
+                </label>
+                    <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                    <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
+                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
+                </button>
+                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
+                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
+                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
+                </button>
+                    </div>
+                       <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                      <div x-data="{showModal:false}">
+                
+                    <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                Add Company
+              </p>
+              <div class="mt-4 space-y-4">
+                <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
+                <label class="block  text-left">
+                 <span>Company Name </span><span class="required"> *</span>
+                  <span class="relative mt-1.5 flex">
+                    <input 
+                      id="company_name_add"
+		              name="company_name"
+                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
+                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                      <i class="fa-regular fa-building text-base"></i>
+                    </span>
+                  </span>
+                </label>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <label class="block  text-left">
+                    <span>Company Code </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                       id="company_code_add"
+              		   name="company_code"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                 <label class="block  text-left">
+                    <span>Status</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_add-container"
+              		name="status"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
+                </div>
+                </form>
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                    <span>Add </span>
+                   
+                  </button>
+                  <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                        </button>
+                 
+                </div>
+                
+              </div>
+            </div>
+          </div>
+                       
+                       
+                      </div>
+                    </div>
+                  </template>
+                </div>
+                 
+                <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
+                 focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                 style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
+                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                </button>
+                    
+                    </div>
+                
+                </div>
+              
+              </div>
+		<br>
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          <div class="card flex-row justify-between space-x-2 p-4 sm:p-5">
+            <div>
+              <div class="flex space-x-1">
+                <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                  Total Companies
+                </h4>
+                <button class="btn h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
+                <span id= "allCompanies">
+                </button>
+              </div>
+             
+            </div>
+            <div class="avatar h-10 w-10">
+             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+          </div>
+          <div class="card flex-row justify-between space-x-2 p-4 sm:p-5">
+            <div>
+              <div class="flex space-x-1">
+                <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                 Active Companies
+                </h4>
+                <button class="btn h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
+                  <span id= "activeCompanies">
+                </button>
+              </div>
+             
+            </div>
+            <div class="avatar h-10 w-10">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
+            </div>
+          </div>
+          <div class="card flex-row justify-between space-x-2 p-4 sm:p-5">
+            <div>
+              <div class="flex space-x-1">
+                <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                  Inactive Companies
+                </h4>
+                <button class="btn h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
+                  <span id= "inActiveCompanies">
+                </button>
+              </div>
+           
+            </div>
+            <div class="avatar h-10 w-10">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>            </div>
+          </div>
+          
+        
+        </div>
               
 
+          <div class="row">
+
+            <div class="card mt-3">
+		     <div class="card invoice-list-wrapper">
+		      <div class="card-datatable table-responsive">
+		       <div class="dt-buttons" style="height : 0.5em;">
+		      
+		        </div>
+                <table class="invoice-list-table table" id="datatable-company">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        #
+                      </th>
+                    <%--  <c:if test="${sessionScope.ROLE eq 'Admin' }" > --%>
+                       <th class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Action
+                      </th>
+                      <%-- </c:if> --%>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Company Code
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Company Name
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Status
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Created Date
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Created By
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified Date
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified By
+                      </th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          
                 
              
    
@@ -2759,39 +2988,82 @@ z-index: 1000;
          
         
       </main>
-          
-           
-  
-      <div class="mt-5" x-data="{showModal:false}">
-               
-                <template x-teleport="#x-teleport-target">
-                  <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                    <div class="scrollbar-sm relative flex max-w-lg2 flex-col overflow-y-auto rounded-lg  px-4  text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                     <div class="flex h-8 items-center justify-between">
-                          <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base"></h2>
-
-                          <button @click="showModal = !showModal" class="btn -mr-1.5 h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" style="
-    margin-bottom: -4rem;
-    z-index: 1;
-    margin-right: -0.7rem; background-color: white;
-">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                          </button>
-                        </div>
-                      <div class="mt-4">
-                        <img
-                      class=""
-                      src="/index/resources/images/CyberSecurity Launch.png"
-                      alt="image"
-                    />
+          <div x-data="{showModal:true}">
+      
+                  <template x-teleport="#x-teleport-target1" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                update Company
+              </p>
+              <div class="mt-4 space-y-4">
+                <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-company" method="post" class="form-horizontal" role="form" >
+                <label class="block  text-left">
+                 <span>Company Name </span><span class="required"> *</span>
+                  <span class="relative mt-1.5 flex">
+                    <input 
+                      id="company_name_edit"
+		              name="company_name"
+		              value=""
+                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
+                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                      <i class="fa-regular fa-building text-base"></i>
+                    </span>
+                  </span>
+                </label>
+                 <input type="hidden" id="id" name="id" />
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <label class="block  text-left">
+                    <span>Company Code </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                       value=""
+                       id="company_code_edit"
+              		   name="company_code"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                 <label class="block  text-left">
+                    <span>Status</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_add-container"
+              		name="status"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
+                </div>
+                </form>
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                    <span>update </span>
+                   
+                  </button>
+                  <button @click="showModal = false" id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                        </button>
+                 
+                </div>
+                
+              </div>
+            </div>
+          </div>
+                       
+                       
                       </div>
                     </div>
-                  </div>
-                </template>
-              </div>
+                  </template>
+                </div>
+           
+  
+      
 
 
      <!--  <div
@@ -2810,135 +3082,360 @@ z-index: 1000;
         @see https://alpinejs.dev/directives/teleport
       -->
     <div id="x-teleport-target"></div>
+     <div id="x-teleport-target1"  style="display:none;"></div>
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+	 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+      <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/reirm/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
+      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
+        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
+	  <form action="<%=request.getContextPath()%>/export-company" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">	
+      
+     
+        <input type="hidden" name="status" id="exportStatus_filter" />
+	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
+ $(window).on("load",(function(){
+          getCompanyList();
+         }));
       
-      $(document).ready(function() {
-
-
-          function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-based
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? '0' + hours : hours;
-            minutes = (minutes < 10) ? '0' + minutes : minutes;
-            seconds = (seconds < 10) ? '0' + seconds : seconds;
-            day = (day < 10) ? '0' + day : day;
-            month = (month < 10) ? '0' + month : month;
-
-            var time = hours + ':' + minutes + ':' + seconds; 
-            var date = day + '-' + month + '-' + year;
-
-            var clock1 =  '<i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
-
-            var clock =  ' <div class="mt-5 space-y-4 " style=" margin-left: 2rem;"> <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
-            $('#clock').html(clock);
-            $('#clock1').html(clock1);
-          }
-
-          setInterval(updateClock, 1000);
-
-          var cityName;
-          if (navigator.geolocation) {
-              // Get current position
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                // Make API request to fetch city name
-                $.ajax({
-                  url: 'https://nominatim.openstreetmap.org/reverse',
-                  type: 'GET',
-                  data: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude,
-                    zoom: 10,
-                    addressdetails: 1
-                  },
-                  success: function(response) {
-                    var city = response.address.city || response.address.town || response.address.village || '';
-                    var country = response.address.country || '';
-
-                    // Update HTML element with city name
-                    cityName = city;
-                    $('#city').text(city + ', ' + country);
-                    var cityNplace = city + ',' + country
-                    getWeather(cityNplace);
-                  },
-                  error: function(xhr, status, error) {
-                    console.log(error);
-                  }
-                });
-              });
-            } else {
-              console.log('Geolocation is not supported by this browser.');
-            }
-          
+      function clearFilter(){
+		    	$("#select2-company_filter-container").val("");
+		    	$("#select2-status_filter-container").val("");
+		    	window.location.href= "<%=request.getContextPath()%>/company2";
+	    }
       
-          
-      });
-     function getWeather(cityNplace){
-    	    
-          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
-          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
+      function getCompanyFilterList() {
+	        var company_code = $("#select2-company_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(company_code) == "") {
+	        	$("#select2-company_filter-container option:not(:first)").remove();
+	        	var myParams = { company_code: company_code, status: status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-company_filter-container").append('<option value="' + val.company_code + '">'+ "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function getStatusFilterList() {
+    	  var company_code = $("#select2-company_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(status) == "") {
+	        	$("#select2-status_filter-container option:not(:first)").remove();
+	        	var myParams = { company_code: company_code, status: status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
 
-          $.ajax({
-              url: apiUrl,
-              method: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  const temperatureElement = $('#temperature');
-                  const descriptionElement = $('#description');
-                  const windSpeedElement = $('#wind-speed');
-                  const weatherIconElement = $('#weather-icon');
-
-                  const temperature = Math.round(data.main.temp);
-                  const description = data.weather[0].description;
-                  const windSpeed = data.wind.speed;
-                  const weatherIcon = data.weather[0].icon;
-
-                  temperatureElement.text(temperature +'°C');
-                  descriptionElement.text(description);
-                  windSpeedElement.text(windSpeed+' m/s');
-                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
-              },
-              error: function(error) {
-                  console.error('Error:', error);
-              }
-        });
-    	  
-      }
-     
-     const button = document.getElementById("signout_button");
-     button.onclick = () => {
-       google.accounts.id.disableAutoSelect();
-       console.log('User signed out.');
-       $("#email").val('');
- 		$("#logoutForm").submit();
-     }
-    // https://www.youtube.com/watch?v=zJkS24mEBbU&pp=ygUQcmVzdXN0YWluYWJpbGl0eQ%3D%3D
-    /*  function onYouTubeIframeAPIReady() {
-         // Create an instance of the YouTube player
-         new YT.Player('player', {
-           videoId: 'z8-Ghz4YSMY',
-           playerVars: {
-             autoplay: 0, // Autoplay the video
-             controls: 1, // Show video controls
-             modestbranding: 1, // Hide YouTube logo
-             fs: 1, // Show fullscreen button
-           },
-         });
-       } */
-   
+	    function exportCompany(){
+	    	 var company_code = $("#select2-company_filter-container").val();
+	         var status = $("#select2-status_filter-container").val();
+	    	
+	    	 $("#exportCompany_filter").val(company_code);
+	     	 $("#exportStatus_filter").val(status);
+	     	 $("#exportCompanyForm ").submit();
+	  	}
+	    
+	    function getCompanyList(){
+	    	getCompanyFilterList('');
+	    	getStatusFilterList('');
+	    	var company_code = $("#select2-company_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        $('#allCompanies').html(0)
+    		$('#activeCompanies').html(0)
+    		$('#inActiveCompanies').html(0)
+	     	table = $('#datatable-company').DataTable();
+			table.destroy();
+			$.fn.dataTable.moment('DD-MMM-YYYY');
+			table = $('#datatable-company').DataTable({
+				"bStateSave": true,  
+	     		fixedHeader: true,
+	         	//Default: Page display length
+					"iDisplayLength" : 10,
+					"iData" : {
+						"start" : 52
+					},"iDisplayStart" : 0,
+					"drawCallback" : function() {
+					},
+	            columnDefs: [],
+	            // "ScrollX": true,
+	            //"scrollCollapse": true,
+	            "sScrollX": "100%",
+	            "sScrollXInner": "100%",
+	            "bScrollCollapse": true,
+	            "initComplete" : function() {
+				/* 		$('.dataTables_filter input[type="search"]')
+								.attr('placeholder', 'Search')
+								.css({
+									'width' : '300px ',
+									'display' : 'inline-block'
+								});
+						var input = $('.dataTables_filter input')
+								.unbind()
+								.bind('keyup',function(e){
+							    if (e.which == 13){
+							    	self.search(input.val()).draw();
+							    }
+							}), self = this.api(), $searchButton = $('<i class="fa fa-search" title="Go" >')
+						.click(function() {
+							self.search(input.val()).draw();
+						}), 
+						$clearButton = $('<i class="fa fa-close" title="Reset">')
+						.click(function() {
+							input.val('');
+							$searchButton.click();
+						})
+						$('.dataTables_filter').append( '<div class="right-btns"></div>');
+						$('.dataTables_filter div').append( $searchButton, $clearButton); */ 					
+					}
+	        }).rows().remove().draw();
+			table.state.clear();		
+		 	var myParams = {company_code: company_code, status: status};
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getCompanies",type:"POST",data:myParams,success : function(data){    				
+					if(data != null && data != '' && data.length > 0){    					
+		         		$.each(data,function(key,val){
+		         			var company_data = "'"+val.company_code+"','"+val.status+"','"+val.company_name+"','"+val.id+"'";
+		                    var actions = '<a href="javascript:void(0);"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
+		                   	var rowArray = [];    	                 
+		            		$('#allCompanies').html(val.all_companies)
+		            		$('#activeCompanies').html(val.active_companies)
+		            		$('#inActiveCompanies').html(val.inActive_companies)
+		                   	rowArray.push($.trim(val.id));
+		                	rowArray.push($.trim(actions));  
+		                   	rowArray.push($.trim(val.company_code));
+		                   	rowArray.push($.trim(val.company_name));
+		                   	rowArray.push($.trim(val.status));
+		                   	rowArray.push($.trim(val.created_date));  
+		                   	rowArray.push($.trim(val.created_by));
+		                   	rowArray.push($.trim(val.modified_date));
+		                   	rowArray.push($.trim(val.modified_by));
+		                    table.row.add(rowArray).draw( true );
+						});
+					}
+				},error: function (jqXHR, exception) {
+		         	getErrorMessage(jqXHR, exception);
+		     }});
+	    } 
+	    
+	    $("#toggleElementButton").click(function() {
+	    	 $("#x-teleport-target1").css("display","none");
+	      });
+	    
+	    function getCompany(company_code,status,company_name,id){
+	    	 $('#company_name_edit').val('');
+			 $('#company_code_edit').val('');
+			 $('select[name^="status"] option:selected').removeAttr("selected");
+			 $("#x-teleport-target1").css("display","block");
+		      $('#id').val($.trim(id));
+		      $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
+		      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
+		      if(status != null && status != ''  && status != "undefined"){
+		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
+		    	 // $('select').select2();
+		      }
+	   }
+	    
+	    function getErrorMessage(jqXHR, exception) {
+	  	    var msg = '';
+	  	    if (jqXHR.status === 0) {
+	  	        msg = 'Not connect.\n Verify Network.';
+	  	    } else if (jqXHR.status == 404) {
+	  	        msg = 'Requested page not found. [404]';
+	  	    } else if (jqXHR.status == 500) {
+	  	        msg = 'Internal Server Error [500].';
+	  	    } else if (exception === 'parsererror') {
+	  	        msg = 'Requested JSON parse failed.';
+	  	    } else if (exception === 'timeout') {
+	  	        msg = 'Time out error.';
+	  	    } else if (exception === 'abort') {
+	  	        msg = 'Ajax request aborted.';
+	  	    } else {
+	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+	  	    }
+	  	    console.log(msg);
+        }
+	    
+	    function addCompany(){
+	    	if(validator.form()){ // validation perform
+	        	document.getElementById("addCompanyForm").submit();	
+	    	}
+	    }
+	    function updateCompany(){
+	    	if(validator1.form()){ // validation perform
+	        	document.getElementById("updateCompany").submit();	
+	    	}
+	    }
+	    var validator1 =	$('#updateCompanyForm').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+		   		 		  "company_name": {
+		   			 			required: true
+		   			 	  },"company_code": {										
+		   			 			required: true
+		   			 	  },"status": {
+		   	                 	required: true,
+		   			 	  }
+		   		 	},
+		   		    messages: {
+		   		 		 "company_name": {
+		   				 	required: 'Required',
+		   			 	  },"company_code": {
+		   			 		required: 'Required'
+		   			 	  },"status": {
+		   		 			required: 'Required'
+		   		 	  	  }
+		      		},
+		      		errorPlacement:function(error, element){
+		      		 	if (element.attr("id") == "company_name_edit" ){
+		   				 document.getElementById("company_name_editError").innerHTML="";
+		   		 		 error.appendTo('#company_name_editError');
+		   			}else if(element.attr("id") == "company_code_edit" ){
+		   			   document.getElementById("company_code_editError").innerHTML="";
+		   		 	   error.appendTo('#company_code_editError');
+		   			}else if(element.attr("id") == "select2-status_edit-container" ){
+		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
+		   			 	error.appendTo('#select2-status_edit-containerError');
+		   			}else{
+		   					error.insertAfter(element);
+		   	        } 
+		      		},invalidHandler: function (form, validator) {
+		               var errors = validator.numberOfInvalids();
+		               if (errors) {
+		                   var position = validator.errorList[0].element;
+		                   jQuery('html, body').animate({
+		                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+		                   }, 1000);
+		               }
+		           },submitHandler:function(form){
+		   	    	//form.submit();
+		   	    }
+		   	});
+	    var validator =	$('#addCompanyForm').validate({
+	   	 errorClass: "my-error-class",
+	   	 validClass: "my-valid-class",
+	   	 ignore: ":hidden:not(.select2 form-select)",
+	   		    rules: {
+	   		 		  "company_name": {
+	   			 			required: true
+	   			 	  },"company_code": {										
+	   			 			required: true
+	   			 	  },"status": {
+	   	                 	required: true,
+	   			 	  }
+	   		 	},
+	   		    messages: {
+	   		 		 "company_name": {
+	   				 	required: 'Required',
+	   			 	  },"company_code": {
+	   			 		required: 'Required'
+	   			 	  },"status": {
+	   		 			required: 'Required'
+	   		 	  	  }
+	      		},
+	      		errorPlacement:function(error, element){
+	      		 	if (element.attr("id") == "company_name_add" ){
+	   				 document.getElementById("company_name_addError").innerHTML="";
+	   		 		 error.appendTo('#company_name_addError');
+	   			}else if(element.attr("id") == "company_code_add" ){
+	   			   document.getElementById("company_code_addError").innerHTML="";
+	   		 	   error.appendTo('#company_code_addError');
+	   			}else if(element.attr("id") == "select2-status_add-container" ){
+	   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	   			 	error.appendTo('#select2-status_add-containerError');
+	   			}else{
+	   					error.insertAfter(element);
+	   	        } 
+	      		},invalidHandler: function (form, validator) {
+	               var errors = validator.numberOfInvalids();
+	               if (errors) {
+	                   var position = validator.errorList[0].element;
+	                   jQuery('html, body').animate({
+	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	                   }, 1000);
+	               }
+	           },submitHandler:function(form){
+	   	    	//form.submit();
+	   	    }
+	   	}); 
+	   	$('.formSelect').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	   	
+	   	$('input').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	   	
+	   	function checkUniqueId(){
+	   		var company_code = $('#company_code_add').val();
+	        if ($.trim(company_code) != "" ) {
+	        	var myParams = {company_code: company_code };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+		                      $("#company_code_addError").html(company_code+" Already Exists!").css("color","red");
+		                      $('#company_code_add').removeClass("is-valid")
+		                      $('#company_code_add').addClass("is-invalid")
+		                      $("#addBtn").prop("disabled",true);
+	                    	});
+	                     }else{
+	                    	  $("#company_code_addError").text("");
+	                    	  $('#company_code_add').removeClass("is-invalid")
+		                      $('#company_code_add').addClass("is-valid")
+		                      $("#addBtn").prop("disabled",false);
+	                     }           
+	                    
+	                    },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	   		
+	   	}
       </script>
   </body>
 </html>
