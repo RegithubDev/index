@@ -3030,8 +3030,7 @@ z-index: 1000;
                       alt="image"
                     />
                     <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
-                    <c:if test="${sessionScope.USER_ID == '22014182'}">SS </c:if>
-                     <c:if test="${sessionScope.USER_ID != '22014182'}">Email </c:if>
+                   Email
                       
                     </h3>
                   </a>
