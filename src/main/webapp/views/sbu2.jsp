@@ -2510,8 +2510,14 @@ button.disabled {
                 <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-company_code_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
+                   
+                  </select>
+                </label>
+                   <label class="block">
+                  <select id="select2-sbu_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select SBU</option>
                    
                   </select>
                 </label>
@@ -2522,7 +2528,7 @@ button.disabled {
                   </select>
                 </label>
                     <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                    <button  onclick="getSBUList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                      style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
@@ -2538,7 +2544,7 @@ button.disabled {
                 
                     <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
                     dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                 <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </button>
                   <template x-teleport="#x-teleport-target" data-teleport-template="true">
                     <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
@@ -2547,17 +2553,15 @@ button.disabled {
                        <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Add Company
+                Add SBU
               </p>
               <div class="mt-4 space-y-4">
-                <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
-                <label class="block  text-left">
-                 <span>Company Name </span><span class="required"> *</span>
+ <form id="addSBUForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-sbu" method="post" class="form-horizontal" role="form" >                <label class="block  text-left">
+                 <span>SBU Name </span><span class="required"> *</span>
                   <span class="relative mt-1.5 flex">
                     <input 
-                      id="company_name_add"
-		              name="company_name"
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
+                      id="sbu_name_add"
+              name="sbu_name"ntrol form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
                     <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                       <i class="fa-regular fa-building text-base"></i>
                     </span>
@@ -2565,11 +2569,11 @@ button.disabled {
                 </label>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block  text-left">
-                    <span>Company Code </span><span class="required"> *</span>
+                    <span>SBU Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
                       <input 
-                       id="company_code_add"
-              		   name="company_code"
+                       id="sbu_code_add"
+              name="sbu_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                       <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                         <i class="far fa-user text-base"></i>
@@ -2579,8 +2583,8 @@ button.disabled {
                  <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
-                   id="select2-status_add-container"
-              		name="status"
+                  id="select2-status_add-container"
+              name="status"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
@@ -2626,31 +2630,31 @@ button.disabled {
           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "allCompanies"></span>
+                  <span id= "allSBU"></span>
                   </p>
                               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
                 </div>
-                <p class="mt-1 text-xs+">Total Companies</p>
+                <p class="mt-1 text-xs+">Total SBU</p>
            </div>
             <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "activeCompanies"></span>
+                  <span id= "activeSBU"></span>
                   </p>
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
 
                 </div>
-                <p class="mt-1 text-xs+"> Active Companies</p>
+                <p class="mt-1 text-xs+"> Active SBU</p>
            </div>
            <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "inActiveCompanies"></span>
+                 <span id= "inActiveSBU"></span>
                   </p>
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                 </div>
-                <p class="mt-1 text-xs+"> Inactive Companies</p>
+                <p class="mt-1 text-xs+"> Inactive SBU</p>
            </div>
           
           
@@ -2665,7 +2669,7 @@ button.disabled {
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table" id="datatable-company">
+                <table class="invoice-list-table table" id="datatable-sbu">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
@@ -2677,27 +2681,18 @@ button.disabled {
                       </th>
                       <%-- </c:if> --%>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Company Code
+                        SBU Code
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Company Name
+                        SBU Name
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Company
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
                       </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created Date
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created By
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified Date
-                      </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified By
-                      </th>
-                     
+                       
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -2722,7 +2717,7 @@ button.disabled {
       </main>
        
      <div x-data="{showModal:false}">
-       <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+       <button style="display : none"; @click="showModal = true"  id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
                     dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </button>
@@ -2733,16 +2728,15 @@ button.disabled {
                        <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                update Company
+                update SBU
               </p>
               <div class="mt-4 space-y-4">
-                <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-company" method="post" class="form-horizontal" role="form" >
-                <label class="block  text-left">
-                 <span>Company Name </span><span class="required"> *</span>
+              <form id="updateSBUForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-sbu" method="post" class="form-horizontal" role="form" >                <label class="block  text-left">
+                 <span>SBU Name </span><span class="required"> *</span>
                   <span class="relative mt-1.5 flex">
                     <input 
-                      id="company_name_edit"
-		              name="company_name"
+                      id="sbu_name_edit"
+                      name="sbu_name"
 		              value=""
                     class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
                     <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
@@ -2753,12 +2747,12 @@ button.disabled {
                  <input type="hidden" id="id" name="id" />
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block  text-left">
-                    <span>Company Code </span><span class="required"> *</span>
+                    <span>SBU Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
                       <input 
                        value=""
-                       id="company_code_edit"
-              		   name="company_code"
+                       id="sbu_code_edit"
+                        name="sbu_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                       <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                         <i class="far fa-user text-base"></i>
@@ -2768,8 +2762,8 @@ button.disabled {
                  <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
-                   id="select2-status_add-container"
-              		name="status"
+                    id="select2-status_edit-container"
+              name="status"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
@@ -2778,7 +2772,7 @@ button.disabled {
                 </div>
               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCoFmpany();">
                     <span>update </span>
                    
                   </button>
@@ -2834,39 +2828,41 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	  <form action="<%=request.getContextPath()%>/export-company" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">	
+	  <form action="<%=request.getContextPath()%>/export-sbu" name="exportSBUForm" id="exportSBUForm" target="_blank" method="post">	
       
      
         <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
-	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
-	</form>
+	
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
- $(window).on("load",(function(){
-		 // $("#x-teleport-target").hide();
-          getCompanyList();
+  $(window).on("load",(function(){
+    	  
+        
+          getSBUList();
          }));
       
       function clearFilter(){
-		    	$("#select2-company_filter-container").val("");
+		    	$("#select2-sbu_filter-container").val(""); 
+		    	$("#select2-company_code_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	window.location.href= "<%=request.getContextPath()%>/company";
+		    	window.location.href= "<%=request.getContextPath()%>/sbu";
 	    }
       
-      function getCompanyFilterList() {
-	        var company_code = $("#select2-company_filter-container").val();
+      function getSBUFilterList() {
+	        var sbu_code = $("#select2-sbu_filter-container").val();
+	        var company_code = $("#select2-company_code_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(company_code) == "") {
-	        	$("#select2-company_filter-container option:not(:first)").remove();
-	        	var myParams = { company_code: company_code, status: status };
+	        if ($.trim(sbu_code) == "") {
+	        	$("#select2-sbu_filter-container option:not(:first)").remove();
+	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getSBUFilterList",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-company_filter-container").append('<option value="' + val.company_code + '">'+ "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                             $("#select2-sbu_filter-container").append('<option value="' + val.sbu_code + '">'+ "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2876,14 +2872,39 @@ button.disabled {
 	            });
 	        }
 	    }
+      function getCompanyFilterList() {
+    	  var sbu_code = $("#select2-sbu_filter-container").val();
+	        var company_code = $("#select2-company_code_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(company_code) == "") {
+	        	$("#select2-company_code_filter-container option:not(:first)").remove();
+	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status : status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterListFromSBU",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-company_code_filter-container").append('<option value="' + val.company_code + '">' + "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name)  +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+
       function getStatusFilterList() {
-    	  var company_code = $("#select2-company_filter-container").val();
+    	  var sbu_code = $("#select2-sbu_filter-container").val();
+	        var company_code = $("#select2-company_code_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { company_code: company_code, status: status };
+	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status : status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromSBU",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2899,27 +2920,32 @@ button.disabled {
 	        }
 	    }
 
-	    function exportCompany(){
-	    	 var company_code = $("#select2-company_filter-container").val();
+      
+	    function exportSBU(){
+	    	 var sbu_code = $("#select2-sbu_filter-container").val();
+	         var company_code = $("#select2-company_code_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
 	    	
-	    	 $("#exportCompany_filter").val(company_code);
-	     	 $("#exportStatus_filter").val(status);
-	     	 $("#exportCompanyForm ").submit();
+	    	 $("#exportSBU_filter").val(sbu_code);
+	     	 $("#exportCompany_Code_filter").val(company_code);
+	     	$("#exportStatus_filter").val(company_code);
+	     	 $("#exportSBUForm ").submit();
 	  	}
 	    
-	    function getCompanyList(){
+	    function getSBUList(){
+	    	getSBUFilterList('');
 	    	getCompanyFilterList('');
 	    	getStatusFilterList('');
-	    	var company_code = $("#select2-company_filter-container").val();
+	    	var sbu_code = $("#select2-sbu_filter-container").val();
+	        var company_code = $("#select2-company_code_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        $('#allCompanies').html(0)
-    		$('#activeCompanies').html(0)
-    		$('#inActiveCompanies').html(0)
-	     	table = $('#datatable-company').DataTable();
+	    	$('#allSBU').html(0)
+    		$('#activeSBU').html(0)
+    		$('#inActiveSBU').html(0)
+	     	table = $('#datatable-sbu').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
-			table = $('#datatable-company').DataTable({
+			table = $('#datatable-sbu').DataTable({
 				"bStateSave": true,  
 	     		fixedHeader: true,
 	         	//Default: Page display length
@@ -2936,30 +2962,49 @@ button.disabled {
 	            "sScrollXInner": "100%",
 	            "bScrollCollapse": true,
 	            "initComplete" : function() {
-									
+				/* 		$('.dataTables_filter input[type="search"]')
+								.attr('placeholder', 'Search')
+								.css({
+									'width' : '300px ',
+									'display' : 'inline-block'
+								});
+						var input = $('.dataTables_filter input')
+								.unbind()
+								.bind('keyup',function(e){
+							    if (e.which == 13){
+							    	self.search(input.val()).draw();
+							    }
+							}), self = this.api(), $searchButton = $('<i class="fa fa-search" title="Go" >')
+						.click(function() {
+							self.search(input.val()).draw();
+						}), 
+						$clearButton = $('<i class="fa fa-close" title="Reset">')
+						.click(function() {
+							input.val('');
+							$searchButton.click();
+						})
+						$('.dataTables_filter').append( '<div class="right-btns"></div>');
+						$('.dataTables_filter div').append( $searchButton, $clearButton); */ 					
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-		 	var myParams = {company_code: company_code, status: status};
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getCompanies",type:"POST",data:myParams,success : function(data){    				
+		 	var myParams = {sbu_code: sbu_code, company_code: company_code, status : status};
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getSBUList",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var company_data = "'"+val.company_code+"','"+val.status+"','"+val.company_name+"','"+val.id+"'";
-		                    var actions = '<a href="javascript:void(0);" @click="showModal = true"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
-                  	
+		         			var sbu_data = "'"+val.sbu_code+"','"+val.company_code+"','"+val.sbu_name+"','"+val.id+"','"+val.status+"'";
+		                    var actions = '<a href="javascript:void(0);"  @click="showModal = true"  onclick="getSBU('+sbu_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
 		                   	var rowArray = [];    	                 
-		            		$('#allCompanies').html(val.all_companies)
-		            		$('#activeCompanies').html(val.active_companies)
-		            		$('#inActiveCompanies').html(val.inActive_companies)
+		                   	$('#allSBU').html(val.all_sbu)
+		            		$('#activeSBU').html(val.active_sbu)
+		            		$('#inActiveSBU').html(val.inActive_sbu)
 		                   	rowArray.push($.trim(val.id));
 		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push($.trim(val.company_code));
-		                   	rowArray.push($.trim(val.company_name));
+		                   	rowArray.push($.trim(val.sbu_code));
+		                   	rowArray.push($.trim(val.sbu_name));
+		                   	rowArray.push("["+ $.trim(val.company_code)+"]"+" - "+ val.company_name);
 		                   	rowArray.push($.trim(val.status));
-		                   	rowArray.push($.trim(val.created_date));  
-		                   	rowArray.push($.trim(val.created_by));
-		                   	rowArray.push($.trim(val.modified_date));
-		                   	rowArray.push($.trim(val.modified_by));
+		                   
 		                    table.row.add(rowArray).draw( true );
 						});
 					}
@@ -2968,33 +3013,29 @@ button.disabled {
 		     }});
 	    } 
 	    
-	    $("#toggleElementButton").click(function() {
-	    	 $("#x-teleport-target").css("display","none");
-	      });
-	    
-	    function getCompany(company_code,status,company_name,id){
-	    	   $("#updateModal").click();
-	    	   $('#company_name_edit').val('');
-				 $('#company_code_edit').val('');
-				 $('select[name^="status"] option:selected').removeAttr("selected");
-				 $("#x-teleport-target1").css("display","none");
-				// $("#x-teleport-target1").css("display","block");
-			      $('#id').val($.trim(id));
-			      $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
-			      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
-			      if(status != null && status != ''  && status != "undefined"){
-			    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-			    	 // $('select').select2();
-			      }
+	    function getSBU(sbu_code,company_code,sbu_name,id,status){
+	    	 $("#updateModal").click();
+	    	 $('#sbu_name_edit').val('');
+			 $('#sbu_code_edit').val('');
+			 $('select[name^="company_code"] option:selected').removeAttr("selected");
+			 $('select[name^="status"] option:selected').removeAttr("selected");
+		      $('#id').val($.trim(id));
+		      $('#updateSBU #sbu_name_edit').val($.trim(sbu_name)).focus();
+		      $('#updateSBU #sbu_code_edit').val($.trim(sbu_code)).focus();
+		      if(company_code != null && company_code != ''  && company_code != "undefined"){
+		    	  $('select[name^="company_code"] option[value="'+ company_code +'"]').attr("selected",true);
+		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
+		    	  //$('select').select2();
+		      }
 	   }
 	    
 	    function getErrorMessage(jqXHR, exception) {
 	  	    var msg = '';
-	  	    if (jqXHR.status === 0) {
+	  	    if (jqXHR.company_code === 0) {
 	  	        msg = 'Not connect.\n Verify Network.';
-	  	    } else if (jqXHR.status == 404) {
+	  	    } else if (jqXHR.company_code == 404) {
 	  	        msg = 'Requested page not found. [404]';
-	  	    } else if (jqXHR.status == 500) {
+	  	    } else if (jqXHR.company_code == 500) {
 	  	        msg = 'Internal Server Error [500].';
 	  	    } else if (exception === 'parsererror') {
 	  	        msg = 'Requested JSON parse failed.';
@@ -3008,45 +3049,52 @@ button.disabled {
 	  	    console.log(msg);
         }
 	    
-	    function addCompany(){
+	    function addSBU(){
 	    	if(validator.form()){ // validation perform
-	        	document.getElementById("addCompanyForm").submit();	
+	        	document.getElementById("addSBUForm").submit();	
 	    	}
 	    }
-	    function updateCompany(){
+	    function updateSBU(){
 	    	if(validator1.form()){ // validation perform
-	        	document.getElementById("updateCompany").submit();	
+	        	document.getElementById("updateSBUForm").submit();	
 	    	}
 	    }
-	    var validator1 =	$('#updateCompanyForm').validate({
+	    var validator1 =	$('#updateSBUForm').validate({
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",
 		   	 ignore: ":hidden:not(.select2 form-select)",
 		   		    rules: {
-		   		 		  "company_name": {
+		   		 		  "sbu_name": {
 		   			 			required: true
-		   			 	  },"company_code": {										
+		   			 	  },"sbu_code": {										
 		   			 			required: true
+		   			 	  },"company_code": {
+		   	                 	required: true,
 		   			 	  },"status": {
 		   	                 	required: true,
 		   			 	  }
 		   		 	},
 		   		    messages: {
-		   		 		 "company_name": {
+		   		 		 "sbu_name": {
 		   				 	required: 'Required',
-		   			 	  },"company_code": {
+		   			 	  },"sbu_code": {
 		   			 		required: 'Required'
-		   			 	  },"status": {
+		   			 	  },"company_code": {
+		   		 			required: 'Required'
+		   		 	  	  },"status": {
 		   		 			required: 'Required'
 		   		 	  	  }
 		      		},
 		      		errorPlacement:function(error, element){
-		      		 	if (element.attr("id") == "company_name_edit" ){
-		   				 document.getElementById("company_name_editError").innerHTML="";
-		   		 		 error.appendTo('#company_name_editError');
-		   			}else if(element.attr("id") == "company_code_edit" ){
-		   			   document.getElementById("company_code_editError").innerHTML="";
-		   		 	   error.appendTo('#company_code_editError');
+		      		 	if (element.attr("id") == "sbu_name_edit" ){
+		   				 document.getElementById("sbu_name_editError").innerHTML="";
+		   		 		 error.appendTo('#sbu_name_editError');
+		   			}else if(element.attr("id") == "sbu_code_edit" ){
+		   			   document.getElementById("sbu_code_editError").innerHTML="";
+		   		 	   error.appendTo('#sbu_code_editError');
+		   			}else if(element.attr("id") == "select2-company_code_edit-container" ){
+		   				document.getElementById("select2-company_code_edit-containerError").innerHTML="";
+		   			 	error.appendTo('#select2-company_code_edit-containerError');
 		   			}else if(element.attr("id") == "select2-status_edit-container" ){
 		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
 		   			 	error.appendTo('#select2-status_edit-containerError');
@@ -3065,35 +3113,42 @@ button.disabled {
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addCompanyForm').validate({
+	    var validator =	$('#addSBUForm').validate({
 	   	 errorClass: "my-error-class",
 	   	 validClass: "my-valid-class",
 	   	 ignore: ":hidden:not(.select2 form-select)",
 	   		    rules: {
-	   		 		  "company_name": {
+	   		 		  "sbu_name": {
 	   			 			required: true
-	   			 	  },"company_code": {										
+	   			 	  },"sbu_code": {										
 	   			 			required: true
+	   			 	  },"company_code": {
+	   	                 	required: true,
 	   			 	  },"status": {
 	   	                 	required: true,
 	   			 	  }
 	   		 	},
 	   		    messages: {
-	   		 		 "company_name": {
+	   		 		 "sbu_name": {
 	   				 	required: 'Required',
-	   			 	  },"company_code": {
+	   			 	  },"sbu_code": {
 	   			 		required: 'Required'
-	   			 	  },"status": {
+	   			 	  },"company_code": {
 	   		 			required: 'Required'
+	   		 	  	  },"status": {
+		   		 		required: 'Required'
 	   		 	  	  }
 	      		},
 	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "company_name_add" ){
-	   				 document.getElementById("company_name_addError").innerHTML="";
-	   		 		 error.appendTo('#company_name_addError');
-	   			}else if(element.attr("id") == "company_code_add" ){
-	   			   document.getElementById("company_code_addError").innerHTML="";
-	   		 	   error.appendTo('#company_code_addError');
+	      		 	if (element.attr("id") == "sbu_name_add" ){
+	   				 document.getElementById("sbu_name_addError").innerHTML="";
+	   		 		 error.appendTo('#sbu_name_addError');
+	   			}else if(element.attr("id") == "sbu_code_add" ){
+	   			   document.getElementById("sbu_code_addError").innerHTML="";
+	   		 	   error.appendTo('#sbu_code_addError');
+	   			}else if(element.attr("id") == "select2-company_code_add-container" ){
+	   				document.getElementById("select2-company_code_add-containerError").innerHTML="";
+	   			 	error.appendTo('#select2-company_code_add-containerError');
 	   			}else if(element.attr("id") == "select2-status_add-container" ){
 	   				document.getElementById("select2-status_add-containerError").innerHTML="";
 	   			 	error.appendTo('#select2-status_add-containerError');
@@ -3123,26 +3178,31 @@ button.disabled {
 	   	        $(this).valid();
 	   	    }
 	   	});
+	   	function addBox(){
+	   		$('select[name^="company_code"] option:selected').removeAttr("selected");
+	   		$('select[name^="status"] option:selected').removeAttr("selected");
+	   		$('select').select2();
+	   	}
 	   	
-	   	function checkUniqueId(){
-	   		var company_code = $('#company_code_add').val();
-	        if ($.trim(company_code) != "" ) {
-	        	var myParams = {company_code: company_code };
+	 	function checkUniqueId(){
+	   		var sbu_code = $('#sbu_code_add').val();
+	        if ($.trim(sbu_code) != "" ) {
+	        	var myParams = {sbu_code: sbu_code };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
+	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForSBU",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-		                      $("#company_code_addError").html(company_code+" Already Exists!").css("color","red");
-		                      $('#company_code_add').removeClass("is-valid")
-		                      $('#company_code_add').addClass("is-invalid")
+		                      $("#sbu_code_addError").html(sbu_code+" Already Exists!").css("color","red");
+		                      $('#sbu_code_add').removeClass("is-valid")
+		                      $('#sbu_code_add').addClass("is-invalid")
 		                      $("#addBtn").prop("disabled",true);
 	                    	});
 	                     }else{
-	                    	  $("#company_code_addError").text("");
-	                    	  $('#company_code_add').removeClass("is-invalid")
-		                      $('#company_code_add').addClass("is-valid")
+	                    	  $("#sbu_code_addError").text("");
+	                    	  $('#sbu_code_add').removeClass("is-invalid")
+		                      $('#sbu_code_add').addClass("is-valid")
 		                      $("#addBtn").prop("disabled",false);
 	                     }           
 	                    
@@ -3152,6 +3212,7 @@ button.disabled {
 	       	     	  }
 	            });
 	        }
+	   		
 	   		
 	   	}
       </script>

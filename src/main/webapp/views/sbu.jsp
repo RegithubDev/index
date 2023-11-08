@@ -328,6 +328,7 @@ body {
               class="select2 form-select formSelect"
               aria-label="Default select example"
             >
+            
               <option value="">Select Company</option>
              	<c:forEach var="obj" items="${objList}">
 					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>

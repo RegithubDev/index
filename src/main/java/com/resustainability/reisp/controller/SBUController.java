@@ -82,7 +82,7 @@ public class SBUController {
 	
 	@RequestMapping(value = "/sbu", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView sbu(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.sbu);
+		ModelAndView model = new ModelAndView(PageConstants.sbu2);
 		SBU obj = null;
 		try {
 			List<SBU> objList = service.getCompaniesList(obj);
@@ -93,6 +93,7 @@ public class SBUController {
 		}
 		return model;
 	}
+	
 	
 	
 	@RequestMapping(value = "/ajax/getSBUList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
