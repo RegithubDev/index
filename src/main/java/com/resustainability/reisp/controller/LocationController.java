@@ -80,7 +80,7 @@ public class LocationController {
 	
 	@RequestMapping(value = "/location", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView location(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.location);
+		ModelAndView model = new ModelAndView(PageConstants.location2);
 		ProjectLocation obj = null;
 		try {
 			List<ProjectLocation> objList = service.getProjectsList(obj);

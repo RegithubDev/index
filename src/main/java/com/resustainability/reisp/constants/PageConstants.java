@@ -56,9 +56,15 @@ public class PageConstants {
 	public static final String departmentsMaster = "departmentsMaster";
 	public static final String company2 = "company2";
 	public static final String sbu2 = "sbu2";
-
+	public static final String project2 = "project2";
+	public static final String department2 = "department2";	
+	public static final String location2 = "location2";	
+	public static final String role_master2 = "role_master2";	
 	
-
+	
+	
+	
+	
 	
 	public static final String FinancePage = "Finance";
 	public static final String updateSelfUser = "updateSelfUser";
@@ -71,6 +77,8 @@ public class PageConstants {
 	public static final String test = "test";
 	public static final String bbForm = "bbForm";
 	public static final String helpCenter = "helpCenter";
+
+	
 	
 	
 	

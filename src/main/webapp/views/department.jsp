@@ -326,8 +326,6 @@ body {
           <h1 class="mb-1">Add Department</h1>
         </div>
         <form id="addDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-department" method="post" class="form-horizontal" role="form" >
-        
-         
           <div class="col-12 col-md-6">
             <label class="form-label" for="modalEditUserLastName">Department Code</label><span class="required"> *</span>
             <input
@@ -371,7 +369,8 @@ body {
            <!-- Multiple -->
                <div class="col-12 col-md-6">
               <label class="form-label" for="select2-multiple">Select Assigned to SBU</label>
-              <select class="select2 form-select formSelect" multiple data-placeholder="Yours Placeholder"  id="select2-select2-multiple-assigned_to_sbu_add-container"
+              <select class="select2 form-select formSelect" multiple data-placeholder="Yours Placeholder"
+                id="select2-select2-multiple-assigned_to_sbu_add-container"
               name="assigned_to_sbu">
                  <option value="">Select SBU</option>
               <c:forEach var="obj" items="${objList}">
@@ -425,7 +424,7 @@ body {
              <span id="department_code_editError" class="error-msg" ></span>
           </div>
 		<div class="col-12 col-md-6">
-            <label class="form-label" for="modalEditUserFirstName">Department Name</label><span class="required"> *</span>
+            <label class="form-label" for="modalEditUserFirstName">Department Name </label><span class="required"> *</span>
             <input
               type="text"
               id="department_name_edit"

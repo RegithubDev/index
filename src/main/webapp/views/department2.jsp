@@ -2510,13 +2510,13 @@ button.disabled {
                 <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Company</option>
+                  <select    id="select2-department_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2525,7 +2525,7 @@ button.disabled {
                     <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                      style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
+                 <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
                 </button>
                 <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
                 active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
@@ -2538,7 +2538,7 @@ button.disabled {
                 
                     <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
                     dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                  <i class="fa fa-add" aria-hidden="true""></i>  &nbsp;Add
                 </button>
                   <template x-teleport="#x-teleport-target" data-teleport-template="true">
                     <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
@@ -2547,29 +2547,19 @@ button.disabled {
                        <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Add Company
+                Add Department
               </p>
-              <div class="mt-4 space-y-4">
-                <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
-                <label class="block  text-left">
-                 <span>Company Name </span><span class="required"> *</span>
-                  <span class="relative mt-1.5 flex">
-                    <input 
-                      id="company_name_add"
-		              name="company_name"
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
-                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                      <i class="fa-regular fa-building text-base"></i>
-                    </span>
-                  </span>
-                </label>
+             
+              <form id="addDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-department" method="post" class="form-horizontal" role="form" >
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  
                   <label class="block  text-left">
-                    <span>Company Code </span><span class="required"> *</span>
+                    <span>Department Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
                       <input 
-                       id="company_code_add"
-              		   name="company_code"
+                    type="text"
+              id="department_code_add"
+              name="department_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                       <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                         <i class="far fa-user text-base"></i>
@@ -2577,20 +2567,47 @@ button.disabled {
                     </span>
                      <span class="required" id="sbu_code_addError"> *</span>
                   </label>
-                 <label class="block  text-left">
+                    <label class="block  text-left">
+                    <span>Department Name </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                         type="text"
+              id="department_name_add"
+              name="department_name"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                     <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
                    id="select2-status_add-container"
-              		name="status"
+              name="status"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
+                    <option value="">Select Status</option>
+             	<option value="Active">Active</option>
+             	<option value="Inactive">Inactive</option>
                   </select>
                   </label>
+                 <label class="block  text-left">
+                    <span>Select Assigned To SBU</span><span class="required"> *</span>
+                  <select
+                   id="select2-select2-multiple-assigned_to_sbu_add-container"
+              name="assigned_to_sbu"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select SBU</option>
+              <c:forEach var="obj" items="${objList}">
+					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+				</c:forEach>
+                  </select>
+                  </label>
+                 
                 </div>
                
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addDepartment();">
                     <span>Add </span>
                    
                   </button>
@@ -2600,7 +2617,7 @@ button.disabled {
                  
                 </div>
                  </form>
-              </div>
+             
             </div>
           </div>
                        
@@ -2610,10 +2627,10 @@ button.disabled {
                   </template>
                 </div>
                  
-                <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
+                <button onclick="exportDepartment();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
-                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                 <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
                 </button>
                     
                     </div>
@@ -2627,27 +2644,27 @@ button.disabled {
           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "allCompanies"></span>
+                   <span  id= "allDepartment"></span>
                   </p>
                               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
                 </div>
-                <p class="mt-1 text-xs+">Total Companies</p>
+                <p class="mt-1 text-xs+">Total Department</p>
            </div>
             <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "activeCompanies"></span>
+                   <span id= "activeDepartment"></span>
                   </p>
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
 
                 </div>
-                <p class="mt-1 text-xs+"> Active Companies</p>
+                <p class="mt-1 text-xs+"> Active Department</p>
            </div>
            <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "inActiveCompanies"></span>
+                   <span  id= "inActiveDepartment"></span>
                   </p>
 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                 </div>
@@ -2666,7 +2683,7 @@ button.disabled {
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table" id="datatable-company">
+                <table class="invoice-list-table table" id="datatable-department">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
@@ -2711,6 +2728,12 @@ button.disabled {
           </div>
           
           
+          
+          
+                
+             
+   
+                
               </div>
          
         
@@ -2726,48 +2749,48 @@ button.disabled {
                       <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
                       <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
                        <div class="col-span-12 sm:col-span-8">
+                       
             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                update Company
+                Update Department -  <span id="department_code_edit" class="error-msg" ></span>
               </p>
               <div class="mt-4 space-y-4">
-                <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-company" method="post" class="form-horizontal" role="form" >
-                <label class="block  text-left">
-                 <span>Company Name </span><span class="required"> *</span>
+       <form id="updateDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-department" method="post" class="form-horizontal" role="form" >             
+            <label class="block  text-left">
+                 <span>Department Name</span><span class="required"> *</span>
                   <span class="relative mt-1.5 flex">
                     <input 
-                      id="company_name_edit"
-		              name="company_name"
-		              value=""
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
+                     type="text"
+              id="department_name_edit"
+              name="department_name"
+                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" onkeyup="checkUniqueId();"  type="text">
                     <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                       <i class="fa-regular fa-building text-base"></i>
                     </span>
                   </span>
+                    <span id="location_code_editError" class="error-msg" ></span>
                 </label>
                  <input type="hidden" id="id" name="id" />
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label class="block  text-left">
-                    <span>Company Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                       value=""
-                       id="company_code_edit"
-              		   name="company_code"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-                  </label>
+                  
                  <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
-                   id="select2-status_add-container"
-              		name="status"
+                      id="select2-status_edit-container"
+              name="status"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
+               <option value="">Select Status</option>
+             	<option value="Active">Active</option>
+             	<option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
+                      <label class="block  text-left">
+                    <span>Select Assigned to SBU</span><span class="required"> *</span>
+                    <select multiple=""  id="select2-status_edit-container"
+              name="assigned_to_sbu"  class="form-multiselect mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <c:forEach var="obj" items="${objList}">
+					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+				</c:forEach>
                   </select>
                   </label>
                 </div>
@@ -2829,39 +2852,42 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	  <form action="<%=request.getContextPath()%>/export-company" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">	
+	  <form action="<%=request.getContextPath()%>/export-department" name="exportDepartmentForm" id="exportDepartmentForm" target="_blank" method="post">	
       
-     
-        <input type="hidden" name="status" id="exportStatus_filter" />
+        <input type="hidden" name="department_code" id="exportDepartment_filter" />
+        <input type="hidden" name="assigned_to_sbu" id="exportSBU_Code_filter" />
+            <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
-	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
-	</form>
+	 
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
- $(window).on("load",(function(){
-		 // $("#x-teleport-target").hide();
-          getCompanyList();
+      $(window).on("load",(function(){
+    	// $("#x-teleport-target").hide();
+          getDepartmentList();
+      
          }));
       
       function clearFilter(){
-		    	$("#select2-company_filter-container").val("");
+		    	$("#select2-department_filter-container").val(""); 
+		    	$("#select2-assigned_to_sbu_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	window.location.href= "<%=request.getContextPath()%>/company";
+		    	window.location = "<%=request.getContextPath()%>/department";
 	    }
       
-      function getCompanyFilterList() {
-	        var company_code = $("#select2-company_filter-container").val();
+      function getDepartmentFilterList() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(company_code) == "") {
-	        	$("#select2-company_filter-container option:not(:first)").remove();
-	        	var myParams = { company_code: company_code, status: status };
+	        if ($.trim(department_code) == "") {
+	        	$("#select2-department_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterList",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-company_filter-container").append('<option value="' + val.company_code + '">'+ "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2871,14 +2897,39 @@ button.disabled {
 	            });
 	        }
 	    }
+      function getSBUFilterList() {
+    	  var department_code = $("#select2-department_filter-container").val();
+	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(sbu_code) == "") {
+	        	$("#select2-assigned_to_sbu_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status : status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getSBUsFilterListFromDepartment",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-assigned_to_sbu_filter-container").append('<option value="' + val.sbu_code + '">' + "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name)  +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+
       function getStatusFilterList() {
-    	  var company_code = $("#select2-company_filter-container").val();
+    	  var department_code = $("#select2-department_filter-container").val();
+	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { company_code: company_code, status: status };
+	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status : status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromDepartment",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2894,27 +2945,32 @@ button.disabled {
 	        }
 	    }
 
-	    function exportCompany(){
-	    	 var company_code = $("#select2-company_filter-container").val();
+      
+	    function exportDepartment(){
+	    	 var department_code = $("#select2-department_filter-container").val();
+	         var assigned_to_sbu = $("#select2-assigned_to_sbu_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
 	    	
-	    	 $("#exportCompany_filter").val(company_code);
-	     	 $("#exportStatus_filter").val(status);
-	     	 $("#exportCompanyForm ").submit();
+	    	 $("#exportDepartment_filter").val(department_code);
+	     	 $("#exportSBU_Code_filter").val(assigned_to_sbu);
+	     	 $("#exportStatus_filter").val(assigned_to_sbu);
+	     	 $("#exportDepartmentForm ").submit();
 	  	}
 	    
-	    function getCompanyList(){
-	    	getCompanyFilterList('');
+	    function getDepartmentList(){
+	    	getDepartmentFilterList('');
+	    	getSBUFilterList('');
 	    	getStatusFilterList('');
-	    	var company_code = $("#select2-company_filter-container").val();
+	    	var department_code = $("#select2-department_filter-container").val();
+	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        $('#allCompanies').html(0)
-    		$('#activeCompanies').html(0)
-    		$('#inActiveCompanies').html(0)
-	     	table = $('#datatable-company').DataTable();
+	    	$('#allDepartment').html(0)
+    		$('#activeDepartment').html(0)
+    		$('#inActiveDepartment').html(0)
+	     	table = $('#datatable-department').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
-			table = $('#datatable-company').DataTable({
+			table = $('#datatable-department').DataTable({
 				"bStateSave": true,  
 	     		fixedHeader: true,
 	         	//Default: Page display length
@@ -2931,30 +2987,32 @@ button.disabled {
 	            "sScrollXInner": "100%",
 	            "bScrollCollapse": true,
 	            "initComplete" : function() {
-									
+					
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-		 	var myParams = {company_code: company_code, status: status};
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getCompanies",type:"POST",data:myParams,success : function(data){    				
+		 	var myParams = {department_code: department_code, sbu_code: sbu_code, status : status};
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getDepartmentList",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var company_data = "'"+val.company_code+"','"+val.status+"','"+val.company_name+"','"+val.id+"'";
-		                    var actions = '<a href="javascript:void(0);" @click="showModal = true"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
-                  	
+		         			var department_data = "'"+val.department_code+"','"+val.assigned_to_sbu_multiple+"','"+val.department_name+"','"+val.id+"','"+val.status+"'";
+		                    var actions = '<a href="javascript:void(0);"  onclick="getDepartment('+department_data+');setSearchble();" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
 		                   	var rowArray = [];    	                 
-		            		$('#allCompanies').html(val.all_companies)
-		            		$('#activeCompanies').html(val.active_companies)
-		            		$('#inActiveCompanies').html(val.inActive_companies)
+		                   	$('#allDepartment').html(val.all_department)
+		            		$('#activeDepartment').html(val.active_department)
+		            		$('#inActiveDepartment').html(val.inActive_department)
 		                   	rowArray.push($.trim(val.id));
 		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push($.trim(val.company_code));
-		                   	rowArray.push($.trim(val.company_name));
+		                	//rowArray.push("["+ $.trim(val.assigned_to_sbu)+"]"+" - ");
+		                   	rowArray.push($.trim(val.department_code));
+		                   	rowArray.push($.trim(val.department_name));
+		                   	
 		                   	rowArray.push($.trim(val.status));
-		                   	rowArray.push($.trim(val.created_date));  
-		                   	rowArray.push($.trim(val.created_by));
+		                	rowArray.push($.trim(val.user_name));
+		                   	rowArray.push($.trim(val.created_date));
+		                	rowArray.push($.trim(val.modified_by));
 		                   	rowArray.push($.trim(val.modified_date));
-		                   	rowArray.push($.trim(val.modified_by));
+		                   
 		                    table.row.add(rowArray).draw( true );
 						});
 					}
@@ -2963,33 +3021,33 @@ button.disabled {
 		     }});
 	    } 
 	    
-	    $("#toggleElementButton").click(function() {
-	    	 $("#x-teleport-target").css("display","none");
-	      });
-	    
-	    function getCompany(company_code,status,company_name,id){
-	    	   $("#updateModal").click();
-	    	   $('#company_name_edit').val('');
-				 $('#company_code_edit').val('');
-				 $('select[name^="status"] option:selected').removeAttr("selected");
-				 $("#x-teleport-target1").css("display","none");
-				// $("#x-teleport-target1").css("display","block");
-			      $('#id').val($.trim(id));
-			      $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
-			      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
-			      if(status != null && status != ''  && status != "undefined"){
-			    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-			    	 // $('select').select2();
-			      }
+	    function getDepartment(department_code,assigned_to_sbu,department_name,id,status){
+	    	 $("#updateModal").click();
+	    	 $('#department_name_edit').val('');
+			 $('#department_code_edit').val('');
+			 $('select[name^="assigned_to_sbu"] option:selected').removeAttr("selected");
+			 $('select[name^="status"] option:selected').removeAttr("selected");
+		      $('#id').val($.trim(id));
+		      $('#updateDepartment #department_name_edit').val($.trim(department_name)).focus();
+		      $('#updateDepartment #department_code_edit').val($.trim(department_code)).focus();
+		      if(assigned_to_sbu != null && assigned_to_sbu != ''  && assigned_to_sbu != "undefined"){
+		    	  var assigned_to_sbu_array = assigned_to_sbu.split(',');
+		    	  jQuery.each(assigned_to_sbu_array, function(index, item) {
+		    		  $('select[name^="assigned_to_sbu"] option[value="'+ item +'"]').attr("selected",true);
+		    		//  $('select').select2();
+		    		});
+		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
+		    	 // $('select').select2();
+		      }
 	   }
 	    
 	    function getErrorMessage(jqXHR, exception) {
 	  	    var msg = '';
-	  	    if (jqXHR.status === 0) {
+	  	    if (jqXHR.assigned_to_sbu === 0) {
 	  	        msg = 'Not connect.\n Verify Network.';
-	  	    } else if (jqXHR.status == 404) {
+	  	    } else if (jqXHR.assigned_to_sbu == 404) {
 	  	        msg = 'Requested page not found. [404]';
-	  	    } else if (jqXHR.status == 500) {
+	  	    } else if (jqXHR.assigned_to_sbu == 500) {
 	  	        msg = 'Internal Server Error [500].';
 	  	    } else if (exception === 'parsererror') {
 	  	        msg = 'Requested JSON parse failed.';
@@ -3003,45 +3061,52 @@ button.disabled {
 	  	    console.log(msg);
         }
 	    
-	    function addCompany(){
+	    function addDepartment(){
 	    	if(validator.form()){ // validation perform
-	        	document.getElementById("addCompanyForm").submit();	
+	        	document.getElementById("addDepartmentForm").submit();	
 	    	}
 	    }
-	    function updateCompany(){
+	    function updateDepartment(){
 	    	if(validator1.form()){ // validation perform
-	        	document.getElementById("updateCompany").submit();	
+	        	document.getElementById("updateDepartmentForm").submit();	
 	    	}
 	    }
-	    var validator1 =	$('#updateCompanyForm').validate({
+	    var validator1 =	$('#updateDepartmentForm').validate({
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",
 		   	 ignore: ":hidden:not(.select2 form-select)",
 		   		    rules: {
-		   		 		  "company_name": {
+		   		 		  "department_name": {
 		   			 			required: true
-		   			 	  },"company_code": {										
+		   			 	  },"department_code": {										
 		   			 			required: true
+		   			 	  },"assigned_to_sbu": {
+		   	                 	required: true,
 		   			 	  },"status": {
 		   	                 	required: true,
 		   			 	  }
 		   		 	},
 		   		    messages: {
-		   		 		 "company_name": {
+		   		 		 "department_name": {
 		   				 	required: 'Required',
-		   			 	  },"company_code": {
+		   			 	  },"department_code": {
 		   			 		required: 'Required'
-		   			 	  },"status": {
+		   			 	  },"assigned_to_sbu": {
+		   		 			required: 'Required'
+		   		 	  	  },"status": {
 		   		 			required: 'Required'
 		   		 	  	  }
 		      		},
 		      		errorPlacement:function(error, element){
-		      		 	if (element.attr("id") == "company_name_edit" ){
-		   				 document.getElementById("company_name_editError").innerHTML="";
-		   		 		 error.appendTo('#company_name_editError');
-		   			}else if(element.attr("id") == "company_code_edit" ){
-		   			   document.getElementById("company_code_editError").innerHTML="";
-		   		 	   error.appendTo('#company_code_editError');
+		      		 	if (element.attr("id") == "department_name_edit" ){
+		   				 document.getElementById("department_name_editError").innerHTML="";
+		   		 		 error.appendTo('#department_name_editError');
+		   			}else if(element.attr("id") == "department_code_edit" ){
+		   			   document.getElementById("department_code_editError").innerHTML="";
+		   		 	   error.appendTo('#department_code_editError');
+		   			}else if(element.attr("id") == "select2-assigned_to_sbu_edit-container" ){
+		   				document.getElementById("select2-assigned_to_sbu_edit-containerError").innerHTML="";
+		   			 	error.appendTo('#select2-assigned_to_sbu_edit-containerError');
 		   			}else if(element.attr("id") == "select2-status_edit-container" ){
 		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
 		   			 	error.appendTo('#select2-status_edit-containerError');
@@ -3060,35 +3125,42 @@ button.disabled {
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addCompanyForm').validate({
+	    var validator =	$('#addDepartmentForm').validate({
 	   	 errorClass: "my-error-class",
 	   	 validClass: "my-valid-class",
 	   	 ignore: ":hidden:not(.select2 form-select)",
 	   		    rules: {
-	   		 		  "company_name": {
+	   		 		  "department_name": {
 	   			 			required: true
-	   			 	  },"company_code": {										
+	   			 	  },"department_code": {										
 	   			 			required: true
+	   			 	  },"assigned_to_sbu": {
+	   	                 	required: true,
 	   			 	  },"status": {
 	   	                 	required: true,
 	   			 	  }
 	   		 	},
 	   		    messages: {
-	   		 		 "company_name": {
+	   		 		 "department_name": {
 	   				 	required: 'Required',
-	   			 	  },"company_code": {
+	   			 	  },"department_code": {
 	   			 		required: 'Required'
-	   			 	  },"status": {
+	   			 	  },"assigned_to_sbu": {
 	   		 			required: 'Required'
+	   		 	  	  },"status": {
+		   		 		required: 'Required'
 	   		 	  	  }
 	      		},
 	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "company_name_add" ){
-	   				 document.getElementById("company_name_addError").innerHTML="";
-	   		 		 error.appendTo('#company_name_addError');
-	   			}else if(element.attr("id") == "company_code_add" ){
-	   			   document.getElementById("company_code_addError").innerHTML="";
-	   		 	   error.appendTo('#company_code_addError');
+	      		 	if (element.attr("id") == "department_name_add" ){
+	   				 document.getElementById("department_name_addError").innerHTML="";
+	   		 		 error.appendTo('#department_name_addError');
+	   			}else if(element.attr("id") == "department_code_add" ){
+	   			   document.getElementById("department_code_addError").innerHTML="";
+	   		 	   error.appendTo('#department_code_addError');
+	   			}else if(element.attr("id") == "select2-assigned_to_sbu_add-container" ){
+	   				document.getElementById("select2-assigned_to_sbu_add-containerError").innerHTML="";
+	   			 	error.appendTo('#select2-assigned_to_sbu_add-containerError');
 	   			}else if(element.attr("id") == "select2-status_add-container" ){
 	   				document.getElementById("select2-status_add-containerError").innerHTML="";
 	   			 	error.appendTo('#select2-status_add-containerError');
@@ -3113,31 +3185,31 @@ button.disabled {
 	   	    }
 	   	});
 	   	
-	   	$('input').change(function(){
+	    	$('input').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();
 	   	    }
-	   	});
-	   	
-	   	function checkUniqueId(){
-	   		var company_code = $('#company_code_add').val();
-	        if ($.trim(company_code) != "" ) {
-	        	var myParams = {company_code: company_code };
+	   	}); 
+	   
+	   	function checkUniqueID(){
+	   		var department_code = $('#department_code_add').val();
+	        if ($.trim(department_code) != "" ) {
+	        	var myParams = {department_code: department_code };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
+	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForDept",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-		                      $("#company_code_addError").html(company_code+" Already Exists!").css("color","red");
-		                      $('#company_code_add').removeClass("is-valid")
-		                      $('#company_code_add').addClass("is-invalid")
+		                      $("#department_code_addError").html(department_code+" Already Exists!");
+		                      $('#department_code_add').removeClass("is-valid")
+		                      $('#department_code_add').addClass("is-invalid")
 		                      $("#addBtn").prop("disabled",true);
 	                    	});
 	                     }else{
-	                    	  $("#company_code_addError").text("");
-	                    	  $('#company_code_add').removeClass("is-invalid")
-		                      $('#company_code_add').addClass("is-valid")
+	                    	  $("#department_code_addError").text("");
+	                    	  $('#department_code_add').removeClass("is-invalid")
+		                      $('#department_code_add').addClass("is-valid")
 		                      $("#addBtn").prop("disabled",false);
 	                     }           
 	                    
@@ -3149,6 +3221,8 @@ button.disabled {
 	        }
 	   		
 	   	}
+	   	
+	
       </script>
   </body>
 </html>

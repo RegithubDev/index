@@ -83,7 +83,7 @@ public class ProjectController {
 	
 	@RequestMapping(value = "/project", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView project(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.project);
+		ModelAndView model = new ModelAndView(PageConstants.project2);
 		Project obj = null;
 		try {
 			List<SBU> objList = service.getCompaniesList(obj);

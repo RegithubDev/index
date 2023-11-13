@@ -2508,7 +2508,7 @@ button.disabled {
       <div class="p-4 sm:p-5">
                 
                 <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
                   <select  id="select2-company_code_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
@@ -2527,6 +2527,9 @@ button.disabled {
                     
                   </select>
                 </label>
+                
+                
+                
                     <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
                     <button  onclick="getSBUList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
@@ -2555,19 +2558,24 @@ button.disabled {
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
                 Add SBU
               </p>
-              <div class="mt-4 space-y-4">
- <form id="addSBUForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-sbu" method="post" class="form-horizontal" role="form" >                <label class="block  text-left">
-                 <span>SBU Name </span><span class="required"> *</span>
-                  <span class="relative mt-1.5 flex">
-                    <input 
-                      id="sbu_name_add"
-              name="sbu_name"ntrol form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
-                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                      <i class="fa-regular fa-building text-base"></i>
-                    </span>
-                  </span>
-                </label>
+
+        <form id="addSBUForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-sbu" method="post" class="form-horizontal" role="form" >
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                
+                 <label class="block  text-left">
+                    <span>Company</span><span class="required"> *</span>
+                  <select
+                               id="select2-company_code_add-container"
+              name="company_code"
+              
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="">Select Company</option>
+             	<c:forEach var="obj" items="${objList}">
+					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
+				</c:forEach>
+                  </select>
+                  </label>
+               
                   <label class="block  text-left">
                     <span>SBU Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
@@ -2579,7 +2587,22 @@ button.disabled {
                         <i class="far fa-user text-base"></i>
                       </span>
                     </span>
+                   
                   </label>
+                   
+                   <label class="block  text-left">
+                    <span>SBU Name </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                     id="sbu_name_add"
+              name="sbu_name"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"   type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                  
                  <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
@@ -2590,8 +2613,8 @@ button.disabled {
                     <option value="Inactive">Inactive</option>
                   </select>
                   </label>
+                   
                 </div>
-                </form>
                 <div class="flex justify-center space-x-2 pt-4">
                  <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
                     <span>Add </span>
@@ -2602,8 +2625,8 @@ button.disabled {
                         </button>
                  
                 </div>
-                
-              </div>
+                </form>
+              
             </div>
           </div>
                        
@@ -2613,10 +2636,10 @@ button.disabled {
                   </template>
                 </div>
                  
-                <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
+                <button onclick="exportSBU();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                 style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
-                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                 style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;"  onclick="exportSBU();">
+                        <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
                 </button>
                     
                     </div>
@@ -2731,28 +2754,45 @@ button.disabled {
                 update SBU
               </p>
               <div class="mt-4 space-y-4">
-              <form id="updateSBUForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-sbu" method="post" class="form-horizontal" role="form" >                <label class="block  text-left">
-                 <span>SBU Name </span><span class="required"> *</span>
-                  <span class="relative mt-1.5 flex">
-                    <input 
-                      id="sbu_name_edit"
-                      name="sbu_name"
-		              value=""
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
-                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                      <i class="fa-regular fa-building text-base"></i>
-                    </span>
-                  </span>
-                </label>
+        <form id="updateSBUForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-sbu" method="post" class="form-horizontal" role="form" >
+                
+                 
+               
                  <input type="hidden" id="id" name="id" />
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                 <label class="block  text-left">
+                    <span>Company</span><span class="required"> *</span>
+                  <select
+                     id="select2-company_code_edit-container"
+              name="company_code"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Company</option>
+              <c:forEach var="obj" items="${objList}">
+					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
+				</c:forEach>
+                  </select>
+                  </label>
                   <label class="block  text-left">
                     <span>SBU Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
                       <input 
                        value=""
                        id="sbu_code_edit"
-                        name="sbu_code"
+              name="sbu_code"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                 
+                   <label class="block  text-left">
+                    <span>SBU Name</span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                       type="text"
+              id="sbu_name_edit"
+              name="sbu_name""
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                       <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                         <i class="far fa-user text-base"></i>
@@ -2772,7 +2812,7 @@ button.disabled {
                 </div>
               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCoFmpany();">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
                     <span>update </span>
                    
                   </button>
@@ -2828,10 +2868,11 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	  <form action="<%=request.getContextPath()%>/export-sbu" name="exportSBUForm" id="exportSBUForm" target="_blank" method="post">	
+<form action="<%=request.getContextPath()%>/export-sbu" name="exportSBUForm" id="exportSBUForm" target="_blank" method="post">	
       
-     
-        <input type="hidden" name="status" id="exportStatus_filter" />
+        <input type="hidden" name="sbu_code" id="exportSBU_filter" />
+        <input type="hidden" name="company_code" id="exportCompany_Code_filter" />
+            <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
 	
     <script>
@@ -2932,6 +2973,7 @@ button.disabled {
 	     	 $("#exportSBUForm ").submit();
 	  	}
 	    
+	    
 	    function getSBUList(){
 	    	getSBUFilterList('');
 	    	getCompanyFilterList('');
@@ -2962,29 +3004,6 @@ button.disabled {
 	            "sScrollXInner": "100%",
 	            "bScrollCollapse": true,
 	            "initComplete" : function() {
-				/* 		$('.dataTables_filter input[type="search"]')
-								.attr('placeholder', 'Search')
-								.css({
-									'width' : '300px ',
-									'display' : 'inline-block'
-								});
-						var input = $('.dataTables_filter input')
-								.unbind()
-								.bind('keyup',function(e){
-							    if (e.which == 13){
-							    	self.search(input.val()).draw();
-							    }
-							}), self = this.api(), $searchButton = $('<i class="fa fa-search" title="Go" >')
-						.click(function() {
-							self.search(input.val()).draw();
-						}), 
-						$clearButton = $('<i class="fa fa-close" title="Reset">')
-						.click(function() {
-							input.val('');
-							$searchButton.click();
-						})
-						$('.dataTables_filter').append( '<div class="right-btns"></div>');
-						$('.dataTables_filter div').append( $searchButton, $clearButton); */ 					
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
@@ -3020,8 +3039,8 @@ button.disabled {
 			 $('select[name^="company_code"] option:selected').removeAttr("selected");
 			 $('select[name^="status"] option:selected').removeAttr("selected");
 		      $('#id').val($.trim(id));
-		      $('#updateSBU #sbu_name_edit').val($.trim(sbu_name)).focus();
-		      $('#updateSBU #sbu_code_edit').val($.trim(sbu_code)).focus();
+		      $('#updateSBUForm #sbu_name_edit').val($.trim(sbu_name)).focus();
+		      $('#updateSBUForm #sbu_code_edit').val($.trim(sbu_code)).focus();
 		      if(company_code != null && company_code != ''  && company_code != "undefined"){
 		    	  $('select[name^="company_code"] option[value="'+ company_code +'"]').attr("selected",true);
 		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);

@@ -80,7 +80,7 @@ public class DepartmentController {
 	
 	@RequestMapping(value = "/department", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView department(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.department);
+		ModelAndView model = new ModelAndView(PageConstants.department2);
 		Department obj = null;
 		try {
 			List<Department> objList = service.getSBUList(obj);

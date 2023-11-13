@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+company2.jsp<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -415,7 +415,8 @@ body {
         <div class="col-12 col-md-6">
             <label class="form-label" for="select2-basic">Project</label><span class="required"> *</span>
             <select
-            	class="select2 form-select formSelect" id="select2-project_code_edit-container"
+            	class="select2 form-select formSelect" 
+            	id="select2-project_code_edit-container"
               name="project_code"
               aria-label="Default select example"
             >

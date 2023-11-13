@@ -81,7 +81,7 @@ public class RoleMasterController {
 	
 	@RequestMapping(value = "/role-master", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView roleMaster(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.role_master);
+		ModelAndView model = new ModelAndView(PageConstants.role_master2);
 		RoleMaster obj = null;
 		try {
 			
