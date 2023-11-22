@@ -635,7 +635,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/ "
+                           href="<%=request.getContextPath() %>/busines-dev "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -657,7 +657,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/ "
+                          href="<%=request.getContextPath() %>/bmw "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -679,8 +679,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                         href="<%=request.getContextPath() %>/ Incin-BMW
-                         "
+                         href="<%=request.getContextPath() %>/contracts "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -702,7 +701,7 @@ z-index: 1000;
                                             <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                          href="<%=request.getContextPath() %>/corp "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -724,7 +723,7 @@ z-index: 1000;
                                             <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                       href="<%=request.getContextPath() %>/erm "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -839,7 +838,7 @@ z-index: 1000;
                          <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                          href="<%=request.getContextPath() %>/legal "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -861,7 +860,7 @@ z-index: 1000;
                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                           href="<%=request.getContextPath() %>/msw"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -906,7 +905,7 @@ z-index: 1000;
                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                            href="<%=request.getContextPath() %>/recycling "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -928,7 +927,7 @@ z-index: 1000;
                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                          href="<%=request.getContextPath() %>/safety"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -972,7 +971,7 @@ z-index: 1000;
                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/"
+                           href="<%=request.getContextPath() %>/waste"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

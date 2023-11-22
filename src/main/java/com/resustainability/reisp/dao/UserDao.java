@@ -218,7 +218,7 @@ public class UserDao {
 				qry = qry + " and up.base_sbu = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by up.user_name asc";
+			qry = qry + " ORDER BY created_date Desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getUser_id())) {
@@ -1645,6 +1645,63 @@ public class UserDao {
 				flag = true ;
 			}
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getSettingsList(User ss) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		boolean flag = false ;
+		try {
+			String qry = "SELECT  id,module,module_name,url ,priority,status FROM settings_master where [status] <> 'Inactive'  ORDER BY priority asc ";
+		
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+			if(objsList.size() > 0) {
+				flag = true ;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getDepartmentsList(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		boolean flag = false ;
+		try {
+			String qry = "SELECT  id,department_code,department_name,url ,status FROM department_master where [status] <> 'Inactive' ";
+		
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+			if(objsList.size() > 0) {
+				flag = true ;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getDepartmentsListForCategory(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		boolean flag = false ;
+		try {
+			String qry = "Select department_code,department_name\n"
+					+ "from department_master \n"
+					+ "where department_code not in (select department_code from department_category)\n"
+					+ "UNION \n"
+					+ "Select department_code,'' \n"
+					+ "from department_category\n"
+					+ "where department_code not in (select department_code from department_master) ";
+		
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+			if(objsList.size() > 0) {
+				flag = true ;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);

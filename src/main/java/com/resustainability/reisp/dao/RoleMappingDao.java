@@ -240,7 +240,7 @@ public class RoleMappingDao {
 				qry = qry + " and p.employee_code = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by project asc";
+			qry = qry + " ORDER BY p.created_date Desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getProject_code())) {

@@ -453,8 +453,10 @@ body {
                <!-- Multiple -->
                <div class="col-12 col-md-6">
               <label class="form-label" for="select2-multiple">Select Assigned to SBU</label>
-              <select class="select2 form-select formSelect" multiple data-placeholder="Yours Placeholder"  id="select2-select2-multiple-assigned_to_sbu_edit-container"
-              name="assigned_to_sbu">
+              <select class="select2 form-select formSelect" multiple data-placeholder="Yours Placeholder"
+                id="select2-select2-multiple-assigned_to_sbu_edit-container"
+              name="assigned_to_sbu"
+              >
                  <option value="">Select SBU</option>
               <c:forEach var="obj" items="${objList}">
 					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>

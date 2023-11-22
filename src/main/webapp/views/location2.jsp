@@ -30,25 +30,40 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-    <style>
-    
-    .pagination {
-  display: flex;
-  list-style: none;
-  padding: 0;
+   <style>
+     
+     th,td{
+    	text-align:left;
+    }
+*, :after, :before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+.pagination{
+  background-color: #e9eef5!important;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .pagination button {
-  margin: 0 5px;
   display: inline-block;
+  background-color: #e9eef5;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-
+.pagination .mdl-button {
+ padding: 5px 10px;
+}
 .pagination .mdl-button--raised {
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #4f46e5!important;
+  color: #fff;
 }
 
 .pagination button:hover {
@@ -56,17 +71,53 @@
 }
 
 .pagination .active button {
-  background-color: #333;
+  background-color: #4f46e5!important;
   color: #fff;
 }
-    
-    
+    .input-sm {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  margin-left: 0.3rem;
+}
+
+.input-sm::after {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
+}
+   input[type="search"] {
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+    .dataTables_info{
+    font-size: .8125rem;
+    line-height: 1.125rem;
+    }
    .mdl-grid{
+   align-items: center;
 	display: flex !important;
     padding: 4px;
     justify-content: space-between;
     height: 4.5rem;
 } 
+.mdl-grid:nth-child(3) .mdl-cell--6-col {
+	    margin-left: 2rem !important;
+}
+.mdl-grid:nth-child(3) .mdl-cell--4-col {
+	    margin-right: 2rem !important;
+}
 .dt-table{
 display: block !important;
 height: 100%;
@@ -114,27 +165,7 @@ button.disabled {
   /* Add any other styles as needed */
 }
 
-.input-sm {
-  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  background-position: right center;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  margin-left: 0.3rem;
-}
 
-.input-sm::after {
-  content: ""; /* Add empty content for the search icon */
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  width: 20px; /* Adjust the width of the icon */
-  height: 20px; /* Adjust the height of the icon */
-  position: absolute;
-  top: 50%;
-  right: 10px; /* Adjust the right position to position the icon correctly */
-  transform: translateY(-50%);
-}
 
 
 
@@ -2506,8 +2537,23 @@ button.disabled {
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
       <div class="p-4 sm:p-5">
-                
-                <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
+       <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            Location
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
+          </div>
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Location</li>
+          </ul>
+        </div>                
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
                   <select   id="select2-project_code_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
@@ -2559,18 +2605,24 @@ button.disabled {
         <form id="addLocationForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-location" method="post" class="form-horizontal" role="form" >
               
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                 <label class="block  text-left">
-                    <span>Project</span><span class="required"> *</span>
-                  <select
-                    id="select2-project_code_add-container"
-              name="project_code"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                   <option value="">Select Project</option>
-             	<c:forEach var="obj" items="${objList}">
-					<option value="${obj.project_code }" >[${obj.project_code }] - ${obj.project_name }</option>
-				</c:forEach>
-                  </select>
+                
+                
+                  <label class="block  text-left">
+                    <span>Location Name </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                       type="text"
+              id="location_name_add"
+              name="location_name"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
                   </label>
+                
+                
+                 
                   <label class="block  text-left">
                     <span>Location Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
@@ -2585,19 +2637,20 @@ button.disabled {
                     </span>
                      <span class="required" id="sbu_code_addError"> *</span>
                   </label>
-                   <label class="block  text-left">
-                    <span>Location Name </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                       type="text"
-              id="location_name_add"
-              name="location_name"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
+                  
+               <label class="block  text-left">
+                    <span>Project</span><span class="required"> *</span><br>
+                  <select
+                    id="select2-project_code_add-container"
+              name="project_code"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   <option value="">Select Project</option>
+             	<c:forEach var="obj" items="${objList}">
+					<option value="${obj.project_code }" >[${obj.project_code }] - ${obj.project_name }</option>
+				</c:forEach>
+                  </select>
                   </label>
+                  
                  <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
@@ -2635,7 +2688,7 @@ button.disabled {
                 <button onclick="exportLocation();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
-                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
                     
                     </div>
@@ -2649,9 +2702,9 @@ button.disabled {
           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <spanspan id= "allLocation"></span>
+                   <span span id= "allLocation"></span>
                   </p>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                              <svg  style="width: 5rem;height: 2rem;"xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
                 </div>
                 <p class="mt-1 text-xs+">Total Location</p>
@@ -2661,7 +2714,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "activeLocation"></span>
                   </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
+<svg  style="width: 5rem;height: 2rem;"xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
 
                 </div>
                 <p class="mt-1 text-xs+"> Active Location</p>
@@ -2671,7 +2724,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <spanid= "inActiveLocation"></span>
                   </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+<svg  style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                 </div>
                 <p class="mt-1 text-xs+"> Inactive Location</p>
            </div>
@@ -2712,16 +2765,16 @@ button.disabled {
                         Status
                       </th>
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created Date
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Created By
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified Date
+                        Created Date
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified By
                       </th>
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified By
+                        Modified Date
                       </th>
                      
                     </tr>
@@ -2762,7 +2815,7 @@ button.disabled {
                   <select
                   	id="select2-project_code_edit-container"
               name="project_code"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" form-select3 select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Project</option>
               <c:forEach var="obj" items="${objList}">
 					<option value="${obj.project_code }" >[${obj.project_code }] - ${obj.project_name }</option>
@@ -2799,12 +2852,14 @@ button.disabled {
                       </span>
                     </span>
                   </label>
-                 <label class="block  text-left">
-                    <span>Status</span><span class="required"> *</span>
+                 <label class="block  text-left" style="
+    padding-left: 1rem;
+    padding-top: 2rem;">
+                    <span>Status</span><span class="required"> *</span><br>
                   <select
                      id="select2-status_edit-container"
               name="status"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" form-select3 select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                    <option value="">Select Status</option>
              	<option value="Active">Active</option>
              	<option value="Inactive">Inactive</option>
@@ -2879,7 +2934,7 @@ button.disabled {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
 $(window).on("load",(function(){
-    	  
+	 $('select').select2();
           
           getLocationList();
          }));
@@ -2997,7 +3052,18 @@ $(window).on("load",(function(){
 					},"iDisplayStart" : 0,
 					"drawCallback" : function() {
 					},
-	            columnDefs: [],
+					 columnDefs: [
+			            	{
+			                    targets: [0, 1, 2, 3, 4, 5],
+			                    className: 'px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+			                  
+			                }
+			            ],
+			            rowCallback: function(row, data, index) {
+			                // Check a condition based on a column value
+			                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+			            },
+				
 	            // "ScrollX": true,
 	            //"scrollCollapse": true,
 	            "sScrollX": "100%",
@@ -3036,17 +3102,24 @@ $(window).on("load",(function(){
 		         		$.each(data,function(key,val){
 		         			var location_data = "'"+val.location_code+"','"+val.project_code+"','"+val.location_name+"','"+val.id+"','"+val.status+"'";
 		                    var actions = '<a href="javascript:void(0);"  onclick="getLocation('+location_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
-		                   	var rowArray = [];    	                 
+		                    key++;
+		                    var rowArray = [];    	                 
 		                   	$('#allLocation').html(val.all_location)
 		            		$('#activeLocation').html(val.active_location)
 		            		$('#inActiveLocation').html(val.inActive_location)
-		                   	rowArray.push($.trim(val.id));
+		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                	rowArray.push("["+ $.trim(val.project_code)+"]"+" - "+ val.project_name);
 		                   	rowArray.push($.trim(val.location_code));
 		                   	rowArray.push($.trim(val.location_name));
 		                   	
-		                   	rowArray.push($.trim(val.status));
+		                   	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
+	                		} else {
+	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
+	                		}
+		                   	rowArray.push(status);
 		                	rowArray.push($.trim(val.created_by));
 		                   	rowArray.push($.trim(val.created_date));
 		                	rowArray.push($.trim(val.modified_by));
@@ -3072,7 +3145,9 @@ $(window).on("load",(function(){
 		      if(project_code != null && project_code != ''  && project_code != "undefined"){
 		    	  $('select[name^="project_code"] option[value="'+ project_code +'"]').attr("selected",true);
 		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
+		    	  $('.form-select3').select2();
 		    	 // $('select').select2();
+		    	 
 		      }
 	   }
 	    

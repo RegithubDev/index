@@ -42,4 +42,16 @@ public class CompanyService {
 	public List<Company> checkUniqueIfForCompany(Company obj) throws Exception {
 		return dao.checkUniqueIfForCompany(obj);
 	}
+
+	public List<User> getreonecategory(User obj) throws Exception {
+		return dao.getreonecategory(obj);
+	}
+
+	public boolean addreonecategory(User obj) throws Exception {
+		return dao.addreonecategory(obj);
+	}
+
+	public boolean updatereonecategory(User obj) throws Exception {
+		return dao.updatereonecategory(obj);
+	}
 }

@@ -531,7 +531,8 @@ body {
   			<div class="col-12 col-md-6">
             <label class="form-label" for="select2-basic">User Role</label><span class="required"> *</span>
             <select
-            	class="select2 form-select formSelect" id="select2-base_role_add-container"
+            	class="select2 form-select formSelect"
+            	 id="select2-base_role_add-container"
               name="base_role"
               aria-label="Default select example"
             >
@@ -707,7 +708,8 @@ body {
   			<div class="col-12 col-md-6">
             <label class="form-label" for="select2-basic">User Role</label><span class="required"> *</span>
             <select
-            	class="select2 form-select formSelect" id="select2-base_role_edit-container"
+            	class="select2 form-select formSelect" 
+            	id="select2-base_role_edit-container"
               name="base_role"
               aria-label="Default select example"
             >
@@ -723,7 +725,8 @@ body {
           <div class="col-12 col-md-6">
             <label class="form-label" for="select2-basic">Status</label><span class="required"> *</span>
             <select
-            	class="select2 form-select formSelect" id="select2-status_edit-container"
+            	class="select2 form-select formSelect" 
+            	id="select2-status_edit-container"
               name="status"
               aria-label="Default select example"
             >

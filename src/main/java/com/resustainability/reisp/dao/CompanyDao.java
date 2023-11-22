@@ -88,7 +88,7 @@ public class CompanyDao {
 				qry = qry + " and status = ? ";
 				arrSize++;
 			}
-			qry = qry + " ORDER BY status ASC ";
+			qry = qry + " ORDER BY c.created_date Desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			
@@ -318,5 +318,69 @@ public class CompanyDao {
 		}
 		return objsList;
 	}
+
+	public List<User> getreonecategory(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT  c.id,c.department_code,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
+					+ "up1.user_name as  modified_by FROM [department_category] c "
+					+ " left join [user_profile] up on c.created_by = up.user_id "
+					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
+					+ "where status is not null and status <> 'Inactive'  "; 
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public boolean addreonecategory(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			obj.setStatus("Active");
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [department_category] (department_code,dm_category,status,created_by,created_date) VALUES (:department_code,:dm_category,:status,:created_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+	
+	
+	public boolean updatereonecategory(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [department_category] SET dm_category = :dm_category, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE department_code = :department_code";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+	
 
 }

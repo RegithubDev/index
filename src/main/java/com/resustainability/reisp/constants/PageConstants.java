@@ -53,19 +53,30 @@ public class PageConstants {
 	public static final String settings = "settings";
 	public static final String projectsPage = "Projects";
 	public static final String AdminPage = "Admin";
+	public static final String recycling = "recycling";
 	public static final String departmentsMaster = "departmentsMaster";
 	public static final String company2 = "company2";
 	public static final String sbu2 = "sbu2";
+	public static final String business = "business";
+	public static final String bmw = "bmw";
+	public static final String contracts = "contracts";
+	public static final String comunication = "communication";
+	public static final String dcform = "dcform";	
 	public static final String project2 = "project2";
 	public static final String department2 = "department2";	
 	public static final String location2 = "location2";	
 	public static final String role_master2 = "role_master2";	
-	
-	
-	
-	
-	
-	
+	public static final String role_mapping2 = "role_mapping2";
+	public static final String user2 = "user2";	
+	public static final String 	reonecategory = "reonecategory";	
+	public static final String 	reonesubcategory ="reonesubcategory";	
+	public static final String  activedepartment ="activedepartment";	
+	public static final String 	depcontent ="depcontent";	
+	public static final String 	ermpage ="ermpage";		
+	public static final String 	legal ="legal";	
+	public static final String 	msw ="msw";
+	public static final String 	safety ="safety";
+	public static final String 	waste ="waste";
 	public static final String FinancePage = "Finance";
 	public static final String updateSelfUser = "updateSelfUser";
 	public static final String roleMapping = "roleMapping";
@@ -77,6 +88,14 @@ public class PageConstants {
 	public static final String test = "test";
 	public static final String bbForm = "bbForm";
 	public static final String helpCenter = "helpCenter";
+	
+	
+	
+
+	
+	
+
+	
 
 	
 	

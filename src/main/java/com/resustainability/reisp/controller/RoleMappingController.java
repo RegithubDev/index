@@ -80,14 +80,15 @@ public class RoleMappingController {
 	
 	@RequestMapping(value = "/role-mapping", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView roleMapping(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.roleMapping);
+		ModelAndView model = new ModelAndView(PageConstants.role_mapping2);
 		RoleMapping obj = null;
-		try {
+		try { 
 			List<RoleMapping> projectsList = service.getProjectsList(obj);
 			model.addObject("projectsList", projectsList);
 			
 			List<RoleMapping> deptList = service.getDeptsList(obj);
 			model.addObject("deptList", deptList);
+			
 			
 			List<RoleMapping> empList = service.getEmpstList(obj);
 			model.addObject("empList", empList);

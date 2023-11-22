@@ -25,349 +25,150 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-           <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
-         <script src="https://www.youtube.com/iframe_api"></script>
-       
+          <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
     <style>
-    .w-50{
-    	    width: 12rem;
-    	
+     
+     th,td{
+    	text-align:left;
     }
-    .pt-8{
-    	    padding-top: 9%;
-    	    padding-left: 3.25rem!important;
-    }
-    @media (min-width: 640px){
-    .max-w-lg2{
-    	max-width: 65rem;
-    }
-    .slm {
-		    padding-left: 2.25rem!important;
-		    padding-right: 1.25rem!important;
-		}
-	}
-	  @media (max-width: 767px) {
-    .sld {
-		    padding: 2rem!important;
-		}
-	}
-    .swiper-scrollbar-drag {
-    background: transparent!important;
-    border-radius: var(--swiper-scrollbar-border-radius,10px);
-    height: 100%;
-    left: 0;
-    position: relative;
-    top: 0;
-    width: 100%;
-}
-    
-       @media (min-width: 766px) and (max-width: 1200px){
-      .qutt{
-          width: 40rem!important;
-      }
-      
-      }
-       @media (min-width: 600px) and (max-width: 1200px){
-      .qutt{
-          width: 34rem!important;
-      }
-      
-      } 
-    .mgi{
-     width: 43px; /* Set the desired width for the image */
-  	height: auto;
-    }
-    .parent1 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Display two items in each row */
-  justify-content: center; /* Optional, to center the items horizontally */
-  grid-gap: 10px; /* Add some spacing between the items */
+*, :after, :before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
 }
 
-.child1 {
-  background-color: #f0f0f0; /* Optional, add background color to the items */
+
+.pagination{
+  background-color: #e9eef5!important;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
-   .parents {
- display: flex;
-  justify-content: center;
-}
-#rewards{
-width: 142px!important;
-}
-#news{
-width: 123px!important;
-}
-.childs {
+.pagination button {
   display: inline-block;
-  width: 221px; /* Optional, set a fixed width for child divs if needed */
-  height: 100px; /* Optional, set a fixed height for child divs if needed */
-  margin: 10px; /* Optional, add some spacing between the child divs */
+  background-color: #e9eef5;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-    .cardT {
-   	 box-shadow: none !important; 
-   	 background-color: transparent!important;
-   	 
-   	 
-	}
-     @media (min-width: 1024px) {
-     .pc{
-         height: 34rem;
-     }
-     #mobileClass2{
-    	display:none;
+.pagination .mdl-button {
+ padding: 5px 10px;
+}
+.pagination .mdl-button--raised {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #4f46e5!important;
+  color: #fff;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+}
+
+.pagination .active button {
+  background-color: #4f46e5!important;
+  color: #fff;
+}
+    .input-sm {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  margin-left: 0.3rem;
+}
+
+.input-sm::after {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
+}
+   input[type="search"] {
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+    .dataTables_info{
+    font-size: .8125rem;
+    line-height: 1.125rem;
     }
-     .h-custom{
-      	height: 5rem;
-      }
-      .qut{
-        position: absolute;
-    top: -1rem;
-    width: 22rem;
-    right: 0rem;
-    }
-     #qut{
-         padding-bottom: 1rem !important;
-    	 padding-top: 1rem !important;
-     }
-     }
-   
-    .bg-slate-2000 {
-    background-color: #ffffff;
+   .mdl-grid{
+   align-items: center;
+	display: flex !important;
+    padding: 4px;
+    justify-content: space-between;
+    height: 4.5rem;
+} 
+.mdl-grid:nth-child(3) .mdl-cell--6-col {
+	    margin-left: 2rem !important;
 }
-    .cardsRight{
-    	    right: -2rem ;
-    	    height: 6rem;
-    }
-    .containers {
-  display: flex;
-  justify-content: center; /* Optional, to center the spans horizontally */
+.mdl-grid:nth-child(3) .mdl-cell--4-col {
+	    margin-right: 2rem !important;
 }
-
-.side-by-side {
-  margin: 5px; /* Optional, add some spacing between the spans */
+.dt-table{
+display: block !important;
+height: 100%;
 }
-    .max-w-xl {
-    max-width: 60rem!important;
+.modal {
+    width: 100% !important;
 }
-    #mobileClass{
-  	display: none;
-  }
-    .w-208{
-    	width: 9rem !important;
-    }
-    @media (max-width: 767px) {
-    #mobileClass2{
-    	display:block;
-    }
-      .h-custom{
-      	height: 0.25rem;
-      }
-    .cardsRight{
-    	    right: 0rem;
-    }
-	  .reimagining {
-	     
-	    display: flex;
-	    align-items: center;
-	
-	  }
-	  #iconsCLass {
-    display: none;
-  }
-  #mobileClass{
-  	display: block;
-  	width: 92% !important;
-    height: 92% !important;
-    padding-bottom: 0.5rem !important;
-    padding-top: 0.5rem !important;
-    padding-left: 3rem;
-    left: 1rem !important;
+.required{
+	color:red;
 }
-.mblview{
-  		width:100% !important;
-  }
-  }
-  
-  }
- .w-1w{
-     width: 5.5rem !important;
- }
-  
-    .text-re{
-    	color:#e21e26;
-    }
-    #clock {
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      text-align: center;
-      padding: 6px;
-      color: #333;
-    }
-    .content{
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    a {
-    color: blue;
-    text-decoration: inherit;
+.my-error-class {
+ 	 color:red;
 }
-  .container{
-    overflow: hidden;
-    z-index: 10;
-    position: relative;
-    height: 90px;
-    width: 300px;
-    background-color: #3935e2;
-    border-radius: 10px;
-    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+.my-valid-class {
+ 	 color:green;
 }
-   #player-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-    }
-
-    #player {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
- .loading-dots {
-      font-size: 36px;
-      text-align: center;
-      animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-      0% { content: ". "; }
-      33% { content: ". . "; }
-      66% { content: ". . . "; }
-    }
-/*  BACKGROUND  */
-
-.Circle1{
-    z-index: 100;
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    right: -20px;
-    top: -30px;
-    border-radius: 50%;
-    background-color: rgba(253,184,19,1);
-    animation: enlarge;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+     left: -25% !important;
+    margin-top: 1p% !important;
+}
+body {
+    font-family: var(--bs-body-font-family) !important;
+}
+.dark-layout h1, .dark-layout h2, .dark-layout h3, .dark-layout h4, .dark-layout h5, .dark-layout h6, .dark-layout span  {
+    color: #D0D2D6;
+}
+.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
+    background-size: 18px 14px,18px 14px !important;
+    background-repeat: no-repeat !important;
+    height: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    left: -8px !important;
+    border-style: none !important;
 }
 
-.Circle2{
-    z-index: 80;
-    position: absolute;
-    height: 150px;
-    width: 150px;
-    right: -50px;
-    top: -70px;
-    border-radius: 50%;
-    background-color: rgba(246,140,31,0.7);
-    
-    animation: enlarge;
-    animation-duration: 7s;
-    animation-iteration-count: infinite;
-}
-
-.Circle3{
-    z-index: 50;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    right: -50px;
-    top: -100px;
-    border-radius: 50%;
-    background-color: rgba(241,125,45,0.7);
-    
-    animation: enlarge;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
+button.disabled {
+  pointer-events: none; /* Disable pointer events to prevent interaction */
+  background-color: #e1dcdc; /* Change background color to a muted color */
+  color: #666; /* Change text color to a muted color */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
+  /* Add any other styles as needed */
 }
 
 
 
-/*  CONTENT  */
 
-.sun{
-    z-index: 1000;
-    font-size: 15px !important;
-}
-
-.Condition{
-z-index: 1000;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-size: 20px;
-    left: 54px;
-    top: 9px;
-}
-
-.Temp{
-   
-        z-index: 1000;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-size: 27px;
-    font-weight: 400;
-    left: 20px;
-    bottom: 19px;
-}
-
-#F{
-    z-index: 1000;
-    font-family: "Roboto",sans-serif;
-    font-weight: 100;
-    font-size: 30px;
-}
-
-
-.Time{
-     z-index: 1000;
-    position: absolute;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 200;
-    right: 9px;
-    top: 30px;
-}
-
-.locationIcon{
-    z-index: 1000;
-    font-size: 10px !important;
-}
-
-.Location{
-    z-index: 1000;
-    position: absolute;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 12px;
-    font-weight: 200;
-    right: 20px;
-    bottom: 15px;
-}
-
-@keyframes enlarge{
-    50%{
-        transform: scale(1.2);
-    }
-}
-
-    .mb-4 {
-    margin-bottom: 1.25rem;
-}
   </style>
     <script>
       /**
@@ -380,9 +181,7 @@ z-index: 1000;
 
   <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
     <!-- App preloader-->
-    <div
-      class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
-    >
+    <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900" >
       <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
     </div>
 
@@ -408,15 +207,7 @@ z-index: 1000;
                   alt="logo"
                 />
               </a>
-              
-              
             </div>
-            
-            
-            
-            
-            
-            
 
             <!-- Main Sections Links -->
  			<jsp:include page="../views/layout/header.jsp"></jsp:include> 
@@ -2745,291 +2536,409 @@ z-index: 1000;
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
-      
- 
-  <div class="flex items-center justify-between py-5 lg:py-6">
-          <div class="group flex items-center space-x-1">
-            <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
-              Masters
-            </h2>
+      <div class="p-4 sm:p-5">
+     <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            Role Mapping
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
           </div>
-  </div><hr><br>
- 
- <div class="swiper-wrapper gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4" id="swiper-wrapper-69e6c010554887420" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                 Company
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <a href="" class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div> 
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+           <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Role Mapping</li>
+          </ul>
+        </div>                
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <label class="block">
+                  <select  id="select2-project-filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Project</option>
+                   
+                  </select>
+                </label>
+                   <label class="block">
+                  <select id="select2-department_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
+                   
+                  </select>
+                </label>
+                  <label class="block">
+                  <select  id="select2-roles_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Employee Code</option>
+                    
+                  </select>
+                </label>
                 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                  Business Unit<BR>(SBU)
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                   Project
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    Department
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                   <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                        </svg>
-                      </button>
-                  </div>
-                </div> 
                 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                   Location
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
+                
+                    <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                    <button  onclick="getSBUList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
+                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
+                </button>
+                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
+                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
+                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
+                </button>
                     </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                </div>
-                <br>
+                       <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                      <div x-data="{showModal:false}">
+                
+                    <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                 <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                Add Role Mapping
+              </p>
+
+        <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-role-mapping" method="post" class="form-horizontal" role="form" >
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                
+                 <label class="block  text-left">
+                    <span>Project</span><span class="required"> *</span>
+                  <select
+                   id="select2-project_add-container"
+              name="project"
+              onchange="filterRoles_add(); deptFilter(); empFilter();"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="">Select Project</option>
+             	<c:forEach var="obj" items="${projectsList}">
+					<option value="${obj.project_code }" >[${obj.project_code }] - ${obj.project_name }</option>
+				</c:forEach>
+                  </select>
+                    <span id="select2-project_add-containerError" class="error-msg" ></span>
+                  </label>
+                  
+                 <label class="block  text-left">
+                    <span>Department</span><span class="required"> *</span>
+                  <select
+                      id="select2-department_code_add-container"
+              name="department_code"
+                onchange="filterRoles_add();
+                setRole();"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="">Select Department</option>
+             	<%-- <c:forEach var="obj" items="${deptList}">
+					<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
+				</c:forEach> --%>
+                  </select>
+                   <span id="select2-department_code_add-containerError" class="error-msg" ></span>
+                  </label>
+                  
+                 <label class="block  text-left">
+                    <span>Incident Type</span><span class="required"> *</span>
+                  <select
+                          id="select2-safety_type_add-container"
+              name="safety_type"
+                  multiple data-placeholder="Select Incident" 
+              aria-label="Default select example" onchange="filterRoles_add();"
               
- <div class="swiper-wrapper gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4" id="swiper-wrapper-69e6c010554887420" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="AC" selected>Accident</option>	  
+					<option value="NM" selected>Near Miss</option>	
+					<option value="UA" selected>Unsafe Act</option>	
+					<option value="UC" selected>Unsafe Condition</option>
+                  </select>
+                     <span id="select2-safety_type_add-containerError" class="error-msg" ></span>
+                  </label>
                   
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                  Role
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
+                 <label class="block  text-left">
+                    <span>Roles</span><span class="required"> *</span>
+                  <select
+              id="select2-roles_add-container"
+              name="role_code"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                     <option value="">Select Roles</option>
+                  </select>
+                               <span id="select2-roles_add-containerError" class="error-msg" ></span>
                   
-                  <div class="pt-2 text-base font-medium tracking-wide ttext-base font-medium text-slate-700 dark:text-accent-light">
-                    Role Mapping
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
+                  </label>
                   
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                   User Profile
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
+                 <label class="block  text-left">
+                    <span>Employees List</span><span class="required"> *</span>
+                  <select
+               id="select2-employee_code_add-container"
+              name="employee_code"
+             onchange="setEmail();"
+               
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="">Select Employees</option>
+             	<%-- <c:forEach var="obj" items="${empList}">
+					<option email ="${obj.email_id }" value="${obj.user_id }" >[${obj.user_id }] - ${obj.user_name }</option>
+				</c:forEach> --%>
+                  </select>
+                    <span id="select2-employee_code_add-containerError" class="error-msg" ></span>
+                  
+                  </label>
+                  
+                 <label class="block  text-left">
+                    <span>Status</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_add-container"
+              name="status"
+              
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="Active" >Active</option>
+             	<option value="Inactive" >Inactive</option>
+                  </select>
+                               <span id="select2-status_add-containerError" class="error-msg" ></span>
+                  
+                  </label>
                
                 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    ReONE Category
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
             
-                
-                    <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    ReONE Sub Category
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                
+                   
                 </div>
-                
-                  <div class="flex items-center justify-between py-5 lg:py-6">
-          <div class="group flex items-center space-x-1">
-            <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
-             Content Management
-            </h2>
-          </div>
-  </div><hr><br>
-    <div class="swiper-wrapper gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4" id="swiper-wrapper-69e6c010554887420" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                 Departmental Contents
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px ;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light ">
-                   Activate Departments
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-              
-               
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                    <span>Add </span>
+                   
+                  </button>
+                  <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                        </button>
                  
-            
-                
-                
+                </div>
+                </form>
+              
+            </div>
+          </div>
+                       
+                       
+                      </div>
+                    </div>
+                  </template>
+                </div>
+                 
+                <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
+                 focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                 style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;"  onclick="exportSBU();">
+                         <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
+                </button>
+                    
+                    </div>
                 
                 </div>
+              
+              </div>
+		<br>
+	
+              
+
+          <div class="row">
+
+            <div class="card mt-3">
+		     <div class="card invoice-list-wrapper">
+		      <div class="card-datatable table-responsive">
+		       <div class="dt-buttons" style="height : 0.5em;">
+		      
+		        </div>
+                <table class="invoice-list-table table" id="datatable-company">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        #
+                      </th>
+                    <%--  <c:if test="${sessionScope.ROLE eq 'Admin' }" > --%>
+                       <th class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Action
+                      </th>
+                      <%-- </c:if> --%>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Status
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Project
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                       Department
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Level
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Employee Code
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          
+                
+             
    
                 
               </div>
          
         
       </main>
-          
-           
-  
-      <div class="mt-5" x-data="{showModal:false}">
+       
+     <div x-data="{showModal:false}">
+       <button style="display : none"; @click="showModal = true"  id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                update Role Mapping
+              </p>
+                  <div class="mt-4 space-y-4">
+        <form id="updateCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-role-mapping" method="post" class="form-horizontal" role="form" >
+                
+                 
                
-                <template x-teleport="#x-teleport-target">
-                  <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                    <div class="scrollbar-sm relative flex max-w-lg2 flex-col overflow-y-auto rounded-lg  px-4  text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                     <div class="flex h-8 items-center justify-between">
-                          <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base"></h2>
-
-                          <button @click="showModal = !showModal" class="btn -mr-1.5 h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" style="
-    margin-bottom: -4rem;
-    z-index: 1;
-    margin-right: -0.7rem; background-color: white;
-">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                          </button>
-                        </div>
-                      <div class="mt-4">
-                        <img
-                      class=""
-                      src="/index/resources/images/CyberSecurity Launch.png"
-                      alt="image"
-                    />
+                 <input type="hidden" id="id" name="id" />
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                 <label class="block  text-left">
+                    <span>Project</span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                       type="text"
+              id="select2-project_edit-container"
+              name="project"
+              readonly
+                      class="  form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                        <span id="select2-project_edit-containerError" class="error-msg" ></span>
+                    
+                  </label>
+                   <label class="block  text-left">
+                    <span> Department</span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                        type="text"
+              id="select2-department_code_edit-container"
+              name="department_code"
+               readonly
+               
+                      class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+             <span id="select2-department_code_edit-containerError" class="error-msg" ></span>
+          
+                  </label>
+                  <label class="block  text-left">
+                    <span> Roles</span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                        type="text"
+              id="select2-roles_edit-container"
+              name="role_code"
+               readonly
+                      class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                       <span id="select2-roles_edit-containerError" class="error-msg" ></span>
+          
+                  </label>
+              
+                  
+                 <label class="block  text-left">
+                    <span>Incident Type</span><span class="required"> *</span>
+                  <select
+                    id="select2-safety_type_edit-container"
+              name="safety_type"
+               onchange="filterRoles_edit(this.value);"
+               multiple data-placeholder="Select Incident" disabled
+                   class=" form-select3 select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="AC"  <c:if test="${  fn:contains( fObj.incidentData, 'AC' ) }"> selected</c:if>>Accident</option>
+                 <option value="NM"  <c:if test="${  fn:contains( fObj.incidentData,'NM' ) }"> selected</c:if>>Near Miss</option>
+                 <option value="UA"  <c:if test="${  fn:contains( fObj.incidentData, 'UA' ) }"> selected</c:if>>Unsafe Act</option>
+                 <option value="UC"  <c:if test="${  fn:contains( fObj.incidentData, 'UC' ) }"> selected</c:if>>Unsafe Condition</option>
+                  </select>
+                    <span id="select2-safety_type_edit-containerError" class="error-msg" ></span>
+       
+                  </label>
+             
+                  
+                    <label class="block  text-left">
+                    <span>Employee Lists</span><span class="required"> *</span>
+                  <select
+                    id="select2-employee_code_edit-container"
+              name="employee_code"
+                   class=" form-select3 select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   <option value="">Select Employees</option>
+             	<c:forEach var="obj" items="${empList}">
+					<option value="${obj.user_id }" >[${obj.user_id }] - ${obj.user_name }</option>
+				</c:forEach>
+                  </select>
+                    <span id="select2-status_edit-containerError" class="error-msg" ></span>
+                         
+                  </label>
+                    <label class="block  text-left">
+                    <span>Status</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_edit-container"
+              name="update_status"
+                onchange = "mappingUserSecurity();"
+                   class=" form-select3 select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Status</option>
+             	<option value="Active" >Active</option>
+             	<option value="Inactive" >Inactive</option>
+                  </select>
+             <span id="select2-status_edit-containerError" class="error-msg" ></span>
+                         
+                  </label>
+                      
+                </div>
+              
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                    <span>update </span>
+                   
+                  </button>
+                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                        </button>
+                 
+                </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+                       
+                       
                       </div>
                     </div>
-                  </div>
-                </template>
-              </div>
+                  </template>
+                </div>
+           
+      
 
 
      <!--  <div
@@ -3051,132 +2960,610 @@ z-index: 1000;
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+	 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+ <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+      <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
+      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
+        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
+<form action="<%=request.getContextPath()%>/export-role-mapping" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">	
+      
+        <input type="hidden" name="structure_type_fk" id="exportStructure_type_fk" />
+        <input type="hidden" name="drawing_type_fk" id="exportDrawing_type_fk" />
+	</form>
+	
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      
-      $(document).ready(function() {
-
-
-          function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-based
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? '0' + hours : hours;
-            minutes = (minutes < 10) ? '0' + minutes : minutes;
-            seconds = (seconds < 10) ? '0' + seconds : seconds;
-            day = (day < 10) ? '0' + day : day;
-            month = (month < 10) ? '0' + month : month;
-
-            var time = hours + ':' + minutes + ':' + seconds; 
-            var date = day + '-' + month + '-' + year;
-
-            var clock1 =  '<i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
-
-            var clock =  ' <div class="mt-5 space-y-4 " style=" margin-left: 2rem;"> <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
-            $('#clock').html(clock);
-            $('#clock1').html(clock1);
-          }
-
-          setInterval(updateClock, 1000);
-
-          var cityName;
-          if (navigator.geolocation) {
-              // Get current position
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                // Make API request to fetch city name
-                $.ajax({
-                  url: 'https://nominatim.openstreetmap.org/reverse',
-                  type: 'GET',
-                  data: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude,
-                    zoom: 10,
-                    addressdetails: 1
-                  },
-                  success: function(response) {
-                    var city = response.address.city || response.address.town || response.address.village || '';
-                    var country = response.address.country || '';
-
-                    // Update HTML element with city name
-                    cityName = city;
-                    $('#city').text(city + ', ' + country);
-                    var cityNplace = city + ',' + country
-                    getWeather(cityNplace);
-                  },
-                  error: function(xhr, status, error) {
-                    console.log(error);
-                  }
-                });
-              });
-            } else {
-              console.log('Geolocation is not supported by this browser.');
-            }
-          
-      
-          
-      });
-     function getWeather(cityNplace){
-    	    
-          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
-          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
-
-          $.ajax({
-              url: apiUrl,
-              method: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  const temperatureElement = $('#temperature');
-                  const descriptionElement = $('#description');
-                  const windSpeedElement = $('#wind-speed');
-                  const weatherIconElement = $('#weather-icon');
-
-                  const temperature = Math.round(data.main.temp);
-                  const description = data.weather[0].description;
-                  const windSpeed = data.wind.speed;
-                  const weatherIcon = data.weather[0].icon;
-
-                  temperatureElement.text(temperature +'°C');
-                  descriptionElement.text(description);
-                  windSpeedElement.text(windSpeed+' m/s');
-                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
-              },
-              error: function(error) {
-                  console.error('Error:', error);
-              }
-        });
-    	  
-      }
      
-     const button = document.getElementById("signout_button");
-     button.onclick = () => {
-       google.accounts.id.disableAutoSelect();
-       console.log('User signed out.');
-       $("#email").val('');
- 		$("#logoutForm").submit();
-     }
-    // https://www.youtube.com/watch?v=zJkS24mEBbU&pp=ygUQcmVzdXN0YWluYWJpbGl0eQ%3D%3D
-    /*  function onYouTubeIframeAPIReady() {
-         // Create an instance of the YouTube player
-         new YT.Player('player', {
-           videoId: 'z8-Ghz4YSMY',
-           playerVars: {
-             autoplay: 0, // Autoplay the video
-             controls: 1, // Show video controls
-             modestbranding: 1, // Hide YouTube logo
-             fs: 1, // Show fullscreen button
-           },
-         });
-       } */
-   
+      $('#addCompany').on('show.bs.modal', function (event) {
+          $(document).ready(function() {
+              $('.select2').select2({
+                  dropdownParent: $('#addCompany')
+              });
+          }); 
+      });
+      $('#updateCompany').on('show.bs.modal', function (event) {
+          $(document).ready(function() {
+              $('.select2').select2({
+                  dropdownParent: $('#updateCompany')
+              });
+          });
+      });
+$(window).on("load",(function(){
+	 	  $('select').select2();
+          getRolemappingList();
+         }));
+    
+      
+      function clearFilter(){
+		    	$("#select2-project-filter-container").val("");
+		    	$("#select2-roles_filter-container").val("");
+		    	window.location.href= "<%=request.getContextPath()%>/role-mapping";
+	    }
+      
+      function setEmail(){
+    	  var userId = $("#select2-employee_code_add-container").val();
+    	  if(userId != ''){
+    		 var email = $("#select2-employee_code_add-container").find('option:selected').attr('email')
+    		 $('#email_id').val(email)
+    	  }
+      }
+      function deptFilter(){
+    	  var project = $("#select2-project_add-container").val();
+    	    if ($.trim(project) != "" ) {
+	        	$("#select2-department_code_add-container option:not(:first)").remove();
+	        	var myParams = {project: project};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getFilteredDeptList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+		                      $("#select2-department_code_add-container").append('<option  value="' + val.department_code + '">'+'['+$.trim(val.department_code) +"] - "+$.trim(val.department_name) +'</option>');
+	                    	});
+	                     }           
+	                    },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+      }
+      function empFilter(){
+    	  var project = $("#select2-project_add-container").val();
+    	    if ($.trim(project) != "" ) {
+	        	$("#select2-employee_code_add-container option:not(:first)").remove();
+	        	var myParams = {project: project};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getEmpstList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+		                      $("#select2-employee_code_add-container").append('<option  email ="' + val.email_id + '"  value="' + val.user_id + '">'+'['+$.trim(val.user_id) +"] - "+$.trim(val.user_name) +'</option>');
+	                    	});
+	                     }           
+	                    },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+      }
+      function filterRoles_add(){
+    	    var project = $("#select2-project_add-container").val();
+	        var department_code = $("#select2-department_code_add-container").val();
+	        var type = $("#select2-safety_type_add-container").val();
+	        type =  type.toString();
+	        if ($.trim(type) != "" && $.trim(project) != "" && $.trim(department_code) != "") {
+	        	$("#select2-roles_add-container option:not(:first)").remove();
+	        	var myParams = {safety_type: type,project: project,department_code: department_code };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getFilteredRolesList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                        	if(department_code == "EHS" && (val.role_code).indexOf('L2') != -1){
+	                        		$("#select2-roles_add-container").append('<option  value="IRL2">IRL2</option>');
+	                        		 return false;;
+	                        	}else if(department_code == "PH" && (val.role_code).indexOf('L3') != -1){
+	                        		$("#select2-roles_add-container").append('<option  value="IRL3">IRL3</option>');
+	                        		 return false;;
+	                        	}else{
+	                        		if(department_code != "EHS" && department_code != "PH" &&  (val.role_code).indexOf('L1') != -1){
+	  	  		                      $("#select2-roles_add-container").append('<option  value="' + val.role_code + '">'+$.trim(val.role_code) +'</option>');
+	                        		}
+	                        	}
+	                    	});
+	                     }           
+	                    },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+      }
+
+      function filterRoles_edit(type){
+    	    var project = $("#select2-project_edit-container").val();
+	        var department_code = $("#select2-department_code_edit-container").val();
+	        var type = $("#select2-safety_type_add-container").val();
+	        if ($.trim(type) != "") {
+	        	$("#select2-roles_edit-container option:not(:first)").remove();
+	        	var myParams = {safety_type: type,project: project,department_code: department_code };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getFilteredRolesList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                        	 $("#select2-roles_edit-container").append('<option  value="' + val.role_code + '">'+$.trim(val.role_code) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+  	  
+    }
+ 
+      function getDeptFilterList() {
+	        var project = $("#select2-project-filter-container").val();
+	        var employee_code = $("#select2-roles_filter-container").val();
+	        var department_code = $("#select2-department_filter-container").val();
+	    	var safety_type = $("#select2-incident-filter-container").val();
+	        if ($.trim(department_code) == "") {
+	        	$("#select2-department_filter-container option:not(:first)").remove();
+	        	var myParams = {project_code: project, employee_code: employee_code, department_code : department_code, safety_type : safety_type};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getDeptFilterListFromRoleMapping",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function getempFilterList() {
+    	  var project = $("#select2-project-filter-container").val();
+	        var employee_code = $("#select2-roles_filter-container").val();
+	        var department_code = $("#select2-department_filter-container").val();
+	    	var safety_type = $("#select2-incident-filter-container").val();
+	        if ($.trim(employee_code) == "") {
+	        	$("#select2-roles_filter-container option:not(:first)").remove();
+	        	var myParams = {project_code: project, employee_code: employee_code, department_code : department_code, safety_type : safety_type};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getempFilterListInRoleMapping",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-roles_filter-container").append('<option value="' + val.employee_code + '">' + "[ "+$.trim(val.employee_code) +" ]"+" - " + $.trim(val.user_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function getProjectFilter() {
+    	  var project = $("#select2-project-filter-container").val();
+	        var employee_code = $("#select2-roles_filter-container").val();
+	        var department_code = $("#select2-department_filter-container").val();
+	    	var safety_type = $("#select2-incident-filter-container").val();
+	        if ($.trim(project) == "") {
+	        	$("#select2-project-filter-container option:not(:first)").remove();
+	        	var myParams = {project_code: project, employee_code: employee_code, department_code : department_code, safety_type : safety_type};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getProjectFilterFromRoleMapping",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-project-filter-container").append('<option value="' + val.project + '">' +"[ "+$.trim(val.project) +" ]"+" - " + $.trim(val.project_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function mappingUserSecurity(){
+    	  var project = $("#select2-project_edit-container").val();
+	        var employee_code1 = $("#select2-employee_code_edit-container").val();
+	        var department_code = $("#select2-department_code_edit-container").val();
+	    	var safety_type = $("#select2-safety_type_edit-container").val();
+	    	var role = $("#select2-roles_edit-container").val();
+	    	var status = $("#select2-status_edit-container").val();
+	    	
+	        if ($.trim(project) != "" && $.trim(employee_code1) != "" && $.trim(department_code) != "" && $.trim(role) != "" && status != 'Inactive') {
+	        	var myParams = {project: project, department_code : department_code, safety_type : safety_type,role_code : role};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getMappingUserSecurity",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                        	var employee_code = $.trim(val.employee_code);
+	                        	var role_code = $.trim(val.role_code);
+	                        	   //if ($.trim(project) === $.trim(val.project) && $.trim(department_code) === $.trim(val.department_code)   && $.trim(role) === role_code && status === $.trim(val.status)    && safety_type === $.trim(val.safety_type) && $.trim(employee_code1) != employee_code) { 
+	                        		 $("#mappingError").html('This Action can not be done!, An Active is User Already Available with this mapping!');
+	 	                             $('#uBtn').attr("disabled", true);
+	                        	 // }
+	                           
+	                        }); 
+	                    }else{
+	                    	 $("#mappingError").html('');
+	                    	 $('#uBtn').removeAttr("disabled");
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+      }
+      function getRoleMasterFilterList() {
+    	    var project = $("#select2-project-filter-container").val();
+	        var employee_code = $("#select2-roles-filter-container").val();
+	        var department_code = $("#select2-department_filter-container").val();
+	    	var safety_type = $("#select2-incident-filter-container").val();
+	        if ($.trim(safety_type) == "") {
+	        	$("#select2-incident-filter-container option:not(:first)").remove();
+	        	var myParams = {project: project, employee_code: employee_code, department_code : department_code, safety_type : safety_type};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getRoleMasterFilterListinRoleMapping",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-incident-filter-container").append('<option  value="' + val.safety_type + '">' + "[ "+$.trim(val.safety_type) +" ]"+" - " + $.trim(val.incident_type) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+
+	    function exportCompany(){
+	    	 var project = $("#select2-project-filter-container").val();
+	         var employee_code = $("#select2-roles_filter-container").val();
+	    	
+	    	 $("#exportCompany_filter").val(project);
+	     	 $("#exportStatus_filter").val(employee_code);
+	     	 $("#exportCompanyForm ").submit();
+	  	}
+	    
+	    function getRolemappingList(){
+	    	getDeptFilterList('');
+	    	getempFilterList('');
+	    	getProjectFilter('');
+	    	getRoleMasterFilterList('');
+	    	var project = $("#select2-project-filter-container").val();
+	        var employee_code = $("#select2-roles_filter-container").val();
+	    	var department_code = $("#select2-department_filter-container").val();
+	    	var safety_type = $("#select2-incident-filter-container").val();
+	     
+	     	table = $('#datatable-company').DataTable();
+			table.destroy();
+			$.fn.dataTable.moment('DD-MMM-YYYY');
+			table = $('#datatable-company').DataTable({
+				"bStateSave": true,  
+	     		fixedHeader: true,
+	         	//Default: Page display length
+					"iDisplayLength" : 10,
+					"iData" : {
+						"start" : 52
+					},"iDisplayStart" : 0,
+					"drawCallback" : function() {
+					},
+					
+					columnDefs: [
+		            	{
+		            		  targets: [0, 1, 2, 3, 4, 5, 6],
+		                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+		                  
+		                }
+		            ],
+		            rowCallback: function(row, data, index) {
+		                // Check a condition based on a column value
+		                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+		            },
+					
+	            // "ScrollX": true,
+	            //"scrollCollapse": true,
+	            "sScrollX": "100%",
+	            "sScrollXInner": "100%",
+	            "bScrollCollapse": true,
+	            "initComplete" : function() {
+					}
+	        }).rows().remove().draw();
+			table.state.clear();		
+		 	var myParams = {project_code: project, employee_code: employee_code, department_code : department_code, safety_type: safety_type};
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getRoleMappings",type:"POST",data:myParams,success : function(data){    				
+					if(data != null && data != '' && data.length > 0){    					
+		         		$.each(data,function(key,val){
+		         			var company_data = "'"+val.safety_type+"','"+val.employee_code+"','"+val.project_name+"','"+val.id+"','"+val.department_code+"','"+val.department_name+"','"+val.project+"','"+val.role_code+"','"+val.status+"'";
+		                    var actions = '<a href="javascript:void(0);"  onclick="getRoleMapping('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
+		                    key++;
+		                    var rowArray = [];    	                 
+		                 	rowArray.push($.trim(key));
+		                	rowArray.push($.trim(actions));  
+		                	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
+	                		} else {
+	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
+	                		}
+		                   	rowArray.push(status);
+		                	rowArray.push("["+ $.trim(val.project)+"]"+" - "+ val.project_name);
+		                	rowArray.push("["+ $.trim(val.department_code)+"]"+" - "+ val.department_name);
+		                	rowArray.push("[ "+val.role_code+" ]");
+		                	rowArray.push("["+ $.trim(val.employee_code)+"]"+" - "+ val.user_name);       
+		                    table.row.add(rowArray).draw( true );
+						});
+					}
+				},error: function (jqXHR, exception) {
+		         	getErrorMessage(jqXHR, exception);
+		     }});
+	    } 
+	    
+	    function getRoleMapping(safety_type,employee_code,p_name,id,c_code,s_code,c_name,role_code,status){
+	   	 $("#updateModal").click();
+	    	 $("#mappingError").html('');
+        	 $('#uBtn').removeAttr("disabled");
+	    	 $('#project_name_edit').val('');
+	    	 $('#safety_type_edit').val('');
+			 $('select[name^="employee_code"] option:selected').removeAttr("selected");
+			 $('select[name^="project"] option:selected').removeAttr("selected");
+			 $('select[name^="department_code"] option:selected').removeAttr("selected");
+			 $('select[name^="safety_type"] option:selected').removeAttr("selected");
+			 $('select[name^="update_status"] option:selected').removeAttr("selected");
+		      $('#id').val($.trim(id));
+		    
+		      $('#updateCompanyForm #safety_type_edit').val($.trim(safety_type)).focus();
+		      $('#updateCompanyForm #project_name_edit').val($.trim(p_name)).focus();
+		      $('#updateCompanyForm #select2-project_edit-container').val($.trim(c_name) +" - "+p_name).focus();
+		      $('#updateCompanyForm #select2-safety_type_edit-container').val($.trim(safety_type)).focus();
+		      $('#updateCompanyForm #select2-department_code_edit-container').val($.trim(c_code)+" - "+s_code).focus();
+		      $('#updateCompanyForm #select2-roles_edit-container').val($.trim(role_code)).focus();
+		      if(c_code != null && c_code != ''  && c_code != "undefined"){
+		    	  $('select[name^="employee_code"] option[value="'+ employee_code +'"]').attr("selected",true);
+		    	  $('select[name^="project"] option[value="'+ c_name +'"]').attr("selected",true);
+		    	  $('select[name^="department_code"] option[value="'+ c_code +'"]').attr("selected",true);
+		    	  var type = safety_type.split(',');
+		    	  jQuery.each(type, function(index, item) {
+		    		  $('select[name^="safety_type"] option[value="'+ item +'"]').attr("selected",true);
+		    		//  $('select').select2();
+		    		});
+		    	 // $('select[name^="safety_type"] option[value="'+ safety_type +'"]').attr("selected",true);
+		    	  $('select[name^="update_status"] option[value="'+ status +'"]').attr("selected",true);
+		    	  if(safety_type != null && safety_type != ''  && safety_type != "undefined"){
+			    	  filterRoles_edit(safety_type);
+			    	  $('select[name^="role_code"] option[value="'+ role_code +'"]').attr("selected",true);
+			    	  $('.form-select3').select2();
+		    	  }
+		    	 // $('select').select2();
+		      }
+	   }
+	    
+	    function getErrorMessage(jqXHR, exception) {
+	  	    var msg = '';
+	  	    if (jqXHR.status === 0) {
+	  	        msg = 'Not connect.\n Verify Network.';
+	  	    } else if (jqXHR.status == 404) {
+	  	        msg = 'Requested page not found. [404]';
+	  	    } else if (jqXHR.status == 500) {
+	  	        msg = 'Internal Server Error [500].';
+	  	    } else if (exception === 'parsererror') {
+	  	        msg = 'Requested JSON parse failed.';
+	  	    } else if (exception === 'timeout') {
+	  	        msg = 'Time out error.';
+	  	    } else if (exception === 'abort') {
+	  	        msg = 'Ajax request aborted.';
+	  	    } else {
+	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+	  	    }
+	  	    console.log(msg);
+        }
+	    
+	    function addCompany(){
+	    	if(validator.form()){ // validation perform
+	    		$('#addCompany').modal('hide');
+	        	document.getElementById("addCompanyForm").submit();	
+	    	}
+	    }
+	    function updateCompany(){
+	    	if(validator1.form()){ // validation perform
+	    		$('#updateCompany').modal('hide');
+	    		$('#select2-employee_code_edit-container').removeAttr("disabled")
+	        	document.getElementById("updateCompanyForm").submit();	
+	    	}
+	    }
+	    var validator1 =	$('#updateCompanyForm').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+		   		 		  "safety_type": {
+		   			 			required: true
+		   			 	  },"project": {										
+		   			 			required: true
+		   			 	  },"role_code": {
+		   	                 	required: true,
+		   			 	  },"department_code": {										
+		   			 			required: true
+		   			 	  },"employee_code": {
+		   	                 	required: true,
+		   			 	  },"update_status": {
+		   	                 	required: true,
+		   			 	  }
+		   		 	},
+		   		    messages: {
+		   		 		 "safety_type": {
+		   				 	required: 'Required',
+		   			 	  },"project": {
+		   			 		required: 'Required'
+		   			 	  },"role_code": {
+		   		 			required: 'Required'
+		   		 	  	  },"department_code": {
+		   			 		required: 'Required'
+		   			 	  },"employee_code": {
+		   		 			required: 'Required'
+		   		 	  	  },"update_status": {
+		   		 			required: 'Required'
+		   		 	  	  }
+		      		},
+		      		errorPlacement:function(error, element){
+		      		 	if (element.attr("id") == "select2-safety_type_edit-container" ){
+		   				 document.getElementById("select2-safety_type_edit-containerError").innerHTML="";
+		   		 		 error.appendTo('#select2-safety_type_edit-containerError');
+			   			}else if(element.attr("id") == "select2-employee_code_edit-container" ){
+			   			   document.getElementById("select2-employee_code_edit-containerError").innerHTML="";
+			   		 	   error.appendTo('#select2-employee_code_edit-containerError');
+			   			}else if(element.attr("id") == "select2-roles_edit-container" ){
+			   				document.getElementById("select2-roles_edit-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-roles_edit-containerError');
+			   			}else if(element.attr("id") == "select2-project_edit-container" ){
+			   				document.getElementById("select2-project_edit-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-project_edit-containerError');
+			   			}else if(element.attr("id") == "select2-department_code_edit-container" ){
+			   				document.getElementById("select2-department_code_edit-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-department_code_edit-containerError');
+			   			}else if(element.attr("id") == "select2-status_edit-container" ){
+			   				document.getElementById("select2-status_edit-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-status_edit-containerError');
+			   			}else{
+			   				error.insertAfter(element);
+			   	        } 
+			      		},invalidHandler: function (form, validator) {
+			               var errors = validator.numberOfInvalids();
+			               if (errors) {
+			                   var position = validator.errorList[0].element;
+			                   jQuery('html, body').animate({
+			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+			                   }, 1000);
+			               }
+			           },submitHandler:function(form){
+			   	    	//form.submit();
+			   	    }
+		   	});
+	    var validator =	$('#addCompanyForm').validate({
+	   	 errorClass: "my-error-class",
+	   	 validClass: "my-valid-class",
+	   	 ignore: ":hidden:not(.select2 form-select)",
+	   		    rules: {
+			   		     "safety_type": {
+					 			required: true
+					 	  },"project": {										
+					 			required: true
+					 	  },"role_code": {
+			                 	required: true,
+					 	  },"department_code": {										
+					 			required: true
+					 	  },"employee_code": {
+			                 	required: true,
+					 	  },"status": {
+			                 	required: true,
+					 	  }
+				 	},
+				    messages: {
+				 		 "safety_type": {
+						 	required: 'Required',
+					 	  },"project": {
+					 		required: 'Required'
+					 	  },"role_code": {
+				 			required: 'Required'
+				 	  	  },"department_code": {
+					 		required: 'Required'
+					 	  },"employee_code": {
+				 			required: 'Required'
+				 	  	  },"status": {
+				 			required: 'Required'
+				 	  	  }
+		   		},
+	      		errorPlacement:function(error, element){
+	      			if (element.attr("id") == "select2-safety_type_add-container" ){
+		   				 document.getElementById("select2-safety_type_add-containerError").innerHTML="";
+		   		 		 error.appendTo('#select2-safety_type_add-containerError');
+			   			}else if(element.attr("id") == "select2-employee_code_add-container" ){
+			   			   document.getElementById("select2-employee_code_add-containerError").innerHTML="";
+			   		 	   error.appendTo('#select2-employee_code_add-containerError');
+			   			}else if(element.attr("id") == "select2-roles_add-container" ){
+			   				document.getElementById("select2-roles_add-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-roles_add-containerError');
+			   			}else if(element.attr("id") == "select2-project_add-container" ){
+			   				document.getElementById("select2-project_add-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-project_add-containerError');
+			   			}else if(element.attr("id") == "select2-department_code_add-container" ){
+			   				document.getElementById("select2-department_code_add-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-department_code_add-containerError');
+			   			}else if(element.attr("id") == "select2-status_add-container" ){
+			   				document.getElementById("select2-status_add-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-status_add-containerError');
+			   			}else{
+			   				error.insertAfter(element);
+					   	        } 
+			      		},invalidHandler: function (form, validator) {
+			               var errors = validator.numberOfInvalids();
+			               if (errors) {
+			                   var position = validator.errorList[0].element;
+			                   jQuery('html, body').animate({
+			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+			                   }, 1000);
+			               }
+			           },submitHandler:function(form){
+			   	    	//form.submit();
+			   	    }
+	   	}); 
+	   	$('.formSelect').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	   	
+	   	$('input').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	function setRole(){
+	  		
+	  	}
+	  	function addBox(){
+	   		$('select[name^="project"] option:selected').removeAttr("selected");
+	   		$('select[name^="department_code"] option:selected').removeAttr("selected");
+	   		$('select[name^="employee_code"] option:selected').removeAttr("selected");
+	   		//$('select[name^="safety_type"] option:selected').removeAttr("selected");
+	   		$('select[name^="role_code"] option:selected').removeAttr("selected");
+	   		$('select[name^="update_status"] option:selected').removeAttr("selected");
+	   		$('select').select2();
+	   	}
       </script>
   </body>
 </html>

@@ -109,7 +109,7 @@ public class DepartmentDao {
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and assigned_to_sbu like '"+obj.getSbu_code()+"%' ";
 			}
-			qry = qry + " ORDER BY department_code ASC ";
+			qry = qry + " ORDER BY s.created_date Desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {

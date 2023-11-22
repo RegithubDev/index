@@ -131,4 +131,16 @@ public class UserService {
 	public List<User> findUniqueEMPCode(IRM obj) throws Exception {
 		return dao.findUniqueEMPCode(obj);
 	}
+
+	public List<User> getSettingsList(User ss) throws Exception {
+		return dao.getSettingsList(ss);
+	}
+
+	public List<User> getDepartmentsList(User user) throws Exception {
+		return dao.getDepartmentsList(user);
+	}
+
+	public List<User> getDepartmentsListForCategory(User user) throws Exception {
+		return dao.getDepartmentsListForCategory(user);
+	}
 }

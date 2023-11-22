@@ -119,7 +119,7 @@ public class ProjectDao {
 				qry = qry + " and p.sbu_code = ? ";
 				arrSize++;
 			}
-			qry = qry + " ORDER BY p.status ASC ";
+			qry = qry + " ORDER BY p.created_date Desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			

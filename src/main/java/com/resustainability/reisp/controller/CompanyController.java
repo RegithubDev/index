@@ -110,6 +110,73 @@ public class CompanyController {
 		return companiesList;
 	}
 	
+	@RequestMapping(value = "/ajax/getreonecategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getreonecategoryList(@ModelAttribute User obj,HttpSession session) {
+		List<User> reonecategoryList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			reonecategoryList = service.getreonecategory(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getreonecategoryList : " + e.getMessage());
+		}
+		return reonecategoryList;
+	}
+	
+	@RequestMapping(value = "/add-reonecategory", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addreonecategory(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/reone-category");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setCreated_by(userId);
+			flag = service.addreonecategory(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Category Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-reonecategory", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updatereonecategory(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/reone-category");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setModified_by(userId);
+			flag = service.updatereonecategory(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Category Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/ajax/checkUniqueIfForCompany", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Company> checkUniqueIfForCompany(@ModelAttribute Company obj,HttpSession session) {
@@ -211,6 +278,10 @@ public class CompanyController {
 		}
 		return model;
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/export-company", method = {RequestMethod.GET,RequestMethod.POST})
 	public void exportCompany(HttpServletRequest request, HttpServletResponse response,HttpSession session,@ModelAttribute Company obj,RedirectAttributes attributes){

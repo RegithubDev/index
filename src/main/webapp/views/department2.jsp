@@ -30,25 +30,40 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-    <style>
-    
-    .pagination {
-  display: flex;
-  list-style: none;
-  padding: 0;
+     <style>
+     
+     th,td{
+    	text-align:left;
+    }
+*, :after, :before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+.pagination{
+  background-color: #e9eef5!important;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .pagination button {
-  margin: 0 5px;
   display: inline-block;
+  background-color: #e9eef5;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-
+.pagination .mdl-button {
+ padding: 5px 10px;
+}
 .pagination .mdl-button--raised {
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #4f46e5!important;
+  color: #fff;
 }
 
 .pagination button:hover {
@@ -56,17 +71,53 @@
 }
 
 .pagination .active button {
-  background-color: #333;
+  background-color: #4f46e5!important;
   color: #fff;
 }
-    
-    
+    .input-sm {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  margin-left: 0.3rem;
+}
+
+.input-sm::after {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
+}
+   input[type="search"] {
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+    .dataTables_info{
+    font-size: .8125rem;
+    line-height: 1.125rem;
+    }
    .mdl-grid{
+   align-items: center;
 	display: flex !important;
     padding: 4px;
     justify-content: space-between;
     height: 4.5rem;
 } 
+.mdl-grid:nth-child(3) .mdl-cell--6-col {
+	    margin-left: 2rem !important;
+}
+.mdl-grid:nth-child(3) .mdl-cell--4-col {
+	    margin-right: 2rem !important;
+}
 .dt-table{
 display: block !important;
 height: 100%;
@@ -114,27 +165,7 @@ button.disabled {
   /* Add any other styles as needed */
 }
 
-.input-sm {
-  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  background-position: right center;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  margin-left: 0.3rem;
-}
 
-.input-sm::after {
-  content: ""; /* Add empty content for the search icon */
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  width: 20px; /* Adjust the width of the icon */
-  height: 20px; /* Adjust the height of the icon */
-  position: absolute;
-  top: 50%;
-  right: 10px; /* Adjust the right position to position the icon correctly */
-  transform: translateY(-50%);
-}
 
 
 
@@ -2506,17 +2537,33 @@ button.disabled {
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
       <div class="p-4 sm:p-5">
+         <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            Department
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
+          </div>
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Department</li>
+          </ul>
+        </div>
                 
-                <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select    id="select2-department_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Department</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select id="select2-status_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2596,7 +2643,7 @@ button.disabled {
                   <select
                    id="select2-select2-multiple-assigned_to_sbu_add-container"
               name="assigned_to_sbu"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select SBU</option>
               <c:forEach var="obj" items="${objList}">
 					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
@@ -2630,7 +2677,7 @@ button.disabled {
                 <button onclick="exportDepartment();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
-                 <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                 <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
                     
                     </div>
@@ -2646,7 +2693,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span  id= "allDepartment"></span>
                   </p>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                              <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
                 </div>
                 <p class="mt-1 text-xs+">Total Department</p>
@@ -2656,7 +2703,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "activeDepartment"></span>
                   </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
+<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
 
                 </div>
                 <p class="mt-1 text-xs+"> Active Department</p>
@@ -2666,7 +2713,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span  id= "inActiveDepartment"></span>
                   </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                 </div>
                 <p class="mt-1 text-xs+"> Inactive Companies</p>
            </div>
@@ -2704,16 +2751,16 @@ button.disabled {
                         Status
                       </th>
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created Date
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Created By
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified Date
+                        Created Date
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified By
                       </th>
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified By
+                        Modified Date
                       </th>
                      
                     </tr>
@@ -2750,50 +2797,72 @@ button.disabled {
                       <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
                        <div class="col-span-12 sm:col-span-8">
                        
-            <div class="card p-4 sm:p-5">
+             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Update Department -  <span id="department_code_edit" class="error-msg" ></span>
+                Update Department
               </p>
               <div class="mt-4 space-y-4">
-       <form id="updateDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-department" method="post" class="form-horizontal" role="form" >             
-            <label class="block  text-left">
-                 <span>Department Name</span><span class="required"> *</span>
-                  <span class="relative mt-1.5 flex">
-                    <input 
+        <form id="updateDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-department" method="post" class="form-horizontal" role="form" >
+                 
+                 <input type="hidden" id="id" name="id" />
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              
+                   <label class="block  text-left">
+                    <span>Department Code </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                      type="text"
+              id="department_code_edit"
+              name="department_code"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" >
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                     <span id="department_code_editError" class="error-msg" ></span>
+                    
+                  </label>
+                 <label class="block  text-left">
+                    <span>Department Name</span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
                      type="text"
               id="department_name_edit"
               name="department_name"
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" onkeyup="checkUniqueId();"  type="text">
-                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                      <i class="fa-regular fa-building text-base"></i>
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" >
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
                     </span>
-                  </span>
-                    <span id="location_code_editError" class="error-msg" ></span>
-                </label>
-                 <input type="hidden" id="id" name="id" />
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  
-                 <label class="block  text-left">
+             <span id="department_name_editError" class="error-msg" ></span>
+                    
+                  </label>
+                </div>
+                <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
-                      id="select2-status_edit-container"
+                  	id="select2-status_edit-container"
               name="status"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-               <option value="">Select Status</option>
+                     <option value="">Select Status</option>
              	<option value="Active">Active</option>
              	<option value="Inactive">Inactive</option>
                   </select>
+                               <span id="select2-status_edit-containerError" class="error-msg" ></span>
+                  
                   </label>
-                      <label class="block  text-left">
+               <label class="block  text-left">
                     <span>Select Assigned to SBU</span><span class="required"> *</span>
-                    <select multiple=""  id="select2-status_edit-container"
-              name="assigned_to_sbu"  class="form-multiselect mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <c:forEach var="obj" items="${objList}">
+                  <select
+                  	 id="select2-select2-multiple-assigned_to_sbu_edit-container"
+              name="assigned_to_sbu" multiple
+                   class="  form-select form-select3  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                     <option value="">Select SBU</option>
+              <c:forEach var="obj" items="${objList}">
 					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
 				</c:forEach>
                   </select>
                   </label>
-                </div>
               
                 <div class="flex justify-center space-x-2 pt-4">
                  <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
@@ -2862,6 +2931,7 @@ button.disabled {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       $(window).on("load",(function(){
+    	  $('.form-select2').select2();
     	// $("#x-teleport-target").hide();
           getDepartmentList();
       
@@ -2980,6 +3050,19 @@ button.disabled {
 					},"iDisplayStart" : 0,
 					"drawCallback" : function() {
 					},
+					
+					columnDefs: [
+		            	{
+		            		  targets: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+		                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+		                  
+		                }
+		            ],
+		            rowCallback: function(row, data, index) {
+		                // Check a condition based on a column value
+		                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+		            },
+					
 	            columnDefs: [],
 	            // "ScrollX": true,
 	            //"scrollCollapse": true,
@@ -2991,28 +3074,36 @@ button.disabled {
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
+
 		 	var myParams = {department_code: department_code, sbu_code: sbu_code, status : status};
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getDepartmentList",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
 		         			var department_data = "'"+val.department_code+"','"+val.assigned_to_sbu_multiple+"','"+val.department_name+"','"+val.id+"','"+val.status+"'";
 		                    var actions = '<a href="javascript:void(0);"  onclick="getDepartment('+department_data+');setSearchble();" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
-		                   	var rowArray = [];    	                 
+		                    key++;
+		                    var rowArray = [];    	                 
 		                   	$('#allDepartment').html(val.all_department)
 		            		$('#activeDepartment').html(val.active_department)
 		            		$('#inActiveDepartment').html(val.inActive_department)
-		                   	rowArray.push($.trim(val.id));
+		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                	//rowArray.push("["+ $.trim(val.assigned_to_sbu)+"]"+" - ");
 		                   	rowArray.push($.trim(val.department_code));
 		                   	rowArray.push($.trim(val.department_name));
-		                   	
-		                   	rowArray.push($.trim(val.status));
+		                   	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
+	                		} else {
+	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
+	                		}
+		                   	rowArray.push(status);
 		                	rowArray.push($.trim(val.user_name));
 		                   	rowArray.push($.trim(val.created_date));
 		                	rowArray.push($.trim(val.modified_by));
 		                   	rowArray.push($.trim(val.modified_date));
-		                   
+		        		    $("#datatable-department td").addClass("whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5");
+
 		                    table.row.add(rowArray).draw( true );
 						});
 					}
@@ -3028,13 +3119,13 @@ button.disabled {
 			 $('select[name^="assigned_to_sbu"] option:selected').removeAttr("selected");
 			 $('select[name^="status"] option:selected').removeAttr("selected");
 		      $('#id').val($.trim(id));
-		      $('#updateDepartment #department_name_edit').val($.trim(department_name)).focus();
-		      $('#updateDepartment #department_code_edit').val($.trim(department_code)).focus();
+		      $('#updateDepartmentForm #department_name_edit').val($.trim(department_name)).focus();
+		      $('#updateDepartmentForm #department_code_edit').val($.trim(department_code)).focus();
 		      if(assigned_to_sbu != null && assigned_to_sbu != ''  && assigned_to_sbu != "undefined"){
 		    	  var assigned_to_sbu_array = assigned_to_sbu.split(',');
 		    	  jQuery.each(assigned_to_sbu_array, function(index, item) {
 		    		  $('select[name^="assigned_to_sbu"] option[value="'+ item +'"]').attr("selected",true);
-		    		//  $('select').select2();
+		    		  $('.form-select3').select2();
 		    		});
 		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
 		    	 // $('select').select2();

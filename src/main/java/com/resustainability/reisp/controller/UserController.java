@@ -101,7 +101,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/user", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView user(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.user);
+		ModelAndView model = new ModelAndView(PageConstants.user2);
 		User obj = null;
 		try {
 			List<RoleMapping> projectsList = service4.getProjectsList(null);
@@ -204,7 +204,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/ajax/getUserList1", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/ajax/getUserList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<User> getLcationsList(@ModelAttribute User obj,HttpSession session) {
 		List<User> companiesList = null;
@@ -221,7 +221,7 @@ public class UserController {
 		return companiesList;
 	}
 	
-	@RequestMapping(value = "/ajax/getUserList", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/ajax/getUserList1", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {
 		PrintWriter pw = null;

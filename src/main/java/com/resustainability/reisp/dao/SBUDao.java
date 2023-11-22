@@ -96,7 +96,6 @@ public class SBUDao {
 				qry = qry + " and s.status = ? ";
 				arrSize++;
 			}
-			qry = qry + " ORDER BY sbu_code ASC ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCompany_code())) {

@@ -31,24 +31,39 @@
       rel="stylesheet"
     />
     <style>
-    
-    .pagination {
-  display: flex;
-  list-style: none;
-  padding: 0;
+     
+     th,td{
+    	text-align:left;
+    }
+*, :after, :before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+.pagination{
+  background-color: #e9eef5!important;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .pagination button {
-  margin: 0 5px;
   display: inline-block;
+  background-color: #e9eef5;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-
+.pagination .mdl-button {
+ padding: 5px 10px;
+}
 .pagination .mdl-button--raised {
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #4f46e5!important;
+  color: #fff;
 }
 
 .pagination button:hover {
@@ -56,17 +71,53 @@
 }
 
 .pagination .active button {
-  background-color: #333;
+  background-color: #4f46e5!important;
   color: #fff;
 }
-    
-    
+    .input-sm {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  margin-left: 0.3rem;
+}
+
+.input-sm::after {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
+}
+   input[type="search"] {
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+    .dataTables_info{
+    font-size: .8125rem;
+    line-height: 1.125rem;
+    }
    .mdl-grid{
+   align-items: center;
 	display: flex !important;
     padding: 4px;
     justify-content: space-between;
     height: 4.5rem;
 } 
+.mdl-grid:nth-child(3) .mdl-cell--6-col {
+	    margin-left: 2rem !important;
+}
+.mdl-grid:nth-child(3) .mdl-cell--4-col {
+	    margin-right: 2rem !important;
+}
 .dt-table{
 display: block !important;
 height: 100%;
@@ -114,27 +165,8 @@ button.disabled {
   /* Add any other styles as needed */
 }
 
-.input-sm {
-  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  background-position: right center;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  margin-left: 0.3rem;
-}
 
-.input-sm::after {
-  content: ""; /* Add empty content for the search icon */
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  width: 20px; /* Adjust the width of the icon */
-  height: 20px; /* Adjust the height of the icon */
-  position: absolute;
-  top: 50%;
-  right: 10px; /* Adjust the right position to position the icon correctly */
-  transform: translateY(-50%);
-}
+
 
 
 
@@ -163,155 +195,12 @@ button.disabled {
       <!-- Sidebar -->
       <div class="sidebar print:hidden">
         <!-- Main Sidebar -->
-        <div class="main-sidebar">
-          <div
-            class="flex h-full w-full flex-col items-center border-r border-slate-150 bg-white dark:border-navy-700 dark:bg-navy-800"
-          >
-            <!-- Application Logo -->
-            <div class="flex pt-4">
-              <a href="<%=request.getContextPath() %>/home">
-                <img
-                  class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
-                  src="/index/resources/images/app-logo.svg"
-                  alt="logo"
-                />
-              </a>
-            </div>
-
+       
             <!-- Main Sections Links -->
  			<jsp:include page="../views/layout/header.jsp"></jsp:include> 
 
             <!-- Bottom Links -->
-            <div class="flex flex-col items-center space-y-3 py-3">
-              <!-- Settings -->
-             <a
-               href="<%=request.getContextPath() %>/settings"
-                class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-              >
-                <svg
-                  class="h-7 w-7"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-opacity="0.3"
-                    fill="#e21e26"
-                    d="M2 12.947v-1.771c0-1.047.85-1.913 1.899-1.913 1.81 0 2.549-1.288 1.64-2.868a1.919 1.919 0 0 1 .699-2.607l1.729-.996c.79-.474 1.81-.192 2.279.603l.11.192c.9 1.58 2.379 1.58 3.288 0l.11-.192c.47-.795 1.49-1.077 2.279-.603l1.73.996a1.92 1.92 0 0 1 .699 2.607c-.91 1.58-.17 2.868 1.639 2.868 1.04 0 1.899.856 1.899 1.912v1.772c0 1.047-.85 1.912-1.9 1.912-1.808 0-2.548 1.288-1.638 2.869.52.915.21 2.083-.7 2.606l-1.729.997c-.79.473-1.81.191-2.279-.604l-.11-.191c-.9-1.58-2.379-1.58-3.288 0l-.11.19c-.47.796-1.49 1.078-2.279.605l-1.73-.997a1.919 1.919 0 0 1-.699-2.606c.91-1.58.17-2.869-1.639-2.869A1.911 1.911 0 0 1 2 12.947Z"
-                  />
-                  <path
-                    fill="#e21e26"
-                    d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
-                  />
-                </svg>
-              </a> 
-
-              <!-- Profile -->
-              <div
-                x-data="usePopper({placement:'right-end',offset:12})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="flex"
-              >
-                <button
-                  @click="isShowPopper = !isShowPopper"
-                  x-ref="popperRef"
-                  class="avatar h-12 w-12"
-                >
-                  <img
-                    class="rounded-full"
-                    src="${sessionScope.USER_IMAGE }"
-                    alt="avatar"
-                  />
-                  <span
-                    class="absolute right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"
-                  ></span>
-                </button>
-
-                <div
-                  :class="isShowPopper && 'show'"
-                  class="popper-root fixed"
-                  x-ref="popperRoot"
-                >
-                  <div
-                    class="popper-box w-64 rounded-lg border border-slate-150 bg-white shadow-soft dark:border-navy-600 dark:bg-navy-700"
-                  >
-                    <div
-                      class="flex items-center space-x-4 rounded-t-lg bg-slate-100 py-5 px-4 dark:bg-navy-800"
-                    >
-                      <div class="avatar h-14 w-14">
-                        <img
-                          class="rounded-full"
-                          src="${sessionScope.USER_IMAGE }"
-                          alt="avatar"
-                        />
-                      </div>
-                      <div>
-                        <a
-                          href="#"
-                          class="text-base font-medium text-slate-700 hover:text-re focus:text-re dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >
-                          ${sessionScope.USER_NAME }
-                        </a>
-                        <p class="text-xs text-slate-400 dark:text-navy-300">
-                          ${sessionScope.BASE_ROLE }
-                        </p>
-                      </div>
-                    </div>
-                    <div class="flex flex-col pt-2 pb-5">
-                      <a
-                        href="#"
-                        class="group flex items-center space-x-3 py-2 px-4 tracking-wide outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                      >
-                     <!--    <div
-                          class="flex h-8 w-8 items-center justify-center rounded-lg bg-warning text-white"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                            />
-                          </svg>
-                        </div>
-
-                        <div>
-                          <h2
-                            class="font-medium text-slate-700 transition-colors group-hover:text-re group-focus:text-re dark:text-navy-100 dark:group-hover:text-accent-light dark:group-focus:text-accent-light"
-                          >
-                            Profile
-                          </h2>
-                          <div
-                            class="text-xs text-slate-400 line-clamp-1 dark:text-navy-300"
-                          >
-                            Your profile setting
-                          </div>
-                        </div> -->
-                      </a>
-                     
-                      <div class="mt-3 px-4">
-                       <button class="btn h-9 w-full g_id_signout space-x-2 bg-primary text-white hover:bg-primary-focus 
-                        focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" 
-                         id="signout_button"  >
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                          </svg>
-                          <i class="me-50" data-feather="power"></i> Logout
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+         
 
 
 
@@ -2506,8 +2395,25 @@ button.disabled {
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
       <div class="p-4 sm:p-5">
+      <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            Companies
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
+          </div>
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Company</li>
+          </ul>
+        </div>
                 
-                <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
+              
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
                   <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
@@ -2550,7 +2456,7 @@ button.disabled {
                 Add Company
               </p>
               <div class="mt-4 space-y-4">
-                <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
+                <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
                 <label class="block  text-left">
                  <span>Company Name </span><span class="required"> *</span>
                   <span class="relative mt-1.5 flex">
@@ -2613,7 +2519,7 @@ button.disabled {
                 <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
-                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
                     
                     </div>
@@ -2629,7 +2535,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "allCompanies"></span>
                   </p>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                              <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
                 </div>
                 <p class="mt-1 text-xs+">Total Companies</p>
@@ -2639,7 +2545,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "activeCompanies"></span>
                   </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
+<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
 
                 </div>
                 <p class="mt-1 text-xs+"> Active Companies</p>
@@ -2649,7 +2555,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "inActiveCompanies"></span>
                   </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                 </div>
                 <p class="mt-1 text-xs+"> Inactive Companies</p>
            </div>
@@ -2751,7 +2657,7 @@ button.disabled {
                     <span>Company Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
                       <input 
-                       value=""
+                       value="" readonly
                        id="company_code_edit"
               		   name="company_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
@@ -2760,7 +2666,9 @@ button.disabled {
                       </span>
                     </span>
                   </label>
-                 <label class="block  text-left">
+                 <label class="block  text-left" style="
+  
+    padding-top: 1rem;">
                     <span>Status</span><span class="required"> *</span>
                   <select
                    id="select2-status_add-container"
@@ -2773,7 +2681,7 @@ button.disabled {
                 </div>
               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="();">
                     <span>update </span>
                    
                   </button>
@@ -2839,7 +2747,7 @@ button.disabled {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
  $(window).on("load",(function(){
-		 // $("#x-teleport-target").hide();
+	 $('select').select2();
           getCompanyList();
          }));
       
@@ -2911,6 +2819,7 @@ button.disabled {
 	        $('#allCompanies').html(0)
     		$('#activeCompanies').html(0)
     		$('#inActiveCompanies').html(0)
+    		
 	     	table = $('#datatable-company').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
@@ -2924,7 +2833,17 @@ button.disabled {
 					},"iDisplayStart" : 0,
 					"drawCallback" : function() {
 					},
-	            columnDefs: [],
+	           columnDefs: [
+	            	{
+	                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+	                  
+	                }
+	            ],
+	            rowCallback: function(row, data, index) {
+	                // Check a condition based on a column value
+	                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+	            },
 	            // "ScrollX": true,
 	            //"scrollCollapse": true,
 	            "sScrollX": "100%",
@@ -2941,16 +2860,22 @@ button.disabled {
 		         		$.each(data,function(key,val){
 		         			var company_data = "'"+val.company_code+"','"+val.status+"','"+val.company_name+"','"+val.id+"'";
 		                    var actions = '<a href="javascript:void(0);" @click="showModal = true"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
-                  	
+		                    key++;
 		                   	var rowArray = [];    	                 
 		            		$('#allCompanies').html(val.all_companies)
 		            		$('#activeCompanies').html(val.active_companies)
 		            		$('#inActiveCompanies').html(val.inActive_companies)
-		                   	rowArray.push($.trim(val.id));
+		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                   	rowArray.push($.trim(val.company_code));
 		                   	rowArray.push($.trim(val.company_name));
-		                   	rowArray.push($.trim(val.status));
+		                   	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
+	                		} else {
+	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
+	                		}
+		                   	rowArray.push(status);
 		                   	rowArray.push($.trim(val.created_date));  
 		                   	rowArray.push($.trim(val.created_by));
 		                   	rowArray.push($.trim(val.modified_date));

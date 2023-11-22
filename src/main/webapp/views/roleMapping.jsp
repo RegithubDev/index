@@ -237,7 +237,9 @@ body {
 ">
     <div class="col-lg-4 col-sm-6 col-6">
     <button type="button" class="btn "  onclick="addBox();" data-bs-toggle="modal" data-bs-target="#addCompany"style="margin-top: 17px; color: white !important; background-color: orange !important; width: 42%;"><i class="fa fa-plus" aria-hidden="true"></i></button>
-         <button class="btn col-md-12" style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;"  onclick="exportCompany();"><i class="fa fa-download" aria-hidden="true"></i></button>
+         <button class="btn col-md-12" style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;"  onclick="exportCompany();">
+         <i class="fa fa-download" aria-hidden="true">
+         </i></button>
      </div>
   
   </div>
@@ -438,13 +440,14 @@ body {
             </select>
              <span id="select2-status_add-containerError" class="error-msg" ></span>
           </div>
-          <div class="col-12 text-center mt-2 pt-50">
+         
+        </form>
+         <div class="col-12 text-center mt-2 pt-50">
             <button type="submit" class="btn btn-primary me-1" onclick="addCompany();">Add</button>
             <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
               Discard
             </button>
           </div>
-        </form>
       </div>
     </div>
   </div>
@@ -541,9 +544,7 @@ body {
    		  <div class="col-12 col-md-6">
             <label class="form-label" for="select2-basic">Roles</label><span class="required"> *</span>
               <input
-              type="text"
-              id="select2-roles_edit-container"
-              name="role_code"
+             
               class="form-control"
               placeholder="eg : Re Sustainablity"
               value=""
@@ -846,14 +847,10 @@ body {
     });
 
       $(window).on("load",(function(){
-          if (feather) {
-            feather.replace({ width: 14, height: 14 });
-          }
-          $('.modal').modal({ dismissible: false });
+    	  $('select').select2();
           getRolemappingList();
          }));
-      document.getElementById("currentYear").innerHTML = new Date().getFullYear();
-      
+     
       function clearFilter(){
 		    	$("#select2-project-filter-container").val("");
 		    	$("#select2-roles_filter-container").val("");
@@ -1133,6 +1130,20 @@ body {
 					},"iDisplayStart" : 0,
 					"drawCallback" : function() {
 					},
+					
+					 columnDefs: [
+			            	{
+			                    targets: [0, 1, 2, 3, 4, 5, 6],
+			                    className: 'whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+			                  
+			                }
+			            ],
+			            rowCallback: function(row, data, index) {
+			                // Check a condition based on a column value
+			                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+			            },
+					
+					
 	            columnDefs: [],
 	            // "ScrollX": true,
 	            //"scrollCollapse": true,
@@ -1149,9 +1160,9 @@ body {
 		         		$.each(data,function(key,val){
 		         			var company_data = "'"+val.safety_type+"','"+val.employee_code+"','"+val.project_name+"','"+val.id+"','"+val.department_code+"','"+val.department_name+"','"+val.project+"','"+val.role_code+"','"+val.status+"'";
 		                    var actions = '<a href="javascript:void(0);"  onclick="getRoleMapping('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
-		                   	var rowArray = [];    	                 
-		            		
-		                   	rowArray.push($.trim(val.id));
+		                    key++;
+		                    var rowArray = [];    	                 
+		                	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                 	rowArray.push($.trim(val.status));
 		                	rowArray.push("["+ $.trim(val.project)+"]"+" - "+ val.project_name);

@@ -62,7 +62,8 @@ public class HomeController {
 	public ModelAndView hr(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.hrPage);
 		try {
-			 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -73,7 +74,8 @@ public class HomeController {
 	public ModelAndView it(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.itPage);
 		try {
-			 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -83,7 +85,19 @@ public class HomeController {
 	public ModelAndView scm(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.scmPage);
 		try {
-			 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/erm", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView erm(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.ermpage);
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -93,17 +107,86 @@ public class HomeController {
 	public ModelAndView projects(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.projectsPage);
 	try {
-			 
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
 		return model; 
 	}
-
+	@RequestMapping(value = "/recycling", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView recycling(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.recycling);
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/legal", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView legal(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.legal);
+	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/safety", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView safety(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.safety);
+	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/waste", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView waste(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.waste);
+	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/msw", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView msw(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.msw);
+	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/busines-dev", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView business(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.business);
+	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
 	@RequestMapping(value = "/Admin", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView admin(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.AdminPage);
 		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 			  
 		} catch (Exception e) { 
 			e.printStackTrace();  
@@ -116,18 +199,54 @@ public class HomeController {
 	public ModelAndView finance(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.FinancePage);
 		try { 
-			  
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
 		return model; 
 	} 
-	 
+	@RequestMapping(value = "/bmw", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView bmw(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.bmw);
+		try { 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	} 
+	
+	@RequestMapping(value = "/contracts", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView contracts(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.contracts);
+		try { 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	} 
+	@RequestMapping(value = "/corp", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView comunication(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.comunication);
+		try { 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	} 
+	
 	@RequestMapping(value = "/Incin-IWM", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView iwm(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.iwmPage);
 		try { 
-			  
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -147,9 +266,11 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/settings", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView settings(@ModelAttribute User user, HttpSession session) {
+	public ModelAndView settings(@ModelAttribute User ss, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.settings);
 		try { 
+			List <User> settingList = service.getSettingsList(ss);
+			model.addObject("settingList", settingList);
 			  
 		} catch (Exception e) { 
 			e.printStackTrace();    
@@ -169,6 +290,59 @@ public class HomeController {
 		return model; 
 	}
 	
+	@RequestMapping(value = "/reone-category", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView reonecategory(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.reonecategory);
+		try { 
+			List <User> departmentsList = service.getDepartmentsListForCategory(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/reone-subcategory", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView reonesubcategory(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.reonesubcategory);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/active-dep", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView activedepartment(@ModelAttribute User user, HttpSession session) {
+
+		ModelAndView model = new ModelAndView(PageConstants.activedepartment);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/dep-content", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView depcontent(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.depcontent);
+		try { 
+			  
+		} catch (Exception e) { 
+			e.printStackTrace();   
+		} 
+		return model; 
+	}
+	@RequestMapping(value = "/dcform", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView dcform(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.dcform);
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
 	
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})

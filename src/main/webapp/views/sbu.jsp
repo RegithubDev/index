@@ -412,7 +412,8 @@ body {
         <div class="col-12 col-md-6">
             <label class="form-label" for="select2-basic">Company</label><span class="required"> *</span>
             <select
-            	class="select2 form-select formSelect" id="select2-company_code_edit-container"
+            	class="select2 form-select formSelect"
+            	 id="select2-company_code_edit-container"
               name="company_code"
               aria-label="Default select example"
             >

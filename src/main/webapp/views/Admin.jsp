@@ -33,6 +33,26 @@
       rel="stylesheet"
     />
     <style>
+    .grid-cols-1s {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+	}
+    @media (min-width: 1024px){
+		.lg\:gap-6s {
+		    gap: 0.5rem!important;
+		}
+	}
+    .text-xlnew{
+    	    font-size: 1rem;
+    		line-height: 1.75rem;
+    }
+    .left-6{
+    	    left: 6%;
+    }
+    @media (min-width: 640px){
+	.sm\:w-60 {
+	    width: 16rem;
+	}
+	}
     .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
@@ -374,7 +394,7 @@ z-index: 1000;
     </script>
   </head>
 
-  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+  <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
     <!-- App preloader-->
     <div
       class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
@@ -551,7 +571,6 @@ z-index: 1000;
 
 
 
-        <!-- Sidebar Panel -->
         <div class="sidebar-panel">
           <div
             class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
@@ -559,9 +578,9 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                Admin Functions
+                All Functions1
               </p>
-              <button @click="$store.global.isSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+              <button @click="$store.global.isRightSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -613,11 +632,33 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/user"
+                           href="<%=request.getContextPath() %>/Admin"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Dashboard</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                           href="<%=request.getContextPath() %>/ "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-warning"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="#e21e26"
@@ -635,11 +676,11 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                          href="<%=request.getContextPath() %>/ "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-warning"
+                            class="h-4.5 w-4.5 text-info"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="#e21e26"
@@ -657,95 +698,8 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-info"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>User Manual</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Certification</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Training Calender</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Topics/Blogs</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
+                         href="<%=request.getContextPath() %>/ Incin-BMW
+                         "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -764,12 +718,98 @@ z-index: 1000;
                           <span>Forms</span>
                         </a>
                       </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>User manual</span>
+                        </a>
+                      </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Trainig calender</span>
+                        </a>
+                      </li>
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                             href="<%=request.getContextPath() %>/F&A"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Finance&Accounts</span>
+                        </a>
+                      </li>
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="<%=request.getContextPath() %>/HR"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Topics/Blogs</span>
+                        </a>
+                      </li>
                               
-                             
-                         
-                     
-                     
-                     
+                        
+                       
+                
                       
                     </ul>
                     
@@ -794,21 +834,22 @@ z-index: 1000;
             
           </div>
         </div>
-                <div class="sidebar-panel">
+
+        <!-- Sidebar Panel -->
+        <div class="sidebar-panel">
           <div
             class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
           >
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                All Functions
+                IT Functions
               </p>
-              <button @click="$store.global.isSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+              <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
               </button>
-
             </div>
             
             
@@ -817,6 +858,314 @@ z-index: 1000;
 
             <!-- Sidebar Panel Body -->
             <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
+              <div class="is-scrollbar-hidden grow overflow-y-auto">
+                <div class="mt-2 px-4">
+                 
+                </div>
+
+                <div x-data="{expanded:true}">
+                  <div class="mt-4 flex items-center justify-between px-4">
+                    <span class="text-xs font-medium uppercase"> </span>
+                   
+                  </div>
+                  <div x-show="expanded" x-collapse>
+                    <ul
+                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
+                    >
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                           href="<%=request.getContextPath() %>/Admin"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Dashboard</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                           href="<%=request.getContextPath() %>/ "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-warning"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Policies</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="<%=request.getContextPath() %>/ "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-info"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Procedures</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                         href="<%=request.getContextPath() %>/ Incin-BMW
+                         "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Forms</span>
+                        </a>
+                      </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>User manual</span>
+                        </a>
+                      </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Trainig calender</span>
+                        </a>
+                      </li>
+                              
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="<%=request.getContextPath() %>/HR"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Topics/Blogs</span>
+                        </a>
+                      </li>
+                              
+                        
+                       
+                
+                      
+                    </ul>
+                    
+                  </div>
+                </div>
+                
+             
+              </div>
+
+              <div class="flex items-center spacex-3 p-4">
+                
+               
+              </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div
+        x-show="$store.global.isRightSidebarExpanded"
+        @keydown.window.escape="$store.global.isRightSidebarExpanded = false"
+      >
+        <div
+          class="fixed inset-0 z-[150] transition-opacity duration-200"
+          @click="$store.global.isRightSidebarExpanded = false"
+          x-show="$store.global.isRightSidebarExpanded"
+          x-transition:enter="ease-out"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        ></div>
+        <div class="fixed left-6 top-0 z-[151] h-full w-full sm:w-60">
+          <div
+            x-data="{activeTab:'tabHome'}"
+            class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
+            x-show="$store.global.isRightSidebarExpanded"
+            x-transition:enter="ease-out"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="ease-in"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+          >
+            <div class="flex items-center justify-between py-2 px-4">
+         <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
+              <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
+                All Functions
+              </p>
+              <button @click="$store.global.isRightSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+            </div>
+              <p
+                x-show="activeTab === 'tabProjects'"
+                class="flex shrink-0 items-center space-x-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                  />
+                </svg>
+                <span class="text-xs">Projects</span>
+              </p>
+              
+              <p
+                x-show="activeTab === 'tabActivity'"
+                class="flex shrink-0 items-center space-x-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-xs">Activity</span>
+              </p>
+              
+
+              <button
+                @click="$store.global.isRightSidebarExpanded=false"
+                class="btn -mr-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+
+
+
+
+ <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
               <div class="is-scrollbar-hidden grow overflow-y-auto">
                 <div class="mt-2 px-4">
                  
@@ -856,7 +1205,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          
+                           href="<%=request.getContextPath() %>/Admin"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -878,7 +1227,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/Admin "
+                           href="<%=request.getContextPath() %>/ "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -989,7 +1338,7 @@ z-index: 1000;
                               <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
- href="<%=request.getContextPath() %>/F&A"
+                             href="<%=request.getContextPath() %>/F&A"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1027,33 +1376,10 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Human Resource</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                         href="<%=request.getContextPath() %>/IT
-                         "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
                           <span>Information Technology</span>
                         </a>
                       </li>
-                         <li>
+                        <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                          
@@ -1076,10 +1402,10 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Industrail Waste Management<br>IWM</span>
+                          <span>Industrail Waste Management<br>(IWM)</span>
                         </a>
                       </li>
-                         <li>
+                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                           href="#"
@@ -1235,6 +1561,11 @@ z-index: 1000;
                         </a>
                       </li>
                       
+                              
+                        
+                       
+                
+                      
                     </ul>
                     
                   </div>
@@ -1248,63 +1579,422 @@ z-index: 1000;
                
               </div>
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-        
-      </div>
 
-      <!-- Right Sidebar -->
-      <div
-        x-show="$store.global.isSidebarExpanded1"
-        @keydown.window.escape="$store.global.isSidebarExpanded1 = false"
-      >
-        <div
-          class="fixed inset-0 z-[150] bg-slate-900/60 transition-opacity duration-200"
-          @click="$store.global.isSidebarExpanded1 = false"
-          x-show="$store.global.isSidebarExpanded1"
-          x-transition:enter="ease-out"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="ease-in"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-        ></div>
-        <div class="fixed top-0 z-[151] h-full w-full sm:w-80">
-          <div
-            x-data="{activeTab:'tabHome'}"
-            class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
-            x-show="$store.global.isSidebarExpanded1"
-            x-transition:enter="ease-out"
-            x-transition:enter-start="translate-x-full"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="ease-in"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="translate-x-full"
-          >
-            <div class="flex items-center justify-between py-2 px-4">
-              <p
-                x-show="activeTab === 'tabHome'"
-                class="flex shrink-0 items-center space-x-1.5"
+
+            <div
+              x-show="activeTab === 'tabProjects'"
+              x-transition:enter="transition-all duration-500 easy-in-out"
+              x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]"
+              x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
+              class="is-scrollbar-hidden overflow-y-auto overscroll-contain px-3 pt-1"
+            >
+              <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
+                  <div class="flex justify-between space-x-1">
+                    <p
+                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+                    >
+                      14
+                    </p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke-width="1.5"
+                      class="h-5 w-5 text-re dark:text-accent"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e21e26"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="mt-1 text-xs+">Pending</p>
+                </div>
+                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
+                  <div class="flex justify-between">
+                    <p
+                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+                    >
+                      36
+                    </p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-success"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e21e26"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="mt-1 text-xs+">Completed</p>
+                </div>
+                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
+                  <div class="flex justify-between">
+                    <p
+                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+                    >
+                      143
+                    </p>
+
+                    <i class="fa fa-spinner text-base text-warning"></i>
+                  </div>
+                  <p class="mt-1 text-xs+">In Progress</p>
+                </div>
+                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
+                  <div class="flex justify-between">
+                    <p
+                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+                    >
+                      279
+                    </p>
+
+                    <i class="fa-solid fa-list-check text-base text-info"></i>
+                  </div>
+                  <p class="mt-1 text-xs+">Total</p>
+                </div>
+              </div>
+
+              <div
+                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
               >
-                <span class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">SCM Functions</span>
-              </p>
-              
+                <div class="flex items-center space-x-3">
+                  <img
+                    class="h-10 w-10 rounded-lg object-cover object-center"
+                    src="/index/resources/images/illustrations/lms-ui.svg"
+                    alt="image"
+                  />
+                  <div>
+                    <p
+                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
+                    >
+                      LMS App Design
+                    </p>
+                    <p class="text-xs text-slate-400 dark:text-navy-300">
+                      Updated at 7 Sep
+                    </p>
+                  </div>
+                </div>
 
-              <button
-                @click="$store.global.isSidebarExpanded1=false"
-                class="btn -mr-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                <div class="mt-4">
+                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
+                    <div
+                      class="w-4/12 rounded-full bg-primary dark:bg-accent"
+                    ></div>
+                  </div>
+                  <p
+                    class="mt-2 text-right text-xs+ font-medium text-re dark:text-accent-light"
+                  >
+                    25%
+                  </p>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between space-x-2">
+                  <div class="flex -space-x-3">
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-16.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <div
+                        class="is-initial rounded-full bg-info text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
+                      >
+                        jd
+                      </div>
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-20.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 rotate-45"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e21e26"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 11l5-5m0 0l5 5m-5-5v12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
+              >
+                <div class="flex items-center space-x-3">
+                  <img
+                    class="h-10 w-10 rounded-lg object-cover object-center"
+                    src="/index/resources/images/illustrations/store-ui.svg"
+                    alt="image"
+                  />
+                  <div>
+                    <p
+                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
+                    >
+                      Store Dashboard
+                    </p>
+                    <p class="text-xs text-slate-400 dark:text-navy-300">
+                      Updated at 11 Sep
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
+                    <div
+                      class="w-6/12 rounded-full bg-primary dark:bg-accent"
+                    ></div>
+                  </div>
+                  <p
+                    class="mt-2 text-right text-xs+ font-medium text-re dark:text-accent-light"
+                  >
+                    49%
+                  </p>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between space-x-2">
+                  <div class="flex -space-x-3">
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-17.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <div
+                        class="is-initial rounded-full bg-warning text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
+                      >
+                        dv
+                      </div>
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-19.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 rotate-45"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e21e26"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 11l5-5m0 0l5 5m-5-5v12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
+              >
+                <div class="flex items-center space-x-3">
+                  <img
+                    class="h-10 w-10 rounded-lg object-cover object-center"
+                    src="/index/resources/images/illustrations/chat-ui.svg"
+                    alt="image"
+                  />
+                  <div>
+                    <p
+                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
+                    >
+                      Chat Mobile App
+                    </p>
+                    <p class="text-xs text-slate-400 dark:text-navy-300">
+                      Updated at 19 Sep
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
+                    <div
+                      class="w-2/12 rounded-full bg-primary dark:bg-accent"
+                    ></div>
+                  </div>
+                  <p
+                    class="mt-2 text-right text-xs+ font-medium text-re dark:text-accent-light"
+                  >
+                    13%
+                  </p>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between space-x-2">
+                  <div class="flex -space-x-3">
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-5.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <div
+                        class="is-initial rounded-full bg-error text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
+                      >
+                        gt
+                      </div>
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-11.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 rotate-45"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e21e26"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 11l5-5m0 0l5 5m-5-5v12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
+              >
+                <div class="flex items-center space-x-3">
+                  <img
+                    class="h-10 w-10 rounded-lg object-cover object-center"
+                    src="/index/resources/images/illustrations/nft.svg"
+                    alt="image"
+                  />
+                  <div>
+                    <p
+                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
+                    >
+                      NFT Marketplace App
+                    </p>
+                    <p class="text-xs text-slate-400 dark:text-navy-300">
+                      Updated at 5 Sep
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
+                    <div
+                      class="w-9/12 rounded-full bg-primary dark:bg-accent"
+                    ></div>
+                  </div>
+                  <p
+                    class="mt-2 text-right text-xs+ font-medium text-re dark:text-accent-light"
+                  >
+                    78%
+                  </p>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between space-x-2">
+                  <div class="flex -space-x-3">
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-8.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <div
+                        class="is-initial rounded-full bg-success text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
+                      >
+                        jd
+                      </div>
+                    </div>
+                    <div class="avatar h-7 w-7 hover:z-10">
+                      <img
+                        class="rounded-full ring ring-white dark:ring-navy-700"
+                        src="/index/resources/images/avatar/avatar-12.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 rotate-45"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e21e26"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 11l5-5m0 0l5 5m-5-5v12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="h-18"></div>
+            </div>
+
+            <div
+              x-show="activeTab === 'tabActivity'"
+              x-transition:enter="transition-all duration-500 easy-in-out"
+              x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]"
+              x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
+              class="is-scrollbar-hidden overflow-y-auto overscroll-contain pt-1"
+            >
+              <div
+                class="mx-3 flex flex-col items-center rounded-lg bg-slate-100 py-3 px-8 dark:bg-navy-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
+                  class="h-8 w-8 text-secondary dark:text-secondary-light"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="#e21e26"
@@ -1313,170 +2003,336 @@ z-index: 1000;
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-              </button>
-            </div>
-                    <ul
-                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
+
+                <p class="mt-2 text-xs">Today</p>
+
+                <p
+                  class="text-lg font-medium text-slate-700 dark:text-navy-100"
+                >
+                  6hr 22m
+                </p>
+
+                <div
+                  class="progress mt-3 h-2 bg-secondary/15 dark:bg-secondary-light/25"
+                >
+                  <div
+                    class="is-active relative w-8/12 overflow-hidden rounded-full bg-secondary dark:bg-secondary-light"
+                  ></div>
+                </div>
+
+                <button
+                  class="btn mt-5 space-x-2 rounded-full border border-slate-300 px-3 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"
+                    />
+                  </svg>
+                  <span> Download Report</span>
+                </button>
+              </div>
+
+              <ol class="timeline line-space mt-5 px-4 [--size:1.5rem]">
+                <li class="timeline-item">
+                  <div
+                    class="timeline-item-point rounded-full border border-current bg-white text-secondary dark:bg-navy-700 dark:text-secondary-light"
+                  >
+                    <i class="fa fa-user-edit text-tiny"></i>
+                  </div>
+                  <div class="timeline-item-content flex-1 pl-4">
+                    <div
+                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
                     >
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/user"
+                      <p
+                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
+                      >
+                        New job alert
+                      </p>
+                      <span class="text-xs text-slate-400 dark:text-navy-300"
+                        >12 minute ago</span
+                      >
+                    </div>
+                    <p class="py-1">John Doe changed his avatar photo</p>
+                    <div class="avatar mt-2 h-20 w-20">
+                      <img
+                        class="mask is-squircle"
+                        src="/index/resources/images/avatar/avatar-19.jpg"
+                        alt="avatar"
+                      />
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div
+                    class="timeline-item-point rounded-full border border-current bg-white text-re dark:bg-navy-700 dark:text-accent"
+                  >
+                    <i class="fa-solid fa-image text-tiny"></i>
+                  </div>
+                  <div class="timeline-item-content flex-1 pl-4">
+                    <div
+                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
+                    >
+                      <p
+                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
+                      >
+                        Images Added
+                      </p>
+                      <span class="text-xs text-slate-400 dark:text-navy-300"
+                        >1 hour ago</span
+                      >
+                    </div>
+                    <p class="py-1">Mores Clarke added new image gallery</p>
+                    <div class="mt-4 grid grid-cols-3 gap-3">
+                      <img
+                        class="rounded-lg"
+                        src="/index/resources/images/object/object-1.jpg"
+                        alt="image"
+                      />
+                      <img
+                        class="rounded-lg"
+                        src="/index/resources/images/object/object-2.jpg"
+                        alt="image"
+                      />
+                      <img
+                        class="rounded-lg"
+                        src="/index/resources/images/object/object-3.jpg"
+                        alt="image"
+                      />
+                      <img
+                        class="rounded-lg"
+                        src="/index/resources/images/object/object-4.jpg"
+                        alt="image"
+                      />
+                      <img
+                        class="rounded-lg"
+                        src="/index/resources/images/object/object-5.jpg"
+                        alt="image"
+                      />
+                      <img
+                        class="rounded-lg"
+                        src="/index/resources/images/object/object-6.jpg"
+                        alt="image"
+                      />
+                    </div>
+                    <div class="mt-4">
+                      <span
+                        class="font-medium text-slate-600 dark:text-navy-100"
+                      >
+                        Category:
+                      </span>
+
+                      <a
+                        href="#"
+                        class="text-xs text-re hover:text-re-focus dark:text-accent-light dark:hover:text-accent"
+                      >
+                        #Tag
+                      </a>
+
+                      <a
+                        href="#"
+                        class="text-xs text-re hover:text-re-focus dark:text-accent-light dark:hover:text-accent"
+                      >
+                        #Category
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div
+                    class="timeline-item-point rounded-full border border-current bg-white text-success dark:bg-navy-700"
+                  >
+                    <i class="fa fa-leaf text-tiny"></i>
+                  </div>
+                  <div class="timeline-item-content flex-1 pl-4">
+                    <div
+                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
+                    >
+                      <p
+                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
+                      >
+                        Design Completed
+                      </p>
+                      <span class="text-xs text-slate-400 dark:text-navy-300"
+                        >3 hours ago</span
+                      >
+                    </div>
+                    <p class="py-1">
+                      Robert Nolan completed the design of the CRM application
+                    </p>
+                    <a
+                      href="#"
+                      class="inline-flex items-center space-x-1 pt-2 text-slate-600 transition-colors hover:text-re dark:text-navy-100 dark:hover:text-accent"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="#e21e26"
+                        stroke-width="1.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span>File_final.fig</span>
+                    </a>
+                    <div class="pt-2">
+                      <a
+                        href="#"
+                        class="tag rounded-full border border-secondary/30 bg-secondary/10 text-secondary hover:bg-secondary/20 focus:bg-secondary/20 active:bg-secondary/25 dark:border-secondary-light/30 dark:bg-secondary-light/10 dark:text-secondary-light dark:hover:bg-secondary-light/20 dark:focus:bg-secondary-light/20 dark:active:bg-secondary-light/25"
+                      >
+                        UI/UX
+                      </a>
+
+                      <a
+                        href="#"
+                        class="tag rounded-full border border-info/30 bg-info/10 text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25"
+                      >
+                        CRM
+                      </a>
+
+                      <a
+                        href="#"
+                        class="tag rounded-full border border-success/30 bg-success/10 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25"
+                      >
+                        Dashboard
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div
+                    class="timeline-item-point rounded-full border border-current bg-white text-warning dark:bg-navy-700"
+                  >
+                    <i class="fa fa-project-diagram text-tiny"></i>
+                  </div>
+                  <div class="timeline-item-content flex-1 pl-4">
+                    <div
+                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
+                    >
+                      <p
+                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
+                      >
+                        ER Diagram
+                      </p>
+                      <span class="text-xs text-slate-400 dark:text-navy-300"
+                        >a day ago</span
+                      >
+                    </div>
+                    <p class="py-1">Team completed the ER diagram app</p>
+                    <div>
+                      <p class="text-xs text-slate-400 dark:text-navy-300">
+                        Members:
+                      </p>
+                      <div class="mt-2 flex justify-between">
+                        <div class="flex flex-wrap -space-x-2">
+                          <div class="avatar h-7 w-7 hover:z-10">
+                            <img
+                              class="rounded-full ring ring-white dark:ring-navy-700"
+                              src="/index/resources/images/avatar/avatar-16.jpg"
+                              alt="avatar"
+                            />
+                          </div>
+
+                          <div class="avatar h-7 w-7 hover:z-10">
+                            <div
+                              class="is-initial rounded-full bg-info text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
+                            >
+                              jd
+                            </div>
+                          </div>
+
+                          <div class="avatar h-7 w-7 hover:z-10">
+                            <img
+                              class="rounded-full ring ring-white dark:ring-navy-700"
+                              src="/index/resources/images/avatar/avatar-20.jpg"
+                              alt="avatar"
+                            />
+                          </div>
+
+                          <div class="avatar h-7 w-7 hover:z-10">
+                            <img
+                              class="rounded-full ring ring-white dark:ring-navy-700"
+                              src="/index/resources/images/avatar/avatar-8.jpg"
+                              alt="avatar"
+                            />
+                          </div>
+
+                          <div class="avatar h-7 w-7 hover:z-10">
+                            <img
+                              class="rounded-full ring ring-white dark:ring-navy-700"
+                              src="/index/resources/images/avatar/avatar-5.jpg"
+                              alt="avatar"
+                            />
+                          </div>
+                        </div>
+                        <button
+                          class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
+                            class="h-5 w-5 rotate-45"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="#e21e26"
-                            stroke-width="1.5"
                           >
                             <path
                               stroke-linecap="round"
                               stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                              stroke-width="2"
+                              d="M7 11l5-5m0 0l5 5m-5-5v12"
                             />
                           </svg>
-                          <span>Policies</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-warning"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Procedures</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-info"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>User Manual</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Certification</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Training Calender</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Topics/Blogs</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Forms</span>
-                        </a>
-                      </li>
-                      
-                    </ul>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div
+                    class="timeline-item-point rounded-full border border-current bg-white text-error dark:bg-navy-700"
+                  >
+                    <i class="fa fa-history text-tiny"></i>
+                  </div>
+                  <div class="timeline-item-content flex-1 pl-4">
+                    <div
+                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
+                    >
+                      <p
+                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
+                      >
+                        Weekly Report
+                      </p>
+                      <span class="text-xs text-slate-400 dark:text-navy-300"
+                        >a day ago</span
+                      >
+                    </div>
+                    <p class="py-1">The weekly report was uploaded</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="h-18"></div>
+            </div>
+
+            <div
+              class="pointer-events-none absolute bottom-4 flex w-full justify-center"
+            >
+            </div>
           </div>
         </div>
       </div>
@@ -1493,8 +2349,8 @@ z-index: 1000;
             <div class="h-7 w-7">
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
-                
-                @click="$store.global.isSidebarExpanded1 = true"
+                :class="$store.global.isSidebarExpanded   && 'active'"
+                @click="$store.global.isSidebarExpanded   = !$store.global.isSidebarExpanded  "
               >
                 <span></span>
                 <span></span>
@@ -1856,11 +2712,8 @@ z-index: 1000;
                   </svg>
                 </div>
               </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Analytics
-              </p>
+              <p class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100" > Analytics   </p>
+           
             </a>
             <a href="apps-chat.html" class="w-14 text-center">
               <div class="avatar h-12 w-12">
@@ -2294,36 +3147,34 @@ z-index: 1000;
           </div>
         
         
-        
-          <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
+     
+    
+     <%--      <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
             
            <div class="flex">
-          <div class="flex flex-col" style="
-    width: 13rem;">
+          <div class="flex flex-col justify-center" style="
+    width: 18rem;">
               <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 text-center">
-               <br> <br> <p class=" text-xl font-medium text-slate-700  active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">${sessionScope.DEPARTMENT_NAME }</p>
+                <p class="text-xlnew">${sessionScope.DEPARTMENT_NAME }</p>
               </div>
               
-              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500 ">
+             <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
                 <a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>
-              </div>
+             </div>
             </div>
            
-           <%--    <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
+              <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
                 <p class="text-xl">${sessionScope.BASE_DEPARTMENT }</p>
-              </button> --%>
+              </button>
               <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
-                       <button class="flex flex-col">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
-                <p class="text-xl">Happenings @ 
-                <span class=" font-medium text-slate-700  active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                Admin
-                </span></p>
+             <button class="flex flex-col  justify-center">
+              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
+                <p class="text-xlnew">Happenings @ Information Technology</p>
               </div>
               
-              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
+              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
                 <p class="text-xs text-success">Other Department</p>
-              </div>
+              </div> <br>
             </button>
               
             <!--   <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500"  :class="$store.global.isSidebarExpanded && 'active'"
@@ -2333,161 +3184,37 @@ z-index: 1000;
             </div>
                   
                   
-          </div>
-          <div class="card flex-row overflow-hidden">
-                  <div class="h-full w-1 bg-gradient-to-b from-blue-500 to-purple-600"></div>
-                  <div class="flex flex-1 flex-col justify-between p-4 sm:px-5">
-                    <div>
-                      <img class="h-12 w-12 rounded-lg object-cover object-center" src="/index/resources/images/avatar/avatar-11.jpg" alt="image">
-                      <h3 class="mt-3 font-medium text-slate-700 line-clamp-2 dark:text-navy-100">
-                        Basic English
-                      </h3>
-                      <p class="text-xs+">Mon. 08:00 - 09:00</p>
-                      <div class="mt-2 flex space-x-1.5">
-                        <a href="#" class="tag bg-primary py-1 px-1.5 text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                          Language
-                        </a>
-                      </div>
-                    </div>
-                    <div class="mt-10 flex justify-between">
-                    
-                      <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="card p-4 sm:p-5">
-            <div class="avatar h-12 w-12">
-              <div class="is-initial rounded-full bg-info text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-              </div>
-            </div>
-            <h2 class="mt-5 text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
-              Chat App
+          </div>  --%> 
+        <div class="mx-auto grid w-full max-w-4xl grid-cols-1s gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6s">
+          <div class="card p-4 " 	<c:if test="${sessionScope.BASE_DEPARTMENT eq 'Admin' && sessionScope.BASE_DEPARTMENT eq 'HR'}"> style="BACKGROUND-COLOR: lavender;"</c:if>>
+            
+            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700 dark:text-navy-100">
+           ${sessionScope.DEPARTMENT_NAME }
             </h2>
-            <p class="mt-1">
-              Lineone prebuilt Messaging UI kit includes designs for social
-              chat.
-            </p>
-            <div class="mt-5 pb-1">
-              <a href="apps-chat.html" class="border-b border-dashed border-current pb-0.5 font-medium text-primary outline-none transition-colors duration-300 hover:text-primary/70 focus:text-primary/70 dark:text-accent-light dark:hover:text-accent-light/70 dark:focus:text-accent-light/70">View Application</a>
-            </div>
+            
+            <div class="mt-5 pb-1 text-center">
+				<a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>            </div>
           </div>
-          <div class="card p-4">
-                                <img class="h-12 w-12 rounded-lg object-cover object-center" src="/index/resources/images/avatar/avatar-11.jpg" alt="image">
-          
-                <p class="font-medium mt-4 text-slate-700 dark:text-navy-100">
-                  Social Media Marketing
-                  
-                </p>
-                
-                <p class="mt-1 text-xs+">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-              
-                <div class="mt-2 flex items-end justify-between">
-                  <p class="flex items-center space-x-2 text-slate-400 dark:text-navy-300">
-                  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                    <span class="text-xs">25 May, 2022</span>
-                  </p>
-                  <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            <div class="rounded-lg bg-slate-50 px-4 py-4 dark:bg-navy-900 sm:px-5">
-              <div>
-                <h2 class="text-lg font-medium tracking-wide text-slate-600 line-clamp-1 dark:text-navy-100">
-                  Outlined Gradient
-                </h2>
-              </div>
-              <div class="pt-2">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut
-                  laboriosam praesentium adipisci iure doloribus accusamus animi
-                  quos.
-                </p>
-              </div>
-            </div>
-            <div class="rounded-lg bg-gradient-to-r from-fuchsia-600 to-pink-600 px-4 py-4 text-white sm:px-5">
-            <div>
-            <img class="h-12 w-12 rounded-lg object-cover object-center" src="/index/resources/images/avatar/avatar-11.jpg" alt="image">
-          
-              <h2 class="text-lg font-medium tracking-wide line-clamp-1">
-                Gradient Card
-              </h2>
-            </div>
-            <div class="pt-2">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut
-                laboriosam praesentium adipisci iure doloribus accusamus animi
-                quos.
-              </p>
-            </div>
+          <div class="card p-4 "
+          <c:if test="${sessionScope.BASE_DEPARTMENT ne 'Admin' }"> style="BACKGROUND-COLOR: lavender;"</c:if>
+           :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
+            
+            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100">Happenings @ Administrator</h2>
+            
+            <div class="mt-5 pb-1 text-center">
+				<p class="text-xs text-success">Other Department</p>            </div>
           </div>
-          <div class="rounded-lg bg-gradient-to-r from-green-400 to-fuchsia-400 p-1">
-            <div class="rounded-lg bg-slate-50 px-4 py-4 dark:bg-navy-900 sm:px-5">
-              <div>
-                <h2 class="text-lg font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
-                  Outlined Gradient
-                </h2>
-              </div>
-              <div class="pt-2">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut
-                  laboriosam praesentium adipisci iure doloribus accusamus animi
-                  quos.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="flex justify-between space-x-2">
-                  <div class="flex flex-1 flex-col justify-between">
-                    <div>
-                      <a href="#" class="font-medium text-slate-700 outline-none transition-colors line-clamp-2 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light">Basic of digital marketing</a>
-                      <a href="#" class="text-xs text-slate-400 hover:text-slate-800 dark:text-navy-300 dark:hover:text-navy-100">Alfredo Elliott</a>
-                    </div>
-                    <div class="flex items-center space-x-2 text-xs">
-                      <div class="flex shrink-0 items-center space-x-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <p>16h 14m</p>
-                      </div>
-                      <div class="mx-2 my-1 w-px self-stretch bg-slate-200 dark:bg-navy-500"></div>
-                      <span class="line-clamp-1">475 Students </span>
-                    </div>
-                  </div>
-                  <img class="h-24 w-24 rounded-lg object-cover" src="/index/resources/images/avatar/avatar-11.jpg" alt="image">
-                </div>
           
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+          
+          
+          
+          
+          
+
+          
         </div>
-        
         </div>
-        
+        </div>
 
   </main>
       <div class="mt-5" x-data="{showModal:false}">

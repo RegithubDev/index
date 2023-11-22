@@ -114,7 +114,7 @@ public class LocationDao {
 				qry = qry + " and c.status = ? ";
 				arrSize++;
 			}
-			qry = qry + " ORDER BY location_code ASC ";
+			qry = qry + " ORDER BY c.created_date Desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getProject_code())) {

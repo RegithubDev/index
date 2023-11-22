@@ -25,349 +25,151 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-           <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
-         <script src="https://www.youtube.com/iframe_api"></script>
-       
+          <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
     <style>
-    .w-50{
-    	    width: 12rem;
-    	
+     
+     th,td{
+    	text-align:left;
     }
-    .pt-8{
-    	    padding-top: 9%;
-    	    padding-left: 3.25rem!important;
-    }
-    @media (min-width: 640px){
-    .max-w-lg2{
-    	max-width: 65rem;
-    }
-    .slm {
-		    padding-left: 2.25rem!important;
-		    padding-right: 1.25rem!important;
-		}
-	}
-	  @media (max-width: 767px) {
-    .sld {
-		    padding: 2rem!important;
-		}
-	}
-    .swiper-scrollbar-drag {
-    background: transparent!important;
-    border-radius: var(--swiper-scrollbar-border-radius,10px);
-    height: 100%;
-    left: 0;
-    position: relative;
-    top: 0;
-    width: 100%;
-}
-    
-       @media (min-width: 766px) and (max-width: 1200px){
-      .qutt{
-          width: 40rem!important;
-      }
-      
-      }
-       @media (min-width: 600px) and (max-width: 1200px){
-      .qutt{
-          width: 34rem!important;
-      }
-      
-      } 
-    .mgi{
-     width: 43px; /* Set the desired width for the image */
-  	height: auto;
-    }
-    .parent1 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Display two items in each row */
-  justify-content: center; /* Optional, to center the items horizontally */
-  grid-gap: 10px; /* Add some spacing between the items */
+*, :after, :before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
 }
 
-.child1 {
-  background-color: #f0f0f0; /* Optional, add background color to the items */
+.pagination{
+  background-color: #e9eef5!important;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
-   .parents {
- display: flex;
-  justify-content: center;
-}
-#rewards{
-width: 142px!important;
-}
-#news{
-width: 123px!important;
-}
-.childs {
+.pagination button {
   display: inline-block;
-  width: 221px; /* Optional, set a fixed width for child divs if needed */
-  height: 100px; /* Optional, set a fixed height for child divs if needed */
-  margin: 10px; /* Optional, add some spacing between the child divs */
+  background-color: #e9eef5;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-    .cardT {
-   	 box-shadow: none !important; 
-   	 background-color: transparent!important;
-   	 
-   	 
-	}
-     @media (min-width: 1024px) {
-     .pc{
-         height: 34rem;
-     }
-     #mobileClass2{
-    	display:none;
+.pagination .mdl-button {
+ padding: 5px 10px;
+}
+.pagination .mdl-button--raised {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #4f46e5!important;
+  color: #fff;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+}
+
+.pagination .active button {
+  background-color: #4f46e5!important;
+  color: #fff;
+}
+    .input-sm {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  margin-left: 0.3rem;
+}
+
+.input-sm::after {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
+}
+   input[type="search"] {
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+    .dataTables_info{
+    font-size: .8125rem;
+    line-height: 1.125rem;
     }
-     .h-custom{
-      	height: 5rem;
-      }
-      .qut{
-        position: absolute;
-    top: -1rem;
-    width: 22rem;
-    right: 0rem;
-    }
-     #qut{
-         padding-bottom: 1rem !important;
-    	 padding-top: 1rem !important;
-     }
-     }
-   
-    .bg-slate-2000 {
-    background-color: #ffffff;
+   .mdl-grid{
+   align-items: center;
+	display: flex !important;
+    padding: 4px;
+    justify-content: space-between;
+    height: 4.5rem;
+} 
+.mdl-grid:nth-child(3) .mdl-cell--6-col {
+	    margin-left: 2rem !important;
 }
-    .cardsRight{
-    	    right: -2rem ;
-    	    height: 6rem;
-    }
-    .containers {
-  display: flex;
-  justify-content: center; /* Optional, to center the spans horizontally */
+.mdl-grid:nth-child(3) .mdl-cell--4-col {
+	    margin-right: 2rem !important;
 }
-
-.side-by-side {
-  margin: 5px; /* Optional, add some spacing between the spans */
+.dt-table{
+display: block !important;
+height: 100%;
 }
-    .max-w-xl {
-    max-width: 60rem!important;
+.modal {
+    width: 100% !important;
 }
-    #mobileClass{
-  	display: none;
-  }
-    .w-208{
-    	width: 9rem !important;
-    }
-    @media (max-width: 767px) {
-    #mobileClass2{
-    	display:block;
-    }
-      .h-custom{
-      	height: 0.25rem;
-      }
-    .cardsRight{
-    	    right: 0rem;
-    }
-	  .reimagining {
-	     
-	    display: flex;
-	    align-items: center;
-	
-	  }
-	  #iconsCLass {
-    display: none;
-  }
-  #mobileClass{
-  	display: block;
-  	width: 92% !important;
-    height: 92% !important;
-    padding-bottom: 0.5rem !important;
-    padding-top: 0.5rem !important;
-    padding-left: 3rem;
-    left: 1rem !important;
+.required{
+	color:red;
 }
-.mblview{
-  		width:100% !important;
-  }
-  }
-  
-  }
- .w-1w{
-     width: 5.5rem !important;
- }
-  
-    .text-re{
-    	color:#e21e26;
-    }
-    #clock {
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      text-align: center;
-      padding: 6px;
-      color: #333;
-    }
-    .content{
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    a {
-    color: blue;
-    text-decoration: inherit;
+.my-error-class {
+ 	 color:red;
 }
-  .container{
-    overflow: hidden;
-    z-index: 10;
-    position: relative;
-    height: 90px;
-    width: 300px;
-    background-color: #3935e2;
-    border-radius: 10px;
-    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+.my-valid-class {
+ 	 color:green;
 }
-   #player-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-    }
-
-    #player {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
- .loading-dots {
-      font-size: 36px;
-      text-align: center;
-      animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-      0% { content: ". "; }
-      33% { content: ". . "; }
-      66% { content: ". . . "; }
-    }
-/*  BACKGROUND  */
-
-.Circle1{
-    z-index: 100;
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    right: -20px;
-    top: -30px;
-    border-radius: 50%;
-    background-color: rgba(253,184,19,1);
-    animation: enlarge;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+     left: -25% !important;
+    margin-top: 1p% !important;
+}
+body {
+    font-family: var(--bs-body-font-family) !important;
+}
+.dark-layout h1, .dark-layout h2, .dark-layout h3, .dark-layout h4, .dark-layout h5, .dark-layout h6, .dark-layout span  {
+    color: #D0D2D6;
+}
+.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
+    background-size: 18px 14px,18px 14px !important;
+    background-repeat: no-repeat !important;
+    height: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    left: -8px !important;
+    border-style: none !important;
 }
 
-.Circle2{
-    z-index: 80;
-    position: absolute;
-    height: 150px;
-    width: 150px;
-    right: -50px;
-    top: -70px;
-    border-radius: 50%;
-    background-color: rgba(246,140,31,0.7);
-    
-    animation: enlarge;
-    animation-duration: 7s;
-    animation-iteration-count: infinite;
-}
-
-.Circle3{
-    z-index: 50;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    right: -50px;
-    top: -100px;
-    border-radius: 50%;
-    background-color: rgba(241,125,45,0.7);
-    
-    animation: enlarge;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
+button.disabled {
+  pointer-events: none; /* Disable pointer events to prevent interaction */
+  background-color: #e1dcdc; /* Change background color to a muted color */
+  color: #666; /* Change text color to a muted color */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
+  /* Add any other styles as needed */
 }
 
 
 
-/*  CONTENT  */
-
-.sun{
-    z-index: 1000;
-    font-size: 15px !important;
-}
-
-.Condition{
-z-index: 1000;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-size: 20px;
-    left: 54px;
-    top: 9px;
-}
-
-.Temp{
-   
-        z-index: 1000;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-size: 27px;
-    font-weight: 400;
-    left: 20px;
-    bottom: 19px;
-}
-
-#F{
-    z-index: 1000;
-    font-family: "Roboto",sans-serif;
-    font-weight: 100;
-    font-size: 30px;
-}
 
 
-.Time{
-     z-index: 1000;
-    position: absolute;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 200;
-    right: 9px;
-    top: 30px;
-}
 
-.locationIcon{
-    z-index: 1000;
-    font-size: 10px !important;
-}
-
-.Location{
-    z-index: 1000;
-    position: absolute;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 12px;
-    font-weight: 200;
-    right: 20px;
-    bottom: 15px;
-}
-
-@keyframes enlarge{
-    50%{
-        transform: scale(1.2);
-    }
-}
-
-    .mb-4 {
-    margin-bottom: 1.25rem;
-}
   </style>
     <script>
       /**
@@ -380,9 +182,7 @@ z-index: 1000;
 
   <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
     <!-- App preloader-->
-    <div
-      class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
-    >
+    <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900" >
       <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
     </div>
 
@@ -395,163 +195,12 @@ z-index: 1000;
       <!-- Sidebar -->
       <div class="sidebar print:hidden">
         <!-- Main Sidebar -->
-        <div class="main-sidebar">
-          <div
-            class="flex h-full w-full flex-col items-center border-r border-slate-150 bg-white dark:border-navy-700 dark:bg-navy-800"
-          >
-            <!-- Application Logo -->
-            <div class="flex pt-4">
-              <a href="<%=request.getContextPath() %>/home">
-                <img
-                  class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
-                  src="/index/resources/images/app-logo.svg"
-                  alt="logo"
-                />
-              </a>
-              
-              
-            </div>
-            
-            
-            
-            
-            
-            
-
+       
             <!-- Main Sections Links -->
  			<jsp:include page="../views/layout/header.jsp"></jsp:include> 
 
             <!-- Bottom Links -->
-            <div class="flex flex-col items-center space-y-3 py-3">
-              <!-- Settings -->
-             <a
-               href="<%=request.getContextPath() %>/settings"
-                class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-              >
-                <svg
-                  class="h-7 w-7"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-opacity="0.3"
-                    fill="#e21e26"
-                    d="M2 12.947v-1.771c0-1.047.85-1.913 1.899-1.913 1.81 0 2.549-1.288 1.64-2.868a1.919 1.919 0 0 1 .699-2.607l1.729-.996c.79-.474 1.81-.192 2.279.603l.11.192c.9 1.58 2.379 1.58 3.288 0l.11-.192c.47-.795 1.49-1.077 2.279-.603l1.73.996a1.92 1.92 0 0 1 .699 2.607c-.91 1.58-.17 2.868 1.639 2.868 1.04 0 1.899.856 1.899 1.912v1.772c0 1.047-.85 1.912-1.9 1.912-1.808 0-2.548 1.288-1.638 2.869.52.915.21 2.083-.7 2.606l-1.729.997c-.79.473-1.81.191-2.279-.604l-.11-.191c-.9-1.58-2.379-1.58-3.288 0l-.11.19c-.47.796-1.49 1.078-2.279.605l-1.73-.997a1.919 1.919 0 0 1-.699-2.606c.91-1.58.17-2.869-1.639-2.869A1.911 1.911 0 0 1 2 12.947Z"
-                  />
-                  <path
-                    fill="#e21e26"
-                    d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
-                  />
-                </svg>
-              </a> 
-
-              <!-- Profile -->
-              <div
-                x-data="usePopper({placement:'right-end',offset:12})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="flex"
-              >
-                <button
-                  @click="isShowPopper = !isShowPopper"
-                  x-ref="popperRef"
-                  class="avatar h-12 w-12"
-                >
-                  <img
-                    class="rounded-full"
-                    src="${sessionScope.USER_IMAGE }"
-                    alt="avatar"
-                  />
-                  <span
-                    class="absolute right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"
-                  ></span>
-                </button>
-
-                <div
-                  :class="isShowPopper && 'show'"
-                  class="popper-root fixed"
-                  x-ref="popperRoot"
-                >
-                  <div
-                    class="popper-box w-64 rounded-lg border border-slate-150 bg-white shadow-soft dark:border-navy-600 dark:bg-navy-700"
-                  >
-                    <div
-                      class="flex items-center space-x-4 rounded-t-lg bg-slate-100 py-5 px-4 dark:bg-navy-800"
-                    >
-                      <div class="avatar h-14 w-14">
-                        <img
-                          class="rounded-full"
-                          src="${sessionScope.USER_IMAGE }"
-                          alt="avatar"
-                        />
-                      </div>
-                      <div>
-                        <a
-                          href="#"
-                          class="text-base font-medium text-slate-700 hover:text-re focus:text-re dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >
-                          ${sessionScope.USER_NAME }
-                        </a>
-                        <p class="text-xs text-slate-400 dark:text-navy-300">
-                          ${sessionScope.BASE_ROLE }
-                        </p>
-                      </div>
-                    </div>
-                    <div class="flex flex-col pt-2 pb-5">
-                      <a
-                        href="#"
-                        class="group flex items-center space-x-3 py-2 px-4 tracking-wide outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                      >
-                     <!--    <div
-                          class="flex h-8 w-8 items-center justify-center rounded-lg bg-warning text-white"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                            />
-                          </svg>
-                        </div>
-
-                        <div>
-                          <h2
-                            class="font-medium text-slate-700 transition-colors group-hover:text-re group-focus:text-re dark:text-navy-100 dark:group-hover:text-accent-light dark:group-focus:text-accent-light"
-                          >
-                            Profile
-                          </h2>
-                          <div
-                            class="text-xs text-slate-400 line-clamp-1 dark:text-navy-300"
-                          >
-                            Your profile setting
-                          </div>
-                        </div> -->
-                      </a>
-                     
-                      <div class="mt-3 px-4">
-                       <button class="btn h-9 w-full g_id_signout space-x-2 bg-primary text-white hover:bg-primary-focus 
-                        focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" 
-                         id="signout_button"  >
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                          </svg>
-                          <i class="me-50" data-feather="power"></i> Logout
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+         
 
 
 
@@ -2745,291 +2394,278 @@ z-index: 1000;
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
-      
- 
-  <div class="flex items-center justify-between py-5 lg:py-6">
-          <div class="group flex items-center space-x-1">
-            <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
-              Masters
-            </h2>
+      <div class="p-4 sm:p-5">
+      <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            ReONE Category
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
           </div>
-  </div><hr><br>
- 
- <div class="swiper-wrapper gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4" id="swiper-wrapper-69e6c010554887420" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                 Company
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <a href="" class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div> 
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>ReONE Category</li>
+          </ul>
+        </div>
                 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                  Business Unit<BR>(SBU)
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                   Project
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    Department
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                   <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                        </svg>
-                      </button>
-                  </div>
-                </div> 
-                
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                   Location
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                </div>
-                <br>
               
- <div class="swiper-wrapper gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4" id="swiper-wrapper-69e6c010554887420" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                  Role
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                 <!--  <label class="block">
+                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
+                   
+                  </select>
+                </label>
+                  <label class="block">
+                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Status</option>
+                    
+                  </select>
+                </label> -->
+                <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                   
                     </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
+                <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                  
+                    </div>
+                    <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                    <!-- <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
+                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
+                </button>
+                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
+                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
+                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
+                </button> -->
+                    </div>
+                       <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                      <div x-data="{showModal:false}">
                 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
+                    <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+             <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                Add ReONE Category
+              </p>
+              <div class="mt-4 space-y-4">
+             
+                  <label class="block  text-left">
+                    <span>Department</span><span class="required"> *</span>
+                  <select
+                   id="select2-department_code_edit-container"
+              name="department_code"
+                   class=" select2 form-select form-select3 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   <option value="">Select Department</option>
+              <c:forEach var="obj" items="${departmentsList}">
+					<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
+				</c:forEach>
+                  </select>
+                  <span id="select2-department_code_edit-containerError" class="error-msg" ></span>
                   
-                  <div class="pt-2 text-base font-medium tracking-wide ttext-base font-medium text-slate-700 dark:text-accent-light">
-                    Role Mapping
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                   User Profile
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
+                  </label>
+                <label class="block">
                
+				    <input name="dm_category"  id="dm_category_add"
+				      class="mt-1.5 w-full"
+				      x-init="$el._tom = new Tom($el,{
+				            plugins: ['remove_button'],
+				            create: true,
+				            onItemRemove: function (val) {
+				              $notification({text:`${val} removed`})
+				            }
+				          })"
+				      placeholder="Enter Category"
+				      type="text"
+				    />
+				     <span id="dm_category_add_edit-containerError" class="error-msg" ></span>
+				  </label>
+		
                 
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    ReONE Category
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-            
-                
-                    <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    ReONE Sub Category
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                
+                 		  
+			    <div class="flex justify-center space-x-2 pt-4">
+                 <a class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                    <span>Add </span>
+                  </a>
+                  <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                  </a>
                 </div>
                 
-                  <div class="flex items-center justify-between py-5 lg:py-6">
-          <div class="group flex items-center space-x-1">
-            <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
-             Content Management
-            </h2>
+              </div>
+               </form>
+            </div>
           </div>
-  </div><hr><br>
-    <div class="swiper-wrapper gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4" id="swiper-wrapper-69e6c010554887420" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                 Departmental Contents
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
+                       
+                       
+                      </div>
                     </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-                
-                 <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px ;">
-                  
-                  <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light ">
-                   Activate Departments
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                     
-                     
-                    </div>
-                    <button class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div> 
-              
-               
+                  </template>
+                </div>
                  
-            
                 
-                
+                    
+                    </div>
                 
                 </div>
-   
-                
+              
+              </div>
+		<br>
+		
+              
+
+          <div class="row">
+
+            <div class="card mt-3">
+		     <div class="card invoice-list-wrapper">
+		      <div class="card-datatable table-responsive">
+		       <div class="dt-buttons" style="height : 0.5em;">
+		      
+		        </div>
+                <table class="invoice-list-table table" id="datatable-company">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        #
+                      </th>
+                    <%--  <c:if test="${sessionScope.ROLE eq 'Admin' }" > --%>
+                       <th class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Action
+                      </th>
+                      <%-- </c:if> --%>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Department 
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Status
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Created Date
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Created By
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified Date
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified By
+                      </th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          
               </div>
          
         
       </main>
-          
-           
-  
-      <div class="mt-5" x-data="{showModal:false}">
+       
+     <div x-data="{showModal:false}">
+       <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                update ReONE Category
+              </p>
+              <div class="mt-4 space-y-4">
+               <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
                
-                <template x-teleport="#x-teleport-target">
-                  <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                    <div class="scrollbar-sm relative flex max-w-lg2 flex-col overflow-y-auto rounded-lg  px-4  text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                     <div class="flex h-8 items-center justify-between">
-                          <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base"></h2>
-
-                          <button @click="showModal = !showModal" class="btn -mr-1.5 h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" style="
-    margin-bottom: -4rem;
-    z-index: 1;
-    margin-right: -0.7rem; background-color: white;
-">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                          </button>
-                        </div>
-                      <div class="mt-4">
-                        <img
-                      class=""
-                      src="/index/resources/images/CyberSecurity Launch.png"
-                      alt="image"
-                    />
+                 <input type="hidden" id="id" name="id" />
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <label class="block  text-left">
+                    <span>Department Code </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 flex">
+                      <input 
+                       value="" readonly
+                       id="company_code_edit"
+              		   name="company_code"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                 <label class="block  text-left" style="
+  
+    padding-top: 1rem;">
+                    <span>Status</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_add-container"
+              		name="status"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
+                </div>
+                <label class="block">
+				    <input name="dm_category" id="company_name_edit"
+				      class="mt-1.5 w-full"
+				      x-init="$el._tom = new Tom($el,{
+				            plugins: ['remove_button'],
+				            create: true,
+				            onItemRemove: function (val) {
+				              $notification({text:`${val} removed`})
+				            }
+				          })"
+				      placeholder="Enter Category"
+				      type="text"
+				    />
+				  </label>
+                
+              
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="();">
+                    <span>update </span>
+                   
+                  </button>
+                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                        </button>
+                 
+                </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+                       
+                       
                       </div>
                     </div>
-                  </div>
-                </template>
-              </div>
+                  </template>
+                </div>
+           
+      
 
 
      <!--  <div
@@ -3051,132 +2687,350 @@ z-index: 1000;
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+	 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+ <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+      <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+       
+         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
+      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
+        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+    
+	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
+	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
+ $(window).on("load",(function(){
+	 $('select').select2();
+          getCompanyList();
+         }));
       
-      $(document).ready(function() {
-
-
-          function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-based
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? '0' + hours : hours;
-            minutes = (minutes < 10) ? '0' + minutes : minutes;
-            seconds = (seconds < 10) ? '0' + seconds : seconds;
-            day = (day < 10) ? '0' + day : day;
-            month = (month < 10) ? '0' + month : month;
-
-            var time = hours + ':' + minutes + ':' + seconds; 
-            var date = day + '-' + month + '-' + year;
-
-            var clock1 =  '<i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
-
-            var clock =  ' <div class="mt-5 space-y-4 " style=" margin-left: 2rem;"> <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
-            $('#clock').html(clock);
-            $('#clock1').html(clock1);
-          }
-
-          setInterval(updateClock, 1000);
-
-          var cityName;
-          if (navigator.geolocation) {
-              // Get current position
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                // Make API request to fetch city name
-                $.ajax({
-                  url: 'https://nominatim.openstreetmap.org/reverse',
-                  type: 'GET',
-                  data: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude,
-                    zoom: 10,
-                    addressdetails: 1
-                  },
-                  success: function(response) {
-                    var city = response.address.city || response.address.town || response.address.village || '';
-                    var country = response.address.country || '';
-
-                    // Update HTML element with city name
-                    cityName = city;
-                    $('#city').text(city + ', ' + country);
-                    var cityNplace = city + ',' + country
-                    getWeather(cityNplace);
-                  },
-                  error: function(xhr, status, error) {
-                    console.log(error);
-                  }
-                });
-              });
-            } else {
-              console.log('Geolocation is not supported by this browser.');
-            }
-          
+      function clearFilter(){
+		    	$("#select2-company_filter-container").val("");
+		    	$("#select2-status_filter-container").val("");
+		    	window.location.href= "<%=request.getContextPath()%>/reone-category";
+	    }
       
-          
-      });
-     function getWeather(cityNplace){
-    	    
-          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
-          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
+      function getCompanyFilterList() {
+	        var company_code = $("#select2-company_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(company_code) == "") {
+	        	$("#select2-company_filter-container option:not(:first)").remove();
+	        	var myParams = { company_code: company_code, status: status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-company_filter-container").append('<option value="' + val.company_code + '">'+ "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function getStatusFilterList() {
+    	  var company_code = $("#select2-company_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(status) == "") {
+	        	$("#select2-status_filter-container option:not(:first)").remove();
+	        	var myParams = { company_code: company_code, status: status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
 
-          $.ajax({
-              url: apiUrl,
-              method: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  const temperatureElement = $('#temperature');
-                  const descriptionElement = $('#description');
-                  const windSpeedElement = $('#wind-speed');
-                  const weatherIconElement = $('#weather-icon');
+	    function exportCompany(){
+	    	 var company_code = $("#select2-company_filter-container").val();
+	         var status = $("#select2-status_filter-container").val();
+	    	
+	    	 $("#exportCompany_filter").val(company_code);
+	     	 $("#exportStatus_filter").val(status);
+	     	 $("#exportCompanyForm ").submit();
+	  	}
+	    
+	    function getCompanyList(){
+	    	
+	     	table = $('#datatable-company').DataTable();
+			table.destroy();
+			$.fn.dataTable.moment('DD-MMM-YYYY');
+			table = $('#datatable-company').DataTable({
+				"bStateSave": true,  
+	     		fixedHeader: true,
+	         	//Default: Page display length
+					"iDisplayLength" : 10,
+					"iData" : {
+						"start" : 52
+					},"iDisplayStart" : 0,
+					"drawCallback" : function() {
+					},
+	           columnDefs: [
+	            	{
+	                    targets: [0, 1, 2, 3, 4, 6, 7],
+	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+	                  
+	                }
+	            ],
+	            rowCallback: function(row, data, index) {
+	                // Check a condition based on a column value
+	                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+	            },
+	            // "ScrollX": true,
+	            //"scrollCollapse": true,
+	            "sScrollX": "100%",
+	            "sScrollXInner": "100%",
+	            "bScrollCollapse": true,
+	            "initComplete" : function() {
+									
+					}
+	        }).rows().remove().draw();
+			table.state.clear();		
+		 	var myParams = {};
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreonecategory",type:"POST",data:myParams,success : function(data){    				
+					if(data != null && data != '' && data.length > 0){    					
+		         		$.each(data,function(key,val){
+		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.id+"'";
+		                    var actions = '<a href="javascript:void(0);" @click="showModal = true"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
+		                    key++;
+		                   	var rowArray = [];    	                 
+		            		
+		                   	rowArray.push($.trim(key));
+		                	rowArray.push($.trim(actions));  
+		                   	rowArray.push($.trim(val.department_code));
+		                   	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
+	                		} else {
+	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
+	                		}
+		                   	rowArray.push(status);
+		                	rowArray.push($.trim(val.created_date));  
+		                   	rowArray.push($.trim(val.created_by));
+		                   	rowArray.push($.trim(val.modified_date));
+		                   	rowArray.push($.trim(val.modified_by));
+		                    table.row.add(rowArray).draw( true );
+						});
+					}
+				},error: function (jqXHR, exception) {
+		         	getErrorMessage(jqXHR, exception);
+		     }});
+	    } 
+	    
+	    $("#toggleElementButton").click(function() {
+	    	 $("#x-teleport-target").css("display","none");
+	      });
+	    
+	    function getCompany(company_code,status,company_name,id){
+	    	   $("#updateModal").click();
+	    	   $('#company_name_edit').val('');
+				 $('#company_code_edit').val('');
+				 $('select[name^="status"] option:selected').removeAttr("selected");
+				 $("#x-teleport-target1").css("display","none");
+				// $("#x-teleport-target1").css("display","block");
+			      $('#id').val($.trim(id));
+			      var type = company_name.split(',');
+		    	  jQuery.each(type, function(index, item) {
+		    		  $(".ts-control:eq(1)").append('<div data-value="'+$.trim(item)+'" id="item'+index+'" class="item" data-ts-item="">'+$.trim(item)+'<a href="javascript:void(0)" onclick="removeItem('+index+')" class="remove" tabindex="-1" title="Remove">×</a></div>')
+		    		//  $('select').select2();
+		    		});
+			     // $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
+			      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
+			      if(status != null && status != ''  && status != "undefined"){
+			    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
+			    	 // $('select').select2();
+			      }
+	   }
+	    
+	    function removeItem(index){
+  		  $("#item"+index).remove();
 
-                  const temperature = Math.round(data.main.temp);
-                  const description = data.weather[0].description;
-                  const windSpeed = data.wind.speed;
-                  const weatherIcon = data.weather[0].icon;
-
-                  temperatureElement.text(temperature +'°C');
-                  descriptionElement.text(description);
-                  windSpeedElement.text(windSpeed+' m/s');
-                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
-              },
-              error: function(error) {
-                  console.error('Error:', error);
-              }
-        });
-    	  
-      }
-     
-     const button = document.getElementById("signout_button");
-     button.onclick = () => {
-       google.accounts.id.disableAutoSelect();
-       console.log('User signed out.');
-       $("#email").val('');
- 		$("#logoutForm").submit();
-     }
-    // https://www.youtube.com/watch?v=zJkS24mEBbU&pp=ygUQcmVzdXN0YWluYWJpbGl0eQ%3D%3D
-    /*  function onYouTubeIframeAPIReady() {
-         // Create an instance of the YouTube player
-         new YT.Player('player', {
-           videoId: 'z8-Ghz4YSMY',
-           playerVars: {
-             autoplay: 0, // Autoplay the video
-             controls: 1, // Show video controls
-             modestbranding: 1, // Hide YouTube logo
-             fs: 1, // Show fullscreen button
-           },
-         });
-       } */
-   
+	    }
+	    function getErrorMessage(jqXHR, exception) {
+	  	    var msg = '';
+	  	    if (jqXHR.status === 0) {
+	  	        msg = 'Not connect.\n Verify Network.';
+	  	    } else if (jqXHR.status == 404) {
+	  	        msg = 'Requested page not found. [404]';
+	  	    } else if (jqXHR.status == 500) {
+	  	        msg = 'Internal Server Error [500].';
+	  	    } else if (exception === 'parsererror') {
+	  	        msg = 'Requested JSON parse failed.';
+	  	    } else if (exception === 'timeout') {
+	  	        msg = 'Time out error.';
+	  	    } else if (exception === 'abort') {
+	  	        msg = 'Ajax request aborted.';
+	  	    } else {
+	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+	  	    }
+	  	    console.log(msg);
+        }
+	 
+	    function updateCompany(){
+	    	if(validator1.form()){ // validation perform
+	        	document.getElementById("updateCompany").submit();	
+	    	}
+	    }
+	    var validator1 =	$('#updateCompanyForm').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+		   		 		  "company_name": {
+		   			 			required: true
+		   			 	  },"company_code": {										
+		   			 			required: true
+		   			 	  },"status": {
+		   	                 	required: true,
+		   			 	  }
+		   		 	},
+		   		    messages: {
+		   		 		 "company_name": {
+		   				 	required: 'Required',
+		   			 	  },"company_code": {
+		   			 		required: 'Required'
+		   			 	  },"status": {
+		   		 			required: 'Required'
+		   		 	  	  }
+		      		},
+		      		errorPlacement:function(error, element){
+		      		 	if (element.attr("id") == "company_name_edit" ){
+		   				 document.getElementById("company_name_editError").innerHTML="";
+		   		 		 error.appendTo('#company_name_editError');
+		   			}else if(element.attr("id") == "company_code_edit" ){
+		   			   document.getElementById("company_code_editError").innerHTML="";
+		   		 	   error.appendTo('#company_code_editError');
+		   			}else if(element.attr("id") == "select2-status_edit-container" ){
+		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
+		   			 	error.appendTo('#select2-status_edit-containerError');
+		   			}else{
+		   					error.insertAfter(element);
+		   	        } 
+		      		},invalidHandler: function (form, validator) {
+		               var errors = validator.numberOfInvalids();
+		               if (errors) {
+		                   var position = validator.errorList[0].element;
+		                   jQuery('html, body').animate({
+		                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+		                   }, 1000);
+		               }
+		           },submitHandler:function(form){
+		   	    	//form.submit();
+		   	    }
+		   	});
+	    
+	  
+	   
+	   	$('.formSelect').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	   	
+	   	$('input').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	    
+	    function addCompany(){
+	    	var flag =  
+	   	     $('#addCompanyForm').validate({
+	   		   	 errorClass: "my-error-class",
+	   		   	 validClass: "my-valid-class",
+	   		   	 ignore: ":hidden:not(.select2 form-select)",
+	   		   		    rules: { 
+	   		   		 		  "dm_category": {
+	   		   			 			required: true
+	   		   			 	  },"department_code": {										
+	   		   			 			required: true
+	   		   			 	  }
+	   		   		 	},
+	   		   		    messages: {
+	   		   		 		 "dm_category": {
+	   		   				 	required: 'Required',
+	   		   			 	  },"department_code": {
+	   		   			 		required: 'Required'
+	   		   			 	  }
+	   		      		},
+	   		      		errorPlacement:function(error, element){
+	   		      		 	if (element.attr("id") == "dm_category_add" ){
+	   		   				 document.getElementById("dm_category_add_edit-containerError").innerHTML="";
+	   		   		 		 error.appendTo('#dm_category_add_edit-containerError');
+	   		   			}else if(element.attr("id") == "select2-department_code_edit-container" ){
+	   		   			   document.getElementById("select2-department_code_edit-containerError").innerHTML="";
+	   		   		 	   error.appendTo('#select2-department_code_edit-containerError');
+	   		   			}else{
+	   		   					error.insertAfter(element);
+	   		   	        } 
+	   		      		},
+	   		      		invalidHandler: function (form, validator) {
+	   		               var errors = validator.numberOfInvalids();
+	   		               if (errors) {
+	   		                   var position = validator.errorList[0].element;
+	   		                   jQuery('html, body').animate({
+	   		                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	   		                   }, 1000);
+	   		               }
+	   		           },submitHandler:function(form){
+	   		   	    	//form.submit();
+	   		   	    }
+	   		   	}); 
+	    	if(flag){ // validation perform
+	        	document.getElementById("addCompanyForm").submit();	
+	    	}
+	    }
+	   	function checkUniqueId(){
+	   		var company_code = $('#company_code_add').val();
+	        if ($.trim(company_code) != "" ) {
+	        	var myParams = {company_code: company_code };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+		                      $("#company_code_addError").html(company_code+" Already Exists!").css("color","red");
+		                      $('#company_code_add').removeClass("is-valid")
+		                      $('#company_code_add').addClass("is-invalid")
+		                      $("#addBtn").prop("disabled",true);
+	                    	});
+	                     }else{
+	                    	  $("#company_code_addError").text("");
+	                    	  $('#company_code_add').removeClass("is-invalid")
+		                      $('#company_code_add').addClass("is-valid")
+		                      $("#addBtn").prop("disabled",false);
+	                     }           
+	                    
+	                    },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	   		
+	   	}
       </script>
   </body>
 </html>

@@ -30,25 +30,40 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-    <style>
-    
-    .pagination {
-  display: flex;
-  list-style: none;
-  padding: 0;
+      <style>
+     
+     th,td{
+    	text-align:left;
+    }
+*, :after, :before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+.pagination{
+  background-color: #e9eef5!important;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .pagination button {
-  margin: 0 5px;
   display: inline-block;
+  background-color: #e9eef5;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-
+.pagination .mdl-button {
+ padding: 5px 10px;
+}
 .pagination .mdl-button--raised {
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #4f46e5!important;
+  color: #fff;
 }
 
 .pagination button:hover {
@@ -56,17 +71,53 @@
 }
 
 .pagination .active button {
-  background-color: #333;
+  background-color: #4f46e5!important;
   color: #fff;
 }
-    
-    
+    .input-sm {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  margin-left: 0.3rem;
+}
+
+.input-sm::after {
+  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
+
+  content: ""; /* Add empty content for the search icon */
+  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
+  width: 20px; /* Adjust the width of the icon */
+  height: 20px; /* Adjust the height of the icon */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to position the icon correctly */
+  transform: translateY(-50%);
+}
+   input[type="search"] {
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+    .dataTables_info{
+    font-size: .8125rem;
+    line-height: 1.125rem;
+    }
    .mdl-grid{
+   align-items: center;
 	display: flex !important;
     padding: 4px;
     justify-content: space-between;
     height: 4.5rem;
 } 
+.mdl-grid:nth-child(3) .mdl-cell--6-col {
+	    margin-left: 2rem !important;
+}
+.mdl-grid:nth-child(3) .mdl-cell--4-col {
+	    margin-right: 2rem !important;
+}
 .dt-table{
 display: block !important;
 height: 100%;
@@ -114,27 +165,6 @@ button.disabled {
   /* Add any other styles as needed */
 }
 
-.input-sm {
-  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  background-position: right center;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  margin-left: 0.3rem;
-}
-
-.input-sm::after {
-  content: ""; /* Add empty content for the search icon */
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  width: 20px; /* Adjust the width of the icon */
-  height: 20px; /* Adjust the height of the icon */
-  position: absolute;
-  top: 50%;
-  right: 10px; /* Adjust the right position to position the icon correctly */
-  transform: translateY(-50%);
-}
 
 
 
@@ -2506,29 +2536,33 @@ button.disabled {
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
       <div class="p-4 sm:p-5">
-                
-                <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
+                <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            Role Master
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
+          </div>
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Role Master</li>
+          </ul>
+        </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select   id="select2-project_code_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Project</option>
+                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Incident</option>
                    
                   </select>
                 </label>
-                  <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Status</option>
-                    
-                  </select>
-                </label>
-                <label class="block">
-                  <select   id="select2-location_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Location</option>
-                    
-                  </select>
-                </label>
+                  
                     <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                    <button  onclick="getRoleMasterList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                      style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
@@ -2540,145 +2574,18 @@ button.disabled {
                 </button>
                     </div>
                        <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                      <div x-data="{showModal:false}">
+                     
                 
-                    <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </button>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-            <div class="card p-4 sm:p-5">
-              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Add Location
-              </p>
-              <div class="mt-4 space-y-4">
-        <form id="addLocationForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-location" method="post" class="form-horizontal" role="form" >
-              
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                 <label class="block  text-left">
-                    <span>Project</span><span class="required"> *</span>
-                  <select
-                    id="select2-project_code_add-container"
-              name="project_code"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                   <option value="">Select Project</option>
-             	<c:forEach var="obj" items="${objList}">
-					<option value="${obj.project_code }" >[${obj.project_code }] - ${obj.project_name }</option>
-				</c:forEach>
-                  </select>
-                  </label>
-                  <label class="block  text-left">
-                    <span>Location Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                      type="text"
-              id="location_code_add"
-              name="location_code"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-                     <span class="required" id="sbu_code_addError"> *</span>
-                  </label>
-                   <label class="block  text-left">
-                    <span>Location Name </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                       type="text"
-              id="location_name_add"
-              name="location_name"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-                  </label>
-                 <label class="block  text-left">
-                    <span>Status</span><span class="required"> *</span>
-                  <select
-                  id="select2-status_add-container"
-              name="status"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                   <option value="">Select Status</option>
-             	<option value="Active">Active</option>
-             	<option value="Inactive">Inactive</option>
-                  </select>
-                  </label>
                 </div>
-                </form>
-                <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
-                    <span>Add </span>
-                   
-                  </button>
-                  <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
-                          Discard
-                        </button>
-                 
-                </div>
-                
-              </div>
-            </div>
-          </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
-                </div>
-                 
-                <button onclick="exportLocation();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
+               <button onclick="exportRoleMaster();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
-                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;export
+                  <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
-                    
-                    </div>
-                
-                </div>
-              
               </div>
-		<br>
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-	
-          <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
-                <div class="flex justify-between space-x-1">
-                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <spanspan id= "allLocation"></span>
-                  </p>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-
-                </div>
-                <p class="mt-1 text-xs+">Total Location</p>
-           </div>
-            <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
-                <div class="flex justify-between space-x-1">
-                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "activeLocation"></span>
-                  </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
-
-                </div>
-                <p class="mt-1 text-xs+"> Active Location</p>
-           </div>
-           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
-                <div class="flex justify-between space-x-1">
-                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <spanid= "inActiveLocation"></span>
-                  </p>
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
-                </div>
-                <p class="mt-1 text-xs+"> Inactive Location</p>
-           </div>
-          
-          
-        </div>
               
+		<br>
+		
 
           <div class="row">
 
@@ -2688,7 +2595,7 @@ button.disabled {
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table" id="datatable-location">
+                <table class="invoice-list-table table" id="datatable-company">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
@@ -2696,33 +2603,16 @@ button.disabled {
                       </th>
                     <%--  <c:if test="${sessionScope.ROLE eq 'Admin' }" > --%>
                        <th class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Action
+                        Incident Type
                       </th>
                       <%-- </c:if> --%>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Project
+                        Code
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                       Location Code
+                        Role
                       </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                       Location Name
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Status
-                      </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created Date
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created By
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified Date
-                      </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified By
-                      </th>
+                     
                      
                     </tr>
                   </thead>
@@ -2741,98 +2631,7 @@ button.disabled {
         
       </main>
        
-     <div x-data="{showModal:false}">
-       <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </button>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-            <div class="card p-4 sm:p-5">
-              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                update Location
-              </p>
-              <div class="mt-4 space-y-4">
-        <form id="updateLocationForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-location" method="post" class="form-horizontal" role="form" >
-                 <label class="block  text-left">
-                    <span>Project</span><span class="required"> *</span>
-                  <select
-                  	id="select2-project_code_edit-container"
-              name="project_code"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Project</option>
-              <c:forEach var="obj" items="${objList}">
-					<option value="${obj.project_code }" >[${obj.project_code }] - ${obj.project_name }</option>
-				</c:forEach>
-                  </select>
-                  </label>
-                <label class="block  text-left">
-                 <span>Location code </span><span class="required"> *</span>
-                  <span class="relative mt-1.5 flex">
-                    <input 
-                     type="text"
-              id="location_code_edit"
-              name="location_code"
-		              value=""
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" onkeyup="checkUniqueId();"  type="text">
-                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                      <i class="fa-regular fa-building text-base"></i>
-                    </span>
-                  </span>
-                    <span id="location_code_editError" class="error-msg" ></span>
-                </label>
-                 <input type="hidden" id="id" name="id" />
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label class="block  text-left">
-                    <span>Location Name </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                       type="text"
-              id="location_name_edit"
-              name="location_name"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-                  </label>
-                 <label class="block  text-left">
-                    <span>Status</span><span class="required"> *</span>
-                  <select
-                     id="select2-status_edit-container"
-              name="status"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                   <option value="">Select Status</option>
-             	<option value="Active">Active</option>
-             	<option value="Inactive">Inactive</option>
-                  </select>
-                  </label>
-                </div>
-              
-                <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
-                    <span>update </span>
-                   
-                  </button>
-                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
-                          Discard
-                        </button>
-                 
-                </div>
-                  </form>
-              </div>
-            </div>
-          </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
-                </div>
-           
+
       
 
 
@@ -2869,42 +2668,61 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	 <form action="<%=request.getContextPath()%>/export-location" name="exportLocationForm" id="exportLocationForm" target="_blank" method="post">	
+	<form action="<%=request.getContextPath()%>/export-role-master" name="exportRoleMasterForm" id="exportRoleMasterForm" target="_blank" method="post">	
       
-        <input type="hidden" name="location_code" id="exportLocation_filter" />
-        <input type="hidden" name="project_code" id="exportProject_Code_filter" />
-            <input type="hidden" name="status" id="exportStatus_filter" />
+        <input type="hidden" name="incident_type" id="exportRoleMaster_filter" />
 	</form>
-	
+	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
+	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-$(window).on("load",(function(){
-    	  
-          
-          getLocationList();
+  $(window).on("load",(function(){
+	  $('select').select2();
+         
+          getRoleMasterList();
          }));
       
+      
       function clearFilter(){
-		    	$("#select2-location_filter-container").val(""); 
-		    	$("#select2-project_code_filter-container").val("");
+		    	$("#select2-company_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	window.location.href= "<%=request.getContextPath()%>/location";
+		    	window.location.href= "<%=request.getContextPath()%>/role-master";
 	    }
       
-      function getLocationFilterList() {
-	        var location_code = $("#select2-location_filter-container").val();
-	        var project_code = $("#select2-project_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(location_code) == "") {
-	        	$("#select2-location_filter-container option:not(:first)").remove();
-	        	var myParams = { location_code: location_code, project_code: project_code, status :status };
+      function getLevelCount(incidentType){
+    	    if ($.trim(incidentType) == "") {
+	        	var myParams = { incident_type: incident_type};
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getLocationFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getLevelCount",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-location_filter-container").append('<option value="' + val.location_code + '">'+ "[ "+$.trim(val.location_code) +" ]"+" - " + $.trim(val.location_name) +'</option>');
+	                             $("#select2-company_filter-container").append('<option value="' + val.incident_type + '">'+ "[ "+$.trim(val.incident_type) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                             $("#level_id").attr('name', 'level' + rowIndex);
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+      }
+      
+      function getRoleMasterFilterList() {
+	        var incident_type = $("#select2-company_filter-container").val();
+	       
+	        if ($.trim(incident_type) == "") {
+	        	$("#select2-company_filter-container option:not(:first)").remove();
+	        	var myParams = { incident_type: incident_type};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getRoleMasterFilterList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-company_filter-container").append('<option value="' + val.incident_type + '">'+ "[ "+$.trim(val.incident_code) +" ]"+" - " + $.trim(val.incident_type) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2914,39 +2732,14 @@ $(window).on("load",(function(){
 	            });
 	        }
 	    }
-      function getProjectFilterList() {
-    	  var location_code = $("#select2-location_filter-container").val();
-	        var project_code = $("#select2-project_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(project_code) == "") {
-	        	$("#select2-project_code_filter-container option:not(:first)").remove();
-	        	var myParams = { location_code: location_code, project_code: project_code, status : status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getProjectFilterListFromLocation",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-project_code_filter-container").append('<option value="' + val.project_code + '">' + "[ "+$.trim(val.project_code) +" ]"+" - " + $.trim(val.project_name)  +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-
       function getStatusFilterList() {
-    	  var location_code = $("#select2-location_filter-container").val();
-	        var project_code = $("#select2-project_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
+    	  var incident_type = $("#select2-company_filter-container").val();
+	       
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { location_code: location_code, project_code: project_code, status : status };
+	        	var myParams = { incident_type: incident_type};
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromLocation",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2962,32 +2755,25 @@ $(window).on("load",(function(){
 	        }
 	    }
 
-      
-	    function exportLocation(){
-	    	 var location_code = $("#select2-location_filter-container").val();
-	         var project_code = $("#select2-project_code_filter-container").val();
-	         var status = $("#select2-status_filter-container").val();
+	    function exportRoleMaster(){
+	    	 var incident_type = $("#select2-company_filter-container").val();
 	    	
-	    	 $("#exportLocation_filter").val(location_code);
-	     	 $("#exportProject_Code_filter").val(project_code);
-	     	$("#exportStatus_filter").val(project_code);
-	     	 $("#exportLocationForm ").submit();
+	    	 $("#exportRoleMaster_filter").val(incident_type);
+	     	 $("#exportRoleMasterForm ").submit();
 	  	}
 	    
-	    function getLocationList(){
-	    	getLocationFilterList('');
-	    	getProjectFilterList('');
+	    function getRoleMasterList(){
+	    	getRoleMasterFilterList('');
 	    	getStatusFilterList('');
-	    	var location_code = $("#select2-location_filter-container").val();
-	        var project_code = $("#select2-project_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	    	$('#allLocation').html(0)
-    		$('#activeLocation').html(0)
-    		$('#inActiveLocation').html(0)
-	     	table = $('#datatable-location').DataTable();
+	    	var incident_type = $("#select2-company_filter-container").val();
+	       
+	        $('#allCompanies').html(0)
+    		$('#activeCompanies').html(0)
+    		$('#inActiveCompanies').html(0)
+	     	table = $('#datatable-company').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
-			table = $('#datatable-location').DataTable({
+			table = $('#datatable-company').DataTable({
 				"bStateSave": true,  
 	     		fixedHeader: true,
 	         	//Default: Page display length
@@ -2997,7 +2783,19 @@ $(window).on("load",(function(){
 					},"iDisplayStart" : 0,
 					"drawCallback" : function() {
 					},
-	            columnDefs: [],
+					
+					 columnDefs: [
+			            	{
+			                    targets: [0, 1, 2, 3],
+			                    className: 'whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+			                  
+			                }
+			            ],
+			            rowCallback: function(row, data, index) {
+			                // Check a condition based on a column value
+			                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
+			            },
+	         
 	            // "ScrollX": true,
 	            //"scrollCollapse": true,
 	            "sScrollX": "100%",
@@ -3030,29 +2828,27 @@ $(window).on("load",(function(){
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-		 	var myParams = {location_code: location_code, project_code: project_code, status : status};
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getLocationList",type:"POST",data:myParams,success : function(data){    				
+		 	var myParams = {incident_type: incident_type, status: status};
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getRoleMaster",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var location_data = "'"+val.location_code+"','"+val.project_code+"','"+val.location_name+"','"+val.id+"','"+val.status+"'";
-		                    var actions = '<a href="javascript:void(0);"  onclick="getLocation('+location_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
-		                   	var rowArray = [];    	                 
-		                   	$('#allLocation').html(val.all_location)
-		            		$('#activeLocation').html(val.active_location)
-		            		$('#inActiveLocation').html(val.inActive_location)
-		                   	rowArray.push($.trim(val.id));
-		                	rowArray.push($.trim(actions));  
-		                	rowArray.push("["+ $.trim(val.project_code)+"]"+" - "+ val.project_name);
-		                   	rowArray.push($.trim(val.location_code));
-		                   	rowArray.push($.trim(val.location_name));
-		                   	
-		                   	rowArray.push($.trim(val.status));
-		                	rowArray.push($.trim(val.created_by));
-		                   	rowArray.push($.trim(val.created_date));
-		                	rowArray.push($.trim(val.modified_by));
-		                   	rowArray.push($.trim(val.modified_date));
-		                   
-		                    table.row.add(rowArray).draw( true );
+		         			var company_data = "'"+val.incident_type+"','"+val.incident_report+"','"+val.incident_code+"','"+val.id+"'";
+		                    var actions = '<a href="javascript:void(0);"  class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
+		                    key++;
+		                    var rowArray = [];    	                 
+		                    rowArray.push($.trim(key));
+		                   	rowArray.push($.trim(val.incident_type));
+		                   	rowArray.push($.trim(val.incident_code));
+		                   	rowArray.push($.trim(val.incident_report));
+		                   	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
+	                		} else {
+	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
+	                		}
+		                   	rowArray.push(status);
+
+		                   	table.row.add(rowArray).draw( true );
 						});
 					}
 				},error: function (jqXHR, exception) {
@@ -3060,29 +2856,28 @@ $(window).on("load",(function(){
 		     }});
 	    } 
 	    
-	    function getLocation(location_code,project_code,location_name,id,status){
-	    	 $("#updateModal").click();
-	    	 $('#location_name_edit').val('');
-			 $('#location_code_edit').val('');
-			 $('select[name^="project_code"] option:selected').removeAttr("selected");
+	    function getRoleMaster(incident_type,status,company_name,id){
+	    	  $("#updateModal").click();
+	    	 $('#company_name_edit').val('');
+			 $('#incident_type_edit').val('');
 			 $('select[name^="status"] option:selected').removeAttr("selected");
 		      $('#id').val($.trim(id));
-		      $('#updateLocationForm #location_name_edit').val($.trim(location_name)).focus();
-		      $('#updateLocationForm #location_code_edit').val($.trim(location_code)).focus();
-		      if(project_code != null && project_code != ''  && project_code != "undefined"){
-		    	  $('select[name^="project_code"] option[value="'+ project_code +'"]').attr("selected",true);
+		   
+		      $('#updateRoleMaster #company_name_edit').val($.trim(company_name)).focus();
+		      $('#updateRoleMaster #incident_type_edit').val($.trim(incident_type)).focus();
+		      if(status != null && status != ''  && status != "undefined"){
 		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-		    	 // $('select').select2();
+		    	  $('select').select2();
 		      }
 	   }
 	    
 	    function getErrorMessage(jqXHR, exception) {
 	  	    var msg = '';
-	  	    if (jqXHR.project_code === 0) {
+	  	    if (jqXHR.status === 0) {
 	  	        msg = 'Not connect.\n Verify Network.';
-	  	    } else if (jqXHR.project_code == 404) {
+	  	    } else if (jqXHR.status == 404) {
 	  	        msg = 'Requested page not found. [404]';
-	  	    } else if (jqXHR.project_code == 500) {
+	  	    } else if (jqXHR.status == 500) {
 	  	        msg = 'Internal Server Error [500].';
 	  	    } else if (exception === 'parsererror') {
 	  	        msg = 'Requested JSON parse failed.';
@@ -3096,52 +2891,45 @@ $(window).on("load",(function(){
 	  	    console.log(msg);
         }
 	    
-	    function addLocation(){
+	    function addRoleMaster(){
 	    	if(validator.form()){ // validation perform
-	        	document.getElementById("addLocationForm").submit();	
+	        	document.getElementById("addRoleMasterForm").submit();	
 	    	}
 	    }
-	    function updateLocation(){
+	    function updateRoleMaster(){
 	    	if(validator1.form()){ // validation perform
-	        	document.getElementById("updateLocationForm").submit();	
+	        	document.getElementById("updateRoleMasterForm").submit();	
 	    	}
 	    }
-	    var validator1 =	$('#updateLocationForm').validate({
+	    var validator1 =	$('#updateRoleMasterForm').validate({
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",
 		   	 ignore: ":hidden:not(.select2 form-select)",
 		   		    rules: {
-		   		 		  "location_name": {
+		   		 		  "company_name": {
 		   			 			required: true
-		   			 	  },"location_code": {										
+		   			 	  },"incident_type": {										
 		   			 			required: true
-		   			 	  },"project_code": {
-		   	                 	required: true,
 		   			 	  },"status": {
 		   	                 	required: true,
 		   			 	  }
 		   		 	},
 		   		    messages: {
-		   		 		 "location_name": {
+		   		 		 "company_name": {
 		   				 	required: 'Required',
-		   			 	  },"location_code": {
+		   			 	  },"incident_type": {
 		   			 		required: 'Required'
-		   			 	  },"project_code": {
-		   		 			required: 'Required'
-		   		 	  	  },"status": {
+		   			 	  },"status": {
 		   		 			required: 'Required'
 		   		 	  	  }
 		      		},
 		      		errorPlacement:function(error, element){
-		      		 	if (element.attr("id") == "location_name_edit" ){
-		   				 document.getElementById("location_name_editError").innerHTML="";
-		   		 		 error.appendTo('#location_name_editError');
-		   			}else if(element.attr("id") == "location_code_edit" ){
-		   			   document.getElementById("location_code_editError").innerHTML="";
-		   		 	   error.appendTo('#location_code_editError');
-		   			}else if(element.attr("id") == "select2-project_code_edit-container" ){
-		   				document.getElementById("select2-project_code_edit-containerError").innerHTML="";
-		   			 	error.appendTo('#select2-project_code_edit-containerError');
+		      		 	if (element.attr("id") == "company_name_edit" ){
+		   				 document.getElementById("company_name_editError").innerHTML="";
+		   		 		 error.appendTo('#company_name_editError');
+		   			}else if(element.attr("id") == "incident_type_edit" ){
+		   			   document.getElementById("incident_type_editError").innerHTML="";
+		   		 	   error.appendTo('#incident_type_editError');
 		   			}else if(element.attr("id") == "select2-status_edit-container" ){
 		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
 		   			 	error.appendTo('#select2-status_edit-containerError');
@@ -3160,42 +2948,35 @@ $(window).on("load",(function(){
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addLocationForm').validate({
+	    var validator =	$('#addRoleMasterForm').validate({
 	   	 errorClass: "my-error-class",
 	   	 validClass: "my-valid-class",
 	   	 ignore: ":hidden:not(.select2 form-select)",
 	   		    rules: {
-	   		 		  "location_name": {
+	   		 		  "company_name": {
 	   			 			required: true
-	   			 	  },"location_code": {										
+	   			 	  },"incident_type": {										
 	   			 			required: true
-	   			 	  },"project_code": {
-	   	                 	required: true,
 	   			 	  },"status": {
 	   	                 	required: true,
 	   			 	  }
 	   		 	},
 	   		    messages: {
-	   		 		 "location_name": {
+	   		 		 "company_name": {
 	   				 	required: 'Required',
-	   			 	  },"location_code": {
+	   			 	  },"incident_type": {
 	   			 		required: 'Required'
-	   			 	  },"project_code": {
+	   			 	  },"status": {
 	   		 			required: 'Required'
-	   		 	  	  },"status": {
-		   		 		required: 'Required'
 	   		 	  	  }
 	      		},
 	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "location_name_add" ){
-	   				 document.getElementById("location_name_addError").innerHTML="";
-	   		 		 error.appendTo('#location_name_addError');
-	   			}else if(element.attr("id") == "location_code_add" ){
-	   			   document.getElementById("location_code_addError").innerHTML="";
-	   		 	   error.appendTo('#location_code_addError');
-	   			}else if(element.attr("id") == "select2-project_code_add-container" ){
-	   				document.getElementById("select2-project_code_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-project_code_add-containerError');
+	      		 	if (element.attr("id") == "company_name_add" ){
+	   				 document.getElementById("company_name_addError").innerHTML="";
+	   		 		 error.appendTo('#company_name_addError');
+	   			}else if(element.attr("id") == "incident_type_add" ){
+	   			   document.getElementById("incident_type_addError").innerHTML="";
+	   		 	   error.appendTo('#incident_type_addError');
 	   			}else if(element.attr("id") == "select2-status_add-container" ){
 	   				document.getElementById("select2-status_add-containerError").innerHTML="";
 	   			 	error.appendTo('#select2-status_add-containerError');
@@ -3225,43 +3006,6 @@ $(window).on("load",(function(){
 	   	        $(this).valid();
 	   	    }
 	   	});
-	   	function addBox(){
-	   		$('select[name^="project_code"] option:selected').removeAttr("selected");
-	   		$('select[name^="status"] option:selected').removeAttr("selected");
-	   		$('select').select2();
-	   	}
-	   	
-		function checkUniqueId(){
-	   		var location_code = $('#location_code_add').val();
-	        if ($.trim(location_code) != "" ) {
-	        	var myParams = {location_code: location_code };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForlocation",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-		                      $("#location_code_addError").html(location_code+" Already Exists!").css("color","red");
-		                      $('#location_code_add').removeClass("is-valid")
-		                      $('#location_code_add').addClass("is-invalid")
-		                      $("#addBtn").prop("disabled",true);
-	                    	});
-	                     }else{
-	                    	  $("#location_code_addError").text("");
-	                    	  $('#location_code_add').removeClass("is-invalid")
-		                      $('#location_code_add').addClass("is-valid")
-		                      $("#addBtn").prop("disabled",false);
-	                     }           
-	                    
-	                    },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	   		
-	   		
-	   	}
       </script>
   </body>
 </html>
