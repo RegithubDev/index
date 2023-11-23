@@ -41,19 +41,19 @@ import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class HomeController {
-
+	 
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     } 
 	Logger logger = Logger.getLogger(HomeController.class);
-
+	  
 	@Autowired  
 	UserService service;
 
 	@Autowired
 	IRMService service2;
-
+	
 	@Value("${Login.Form.Invalid}")
 	public String invalidUserName;
 
@@ -69,7 +69,7 @@ public class HomeController {
 		} 
 		return model; 
 	}
-
+	
 	@RequestMapping(value = "/IT", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView it(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.itPage);
@@ -180,20 +180,20 @@ public class HomeController {
 		} 
 		return model; 
 	}
-
+	
 	@RequestMapping(value = "/Admin", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView admin(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.AdminPage);
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		}  
 		return model; 
 	} 
-
+	
 
 	@RequestMapping(value = "/F&A", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView finance(@ModelAttribute User user, HttpSession session) {
@@ -217,7 +217,7 @@ public class HomeController {
 		} 
 		return model; 
 	} 
-
+	
 	@RequestMapping(value = "/contracts", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView contracts(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.contracts);
@@ -240,7 +240,7 @@ public class HomeController {
 		} 
 		return model; 
 	} 
-
+	
 	@RequestMapping(value = "/Incin-IWM", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView iwm(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.iwmPage);
@@ -252,44 +252,44 @@ public class HomeController {
 		} 
 		return model; 
 	}
-
+	
 	@RequestMapping(value = "/departments-master", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView departmentsMaster(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.departmentsMaster);
 		try { 
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
 		return model; 
 	}
-
-
+	
+	
 	@RequestMapping(value = "/settings", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView settings(@ModelAttribute User ss, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.settings);
 		try { 
 			List <User> settingList = service.getSettingsList(ss);
 			model.addObject("settingList", settingList);
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();    
 		} 
 		return model; 
 	}
-
-
+	
+	
 	@RequestMapping(value = "/deps", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView deps(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.deps);
 		try { 
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();    
 		} 
 		return model; 
 	}
-
+	
 	@RequestMapping(value = "/reone-category", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView reonecategory(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.reonecategory);
@@ -305,7 +305,7 @@ public class HomeController {
 	public ModelAndView reonesubcategory(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.reonesubcategory);
 		try { 
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -316,7 +316,7 @@ public class HomeController {
 
 		ModelAndView model = new ModelAndView(PageConstants.activedepartment);
 		try { 
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -326,7 +326,7 @@ public class HomeController {
 	public ModelAndView depcontent(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.depcontent);
 		try { 
-
+			  
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -343,8 +343,8 @@ public class HomeController {
 		} 
 		return model; 
 	}
-
-
+	
+	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView user(@ModelAttribute User user,IRM obj, HttpSession session) {
 		ModelAndView model = null;
@@ -404,7 +404,7 @@ public class HomeController {
 		}
 		return model;
 	}
-
+	
 	@RequestMapping(value = "/ajax/get-users", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {
@@ -503,7 +503,7 @@ public class HomeController {
 		}
 		return objList;
 	}
-
+	
 	@RequestMapping(value = "/ajax/getDesignationFilterListInUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<User> getDesignationFilterList(@ModelAttribute User obj) {
@@ -516,8 +516,8 @@ public class HomeController {
 		}
 		return objsList;
 	}
-
-
+	
+	
 	@RequestMapping(value = "/delete-user", method = {RequestMethod.GET,RequestMethod.POST})
 	public String deleteUser(@ModelAttribute User obj,RedirectAttributes attributes){
 		try{
@@ -532,6 +532,6 @@ public class HomeController {
 			logger.error("deleteUser : " + e.getMessage());
 		}
 		return "redirect:/home";
-
+	
 	}
 }

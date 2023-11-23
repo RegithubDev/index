@@ -91,8 +91,8 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
                   <path fill-opacity="0.3" d="M21.25 16C21.25 18.8962 18.8962 21.25 16 21.25C14.6525 21.25 13.4275 20.7425 12.5 19.9025C13.5763 18.9487 14.25 17.5487 14.25 16C14.25 15.3175 14.1187 14.6612 13.8825 14.0662C15.4837 13.6287 16.7787 12.4562 17.3825 10.9337C19.605 11.5375 21.25 13.585 21.25 16Z" fill="#e21e26"></path>
                 </svg>
               </a>
-
-             <a href="#" class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" 
+              
+           <!--   <a href="#" class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" 
             :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" 
             @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded" style="
     color: red !important;">
@@ -100,8 +100,8 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
                   <path d="M13.3111 14.75H5.03356C3.36523 14.75 2.30189 12.9625 3.10856 11.4958L5.24439 7.60911L7.24273 3.96995C8.07689 2.45745 10.2586 2.45745 11.0927 3.96995L13.1002 7.60911L14.0627 9.35995L15.2361 11.4958C16.0427 12.9625 14.9794 14.75 13.3111 14.75Z" fill="currentColor"></path>
                   <path fill-opacity="0.3" d="M21.1667 15.2083C21.1667 18.4992 18.4992 21.1667 15.2083 21.1667C11.9175 21.1667 9.25 18.4992 9.25 15.2083C9.25 15.0525 9.25917 14.9058 9.26833 14.75H13.3108C14.9792 14.75 16.0425 12.9625 15.2358 11.4958L14.0625 9.36C14.4292 9.28666 14.8142 9.25 15.2083 9.25C18.4992 9.25 21.1667 11.9175 21.1667 15.2083Z" fill="currentColor"></path>
                 </svg>
-              </a>
-
+              </a> -->
+             <%--  
                <a href="<%=request.getContextPath() %>/deps" id="deps"
                 class="flex h-11 w-11 items-center justify-center boxx  rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 
                 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
@@ -112,7 +112,7 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
                   <path d="M17.75 9.00012C17.75 9.68262 17.6187 10.3389 17.3825 10.9339C16.7787 12.4564 15.4837 13.6289 13.8825 14.0664C13.445 14.1889 12.9813 14.2501 12.5 14.2501C12.0187 14.2501 11.555 14.1889 11.1175 14.0664C9.51625 13.6289 8.22125 12.4564 7.6175 10.9339C7.38125 10.3389 7.25 9.68262 7.25 9.00012C7.25 6.10387 9.60375 3.75012 12.5 3.75012C15.3962 3.75012 17.75 6.10387 17.75 9.00012Z" fill="#e21e26"></path>
                   <path fill-opacity="0.3" d="M21.25 16C21.25 18.8962 18.8962 21.25 16 21.25C14.6525 21.25 13.4275 20.7425 12.5 19.9025C13.5763 18.9487 14.25 17.5487 14.25 16C14.25 15.3175 14.1187 14.6612 13.8825 14.0662C15.4837 13.6287 16.7787 12.4562 17.3825 10.9337C19.605 11.5375 21.25 13.585 21.25 16Z" fill="#e21e26"></path>
                 </svg>
-              </a>
+              </a> --%>
                           <%--   <a
                 href="<%=request.getContextPath() %>/views/help.jsp" id="help"
                 class="flex h-11 w-11 items-center justify-center boxx  rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
@@ -141,10 +141,10 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
     height: 65%;
 ">
               </a> --%>
-
-
+   
+           
             </div>
-
+	  
    <div class="flex flex-col items-center space-y-3 py-3">
    <c:if test="${sessionScope.BASE_ROLE eq 'Admin' }">
               <!-- Settings -->
@@ -244,6 +244,7 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
                             />
                           </svg>
                         </div>
+
                         <div>
                           <h2
                             class="font-medium text-slate-700 transition-colors group-hover:text-re group-focus:text-re dark:text-navy-100 dark:group-hover:text-accent-light dark:group-focus:text-accent-light"
@@ -257,7 +258,7 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
                           </div>
                         </div> -->
                       </a>
-
+                     
                       <div class="mt-3 px-4">
                        <button class="btn h-9 w-full g_id_signout space-x-2 bg-primary text-white hover:bg-primary-focus 
                         focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" 
@@ -272,9 +273,9 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
                   </div>
                 </div>
               </div>
-
+               
             </div>
-
+             
           </div>
         </div>
       <!-- App Header Wrapper-->
@@ -282,7 +283,7 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
       <!-- Mobile Searchbar -->
 
       <!-- Right Sidebar -->
-
+	
     <script>
     
      var selected = window.localStorage.getItem("selected");
@@ -290,6 +291,7 @@ class="flex h-11 w-11 items-center justify-center rounded-lg boxx  bg-primary/10
     $(".boxx").click(function() {
         // Remove the class from all boxes
         $(".boxx").removeClass("bg-primary/10 text-primary");
+
         // Add the class to the clicked box
         
         var clickedBoxId = $(this).attr("id");
