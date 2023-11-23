@@ -2404,7 +2404,7 @@ button.disabled {
           </div>
           <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
             <li class="flex items-center space-x-2">
-              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Masters</a>
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
               <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -2607,8 +2607,8 @@ button.disabled {
                     <span class="relative mt-1.5 flex">
                       <input 
                        value="" readonly
-                       id="company_code_edit"
-              		   name="company_code"
+                       id="department_code_edit"
+              		   name="department_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                       <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                         <i class="far fa-user text-base"></i>
@@ -2629,7 +2629,8 @@ button.disabled {
                   </label>
                 </div>
                 <label class="block">
-				    <input name="dm_category" id="company_name_edit"
+                <input type="hidden"  name="dm_category" id="company_name_edit" value="" />
+				    <input 
 				      class="mt-1.5 w-full"
 				      x-init="$el._tom = new Tom($el,{
 				            plugins: ['remove_button'],
@@ -2645,10 +2646,13 @@ button.disabled {
                 
               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="();">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addaCompany();">
+                    <span>update </span>
+                  </button>
+              <!--    <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="updateCompany();">
                     <span>update </span>
                    
-                  </button>
+                  </button> -->
                   <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
                         </button>
@@ -2718,18 +2722,18 @@ button.disabled {
 	    }
       
       function getCompanyFilterList() {
-	        var company_code = $("#select2-company_filter-container").val();
+	        var department_code = $("#select2-company_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(company_code) == "") {
+	        if ($.trim(department_code) == "") {
 	        	$("#select2-company_filter-container option:not(:first)").remove();
-	        	var myParams = { company_code: company_code, status: status };
+	        	var myParams = { department_code: department_code, status: status };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterList",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-company_filter-container").append('<option value="' + val.company_code + '">'+ "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                             $("#select2-company_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2740,11 +2744,11 @@ button.disabled {
 	        }
 	    }
       function getStatusFilterList() {
-    	  var company_code = $("#select2-company_filter-container").val();
+    	  var department_code = $("#select2-company_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { company_code: company_code, status: status };
+	        	var myParams = { department_code: department_code, status: status };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
 	                data: myParams, cache: false,async: false,
@@ -2763,10 +2767,10 @@ button.disabled {
 	    }
 
 	    function exportCompany(){
-	    	 var company_code = $("#select2-company_filter-container").val();
+	    	 var department_code = $("#select2-company_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
 	    	
-	    	 $("#exportCompany_filter").val(company_code);
+	    	 $("#exportCompany_filter").val(department_code);
 	     	 $("#exportStatus_filter").val(status);
 	     	 $("#exportCompanyForm ").submit();
 	  	}
@@ -2838,29 +2842,40 @@ button.disabled {
 		     }});
 	    } 
 	    
+	  
 	    $("#toggleElementButton").click(function() {
 	    	 $("#x-teleport-target").css("display","none");
 	      });
 	    
-	    function getCompany(company_code,status,company_name,id){
+	    function getCompany(department_code,status,company_name,id){
 	    	   $("#updateModal").click();
+	    	   $(".ts-control:eq(1) div").remove();
 	    	   $('#company_name_edit').val('');
-				 $('#company_code_edit').val('');
+				 $('#department_code_edit').val('');
 				 $('select[name^="status"] option:selected').removeAttr("selected");
 				 $("#x-teleport-target1").css("display","none");
 				// $("#x-teleport-target1").css("display","block");
 			      $('#id').val($.trim(id));
+			     
+			    
 			      var type = company_name.split(',');
 		    	  jQuery.each(type, function(index, item) {
 		    		  $(".ts-control:eq(1)").append('<div data-value="'+$.trim(item)+'" id="item'+index+'" class="item" data-ts-item="">'+$.trim(item)+'<a href="javascript:void(0)" onclick="removeItem('+index+')" class="remove" tabindex="-1" title="Remove">×</a></div>')
 		    		//  $('select').select2();
 		    		});
 			     // $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
-			      $('#updateCompany #company_code_edit').val($.trim(company_code)).focus();
+			      $('#updateCompany #department_code_edit').val($.trim(department_code)).focus();
 			      if(status != null && status != ''  && status != "undefined"){
 			    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
 			    	 // $('select').select2();
 			      }
+			      var textArray = [];
+			      $('.ts-control:eq(1)').children('div').each(function() {
+			    	    textArray.push($(this).text().replace("×", ""));
+			    	});
+			    	var commaSeparatedText = textArray.join(', ');
+			    	$('#company_name_edit').val(commaSeparatedText);
+			     
 	   }
 	    
 	    function removeItem(index){
@@ -2888,6 +2903,7 @@ button.disabled {
         }
 	 
 	    function updateCompany(){
+	    	
 	    	if(validator1.form()){ // validation perform
 	        	document.getElementById("updateCompany").submit();	
 	    	}
@@ -2899,7 +2915,7 @@ button.disabled {
 		   		    rules: {
 		   		 		  "company_name": {
 		   			 			required: true
-		   			 	  },"company_code": {										
+		   			 	  },"department_code": {										
 		   			 			required: true
 		   			 	  },"status": {
 		   	                 	required: true,
@@ -2908,7 +2924,7 @@ button.disabled {
 		   		    messages: {
 		   		 		 "company_name": {
 		   				 	required: 'Required',
-		   			 	  },"company_code": {
+		   			 	  },"department_code": {
 		   			 		required: 'Required'
 		   			 	  },"status": {
 		   		 			required: 'Required'
@@ -2918,9 +2934,9 @@ button.disabled {
 		      		 	if (element.attr("id") == "company_name_edit" ){
 		   				 document.getElementById("company_name_editError").innerHTML="";
 		   		 		 error.appendTo('#company_name_editError');
-		   			}else if(element.attr("id") == "company_code_edit" ){
-		   			   document.getElementById("company_code_editError").innerHTML="";
-		   		 	   error.appendTo('#company_code_editError');
+		   			}else if(element.attr("id") == "department_code_edit" ){
+		   			   document.getElementById("department_code_editError").innerHTML="";
+		   		 	   error.appendTo('#department_code_editError');
 		   			}else if(element.attr("id") == "select2-status_edit-container" ){
 		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
 		   			 	error.appendTo('#select2-status_edit-containerError');
@@ -2954,6 +2970,18 @@ button.disabled {
 	   	    }
 	   	});
 	    
+	    function addaCompany(){
+	    	 var textArray = [];
+		      $('.ts-control:eq(1)').children('div').each(function() {
+		    	    textArray.push($(this).text().replace("×", ""));
+		    	});
+		    	var commaSeparatedText = textArray.join(', ');
+		    	$('#company_name_edit').val(commaSeparatedText);
+		    	if(validator1.form()){ // validation perform
+		        	document.getElementById("updateCompany").submit();	
+		    	}
+	    		
+	    }
 	    function addCompany(){
 	    	var flag =  
 	   	     $('#addCompanyForm').validate({
@@ -3002,24 +3030,24 @@ button.disabled {
 	    	}
 	    }
 	   	function checkUniqueId(){
-	   		var company_code = $('#company_code_add').val();
-	        if ($.trim(company_code) != "" ) {
-	        	var myParams = {company_code: company_code };
+	   		var department_code = $('#department_code_add').val();
+	        if ($.trim(department_code) != "" ) {
+	        	var myParams = {department_code: department_code };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-		                      $("#company_code_addError").html(company_code+" Already Exists!").css("color","red");
-		                      $('#company_code_add').removeClass("is-valid")
-		                      $('#company_code_add').addClass("is-invalid")
+		                      $("#department_code_addError").html(department_code+" Already Exists!").css("color","red");
+		                      $('#department_code_add').removeClass("is-valid")
+		                      $('#department_code_add').addClass("is-invalid")
 		                      $("#addBtn").prop("disabled",true);
 	                    	});
 	                     }else{
-	                    	  $("#company_code_addError").text("");
-	                    	  $('#company_code_add').removeClass("is-invalid")
-		                      $('#company_code_add').addClass("is-valid")
+	                    	  $("#department_code_addError").text("");
+	                    	  $('#department_code_add').removeClass("is-invalid")
+		                      $('#department_code_add').addClass("is-valid")
 		                      $("#addBtn").prop("disabled",false);
 	                     }           
 	                    

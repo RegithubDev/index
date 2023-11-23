@@ -1690,13 +1690,10 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
 		boolean flag = false ;
 		try {
-			String qry = "Select department_code,department_name\n"
-					+ "from department_master \n"
-					+ "where department_code not in (select department_code from department_category)\n"
-					+ "UNION \n"
-					+ "Select department_code,'' \n"
-					+ "from department_category\n"
-					+ "where department_code not in (select department_code from department_master) ";
+			String qry = "SELECT dm.department_code,department_name "
+					+ "FROM department_master dm "
+					+ "LEFT JOIN department_category dc ON dm.department_code = dc.department_code "
+					+ "WHERE dc.department_code IS NULL; ";
 		
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			if(objsList.size() > 0) {
