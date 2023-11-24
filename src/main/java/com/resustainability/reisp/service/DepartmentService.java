@@ -49,4 +49,12 @@ public class DepartmentService {
 	public List<Department> getDepartmentMasterList(Department obj) throws Exception {
 		return dao.getDepartmentMasterList(obj);
 	}
+
+	public boolean addDepartmentMaster(Department obj) throws Exception {
+		return dao.addDepartmentMaster(obj);
+	}
+
+	public boolean updateDepartmentMaster(Department obj) throws Exception {
+		return dao. updateDepartmentMaster(obj);
+	}
 }

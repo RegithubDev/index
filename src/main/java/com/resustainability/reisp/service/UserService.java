@@ -143,4 +143,8 @@ public class UserService {
 	public List<User> getDepartmentsListForCategory(User user) throws Exception {
 		return dao.getDepartmentsListForCategory(user);
 	}
+
+	public List<User> getCatagoryList(User user) throws Exception {
+		return dao.getCatagoryList(user);
+	}
 }

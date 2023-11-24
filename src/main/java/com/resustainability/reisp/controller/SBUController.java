@@ -45,6 +45,7 @@ import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.SBUService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class SBUController {
@@ -79,6 +80,9 @@ public class SBUController {
 	
 	@Value("${template.upload.formatError}")
 	public String uploadformatError;
+	@Autowired  
+	UserService serviceU;
+	
 	
 	@RequestMapping(value = "/sbu", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView sbu(@ModelAttribute User user, HttpSession session) {
@@ -87,6 +91,9 @@ public class SBUController {
 		try {
 			List<SBU> objList = service.getCompaniesList(obj);
 			model.addObject("objList", objList);
+		
+           List <User> departmentsList = serviceU.getDepartmentsList(null);
+			model.addObject("departmentsList", departmentsList);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

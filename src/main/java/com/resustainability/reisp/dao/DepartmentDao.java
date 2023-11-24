@@ -330,8 +330,9 @@ public class DepartmentDao {
 	public List<Department> getDepartmentMasterList(Department obj) throws Exception {
 		List<Department> objsList = new ArrayList<Department>();
 		try {
-			String qry = "SELECT id,department_code,department_name,url,s.status,s.created_by,FORMAT(s.created_date, 'dd-MMM-yy  HH:mm') as created_date,FORMAT(s.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
-					+ "s.modified_by,s.department_name,p.user_name,p1.user_name as  modified_by from [department_master] s "
+			String qry = "SELECT s.id,department_code,s.department_name,s.url ,s.status,s.created_by,"
+					+ "FORMAT(s.created_date, 'dd-MMM-yy  HH:mm') as created_date,FORMAT(s.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
+					+ "s.modified_by,p.user_name,p1.user_name as  modified_by from [department_master] s "
 					+ "left join user_profile p on s.created_by = p.user_id "
 					+ "left join user_profile p1 on s.modified_by = p1.user_id "
 					+ " where s.department_code is not null and s.department_code <> '' ";
@@ -351,6 +352,51 @@ public class DepartmentDao {
 			throw new Exception(e);
 		}
 		return objsList;
+	}
+
+	public boolean addDepartmentMaster(Department obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [department-master] (department_code,department_name,status,created_by,created_date) VALUES (:department_code,:department_name,:status,:craeted_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean updateDepartmentMaster(Department obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String updateQry = "UPDATE [department_master] set department_code= :department_code,department_name=:department_name,status= :status, modified_by= :modified_by,modified_date= getdate() "
+					+ " where id= :id ";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(updateQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
 	}
 
 

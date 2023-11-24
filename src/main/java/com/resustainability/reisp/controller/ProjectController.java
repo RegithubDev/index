@@ -48,6 +48,7 @@ import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.ProjectService;
 import com.resustainability.reisp.service.SBUService;
+import com.resustainability.reisp.service.UserService;
 @Controller
 public class ProjectController {
 
@@ -81,6 +82,9 @@ public class ProjectController {
 	@Value("${template.upload.formatError}")
 	public String uploadformatError;
 	
+	@Autowired  
+	UserService serviceU;
+	
 	@RequestMapping(value = "/project", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView project(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.project2);
@@ -88,6 +92,9 @@ public class ProjectController {
 		try {
 			List<SBU> objList = service.getCompaniesList(obj);
 			model.addObject("objList", objList);
+			
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 			
 			List<SBU> sbuList = service.getSbuList(obj);
 			model.addObject("sbuList", sbuList);

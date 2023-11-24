@@ -45,6 +45,7 @@ import com.resustainability.reisp.model.Project;
 import com.resustainability.reisp.model.ProjectLocation;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.LocationService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class LocationController {
@@ -56,6 +57,10 @@ public class LocationController {
 	
 	@Autowired
 	LocationService service;   
+	
+	
+	@Autowired  
+	UserService serviceU;
 	 
 	@Value("${common.error.message}") 
 	public String commonError;     
@@ -85,6 +90,9 @@ public class LocationController {
 		try {
 			List<ProjectLocation> objList = service.getProjectsList(obj);
 			model.addObject("objList", objList);
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

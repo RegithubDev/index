@@ -89,7 +89,9 @@ public class DepartmentController {
 		try {
 			List<Department> objList = service.getSBUList(obj);
 			model.addObject("objList", objList);
-
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -252,6 +254,61 @@ public class DepartmentController {
 		return model;
 	}
 
+	
+	@RequestMapping(value = "/add-department-master", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addDepartmentMaster(@ModelAttribute Department obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/department-action");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setCraeted_by(userId);
+			flag = service.addDepartmentMaster(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Department Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Department is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding Department is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-department-master", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateDepartmentMaster(@ModelAttribute Department obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/department-action");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setModified_by(userId);
+			flag = service.updateDepartmentMaster(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Department Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating Department is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Updating Department is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/update-department", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView updateDepartment(@ModelAttribute Department obj,RedirectAttributes attributes,HttpSession session) {
 		boolean flag = false;

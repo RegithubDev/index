@@ -64,6 +64,9 @@ public class HomeController {
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -76,6 +79,9 @@ public class HomeController {
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -87,6 +93,9 @@ public class HomeController {
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -98,6 +107,8 @@ public class HomeController {
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -109,6 +120,8 @@ public class HomeController {
 	try {
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -120,6 +133,8 @@ public class HomeController {
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -131,6 +146,8 @@ public class HomeController {
 	try {
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -142,6 +159,8 @@ public class HomeController {
 	try {
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -153,6 +172,8 @@ public class HomeController {
 	try {
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -164,6 +185,8 @@ public class HomeController {
 	try {
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -175,6 +198,8 @@ public class HomeController {
 	try {
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -187,6 +212,8 @@ public class HomeController {
 		try {
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 			  
 		} catch (Exception e) { 
 			e.printStackTrace();  
@@ -201,6 +228,8 @@ public class HomeController {
 		try { 
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -212,6 +241,9 @@ public class HomeController {
 		try { 
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -224,6 +256,8 @@ public class HomeController {
 		try { 
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -235,6 +269,8 @@ public class HomeController {
 		try { 
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -247,6 +283,8 @@ public class HomeController {
 		try { 
 			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -257,6 +295,8 @@ public class HomeController {
 	public ModelAndView departmentsMaster(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.departmentsMaster);
 		try { 
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 			  
 		} catch (Exception e) { 
 			e.printStackTrace();   
@@ -269,9 +309,11 @@ public class HomeController {
 	public ModelAndView settings(@ModelAttribute User ss, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.settings);
 		try { 
+			List <User> departmentsList = service.getDepartmentsList(null);
+			model.addObject("departmentsList", departmentsList);
+			  
 			List <User> settingList = service.getSettingsList(ss);
 			model.addObject("settingList", settingList);
-			  
 		} catch (Exception e) { 
 			e.printStackTrace();    
 		} 
@@ -283,7 +325,8 @@ public class HomeController {
 	public ModelAndView deps(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.deps);
 		try { 
-			  
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();    
 		} 
@@ -305,7 +348,8 @@ public class HomeController {
 	public ModelAndView reonesubcategory(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.reonesubcategory);
 		try { 
-			  
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -316,7 +360,8 @@ public class HomeController {
 
 		ModelAndView model = new ModelAndView(PageConstants.activedepartment);
 		try { 
-			  
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -377,8 +422,8 @@ public class HomeController {
 					 model.addObject("not_assigned", companiesList.get(0).getNot_assigned());
 				 }
 			}
-			//List <User> deptList = service.getDeptList(user);
-			//model.addObject("deptList", deptList);
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

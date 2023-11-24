@@ -47,6 +47,7 @@ import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.Department;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.CompanyService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class CompanyController {
@@ -81,11 +82,16 @@ public class CompanyController {
 	@Value("${template.upload.formatError}")
 	public String uploadformatError;
 	
+	@Autowired  
+	UserService serviceU;
+	
 	@RequestMapping(value = "/company", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView company2(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.company2);
 		try { 
-			  
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
 		} catch (Exception e) { 
 			e.printStackTrace();    
 		} 

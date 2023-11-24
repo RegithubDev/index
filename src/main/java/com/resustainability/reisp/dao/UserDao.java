@@ -1706,4 +1706,21 @@ public class UserDao {
 		return objsList;
 	}
 
+	public List<User> getCatagoryList(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+            String qry = "SELECT [department_code], [status], value as dm_category FROM [department_category] CROSS APPLY STRING_SPLIT([dm_category], ',') order by value asc;";
+        
+            objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;
+	}
+
 }

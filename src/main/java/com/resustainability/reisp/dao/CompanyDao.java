@@ -327,7 +327,7 @@ public class CompanyDao {
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [user_profile] up on c.created_by = up.user_id "
 					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
-					+ "where status is not null and status <> 'Inactive'  "; 
+					+ "where status is not null "; 
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 		} catch (Exception e) {
 			e.printStackTrace();
