@@ -327,6 +327,32 @@ public class DepartmentDao {
 		return objsList;
 	}
 
+	public List<Department> getDepartmentMasterList(Department obj) throws Exception {
+		List<Department> objsList = new ArrayList<Department>();
+		try {
+			String qry = "SELECT id,department_code,department_name,url,s.status,s.created_by,FORMAT(s.created_date, 'dd-MMM-yy  HH:mm') as created_date,FORMAT(s.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
+					+ "s.modified_by,s.department_name,p.user_name,p1.user_name as  modified_by from [department_master] s "
+					+ "left join user_profile p on s.created_by = p.user_id "
+					+ "left join user_profile p1 on s.modified_by = p1.user_id "
+					+ " where s.department_code is not null and s.department_code <> '' ";
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ?";
+				arrSize++;
+			}	
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<Department>(Department.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
 
 
 }

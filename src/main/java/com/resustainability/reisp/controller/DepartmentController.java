@@ -44,6 +44,7 @@ import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.Department;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.DepartmentService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class DepartmentController {
@@ -56,6 +57,9 @@ public class DepartmentController {
 
 	@Autowired
 	DepartmentService service;
+	
+	@Autowired
+	UserService serviceU;
 
 	@Value("${common.error.message}")
 	public String commonError;
@@ -91,7 +95,45 @@ public class DepartmentController {
 		}
 		return model;
 	}
+	
+	@RequestMapping(value = "/dep-content", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView depContent(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.depContent);
+		Department obj = null;
+		try {
+			List<Department> objList = service.getSBUList(obj);
+			model.addObject("objList", objList);
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/dcform", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView dcform(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.dcform);
+		try {
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	@RequestMapping(value = "/department-action", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView departmentAction(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.departmentAction);
+		try {
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
 
 	@RequestMapping(value = "/ajax/getDepartmentList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -110,7 +152,24 @@ public class DepartmentController {
 		return companiesList;
 	}
 
+	@RequestMapping(value = "/ajax/getDepartmentMasterList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Department> getDepartmentMasterList(@ModelAttribute Department obj,HttpSession session) {
+		List<Department> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.getDepartmentMasterList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentMasterList : " + e.getMessage());
+		}
+		return companiesList;
+	}
 
+	
 	@RequestMapping(value = "/ajax/getSBUsFilterListFromDepartment", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Department> getSBUsFilterList(@ModelAttribute Department obj,HttpSession session) {

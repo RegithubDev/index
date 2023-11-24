@@ -322,27 +322,7 @@ public class HomeController {
 		} 
 		return model; 
 	}
-	@RequestMapping(value = "/dep-content", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView depcontent(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.depcontent);
-		try { 
-			  
-		} catch (Exception e) { 
-			e.printStackTrace();   
-		} 
-		return model; 
-	}
-	@RequestMapping(value = "/dcform", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView dcform(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.dcform);
-		try {
-			List <User> departmentsList = service.getDepartmentsList(user);
-			model.addObject("departmentsList", departmentsList);
-		} catch (Exception e) { 
-			e.printStackTrace();  
-		} 
-		return model; 
-	}
+	
 	
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST, RequestMethod.GET})

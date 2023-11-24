@@ -45,4 +45,8 @@ public class DepartmentService {
 	public List<Department> checkUniqueIfForDept(Department obj) throws Exception {
 		return dao.checkUniqueIfForDept(obj);
 	}
+
+	public List<Department> getDepartmentMasterList(Department obj) throws Exception {
+		return dao.getDepartmentMasterList(obj);
+	}
 }

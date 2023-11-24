@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -2742,54 +2741,23 @@ z-index: 1000;
       <main
         class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
       >
-  <div class="mt-4 space-y-4 mb-4">
-                <ul class="flex flex-wrap items-center space-x-2">
-                  <li class="flex items-center space-x-2">
-                    <a href="/index/home">
-		                <img class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]" src="/index/resources/images/app-logo.svg" alt="logo">
-		              </a>
-                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </li>
-                  <li class="flex items-center space-x-2">
-                   <a href="/index/settings" class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-opacity="0.3" fill="#e21e26" d="M2 12.947v-1.771c0-1.047.85-1.913 1.899-1.913 1.81 0 2.549-1.288 1.64-2.868a1.919 1.919 0 0 1 .699-2.607l1.729-.996c.79-.474 1.81-.192 2.279.603l.11.192c.9 1.58 2.379 1.58 3.288 0l.11-.192c.47-.795 1.49-1.077 2.279-.603l1.73.996a1.92 1.92 0 0 1 .699 2.607c-.91 1.58-.17 2.868 1.639 2.868 1.04 0 1.899.856 1.899 1.912v1.772c0 1.047-.85 1.912-1.9 1.912-1.808 0-2.548 1.288-1.638 2.869.52.915.21 2.083-.7 2.606l-1.729.997c-.79.473-1.81.191-2.279-.604l-.11-.191c-.9-1.58-2.379-1.58-3.288 0l-.11.19c-.47.796-1.49 1.078-2.279.605l-1.73-.997a1.919 1.919 0 0 1-.699-2.606c.91-1.58.17-2.869-1.639-2.869A1.911 1.911 0 0 1 2 12.947Z"></path>
-                  <path fill="#e21e26" d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"></path>
-                </svg>
-              </a>
-                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </li>
-                   <li class="flex items-center space-x-2">
-                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/dep-content">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                      </svg>
-                      <span>Department Content</span>
-                    </a>
-                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </li>
-                  
-                      <li class="flex items-center space-x-2">
-                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/dcform">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                      </svg>
-                      <span>Department Content Form</span>
-                    </a>
-                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               
-                    </svg>
-                  </li> 
-                  
-                 
-                </ul>
-              </div>
+    <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+            Input File
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
+          </div>
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Forms</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Input File</li>
+          </ul>
+        </div>
         <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
              <h1 class="text-base font-medium text-slate-700 dark:text-navy-100">
@@ -2803,12 +2771,12 @@ z-index: 1000;
               
               <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
-                  <span>Company</span>
+                  <span>company</span>
                   <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
-             	<c:forEach var="obj" items="${companiesList}">
+             	<c:forEach var="obj" items="${objList}">
 					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
 				</c:forEach>
                   </select>
@@ -2817,28 +2785,15 @@ z-index: 1000;
                    <label class="block">
                   <span>SBU</span>
                   <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Select SBU</option>
-                    <c:forEach var="obj" items="${sbuList}">
-						<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
-					</c:forEach>
+                    <option>Corporate event</option>
+                    
                   </select>
                 </label>
                   <label class="block">
                   <span>Department</span>
                   <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Department event</option>
-                    <c:forEach var="obj" items="${departmentsList}">
-						<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
-					</c:forEach>
-                  </select>
-                </label>
-                 <label class="block">
-                  <span>Category <span class="text-sm text-error">*</span></span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Corporate event</option>
-                    <c:forEach var="obj" items="${reonecategoryList}">
-						<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
-					</c:forEach>
+                    
                   </select>
                 </label>
                 </div>
@@ -2856,23 +2811,69 @@ z-index: 1000;
                  <div class="mt-4 space-y-4">
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                 
                   <label class="block">
-                  <span>Sub Category <span class="text-sm text-error"> *</span></span>
+                  <span>Category</span>
                   <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Corporate event</option>
-                     
+                    
+                  </select>
+                </label>
+                  <label class="block">
+                  <span>Sub Category</span>
+                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option>Corporate event</option>
+                    
                   </select>
                 </label>
                 <label class="block">
-                      <span>Content Title <span class="text-sm text-error">*</span></span>
+                      <span>Content Title</span>
                       <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
                     </label>
                      <label class="block">
                       <span> Title Icon</span>
                       <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
                     </label>
-                     <label class="block">
+                </div>
+                
+                
+                
+                
+                <div class="flex justify-end space-x-2">
+                  
+                  
+                </div>
+              </div>
+              
+              
+             <div class="">
+                  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+					  <div class="filepond fp-grid fp-bordered [--fp-grid:4]">
+					    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept="image/*" multiple />
+					  </div>
+					
+					<div class="filepond fp-grid fp-bordered [--fp-grid:4]">
+					    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept=".doc, .docx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" multiple />
+					  </div>
+                </div>
+                <div class="flex justify-end space-x-2">
+                </div>
+              </div>
+              
+                 <div class="mt-4 space-y-4">
+                
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                 
+                 <div class="max-w-xl">
+              <p>
+                Content Description
+              </p>
+              <div class="mt-5">
+                <label class="block">
+                  <textarea rows="4" placeholder=" Enter Text" class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"></textarea>
+                </label>
+              </div>
+            </div>
+                 <label class="block">
                       <span> URL Reference</span>
                       <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
                     </label>
@@ -2888,47 +2889,11 @@ z-index: 1000;
                   
                 </div>
               </div>
-               <div class="">
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-				  <div class="filepond fp-grid fp-bordered [--fp-grid:4]">
-				   <label class="block pb-2">Image Files </label>
-				    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" multiple />
-				  </div>
-				
-				 <div class="filepond fp-grid fp-bordered [--fp-grid:4]">
-				 <label class="block pb-2">Document Files </label>
-				    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)"  id="documentFile" name="documentFile" accept=".doc, .docx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" multiple />
-				  </div>
-                </div>
-                <div class="flex justify-end space-x-2">
-                </div>
-              </div>
-           
-                 <div class="mt-4 space-y-4">
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-              <p>
-                Content Description
-              </p>
-              <div class="mt-5">
-                <label class="block">
-                  <textarea rows="4" placeholder=" Enter Text" class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"></textarea>
-                </label>
-              </div>
-                </div>
-             
-              </div>
-                 
-            
-              
-           <div class="flex justify-center space-x-1 gap-4 pt-4">
-              <button class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+           <div class="flex justify-center space-x-1 pt-4">
+              <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
              Submit
                 </button>
-               <button class="btn bg-error font-medium text-white hover:bg-error-focus focus:bg-error-focus active:bg-error-focus/90">
-                  Cancel
-                </button>
+               
               </div>
               
               
@@ -3142,3 +3107,4 @@ z-index: 1000;
       </script>
   </body>
 </html>
+
