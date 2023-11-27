@@ -1673,7 +1673,9 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
 		boolean flag = false ;
 		try {
-			String qry = "SELECT  id,department_code,department_name,url ,status FROM department_master where [status] <> 'Inactive' ";
+			String qry = "SELECT  id,department_code,department_name,url ,priority,status"
+					+ " FROM department_master where [status] <> 'Inactive' "
+					+ "and department_code is not null and department_code<> '' order by priority asc ";
 		
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			if(objsList.size() > 0) {

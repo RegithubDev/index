@@ -104,6 +104,10 @@ public class UserController {
 		ModelAndView model = new ModelAndView(PageConstants.user2);
 		User obj = null;
 		try {
+			
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
 			List<RoleMapping> projectsList = service4.getProjectsList(null);
 			model.addObject("projectsList", projectsList);
 			

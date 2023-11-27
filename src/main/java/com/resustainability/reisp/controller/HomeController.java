@@ -57,6 +57,38 @@ public class HomeController {
 	@Value("${Login.Form.Invalid}")
 	public String invalidUserName;
 
+	
+	@RequestMapping(value = "/subcategory_form", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView subcategory_form(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.subcategory_form);
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	@RequestMapping(value = "/category", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView category_form(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.category_form);
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+			List <User> catagoryList = service.getCatagoryList(user);
+            model.addObject("catagoryList", catagoryList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	
 
 	@RequestMapping(value = "/HR", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView hr(@ModelAttribute User user, HttpSession session) {

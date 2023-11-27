@@ -44,7 +44,9 @@ import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.RoleMapping;
 import com.resustainability.reisp.model.RoleMapping;
 import com.resustainability.reisp.model.User;
+import com.resustainability.reisp.service.IRMService;
 import com.resustainability.reisp.service.RoleMappingService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class RoleMappingController {
@@ -53,6 +55,11 @@ public class RoleMappingController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 	Logger logger = Logger.getLogger(RoleMappingController.class);
+	
+	
+
+	@Autowired  
+	UserService serviceU;
 	
 	@Autowired
 	RoleMappingService service;
@@ -83,6 +90,10 @@ public class RoleMappingController {
 		ModelAndView model = new ModelAndView(PageConstants.role_mapping2);
 		RoleMapping obj = null;
 		try { 
+			
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
 			List<RoleMapping> projectsList = service.getProjectsList(obj);
 			model.addObject("projectsList", projectsList);
 			

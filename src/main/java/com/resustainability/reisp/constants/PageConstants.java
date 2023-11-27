@@ -51,6 +51,8 @@ public class PageConstants {
 		public static final String scmPage = "SCM";
 		public static final String iwmPage = "IWM";
 		public static final String deps = "deps";
+		public static final String category_form = "category_form";
+		public static final String subcategory_form = "subcategory_form";
 		public static final String settings = "settings";
 		public static final String projectsPage = "Projects";
 		public static final String AdminPage = "Admin";
@@ -93,6 +95,7 @@ public class PageConstants {
 		public static final String test = "test";
 		public static final String bbForm = "bbForm";
 		public static final String helpCenter = "helpCenter";
+		
 
 
 

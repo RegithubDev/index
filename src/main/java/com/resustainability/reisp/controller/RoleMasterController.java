@@ -45,6 +45,7 @@ import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.RoleMaster;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.RoleMasterService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class RoleMasterController {
@@ -57,6 +58,10 @@ public class RoleMasterController {
 	
 	@Autowired
 	RoleMasterService service;
+	
+	@Autowired  
+	UserService serviceU;
+
 	
 	@Value("${common.error.message}")
 	public String commonError;
@@ -84,6 +89,8 @@ public class RoleMasterController {
 		ModelAndView model = new ModelAndView(PageConstants.role_master2);
 		RoleMaster obj = null;
 		try {
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

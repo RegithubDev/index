@@ -55,6 +55,7 @@ public class DepartmentController {
     }
 	Logger logger = Logger.getLogger(DepartmentController.class);
 
+	
 	@Autowired
 	DepartmentService service;
 	
@@ -105,7 +106,9 @@ public class DepartmentController {
 		try {
 			List<Department> objList = service.getSBUList(obj);
 			model.addObject("objList", objList);
-
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
