@@ -2095,10 +2095,10 @@ button.disabled {
                        <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
                       <div x-data="{showModal:false}">
                 
-                    <button @click="showModal = true" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    <a href="<%=request.getContextPath()%>/category"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
                     dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </button>
+                </a>
                   <template x-teleport="#x-teleport-target" data-teleport-template="true">
                     <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
                       <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
@@ -2247,7 +2247,6 @@ button.disabled {
               <div class="mt-4 space-y-4">
                <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
                
-                 <input type="hidden" id="id" name="id" />
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block  text-left">
                     <span>Department Code </span><span class="required"> *</span>
@@ -2353,7 +2352,8 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
     
-	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
+	 <form action="<%=request.getContextPath()%>/get-dm" name="updatereonecategory" id="updatereonecategory" method="post">	
+		<input id="id" name="id" type="hidden" />
 	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
@@ -2463,13 +2463,13 @@ button.disabled {
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
 		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.id+"'";
-		                    var actions = '<a href="javascript:void(0);" @click="showModal = true"  onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
+		                    var actions = '<a href="javascript:void(0);"   onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
 		                    key++;
 		                   	var rowArray = [];    	                 
 		            		
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push($.trim(val.department_code));
+		                   	rowArray.push($.trim('['+val.department_code) +'] - '+$.trim(val.department_name));
 		                   	var status = $.trim(val.status);
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
@@ -2495,34 +2495,9 @@ button.disabled {
 	      });
 	    
 	    function getCompany(department_code,status,company_name,id){
-	    	   $("#updateModal").click();
-	    	   $(".ts-control:eq(1) div").remove();
-	    	   $('#company_name_edit').val('');
-				 $('#department_code_edit').val('');
-				 $('select[name^="status"] option:selected').removeAttr("selected");
-				 $("#x-teleport-target1").css("display","none");
-				// $("#x-teleport-target1").css("display","block");
-			      $('#id').val($.trim(id));
-			     
-			    
-			      var type = company_name.split(',');
-		    	  jQuery.each(type, function(index, item) {
-		    		  $(".ts-control:eq(1)").append('<div data-value="'+$.trim(item)+'" id="item'+index+'" class="item" data-ts-item="">'+$.trim(item)+'<a href="javascript:void(0)" onclick="removeItem('+index+')" class="remove" tabindex="-1" title="Remove">×</a></div>')
-		    		//  $('select').select2();
-		    		});
-			     // $('#updateCompany #company_name_edit').val($.trim(company_name)).focus();
-			      $('#updateCompany #department_code_edit').val($.trim(department_code)).focus();
-			      if(status != null && status != ''  && status != "undefined"){
-			    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-			    	 // $('select').select2();
-			      }
-			      var textArray = [];
-			      $('.ts-control:eq(1)').children('div').each(function() {
-			    	    textArray.push($(this).text().replace("×", ""));
-			    	});
-			    	var commaSeparatedText = textArray.join(', ');
-			    	$('#company_name_edit').val(commaSeparatedText);
-			     
+	    	
+		 $('#id').val($.trim(id));
+		 $("#updatereonecategory ").submit();
 	   }
 	    
 	    function removeItem(index){

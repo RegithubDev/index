@@ -45,6 +45,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.resustainability.reisp.common.PageConstants;
 import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.Department;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.CompanyService;
 import com.resustainability.reisp.service.UserService;
@@ -153,6 +154,21 @@ public class CompanyController {
 			}
 		} catch (Exception e) {
 			attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/get-dm", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView getDM(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.category_form);
+		try {
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+			User CDetails = service.getCategoryDocumentDEtails(user);
+			model.addObject("CDetails", CDetails);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return model;

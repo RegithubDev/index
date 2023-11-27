@@ -1712,7 +1712,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT [department_code], [status], value as dm_category FROM [department_category] CROSS APPLY STRING_SPLIT([dm_category], ',') order by value asc;";
+            String qry = "SELECT [department_code], [status], dm_category FROM [department_category] where status <> 'Inactive' ";
         
             objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {

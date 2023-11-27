@@ -7,9 +7,11 @@ public class User {
 	private String user_id,user_name,user_role,user_session_id,otp_code,department_name,reporting_user_name,minutes,assigned_to_sbu,sbu_code,project,sbu,gToken,reporting_to,reporting_to_id,profileImg,current_project,id,	last_login_date_time,totalCount,password,email_id,mobile_number,user_name_new,designation_new,email_new,contact_number,totalUers,count,
 	company_code,	project_code,department_code,sub_code,action,	project_name,priority,url,module,	status,	created_date,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
-	base_sbu,base_project,base_role,message, description,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
+	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,description,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
 	module_name,module_url,timePeriod,dm_category;
 	int session_count,time_period;
+	
+	private List<User> categoryList;
 	
 	public String getDescription() {
 		return description;
@@ -26,8 +28,6 @@ public class User {
 	public void setCategoryList(List<User> categoryList) {
 		this.categoryList = categoryList;
 	}
-
-	private List<User> categoryList;
 
 	public String getDm_category() {
 		return dm_category;

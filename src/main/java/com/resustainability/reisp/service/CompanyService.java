@@ -54,4 +54,8 @@ public class CompanyService {
 	public boolean updatereonecategory(User obj) throws Exception {
 		return dao.updatereonecategory(obj);
 	}
+
+	public User getCategoryDocumentDEtails(User user) throws Exception {
+		return dao.getCategoryDocumentDEtails(user);
+	}
 }

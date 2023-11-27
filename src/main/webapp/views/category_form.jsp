@@ -14,7 +14,7 @@
 
     <title>ReONE - Re Sustainability ONE</title>
     <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
-
+	<link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <!-- CSS Assets -->
     <link rel="stylesheet" href="/index/resources/css/app.css" />
 
@@ -33,6 +33,21 @@
       rel="stylesheet"
     />
     <style>
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+	     left: -25% !important;
+	    margin-top: 1p% !important;
+	}
+	.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
+    background-size: 18px 14px,18px 14px !important;
+    background-repeat: no-repeat !important;
+    height: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    left: -8px !important;
+    border-style: none !important;
+}
     .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
@@ -2406,124 +2421,173 @@ z-index: 1000;
         </div>
         <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
-             <h1 class="text-base font-medium text-slate-700 dark:text-navy-100">
-                  ReONE Sub Category
-              </h1> 
-              
-              
-              
-              
-              
-              
-              <div class="mt-4 space-y-4">
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-                  <label class="block">
-                  <span>Department</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+		<div  class="alert flex flex-row items-center justify-between  rounded-lg  px-4 py-3 text-center text-slate-800 dark:border-navy-450 dark:text-navy-50 sm:flex-row sm:space-y-0 sm:px-5">
+               <a href="<%=request.getContextPath()%>/reone-category" class="btn bg-error font-medium text-white hover:bg-error-focus focus:bg-error-focus active:bg-error-focus/90">
                     
-                  </select>
-                </label>
-              
-                 
+                    <span><i class="fa-solid fa-arrow-left"></i> Back</span>
+                  </a>
+                  <a onclick="addCategory();" class="btn bg-primary font-medium text-white hover:bg-primary-focus hover:shadow-lg hover:shadow-primary/50 focus:bg-primary-focus focus:shadow-lg focus:shadow-primary/50 active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:hover:shadow-accent/50 dark:focus:bg-accent-focus dark:focus:shadow-accent/50 dark:active:bg-accent/90">
+                    
+                    <span>Save <i class="fas fa-save"></i></span>
+                  </a>
                 </div>
                 
+                  <c:if test="${empty CDetails.department_code}">
+                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
+                  </c:if>
+                   <c:if test="${not empty CDetails.department_code}">
+                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
+                  </c:if>
+			<div class="grid place-items-center">
+		          <div class="card  w-full max-w-xl p-4 sm:p-5" x-data="pages.initCreditCard">
+		            
+		            <div class="grid place-items-center">
+		            <c:if test="${empty CDetails.department_code}">
+		            
+		              <label class="block">
+	                  <span>Department</span>
+	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
+	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
+	                  name="department_code" id="department_code">
+	                    <option>Select Department</option>
+	                     <c:forEach var="obj" items="${departmentsList}">
+	                     	<option value="${obj.department_code }" <c:if test="${CDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
+						  </c:forEach>
+	                  </select>
+	                </label>
+		            
+		            </c:if>
+		            
+		            <c:if test="${not empty CDetails.department_code}">
+		            <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+	                  ${CDetails.department_code} - ${CDetails.department_name}
+	                </button>
+		            
+		            <input name="department_code"  value="${CDetails.department_code}"  type="hidden" />
+		            </c:if>
+		           
+		              
+		            </div>
+		            <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
+		             <div class="space-y-4" id="addNewRow">
+		              <c:choose>
+					         <c:when test ="${fn:length(CDetails.categoryList) gt 0}" >
+					             <c:forEach var="obj" items="${CDetails.categoryList}" varStatus="index">
+					             <div id="row${index.count }">
+					                
+		           					 <input name="id"  value="${obj.id}"  type="hidden" />
+					              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
+			                  <label class="block sm:col-span-8">
+			                    <span>Category Title</span>
+			                    <div class="relative mt-1.5 flex">
+			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
+								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
+								                placeholder="Category Title..." type="text"  id="dm_category${index.count }" name="dm_category" value="${obj.dm_category}">
+			                     
+			                    </div>
+			                  </label>
+			                  <label class="block sm:col-span-4">
+			                    <span>Status</span>
+			                    <div class="relative mt-1.5 flex">
+			                      <select
+					                   id="select2-status_add-container"
+					              		name="status"
+					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+					                    <option value="Active" <c:if test="${obj.status eq 'Active'}">selected</c:if>>Active</option>
+					                    <option value="Inactive" <c:if test="${obj.status eq 'Inactive'}">selected</c:if>>Inactive</option>
+					                  </select>
+			                    </div>
+			                  </label>
+			                </div>
+			                
+					              <label class="block mt-2">
+					                <span>Content Description</span>
+					                <textarea rows="4" placeholder="Content Description..." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
+					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
+					                dark:focus:border-accent" id="description${index.count }" name="description">${obj.description}</textarea>
+					              </label>
+					               <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
+					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+					                  </svg>
+					                  
+					                </a>
+					             </div>
+					              <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
+								</c:forEach>
+					         </c:when>
+					         <c:otherwise>
+					         <div id="row0">
+				               <input name="id"  value="new"  type="hidden" />
+				              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
+			                  <label class="block sm:col-span-8">
+			                    <span>Category Title</span>
+			                    <div class="relative mt-1.5 flex">
+			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
+								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
+								                placeholder="Category Title..." type="text" id="dm_category0" name="dm_category">
+			                     
+			                    </div>
+			                  </label>
+			                  <label class="block sm:col-span-4">
+			                    <span>Status</span>
+			                    <div class="relative mt-1.5 flex">
+			                      <select
+					                   id="select2-status_add-container"
+					              		name="status"
+					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+					                    <option value="Active">Active</option>
+					                    <option value="Inactive">Inactive</option>
+					                  </select>
+			                    </div>
+			                  </label>
+			                </div>
                 
                 
-                
-                <div class="flex justify-end space-x-2">
-                  
-                  
-                </div>
-              </div>
-           
-             
-                 <div class="mt-4 space-y-4">
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-                 
-                <label class="block">
-                      <span>Content Title</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
-                    </label>
-                     
-                </div>
-                
-                
-                
-                
-                <div class="flex justify-end space-x-2">
-                  
-                  
-                </div>
-              </div>
-              
-              
-           
-              
-                 <div class="mt-4 space-y-4">
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-                 
-                 <div class="max-w-xl">
-              <p>
-                Content Description
-              </p>
-              <div class="mt-5">
-                <label class="block">
-                  <textarea rows="4" placeholder=" Enter Text" class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"></textarea>
-                </label>
-              </div>
-            </div>
-              
-                 
-                </div>
-                
-                
-                
-                
-                <div class="flex justify-end space-x-2">
-                  
-                  
-                </div>
-              </div>
-              
-               
-              
-           <div class="flex justify-center space-x-1 pt-4">
-              <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
-             Add
-                </button>
-               
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-            </div>
-            
-            
+				              <label class="block mt-2">
+				                <span>Content Description</span>
+				                <textarea rows="4" placeholder="Content Description...." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 
+				                bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
+				                dark:hover:border-navy-400 dark:focus:border-accent" id="description0" name="description"></textarea>
+				              </label>
+				               <a  onclick="removeRow('0');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
+				                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+				                  </svg>
+				                  
+				                </a>
+				                </div>
+				                 <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
+					         </c:otherwise>
+					      </c:choose>
+					      
+		       
+		             
+		            </div>
+		             <div class="flex justify-center space-x-2 pt-4">
+				          <a  onclick="addNewRow();" class="btn space-x-2 bg-warning font-medium text-white shadow-lg shadow-warning/50 hover:bg-warning-focus focus:bg-warning-focus active:bg-warning-focus/90">
+		                  <span>Add New Row</span>
+		                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
+		                  </svg>
+		                </a>
+		              </div>
+		          </div>
+		        </div>            
+            </form>
             
           </div>
-        
-        
+          
+           <c:choose>
+		         <c:when test ="${fn:length(CDetails.categoryList) gt 0}" >
+		            	<input id="rowCount" type="hidden" value="${fn:length(CDetails.categoryList)}" />
+		         </c:when>
+		         <c:otherwise>
+		        		<input id="rowCount" type="hidden" value="${fn:length(CDetails.categoryList)}" />
+		         </c:otherwise>
+		      </c:choose>
+		      
         </main>
-   
         </div>
 
 
@@ -2579,9 +2643,11 @@ z-index: 1000;
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+	  <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $('select').select2();
+      $('.select2').select2();
       $(document).ready(function() {
 
 
@@ -2705,6 +2771,35 @@ z-index: 1000;
          });
        } */
    
+       function addNewRow(){
+    	   var count = $('#rowCount').val();
+    	   var rNo = Number(count)+1;
+    	   var html = '<div id="row'+rNo+'"> <input name="id"  value="new"  type="hidden" /><label class="block"><span>Category Title</span><input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Category Title..." type="text" id="dm_category'+rNo+'" name="dm_category"></label>'
+               
+               +'<label class="block mt-2"><span>Content Description</span>' 
+               +'<textarea rows="4" placeholder="Content Description..." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 '
+               +'bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450' 
+               +'dark:hover:border-navy-400 dark:focus:border-accent" id="description'+rNo+'" name="description"></textarea></label>'
+               +'<a onclick="removeRow('+rNo+');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">'
+           +'<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">'
+             +' <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>'
+           +'</svg>'
+           +'</a></div> <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>';
+           
+    	   $('#addNewRow').append(html);
+			 $("#rowCount").val(rNo);
+           }
+     
+     
+       function removeRow(rowNo){
+			$("#row"+rowNo).remove();
+		}
+       function addCategory(){
+	    	//if(validator.form()){ // validation perform
+	        	document.getElementById("addCategoryForm").submit();	
+	    	//}
+	    }
+       
       </script>
   </body>
 </html>

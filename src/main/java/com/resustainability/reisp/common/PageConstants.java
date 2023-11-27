@@ -51,6 +51,8 @@ public class PageConstants {
 		public static final String scmPage = "SCM";
 		public static final String iwmPage = "IWM";
 		public static final String deps = "deps";
+		public static final String category_form = "category_form";
+		public static final String subcategory_form = "subcategory_form";
 		public static final String settings = "settings";
 		public static final String projectsPage = "Projects";
 		public static final String AdminPage = "Admin";
@@ -63,8 +65,12 @@ public class PageConstants {
 		public static final String contracts = "contracts";
 		public static final String comunication = "communication";
 		public static final String dcform = "dcform";	
+		public static final String departmentAction = "departmentAction";	
+		
 		public static final String project2 = "project2";
 		public static final String department2 = "department2";	
+		public static final String depContent = "depContent";	
+		
 		public static final String location2 = "location2";	
 		public static final String role_master2 = "role_master2";	
 		public static final String role_mapping2 = "role_mapping2";
@@ -89,6 +95,7 @@ public class PageConstants {
 		public static final String test = "test";
 		public static final String bbForm = "bbForm";
 		public static final String helpCenter = "helpCenter";
+		
 
 
 

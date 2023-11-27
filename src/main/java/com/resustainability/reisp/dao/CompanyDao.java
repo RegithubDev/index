@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
@@ -25,6 +28,7 @@ import com.resustainability.reisp.common.DBConnectionHandler;
 import com.resustainability.reisp.common.EncryptDecrypt;
 import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.Department;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.User;
 
 @Repository
@@ -321,19 +325,26 @@ public class CompanyDao {
 
 	public List<User> getreonecategory(User obj) throws Exception {
 		List<User> objsList = new ArrayList<User>();
+		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
+					+ " left join [department_master] dm on c.department_code = dm.department_code "
 					+ " left join [user_profile] up on c.created_by = up.user_id "
 					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
-					+ "where status is not null "; 
+					+ "where c.status is not null "; 
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+			
+			Set<String> nameSet = new HashSet<>();
+			employeesDistinctByName = objsList.stream()
+			            .filter(e -> nameSet.add(e.getDepartment_code()))
+			            .collect(Collectors.toList());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return objsList;
+		return employeesDistinctByName;
 	}
 
 	public boolean addreonecategory(User obj) throws Exception {
@@ -342,11 +353,24 @@ public class CompanyDao {
 		TransactionDefinition def = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
-			obj.setStatus("Active");
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [department_category] (department_code,dm_category,status,created_by,created_date) VALUES (:department_code,:dm_category,:status,:created_by,getdate())";
-			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
-		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			
+			String insertQry = "INSERT INTO [department_category] (department_code,description,dm_category,status,created_by,created_date) "
+					+ "VALUES "
+					+ "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
+			String [] categorys = obj.getDm_category().split(",");
+			String [] description = obj.getDescription().split(",");
+			String [] statuss = obj.getStatus().split(",");
+			int i = 0;
+			for (String set : categorys) {
+				obj.setDm_category(categorys[i]);
+				obj.setDescription(statuss[i]);
+				obj.setStatus(description[i]);
+				BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+			    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			    i++;
+			}
+			
 			if(count > 0) {
 				flag = true;
 			}
@@ -367,9 +391,36 @@ public class CompanyDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "UPDATE [department_category] SET dm_category = :dm_category, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE department_code = :department_code";
-			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
-		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			
+
+			
+			String insertQry = "INSERT INTO [department_category] (department_code,description,dm_category,status,created_by,created_date) "
+					+ "VALUES "
+					+ "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
+			
+			String updateQry = "UPDATE [department_category] SET dm_category = :dm_category, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
+			String [] categorys = obj.getDm_category().split(",");
+			String [] description = obj.getDescription().split(",");
+			String [] statuss = obj.getStatus().split(",");
+			String [] ids = obj.getId().split(",");
+			int i = 0;
+			for (String set : categorys) {
+				obj.setDm_category(categorys[i]);
+				obj.setDescription(description[i]);
+				obj.setStatus(statuss[i]);
+				obj.setId(ids[i]);
+				
+				if(ids[i].equalsIgnoreCase("New")) {
+					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+				    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+				}else {
+					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+				    count = namedParamJdbcTemplate.update(updateQry, paramSource);
+				}
+				
+				i++;
+			}
+			
 			if(count > 0) {
 				flag = true;
 			}
@@ -380,6 +431,52 @@ public class CompanyDao {
 			throw new Exception(e);
 		}
 		return flag;
+	}
+
+	public User getCategoryDocumentDEtails(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		List<User> employeesDistinctByName = new ArrayList<User>();
+		User obj = null;
+		try {
+			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
+					+ "up1.user_name as  modified_by FROM [department_category] c "
+					+ " left join [department_master] dm on c.department_code = dm.department_code "
+					+ " left join [user_profile] up on c.created_by = up.user_id "
+					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
+					+ "where c.status is not null "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
+				qry = qry + " and c.id = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by dm_category desc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
+				pValues[i++] = user.getId();
+			}
+			obj = (User)jdbcTemplate.queryForObject(qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				String qryDetails =  "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.description,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+						+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
+						+ "up1.user_name as  modified_by FROM [department_category] c "
+						+ " left join [department_master] dm on c.department_code = dm.department_code "
+						+ " left join [user_profile] up on c.created_by = up.user_id "
+						+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
+						+ "where c.status is not null and c.department_code = ? " 
+						+ "order by dm_category asc ";
+				
+				objsList = jdbcTemplate.query(qryDetails, new Object[] {obj.getDepartment_code()}, new BeanPropertyRowMapper<User>(User.class));
+				obj.setCategoryList(objsList);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return obj;
 	}
 	
 
