@@ -11,7 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-<title>ReONE - Re Sustainability ONE</title>
+<title>ReOne - Re Sustainability ONE</title>
 <link rel="icon" type="image/png"
 	href="/index/resources/images/favicon.svg" />
 

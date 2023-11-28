@@ -12,7 +12,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
 
-    <title>ReONE - Re Sustainability ONE</title>
+    <title>ReOne - Re Sustainability ONE</title>
     <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
 
     <!-- CSS Assets -->
@@ -2904,7 +2904,7 @@ z-index: 1000;
                  <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
                   
                   <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    ReONE Category
+                    ReOne Category
                   </div>
                   <div class="flex justify-between">
                     <div class="flex space-x-2">
@@ -2923,7 +2923,7 @@ z-index: 1000;
                     <div class="card swiper-slide w-50 shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
                   
                   <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                    ReONE Sub Category
+                    ReOne Sub Category
                   </div>
                   <div class="flex justify-between">
                     <div class="flex space-x-2">

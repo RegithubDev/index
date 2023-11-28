@@ -12,7 +12,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
 
-    <title>ReONE - Re Sustainability ONE</title>
+    <title>ReOne - Re Sustainability ONE</title>
     <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
 	<link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <!-- CSS Assets -->
@@ -2404,7 +2404,7 @@ z-index: 1000;
       >
     <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-             ReONE  Category
+             ReOne  Category
           </h2>
           <div class="hidden h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
@@ -2416,7 +2416,7 @@ z-index: 1000;
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li>  ReONE  Category Form</li>
+            <li>  ReOne  Category Form</li>
           </ul>
         </div>
         <div class="col-span-12 sm:col-span-8">
@@ -2774,8 +2774,18 @@ z-index: 1000;
        function addNewRow(){
     	   var count = $('#rowCount').val();
     	   var rNo = Number(count)+1;
-    	   var html = '<div id="row'+rNo+'"> <input name="id"  value="new"  type="hidden" /><label class="block"><span>Category Title</span><input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Category Title..." type="text" id="dm_category'+rNo+'" name="dm_category"></label>'
-               
+    	   var html = '<div id="row'+rNo+'"> <input name="id"  value="new"  type="hidden" />'
+    	   
+    	   
+    	   +'<div class="grid grid-cols-1 gap-4 sm:grid-cols-12">'
+    	   +'<label class="block sm:col-span-8"><span>Category Title</span><div class="relative mt-1.5 flex">'
+    	   +'<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" '
+    	   +'placeholder="Category Title..." type="text" id="dm_category0" name="dm_category"></div></label>'
+    	   +'<label class="block sm:col-span-4"> <span>Status</span><div class="relative mt-1.5 flex">'
+    	   +'<select id="select2-status_add-container" name="status" class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">'
+    	   +'<option value="Active">Active</option>'
+    	   +'<option value="Inactive">Inactive</option>'
+    	   +'</select> </div> </label></div>'
                +'<label class="block mt-2"><span>Content Description</span>' 
                +'<textarea rows="4" placeholder="Content Description..." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 '
                +'bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450' 

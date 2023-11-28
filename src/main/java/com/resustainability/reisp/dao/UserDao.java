@@ -1695,7 +1695,7 @@ public class UserDao {
 			String qry = "SELECT dm.department_code,department_name "
 					+ "FROM department_master dm "
 					+ "LEFT JOIN department_category dc ON dm.department_code = dc.department_code "
-					+ "WHERE dc.department_code IS NULL; ";
+					+ "WHERE dc.department_code IS NULL and dm.status <> 'Inactive'; ";
 		
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			if(objsList.size() > 0) {

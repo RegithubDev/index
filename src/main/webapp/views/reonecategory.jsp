@@ -12,7 +12,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
 
-    <title>ReONE - Re Sustainability ONE</title>
+    <title>ReOne - Re Sustainability ONE</title>
     <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
 
     <!-- CSS Assets -->
@@ -2044,7 +2044,7 @@ button.disabled {
       <div class="p-4 sm:p-5">
       <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            ReONE Category
+            ReOne Category
           </h2>
           <div class="hidden h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
@@ -2056,7 +2056,7 @@ button.disabled {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li>ReONE Category</li>
+            <li>ReOne Category</li>
           </ul>
         </div>
                 
@@ -2107,7 +2107,7 @@ button.disabled {
             <div class="card p-4 sm:p-5">
              <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Add ReONE Category
+                Add ReOne Category
               </p>
               <div class="mt-4 space-y-4">
              
@@ -2242,7 +2242,7 @@ button.disabled {
                        <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                update ReONE Category
+                update ReOne Category
               </p>
               <div class="mt-4 space-y-4">
                <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >

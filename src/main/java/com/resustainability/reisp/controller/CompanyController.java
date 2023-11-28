@@ -163,7 +163,7 @@ public class CompanyController {
 	public ModelAndView getDM(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.category_form);
 		try {
-			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			List <User> departmentsList = serviceU.getDepartmentsListForCategory(user);
 			model.addObject("departmentsList", departmentsList);
 			
 			User CDetails = service.getCategoryDocumentDEtails(user);

@@ -77,7 +77,7 @@ public class HomeController {
 	public ModelAndView category_form(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.category_form);
 		try {
-			List <User> departmentsList = service.getDepartmentsList(user);
+			List <User> departmentsList = service.getDepartmentsListForCategory(user);
 			model.addObject("departmentsList", departmentsList);
 			
 			List <User> catagoryList = service.getCatagoryList(user);
