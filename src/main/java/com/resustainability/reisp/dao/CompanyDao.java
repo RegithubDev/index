@@ -364,8 +364,8 @@ public class CompanyDao {
 			int i = 0;
 			for (String set : categorys) {
 				obj.setDm_category(categorys[i]);
-				obj.setDescription(statuss[i]);
-				obj.setStatus(description[i]);
+				obj.setDescription(description[i]);
+				obj.setStatus(statuss[i]);
 				BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 			    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			    i++;

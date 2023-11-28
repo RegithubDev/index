@@ -2197,9 +2197,9 @@ button.disabled {
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Department 
                       </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                      <!-- <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
-                      </th>
+                      </th> -->
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Created Date
                       </th>
@@ -2439,7 +2439,7 @@ button.disabled {
 					},
 	           columnDefs: [
 	            	{
-	                    targets: [0, 1, 2, 3, 4, 6, 7],
+	                    targets: [0, 1, 2, 3, 4, 5,6],
 	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
 	                  
 	                }
@@ -2470,13 +2470,13 @@ button.disabled {
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                   	rowArray.push($.trim('['+val.department_code) +'] - '+$.trim(val.department_name));
-		                   	var status = $.trim(val.status);
+		                   /* 	var status = $.trim(val.status);
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
 	                		} else {
 	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
 	                		}
-		                   	rowArray.push(status);
+		                   	rowArray.push(status); */
 		                	rowArray.push($.trim(val.created_date));  
 		                   	rowArray.push($.trim(val.created_by));
 		                   	rowArray.push($.trim(val.modified_date));
