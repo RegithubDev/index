@@ -2389,19 +2389,19 @@ z-index: 1000;
       >
     <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            Input File
-          </h2>
+            Sub Category
+          </h2> 
           <div class="hidden h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
           </div>
           <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
             <li class="flex items-center space-x-2">
-              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="#">Forms</a>
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"  href="<%=request.getContextPath() %>/settings">Masters</a>
               <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li>Input File</li>
+            <li> Sub Category Form</li>
           </ul>
         </div>
         <div class="col-span-12 sm:col-span-8">
@@ -2417,9 +2417,9 @@ z-index: 1000;
               
               <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
-                  <span>company</span>
+                  <span>Department</span>
                   <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
              	<c:forEach var="obj" items="${objList}">
@@ -2428,15 +2428,9 @@ z-index: 1000;
                   </select>
                 </label>
               
-                   <label class="block">
-                  <span>SBU</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
-                    
-                  </select>
-                </label>
+                  
                   <label class="block">
-                  <span>Department</span>
+                  <span>Category</span>
                   <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Corporate event</option>
                     
@@ -2456,33 +2450,19 @@ z-index: 1000;
              
                  <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                  <label class="block">
-                  <span>Category</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
-                    
-                  </select>
-                </label>
-                  <label class="block">
-                  <span>Sub Category</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
-                    
-                  </select>
-                </label>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+                  
                 <label class="block">
-                      <span>Content Title</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
+                      <span>Title</span>
+                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="title" type="text">
                     </label>
-                     <label class="block">
-                      <span> Title Icon</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
-                    </label>
+                     
                 </div>
                 
                 
                 
+                
+           
                 
                 <div class="flex justify-end space-x-2">
                   
@@ -2491,27 +2471,15 @@ z-index: 1000;
               </div>
               
               
-             <div class="">
-                  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-					  <div class="filepond fp-grid fp-bordered [--fp-grid:4]">
-					    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept="image/*" multiple />
-					  </div>
-					
-					<div class="filepond fp-grid fp-bordered [--fp-grid:4]">
-					    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept=".doc, .docx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" multiple />
-					  </div>
-                </div>
-                <div class="flex justify-end space-x-2">
-                </div>
-              </div>
+           
               
                  <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
                  
                  <div class="max-w-xl">
               <p>
-                Content Description
+                Description
               </p>
               <div class="mt-5">
                 <label class="block">
@@ -2519,11 +2487,7 @@ z-index: 1000;
                 </label>
               </div>
             </div>
-                 <label class="block">
-                      <span> URL Reference</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
-                    </label>
-                 
+               
                  
                 </div>
                 
@@ -2535,6 +2499,18 @@ z-index: 1000;
                   
                 </div>
               </div>
+               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+					  <div class="filepond fp-grid fp-bordered [--fp-grid:4]">
+					    <div class="filepond--root filepond--hopper" data-style-button-remove-item-position="left" data-style-button-process-item-position="right" data-style-load-indicator-position="right" data-style-progress-indicator-position="right" data-style-button-remove-item-align="false" style="height: 76px;"><input class="filepond--browser" type="file" id="filepond--browser-3mocr9edl" name="filepond" aria-controls="filepond--assistant-3mocr9edl" aria-labelledby="filepond--drop-label-3mocr9edl" multiple=""><a class="filepond--credits" aria-hidden="true" href="https://pqina.nl/" target="_blank" rel="noopener noreferrer" style="transform: translateY(68px);">Powered by PQINA</a><div class="filepond--drop-label" style="transform: translate3d(0px, 0px, 0px); opacity: 1;"><label for="filepond--browser-3mocr9edl" id="filepond--drop-label-3mocr9edl" aria-hidden="true">Upload              
+					    <span class="filepond--label-action" tabindex="0">Browse</span>
+					    </label></div><div class="filepond--list-scroller" style="transform: translate3d(0px, 60px, 0px);"><ul class="filepond--list" role="list"></ul></div><div class="filepond--panel filepond--panel-root" data-scalable="true"><div class="filepond--panel-top filepond--panel-root"></div><div class="filepond--panel-center filepond--panel-root" style="transform: translate3d(0px, 8px, 0px) scale3d(1, 0.6, 1);"></div><div class="filepond--panel-bottom filepond--panel-root" style="transform: translate3d(0px, 68px, 0px);"></div></div><span class="filepond--assistant" id="filepond--assistant-3mocr9edl" role="status" aria-live="polite" aria-relevant="additions"></span><div class="filepond--drip"></div><fieldset class="filepond--data"></fieldset></div>
+					  </div>
+					
+			 <a href="/index/category" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="height: 3rem;width: 7rem;margin-top: 17px;color: white !important;/* background-color: orange !important; */">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </a>
+                </div>
            <div class="flex justify-center space-x-1 pt-4">
               <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
              Submit

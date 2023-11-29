@@ -478,6 +478,30 @@ public class CompanyDao {
 		}
 		return obj;
 	}
+
+	public List<User> getreoneSubcategory(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		List<User> employeesDistinctByName = new ArrayList<User>();
+		try {
+			String qry = "SELECT  c.id,c.department_code,dm.department_name,c.category,c.sub_category_title,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
+					+ "up1.user_name as  modified_by FROM [sub_category] c "
+					+ " left join [department_master] dm on c.department_code = dm.department_code "
+					+ " left join [user_profile] up on c.created_by = up.user_id "
+					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
+					+ "where c.status is not null "; 
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+			
+			Set<String> nameSet = new HashSet<>();
+			employeesDistinctByName = objsList.stream()
+			            .filter(e -> nameSet.add(e.getDepartment_code()))
+			            .collect(Collectors.toList());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return employeesDistinctByName;
+	}
 	
 
 }

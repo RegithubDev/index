@@ -2181,7 +2181,7 @@ button.disabled {
       <div class="p-4 sm:p-5">
          <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            Department
+            Sub Category
           </h2>
           <div class="hidden h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
@@ -2193,7 +2193,7 @@ button.disabled {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li>Department</li>
+            <li>Sub Category</li>
           </ul>
         </div>
                 
@@ -2209,12 +2209,12 @@ button.disabled {
                     <option value="">Select Category</option>
                     
                   </select>
-                </label>
-                    <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
+                </label> 
+             <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
                     <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                      style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
-                 <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
+                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
                 </button>
                 <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
                 active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
@@ -2222,59 +2222,20 @@ button.disabled {
                   <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
                 </button>
                     </div>
-                       <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                      <div x-data="{showModal:false}">
-                
-                  <a  href="<%=request.getContextPath()%>/subcategory_form" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                         <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                     </a>>
-                  
-                </div>
-                 
-              
-                    </div>
+           
+           
+                    <a href= "<%=request.getContextPath()%>/subcategory_form" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
+                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 30%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </a>
+           
+           
                 
                 </div>
               
               </div>
 		<br>
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-	
-          <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
-                <div class="flex justify-between space-x-1">
-                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span  id= "allDepartment"></span>
-                  </p>
-                              <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-
-                </div>
-                <p class="mt-1 text-xs+">Total Department</p>
-           </div>
-            <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
-                <div class="flex justify-between space-x-1">
-                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span id= "activeDepartment"></span>
-                  </p>
-<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
-
-                </div>
-                <p class="mt-1 text-xs+"> Active Department</p>
-           </div>
-           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
-                <div class="flex justify-between space-x-1">
-                  <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-                   <span  id= "inActiveDepartment"></span>
-                  </p>
-<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
-                </div>
-                <p class="mt-1 text-xs+"> Inactive Companies</p>
-           </div>
-          
-          
-        </div>
-              
-
+		
           <div class="row">
 
             <div class="card mt-3">
@@ -2611,7 +2572,7 @@ button.disabled {
 			table.state.clear();		
 
 		 	var myParams = {department_code: department_code, sbu_code: sbu_code, status : status};
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getDepartmentMasterList",type:"POST",data:myParams,success : function(data){    				
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreoneSubcategory",type:"POST",data:myParams,success : function(data){    				
 				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){

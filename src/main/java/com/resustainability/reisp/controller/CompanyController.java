@@ -134,6 +134,23 @@ public class CompanyController {
 		return reonecategoryList;
 	}
 	
+	@RequestMapping(value = "/ajax/getreoneSubcategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getreoneSubcategory(@ModelAttribute User obj,HttpSession session) {
+		List<User> getreoneSubcategory = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			getreoneSubcategory = service.getreoneSubcategory(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getreoneSubcategory : " + e.getMessage());
+		}
+		return getreoneSubcategory;
+	}
+	
 	@RequestMapping(value = "/add-reonecategory", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView addreonecategory(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
 		boolean flag = false;

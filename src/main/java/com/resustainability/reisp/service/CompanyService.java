@@ -58,4 +58,8 @@ public class CompanyService {
 	public User getCategoryDocumentDEtails(User user) throws Exception {
 		return dao.getCategoryDocumentDEtails(user);
 	}
+
+	public List<User> getreoneSubcategory(User obj) throws Exception {
+		return dao.getreoneSubcategory(obj);
+	}
 }
