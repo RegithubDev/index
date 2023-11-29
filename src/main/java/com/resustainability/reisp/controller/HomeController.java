@@ -369,7 +369,7 @@ public class HomeController {
 	public ModelAndView reonecategory(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.reonecategory);
 		try { 
-			List <User> departmentsList = service.getDepartmentsListForCategory(user);
+			List <User> departmentsList = service.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
