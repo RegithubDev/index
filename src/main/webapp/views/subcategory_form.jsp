@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@page import="com.resustainability.reisp.constants.CommonConstants"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
            <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
          <script src="https://www.youtube.com/iframe_api"></script>
-       
+         <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
@@ -363,6 +364,21 @@ z-index: 1000;
 
     .mb-4 {
     margin-bottom: 1.25rem;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+     left: -25% !important;
+    margin-top: 1p% !important;
+}
+.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
+    background-size: 18px 14px,18px 14px !important;
+    background-repeat: no-repeat !important;
+    height: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    left: -8px !important;
+    border-style: none !important;
 }
   </style>
     <script>
@@ -2407,137 +2423,151 @@ z-index: 1000;
         <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
              <h1 class="text-base font-medium text-slate-700 dark:text-navy-100">
-                  Department Content
+                 Sub Category Form
               </h1> 
-              
-              
-              
-              
-              
-              
+          <c:if test="${empty sCDetails.department_code}">
+            <form id="updateCategoryForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reoneSubcategory" method="post" class="form-horizontal" role="form"  enctype="multipart/form-data">
+           </c:if>
+            <c:if test="${not empty sCDetails.department_code}">
+            <form id="updateCategoryForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reoneSubcategory" method="post" class="form-horizontal" role="form"  enctype="multipart/form-data">
+           </c:if>
+                  
               <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label class="block">
-                  <span>Department</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Company</option>
-             	<c:forEach var="obj" items="${objList}">
-					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
-				</c:forEach>
-                  </select>
-                </label>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                 <c:if test="${empty sCDetails.department_code}">
+	                  <label class="block">
+	                  <span>Department</span>
+	                  <select id="department_code" name="department_code" onchange="setCategory(this.value);" class="form-select select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+	                    <option value="">Select Department</option>
+	             	<c:forEach var="obj" items="${departmentsList}">
+						<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
+					</c:forEach>
+	                  </select>
+	                </label>
               
                   
-                  <label class="block">
-                  <span>Category</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
-                    
-                  </select>
-                </label>
-                </div>
+                   <label class="block">
+	                  <span>Category</span>
+	                  <select id="dm_category_filter" name="category" class="form-select select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+	                    <option  value="">Select Category</option>
+	                   <%--  <c:forEach var="obj" items="${catagoryList}">
+						<option value="${obj.dm_category }" >${obj.dm_category }</option>
+					</c:forEach> --%>
+	                  </select>
+	                </label>
+                </c:if>
                 
-                
-                
-                
-                <div class="flex justify-end space-x-2">
-                  
-                  
-                </div>
-              </div>
-           
-             
-                 <div class="mt-4 space-y-4">
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-                  
+                 <c:if test="${not empty sCDetails.department_code}">
+                    <label class="block">
+	                  <span>Department</span>
+                   <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+	                  ${sCDetails.department_code} - ${sCDetails.department_name}
+	                </button>
+	                 </label>
+	                  <label class="block">
+	                  <span>Category</span><br>
+	                  <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+	                  ${sCDetails.category}
+	                </button>
+                  </label>
+                 </c:if>
                 <label class="block">
                       <span>Title</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="title" type="text">
+                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
+                       px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
+                       dark:hover:border-navy-400 dark:focus:border-accent" 
+                       id="sub_category_title" name="sub_category_title" placeholder="title" type="text" value='${sCDetails.sub_category_title }'>
                     </label>
-                     
+                    
+                    <label class="block">
+                      <span>Icon</span>
+                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
+                       px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
+                       dark:hover:border-navy-400 dark:focus:border-accent" 
+                       id="icon_text" name="icon_text" placeholder="Eg: Font Awsome Tags" type="text" value="${sCDetails.icon_text }" >
+                    </label>
+                
                 </div>
                 
-                
-                
-                
-           
-                
-                <div class="flex justify-end space-x-2">
-                  
-                  
-                </div>
-              </div>
-              
-              
-           
-              
                  <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                  
                  <div class="max-w-xl">
               <p>
                 Description
               </p>
-              <div class="mt-5">
+              <div >
                 <label class="block">
-                  <textarea rows="4" placeholder=" Enter Text" class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"></textarea>
+                  <textarea rows="4" id="description" name="description" placeholder=" Enter Text" 
+                  class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 
+                  placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
+                  dark:hover:border-navy-400 dark:focus:border-accent">${sCDetails.description }</textarea>
                 </label>
               </div>
             </div>
-               
-                 
-                </div>
-                
-                
-                
-                
-                <div class="flex justify-end space-x-2">
-                  
-                  
-                </div>
-              </div>
-               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-					  <div class="filepond fp-grid fp-bordered [--fp-grid:4]">
-					    <div class="filepond--root filepond--hopper" data-style-button-remove-item-position="left" data-style-button-process-item-position="right" data-style-load-indicator-position="right" data-style-progress-indicator-position="right" data-style-button-remove-item-align="false" style="height: 76px;"><input class="filepond--browser" type="file" id="filepond--browser-3mocr9edl" name="filepond" aria-controls="filepond--assistant-3mocr9edl" aria-labelledby="filepond--drop-label-3mocr9edl" multiple=""><a class="filepond--credits" aria-hidden="true" href="https://pqina.nl/" target="_blank" rel="noopener noreferrer" style="transform: translateY(68px);">Powered by PQINA</a><div class="filepond--drop-label" style="transform: translate3d(0px, 0px, 0px); opacity: 1;"><label for="filepond--browser-3mocr9edl" id="filepond--drop-label-3mocr9edl" aria-hidden="true">Upload              
-					    <span class="filepond--label-action" tabindex="0">Browse</span>
-					    </label></div><div class="filepond--list-scroller" style="transform: translate3d(0px, 60px, 0px);"><ul class="filepond--list" role="list"></ul></div><div class="filepond--panel filepond--panel-root" data-scalable="true"><div class="filepond--panel-top filepond--panel-root"></div><div class="filepond--panel-center filepond--panel-root" style="transform: translate3d(0px, 8px, 0px) scale3d(1, 0.6, 1);"></div><div class="filepond--panel-bottom filepond--panel-root" style="transform: translate3d(0px, 68px, 0px);"></div></div><span class="filepond--assistant" id="filepond--assistant-3mocr9edl" role="status" aria-live="polite" aria-relevant="additions"></span><div class="filepond--drip"></div><fieldset class="filepond--data"></fieldset></div>
+              <!--  <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept="image/*" multiple /> -->
+        <div class="filepond fp-grid fp-bordered [--fp-grid:4] mt-4">
+					    <input type="file"name="mediaList" id="mediaList"  accept="image/*" multiple />
 					  </div>
-					
-			 <a href="/index/category" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="height: 3rem;width: 7rem;margin-top: 17px;color: white !important;/* background-color: orange !important; */">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
+				  <label class="block">
+            	</label>
+				  <c:if test="${not empty sCDetails.documants}">
+			    <div class="inline-space mt-5">
+			    <div class="badge bg-navy-700 text-white dark:bg-navy-900">
+                  Attachments :
                 </div>
+			    
+			     <c:choose>
+  					 <c:when test="${  fn:contains( sCDetails.documants, ',' ) }">
+		  	                <c:set var="filesList" value="${fn:split(sCDetails.documants, ',')}" />
+			                 <c:choose>
+					         <c:when test ="${fn:length(filesList) gt 0}" >
+					             <c:forEach var="obj" items="${filesList}">
+									<input type="hidden" id="design_file_ids" value="${obj}"/>
+									 <div class="badge space-x-2.5 text-slate-800 dark:text-navy-100">
+	                 				 <div class="h-2 w-2 rounded-full bg-current"></div>
+							       		 <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${sCDetails.department_code }/${sCDetails.category }/${obj }" class="filevalue" download ="${obj}"><i class="fa fa-arrow-down"></i>
+				                 
+				                  <span class="fw-bold">${obj }</span></a><br></div>
+								</c:forEach>
+					         </c:when>
+					         <c:otherwise>
+					          <p >   <i class="fa-solid fa-file"></i> No Attachments Found!</p>
+					         </c:otherwise>
+					      </c:choose>
+			      </c:when>
+			       <c:otherwise>
+			       <c:if test="${ not empty fn:trim(sCDetails.documants) }">
+		        		<input type="hidden" id="design_file_ids" value="${sCDetails.documants}"/>
+		        		 <div class="badge space-x-2.5 text-slate-800 dark:text-navy-100">
+	                 				 <div class="h-2 w-2 rounded-full bg-current"></div>
+				        <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${sCDetails.department_code }/${sCDetails.category }/${sCDetails.documants }" class="filevalue" download ="${sCDetails.documants}"><i class="fa fa-arrow-down"></i>
+	                    <span class="fw-bold">${sCDetails.documants }</span></a></div>
+			       </c:if>
+			        <c:if test="${ empty fn:trim(sCDetails.documants) }">
+			         <p >   <i class="fa-solid fa-file"></i> No Attachments Found!</p>
+			        </c:if>
+			         </c:otherwise>
+			       </c:choose>
+              	</div>
+              	</c:if>
+                </div>
+                
+                
+              </div>
+              
            <div class="flex justify-center space-x-1 pt-4">
               <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
-             Submit
-                </button>
-               
-              </div>
+             		Submit
+              </button>
+           </div>
               
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
+        
               
             </div>
-            
+            </form>
             
             
           </div>
@@ -2600,9 +2630,11 @@ z-index: 1000;
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+	        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $('select').select2();
+      $('.select2').select2();
       $(document).ready(function() {
 
 
@@ -2726,6 +2758,27 @@ z-index: 1000;
          });
        } */
    
+       function setCategory(department_code){
+    	 
+	        if ($.trim(department_code) != "") {
+	        	$("#dm_category_filter option:not(:first)").remove();
+	        	var myParams = { department_code: department_code };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/setCategoryForSubcategoryForm",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#dm_category_filter").append('<option value="' + val.dm_category + '">' + $.trim(val.dm_category) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+       }
       </script>
   </body>
 </html>

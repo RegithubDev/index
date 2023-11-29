@@ -134,6 +134,23 @@ public class CompanyController {
 		return reonecategoryList;
 	}
 	
+	@RequestMapping(value = "/ajax/setCategoryForSubcategoryForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> setCategoryForSubcategoryForm(@ModelAttribute User obj,HttpSession session) {
+		List<User> reonecategoryList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			reonecategoryList = service.getreonecategory(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("setCategoryForSubcategoryForm : " + e.getMessage());
+		}
+		return reonecategoryList;
+	}
+	
 	@RequestMapping(value = "/ajax/getreoneSubcategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<User> getreoneSubcategory(@ModelAttribute User obj,HttpSession session) {
@@ -149,6 +166,71 @@ public class CompanyController {
 			logger.error("getreoneSubcategory : " + e.getMessage());
 		}
 		return getreoneSubcategory;
+	}
+	
+	@RequestMapping(value = "/add-reoneSubcategory", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addreoneSubcategory(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/reone-subcategory");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setCreated_by(userId);
+			flag = service.addreoneSubcategory(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Category Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/get-sub-c", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView getSubDM(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.subcategory_form);
+		try {
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+			User sCDetails = service.getSubCategoryDocumentDEtails(user);
+			model.addObject("sCDetails", sCDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-reoneSubcategory", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updatereoneSubcategory(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/reone-subcategory");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setCreated_by(userId);
+			flag = service.updatereoneSubcategory(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Category Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding Category is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
 	}
 	
 	@RequestMapping(value = "/add-reonecategory", method = {RequestMethod.GET,RequestMethod.POST})

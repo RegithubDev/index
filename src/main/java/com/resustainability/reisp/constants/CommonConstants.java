@@ -18,6 +18,7 @@ public class CommonConstants {
 	 
 	//////////////////////// SAVE FILES PATH
 	public final static String SAFETY_FILE_SAVING_PATH = base_path+"/resources/gallery/";
+	public final static String FILE_SAVING_PATH = base_path+"/resources/gallery/";
 	
 	
 	
@@ -25,6 +26,7 @@ public class CommonConstants {
 	//////////////////////// GET SAVE FILES PATH
 	
 	public final static String SAFETY_FILE_SAVING_PATH_LOC = "/"+context_path+"/resources/gallery/";
+	public final static String FILE_SAVING_PATH_LOC = "/"+context_path+"/resources/gallery/";
 	
 //////////////////////////////// Production ////////////////////////////////////////////////////////////
 	

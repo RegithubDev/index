@@ -62,4 +62,16 @@ public class CompanyService {
 	public List<User> getreoneSubcategory(User obj) throws Exception {
 		return dao.getreoneSubcategory(obj);
 	}
+
+	public boolean addreoneSubcategory(User obj)  throws Exception {
+		return dao.addreoneSubcategory(obj);
+	}
+
+	public boolean updatereoneSubcategory(User obj)  throws Exception {
+		return dao.updatereoneSubcategory(obj);
+	}
+
+	public User getSubCategoryDocumentDEtails(User user)  throws Exception {
+		return dao.getSubCategoryDocumentDEtails(user);
+	}
 }

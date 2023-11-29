@@ -2423,7 +2423,9 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	
+	<form action="<%=request.getContextPath()%>/get-sub-c" name="updatereonecategory" id="updatereonecategory" method="post">	
+		<input id="id" name="id" type="hidden" />
+	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       $(window).on("load",(function(){
@@ -2610,23 +2612,8 @@ button.disabled {
 	    } 
 	    
 	    function getDepartment(department_code,assigned_to_sbu,department_name,id,status){
-	    	 $("#updateModal").click();
-	    	 $('#department_name_edit').val('');
-			 $('#department_code_edit').val('');
-			 $('select[name^="assigned_to_sbu"] option:selected').removeAttr("selected");
-			 $('select[name^="status"] option:selected').removeAttr("selected");
 		      $('#id').val($.trim(id));
-		      $('#updateDepartmentForm #department_name_edit').val($.trim(department_name)).focus();
-		      $('#updateDepartmentForm #department_code_edit').val($.trim(department_code)).focus();
-		      if(assigned_to_sbu != null && assigned_to_sbu != ''  && assigned_to_sbu != "undefined"){
-		    	  var assigned_to_sbu_array = assigned_to_sbu.split(',');
-		    	  jQuery.each(assigned_to_sbu_array, function(index, item) {
-		    		  $('select[name^="assigned_to_sbu"] option[value="'+ item +'"]').attr("selected",true);
-		    		  $('.form-select3').select2();
-		    		});
-		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-		    	 // $('select').select2();
-		      }
+		      $("#updatereonecategory ").submit();
 	   }
 	    
 	    function getErrorMessage(jqXHR, exception) {
