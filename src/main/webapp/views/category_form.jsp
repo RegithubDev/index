@@ -2440,10 +2440,10 @@ z-index: 1000;
                 </div>
                 
                   <c:if test="${empty CDetails.department_code}">
-                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reoneSubcategory" method="post" class="form-horizontal" role="form" >
+                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
                   </c:if>
                    <c:if test="${not empty CDetails.department_code}">
-                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reoneSubcategory" method="post" class="form-horizontal" role="form" >
+                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
                   </c:if>
 			<div class="grid place-items-center">
 		          <div class="card  w-full max-w-xl p-4 sm:p-5" x-data="pages.initCreditCard">
