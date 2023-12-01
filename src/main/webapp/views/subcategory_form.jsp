@@ -2530,7 +2530,14 @@ z-index: 1000;
 	                 				 <div class="h-2 w-2 rounded-full bg-current"></div>
 							       		 <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${sCDetails.department_code }/${sCDetails.category }/${obj }" class="filevalue" download ="${obj}"><i class="fa fa-arrow-down"></i>
 				                 
-				                  <span class="fw-bold">${obj }</span></a><br></div>
+				                  <span class="fw-bold">${obj }</span></a>
+								<div class="badge space-x-2 bg-error text-white">
+				                  
+				                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				                  </svg>
+				                </div>
+								</div>
 								</c:forEach>
 					         </c:when>
 					         <c:otherwise>

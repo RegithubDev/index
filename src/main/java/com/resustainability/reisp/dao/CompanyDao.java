@@ -537,6 +537,11 @@ public class CompanyDao {
 					}
 				}
 				}
+			  String stringWithSingleQuotes =  null;
+			if(!StringUtils.isEmpty(obj.getIcon_text())) {
+				stringWithSingleQuotes = obj.getIcon_text().replace("\"", "'");
+			}
+	        obj.setIcon_text(stringWithSingleQuotes);
 			obj.setStatus("Active");
 			String insertQry = "INSERT INTO [sub_category]"
 					+ " (department_code,category,sub_category_title,icon_text,description,documants,created_by,created_date,status) "
