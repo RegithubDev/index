@@ -2461,20 +2461,21 @@ z-index: 1000;
                  <c:if test="${not empty sCDetails.department_code}">
                     <label class="block">
 	                  <span>Department</span>
-                   <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+                   <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 mt-1.5 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
 	                  ${sCDetails.department_code} - ${sCDetails.department_name}
 	                </button>
 	                 </label>
 	                  <label class="block">
 	                  <span>Category</span><br>
-	                  <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+	                  <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 mt-1.5 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
 	                  ${sCDetails.category}
 	                </button>
                   </label>
                  </c:if>
+                 <input name="id" value="${sCDetails.id }" type="hidden" />
                 <label class="block">
                       <span>Title</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
+                      <input requried class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
                        px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                        dark:hover:border-navy-400 dark:focus:border-accent" 
                        id="sub_category_title" name="sub_category_title" placeholder="title" type="text" value='${sCDetails.sub_category_title }'>
@@ -2482,7 +2483,7 @@ z-index: 1000;
                     
                     <label class="block">
                       <span>Icon</span>
-                      <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
+                      <input requried class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
                        px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                        dark:hover:border-navy-400 dark:focus:border-accent" 
                        id="icon_text" name="icon_text" placeholder="Eg: Font Awsome Tags" type="text" value="${sCDetails.icon_text }" >
@@ -2500,20 +2501,28 @@ z-index: 1000;
               </p>
               <div >
                 <label class="block">
-                  <textarea rows="4" id="description" name="description" placeholder=" Enter Text" 
+                  <textarea requried rows="4" id="descriptions" name="description" placeholder=" Enter Text" 
                   class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 
                   placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                   dark:hover:border-navy-400 dark:focus:border-accent">${sCDetails.description }</textarea>
                 </label>
+                
               </div>
             </div>
+            <label class="block">
+	                  <span>Status</span>
+	                  <select id="dm_category_filter" name="status" class="form-select  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+	                    <option  value="Active" <c:if test="${sCDetails.status eq 'Active' }">selected</c:if>>Active</option>
+	                    <option  value="Inactive"  <c:if test="${sCDetails.status eq 'Inactive' }">selected</c:if>>Inactive</option>
+	                  </select>
+	                </label>
               <!--  <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept="image/*" multiple /> -->
-        <div class="filepond fp-grid fp-bordered [--fp-grid:4] mt-4">
+       <!--  <div class="filepond fp-grid fp-bordered [--fp-grid:4] mt-4">
 					    <input type="file"name="mediaList" id="mediaList"  accept="image/*" multiple />
-					  </div>
+					  </div> -->
 				  <label class="block">
             	</label>
-				  <c:if test="${not empty sCDetails.documants}">
+				  <%-- <c:if test="${not empty sCDetails.documants}">
 			    <div class="inline-space mt-5">
 			    <div class="badge bg-navy-700 text-white dark:bg-navy-900">
                   Attachments :
@@ -2559,16 +2568,20 @@ z-index: 1000;
 			         </c:otherwise>
 			       </c:choose>
               	</div>
-              	</c:if>
+              	</c:if> --%>
                 </div>
                 
                 
               </div>
               
            <div class="flex justify-center space-x-1 pt-4">
-              <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
+             
+               <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
              		Submit
               </button>
+               <a href="<%=request.getContextPath() %>/reone-subcategory" class="btn border border-error font-medium text-error hover:bg-error hover:text-white focus:bg-error focus:text-white active:bg-error/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
+             		Back
+              </a>
            </div>
               
         

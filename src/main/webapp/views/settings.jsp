@@ -2258,7 +2258,7 @@ z-index: 1000;
                         </div>
             </h2>
           </div> 
-  </div><hr>
+  </div>
         <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
           <div class="col-span-12 lg:col-span-12">
             <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">
@@ -2314,7 +2314,7 @@ z-index: 1000;
               
             </h2>
           </div> 
-  </div><hr>
+  </div>
          <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
           <div class="col-span-12 lg:col-span-12">
             <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">

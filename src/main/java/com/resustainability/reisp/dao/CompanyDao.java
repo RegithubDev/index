@@ -504,18 +504,19 @@ public class CompanyDao {
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
 					+ " left join [user_profile] up on c.created_by = up.user_id "
 					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
-					+ "where c.status is not null "; 
+					+ "where c.department_code is not null "; 
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			
-			Set<String> nameSet = new HashSet<>();
-			employeesDistinctByName = objsList.stream()
-			            .filter(e -> nameSet.add(e.getDepartment_code()))
-			            .collect(Collectors.toList());
+			/*
+			 * Set<String> nameSet = new HashSet<>(); employeesDistinctByName =
+			 * objsList.stream() .filter(e -> nameSet.add(e.getDepartment_code()))
+			 * .collect(Collectors.toList());
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return employeesDistinctByName;
+		return objsList;
 	}
 
 	public boolean addreoneSubcategory(User obj) throws Exception {
@@ -573,7 +574,8 @@ public class CompanyDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String updateQry = "UPDATE [sub_category] SET category = :category, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
+			String updateQry = "UPDATE [sub_category] SET sub_category_title = :sub_category_title,icon_text =:icon_text,description =:description,"
+					+ " status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
 			
 					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 				    count = namedParamJdbcTemplate.update(updateQry, paramSource);
