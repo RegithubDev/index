@@ -410,7 +410,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.url }"
+                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2245,7 +2245,7 @@ button.disabled {
                   <label class="block  text-left">
                     <span>Department Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 flex">
-                      <input 
+                      <input  required
                     type="text"
               id="department_code_add"
               name="department_code"
@@ -2254,15 +2254,28 @@ button.disabled {
                         <i class="far fa-user text-base"></i>
                       </span>
                     </span>
-                     <span class="required" id="sbu_code_addError"> *</span>
+                     <span class="required" id="sbu_code_addError"> </span>
                   </label>
                     <label class="block  text-left">
                     <span>Department Name </span><span class="required"> </span>
                     <span class="relative mt-1.5 flex">
-                      <input 
+                      <input  required
                          type="text"
               id="department_name_add"
               name="department_name"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
+                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                        <i class="far fa-user text-base"></i>
+                      </span>
+                    </span>
+                  </label>
+                  <label class="block  text-left">
+                    <span>Priority </span><span class="required"> </span>
+                    <span class="relative mt-1.5 flex">
+                      <input  required
+                         type="text"
+              id="priority_add"
+              name="priority"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
                       <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                         <i class="far fa-user text-base"></i>
@@ -2273,7 +2286,7 @@ button.disabled {
                     <span>Status</span><span class="required"> *</span>
                   <select
                    id="select2-status_add-container"
-              name="status"
+              name="status" required
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     
              	<option value="Active">Active</option>

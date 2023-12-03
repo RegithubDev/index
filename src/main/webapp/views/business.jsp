@@ -1075,7 +1075,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.url }"
+                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2748,14 +2748,10 @@ z-index: 1000;
          
 
         
-        
-        </div>
-        	<div class="  mt-4 flex h-8 ">
+                	<div class="  mt-4 flex h-8 ">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-              
-Business Development Categories
+				Business Development Categories
               </h2>
-              
             </div>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1"> 
 		  <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
@@ -2770,9 +2766,9 @@ Business Development Categories
                  ${obj.dm_category }
               </h4>
               
-              <button class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                 Sub Categories
-              </button>
+              </a>
             </div>
           </div>
           
@@ -2781,6 +2777,8 @@ Business Development Categories
     </c:forEach>
       
         </div>
+        </div>
+
 
   </main>
       <div class="mt-5" x-data="{showModal:false}">

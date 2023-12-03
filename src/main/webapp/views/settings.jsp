@@ -470,7 +470,7 @@ z-index: 1000;
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.url }"
+                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2241,10 +2241,21 @@ z-index: 1000;
       <!-- Main Content Wrapper -->
    
    <main class="main-content w-full px-[var(--margin-x)] pb-8">
-   <div class="flex items-center justify-between py-5 lg:py-6">
+   <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-4 mb-2  from-purple-500 to-purple-600  tracking-wide text-white outline-none transition-all ">
           <div class="group flex items-center space-x-1">
             <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
-              Masters
+            
+                <div class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          <div class="flex space-x-2">
+                            <div class="flex items-center">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg> 
+                            </div>
+
+                            <span class="text-white">Content Master</span>
+                          </div>
+                        </div>
             </h2>
           </div> 
   </div><hr>
@@ -2254,18 +2265,26 @@ z-index: 1000;
             <c:forEach var="obj" items="${settingList }"  varStatus="index">
 			<c:if test="${obj.module eq 'Masters' }">
                <div class="card swiper-slide  shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                 <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                 ${obj.module_name }
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                    </div>
-                    <a href="<%=request.getContextPath() %>${obj.url }" class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
+                 <div class=" flex cursor-pointer flex justify-between space-x-1 rounded px-2 py-1 tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+                 <div class=" flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+              	 <span> &nbsp;${obj.module_name }</span></div>
+                  <div>
+                  <a href="<%=request.getContextPath() %>${obj.url}" class="mask is-squircle flex h-10 w-10 items-center justify-center bg-info/10">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                       </svg>
                     </a>
+                    </div>
                   </div>
+                 <%--  <div class="flex justify-between">
+                    <div class="flex space-x-2">
+                    </div>
+                    <a href="<%=request.getContextPath() %>${obj.url}" class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
+                      </svg>
+                    </a>
+                  </div> --%>
                 </div>
                </c:if>
                </c:forEach>
@@ -2277,10 +2296,22 @@ z-index: 1000;
             </div>
           </div>
         </div>
-         <div class="flex items-center justify-between py-5 lg:py-6">
+         <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2 from-purple-500 to-purple-600  tracking-wide text-white outline-none transition-all">
           <div class="group flex items-center space-x-1">
             <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
-              Content Management
+            <div class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          <div class="flex space-x-2">
+                            <div class="flex items-center " >
+                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                            </div>
+
+                            <span class="text-white">Content Management</span>
+                          </div>
+                        </div>
+              
             </h2>
           </div> 
   </div><hr>
@@ -2290,17 +2321,16 @@ z-index: 1000;
             <c:forEach var="obj" items="${settingList }"  varStatus="index">
 			<c:if test="${obj.module eq 'Content Management' }">
                <div class="card swiper-slide  shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
-                 <div class="pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-                 ${obj.module_name }
-                  </div>
-                  <div class="flex justify-between">
-                    <div class="flex space-x-2">
-                    </div>
-                    <a href="<%=request.getContextPath() %>${obj.url }" class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
+                 <div class=" flex cursor-pointer flex justify-between space-x-1 rounded px-2 py-1 tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+                 <div class=" flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+              	 <span> &nbsp;${obj.module_name }</span></div>
+                  <div>
+                  <a href="<%=request.getContextPath() %>${obj.url}" class="mask is-squircle flex h-10 w-10 items-center justify-center bg-info/10">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                       </svg>
                     </a>
+                    </div> 
                   </div>
                 </div>
                </c:if>

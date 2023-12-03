@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -228,6 +229,21 @@ public class HomeController {
 	public ModelAndView business(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.business);
 	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	@RequestMapping(value = "/re-curls/{department_code}/{department_name}", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView commonUrls(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("department_name") String department_name , HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.categoryMaster);
+	try {
+		user.setDepartment_code(department_code);
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
 		List <User> catagoryList = service.getCatagoryList(user);

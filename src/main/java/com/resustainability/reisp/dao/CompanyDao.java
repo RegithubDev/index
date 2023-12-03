@@ -329,6 +329,7 @@ public class CompanyDao {
 
 	public List<User> getreonecategory(User obj) throws Exception {
 		List<User> objsList = new ArrayList<User>();
+		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
 			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
@@ -350,12 +351,15 @@ public class CompanyDao {
 			}
 			
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
-		
+			Set<String> nameSet = new HashSet<>();
+			employeesDistinctByName = objsList.stream()
+			            .filter(e -> nameSet.add(e.getDepartment_code()))
+			            .collect(Collectors.toList());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return objsList;
+		return employeesDistinctByName;
 	}
 
 	public boolean addreonecategory(User obj) throws Exception {

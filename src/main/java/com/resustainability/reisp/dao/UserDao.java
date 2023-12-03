@@ -1673,7 +1673,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
 		boolean flag = false ;
 		try {
-			String qry = "SELECT  id,department_code,department_name,url ,priority,status"
+			String qry = "SELECT  id,department_code,department_name,url ,common_url,priority,status"
 					+ " FROM department_master where [status] <> 'Inactive' "
 					+ "and department_code is not null and department_code<> '' order by priority asc ";
 		
@@ -1712,9 +1712,21 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT [department_code], [status], dm_category FROM [department_category] where status <> 'Inactive' ";
-        
-            objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
+            String qry = "SELECT dc.[department_code],department_name, dc.[status], dc.dm_category FROM [department_category] dc "
+            		+ "left join department_master dm on dc.department_code = dm.department_code "
+            		+ " where dc.status <> 'Inactive' ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and dc.department_code = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by dc.dm_category desc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
                 flag = true ;
             }

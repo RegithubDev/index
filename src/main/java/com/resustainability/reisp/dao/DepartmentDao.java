@@ -360,8 +360,11 @@ public class DepartmentDao {
 		TransactionDefinition def = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
+			obj.setCommon_url("/re-curls");
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [department-master] (department_code,department_name,status,created_by,created_date) VALUES (:department_code,:department_name,:status,:craeted_by,getdate())";
+			String insertQry = "INSERT INTO [department_master] (department_code,department_name,priority,status,created_by,created_date,common_url)"
+					+ " VALUES (:department_code,:department_name,:priority,:status,:craeted_by,getdate(),:common_url)";
+			
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

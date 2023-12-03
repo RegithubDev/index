@@ -25,150 +25,365 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-          <link rel="stylesheet" type="text/css" href="/index/resources/vendors/css/forms/select/select2.min.css">
+           <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
+         <script src="https://www.youtube.com/iframe_api"></script>
+       
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-      <style>
-     
-     th,td{
-    	text-align:left;
+    <style>
+    .grid-cols-1s {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+	}
+    @media (min-width: 1024px){
+		.lg\:gap-6s {
+		    gap: 0.5rem!important;
+		}
+	}
+    .text-xlnew{
+    	    font-size: 1rem;
+    		line-height: 1.75rem;
     }
-*, :after, :before {
-    border: 0 solid #e5e7eb;
-    box-sizing: border-box;
+    .left-6{
+    	    left: 6%;
+    }
+    @media (min-width: 640px){
+	.sm\:w-60 {
+	    width: 16rem;
+	}
+	}
+    .pt-8{
+    	    padding-top: 9%;
+    	    padding-left: 3.25rem!important;
+    }
+    @media (min-width: 640px){
+    .max-w-lg2{
+    	max-width: 65rem;
+    }
+    .slm {
+		    padding-left: 2.25rem!important;
+		    padding-right: 1.25rem!important;
+		}
+	}
+	  @media (max-width: 767px) {
+    .sld {
+		    padding: 2rem!important;
+		}
+	}
+    .swiper-scrollbar-drag {
+    background: transparent!important;
+    border-radius: var(--swiper-scrollbar-border-radius,10px);
+    height: 100%;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+    
+       @media (min-width: 766px) and (max-width: 1200px){
+      .qutt{
+          width: 40rem!important;
+      }
+      
+      }
+       @media (min-width: 600px) and (max-width: 1200px){
+      .qutt{
+          width: 34rem!important;
+      }
+      
+      } 
+    .mgi{
+     width: 43px; /* Set the desired width for the image */
+  	height: auto;
+    }
+    .parent1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Display two items in each row */
+  justify-content: center; /* Optional, to center the items horizontally */
+  grid-gap: 10px; /* Add some spacing between the items */
 }
 
-.pagination{
-  background-color: #e9eef5!important;
-  border-bottom-left-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+.child1 {
+  background-color: #f0f0f0; /* Optional, add background color to the items */
 }
 
-.pagination button {
+   .parents {
+ display: flex;
+  justify-content: center;
+}
+#rewards{
+width: 142px!important;
+}
+#news{
+width: 123px!important;
+}
+.childs {
   display: inline-block;
-  background-color: #e9eef5;
-  border-bottom-left-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  width: 221px; /* Optional, set a fixed width for child divs if needed */
+  height: 100px; /* Optional, set a fixed height for child divs if needed */
+  margin: 10px; /* Optional, add some spacing between the child divs */
 }
-.pagination .mdl-button {
- padding: 5px 10px;
-}
-.pagination .mdl-button--raised {
-  text-decoration: none;
-  padding: 5px 10px;
-  background-color: #4f46e5!important;
-  color: #fff;
-}
-
-.pagination button:hover {
-  background-color: #ddd;
-}
-
-.pagination .active button {
-  background-color: #4f46e5!important;
-  color: #fff;
-}
-    .input-sm {
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  background-position: right center;
-  background-repeat: no-repeat;
-  font-size: 13px;
-  margin-left: 0.3rem;
-}
-
-.input-sm::after {
-  padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
-
-  content: ""; /* Add empty content for the search icon */
-  background-image: url('<i class="fa fa-search" aria-hidden="true"></i>'); /* Provide the path to your search icon image */
-  width: 20px; /* Adjust the width of the icon */
-  height: 20px; /* Adjust the height of the icon */
-  position: absolute;
-  top: 50%;
-  right: 10px; /* Adjust the right position to position the icon correctly */
-  transform: translateY(-50%);
-}
-   input[type="search"] {
-  padding: 8px 30px 8px 10px;
-  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
-  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-}
-    .dataTables_info{
-    font-size: .8125rem;
-    line-height: 1.125rem;
+    .cardT {
+   	 box-shadow: none !important; 
+   	 background-color: transparent!important;
+   	 
+   	 
+	}
+     @media (min-width: 1024px) {
+     .pc{
+         height: 34rem;
+     }
+     #mobileClass2{
+    	display:none;
     }
-   .mdl-grid{
-   align-items: center;
-	display: flex !important;
-    padding: 4px;
-    justify-content: space-between;
-    height: 4.5rem;
-} 
-.mdl-grid:nth-child(3) .mdl-cell--6-col {
-	    margin-left: 2rem !important;
+     .h-custom{
+      	height: 5rem;
+      }
+      .qut{
+        position: absolute;
+    top: -1rem;
+    width: 22rem;
+    right: 0rem;
+    }
+     #qut{
+         padding-bottom: 1rem !important;
+    	 padding-top: 1rem !important;
+     }
+     }
+   
+    .bg-slate-2000 {
+    background-color: #ffffff;
 }
-.mdl-grid:nth-child(3) .mdl-cell--4-col {
-	    margin-right: 2rem !important;
-}
-.dt-table{
-display: block !important;
-height: 100%;
-}
-.modal {
-    width: 100% !important;
-}
-.required{
-	color:red;
-}
-.my-error-class {
- 	 color:red;
-}
-.my-valid-class {
- 	 color:green;
-}
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-     left: -25% !important;
-    margin-top: 1p% !important;
-}
-body {
-    font-family: var(--bs-body-font-family) !important;
-}
-.dark-layout h1, .dark-layout h2, .dark-layout h3, .dark-layout h4, .dark-layout h5, .dark-layout h6, .dark-layout span  {
-    color: #D0D2D6;
-}
-.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
-    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
-    background-size: 18px 14px,18px 14px !important;
-    background-repeat: no-repeat !important;
-    height: 1rem !important;
-    padding-right: 1.5rem !important;
-    margin-left: 0 !important;
-    margin-top: 0 !important;
-    left: -8px !important;
-    border-style: none !important;
+    .cardsRight{
+    	    right: -2rem ;
+    	    height: 6rem;
+    }
+    .containers {
+  display: flex;
+  justify-content: center; /* Optional, to center the spans horizontally */
 }
 
-button.disabled {
-  pointer-events: none; /* Disable pointer events to prevent interaction */
-  background-color: #e1dcdc; /* Change background color to a muted color */
-  color: #666; /* Change text color to a muted color */
-  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
-  opacity: 0.5; /* Reduce opacity to visually indicate it's disabled */
-  /* Add any other styles as needed */
+.side-by-side {
+  margin: 5px; /* Optional, add some spacing between the spans */
+}
+    .max-w-xl {
+    max-width: 60rem!important;
+}
+    #mobileClass{
+  	display: none;
+  }
+    .w-208{
+    	width: 9rem !important;
+    }
+    @media (max-width: 767px) {
+    #mobileClass2{
+    	display:block;
+    }
+      .h-custom{
+      	height: 0.25rem;
+      }
+    .cardsRight{
+    	    right: 0rem;
+    }
+	  .reimagining {
+	     
+	    display: flex;
+	    align-items: center;
+	
+	  }
+	  #iconsCLass {
+    display: none;
+  }
+  #mobileClass{
+  	display: block;
+  	width: 92% !important;
+    height: 92% !important;
+    padding-bottom: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-left: 3rem;
+    left: 1rem !important;
+}
+.mblview{
+  		width:100% !important;
+  }
+  }
+  
+  }
+ .w-1w{
+     width: 5.5rem !important;
+ }
+  
+    .text-re{
+    	color:#e21e26;
+    }
+    #clock {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      text-align: center;
+      padding: 6px;
+      color: #333;
+    }
+    .content{
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    a {
+    color: blue;
+    text-decoration: inherit;
+}
+  .container{
+    overflow: hidden;
+    z-index: 10;
+    position: relative;
+    height: 90px;
+    width: 300px;
+    background-color: #3935e2;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+   #player-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+    }
+
+    #player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+ .loading-dots {
+      font-size: 36px;
+      text-align: center;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { content: ". "; }
+      33% { content: ". . "; }
+      66% { content: ". . . "; }
+    }
+/*  BACKGROUND  */
+
+.Circle1{
+    z-index: 100;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    right: -20px;
+    top: -30px;
+    border-radius: 50%;
+    background-color: rgba(253,184,19,1);
+    animation: enlarge;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.Circle2{
+    z-index: 80;
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    right: -50px;
+    top: -70px;
+    border-radius: 50%;
+    background-color: rgba(246,140,31,0.7);
+    
+    animation: enlarge;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+.Circle3{
+    z-index: 50;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    right: -50px;
+    top: -100px;
+    border-radius: 50%;
+    background-color: rgba(241,125,45,0.7);
+    
+    animation: enlarge;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 
 
+/*  CONTENT  */
+
+.sun{
+    z-index: 1000;
+    font-size: 15px !important;
+}
+
+.Condition{
+z-index: 1000;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    left: 54px;
+    top: 9px;
+}
+
+.Temp{
+   
+        z-index: 1000;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-size: 27px;
+    font-weight: 400;
+    left: 20px;
+    bottom: 19px;
+}
+
+#F{
+    z-index: 1000;
+    font-family: "Roboto",sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
 
 
+.Time{
+     z-index: 1000;
+    position: absolute;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    right: 9px;
+    top: 30px;
+}
+
+.locationIcon{
+    z-index: 1000;
+    font-size: 10px !important;
+}
+
+.Location{
+    z-index: 1000;
+    position: absolute;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+    right: 20px;
+    bottom: 15px;
+}
+
+@keyframes enlarge{
+    50%{
+        transform: scale(1.2);
+    }
+}
+
+    .mb-4 {
+    margin-bottom: 1.25rem;
+}
   </style>
     <script>
       /**
@@ -179,9 +394,11 @@ button.disabled {
     </script>
   </head>
 
-  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+  <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
     <!-- App preloader-->
-    <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900" >
+    <div
+      class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
+    >
       <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
     </div>
 
@@ -207,7 +424,15 @@ button.disabled {
                   alt="logo"
                 />
               </a>
+              
+              
             </div>
+            
+            
+            
+            
+            
+            
 
             <!-- Main Sections Links -->
  			<jsp:include page="../views/layout/header.jsp"></jsp:include> 
@@ -215,8 +440,8 @@ button.disabled {
             <!-- Bottom Links -->
             <div class="flex flex-col items-center space-y-3 py-3">
               <!-- Settings -->
-             <a
-               href="<%=request.getContextPath() %>/settings"
+           <!--    <a
+                href="form-layout-5.html"
                 class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
               >
                 <svg
@@ -235,7 +460,7 @@ button.disabled {
                     d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
                   />
                 </svg>
-              </a> 
+              </a> -->
 
               <!-- Profile -->
               <div
@@ -346,7 +571,6 @@ button.disabled {
 
 
 
-        <!-- Sidebar Panel -->
         <div class="sidebar-panel">
           <div
             class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
@@ -354,9 +578,9 @@ button.disabled {
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                All Functions
+                All Functions1
               </p>
-              <button @click="$store.global.isSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+              <button @click="$store.global.isRightSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -401,16 +625,14 @@ button.disabled {
                       </button>
                     </div>
                   </div>
-                     <div x-show="expanded" x-collapse>
+                  <div x-show="expanded" x-collapse>
                     <ul
                       class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
                     >
-                                <c:forEach var="obj" items="${departmentsList }"  varStatus="index">
-                    
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>/Admin"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -426,11 +648,168 @@ button.disabled {
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>${obj.department_name }</span>
+                          <span>Dashboard</span>
                         </a>
                       </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                           href="<%=request.getContextPath() %>/ "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-warning"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Policies</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="<%=request.getContextPath() %>/ "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-info"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Procedures</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                         href="<%=request.getContextPath() %>/ Incin-BMW
+                         "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Forms</span>
+                        </a>
+                      </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>User manual</span>
+                        </a>
+                      </li>
+                                            <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="#"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Trainig calender</span>
+                        </a>
+                      </li>
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                             href="<%=request.getContextPath() %>/F&A"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Finance&Accounts</span>
+                        </a>
+                      </li>
+                              <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                          href="<%=request.getContextPath() %>/HR"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-success"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>Topics/Blogs</span>
+                        </a>
+                      </li>
+                              
+                        
                        
-                </c:forEach>
+                
                       
                     </ul>
                     
@@ -455,6 +834,96 @@ button.disabled {
             
           </div>
         </div>
+
+        <!-- Sidebar Panel -->
+        <div class="sidebar-panel">
+          <div
+            class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
+          >
+            <!-- Sidebar Panel Header -->
+            <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
+              <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
+                <span class="dept"></span> Functions
+              </p>
+              <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+            </div>
+            
+            
+          
+            
+
+            <!-- Sidebar Panel Body -->
+            <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
+              <div class="is-scrollbar-hidden grow overflow-y-auto">
+                <div class="mt-2 px-4">
+                 
+                </div>
+
+                <div x-data="{expanded:true}">
+                  <div class="mt-4 flex items-center justify-between px-4">
+                    <span class="text-xs font-medium uppercase"> </span>
+                   
+                  </div>
+                  <div x-show="expanded" x-collapse>
+                    <ul
+                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium" id="deptListLi"
+                    >
+                          <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
+                          <c:if test="${obj.department_code eq 'BD' }">
+                      <li>
+                        <a
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                           href="<%=request.getContextPath() %>/Admin"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span>${obj.dm_category }</span>
+                        </a>
+                      </li>
+                      </c:if>
+                          </c:forEach>  
+                              
+                        
+                       
+                
+                      
+                    </ul>
+                    
+                  </div>
+                </div>
+                
+             
+              </div>
+
+              <div class="flex items-center spacex-3 p-4">
+                
+               
+              </div>
+            </div>
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
       </div>
 
       <!-- Right Sidebar -->
@@ -463,7 +932,7 @@ button.disabled {
         @keydown.window.escape="$store.global.isRightSidebarExpanded = false"
       >
         <div
-          class="fixed inset-0 z-[150] bg-slate-900/60 transition-opacity duration-200"
+          class="fixed inset-0 z-[150] transition-opacity duration-200"
           @click="$store.global.isRightSidebarExpanded = false"
           x-show="$store.global.isRightSidebarExpanded"
           x-transition:enter="ease-out"
@@ -473,7 +942,7 @@ button.disabled {
           x-transition:leave-start="opacity-100"
           x-transition:leave-end="opacity-0"
         ></div>
-        <div class="fixed right-0 top-0 z-[151] h-full w-full sm:w-80">
+        <div class="fixed left-6 top-0 z-[151] h-full w-full sm:w-60">
           <div
             x-data="{activeTab:'tabHome'}"
             class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
@@ -486,26 +955,16 @@ button.disabled {
             x-transition:leave-end="translate-x-full"
           >
             <div class="flex items-center justify-between py-2 px-4">
-              <p
-                x-show="activeTab === 'tabHome'"
-                class="flex shrink-0 items-center space-x-1.5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#e21e26"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span class="text-xs">25 May, 2022</span>
+         <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
+              <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
+                All Functions
               </p>
+              <button @click="$store.global.isRightSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+            </div>
               <p
                 x-show="activeTab === 'tabProjects'"
                 class="flex shrink-0 items-center space-x-1.5"
@@ -526,6 +985,7 @@ button.disabled {
                 </svg>
                 <span class="text-xs">Projects</span>
               </p>
+              
               <p
                 x-show="activeTab === 'tabActivity'"
                 class="flex shrink-0 items-center space-x-1.5"
@@ -546,6 +1006,7 @@ button.disabled {
                 </svg>
                 <span class="text-xs">Activity</span>
               </p>
+              
 
               <button
                 @click="$store.global.isRightSidebarExpanded=false"
@@ -568,6 +1029,88 @@ button.disabled {
               </button>
             </div>
 
+
+
+
+
+  <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
+              <div class="is-scrollbar-hidden grow overflow-y-auto">
+                <div class="mt-2 px-4">
+                 
+                </div>
+
+                <div x-data="{expanded:true}">
+                  <div class="mt-4 flex items-center justify-between px-4">
+                    <span class="text-xs font-medium uppercase">Departments </span>
+                    <div class="-mr-1.5 flex">
+                      <button
+                        @click="expanded =! expanded"
+                        class="btn h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          :class="expanded && 'rotate-180'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#e21e26"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                 <div x-show="expanded" x-collapse>
+                    <ul
+                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
+                    >
+                                <c:forEach var="obj" items="${departmentsList }"  varStatus="index">
+                    
+                      <li>
+                        <button onclick="ChangeCategoryForDept('${obj.department_code }','${obj.department_name }')"
+                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
+                           <%-- href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}" --%>
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="#e21e26"
+                            stroke-width="1.5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            />
+                          </svg>
+                          <span style="text-align: left;">${obj.department_name }</span>
+                        </button>
+                      </li>
+                       
+                </c:forEach>
+                      
+                    </ul>
+                    
+                  </div>
+                </div>
+                
+             
+              </div>
+
+              <div class="flex items-center spacex-3 p-4">
+                
+               
+              </div>
+            </div>
+            
 
             <div
               x-show="activeTab === 'tabProjects'"
@@ -1320,111 +1863,6 @@ button.disabled {
             <div
               class="pointer-events-none absolute bottom-4 flex w-full justify-center"
             >
-              <div
-                class="pointer-events-auto mx-auto flex space-x-1 rounded-full border border-slate-150 bg-white px-4 py-0.5 shadow-lg dark:border-navy-700 dark:bg-navy-900"
-              >
-                <button
-                  @click="activeTab = 'tabHome'"
-                  :class="activeTab === 'tabHome' && 'text-re dark:text-accent'"
-                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    x-show="activeTab === 'tabHome'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="#e21e26"
-                  >
-                    <path
-                      d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-                    />
-                  </svg>
-                  <svg
-                    x-show="activeTab !== 'tabHome'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
-                </button>
-                <button
-                  @click="activeTab = 'tabProjects'"
-                  :class="activeTab === 'tabProjects' && 'text-re dark:text-accent'"
-                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    x-show="activeTab === 'tabProjects'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="#e21e26"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-
-                  <svg
-                    x-show="activeTab !== 'tabProjects'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                    />
-                  </svg>
-                </button>
-                <button
-                  @click="activeTab = 'tabActivity'"
-                  :class="activeTab === 'tabActivity' && 'text-re dark:text-accent'"
-                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    x-show="activeTab ===  'tabActivity'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="#e21e26"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <svg
-                    x-show="activeTab !==  'tabActivity'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -1442,8 +1880,8 @@ button.disabled {
             <div class="h-7 w-7">
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
-                :class="$store.global.isSidebarExpanded && 'active'"
-                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded"
+                :class="$store.global.isSidebarExpanded   && 'active'"
+                @click="$store.global.isSidebarExpanded   = !$store.global.isSidebarExpanded  "
               >
                 <span></span>
                 <span></span>
@@ -1805,11 +2243,8 @@ button.disabled {
                   </svg>
                 </div>
               </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Analytics
-              </p>
+              <p class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100" > Analytics   </p>
+           
             </a>
             <a href="apps-chat.html" class="w-14 text-center">
               <div class="avatar h-12 w-12">
@@ -2179,107 +2614,199 @@ button.disabled {
       </div>
 
       <!-- Main Content Wrapper -->
-     
-     <main class="main-content w-full px-[var(--margin-x)] pb-8">
-      <div class="p-4 sm:p-5">
-              
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <label class="block">
-                  
-                  
-                  
-                  <select  id="select2-company_code_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select </option>
-                   
-                  </select>
-                </label>
-                   <label class="block">
-                  <select id="select2-sbu_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select </option>
-                   
-                  </select>
-                </label>
-                  <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select </option>
-                    
-                  </select>
-                </label>
-                
-                
-                
-          <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <button  onclick="getSBUList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
-                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
-                </button>
-                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
-                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
-                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
-                </button>
-          </div>
-            <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                 <div x-data="{showModal:false}">
-                    <a  href="<%=request.getContextPath()%>/dcform" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                         <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                     </a>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                       </div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-                       </div>
-                     </div>
-                    </div>
-                  </template>
-                </div>
-                 
-                <button onclick="exportSBU();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
-                 focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                 style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;"  onclick="exportSBU();">
-                        <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
-                </button>
-                    
-                    </div>
+      <main
+        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+      >
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
+          <div class="card flex-row justify-between space-x-2 ">
+            <div class="flex flex-1 flex-col justify-between"  id="clock">
+            
+            </div>
+            <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
+            <div class=" swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-active" @click="selected = 'slide-8'" role="group" aria-label="1 / 16" style="margin-right: 14px;">
+                  <a id="iconsCLass" href="#"  class="flex flex-col items-center rounded-lg px-2 py-4 text-slate-600 dark:text-navy-100" :class="selected === 'slide-8' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' ">
+                  <img class="h-11 w-1w" src="/index/resources/images/avatar/tropy icon.svg" alt="image" style="
+    margin-top: 1rem;
+">
+                   <p class="text-3xl font-medium text-slate-700 dark:text-navy-100">
+	                                      ${sessionScope.REWARDS }
+	                                    </p>
+	                                    <p class="text-xs text-success">Rewards</p>
+                  </a>
                 
                 </div>
-              
-              </div>
-                  </main>
-	
-		
 
-         
-          
-              </div>
-         
-        
-  
-       
-     <div x-data="{showModal:false}">
-       <a class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-          
           </div>
-                       
-                       
+          
+          
+          <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
+            
+              <div class="flex items-center justify-between">
+                <div style="
+    left: -1rem;
+"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
+                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
+				      <div class="container"
+   style="
+    top: -0.5rem;
+    right: -0.5rem;
+    height: 7.2rem;
+
+">
+				    <div class="background">
+				      <div class="Circle1"></div>
+				      <div class="Circle2"></div>
+				      <div class="Circle3"></div>
+				      <div class="content">
+				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
+				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
+				        <h3 class="Temp" id="temperature"></h3>
+				        <h1 class="Time" id="wind-speed"></h1>
+				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
+				      </div>
+				    </div>
+                  </div>
+                  </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              </div>
+              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
+            <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
+    margin-top: 2rem;
+"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
+                   
+                  </a>
+          </div>
+        
+        
+     
+    
+     <%--      <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
+            
+           <div class="flex">
+          <div class="flex flex-col justify-center" style="
+    width: 18rem;">
+              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 text-center">
+                <p class="text-xlnew">${sessionScope.DEPARTMENT_NAME }</p>
+              </div>
+              
+             <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
+                <a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>
+             </div>
+            </div>
+           
+              <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
+                <p class="text-xl">${sessionScope.BASE_DEPARTMENT }</p>
+              </button>
+              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
+             <button class="flex flex-col  justify-center">
+              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
+                <p class="text-xlnew">Happenings @ Information Technology</p>
+              </div>
+              
+              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
+                <p class="text-xs text-success">Other Department</p>
+              </div> <br>
+            </button>
+              
+            <!--   <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500"  :class="$store.global.isSidebarExpanded && 'active'"
+                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
+                <p class="text-xl">All Functions</p>
+              </button> -->
+            </div>
+                  
+                  
+          </div>  --%> 
+        <div class="mx-auto grid w-full max-w-4xl grid-cols-1s gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6s">
+          <div class="card p-4 " id="cardBG"	>
+            
+            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700 dark:text-navy-100">
+           ${sessionScope.DEPARTMENT_NAME }
+            </h2>
+            
+            <div class="mt-5 pb-1 text-center">
+				<a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>            </div>
+          </div>
+          <div class="card p-4 " id="cardBG2"
+         
+           :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
+            
+            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100">Happenings @ <span class="dept"></span></h2>
+            
+            <div class="mt-5 pb-1 text-center">
+				<p class="text-xs text-success">Other Department</p>            </div>
+          </div>
+          
+          
+          
+          
+          
+          
+
+          
+        </div>
+        </div>
+         
+
+        
+                	<div class="  mt-4 flex h-8 ">
+              <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
+				<span class="dept"></span> Categories
+              </h2>
+            </div>
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
+		   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
+		   <c:if test="${obj.department_code eq 'BD' }">
+		   
+		   <div class="card"> <div class="flex justify-center p-5"></div>
+            <div class="px-4 pb-8 text-center sm:px-5">
+              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
+                 ${obj.dm_category }
+              </h4>
+              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                Sub Categories
+              </a>
+            </div>
+          </div>
+          
+		   
+          </c:if>
+    </c:forEach> 
+      
+        </div>
+        </div>
+
+
+  </main>
+      <div class="mt-5" x-data="{showModal:false}">
+               
+                <template x-teleport="#x-teleport-target">
+                  <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                    <div class="scrollbar-sm relative flex max-w-lg2 flex-col overflow-y-auto rounded-lg  px-4  text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                     <div class="flex h-8 items-center justify-between">
+                          <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base"></h2>
+
+                          <button @click="showModal = !showModal" class="btn -mr-1.5 h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" style="
+    margin-bottom: -4rem;
+    z-index: 1;
+    margin-right: -0.7rem; background-color: white;
+">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      <div class="mt-4">
+                        <img
+                      class=""
+                      src="/index/resources/images/CyberSecurity Launch.png"
+                      alt="image"
+                    />
                       </div>
                     </div>
-                  </template>
-                </div>
-           
-      
+                  </div>
+                </template>
+              </div>
 
 
      <!--  <div
@@ -2301,404 +2828,217 @@ button.disabled {
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
-	 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
-    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
- <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
-     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
-       <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-      <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
-     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
-       <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
-         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
-      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
-        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
-           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-<form action="<%=request.getContextPath()%>/export-sbu" name="exportSBUForm" id="exportSBUForm" target="_blank" method="post">	
-      
-        <input type="hidden" name="sbu_code" id="exportSBU_filter" />
-        <input type="hidden" name="company_code" id="exportCompany_Code_filter" />
-            <input type="hidden" name="status" id="exportStatus_filter" />
-	</form>
-	
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-  $(window).on("load",(function(){
-	  $('select').select2();
-          getSBUList();
-         }));
-      
-      function clearFilter(){
-		    	$("#select2-sbu_filter-container").val(""); 
-		    	$("#select2-company_code_filter-container").val("");
-		    	$("#select2-status_filter-container").val("");
-		    	window.location.href= "<%=request.getContextPath()%>/sbu";
-	    }
-      
-      function getSBUFilterList() {
-	        var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(sbu_code) == "") {
-	        	$("#select2-sbu_filter-container option:not(:first)").remove();
-	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status :status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getSBUFilterList",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-sbu_filter-container").append('<option value="' + val.sbu_code + '">'+ "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-      function getCompanyFilterList() {
-    	  var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(company_code) == "") {
-	        	$("#select2-company_code_filter-container option:not(:first)").remove();
-	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status : status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterListFromSBU",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-company_code_filter-container").append('<option value="' + val.company_code + '">' + "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name)  +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
+     /*  
+      function encryptURL(url) {
+    	    return btoa(url);
+    	  }
 
-      function getStatusFilterList() {
-    	  var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(status) == "") {
-	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status : status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromSBU",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
+    	  // Simple decryption function
+    	  function decryptURL(encryptedURL) {
+    	    return atob(encryptedURL);
+    	  }
 
+    	  var encryptedURL;
+    	  var decryptedURL; */
+      $(document).ready(function() {
+    	 
+    	/*   if(encryptedURL != null){
+    		  decryptedURL = decryptURL(encryptedURL);
+          	  window.history.pushState({}, document.title, decryptedURL);
+    	  } */
+    	  var currentURL = window.location.href;
+    	  var parts = currentURL.split('/');
+    	  var dCode = parts[5];
+    	  var dName = parts[6];
+    	  console.log(dName)
+    	  dName = dName.replaceAll("%20", " ");
+    	  console.log(dName)
+    	  ChangeCategoryForDept(dCode,dName);
+    	 // encryptedURL = encryptURL(currentURL);
+    	 // window.history.pushState({}, document.title, encryptedURL);
+  	    // Decrypt the URL
+    	
+    	
+          function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var day = now.getDate();
+            var month = now.getMonth() + 1; // Months are zero-based
+            var year = now.getFullYear();
+
+            hours = (hours < 10) ? '0' + hours : hours;
+            minutes = (minutes < 10) ? '0' + minutes : minutes;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+            day = (day < 10) ? '0' + day : day;
+            month = (month < 10) ? '0' + month : month;
+
+            var time = hours + ':' + minutes + ':' + seconds; 
+            var date = day + '-' + month + '-' + year;
+
+            var clock1 =  '<i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
+
+            var clock =  ' <div class="mt-5 space-y-4 " style=" margin-left: 2rem;"> <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
+            $('#clock').html(clock);
+            $('#clock1').html(clock1);
+          }
+
+          setInterval(updateClock, 1000);
+
+          var cityName;
+          if (navigator.geolocation) {
+              // Get current position
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Make API request to fetch city name
+                $.ajax({
+                  url: 'https://nominatim.openstreetmap.org/reverse',
+                  type: 'GET',
+                  data: {
+                    format: 'json',
+                    lat: latitude,
+                    lon: longitude,
+                    zoom: 10,
+                    addressdetails: 1
+                  },
+                  success: function(response) {
+                    var city = response.address.city || response.address.town || response.address.village || '';
+                    var country = response.address.country || '';
+
+                    // Update HTML element with city name
+                    cityName = city;
+                    $('#city').text(city + ', ' + country);
+                    var cityNplace = city + ',' + country
+                    getWeather(cityNplace);
+                  },
+                  error: function(xhr, status, error) {
+                    console.log(error);
+                  }
+                });
+              });
+            } else {
+              console.log('Geolocation is not supported by this browser.');
+            }
+          
       
-	    function exportSBU(){
-	    	 var sbu_code = $("#select2-sbu_filter-container").val();
-	         var company_code = $("#select2-company_code_filter-container").val();
-	         var status = $("#select2-status_filter-container").val();
-	    	
-	    	 $("#exportSBU_filter").val(sbu_code);
-	     	 $("#exportCompany_Code_filter").val(company_code);
-	     	$("#exportStatus_filter").val(company_code);
-	     	 $("#exportSBUForm ").submit();
-	  	}
-	    
-	    
-	    function getSBUList(){
-	    	getSBUFilterList('');
-	    	getCompanyFilterList('');
-	    	getStatusFilterList('');
-	    	var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	    	$('#allSBU').html(0)
-    		$('#activeSBU').html(0)
-    		$('#inActiveSBU').html(0)
-	     	table = $('#datatable-sbu').DataTable();
-			table.destroy();
-			$.fn.dataTable.moment('DD-MMM-YYYY');
-			table = $('#datatable-sbu').DataTable({
-				"bStateSave": true,  
-	     		fixedHeader: true,
-	         	//Default: Page display length
-					"iDisplayLength" : 10,
-					"iData" : {
-						"start" : 52
-					},"iDisplayStart" : 0,
-					"drawCallback" : function() {
-					},
-					   columnDefs: [
-			            	{
-			                    targets: [0, 1, 2, 3, 4, 5],
-			                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
-			                  
-			                }
-			            ],
-			            rowCallback: function(row, data, index) {
-			                // Check a condition based on a column value
-			                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
-			            },
-	            // "ScrollX": true,
-	            //"scrollCollapse": true,
-	            "sScrollX": "100%",
-	            "sScrollXInner": "100%",
-	            "bScrollCollapse": true,
-	            "initComplete" : function() {
-					}
-	        }).rows().remove().draw();
-			table.state.clear();		
-		 	var myParams = {sbu_code: sbu_code, company_code: company_code, status : status};
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getSBUList",type:"POST",data:myParams,success : function(data){    				
-					if(data != null && data != '' && data.length > 0){    					
-		         		$.each(data,function(key,val){
-		         			var sbu_data = "'"+val.sbu_code+"','"+val.company_code+"','"+val.sbu_name+"','"+val.id+"','"+val.status+"'";
-		                    var actions = '<a href="javascript:void(0);"  @click="showModal = true"  onclick="getSBU('+sbu_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
-		                    key++;
-		                    var rowArray = [];    	                 
-		                   	$('#allSBU').html(val.all_sbu)
-		            		$('#activeSBU').html(val.active_sbu)
-		            		$('#inActiveSBU').html(val.inActive_sbu)
-		            		rowArray.push($.trim(key));
-		                   	
-		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push($.trim(val.sbu_code));
-		                   	rowArray.push($.trim(val.sbu_name));
-		                   	rowArray.push("["+ $.trim(val.company_code)+"]"+" - "+ val.company_name);
-		                   	var status = $.trim(val.status);
-		                	if (status == 'Active') {
-		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
-	                		} else {
-	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
-	                		}
-		                   	rowArray.push(status);
-		                   
-		                    table.row.add(rowArray).draw( true );
-						});
-					}
-				},error: function (jqXHR, exception) {
-		         	getErrorMessage(jqXHR, exception);
-		     }});
-	    } 
-	    
-	    function getSBU(sbu_code,company_code,sbu_name,id,status){
-	    	 $("#updateModal").click();
-	    	 $('#sbu_name_edit').val('');
-			 $('#sbu_code_edit').val('');
-			 $('select[name^="company_code"] option:selected').removeAttr("selected");
-			 $('select[name^="status"] option:selected').removeAttr("selected");
-		      $('#id').val($.trim(id));
-		      $('#updateSBUForm #sbu_name_edit').val($.trim(sbu_name)).focus();
-		      $('#updateSBUForm #sbu_code_edit').val($.trim(sbu_code)).focus();
-		      if(company_code != null && company_code != ''  && company_code != "undefined"){
-		    	  $('select[name^="company_code"] option[value="'+ company_code +'"]').attr("selected",true);
-		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-		    	  $('.form-select3').select2();
-		      }
-	   }
-	    
-	    function getErrorMessage(jqXHR, exception) {
-	  	    var msg = '';
-	  	    if (jqXHR.company_code === 0) {
-	  	        msg = 'Not connect.\n Verify Network.';
-	  	    } else if (jqXHR.company_code == 404) {
-	  	        msg = 'Requested page not found. [404]';
-	  	    } else if (jqXHR.company_code == 500) {
-	  	        msg = 'Internal Server Error [500].';
-	  	    } else if (exception === 'parsererror') {
-	  	        msg = 'Requested JSON parse failed.';
-	  	    } else if (exception === 'timeout') {
-	  	        msg = 'Time out error.';
-	  	    } else if (exception === 'abort') {
-	  	        msg = 'Ajax request aborted.';
-	  	    } else {
-	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-	  	    }
-	  	    console.log(msg);
-        }
-	    
-	    function addSBU(){
-	    	if(validator.form()){ // validation perform
-	        	document.getElementById("addSBUForm").submit();	
-	    	}
-	    }
-	    function updateSBU(){
-	    	if(validator1.form()){ // validation perform
-	        	document.getElementById("updateSBUForm").submit();	
-	    	}
-	    }
-	    var validator1 =	$('#updateSBUForm').validate({
-		   	 errorClass: "my-error-class",
-		   	 validClass: "my-valid-class",
-		   	 ignore: ":hidden:not(.select2 form-select)",
-		   		    rules: {
-		   		 		  "sbu_name": {
-		   			 			required: true
-		   			 	  },"sbu_code": {										
-		   			 			required: true
-		   			 	  },"company_code": {
-		   	                 	required: true,
-		   			 	  },"status": {
-		   	                 	required: true,
-		   			 	  }
-		   		 	},
-		   		    messages: {
-		   		 		 "sbu_name": {
-		   				 	required: 'Required',
-		   			 	  },"sbu_code": {
-		   			 		required: 'Required'
-		   			 	  },"company_code": {
-		   		 			required: 'Required'
-		   		 	  	  },"status": {
-		   		 			required: 'Required'
-		   		 	  	  }
-		      		},
-		      		errorPlacement:function(error, element){
-		      		 	if (element.attr("id") == "sbu_name_edit" ){
-		   				 document.getElementById("sbu_name_editError").innerHTML="";
-		   		 		 error.appendTo('#sbu_name_editError');
-		   			}else if(element.attr("id") == "sbu_code_edit" ){
-		   			   document.getElementById("sbu_code_editError").innerHTML="";
-		   		 	   error.appendTo('#sbu_code_editError');
-		   			}else if(element.attr("id") == "select2-company_code_edit-container" ){
-		   				document.getElementById("select2-company_code_edit-containerError").innerHTML="";
-		   			 	error.appendTo('#select2-company_code_edit-containerError');
-		   			}else if(element.attr("id") == "select2-status_edit-container" ){
-		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
-		   			 	error.appendTo('#select2-status_edit-containerError');
-		   			}else{
-		   					error.insertAfter(element);
-		   	        } 
-		      		},invalidHandler: function (form, validator) {
-		               var errors = validator.numberOfInvalids();
-		               if (errors) {
-		                   var position = validator.errorList[0].element;
-		                   jQuery('html, body').animate({
-		                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-		                   }, 1000);
-		               }
-		           },submitHandler:function(form){
-		   	    	//form.submit();
-		   	    }
-		   	});
-	    var validator =	$('#addSBUForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-	   		 		  "sbu_name": {
-	   			 			required: true
-	   			 	  },"sbu_code": {										
-	   			 			required: true
-	   			 	  },"company_code": {
-	   	                 	required: true,
-	   			 	  },"status": {
-	   	                 	required: true,
-	   			 	  }
-	   		 	},
-	   		    messages: {
-	   		 		 "sbu_name": {
-	   				 	required: 'Required',
-	   			 	  },"sbu_code": {
-	   			 		required: 'Required'
-	   			 	  },"company_code": {
-	   		 			required: 'Required'
-	   		 	  	  },"status": {
-		   		 		required: 'Required'
-	   		 	  	  }
-	      		},
-	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "sbu_name_add" ){
-	   				 document.getElementById("sbu_name_addError").innerHTML="";
-	   		 		 error.appendTo('#sbu_name_addError');
-	   			}else if(element.attr("id") == "sbu_code_add" ){
-	   			   document.getElementById("sbu_code_addError").innerHTML="";
-	   		 	   error.appendTo('#sbu_code_addError');
-	   			}else if(element.attr("id") == "select2-company_code_add-container" ){
-	   				document.getElementById("select2-company_code_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-company_code_add-containerError');
-	   			}else if(element.attr("id") == "select2-status_add-container" ){
-	   				document.getElementById("select2-status_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-status_add-containerError');
-	   			}else{
-	   					error.insertAfter(element);
-	   	        } 
-	      		},invalidHandler: function (form, validator) {
-	               var errors = validator.numberOfInvalids();
-	               if (errors) {
-	                   var position = validator.errorList[0].element;
-	                   jQuery('html, body').animate({
-	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-	                   }, 1000);
-	               }
-	           },submitHandler:function(form){
-	   	    	//form.submit();
-	   	    }
-	   	}); 
-	   	$('.formSelect').change(function(){
-	   	    if ($(this).val() != ""){
-	   	        $(this).valid();
-	   	    }
-	   	});
-	   	
-	   	$('input').change(function(){
-	   	    if ($(this).val() != ""){
-	   	        $(this).valid();
-	   	    }
-	   	});
-	   	function addBox(){
-	   		$('select[name^="company_code"] option:selected').removeAttr("selected");
-	   		$('select[name^="status"] option:selected').removeAttr("selected");
-	   		$('select').select2();
-	   	}
-	   	
-	 	function checkUniqueId(){
-	   		var sbu_code = $('#sbu_code_add').val();
-	        if ($.trim(sbu_code) != "" ) {
-	        	var myParams = {sbu_code: sbu_code };
+          
+      });
+     function getWeather(cityNplace){
+    	    
+          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
+          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
+
+          $.ajax({
+              url: apiUrl,
+              method: 'GET',
+              dataType: 'json',
+              success: function(data) {
+                  const temperatureElement = $('#temperature');
+                  const descriptionElement = $('#description');
+                  const windSpeedElement = $('#wind-speed');
+                  const weatherIconElement = $('#weather-icon');
+
+                  const temperature = Math.round(data.main.temp);
+                  const description = data.weather[0].description;
+                  const windSpeed = data.wind.speed;
+                  const weatherIcon = data.weather[0].icon;
+
+                  temperatureElement.text(temperature +'°C');
+                  descriptionElement.text(description);
+                  windSpeedElement.text(windSpeed+' m/s');
+                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
+              },
+              error: function(error) {
+                  console.error('Error:', error);
+              }
+        });
+    	  
+      }
+     
+     const button = document.getElementById("signout_button");
+     button.onclick = () => {
+       google.accounts.id.disableAutoSelect();
+       console.log('User signed out.');
+       $("#email").val('');
+ 		$("#logoutForm").submit();
+     }
+    // https://www.youtube.com/watch?v=zJkS24mEBbU&pp=ygUQcmVzdXN0YWluYWJpbGl0eQ%3D%3D
+    /*  function onYouTubeIframeAPIReady() {
+         // Create an instance of the YouTube player
+         new YT.Player('player', {
+           videoId: 'z8-Ghz4YSMY',
+           playerVars: {
+             autoplay: 0, // Autoplay the video
+             controls: 1, // Show video controls
+             modestbranding: 1, // Hide YouTube logo
+             fs: 1, // Show fullscreen button
+           },
+         });
+       } */
+   
+       function ChangeCategoryForDept(department_code,department_name){
+    	   		$(".dept").html( $.trim(department_name));
+	        if ($.trim(department_code) != "") {
+	        	 $("#deptList div").remove();
+                 $("#deptListLi li").remove();
+                 if('${sessionScope.BASE_DEPARTMENT}' == department_code){
+                	 $('#cardBG').css('background-color','lavender');
+                	 $('#cardBG2').css('background-color','white');
+                 }else{
+                	 $('#cardBG2').css('background-color','lavender');
+                	 $('#cardBG').css('background-color','white');
+                 }
+	        	var myParams = { department_code: department_code };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForSBU",
+	                url: "<%=request.getContextPath()%>/ajax/ChangeCategoryForDept",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-		                      $("#sbu_code_addError").html(sbu_code+" Already Exists!").css("color","red");
-		                      $('#sbu_code_add').removeClass("is-valid")
-		                      $('#sbu_code_add').addClass("is-invalid")
-		                      $("#addBtn").prop("disabled",true);
-	                    	});
-	                     }else{
-	                    	  $("#sbu_code_addError").text("");
-	                    	  $('#sbu_code_add').removeClass("is-invalid")
-		                      $('#sbu_code_add').addClass("is-valid")
-		                      $("#addBtn").prop("disabled",false);
-	                     }           
+	                        	 $(".dept").html( $.trim(val.department_name));
+	                        	var html='  <div class="card"> <div class="flex justify-center p-5"></div>'
+	                                +'<div class="px-4 pb-8 text-center sm:px-5">'
+	                                +'<h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'
+	                                +$.trim(val.dm_category)
+	                               +'</h4>' 
+	                               +'<a '
+	                               +' href="<%=request.getContextPath() %>/'+$.trim(val.dm_category)
+	                               +'"'
+	                               +' class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
+	                               +'Sub Categories'
+	                              +' </a></div></div>';
+	                              $("#deptList").append(html);
+	                              
+	                            var html2= ' <li> <a class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
+	                            	   +' href="<%=request.getContextPath() %>/'+$.trim(val.dm_category)
+	                            	+'">'
+	                            	+' <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-secondary dark:text-secondary-light" fill="none"'
+	                            	+'  viewBox="0 0 24 24" stroke="#e21e26" stroke-width="1.5" >'
+	                            	+' <path  stroke-linecap="round" stroke-linejoin="round"'
+	                            	+'   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"'
+	                            	+'  /></svg> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
+	                                  
+	                            
+	                            
+	                             $("#deptListLi").append(html2);
+	                        });
+	                    }else{
+	                    	
+	                    	
+	                    }
 	                    
-	                    },error: function (jqXHR, exception) {
+	                },error: function (jqXHR, exception) {
 	    	   			      $(".page-loader").hide();
 	       	          	  getErrorMessage(jqXHR, exception);
 	       	     	  }
 	            });
 	        }
-	   		
-	   		
-	   	}
+       }
       </script>
   </body>
 </html>
-

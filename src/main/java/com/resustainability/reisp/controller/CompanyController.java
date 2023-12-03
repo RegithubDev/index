@@ -134,6 +134,27 @@ public class CompanyController {
 		return reonecategoryList;
 	}
 	
+	@RequestMapping(value = "/ajax/ChangeCategoryForDept", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> ChangeCategoryForDept(@ModelAttribute User obj,HttpSession session) {
+		List<User> reonecategoryList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			List <User> departmentsList = serviceU.getDepartmentsList(obj);
+			if(obj.getDepartment_code().equals("doc")) {
+				obj.setDepartment_code(departmentsList.get(0).getDepartment_code());	
+        	}
+			reonecategoryList = serviceU.getCatagoryList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getreonecategoryList : " + e.getMessage());
+		}
+		return reonecategoryList;
+	}
+	
 	@RequestMapping(value = "/ajax/setCategoryForSubcategoryForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<User> setCategoryForSubcategoryForm(@ModelAttribute User obj,HttpSession session) {

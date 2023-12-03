@@ -61,6 +61,7 @@ public class PageConstants {
 		public static final String company2 = "company2";
 		public static final String sbu2 = "sbu2";
 		public static final String business = "business";
+		public static final String categoryMaster = "categoryMaster";
 		public static final String bmw = "bmw";
 		public static final String contracts = "contracts";
 		public static final String comunication = "communication";

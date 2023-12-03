@@ -3,7 +3,23 @@ package com.resustainability.reisp.model;
 public class Department {
 
 	private String id,	department_code	,department_name,assigned_to_sbu_multiple,	assigned_to_sbu,sbu_code,sbu_name,
-	status,	craeted_by,user_name,user_id,created_date,created_by	,craeted_date,	modified_by	,modified_date,all_department,active_department,inActive_department;
+	status,	craeted_by,user_name,user_id,created_date,created_by,priority,common_url	,craeted_date,	modified_by	,modified_date,all_department,active_department,inActive_department;
+
+	public String getCommon_url() {
+		return common_url;
+	}
+
+	public void setCommon_url(String common_url) {
+		this.common_url = common_url;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
 
 	public String getCreated_date() {
 		return created_date;
