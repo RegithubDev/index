@@ -2750,7 +2750,7 @@ z-index: 1000;
         
                 	<div class="  mt-4 flex h-8 ">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				Business Development Categories
+				Business Development 
               </h2>
             </div>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1"> 

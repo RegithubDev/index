@@ -410,7 +410,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>${obj.url }"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2197,23 +2197,23 @@ button.disabled {
               </svg>
             </li>
             <li>Role Mapping</li>
-          </ul>
-        </div>                
+               </ul>
+                 </div>                
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
-                  <select  id="select2-project-filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-project-filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Project</option>
                    
                   </select>
                 </label>
                    <label class="block">
-                  <select id="select2-department_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-department_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Department</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select  id="select2-roles_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-roles_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Employee Code</option>
                     
                   </select>
@@ -2249,12 +2249,11 @@ button.disabled {
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
                 Add Role Mapping
               </p>
-
         <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-role-mapping" method="post" class="form-horizontal" role="form" >
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                
                  <label class="block  text-left">
-                    <span>Project</span><span class="required"> *</span>
+                  <span>Project</span>
+                  <span class="required"> *</span>
                   <select
                    id="select2-project_add-container"
               name="project"
@@ -2267,12 +2266,11 @@ button.disabled {
                   </select>
                     <span id="select2-project_add-containerError" class="error-msg" ></span>
                   </label>
-                  
                  <label class="block  text-left">
                     <span>Department</span><span class="required"> *</span>
-                  <select
-                      id="select2-department_code_add-container"
-              name="department_code"
+                <select
+                id="select2-department_code_add-container"
+                name="department_code"
                 onchange="filterRoles_add();
                 setRole();"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
@@ -2280,117 +2278,91 @@ button.disabled {
              	<%-- <c:forEach var="obj" items="${deptList}">
 					<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
 				</c:forEach> --%>
-                  </select>
+                 </select>
                    <span id="select2-department_code_add-containerError" class="error-msg" ></span>
                   </label>
-                  
                  <label class="block  text-left">
                     <span>Incident Type</span><span class="required"> *</span>
                   <select
-                          id="select2-safety_type_add-container"
-              name="safety_type"
-                  multiple data-placeholder="Select Incident" 
-              aria-label="Default select example" onchange="filterRoles_add();"
-              
+                   id="select2-safety_type_add-container"
+                   name="safety_type"
+                   multiple data-placeholder="Select Incident" 
+                   aria-label="Default select example" 
+                   onchange="filterRoles_add();"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
                    <option value="AC" selected>Accident</option>	  
 					<option value="NM" selected>Near Miss</option>	
 					<option value="UA" selected>Unsafe Act</option>	
 					<option value="UC" selected>Unsafe Condition</option>
-                  </select>
-                     <span id="select2-safety_type_add-containerError" class="error-msg" ></span>
-                  </label>
-                  
-                 <label class="block  text-left">
+                   </select>
+                    <span id="select2-safety_type_add-containerError" class="error-msg" ></span>
+                    </label>
+                    <label class="block  text-left">
                     <span>Roles</span><span class="required"> *</span>
-                  <select
-              id="select2-roles_add-container"
-              name="role_code"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                    <select
+                     id="select2-roles_add-container"
+                     name="role_code"
+                     class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
                      <option value="">Select Roles</option>
-                  </select>
-                               <span id="select2-roles_add-containerError" class="error-msg" ></span>
-                  
-                  </label>
-                  
-                 <label class="block  text-left">
+                     </select>
+                     <span id="select2-roles_add-containerError" class="error-msg" ></span>
+                     </label>
+                   <label class="block  text-left">
                     <span>Employees List</span><span class="required"> *</span>
-                  <select
-               id="select2-employee_code_add-container"
-              name="employee_code"
-             onchange="setEmail();"
-               
+                    <select
+                     id="select2-employee_code_add-container"
+                    name="employee_code"
+                   onchange="setEmail();"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
                    <option value="">Select Employees</option>
              	<%-- <c:forEach var="obj" items="${empList}">
 					<option email ="${obj.email_id }" value="${obj.user_id }" >[${obj.user_id }] - ${obj.user_name }</option>
 				</c:forEach> --%>
-                  </select>
+                    </select>
                     <span id="select2-employee_code_add-containerError" class="error-msg" ></span>
-                  
-                  </label>
-                  
-                 <label class="block  text-left">
+                    </label>
+                    <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
                    id="select2-status_add-container"
               name="status"
-              
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" >
+                   <option value="">Select Status</option>
                    <option value="Active" >Active</option>
              	<option value="Inactive" >Inactive</option>
                   </select>
-                               <span id="select2-status_add-containerError" class="error-msg" ></span>
-                  
+                  <span id="select2-status_add-containerError" class="error-msg" ></span>
                   </label>
-               
-                
-            
-                   
                 </div>
                 <div class="flex justify-center space-x-2 pt-4">
                  <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
                     <span>Add </span>
-                   
                   </button>
                   <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
-                        </button>
-                 
+                  </button>
                 </div>
                 </form>
-              
             </div>
           </div>
-                       
-                       
-                      </div>
+              </div>
                     </div>
                   </template>
                 </div>
-                 
                 <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;"  onclick="exportSBU();">
                          <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
-                    
                     </div>
-                
                 </div>
-              
               </div>
 		<br>
-	
-              
-
-          <div class="row">
-
+	<div class="row">
             <div class="card mt-3">
 		     <div class="card invoice-list-wrapper">
 		      <div class="card-datatable table-responsive">
 		       <div class="dt-buttons" style="height : 0.5em;">
-		      
 		        </div>
                 <table class="invoice-list-table table" id="datatable-company">
                   <thead>
@@ -2421,24 +2393,13 @@ button.disabled {
                     </tr>
                   </thead>
                   <tbody class="text-center">
-                    
                   </tbody>
                 </table>
               </div>
               </div>
             </div>
           </div>
-          
-          
-          
-          
-                
-             
-   
-                
               </div>
-         
-        
       </main>
        
      <div x-data="{showModal:false}">
@@ -3038,6 +2999,76 @@ $(window).on("load",(function(){
         }
 	    
 	    function addCompany(){
+	        var validator =	$('#addCompanyForm').validate({
+	   	   	 errorClass: "my-error-class",
+	   	   	 validClass: "my-valid-class",
+	   	   	 ignore: ":hidden:not(.select2 form-select)",
+	   	   		    rules: {
+	   			   		     "safety_type": {
+	   					 			required: true
+	   					 	  },"project": {										
+	   					 			required: true
+	   					 	  },"role_code": {
+	   			                 	required: true,
+	   					 	  },"department_code": {										
+	   					 			required: true
+	   					 	  },"employee_code": {
+	   			                 	required: true,
+	   					 	  },"status": {
+	   			                 	required: true,
+	   					 	  }
+	   				 	},
+	   				    messages: {
+	   				 		 "safety_type": {
+	   						 	required: 'Required',
+	   					 	  },"project": {
+	   					 		required: 'Required'
+	   					 	  },"role_code": {
+	   				 			required: 'Required'
+	   				 	  	  },"department_code": {
+	   					 		required: 'Required'
+	   					 	  },"employee_code": {
+	   				 			required: 'Required'
+	   				 	  	  },"status": {
+	   				 			required: 'Required'
+	   				 	  	  }
+	   		   		},
+	   	      		errorPlacement:function(error, element){
+	   	      			/* if (element.attr("id") == "select2-safety_type_add-container" ){
+	   		   				 document.getElementById("select2-safety_type_add-containerError").innerHTML="";
+	   		   		 		 error.appendTo('#select2-safety_type_add-containerError');
+	   			   			}else if(element.attr("id") == "select2-employee_code_add-container" ){
+	   			   			   document.getElementById("select2-employee_code_add-containerError").innerHTML="";
+	   			   		 	   error.appendTo('#select2-employee_code_add-containerError');
+	   			   			}else if(element.attr("id") == "select2-roles_add-container" ){
+	   			   				document.getElementById("select2-roles_add-containerError").innerHTML="";
+	   			   			 	error.appendTo('#select2-roles_add-containerError');
+	   			   			}else if(element.attr("id") == "select2-project_add-container" ){
+	   			   				document.getElementById("select2-project_add-containerError").innerHTML="";
+	   			   			 	error.appendTo('#select2-project_add-containerError');
+	   			   			}else if(element.attr("id") == "select2-department_code_add-container" ){
+	   			   				document.getElementById("select2-department_code_add-containerError").innerHTML="";
+	   			   			 	error.appendTo('#select2-department_code_add-containerError');
+	   			   			}else if(element.attr("id") == "select2-status_add-container" ){
+	   			   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	   			   			 	error.appendTo('#select2-status_add-containerError');
+	   			   			}else{ */
+	   			   				error.insertAfter(element);
+	   					   	     //   } 
+	   			      		},invalidHandler: function (form, validator) {
+	   			               var errors = validator.numberOfInvalids();
+	   			               if (errors) {
+	   			                   var position = validator.errorList[0].element;
+	   			                   jQuery('html, body').animate({
+	   			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	   			                   }, 1000);
+	   			               }
+	   			           },submitHandler:function(form){
+	   			   	    	//form.submit();
+	   			   	    }
+	   	   	});
+	    	
+	    	
 	    	if(validator.form()){ // validation perform
 	    		$('#addCompany').modal('hide');
 	        	document.getElementById("addCompanyForm").submit();	
@@ -3118,74 +3149,7 @@ $(window).on("load",(function(){
 			   	    	//form.submit();
 			   	    }
 		   	});
-	    var validator =	$('#addCompanyForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-			   		     "safety_type": {
-					 			required: true
-					 	  },"project": {										
-					 			required: true
-					 	  },"role_code": {
-			                 	required: true,
-					 	  },"department_code": {										
-					 			required: true
-					 	  },"employee_code": {
-			                 	required: true,
-					 	  },"status": {
-			                 	required: true,
-					 	  }
-				 	},
-				    messages: {
-				 		 "safety_type": {
-						 	required: 'Required',
-					 	  },"project": {
-					 		required: 'Required'
-					 	  },"role_code": {
-				 			required: 'Required'
-				 	  	  },"department_code": {
-					 		required: 'Required'
-					 	  },"employee_code": {
-				 			required: 'Required'
-				 	  	  },"status": {
-				 			required: 'Required'
-				 	  	  }
-		   		},
-	      		errorPlacement:function(error, element){
-	      			if (element.attr("id") == "select2-safety_type_add-container" ){
-		   				 document.getElementById("select2-safety_type_add-containerError").innerHTML="";
-		   		 		 error.appendTo('#select2-safety_type_add-containerError');
-			   			}else if(element.attr("id") == "select2-employee_code_add-container" ){
-			   			   document.getElementById("select2-employee_code_add-containerError").innerHTML="";
-			   		 	   error.appendTo('#select2-employee_code_add-containerError');
-			   			}else if(element.attr("id") == "select2-roles_add-container" ){
-			   				document.getElementById("select2-roles_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-roles_add-containerError');
-			   			}else if(element.attr("id") == "select2-project_add-container" ){
-			   				document.getElementById("select2-project_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-project_add-containerError');
-			   			}else if(element.attr("id") == "select2-department_code_add-container" ){
-			   				document.getElementById("select2-department_code_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-department_code_add-containerError');
-			   			}else if(element.attr("id") == "select2-status_add-container" ){
-			   				document.getElementById("select2-status_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-status_add-containerError');
-			   			}else{
-			   				error.insertAfter(element);
-					   	        } 
-			      		},invalidHandler: function (form, validator) {
-			               var errors = validator.numberOfInvalids();
-			               if (errors) {
-			                   var position = validator.errorList[0].element;
-			                   jQuery('html, body').animate({
-			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-			                   }, 1000);
-			               }
-			           },submitHandler:function(form){
-			   	    	//form.submit();
-			   	    }
-	   	}); 
+	 
 	   	$('.formSelect').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();
@@ -3212,3 +3176,4 @@ $(window).on("load",(function(){
       </script>
   </body>
 </html>
+

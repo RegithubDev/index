@@ -411,7 +411,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>${obj.url }"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2201,42 +2201,39 @@ button.disabled {
           </ul>
         </div>  
                 <div class="my-7 h-px bg-slate-200 dark:bg-navy-500"></div>
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
-                  <select id="select2-sbu_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">                   
+                  <select id="select2-sbu_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">                   
                  <option value="">Select SBU</option>
                    
                   </select>
                 </label>
                 <label class="block">
-                  <select id="select2-project_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-project_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Project</option>
                    
                   </select>
                 </label>
                 <label class="block">
-                  <select  id="select2-role_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-role_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Role</option>
                    
                   </select>
                 </label>
                 <label class="block">
-                  <select  id="select2-user_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-user_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select User</option>
                    
                   </select>
                 </label>
                 <label class="block">
-                  <select id="select2-time_period_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-time_period_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Time Period</option>
-                   
                   </select>
                 </label>
-                
                   <label class="block">
-                  <select id="select2-status_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Status</option>
-                    
                   </select>
                 </label>
                     <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
@@ -2268,63 +2265,56 @@ button.disabled {
                 Add User
               </p>
               <div class="mt-4 space-y-4">
-        <form id="addUserForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-user" method="post" class="form-horizontal" role="form" >
+        <form id="addCompanyForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-user" method="post" class="form-horizontal" role="form" >
               
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block  text-left">
                     <span>User ID </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                         type="text"
               id="user_id_add"
               name="user_id"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="enter ID"   type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="enter ID"   type="text"/>
+                      <span id="company_name_addError"></span>
+                      
                     </span>
              <span id="user_id_addError" class="error-msg" ></span>
                   </label>
                     <label class="block  text-left">
                     <span>User Name </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                        type="text"
               id="user_name_add"
               name="user_name"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="enter name"   type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                      
                     </span>
              <span id="user_name_addError" class="error-msg" ></span>
                   </label>
                     <label class="block  text-left">
                     <span>Mobile Number</span><span class="required"> </span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                        type="number"
               id="contact_number_add"
               name="contact_number"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : +91 ##########"   type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                      
                     </span>
              <span id="contact_number_addError" class="error-msg" ></span>
                   </label>
                     <label class="block  text-left">
                     <span>E-mail</span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                         type="email"
               id="email_add"
               name="email_id"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : email@gmail.com"   type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                     
                     </span>
              <span id="email_addError" class="error-msg" ></span>
                   </label>
@@ -2338,11 +2328,9 @@ button.disabled {
              	 <c:forEach var="obj" items="${objList}">
 					<option value="${obj.user_id }" >[${obj.user_id }] - ${obj.user_name }</option>
 				</c:forEach>
-                  </select><br>
-                               <span id="select2-reporting_to_add-containerError" class="error-msg" ></span>
-                  
+                  </select>
+                      <span id="select2-reporting_to_add-containerError" class="error-msg" ></span>
                   </label>
-                  
                   
                    <label class="block  text-left">
                     <span>Department</span><span class="required"> *</span>
@@ -2417,12 +2405,12 @@ button.disabled {
               <option value="Inactive">Inactive</option>
                   </select>
                    <span id="select2-status_add-containerError" class="error-msg" ></span>
-   
+    
                   </label>
                 </div>
                
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" onclick="addCompany();">
                     <span>Add </span>
                    
                   </button>
@@ -2454,7 +2442,7 @@ button.disabled {
               
               </div>
 		<br>
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
 	
           <div class=" card  rounded-lg  p-4 dark:bg-navy-600">
                 <div class="flex justify-between space-x-1">
@@ -3008,6 +2996,87 @@ button.disabled {
         }
 	    
 	    function addCompany(){
+	    	
+	    	var validator =	$('#addCompanyForm').validate({
+	   	   	 errorClass: "my-error-class",
+	   	   	 validClass: "my-valid-class",
+	   	   	 ignore: ":hidden:not(.select2 form-select)",
+	   	   		    rules: {
+	   	   		  "user_name": {
+  			 		required: true
+  			 	  },"user_id": {										
+  			 		required: true
+  			 	  },"contact_number": {
+  			 		  required: false,
+  			 		  minlength:10,
+  			 		  maxlength:14,
+  			 		  number: true
+  			 	  },"email_id": {
+  		 		    required: true,
+  	                   email: true
+  			 	  },"status": {										
+	    			 		required: true
+	  			 	  },"reporting_to": {
+  		 			required: false
+  		 	  	  },"base_project": {										
+	    			 		required: true
+	  			 	  },"base_sbu": {										
+	    			 		required: true
+	  			 	  },"base_department": {										
+	    			 		required: true
+	  			 	  },"base_role": {
+	  			 		required: true
+	  		 	  	  }
+	   	   		 	},
+	   	   		    messages: {
+	   	   		  "user_name": {
+	  				 	required: 'Required',
+	  			 	  },"user_id": {
+	  			 		required: 'Required'
+	  			 	  },"contact_number": {
+	  		 			required: 'Required'
+	  		 	  	  },"email_id": {
+	  		 			required: 'Required'
+	  		 	  	  },"status": {
+	  		 			required: 'Required'
+	  		 	  	  },"reporting_to": {
+  		 			required: 'Required'
+  		 	  	  },"base_project": {
+	  		 			required: 'Required'
+	  		 	  	  },"base_sbu": {
+	  		 			required: 'Required'
+	  		 	  	  },"base_department": {
+	  		 			required: 'Required'
+	  		 	  	  },"base_role": {
+	  		 			required: 'Required'
+	  		 	  	  }
+	   	      		},
+	   	      		errorPlacement:function(error, element){
+	   	      		 	/* if (element.attr("id") == "company_name_add" ){
+	   	   				 document.getElementById("company_name_addError").innerHTML="";
+	   	   		 		 error.appendTo('#company_name_addError');
+	   	   			}else if(element.attr("id") == "company_code_add" ){
+	   	   			   document.getElementById("company_code_addError").innerHTML="";
+	   	   		 	   error.appendTo('#company_code_addError');
+	   	   			}else if(element.attr("id") == "select2-status_add-container" ){
+	   	   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	   	   			 	error.appendTo('#select2-status_add-containerError');
+	   	   			}else{ */
+	   	   					error.insertAfter(element);
+	   	   	       // } 
+	   	      		},invalidHandler: function (form, validator) {
+	   	               var errors = validator.numberOfInvalids();
+	   	               if (errors) {
+	   	                   var position = validator.errorList[0].element;
+	   	                   jQuery('html, body').animate({
+	   	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	   	                   }, 1000);
+	   	               }
+	   	           },submitHandler:function(form){
+	   	        	 console.log('submit handler')
+	   	   	    }
+	   	   	}); 
+	    	console.log(validator.form());
 	    	if(validator.form()){ // validation perform
 	        	document.getElementById("addCompanyForm").submit();	
 	    	}
@@ -3064,53 +3133,7 @@ button.disabled {
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addCompanyForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-	   		 		  "company_name": {
-	   			 			required: true
-	   			 	  },"company_code": {										
-	   			 			required: true
-	   			 	  },"status": {
-	   	                 	required: true,
-	   			 	  }
-	   		 	},
-	   		    messages: {
-	   		 		 "company_name": {
-	   				 	required: 'Required',
-	   			 	  },"company_code": {
-	   			 		required: 'Required'
-	   			 	  },"status": {
-	   		 			required: 'Required'
-	   		 	  	  }
-	      		},
-	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "company_name_add" ){
-	   				 document.getElementById("company_name_addError").innerHTML="";
-	   		 		 error.appendTo('#company_name_addError');
-	   			}else if(element.attr("id") == "company_code_add" ){
-	   			   document.getElementById("company_code_addError").innerHTML="";
-	   		 	   error.appendTo('#company_code_addError');
-	   			}else if(element.attr("id") == "select2-status_add-container" ){
-	   				document.getElementById("select2-status_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-status_add-containerError');
-	   			}else{
-	   					error.insertAfter(element);
-	   	        } 
-	      		},invalidHandler: function (form, validator) {
-	               var errors = validator.numberOfInvalids();
-	               if (errors) {
-	                   var position = validator.errorList[0].element;
-	                   jQuery('html, body').animate({
-	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-	                   }, 1000);
-	               }
-	           },submitHandler:function(form){
-	   	    	//form.submit();
-	   	    }
-	   	}); 
+	    
 	   	$('.formSelect').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();

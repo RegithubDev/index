@@ -84,6 +84,16 @@
   margin-left: 0.3rem;
 }
 
+#select2-select2-multiple-assigned_to_sbu_add-container
+{
+ color: black !important;
+}
+
+#select2-status_add-container
+{
+ color: black !important;
+} 
+
 .input-sm::after {
   padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
 
@@ -410,7 +420,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>${obj.url }"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2201,13 +2211,13 @@ button.disabled {
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
                     <option value="">Select Department</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" style="width: 14rem;">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2246,29 +2256,26 @@ button.disabled {
                   
                   <label class="block  text-left">
                     <span>Department Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                     type="text"
               id="department_code_add"
               name="department_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                       <span id="department_name_addError"></span>
+
                     </span>
-                     <span class="required" id="sbu_code_addError"> *</span>
+                     <span class="required" id="sbu_code_addError"> </span>
                   </label>
                     <label class="block  text-left">
                     <span>Department Name </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                          type="text"
               id="department_name_add"
               name="department_name"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                     
                     </span>
                   </label>
                      <label class="block  text-left">
@@ -2287,7 +2294,7 @@ button.disabled {
                   <select
                    id="select2-select2-multiple-assigned_to_sbu_add-container"
               name="assigned_to_sbu"
-                   class=" select2 form-select  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select SBU</option>
               <c:forEach var="obj" items="${objList}">
 					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
@@ -2337,7 +2344,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span  id= "allDepartment"></span>
                   </p>
-                              <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+         <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
                 </div>
                 <p class="mt-1 text-xs+">Total Department</p>
@@ -2347,7 +2354,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "activeDepartment"></span>
                   </p>
-<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
+            <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
 
                 </div>
                 <p class="mt-1 text-xs+"> Active Department</p>
@@ -2357,7 +2364,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span  id= "inActiveDepartment"></span>
                   </p>
-<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+           <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap-off font-medium-5"><polyline points="12.41 6.75 13 2 10.57 4.92"></polyline><polyline points="18.57 12.91 21 10 15.66 10"></polyline><polyline points="8 8 3 14 12 14 11 22 16 16"></polyline><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                 </div>
                 <p class="mt-1 text-xs+"> Inactive Companies</p>
            </div>
@@ -2797,6 +2804,62 @@ button.disabled {
         }
 	    
 	    function addDepartment(){
+	    	 var validator =	$('#addDepartmentForm').validate({
+	    	   	 errorClass: "my-error-class",
+	    	   	 validClass: "my-valid-class",
+	    	   	 ignore: ":hidden:not(.select2 form-select)",
+	    	   		    rules: {
+	    	   		 		  "department_name": {
+	    	   			 			required: true
+	    	   			 	  },"department_code": {										
+	    	   			 			required: true
+	    	   			 	  },"assigned_to_sbu": {
+	    	   	                 	required: true,
+	    	   			 	  },"status": {
+	    	   	                 	required: true,
+	    	   			 	  }
+	    	   		 	},
+	    	   		    messages: {
+	    	   		 		 "department_name": {
+	    	   				 	required: 'Required',
+	    	   			 	  },"department_code": {
+	    	   			 		required: 'Required'
+	    	   			 	  },"assigned_to_sbu": {
+	    	   		 			required: 'Required'
+	    	   		 	  	  },"status": {
+	    		   		 		required: 'Required'
+	    	   		 	  	  }
+	    	      		},
+	    	      		errorPlacement:function(error, element){
+	    	      		 	/* if (element.attr("id") == "department_name_add" ){
+	    	   				 document.getElementById("department_name_addError").innerHTML="";
+	    	   		 		 error.appendTo('#department_name_addError');
+	    	   			}else if(element.attr("id") == "department_code_add" ){
+	    	   			   document.getElementById("department_code_addError").innerHTML="";
+	    	   		 	   error.appendTo('#department_code_addError');
+	    	   			}else if(element.attr("id") == "select2-assigned_to_sbu_add-container" ){
+	    	   				document.getElementById("select2-assigned_to_sbu_add-containerError").innerHTML="";
+	    	   			 	error.appendTo('#select2-assigned_to_sbu_add-containerError');
+	    	   			}else if(element.attr("id") == "select2-status_add-container" ){
+	    	   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	    	   			 	error.appendTo('#select2-status_add-containerError');
+	    	   			}else{ */
+	    	   					error.insertAfter(element);
+	    	   			// } 
+	    	      		},invalidHandler: function (form, validator) {
+	    	               var errors = validator.numberOfInvalids();
+	    	               console.log('invalidHandler',errors);
+	    	               if (errors) {
+	    	                   var position = validator.errorList[0].element;
+	    	                   jQuery('html, body').animate({
+	    	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	    	                   }, 1000);
+	    	               }
+	    	           },submitHandler:function(form){
+	    	        	   console.log('submit handler')
+	    	   	    }
+	    	   	}); 
+	    	 console.log(validator.form());
 	    	if(validator.form()){ // validation perform
 	        	document.getElementById("addDepartmentForm").submit();	
 	    	}
@@ -2860,60 +2923,7 @@ button.disabled {
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addDepartmentForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-	   		 		  "department_name": {
-	   			 			required: true
-	   			 	  },"department_code": {										
-	   			 			required: true
-	   			 	  },"assigned_to_sbu": {
-	   	                 	required: true,
-	   			 	  },"status": {
-	   	                 	required: true,
-	   			 	  }
-	   		 	},
-	   		    messages: {
-	   		 		 "department_name": {
-	   				 	required: 'Required',
-	   			 	  },"department_code": {
-	   			 		required: 'Required'
-	   			 	  },"assigned_to_sbu": {
-	   		 			required: 'Required'
-	   		 	  	  },"status": {
-		   		 		required: 'Required'
-	   		 	  	  }
-	      		},
-	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "department_name_add" ){
-	   				 document.getElementById("department_name_addError").innerHTML="";
-	   		 		 error.appendTo('#department_name_addError');
-	   			}else if(element.attr("id") == "department_code_add" ){
-	   			   document.getElementById("department_code_addError").innerHTML="";
-	   		 	   error.appendTo('#department_code_addError');
-	   			}else if(element.attr("id") == "select2-assigned_to_sbu_add-container" ){
-	   				document.getElementById("select2-assigned_to_sbu_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-assigned_to_sbu_add-containerError');
-	   			}else if(element.attr("id") == "select2-status_add-container" ){
-	   				document.getElementById("select2-status_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-status_add-containerError');
-	   			}else{
-	   					error.insertAfter(element);
-	   	        } 
-	      		},invalidHandler: function (form, validator) {
-	               var errors = validator.numberOfInvalids();
-	               if (errors) {
-	                   var position = validator.errorList[0].element;
-	                   jQuery('html, body').animate({
-	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-	                   }, 1000);
-	               }
-	           },submitHandler:function(form){
-	   	    	//form.submit();
-	   	    }
-	   	}); 
+	   
 	   	$('.formSelect').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();

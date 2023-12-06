@@ -83,6 +83,11 @@
   font-size: 13px;
   margin-left: 0.3rem;
 }
+#select2-status_add-container
+
+{
+ color:black!important;
+}
 
 .input-sm::after {
   padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
@@ -2199,13 +2204,13 @@ button.disabled {
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
                     <option value="">Select Department</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2244,42 +2249,36 @@ button.disabled {
                   
                   <label class="block  text-left">
                     <span>Department Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input  required
+                    <span class="relative mt-1.5 ">
+                      <input  
                     type="text"
               id="department_code_add"
               name="department_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                      
                     </span>
                      <span class="required" id="sbu_code_addError"> </span>
                   </label>
                     <label class="block  text-left">
-                    <span>Department Name </span><span class="required"> </span>
-                    <span class="relative mt-1.5 flex">
-                      <input  required
-                         type="text"
-              id="department_name_add"
-              name="department_name"
+                    <span>Department Name </span><span class="required">* </span>
+                    <span class="relative mt-1.5 ">
+                      <input  
+                      type="text"
+                      id="department_name_add"
+                      name="department_name"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                      
                     </span>
                   </label>
                   <label class="block  text-left">
-                    <span>Priority </span><span class="required"> </span>
-                    <span class="relative mt-1.5 flex">
-                      <input  required
+                    <span>Priority </span><span class="required">* </span>
+                    <span class="relative mt-1.5 ">
+                      <input  
                          type="text"
               id="priority_add"
               name="priority"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                      
                     </span>
                   </label>
                      <label class="block  text-left">
@@ -2288,7 +2287,7 @@ button.disabled {
                    id="select2-status_add-container"
               name="status" required
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    
+                    <option value="">Select Status</option>
              	<option value="Active">Active</option>
              	<option value="Inactive">Inactive</option>
                   </select>
@@ -2775,7 +2774,62 @@ button.disabled {
         }
 	    
 	    function addDepartment(){
-	    	if(validator.form()){ // validation perform
+	    	 var validator =	$('#addDepartmentForm').validate({
+	    	   	 errorClass: "my-error-class",
+	    	   	 validClass: "my-valid-class",
+	    	   	 ignore: ":hidden:not(.select2 form-select)",
+	    	   		    rules: {
+	    	   		 		  "department_name": {
+	    	   			 			required: true
+	    	   			 	  },"department_code": {										
+	    	   			 			required: true
+	    	   			 	  },"priority": {
+	    	   	                 	required: true,
+	    	   			 	  },"status": {
+	    	   	                 	required: true,
+	    	   			 	  }
+	    	   		 	},
+	    	   		    messages: {
+	    	   		 		 "department_name": {
+	    	   				 	required: 'Required',
+	    	   			 	  },"department_code": {
+	    	   			 		required: 'Required'
+	    	   			 	  },"priority": {
+	    	   		 			required: 'Required'
+	    	   		 	  	  },"status": {
+	    		   		 		required: 'Required'
+	    	   		 	  	  }
+	    	      		},
+	    	      		errorPlacement:function(error, element){
+	    	      		 	/* if (element.attr("id") == "department_name_add" ){
+	    	   				 document.getElementById("department_name_addError").innerHTML="";
+	    	   		 		 error.appendTo('#department_name_addError');
+	    	   			}else if(element.attr("id") == "department_code_add" ){
+	    	   			   document.getElementById("department_code_addError").innerHTML="";
+	    	   		 	   error.appendTo('#department_code_addError');
+	    	   			}else if(element.attr("id") == "select2-assigned_to_sbu_add-container" ){
+	    	   				document.getElementById("select2-assigned_to_sbu_add-containerError").innerHTML="";
+	    	   			 	error.appendTo('#select2-assigned_to_sbu_add-containerError');
+	    	   			}else if(element.attr("id") == "select2-status_add-container" ){
+	    	   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	    	   			 	error.appendTo('#select2-status_add-containerError');
+	    	   			 }else{*/
+	    	   					error.insertAfter(element);
+	    	   	        // } 
+	    	      		},invalidHandler: function (form, validator) {
+	    	               var errors = validator.numberOfInvalids();
+	    	               if (errors) {
+	    	                   var position = validator.errorList[0].element;
+	    	                   jQuery('html, body').animate({
+	    	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	    	                   }, 1000);
+	    	               }
+	    	           },submitHandler:function(form){
+	    	        	   console.log('submit handler')
+	    	   	    }
+	    	   	}); 
+	    	 console.log(validator.form());
+	    	if(validator.form()){ 
 	        	document.getElementById("addDepartmentForm").submit();	
 	    	}
 	    }
@@ -2838,60 +2892,7 @@ button.disabled {
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addDepartmentForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-	   		 		  "department_name": {
-	   			 			required: true
-	   			 	  },"department_code": {										
-	   			 			required: true
-	   			 	  },"assigned_to_sbu": {
-	   	                 	required: true,
-	   			 	  },"status": {
-	   	                 	required: true,
-	   			 	  }
-	   		 	},
-	   		    messages: {
-	   		 		 "department_name": {
-	   				 	required: 'Required',
-	   			 	  },"department_code": {
-	   			 		required: 'Required'
-	   			 	  },"assigned_to_sbu": {
-	   		 			required: 'Required'
-	   		 	  	  },"status": {
-		   		 		required: 'Required'
-	   		 	  	  }
-	      		},
-	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "department_name_add" ){
-	   				 document.getElementById("department_name_addError").innerHTML="";
-	   		 		 error.appendTo('#department_name_addError');
-	   			}else if(element.attr("id") == "department_code_add" ){
-	   			   document.getElementById("department_code_addError").innerHTML="";
-	   		 	   error.appendTo('#department_code_addError');
-	   			}else if(element.attr("id") == "select2-assigned_to_sbu_add-container" ){
-	   				document.getElementById("select2-assigned_to_sbu_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-assigned_to_sbu_add-containerError');
-	   			}else if(element.attr("id") == "select2-status_add-container" ){
-	   				document.getElementById("select2-status_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-status_add-containerError');
-	   			}else{
-	   					error.insertAfter(element);
-	   	        } 
-	      		},invalidHandler: function (form, validator) {
-	               var errors = validator.numberOfInvalids();
-	               if (errors) {
-	                   var position = validator.errorList[0].element;
-	                   jQuery('html, body').animate({
-	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-	                   }, 1000);
-	               }
-	           },submitHandler:function(form){
-	   	    	//form.submit();
-	   	    }
-	   	}); 
+	   
 	   	$('.formSelect').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();

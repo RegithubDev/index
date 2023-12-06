@@ -2181,6 +2181,23 @@ button.disabled {
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
+      <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+             Department Content
+          </h2>
+          <div class="hidden h-full py-1 sm:flex">
+            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
+          </div>
+          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+            <li class="flex items-center space-x-2">
+              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Master</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </li>
+            <li>Department Content</li>
+          </ul>
+        </div>
       <div class="p-4 sm:p-5">
               
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -2188,20 +2205,21 @@ button.disabled {
                   
                   
                   
-                  <select  id="select2-company_code_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select </option>
+                  <select  id="select2-company_code_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" style="width: 302px;">
+                    <option value="">Select Category</option>
                    
                   </select>
                 </label>
                    <label class="block">
-                  <select id="select2-sbu_filter-container"   class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select </option>
+                  <select id="select2-sbu_filter-container"   class="form-select mt-1.5 w-full rounded-lg border borde
+                  r-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"  style="width: 302px;">
+                    <option value="">Select Sub Category</option>
                    
                   </select>
-                </label>
+                </label><br>
                   <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select </option>
+                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"  style="width: 302px;">
+                    <option value="">Select Status</option>
                     
                   </select>
                 </label>
@@ -2247,7 +2265,48 @@ button.disabled {
                     </div>
                 
                 </div>
-              
+               <div class="row">
+
+            <div class="card mt-3">
+		     <div class="card invoice-list-wrapper">
+		      <div class="card-datatable table-responsive">
+		       <div class="dt-buttons" style="height : 0.5em;">
+		      
+		        </div>
+                <table class="invoice-list-table table" id="datatable-sbu">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        #
+                      </th>
+                    <%--  <c:if test="${sessionScope.ROLE eq 'Admin' }" > --%>
+                       <th class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Action
+                      </th>
+                      <%-- </c:if> --%>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        SBU Code
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        SBU Name
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Company
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Status
+                      </th>
+                       
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
               </div>
                   </main>
 	
@@ -2257,30 +2316,6 @@ button.disabled {
           
               </div>
          
-        
-  
-       
-     <div x-data="{showModal:false}">
-       <a class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-          
-          </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
-                </div>
-           
-      
-
 
      <!--  <div
         class="fixed right-3 bottom-3 rounded-full bg-white dark:bg-navy-700"

@@ -131,6 +131,9 @@ height: 100%;
 .my-error-class {
  	 color:red;
 }
+select .my-error-class {
+ 	 color:red;
+}
 .my-valid-class {
  	 color:green;
 }
@@ -138,6 +141,11 @@ height: 100%;
      left: -25% !important;
     margin-top: 1p% !important;
 }
+#select2-status_add-container{
+    color: black !important;
+}
+
+
 body {
     font-family: var(--bs-body-font-family) !important;
 }
@@ -268,7 +276,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>${obj.url }"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2058,15 +2066,15 @@ button.disabled {
         </div>
                 
               
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
-                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" style="width: 19rem;">
                     <option value="">Select Company</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" style="width: 19rem;">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2090,7 +2098,7 @@ button.disabled {
                     dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </button>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+             <template x-teleport="#x-teleport-target" data-teleport-template="true">
                     <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
                       <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
                       <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
@@ -2103,73 +2111,63 @@ button.disabled {
                 <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
                 <label class="block  text-left">
                  <span>Company Name </span><span class="required"> *</span>
-                  <span class="relative mt-1.5 flex">
+                  <span class="relative mt-1.5 ">
                     <input 
                       id="company_name_add"
-		              name="company_name"
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text">
-                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                      <i class="fa-regular fa-building text-base"></i>
-                    </span>
+		              name="company_name" 
+                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text"/>
+                   <span id="company_name_addError"></span>
+                    
                   </span>
                 </label>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block  text-left">
                     <span>Company Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                        id="company_code_add"
-              		   name="company_code"
+              		   name="company_code" 
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                     
                     </span>
-                     <span class="required" id="sbu_code_addError"> *</span>
+                     <span class="required" id="sbu_code_addError"></span>
                   </label>
                  <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
+                    
                   <select
                    id="select2-status_add-container"
-              		name="status"
+              		name="status" 
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select status</option>
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
                   </select>
                   </label>
                 </div>
-               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90"   onclick="addCompany()">
                     <span>Add </span>
-                   
                   </button>
                   <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
-                          Discard
-                        </button>
-                 
+                    Discard
+                  </button>
                 </div>
                  </form>
               </div>
             </div>
           </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
+          </div>
+          </div>
+            </template>
                 </div>
-                 
                 <button onclick="exportCompany();" class="btn bg-primary font-medium text-white hover:bg-primary-focus
                  focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                  style="margin-top: 17px; width: 42%;     background-color: #14e014 !important;color: white !important;">
                   <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
-                    
                     </div>
-                
                 </div>
-              
               </div>
 		<br>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
@@ -2179,8 +2177,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "allCompanies"></span>
                   </p>
-                              <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-
+         <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users font-medium-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
                 <p class="mt-1 text-xs+">Total Companies</p>
            </div>
@@ -2189,8 +2186,7 @@ button.disabled {
                   <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                    <span id= "activeCompanies"></span>
                   </p>
-<svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
-
+         <svg style="width: 5rem;height: 2rem;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap font-medium-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>          
                 </div>
                 <p class="mt-1 text-xs+"> Active Companies</p>
            </div>
@@ -2203,18 +2199,12 @@ button.disabled {
                 </div>
                 <p class="mt-1 text-xs+"> Inactive Companies</p>
            </div>
-          
-          
         </div>
-              
-
           <div class="row">
-
             <div class="card mt-3">
 		     <div class="card invoice-list-wrapper">
 		      <div class="card-datatable table-responsive">
 		       <div class="dt-buttons" style="height : 0.5em;">
-		      
 		        </div>
                 <table class="invoice-list-table table" id="datatable-company">
                   <thead>
@@ -2248,24 +2238,17 @@ button.disabled {
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Modified By
                       </th>
-                     
                     </tr>
                   </thead>
                   <tbody class="text-center">
-                    
                   </tbody>
                 </table>
               </div>
               </div>
             </div>
           </div>
-          
-          
               </div>
-         
-        
       </main>
-       
      <div x-data="{showModal:false}">
        <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
                     dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
@@ -2310,9 +2293,7 @@ button.disabled {
                       </span>
                     </span>
                   </label>
-                 <label class="block  text-left" style="
-  
-    padding-top: 1rem;">
+                 <label class="block  text-left" style="padding-top: 1rem;">
                     <span>Status</span><span class="required"> *</span>
                   <select
                    id="select2-status_add-container"
@@ -2323,31 +2304,22 @@ button.disabled {
                   </select>
                   </label>
                 </div>
-              
                 <div class="flex justify-center space-x-2 pt-4">
                  <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="();">
                     <span>update </span>
-                   
                   </button>
                   <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
                         </button>
-                 
                 </div>
                   </form>
               </div>
             </div>
           </div>
-                       
-                       
                       </div>
                     </div>
                   </template>
                 </div>
-           
-      
-
-
      <!--  <div
         class="fixed right-3 bottom-3 rounded-full bg-white dark:bg-navy-700"
       >
@@ -2381,9 +2353,7 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	  <form action="<%=request.getContextPath()%>/export-company" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">	
-      
-     
+	<form action="<%=request.getContextPath()%>/export-company" name="exportCompanyForm" id="exportCompanyForm" target="_blank" method="post">
         <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
 	 <form action="<%=request.getContextPath()%>/update-company" name="updateCompany" id="updateCompany" method="post">	
@@ -2572,7 +2542,61 @@ button.disabled {
 	  	    console.log(msg);
         }
 	    
+	   
 	    function addCompany(){
+	    	
+	    	 var validator =	$('#addCompanyForm').validate({
+			   	 errorClass: "my-error-class",
+			   	 validClass: "my-valid-class",
+			   	 ignore: ":hidden:not(.select2 form-select)",
+			   		    rules: {
+			   		 		  "company_name": {
+			   			 			required: true
+			   			 	  },"company_code": {										
+			   			 			required: true
+			   			 	  },"status": {
+			   	                 	required: true,
+			   			 	  }
+			   		 	},
+			   		    messages: {
+			   		 		 "company_name": {
+			   				 	required: 'Required',
+			   			 	  },"company_code": {
+			   			 		required: 'Required'
+			   			 	  },"status": {
+			   		 			required: 'Required'
+			   		 	  	  }
+			      		},
+			      		errorPlacement:function(error, element){
+			      		 /* 	if (element.attr("id") == "company_name_add" ){
+			   				 document.getElementById("company_name_addError").innerHTML="";
+			   		 		 error.appendTo('#company_name_addError');
+			   			}else if(element.attr("id") == "company_code_add" ){
+			   			   document.getElementById("company_code_addError").innerHTML="";
+			   		 	   error.appendTo('#company_code_addError');
+			   			}else if(element.attr("id") == "select2-status_add-container" ){
+			   				document.getElementById("select2-status_add-containerError").innerHTML="";
+			   			 	error.appendTo('#select2-status_add-containerError');
+			   			}else{ */
+			   					error.insertAfter(element);
+			   			 //  } 
+			      		},invalidHandler: function (form, validator) {
+			               var errors = validator.numberOfInvalids();
+			               console.log('invalidHandler',errors);
+			               if (errors) {
+			                   var position = validator.errorList[0].element;
+			                   jQuery('html, body').animate({
+			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+			                   }, 1000);
+			               }
+			           },submitHandler:function(form){
+			        	   console.log('submit handler')
+			   	    	form.submit();
+			   	    	document.getElementById("addCompanyForm").submit();	
+			   	    }
+			   	}); 
+		    
+	    	console.log(validator.form());
 	    	if(validator.form()){ // validation perform
 	        	document.getElementById("addCompanyForm").submit();	
 	    	}
@@ -2629,53 +2653,7 @@ button.disabled {
 		   	    	//form.submit();
 		   	    }
 		   	});
-	    var validator =	$('#addCompanyForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-	   		 		  "company_name": {
-	   			 			required: true
-	   			 	  },"company_code": {										
-	   			 			required: true
-	   			 	  },"status": {
-	   	                 	required: true,
-	   			 	  }
-	   		 	},
-	   		    messages: {
-	   		 		 "company_name": {
-	   				 	required: 'Required',
-	   			 	  },"company_code": {
-	   			 		required: 'Required'
-	   			 	  },"status": {
-	   		 			required: 'Required'
-	   		 	  	  }
-	      		},
-	      		errorPlacement:function(error, element){
-	      		 	if (element.attr("id") == "company_name_add" ){
-	   				 document.getElementById("company_name_addError").innerHTML="";
-	   		 		 error.appendTo('#company_name_addError');
-	   			}else if(element.attr("id") == "company_code_add" ){
-	   			   document.getElementById("company_code_addError").innerHTML="";
-	   		 	   error.appendTo('#company_code_addError');
-	   			}else if(element.attr("id") == "select2-status_add-container" ){
-	   				document.getElementById("select2-status_add-containerError").innerHTML="";
-	   			 	error.appendTo('#select2-status_add-containerError');
-	   			}else{
-	   					error.insertAfter(element);
-	   	        } 
-	      		},invalidHandler: function (form, validator) {
-	               var errors = validator.numberOfInvalids();
-	               if (errors) {
-	                   var position = validator.errorList[0].element;
-	                   jQuery('html, body').animate({
-	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-	                   }, 1000);
-	               }
-	           },submitHandler:function(form){
-	   	    	//form.submit();
-	   	    }
-	   	}); 
+
 	   	$('.formSelect').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();

@@ -410,7 +410,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>${obj.url }"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -2198,27 +2198,27 @@ button.disabled {
             <li>Project</li>
           </ul>
         </div>
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
-                  <select   id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select   id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Company</option>
                    
                   </select>
                 </label>
                  <label class="block">
-                  <select id="select2-sbu_filter-container" id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-sbu_filter-container" id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select sbu</option>
                    
                   </select>
                 </label>
                  <label class="block">
-                  <select  id="select2-project_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-project_filter-container" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Project</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 19rem;">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2255,17 +2255,22 @@ button.disabled {
               
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 
-                 <label class="block  text-left">
+               
+                  
+                   <label class="block  text-left">
                     <span>Company</span><span class="required"> *</span>
+                    
                   <select
-                    id="select2-company_code_add-container"
-              name="company_code"                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+       id="select2-company_code_add-container"              
+		name="status" 
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                    <option value="">Select Company</option>
              	<c:forEach var="obj" items="${objList}">
 					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
 				</c:forEach>
                   </select>
                   </label>
+                  
                    <label class="block  text-left">
                     <span>SBU</span><span class="required"> *</span>
                   <select
@@ -2280,28 +2285,24 @@ button.disabled {
                   </label>
                   <label class="block  text-left">
                     <span>Project Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                         type="text"
               id="project_code_add"
               name="project_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
                       </span>
-                    </span>
+                    
                   </label>
                    <label class="block  text-left">
                     <span>Project Name </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
+                    <span class="relative mt-1.5 ">
                       <input 
                       type="text"
               id="project_name_add"
               name="project_name"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
+                        
                     </span>
                   </label>
                  <label class="block  text-left">
@@ -2310,15 +2311,19 @@ button.disabled {
                    id="select2-status_add-container"
               name="status"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                   <option value="">Select Status</option>
+                <option value="">Select Status</option>
              	<option value="Active">Active</option>
              	<option value="Inactive">Inactive</option>
                   </select>
                   </label>
+                  
+                  
+                  
+                  
                 </div>
                 
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90"onclick="addCompany();">
                     <span>Add </span>
                    
                   </button>
@@ -2935,6 +2940,73 @@ button.disabled {
         }
 	    
 	    function addCompany(){
+	    	
+	    	 var validator =	$('#addCompanyForm').validate({
+	    	   	 errorClass: "my-error-class",
+	    	   	 validClass: "my-valid-class",
+	    	   	 ignore: ":hidden:not(.select2 form-select)",
+	    	   		    rules: {
+	    			   		     "project_name": {
+	    					 			required: true
+	    					 	  },"company_code": {										
+	    					 			required: true
+	    					 	  },"status": {
+	    			                 	required: true,
+	    					 	  },"sbu_code": {										
+	    					 			required: true
+	    					 	  },"project_code": {
+	    			                 	required: true,
+	    					 	  },"status":{
+	    					 		  required: true
+	    					 	  }
+	    				 	},
+	    				    messages: {
+	    				 		 "project_name": {
+	    						 	required: 'Required',
+	    					 	  },"company_code": {
+	    					 		required: 'Required'
+	    					 	  },"status": {
+	    				 			required: 'Required'
+	    				 	  	  },"sbu_code": {
+	    					 		required: 'Required'
+	    					 	  },"project_code": {
+	    				 			required: 'Required'
+	    				 	  	  },"status":{
+	    				 	  		  required:'Required'
+	    				 	  	  }
+	    		   		},
+	    	      		errorPlacement:function(error, element){
+	    	      			/* if (element.attr("id") == "project_name_add" ){
+	    		   				 document.getElementById("project_name_addError").innerHTML="";
+	    		   		 		 error.appendTo('#project_name_addError');
+	    			   			}else if(element.attr("id") == "project_code_add" ){
+	    			   			   document.getElementById("project_code_addError").innerHTML="";
+	    			   		 	   error.appendTo('#project_code_addError');
+	    			   			}else if(element.attr("id") == "select2-status_add-container" ){
+	    			   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	    			   			 	error.appendTo('#select2-status_add-containerError');
+	    			   			}else if(element.attr("id") == "select2-company_code_add-container" ){
+	    			   				document.getElementById("select2-company_code_add-containerError").innerHTML="";
+	    			   			 	error.appendTo('#select2-company_code_add-containerError');
+	    			   			}else if(element.attr("id") == "select2-sbu_code_add-container" ){
+	    			   				document.getElementById("select2-sbu_code_add-containerError").innerHTML="";
+	    			   			 	error.appendTo('#select2-sbu_code_add-containerError');
+	    			   			}else{ */
+	    			   				error.insertAfter(element);
+	    					   	     //   } 
+	    			      		},invalidHandler: function (form, validator) {
+	    			               var errors = validator.numberOfInvalids();
+	    			               if (errors) {
+	    			                   var position = validator.errorList[0].element;
+	    			                   jQuery('html, body').animate({
+	    			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	    			                   }, 1000);
+	    			               }
+	    			           },submitHandler:function(form){
+	    			        	   console.log('submit handler')
+	    			   	    }
+	    	   	}); 
+	    	 console.log(validator.form());
 	    	if(validator.form()){ // validation perform
 	        	document.getElementById("addCompanyForm").submit();	
 	    	}
@@ -3005,67 +3077,7 @@ button.disabled {
 			   	    	//form.submit();
 			   	    }
 		   	});
-	    var validator =	$('#addCompanyForm').validate({
-	   	 errorClass: "my-error-class",
-	   	 validClass: "my-valid-class",
-	   	 ignore: ":hidden:not(.select2 form-select)",
-	   		    rules: {
-			   		     "project_name": {
-					 			required: true
-					 	  },"company_code": {										
-					 			required: true
-					 	  },"status": {
-			                 	required: true,
-					 	  },"sbu_code": {										
-					 			required: true
-					 	  },"project_code": {
-			                 	required: true,
-					 	  }
-				 	},
-				    messages: {
-				 		 "project_name": {
-						 	required: 'Required',
-					 	  },"company_code": {
-					 		required: 'Required'
-					 	  },"status": {
-				 			required: 'Required'
-				 	  	  },"sbu_code": {
-					 		required: 'Required'
-					 	  },"project_code": {
-				 			required: 'Required'
-				 	  	  }
-		   		},
-	      		errorPlacement:function(error, element){
-	      			if (element.attr("id") == "project_name_add" ){
-		   				 document.getElementById("project_name_addError").innerHTML="";
-		   		 		 error.appendTo('#project_name_addError');
-			   			}else if(element.attr("id") == "project_code_add" ){
-			   			   document.getElementById("project_code_addError").innerHTML="";
-			   		 	   error.appendTo('#project_code_addError');
-			   			}else if(element.attr("id") == "select2-status_add-container" ){
-			   				document.getElementById("select2-status_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-status_add-containerError');
-			   			}else if(element.attr("id") == "select2-company_code_add-container" ){
-			   				document.getElementById("select2-company_code_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-company_code_add-containerError');
-			   			}else if(element.attr("id") == "select2-sbu_code_add-container" ){
-			   				document.getElementById("select2-sbu_code_add-containerError").innerHTML="";
-			   			 	error.appendTo('#select2-sbu_code_add-containerError');
-			   			}else{
-			   				error.insertAfter(element);
-					   	        } 
-			      		},invalidHandler: function (form, validator) {
-			               var errors = validator.numberOfInvalids();
-			               if (errors) {
-			                   var position = validator.errorList[0].element;
-			                   jQuery('html, body').animate({
-			                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
-			                   }, 1000);
-			               }
-			           },submitHandler:function(form){
-			   	    	//form.submit();
-			   	    }
-	   	}); 
+	   
 	   	$('.formSelect').change(function(){
 	   	    if ($(this).val() != ""){
 	   	        $(this).valid();
