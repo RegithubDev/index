@@ -2414,7 +2414,7 @@ z-index: 1000;
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
                   <span>company</span>
-                  <select id="company_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="company_code" onclick="setSBUList()" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
              	<c:forEach var="obj" items="${companiesList}">
 					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
@@ -2424,21 +2424,21 @@ z-index: 1000;
               
                    <label class="block">
                   <span>SBU</span>
-                  <select onclick="setSBUList()"  id="sbu_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select onclick="setDeptList();"  id="sbu_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Select SBU</option>
                     
                   </select>
                 </label>
                   <label class="block">
                   <span>Department</span>
-                  <select onclick="setDeptList();" id="department_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  onclick="setCategoryList();" id="department_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Corporate event</option>
                     
                   </select>
                 </label>
                   <label class="block">
                   <span>Category</span>
-                  <select onclick="setCategoryList();" id="category" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select onclick="setSubCategoryList();" id="category" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Select Category</option>
                     
                   </select>
@@ -2461,7 +2461,7 @@ z-index: 1000;
                 
                   <label class="block">
                   <span>Sub Category</span>
-                  <select onclick="setSubCategoryList();" id="sub_category" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="sub_category" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Select Sub Category</option>
                     
                   </select>
