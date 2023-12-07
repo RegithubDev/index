@@ -2281,6 +2281,17 @@ button.disabled {
                       
                     </span>
                   </label>
+                    <label class="block  text-left">
+                    <span>SBU</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_add-container"
+              name="status" required
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Status</option>
+             	<option value="Active">Active</option>
+             	<option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
                      <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
@@ -2785,7 +2796,10 @@ button.disabled {
 	    	   			 			required: true
 	    	   			 	  },"priority": {
 	    	   	                 	required: true,
-	    	   			 	  },"status": {
+	    	   			 	  },"sbu_code":{
+	    	   			 		required: true, 
+	    	   			 	  },
+	    	   			 	  "status": {
 	    	   	                 	required: true,
 	    	   			 	  }
 	    	   		 	},
@@ -2796,7 +2810,10 @@ button.disabled {
 	    	   			 		required: 'Required'
 	    	   			 	  },"priority": {
 	    	   		 			required: 'Required'
-	    	   		 	  	  },"status": {
+	    	   		 	  	  },"sbu_code":{
+	    	   		 	  	required: 'Required' 
+	    	   		 	  	  },
+	    	   		 	  	  "status": {
 	    		   		 		required: 'Required'
 	    	   		 	  	  }
 	    	      		},
@@ -2849,7 +2866,10 @@ button.disabled {
 		   			 			required: true
 		   			 	  },"assigned_to_sbu": {
 		   	                 	required: true,
-		   			 	  },"status": {
+		   			 	  },"sbu_code":{
+		   			 		required: true,
+		   			 		  },
+		   			 	  "status": {
 		   	                 	required: true,
 		   			 	  }
 		   		 	},
@@ -2860,7 +2880,10 @@ button.disabled {
 		   			 		required: 'Required'
 		   			 	  },"assigned_to_sbu": {
 		   		 			required: 'Required'
-		   		 	  	  },"status": {
+		   		 	  	  },"sbu_code":{
+		   		 	  		  required: 'Required'
+		   		 	  	  },
+		   		 	  	  "status": {
 		   		 			required: 'Required'
 		   		 	  	  }
 		      		},
