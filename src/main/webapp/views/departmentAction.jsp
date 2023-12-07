@@ -2561,7 +2561,7 @@ button.disabled {
 		    	$("#select2-department_filter-container").val(""); 
 		    	$("#select2-assigned_to_sbu_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	window.location = "<%=request.getContextPath()%>/department";
+		    	window.location = "<%=request.getContextPath()%>/department-action";
 	    }
       
       function getDepartmentFilterList() {

@@ -2350,7 +2350,7 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-<form action="<%=request.getContextPath()%>/export-sbu" name="exportSBUForm" id="exportSBUForm" target="_blank" method="post">	
+<form action="<%=request.getContextPath()%>/dep-content" name="exportSBUForm" id="exportSBUForm" target="_blank" method="post">	
       
         <input type="hidden" name="sbu_code" id="exportSBU_filter" />
         <input type="hidden" name="company_code" id="exportCompany_Code_filter" />
@@ -2368,7 +2368,7 @@ button.disabled {
 		    	$("#select2-sbu_filter-container").val(""); 
 		    	$("#select2-company_code_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	window.location.href= "<%=request.getContextPath()%>/sbu";
+		    	window.location.href= "<%=request.getContextPath()%>/dep-content";
 	    }
       
       function getSBUFilterList() {
