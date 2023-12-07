@@ -41,9 +41,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.resustainability.reisp.constants.PageConstants;
+import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.Department;
+import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.User;
+import com.resustainability.reisp.service.CompanyService;
 import com.resustainability.reisp.service.DepartmentService;
+import com.resustainability.reisp.service.SBUService;
 import com.resustainability.reisp.service.UserService;
 
 @Controller
@@ -60,7 +64,13 @@ public class DepartmentController {
 	DepartmentService service;
 	
 	@Autowired
+	CompanyService serviceC;
+	
+	@Autowired
 	UserService serviceU;
+	
+	@Autowired
+	SBUService serviceS;
 
 	@Value("${common.error.message}")
 	public String commonError;
@@ -121,10 +131,81 @@ public class DepartmentController {
 		try {
 			List <User> departmentsList = serviceU.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			
+			List<Company> companiesList =  serviceC.getCompaniesList(null);
+			model.addObject("companiesList", companiesList);
+			
+			SBU sObj = new SBU();
+			sObj.setStatus("Active");
+			List<SBU> sbuList  = serviceS.getSBUsList(sObj);
+			model.addObject("sbuList", sbuList);
+			
+			
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
 		return model; 
+	}
+	
+	@RequestMapping(value = "/ajax/getSBUFilterListForDCForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<SBU> getSBUFilterListForDCForm(@ModelAttribute SBU obj,HttpSession session) {
+		List<SBU> sbuList = null;
+		try {
+			SBU sObj = new SBU();
+			sObj.setStatus("Active");
+			sbuList  = serviceS.getSBUsList(sObj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDeptFilterListForDCForm : " + e.getMessage());
+		}
+		return sbuList;
+	}
+	
+	@RequestMapping(value = "/ajax/getDeptFilterListForDCForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Department> getDeptFilterListForDCForm(@ModelAttribute Department obj,HttpSession session) {
+		List<Department> deptList = null;
+		try {
+			obj.setStatus("Active");
+			deptList  = service.getDepartmentFilterList(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDeptFilterListForDCForm : " + e.getMessage());
+		}
+		return deptList;
+	}
+	
+	@RequestMapping(value = "/ajax/getCategoryFilterListForDCForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getCategoryFilterListForDCForm(@ModelAttribute User obj,HttpSession session) {
+		List<User> deptList = null;
+		try {
+			obj.setStatus("Active");
+			deptList  = service.getCategoryFilterListForDCForm(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryFilterListForDCForm : " + e.getMessage());
+		}
+		return deptList;
+	}
+	
+	@RequestMapping(value = "/ajax/getSubCategoryFilterListForDCForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getSubCategoryFilterListForDCForm(@ModelAttribute User obj,HttpSession session) {
+		List<User> deptList = null;
+		try {
+			obj.setStatus("Active");
+			deptList  = service.getSubCategoryFilterListForDCForm(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getSubCategoryFilterListForDCForm : " + e.getMessage());
+		}
+		return deptList;
 	}
 	
 	@RequestMapping(value = "/department-action", method = {RequestMethod.POST, RequestMethod.GET})

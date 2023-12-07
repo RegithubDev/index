@@ -254,6 +254,8 @@ public class HomeController {
 		return model; 
 	}
 	
+	
+	
 	@RequestMapping(value = "/Admin", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView admin(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.AdminPage);

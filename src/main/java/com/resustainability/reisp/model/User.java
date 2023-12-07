@@ -10,13 +10,21 @@ public class User {
 	company_code,	project_code,department_code,sub_code,action,common_url,	project_name,priority,url,module,	status,	created_date,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,description,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
-	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text;
+	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text,document_type;
 	int session_count,time_period;
 	
 	private MultipartFile[] mediaList;
 	
 	private List<User> categoryList;
 	
+	public String getDocument_type() {
+		return document_type;
+	}
+
+	public void setDocument_type(String document_type) {
+		this.document_type = document_type;
+	}
+
 	public String getCommon_url() {
 		return common_url;
 	}

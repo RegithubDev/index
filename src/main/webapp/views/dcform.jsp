@@ -2411,12 +2411,12 @@ z-index: 1000;
               </h1> 
               <div class="mt-4 space-y-4">
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
                   <span>company</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="company_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
-             	<c:forEach var="obj" items="${objList}">
+             	<c:forEach var="obj" items="${companiesList}">
 					<option value="${obj.company_code }" >[${obj.company_code }] - ${obj.company_name }</option>
 				</c:forEach>
                   </select>
@@ -2424,15 +2424,22 @@ z-index: 1000;
               
                    <label class="block">
                   <span>SBU</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
+                  <select onclick="setSBUList()"  id="sbu_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option>Select SBU</option>
                     
                   </select>
                 </label>
                   <label class="block">
                   <span>Department</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select onclick="setDeptList();" id="department_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option>Corporate event</option>
+                    
+                  </select>
+                </label>
+                  <label class="block">
+                  <span>Category</span>
+                  <select onclick="setCategoryList();" id="category" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option>Select Category</option>
                     
                   </select>
                 </label>
@@ -2451,17 +2458,11 @@ z-index: 1000;
                  <div class="mt-4 space-y-4">
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                  <label class="block">
-                  <span>Category</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
-                    
-                  </select>
-                </label>
+                
                   <label class="block">
                   <span>Sub Category</span>
-                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Corporate event</option>
+                  <select onclick="setSubCategoryList();" id="sub_category" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option>Select Sub Category</option>
                     
                   </select>
                 </label>
@@ -2473,6 +2474,16 @@ z-index: 1000;
                       <span> Title Icon</span>
                       <input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="textfileld" type="text">
                     </label>
+                     <label class="block">
+                  <span>Document Type</span>
+                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+	                  <option value="">Select Type</option>
+	                  <option value="Document">Document</option>
+	                  <option value="Link">Link</option>
+	                  <option value="Gallery">Gallery</option>
+	                  <option value="Form">Form</option>
+                  </select>
+                </label>
                 </div>
                 
                 
@@ -2744,6 +2755,95 @@ z-index: 1000;
          });
        } */
    
+       function setSBUList(){
+	    	var company_code = $("#company_code").val();
+	        if ($.trim(company_code) !=""  ) {
+	        	$("#sbu_code option:not(:first)").remove();
+	        	var myParams = { company_code: company_code};
+	            $.ajax({
+	                url:"<%=request.getContextPath()%>/ajax/getSBUFilterListForDCForm",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#sbu_code").append('<option value="' + val.sbu_code + '">' +'[ '+ $.trim(val.sbu_code) +' ] - '+ $.trim(val.sbu_name) + '</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+       
+       function setDeptList(){
+	    	var sbu_code = $("#sbu_code").val();
+	        if ($.trim(sbu_code) !=""  ) {
+	        	$("#department_code option:not(:first)").remove();
+	        	var myParams = { sbu_code: sbu_code};
+	            $.ajax({
+	                url:"<%=request.getContextPath()%>/ajax/getDeptFilterListForDCForm",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#department_code").append('<option value="' + val.department_code + '">' +'[ '+ $.trim(val.department_code) +' ] - '+ $.trim(val.department_name) + '</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+       
+       function setCategoryList(){
+	    	var department_code = $("#department_code").val();
+	        if ($.trim(department_code) !=""  ) {
+	        	$("#category option:not(:first)").remove();
+	        	var myParams = { department_code: department_code};
+	            $.ajax({
+	                url:"<%=request.getContextPath()%>/ajax/getCategoryFilterListForDCForm",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#category").append('<option value="' + val.category + '">'+ $.trim(val.category) + '</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+       
+       function setSubCategoryList(){
+	    	var department_code = $("#department_code").val();
+	    	var category = $("#category").val();
+	        if ($.trim(department_code) !="" && $.trim(category) !="" ) {
+	        	$("#sub_category option:not(:first)").remove();
+	        	var myParams = { department_code: department_code};
+	            $.ajax({
+	                url:"<%=request.getContextPath()%>/ajax/getSubCategoryFilterListForDCForm",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#sub_category").append('<option value="' + val.sub_category_title + '">'+ $.trim(val.sub_category_title) + '</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+       
       </script>
   </body>
 </html>
