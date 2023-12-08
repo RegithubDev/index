@@ -2424,7 +2424,7 @@ button.disabled {
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
 	<form action="<%=request.getContextPath()%>/get-sub-c" name="updatereonecategory" id="updatereonecategory" method="post">	
-		<input id="id" name="id" type="hidden" />
+		<input id="idVal" name="id" type="hidden" />
 	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
@@ -2612,7 +2612,7 @@ button.disabled {
 	    } 
 	    
 	    function getDepartment(department_code,assigned_to_sbu,department_name,id,status){
-		      $('#id').val($.trim(id));
+		      $('#idVal').val($.trim(id));
 		      $("#updatereonecategory ").submit();
 	   }
 	    

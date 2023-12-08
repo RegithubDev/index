@@ -591,6 +591,31 @@ public class DepartmentDao {
 		return obj;
 	}
 
+	public boolean updateDCForm(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String updateQry = "UPDATE [dept_content] set title_icon= :title_icon,content_title= :content_title,Attachments=:Attachments,status= :status,description= :description, modified_by= :modified_by,modified_date= getdate() "
+					+ " where id= :id ";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(updateQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+
+
 
 
 }

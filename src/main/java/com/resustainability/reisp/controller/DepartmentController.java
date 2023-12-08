@@ -192,6 +192,7 @@ public class DepartmentController {
 	public ModelAndView getDCFORM(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.dcform);
 		try {
+			model.addObject("action", "edit");
 			List <User> departmentsList = serviceU.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
 			
@@ -221,6 +222,31 @@ public class DepartmentController {
 			User DCFromDetails = service.getDCFORM(user);
 			model.addObject("DCFromDetails", DCFromDetails);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-dcform", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateDCForm(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/dep-content");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setModified_by(userId);
+			flag = service.updateDCForm(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Form Submitted Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Submitting Form is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Submitting Form is failed. Try again.");
 			e.printStackTrace();
 		}
 		return model;

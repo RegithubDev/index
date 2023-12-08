@@ -2371,7 +2371,7 @@ button.disabled {
             <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
 	
-	<form action="<%=request.getContextPath()%>/get-DCForm" name="getDCForm" id="getDCForm" target="_blank" method="post">	
+	<form action="<%=request.getContextPath()%>/get-DCForm" name="getDCForm" id="getDCForm"  method="post">	
       
         <input type="hidden" name="id" id="idVal" />
        

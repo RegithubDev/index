@@ -597,7 +597,7 @@ public class CompanyDao {
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		User obj = null;
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm.department_name,category,sub_category_title,icon_text,documants,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,c.description,dm.department_name,category,sub_category_title,icon_text,documants,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [sub_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "

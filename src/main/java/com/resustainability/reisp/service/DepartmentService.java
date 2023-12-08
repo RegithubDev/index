@@ -75,4 +75,8 @@ public class DepartmentService {
 	public User getDCFORM(User user) throws Exception {
 		return dao. getDCFORM(user);
 	}
+
+	public boolean updateDCForm(User obj)  throws Exception {
+		return dao. updateDCForm(obj);
+	}
 }
