@@ -10,13 +10,74 @@ public class User {
 	company_code,	project_code,department_code,sub_code,action,common_url,	project_name,priority,url,module,	status,	created_date,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,description,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
-	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text,document_type;
+	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text,document_type,
+	sub_category,	content_title,	title_icon,Attachments,	link;
 	int session_count,time_period;
+	
+	private String [] docs;
 	
 	private MultipartFile[] mediaList;
 	
 	private List<User> categoryList;
 	
+	private List<User> depContentList;
+	
+	public String[] getDocs() {
+		return docs;
+	}
+
+	public void setDocs(String[] docs) {
+		this.docs = docs;
+	}
+
+	public String getSub_category() {
+		return sub_category;
+	}
+
+	public void setSub_category(String sub_category) {
+		this.sub_category = sub_category;
+	}
+
+	public String getContent_title() {
+		return content_title;
+	}
+
+	public void setContent_title(String content_title) {
+		this.content_title = content_title;
+	}
+
+	public String getTitle_icon() {
+		return title_icon;
+	}
+
+	public void setTitle_icon(String title_icon) {
+		this.title_icon = title_icon;
+	}
+
+	public String getAttachments() {
+		return Attachments;
+	}
+
+	public void setAttachments(String attachments) {
+		Attachments = attachments;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public List<User> getDepContentList() {
+		return depContentList;
+	}
+
+	public void setDepContentList(List<User> depContentList) {
+		this.depContentList = depContentList;
+	}
+
 	public String getDocument_type() {
 		return document_type;
 	}

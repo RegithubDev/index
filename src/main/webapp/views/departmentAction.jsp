@@ -35,6 +35,10 @@
      th,td{
     	text-align:left;
     }
+    #select2-sbu_code_add-container{
+        color: black !important;
+    
+    }
 *, :after, :before {
     border: 0 solid #e5e7eb;
     box-sizing: border-box;
@@ -2284,12 +2288,13 @@ button.disabled {
                     <label class="block  text-left">
                     <span>SBU</span><span class="required"> *</span>
                   <select
-                   id="select2-status_add-container"
-              name="status" required
+                   id="select2-sbu_code_add-container"
+              name=sbu_code 
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Status</option>
-             	<option value="Active">Active</option>
-             	<option value="Inactive">Inactive</option>
+                    <option value="">Select SBU</option>
+             		<c:forEach var="obj" items="${sbuList}">
+						<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+					</c:forEach>
                   </select>
                   </label>
                      <label class="block  text-left">
@@ -2487,6 +2492,18 @@ button.disabled {
                     
                   </label>
                 </div>
+                <label class="block  text-left">
+                    <span>SBU</span><span class="required"> *</span>
+                  <select
+                   id="select2-sbu_code_edit-container"
+              		name=sbu_code 
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select SBU</option>
+             		<c:forEach var="obj" items="${sbuList}">
+						<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+					</c:forEach>
+                  </select>
+                  </label>
                 <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
@@ -2711,7 +2728,7 @@ button.disabled {
 				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var department_data = "'"+val.department_code+"','"+val.assigned_to_sbu_multiple+"','"+val.department_name+"','"+val.id+"','"+val.status+"'";
+		         			var department_data = "'"+val.department_code+"','"+val.sbu_code+"','"+val.department_name+"','"+val.id+"','"+val.status+"'";
 		                    var actions = '<a href="javascript:void(0);"  onclick="getDepartment('+department_data+');setSearchble();" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
 		                    key++;
 		                    var rowArray = [];    	                 
@@ -2720,7 +2737,7 @@ button.disabled {
 		            		$('#inActiveDepartment').html(val.inActive_department)
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
-		                	//rowArray.push("["+ $.trim(val.assigned_to_sbu)+"]"+" - ");
+		                	rowArray.push("["+ $.trim(val.sbu_code)+"]"+" - "+ $.trim(val.sbu_name));
 		                   	rowArray.push($.trim(val.department_code));
 		                   	rowArray.push($.trim(val.department_name));
 		                   	var status = $.trim(val.status);
@@ -2754,11 +2771,7 @@ button.disabled {
 		      $('#updateDepartmentForm #department_name_edit').val($.trim(department_name)).focus();
 		      $('#updateDepartmentForm #department_code_edit').val($.trim(department_code)).focus();
 		      if(assigned_to_sbu != null && assigned_to_sbu != ''  && assigned_to_sbu != "undefined"){
-		    	  var assigned_to_sbu_array = assigned_to_sbu.split(',');
-		    	  jQuery.each(assigned_to_sbu_array, function(index, item) {
-		    		  $('select[name^="assigned_to_sbu"] option[value="'+ item +'"]').attr("selected",true);
-		    		  $('.form-select3').select2();
-		    		});
+		    	  $('select[name^="sbu_code"] option[value="'+ assigned_to_sbu +'"]').attr("selected",true);
 		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
 		    	 // $('select').select2();
 		      }

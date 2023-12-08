@@ -407,11 +407,10 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/active-dep", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView activedepartment(@ModelAttribute User user, HttpSession session) {
-
 		ModelAndView model = new ModelAndView(PageConstants.activedepartment);
 		try { 
-			List <User> departmentsList = service.getDepartmentsList(user);
-			model.addObject("departmentsList", departmentsList);
+			List <User> deptContentList = service.getDeptContentList(user);
+			model.addObject("deptContentList", deptContentList);
 		} catch (Exception e) { 
 			e.printStackTrace();   
 		} 
@@ -437,7 +436,7 @@ public class HomeController {
 			User uBoj = new User();
 			uBoj.setEmail_id(email);
 			User userDetails = service.validateUser(uBoj);
-			companiesList = service2.getIRMList(obj);
+			//companiesList = service2.getIRMList(obj);
 			user.setUser_id(userId);
 			user.setRole(role);
 			List<User> rewardsList = service.getRewardsHistory(user);

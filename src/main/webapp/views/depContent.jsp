@@ -2285,18 +2285,32 @@ button.disabled {
                       </th>
                       <%-- </c:if> --%>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        SBU Code
+                        SBU 
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        SBU Name
+                        Department
                       </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Company
+                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Category
+                      </th>
+                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Sub Category
                       </th>
                         <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
                       </th>
-                       
+                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Created By
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Created Date
+                      </th>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified By
+                      </th>
+                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Modified Date
+                      </th>
                     </tr>
                   </thead>
                   <tbody class="text-center">
@@ -2357,6 +2371,11 @@ button.disabled {
             <input type="hidden" name="status" id="exportStatus_filter" />
 	</form>
 	
+	<form action="<%=request.getContextPath()%>/get-DCForm" name="getDCForm" id="getDCForm" target="_blank" method="post">	
+      
+        <input type="hidden" name="id" id="idVal" />
+       
+	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
   $(window).on("load",(function(){
@@ -2480,7 +2499,7 @@ button.disabled {
 					},
 					   columnDefs: [
 			            	{
-			                    targets: [0, 1, 2, 3, 4, 5],
+			                    targets: [0, 1, 2, 3, 4, 5,6,7,8,9,10],
 			                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
 			                  
 			                }
@@ -2499,11 +2518,11 @@ button.disabled {
 	        }).rows().remove().draw();
 			table.state.clear();		
 		 	var myParams = {sbu_code: sbu_code, company_code: company_code, status : status};
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getSBUList",type:"POST",data:myParams,success : function(data){    				
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getDepartmentContentList",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var sbu_data = "'"+val.sbu_code+"','"+val.company_code+"','"+val.sbu_name+"','"+val.id+"','"+val.status+"'";
-		                    var actions = '<a href="javascript:void(0);"  @click="showModal = true"  onclick="getSBU('+sbu_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
+		         			var sbu_data = "'"+val.department_code+"','"+val.sbu_code+"','"+val.category+"','"+val.sub_category+"','"+val.id+"','"+val.status+"'";
+		                    var actions = '<a  onclick="getSBU('+sbu_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
 		                    key++;
 		                    var rowArray = [];    	                 
 		                   	$('#allSBU').html(val.all_sbu)
@@ -2512,9 +2531,10 @@ button.disabled {
 		            		rowArray.push($.trim(key));
 		                   	
 		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push($.trim(val.sbu_code));
-		                   	rowArray.push($.trim(val.sbu_name));
-		                   	rowArray.push("["+ $.trim(val.company_code)+"]"+" - "+ val.company_name);
+		                	rowArray.push("["+ $.trim(val.sbu_code)+"]"+" - "+ $.trim(val.sbu_name));
+		                	rowArray.push("["+ $.trim(val.department_code)+"]"+" - "+ $.trim(val.department_name));
+		                   	rowArray.push($.trim(val.category));
+		                   	rowArray.push($.trim(val.sub_category));
 		                   	var status = $.trim(val.status);
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
@@ -2522,7 +2542,10 @@ button.disabled {
 	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
 	                		}
 		                   	rowArray.push(status);
-		                   
+		                   	rowArray.push($.trim(val.user_name));
+		                   	rowArray.push($.trim(val.created_date));
+		                	rowArray.push($.trim(val.modified_by));
+		                   	rowArray.push($.trim(val.modified_date));
 		                    table.row.add(rowArray).draw( true );
 						});
 					}
@@ -2531,20 +2554,9 @@ button.disabled {
 		     }});
 	    } 
 	    
-	    function getSBU(sbu_code,company_code,sbu_name,id,status){
-	    	 $("#updateModal").click();
-	    	 $('#sbu_name_edit').val('');
-			 $('#sbu_code_edit').val('');
-			 $('select[name^="company_code"] option:selected').removeAttr("selected");
-			 $('select[name^="status"] option:selected').removeAttr("selected");
-		      $('#id').val($.trim(id));
-		      $('#updateSBUForm #sbu_name_edit').val($.trim(sbu_name)).focus();
-		      $('#updateSBUForm #sbu_code_edit').val($.trim(sbu_code)).focus();
-		      if(company_code != null && company_code != ''  && company_code != "undefined"){
-		    	  $('select[name^="company_code"] option[value="'+ company_code +'"]').attr("selected",true);
-		    	  $('select[name^="status"] option[value="'+ status +'"]').attr("selected",true);
-		    	  $('.form-select3').select2();
-		      }
+	    function getSBU(sbu_code,company_code,sbu_name,subc,id,status){
+	    	 $('#idVal').val(id);
+	    	document.getElementById("getDCForm").submit();	
 	   }
 	    
 	    function getErrorMessage(jqXHR, exception) {

@@ -43,6 +43,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.Department;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.CompanyService;
@@ -129,6 +130,7 @@ public class DepartmentController {
 	public ModelAndView dcform(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.dcform);
 		try {
+			model.addObject("action", "add");
 			List <User> departmentsList = serviceU.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
 			
@@ -140,11 +142,88 @@ public class DepartmentController {
 			List<SBU> sbuList  = serviceS.getSBUsList(sObj);
 			model.addObject("sbuList", sbuList);
 			
+			Department dObj = new Department();
+			dObj.setStatus("Active");
+			List<Department> deptList  = service.getDepartmentMasterList(dObj);
+			model.addObject("deptList", deptList);
+			
+			User cObj = new User();
+			cObj.setStatus("Active");
+			List<User> ceptList  = service.getCategoryFilterListForDCForm(cObj);
+			model.addObject("ceptList", ceptList);
+			
+			User scObj = new User();
+			scObj.setStatus("Active");
+			List<User> sceptList  = service.getSubCategoryFilterListForDCForm(scObj);
+			model.addObject("sceptList", sceptList);
 			
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
 		return model; 
+	}
+	
+	@RequestMapping(value = "/add-dcform", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addDCForm(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/dep-content");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setCreated_by(userId);
+			flag = service.addDCForm(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Form Submitted Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Submitting Form is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Submitting Form is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/get-DCForm", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView getDCFORM(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.dcform);
+		try {
+			List <User> departmentsList = serviceU.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+			List<Company> companiesList =  serviceC.getCompaniesList(null);
+			model.addObject("companiesList", companiesList);
+			
+			SBU sObj = new SBU();
+			sObj.setStatus("Active");
+			List<SBU> sbuList  = serviceS.getSBUsList(sObj);
+			model.addObject("sbuList", sbuList);
+			
+			Department dObj = new Department();
+			dObj.setStatus("Active");
+			List<Department> deptList  = service.getDepartmentMasterList(dObj);
+			model.addObject("deptList", deptList);
+			
+			User cObj = new User();
+			cObj.setStatus("Active");
+			List<User> ceptList  = service.getCategoryFilterListForDCForm(cObj);
+			model.addObject("ceptList", ceptList);
+			
+			User scObj = new User();
+			scObj.setStatus("Active");
+			List<User> sceptList  = service.getSubCategoryFilterListForDCForm(scObj);
+			model.addObject("sceptList", sceptList);
+		
+			User DCFromDetails = service.getDCFORM(user);
+			model.addObject("DCFromDetails", DCFromDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
 	}
 	
 	@RequestMapping(value = "/ajax/getSBUFilterListForDCForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
@@ -169,7 +248,7 @@ public class DepartmentController {
 		List<Department> deptList = null;
 		try {
 			obj.setStatus("Active");
-			deptList  = service.getDepartmentFilterList(obj);
+			deptList  = service.getDepartmentMasterList(obj);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -214,6 +293,10 @@ public class DepartmentController {
 		try {
 			List <User> departmentsList = serviceU.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
+			SBU sObj = new SBU();
+			sObj.setStatus("Active");
+			List <SBU> sbuList = serviceS.getSBUsList(sObj);
+			model.addObject("sbuList", sbuList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -309,6 +392,20 @@ public class DepartmentController {
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getStatusFilterListFromDepartment : " + e.getMessage());
+		}
+		return objsList;
+	}
+	
+	@RequestMapping(value = "/ajax/getDepartmentContentList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getDepartmentContentList(@ModelAttribute User obj,HttpSession session) {
+		List<User> objsList = null;
+		try {
+			objsList = serviceU.getDeptContentList(obj);
+
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentContentList : " + e.getMessage());
 		}
 		return objsList;
 	}

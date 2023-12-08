@@ -147,4 +147,8 @@ public class UserService {
 	public List<User> getCatagoryList(User user) throws Exception {
 		return dao.getCatagoryList(user);
 	}
+
+	public List<User> getDeptContentList(User user)  throws Exception {
+		return dao.getDeptContentList(user);
+	}
 }

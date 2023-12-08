@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.resustainability.reisp.dao.DepartmentDao;
 import com.resustainability.reisp.model.Department;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.User;
 
 @Service
@@ -65,5 +66,13 @@ public class DepartmentService {
 
 	public List<User> getSubCategoryFilterListForDCForm(User obj) throws Exception {
 		return dao. getSubCategoryFilterListForDCForm(obj);
+	}
+
+	public boolean addDCForm(User obj) throws Exception {
+		return dao. addDCForm(obj);
+	}
+
+	public User getDCFORM(User user) throws Exception {
+		return dao. getDCFORM(user);
 	}
 }
