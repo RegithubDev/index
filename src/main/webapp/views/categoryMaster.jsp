@@ -33,6 +33,9 @@
       rel="stylesheet"
     />
     <style>
+    .bg-slate-131{
+    	background-color: #ffffff;
+    }
     .grid-cols-1s {
     grid-template-columns: repeat(2,minmax(0,1fr));
 	}
@@ -120,9 +123,12 @@ width: 123px!important;
 }
 .childs {
   display: inline-block;
-  width: 221px; /* Optional, set a fixed width for child divs if needed */
+  width: 280px; /* Optional, set a fixed width for child divs if needed */
   height: 100px; /* Optional, set a fixed height for child divs if needed */
   margin: 10px; /* Optional, add some spacing between the child divs */
+}
+.h-25{
+	height: 7.5rem;
 }
     .cardT {
    	 box-shadow: none !important; 
@@ -2617,7 +2623,95 @@ z-index: 1000;
       <main
         class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
       >
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
+      <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+          <div class="col-span-12 lg:col-span-8">
+          <div class="card bg-gradient-to-br from-purple-500 to-indigo-600 px-4 pb-4 sm:px-5">
+              <div class="flex items-center justify-between py-3 text-white">
+                <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
+                
+              </div>
+              <div class="flex">
+                <div class=" flex-row justify-between space-x-2" id="iconsCLass">
+            
+              <div class="flex items-center justify-between">
+                <div style="
+    left: -1rem;
+"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
+                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
+				      <div class="container"
+   style="
+    top: -0.5rem;
+    right: -0.5rem;
+    height: 7.2rem;
+
+">
+				    <div class="background">
+				      <div class="Circle1"></div>
+				      <div class="Circle2"></div>
+				      <div class="Circle3"></div>
+				      <div class="content">
+				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
+				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
+				        <h3 class="Temp" id="temperature"></h3>
+				        <h1 class="Time" id="wind-speed"></h1>
+				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
+				      </div>
+				    </div>
+                  </div>
+                  </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              </div>
+           
+          </div>
+<div class="mr-4 my-1 w-px bg-slate-200 dark:bg-navy-500" id="iconsCLass"></div>
+                <div class="flex col-span-12 lg:col-span-4 h-25 w-full items-center justify-center rounded-lg bg-slate-131 dark:bg-navy-500">
+                  <div class="col-span-12 lg:col-span-8">
+                    <div class="flex flex-1 flex-col justify-between"  id="clock" style="
+    height: 9.5rem;
+">
+            
+            		</div>
+                  </div>
+                  <div class="col-span-12 lg:col-span-4">
+                   <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
+					    margin-top: 2rem;
+					"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
+                   
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-4">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+              <div style="
+    cursor: pointer;
+"  id="cardBG" class="rounded-lg bg-primary p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
+               
+                <p class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100"> ${sessionScope.DEPARTMENT_NAME }</p>
+                <div class="mt-8 text-center">
+                  
+                  <a href="<%=request.getContextPath() %>/re-curls/${sessionScope.BASE_DEPARTMENT }/${sessionScope.DEPARTMENT_NAME }" class="text-xs text-success">My Department</a> 
+                </div>
+              </div>
+              <div style="
+    cursor: pointer;
+" id="cardBG2" class="rounded-lg bg-warning p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-warning/50"   :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
+               
+                <p class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100">Happenings @ <span class="dept"></span></p>
+                <div class="mt-8 text-center">
+                 <p class="text-xs text-success">Other Department</p>    
+                </div>
+              </div>
+              
+              
+            </div>
+
+            
+          </div>
+        </div>
+      <%-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
           <div class="card flex-row justify-between space-x-2 ">
             <div class="flex flex-1 flex-col justify-between"  id="clock">
             
@@ -2680,7 +2774,7 @@ z-index: 1000;
         
      
     
-     <%--      <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
+          <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
             
            <div class="flex">
           <div class="flex flex-col justify-center" style="
@@ -2715,7 +2809,7 @@ z-index: 1000;
             </div>
                   
                   
-          </div>  --%> 
+          </div>  
         <div class="mx-auto grid w-full max-w-4xl grid-cols-1s gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6s">
           <div class="card p-4 " id="cardBG"	>
             
@@ -2744,16 +2838,25 @@ z-index: 1000;
 
           
         </div>
-        </div>
+        </div> --%>
          
 
         
                 	<div class="  mt-4 flex h-8 ">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				<span class="dept"></span> 
+				<span class="text-xl font-semibold  dept"></span> 
               </h2>
             </div>
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
+            
+            
+            <div class=" text-center"  id="deptListERR">
+         
+         
+        </div>
+            
+            
+            
+           		<div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
 		   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
 		   <c:if test="${obj.department_code eq 'BD' }">
 		   
@@ -2773,6 +2876,9 @@ z-index: 1000;
     </c:forEach> 
       
         </div>
+             
+             
+
         </div>
 
 
@@ -2879,9 +2985,9 @@ z-index: 1000;
             var time = hours + ':' + minutes + ':' + seconds; 
             var date = day + '-' + month + '-' + year;
 
-            var clock1 =  '<i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
+            var clock1 =  '<a href="https://calendar.google.com/"><i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i></a>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
 
-            var clock =  ' <div class="mt-5 space-y-4 " style=" margin-left: 2rem;"> <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
+            var clock =  ' <div class="mt-5 space-y-4 " > <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
             $('#clock').html(clock);
             $('#clock1').html(clock1);
           }
@@ -2986,6 +3092,8 @@ z-index: 1000;
 	        if ($.trim(department_code) != "") {
 	        	 $("#deptList div").remove();
                  $("#deptListLi li").remove();
+                 $("#deptListLi").text('');
+                 $("#deptListERR p").remove();
                  if('${sessionScope.BASE_DEPARTMENT}' == department_code){
                 	 $('#cardBG').css('background-color','lavender');
                 	 $('#cardBG2').css('background-color','white');
@@ -3028,9 +3136,13 @@ z-index: 1000;
 	                             $("#deptListLi").append(html2);
 	                        });
 	                    }else{
-	                    	
-	                    	
+	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
+		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+		                        +'</p>';
+	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
+	                        $("#deptListLi").append(html2); $("#deptListERR").append(html);
 	                    }
+	                    $(".dept").html( $.trim(department_name));
 	                    
 	                },error: function (jqXHR, exception) {
 	    	   			      $(".page-loader").hide();
