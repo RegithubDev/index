@@ -1720,7 +1720,7 @@ public class UserDao {
 				qry = qry + " and dc.department_code = ? ";
 				arrSize++;
 			}
-			qry = qry + "order by dc.dm_category desc";
+			qry = qry + "ORDER BY CASE WHEN [dm_category] = 'Dashboard' THEN 0  ELSE 1  END, [dm_category] ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
