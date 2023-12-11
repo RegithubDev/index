@@ -33,7 +33,7 @@
       rel="stylesheet"
     />
     <style>
-      .iconCLass i {
+ .iconCLass i {
 	 	width: 4.5rem;
 	 	height: 4.5rem;
 	 	display: flex;
@@ -41,30 +41,16 @@
 	    align-items: center;
 	    font-size: 2em;
 	}
-    .bg-slate-131{
-    	background-color: #ffffff;
-    }
-    .grid-cols-1s {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-	}
-    @media (min-width: 1024px){
-		.lg\:gap-6s {
-		    gap: 0.5rem!important;
+ @media (min-width: 640px){
+		.sm\:grid-cols-4 {
+		    grid-template-columns: repeat(5,minmax(0,1fr));
 		}
 	}
-    .text-xlnew{
-    	    font-size: 1rem;
-    		line-height: 1.75rem;
+	 .w-50{
+    	    width: 12rem;
+    	
     }
-    .left-6{
-    	    left: 6%;
-    }
-    @media (min-width: 640px){
-	.sm\:w-60 {
-	    width: 16rem;
-	}
-	}
-    .pt-8{
+	    .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
     }
@@ -131,12 +117,9 @@ width: 123px!important;
 }
 .childs {
   display: inline-block;
-  width: 280px; /* Optional, set a fixed width for child divs if needed */
+  width: 221px; /* Optional, set a fixed width for child divs if needed */
   height: 100px; /* Optional, set a fixed height for child divs if needed */
   margin: 10px; /* Optional, add some spacing between the child divs */
-}
-.h-25{
-	height: 7.5rem;
 }
     .cardT {
    	 box-shadow: none !important; 
@@ -408,7 +391,7 @@ z-index: 1000;
     </script>
   </head>
 
-  <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
+  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
     <!-- App preloader-->
     <div
       class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
@@ -425,166 +408,12 @@ z-index: 1000;
       <!-- Sidebar -->
       <div class="sidebar print:hidden">
         <!-- Main Sidebar -->
-        <div class="main-sidebar">
-          <div
-            class="flex h-full w-full flex-col items-center border-r border-slate-150 bg-white dark:border-navy-700 dark:bg-navy-800"
-          >
-            <!-- Application Logo -->
-            <div class="flex pt-4">
-              <a href="<%=request.getContextPath() %>/home">
-                <img
-                  class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
-                  src="/index/resources/images/app-logo.svg"
-                  alt="logo"
-                />
-              </a>
-              
-              
-            </div>
-            
-            
-            
-            
-            
-            
-
+      
             <!-- Main Sections Links -->
  			<jsp:include page="../views/layout/header.jsp"></jsp:include> 
-
             <!-- Bottom Links -->
-            <div class="flex flex-col items-center space-y-3 py-3">
-              <!-- Settings -->
-           <!--    <a
-                href="form-layout-5.html"
-                class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-              >
-                <svg
-                  class="h-7 w-7"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-opacity="0.3"
-                    fill="#e21e26"
-                    d="M2 12.947v-1.771c0-1.047.85-1.913 1.899-1.913 1.81 0 2.549-1.288 1.64-2.868a1.919 1.919 0 0 1 .699-2.607l1.729-.996c.79-.474 1.81-.192 2.279.603l.11.192c.9 1.58 2.379 1.58 3.288 0l.11-.192c.47-.795 1.49-1.077 2.279-.603l1.73.996a1.92 1.92 0 0 1 .699 2.607c-.91 1.58-.17 2.868 1.639 2.868 1.04 0 1.899.856 1.899 1.912v1.772c0 1.047-.85 1.912-1.9 1.912-1.808 0-2.548 1.288-1.638 2.869.52.915.21 2.083-.7 2.606l-1.729.997c-.79.473-1.81.191-2.279-.604l-.11-.191c-.9-1.58-2.379-1.58-3.288 0l-.11.19c-.47.796-1.49 1.078-2.279.605l-1.73-.997a1.919 1.919 0 0 1-.699-2.606c.91-1.58.17-2.869-1.639-2.869A1.911 1.911 0 0 1 2 12.947Z"
-                  />
-                  <path
-                    fill="#e21e26"
-                    d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
-                  />
-                </svg>
-              </a> -->
 
-              <!-- Profile -->
-              <div
-                x-data="usePopper({placement:'right-end',offset:12})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="flex"
-              >
-                <button
-                  @click="isShowPopper = !isShowPopper"
-                  x-ref="popperRef"
-                  class="avatar h-12 w-12"
-                >
-                  <img
-                    class="rounded-full"
-                    src="${sessionScope.USER_IMAGE }"
-                    alt="avatar"
-                  />
-                  <span
-                    class="absolute right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"
-                  ></span>
-                </button>
-
-                <div
-                  :class="isShowPopper && 'show'"
-                  class="popper-root fixed"
-                  x-ref="popperRoot"
-                >
-                  <div
-                    class="popper-box w-64 rounded-lg border border-slate-150 bg-white shadow-soft dark:border-navy-600 dark:bg-navy-700"
-                  >
-                    <div
-                      class="flex items-center space-x-4 rounded-t-lg bg-slate-100 py-5 px-4 dark:bg-navy-800"
-                    >
-                      <div class="avatar h-14 w-14">
-                        <img
-                          class="rounded-full"
-                          src="${sessionScope.USER_IMAGE }"
-                          alt="avatar"
-                        />
-                      </div>
-                      <div>
-                        <a
-                          href="#"
-                          class="text-base font-medium text-slate-700 hover:text-re focus:text-re dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >
-                          ${sessionScope.USER_NAME }
-                        </a>
-                        <p class="text-xs text-slate-400 dark:text-navy-300">
-                          ${sessionScope.BASE_ROLE }
-                        </p>
-                      </div>
-                    </div>
-                    <div class="flex flex-col pt-2 pb-5">
-                      <a
-                        href="#"
-                        class="group flex items-center space-x-3 py-2 px-4 tracking-wide outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                      >
-                     <!--    <div
-                          class="flex h-8 w-8 items-center justify-center rounded-lg bg-warning text-white"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                            />
-                          </svg>
-                        </div>
-
-                        <div>
-                          <h2
-                            class="font-medium text-slate-700 transition-colors group-hover:text-re group-focus:text-re dark:text-navy-100 dark:group-hover:text-accent-light dark:group-focus:text-accent-light"
-                          >
-                            Profile
-                          </h2>
-                          <div
-                            class="text-xs text-slate-400 line-clamp-1 dark:text-navy-300"
-                          >
-                            Your profile setting
-                          </div>
-                        </div> -->
-                      </a>
-                     
-                      <div class="mt-3 px-4">
-                       <button class="btn h-9 w-full g_id_signout space-x-2 bg-primary text-white hover:bg-primary-focus 
-                        focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" 
-                         id="signout_button"  >
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                          </svg>
-                          <i class="me-50" data-feather="power"></i> Logout
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
+        <!-- Sidebar Panel -->
         <div class="sidebar-panel">
           <div
             class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
@@ -592,9 +421,9 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
               <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                All Functions1
+                All Functions
               </p>
-              <button @click="$store.global.isRightSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
+              <button @click="$store.global.isSidebarExpanded = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -640,13 +469,15 @@ z-index: 1000;
                     </div>
                   </div>
                   <div x-show="expanded" x-collapse>
-                    <ul
+                      <ul
                       class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
                     >
+                                <c:forEach var="obj" items="${departmentsList }"  varStatus="index">
+                    
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/Admin"
+                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -662,168 +493,11 @@ z-index: 1000;
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                             />
                           </svg>
-                          <span>Dashboard</span>
+                          <span>${obj.department_name }</span>
                         </a>
                       </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/ "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-warning"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Policies</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/ "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-info"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Procedures</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                         href="<%=request.getContextPath() %>/ Incin-BMW
-                         "
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Forms</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>User manual</span>
-                        </a>
-                      </li>
-                                            <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="#"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Trainig calender</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                             href="<%=request.getContextPath() %>/F&A"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Finance&Accounts</span>
-                        </a>
-                      </li>
-                              <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                          href="<%=request.getContextPath() %>/HR"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-success"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>Topics/Blogs</span>
-                        </a>
-                      </li>
-                              
-                        
                        
-                
+                </c:forEach>
                       
                     </ul>
                     
@@ -848,66 +522,6 @@ z-index: 1000;
             
           </div>
         </div>
-
-        <!-- Sidebar Panel -->
-        <div class="sidebar-panel">
-          <div
-            class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
-          >
-            <!-- Sidebar Panel Header -->
-            <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
-             <h2 class="font-medium tracking-wide text-slate-700 dark:text-navy-100">            
-                <span class="dept"></span> Functions
-              </h2>
-              <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-              </button>
-            </div>
-            
-            
-          
-            
-
-            <!-- Sidebar Panel Body -->
-            <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
-              <div class="is-scrollbar-hidden grow overflow-y-auto">
-                <div class="mt-2 px-4">
-                 
-                </div>
-
-                <div x-data="{expanded:true}">
-                  <div class="mt-4 flex items-center justify-between px-4">
-                    <span class="text-xs font-medium uppercase"> </span>
-                   
-                  </div>
-                  <div x-show="expanded" x-collapse>
-                    <ul
-                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium" id="deptListLi"
-                    >
-                         
-                    </ul>
-                    
-                  </div>
-                </div>
-                
-             
-              </div>
-
-              <div class="flex items-center spacex-3 p-4">
-                
-               
-              </div>
-            </div>
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
       </div>
 
       <!-- Right Sidebar -->
@@ -916,7 +530,7 @@ z-index: 1000;
         @keydown.window.escape="$store.global.isRightSidebarExpanded = false"
       >
         <div
-          class="fixed inset-0 z-[150] transition-opacity duration-200"
+          class="fixed inset-0 z-[150] bg-slate-900/60 transition-opacity duration-200"
           @click="$store.global.isRightSidebarExpanded = false"
           x-show="$store.global.isRightSidebarExpanded"
           x-transition:enter="ease-out"
@@ -926,7 +540,7 @@ z-index: 1000;
           x-transition:leave-start="opacity-100"
           x-transition:leave-end="opacity-0"
         ></div>
-        <div class="fixed left-6 top-0 z-[151] h-full w-full sm:w-60">
+        <div class="fixed right-0 top-0 z-[151] h-full w-full sm:w-80">
           <div
             x-data="{activeTab:'tabHome'}"
             class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
@@ -939,16 +553,26 @@ z-index: 1000;
             x-transition:leave-end="translate-x-full"
           >
             <div class="flex items-center justify-between py-2 px-4">
-         <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
-              <p class="text-base tracking-wider text-slate-800 dark:text-navy-100">
-                All Functions
-              </p>
-              <button @click="$store.global.isRightSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              <p
+                x-show="activeTab === 'tabHome'"
+                class="flex shrink-0 items-center space-x-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e21e26"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
                 </svg>
-              </button>
-            </div>
+                <span class="text-xs">25 May, 2022</span>
+              </p>
               <p
                 x-show="activeTab === 'tabProjects'"
                 class="flex shrink-0 items-center space-x-1.5"
@@ -969,7 +593,6 @@ z-index: 1000;
                 </svg>
                 <span class="text-xs">Projects</span>
               </p>
-              
               <p
                 x-show="activeTab === 'tabActivity'"
                 class="flex shrink-0 items-center space-x-1.5"
@@ -990,7 +613,6 @@ z-index: 1000;
                 </svg>
                 <span class="text-xs">Activity</span>
               </p>
-              
 
               <button
                 @click="$store.global.isRightSidebarExpanded=false"
@@ -1013,88 +635,6 @@ z-index: 1000;
               </button>
             </div>
 
-
-
-
-
-  <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
-              <div class="is-scrollbar-hidden grow overflow-y-auto">
-                <div class="mt-2 px-4">
-                 
-                </div>
-
-                <div x-data="{expanded:true}">
-                  <div class="mt-4 flex items-center justify-between px-4">
-                    <span class="text-xs font-medium uppercase">Departments </span>
-                    <div class="-mr-1.5 flex">
-                      <button
-                        @click="expanded =! expanded"
-                        class="btn h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          :class="expanded && 'rotate-180'"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="#e21e26"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                 <div x-show="expanded" x-collapse>
-                    <ul
-                      class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
-                    >
-                                <c:forEach var="obj" items="${departmentsList }"  varStatus="index">
-                    
-                      <li>
-                        <button onclick="ChangeCategoryForDept('${obj.department_code }','${obj.department_name }')"
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           <%-- href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}" --%>
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span style="text-align: left;">${obj.department_name }</span>
-                        </button>
-                      </li>
-                       
-                </c:forEach>
-                      
-                    </ul>
-                    
-                  </div>
-                </div>
-                
-             
-              </div>
-
-              <div class="flex items-center spacex-3 p-4">
-                
-               
-              </div>
-            </div>
-            
 
             <div
               x-show="activeTab === 'tabProjects'"
@@ -1847,6 +1387,111 @@ z-index: 1000;
             <div
               class="pointer-events-none absolute bottom-4 flex w-full justify-center"
             >
+              <div
+                class="pointer-events-auto mx-auto flex space-x-1 rounded-full border border-slate-150 bg-white px-4 py-0.5 shadow-lg dark:border-navy-700 dark:bg-navy-900"
+              >
+                <button
+                  @click="activeTab = 'tabHome'"
+                  :class="activeTab === 'tabHome' && 'text-re dark:text-accent'"
+                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    x-show="activeTab === 'tabHome'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="#e21e26"
+                  >
+                    <path
+                      d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                    />
+                  </svg>
+                  <svg
+                    x-show="activeTab !== 'tabHome'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                  </svg>
+                </button>
+                <button
+                  @click="activeTab = 'tabProjects'"
+                  :class="activeTab === 'tabProjects' && 'text-re dark:text-accent'"
+                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    x-show="activeTab === 'tabProjects'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="#e21e26"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="activeTab !== 'tabProjects'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  @click="activeTab = 'tabActivity'"
+                  :class="activeTab === 'tabActivity' && 'text-re dark:text-accent'"
+                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-re focus:bg-slate-300/20 focus:text-re active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    x-show="activeTab ===  'tabActivity'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="#e21e26"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <svg
+                    x-show="activeTab !==  'tabActivity'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#e21e26"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1864,8 +1509,8 @@ z-index: 1000;
             <div class="h-7 w-7">
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
-                :class="$store.global.isSidebarExpanded   && 'active'"
-                @click="$store.global.isSidebarExpanded   = !$store.global.isSidebarExpanded  "
+                :class="$store.global.isSidebarExpanded && 'active'"
+                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded"
               >
                 <span></span>
                 <span></span>
@@ -2227,8 +1872,11 @@ z-index: 1000;
                   </svg>
                 </div>
               </div>
-              <p class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100" > Analytics   </p>
-           
+              <p
+                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
+              >
+                Analytics
+              </p>
             </a>
             <a href="apps-chat.html" class="w-14 text-center">
               <div class="avatar h-12 w-12">
@@ -2598,269 +2246,79 @@ z-index: 1000;
       </div>
 
       <!-- Main Content Wrapper -->
-      <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
-      >
-      <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-          <div class="col-span-12 lg:col-span-8">
-          <div class="card bg-gradient-to-br from-purple-500 to-indigo-600 px-4 pb-4 sm:px-5">
-              <div class="flex items-center justify-between py-3 text-white">
-                <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
-                
-              </div>
-              <div class="flex">
-                <div class=" flex-row justify-between space-x-2" id="iconsCLass">
+   
+   <main class="main-content w-full px-[var(--margin-x)] pb-8">
+   <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-4 mb-2  from-purple-500 to-purple-600  tracking-wide text-white outline-none transition-all ">
+          <div class="group flex items-center space-x-1">
+            <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
             
-              <div class="flex items-center justify-between">
-                <div style="
-    left: -1rem;
-"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
-                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
-				      <div class="container"
-   style="
-    top: -0.5rem;
-    right: -0.5rem;
-    height: 7.2rem;
+          <!--       <div class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          <div class="flex space-x-2">
+                            <div class="flex items-center">
+			                      <svg xmlns="http://www.w3.org/2000/svg" 
+			                      class="h-5 w-5 text-slate-100 transition-colors text-white group-hover:text-slate-500 group-focus:text-slate-500 
+			                      dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+			                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+			                    </svg>
+                            </div>
 
-">
-				    <div class="background">
-				      <div class="Circle1"></div>
-				      <div class="Circle2"></div>
-				      <div class="Circle3"></div>
-				      <div class="content">
-				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
-				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
-				        <h3 class="Temp" id="temperature"></h3>
-				        <h1 class="Time" id="wind-speed"></h1>
-				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
-				      </div>
-				    </div>
-                  </div>
-                  </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                            <span class="text-white">Content Master</span>
+                          </div>
+                        </div> -->
+            </h2>
+          </div> 
+  </div>
+        <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
+          <div class="col-span-12 lg:col-span-12">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+             <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
+          <div class="card">
+            <div class="flex flex-col items-center p-4 text-center sm:p-5">
+              <div class="avatar h-20 w-20 iconCLass">
+                ${obj.title_icon }
               </div>
-           
-          </div>
-<div class="mr-4 my-1 w-px bg-slate-200 dark:bg-navy-500" id="iconsCLass"></div>
-                <div class="flex col-span-12 lg:col-span-4 h-25 w-full items-center justify-center rounded-lg bg-slate-131 dark:bg-navy-500">
-                  <div class="col-span-12 lg:col-span-8">
-                    <div class="flex flex-1 flex-col justify-between"  id="clock" style="
-    height: 9.5rem;
-">
-            
-            		</div>
-                  </div>
-                  <div class="col-span-12 lg:col-span-4">
-                   <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
-					    margin-top: 2rem;
-					"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
-                   
-                  </a>
-                  </div>
-                </div>
-              </div>
+              <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100 mb-2">
+                ${obj.content_title }
+              </h3>
+              <%-- <div class="rounded-lg bg-primary px-4 py-4 text-white shadow-lg shadow-primary/50 dark:bg-accent dark:shadow-accent/50 sm:px-5" style=" width: -webkit-fill-available;">
+       
+            <div class="pt-2">
+              <p>
+               ${obj.description }
+              </p>
             </div>
-          </div>
-          <div class="col-span-12 lg:col-span-4">
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-              <div style="
-    cursor: pointer;
-"  id="cardBG" class="rounded-lg bg-primary p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
-               
-                <p class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100"> ${sessionScope.DEPARTMENT_NAME }</p>
-                <div class="mt-8 text-center">
-                  
-                  <a href="<%=request.getContextPath() %>/re-curls/${sessionScope.BASE_DEPARTMENT }/${sessionScope.DEPARTMENT_NAME }" class="text-xs text-success">My Department</a> 
-                </div>
-              </div>
-              <div style="
-    cursor: pointer;
-" id="cardBG2" class="rounded-lg bg-warning p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-warning/50"   :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-               
-                <p class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100">Happenings @ <span class="dept"></span></p>
-                <div class="mt-8 text-center">
-                 <p class="text-xs text-success">Other Department</p>    
-                </div>
-              </div>
-              
+          </div> --%>
               
             </div>
-
-            
-          </div>
-        </div>
-      <%-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
-          <div class="card flex-row justify-between space-x-2 ">
-            <div class="flex flex-1 flex-col justify-between"  id="clock">
-            
-            </div>
-            <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <div class=" swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-active" @click="selected = 'slide-8'" role="group" aria-label="1 / 16" style="margin-right: 14px;">
-                  <a id="iconsCLass" href="#"  class="flex flex-col items-center rounded-lg px-2 py-4 text-slate-600 dark:text-navy-100" :class="selected === 'slide-8' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' ">
-                  <img class="h-11 w-1w" src="/index/resources/images/avatar/tropy icon.svg" alt="image" style="
-    margin-top: 1rem;
-">
-                   <p class="text-3xl font-medium text-slate-700 dark:text-navy-100">
-	                                      ${sessionScope.REWARDS }
-	                                    </p>
-	                                    <p class="text-xs text-success">Rewards</p>
-                  </a>
-                
-                </div>
-
-          </div>
-          
-          
-          <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
-            
-              <div class="flex items-center justify-between">
-                <div style="
-    left: -1rem;
-"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
-                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
-				      <div class="container"
-   style="
-    top: -0.5rem;
-    right: -0.5rem;
-    height: 7.2rem;
-
-">
-				    <div class="background">
-				      <div class="Circle1"></div>
-				      <div class="Circle2"></div>
-				      <div class="Circle3"></div>
-				      <div class="content">
-				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
-				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
-				        <h3 class="Temp" id="temperature"></h3>
-				        <h1 class="Time" id="wind-speed"></h1>
-				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
-				      </div>
-				    </div>
-                  </div>
-                  </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-              </div>
-              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
-    margin-top: 2rem;
-"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
-                   
-                  </a>
-          </div>
-        
-        
-     
-    
-          <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
-            
-           <div class="flex">
-          <div class="flex flex-col justify-center" style="
-    width: 18rem;">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 text-center">
-                <p class="text-xlnew">${sessionScope.DEPARTMENT_NAME }</p>
-              </div>
-              
-             <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
-                <a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>
-             </div>
-            </div>
-           
-              <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
-                <p class="text-xl">${sessionScope.BASE_DEPARTMENT }</p>
+            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500">
+            <c:if test="${obj.document_type eq 'Link' }">
+            <a href="${obj.link }" target="_blank" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+                Open
+              </a>
+            </c:if>
+             <c:if test="${obj.document_type ne 'Link' }">
+              <button class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+                View
               </button>
-              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
-             <button class="flex flex-col  justify-center">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xlnew">Happenings @ Information Technology</p>
-              </div>
-              
-              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xs text-success">Other Department</p>
-              </div> <br>
-            </button>
-              
-            <!--   <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500"  :class="$store.global.isSidebarExpanded && 'active'"
-                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
-                <p class="text-xl">All Functions</p>
+             </c:if>
+             
+             <!--  <button class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+                Chat
               </button> -->
             </div>
-                  
-                  
-          </div>  
-        <div class="mx-auto grid w-full max-w-4xl grid-cols-1s gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6s">
-          <div class="card p-4 " id="cardBG"	>
-            
-            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700 dark:text-navy-100">
-           ${sessionScope.DEPARTMENT_NAME }
-            </h2>
-            
-            <div class="mt-5 pb-1 text-center">
-				<a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>            </div>
-          </div>
-          <div class="card p-4 " id="cardBG2"
-         
-           :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-            
-            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100">Happenings @ <span class="dept"></span></h2>
-            
-            <div class="mt-5 pb-1 text-center">
-				<p class="text-xs text-success">Other Department</p>            </div>
           </div>
           
-          
-          
-          
-          
-          
-
-          
+           </c:forEach>
         </div>
-        </div> --%>
-         
 
+            <div class="ax-transparent-gridline mt-2 px-2">
+              
+            </div>
+          </div>
+        </div>
         
-                	<div class="  mt-4 flex h-8 ">
-              <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				<span class="text-xl font-semibold  cat"></span> 
-              </h2>
-            </div>
-            
-            
-            <div class=" text-center"  id="deptListERR">
-         
-         
-        </div>
-            
-            
-            
-           		<div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
-		   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
-		   <c:if test="${obj.department_code eq 'BD' }">
-		   
-		   <div class="card"> <div class="flex justify-center p-5"></div>
-            <div class="px-4 pb-8 text-center sm:px-5">
-              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
-                 ${obj.dm_category }
-              </h4>
-              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                Sub Categories
-              </a>
-            </div>
-          </div>
-          
-		   
-          </c:if>
-    </c:forEach> 
-      
-        </div>
-             
-             
-
-        </div>
-
-
-  </main>
+        
+      </main>
       <div class="mt-5" x-data="{showModal:false}">
                
                 <template x-teleport="#x-teleport-target">
@@ -2914,135 +2372,13 @@ z-index: 1000;
 	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-     /*  
-      function encryptURL(url) {
-    	    return btoa(url);
-    	  }
-
-    	  // Simple decryption function
-    	  function decryptURL(encryptedURL) {
-    	    return atob(encryptedURL);
-    	  }
-
-    	  var encryptedURL;
-    	  var decryptedURL; */
-      $(document).ready(function() {
-    	 
-    	/*   if(encryptedURL != null){
-    		  decryptedURL = decryptURL(encryptedURL);
-          	  window.history.pushState({}, document.title, decryptedURL);
-    	  } */
-    	  var currentURL = window.location.href;
-    	  var parts = currentURL.split('/');
-    	  var dCode = parts[5];
-    	  var dName = parts[6];
-    	  console.log(dName)
-    	  dName = dName.replaceAll("%20", " ");
-    	  console.log(dName)
-    	  ChangeCategoryForDept(dCode,dName);
-    	 // encryptedURL = encryptURL(currentURL);
-    	 // window.history.pushState({}, document.title, encryptedURL);
-  	    // Decrypt the URL
-    	
-    	
-          function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-based
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? '0' + hours : hours;
-            minutes = (minutes < 10) ? '0' + minutes : minutes;
-            seconds = (seconds < 10) ? '0' + seconds : seconds;
-            day = (day < 10) ? '0' + day : day;
-            month = (month < 10) ? '0' + month : month;
-
-            var time = hours + ':' + minutes + ':' + seconds; 
-            var date = day + '-' + month + '-' + year;
-
-            var clock1 =  '<a href="https://calendar.google.com/"><i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i></a>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
-
-            var clock =  ' <div class="mt-5 space-y-4 " > <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
-            $('#clock').html(clock);
-            $('#clock1').html(clock1);
-          }
-
-          setInterval(updateClock, 1000);
-
-          var cityName;
-          if (navigator.geolocation) {
-              // Get current position
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                // Make API request to fetch city name
-                $.ajax({
-                  url: 'https://nominatim.openstreetmap.org/reverse',
-                  type: 'GET',
-                  data: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude,
-                    zoom: 10,
-                    addressdetails: 1
-                  },
-                  success: function(response) {
-                    var city = response.address.city || response.address.town || response.address.village || '';
-                    var country = response.address.country || '';
-
-                    // Update HTML element with city name
-                    cityName = city;
-                    $('#city').text(city + ', ' + country);
-                    var cityNplace = city + ',' + country
-                    getWeather(cityNplace);
-                  },
-                  error: function(xhr, status, error) {
-                    console.log(error);
-                  }
-                });
-              });
-            } else {
-              console.log('Geolocation is not supported by this browser.');
-            }
-          
       
-          
-      });
-     function getWeather(cityNplace){
-    	    
-          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
-          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
+      $(document).ready(function() {
 
-          $.ajax({
-              url: apiUrl,
-              method: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  const temperatureElement = $('#temperature');
-                  const descriptionElement = $('#description');
-                  const windSpeedElement = $('#wind-speed');
-                  const weatherIconElement = $('#weather-icon');
 
-                  const temperature = Math.round(data.main.temp);
-                  const description = data.weather[0].description;
-                  const windSpeed = data.wind.speed;
-                  const weatherIcon = data.weather[0].icon;
-
-                  temperatureElement.text(temperature +'°C');
-                  descriptionElement.text(description);
-                  windSpeedElement.text(windSpeed+' m/s');
-                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
-              },
-              error: function(error) {
-                  console.error('Error:', error);
-              }
         });
     	  
-      }
+      
      
      const button = document.getElementById("signout_button");
      button.onclick = () => {
@@ -3065,106 +2401,6 @@ z-index: 1000;
          });
        } */
    
-       function ChangeCategoryForDept(department_code,department_name){
-    	   		$(".dept").html( $.trim(department_name));
-	        if ($.trim(department_code) != "") {
-	        	 $("#deptList div").remove();
-                 $("#deptListLi li").remove();
-                 $("#deptListLi").text('');
-                 $("#deptListERR p").remove();
-                 if('${sessionScope.BASE_DEPARTMENT}' == department_code){
-                	 $('#cardBG').css('background-color','lavender');
-                	 $('#cardBG2').css('background-color','white');
-                 }else{
-                	 $('#cardBG2').css('background-color','lavender');
-                	 $('#cardBG').css('background-color','white');
-                 }
-	        	var myParams = { department_code: department_code };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/ChangeCategoryForDept",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                        	 $(".cat").html( $.trim(val.dm_category));
-	                        	 var department_data = "'"+val.department_code+"','"+val.dm_category+"'";
-	                            var html2= ' <li> <a class=" clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
-	                            	 +'onclick="ChangeSubCategoryForDept('+department_data+');"'
-	                            	+'">'
-	                            	+' <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-secondary dark:text-secondary-light" fill="none"'
-	                            	+'  viewBox="0 0 24 24" stroke="#e21e26" stroke-width="1.5" >'
-	                            	+' <path  stroke-linecap="round" stroke-linejoin="round"'
-	                            	+'   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"'
-	                            	+'  /></svg> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
-	                                  
-	                             $("#deptListLi").append(html2);
-	                        });
-	                    }else{
-	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
-		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
-		                        +'</p>';
-	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
-	                        $("#deptListLi").append(html2); $("#deptListERR").append(html);
-	                    }
-;	                    $('a.clickFirst:first').click()
-	                    $(".dept").html( $.trim(department_name));
-	                    
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-       }
-       
-       function ChangeSubCategoryForDept(department_code,dm_category){
-	   		$(".dept").html( $.trim(dm_category));
-       if ($.trim(department_code) != "") {
-       	 $("#deptList div").remove();
-            $("#deptListERR p").remove();
-            if('${sessionScope.BASE_DEPARTMENT}' == department_code){
-           	 $('#cardBG').css('background-color','lavender');
-           	 $('#cardBG2').css('background-color','white');
-            }else{
-           	 $('#cardBG2').css('background-color','lavender');
-           	 $('#cardBG').css('background-color','white');
-            }
-       	var myParams = { department_code: department_code, dm_category : dm_category };
-           $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/ChangeSubCategoryForDept",
-               data: myParams, cache: false,async: false,
-               success: function (data) {
-                   if (data.length > 0) {
-                       $.each(data, function (i, val) {
-                       	 $(".cat").html( $.trim(val.dm_category));
-                       	 var url = 'href=<%=request.getContextPath() %>'
-                       		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
-                       	var html='   <div class="card grow items-center p-4 text-center sm:p-5"><div class="avatar h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
-                               +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
-                             +' <div class="mt-3 flex space-x-1">'
-                             +'<a '
-                             +url
-                             +' class="btn mt-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
-                             +'View Content'
-                            +' </a>'
-                             +' </div></div>';
-                             $("#deptList").append(html);
-                       });
-                   }else{
-                   	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
-	                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Sub Categories Found in <b><span class="cat"></span></b>, Please Add (or) Contact Admin.'
-	                        +'</p>';
-                        $("#deptListERR").append(html);
-                   }
-                   $(".cat").html( $.trim(dm_category));
-                   
-               },error: function (jqXHR, exception) {
-   	   			      $(".page-loader").hide();
-      	          	  getErrorMessage(jqXHR, exception);
-      	     	  }
-           });
-       }
-  }
       </script>
   </body>
 </html>

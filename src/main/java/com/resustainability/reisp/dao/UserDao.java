@@ -1757,11 +1757,62 @@ public class UserDao {
 				qry = qry + " and dc.department_code = ? ";
 				arrSize++;
 			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
+				qry = qry + " and dc.category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
+				qry = qry + " and dc.sub_category = ? ";
+				arrSize++;
+			}
 			qry = qry + "order by dc.category desc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
 				pValues[i++] = user.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
+				pValues[i++] = user.getCategory();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
+				pValues[i++] = user.getSub_category();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;
+	}
+
+	public List<User> getSubCatagoryList(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+            String qry = "SELECT dc.[department_code],department_name, dc.[status], dc.category,sub_category_title"
+            		+ ",icon_text,description,document_type,documants FROM [sub_category] dc "
+            		+ "left join department_master dm on dc.department_code = dm.department_code "
+            		+ " where dc.status <> 'Inactive' ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and dc.department_code = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
+				qry = qry + " and dc.category = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by dc.category desc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
+				pValues[i++] = user.getCategory();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {

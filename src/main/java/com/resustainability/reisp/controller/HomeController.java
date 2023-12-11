@@ -254,6 +254,24 @@ public class HomeController {
 		return model; 
 	}
 	
+	@RequestMapping(value = "/subcat/{department_code}/{dm_category}/{sub_category_title}", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView subCategoryView(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("dm_category") String dm_category 
+			,@PathVariable("sub_category_title") String sub_category_title , HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.subcategoryMaster);
+	try {
+		user.setDepartment_code(department_code);
+		user.setCategory(dm_category);
+		user.setSub_category(sub_category_title);
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		List <User> departmentcontentList = service.getDeptContentList(user);
+        model.addObject("departmentcontentList", departmentcontentList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
 	
 	
 	@RequestMapping(value = "/Admin", method = {RequestMethod.POST, RequestMethod.GET})
