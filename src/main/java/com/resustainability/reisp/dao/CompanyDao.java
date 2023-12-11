@@ -359,7 +359,7 @@ public class CompanyDao {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return employeesDistinctByName;
+		return objsList;
 	}
 
 	public boolean addreonecategory(User obj) throws Exception {

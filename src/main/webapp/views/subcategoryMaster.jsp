@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@page import="com.resustainability.reisp.constants.CommonConstants"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2296,12 +2297,110 @@ z-index: 1000;
                 Open
               </a>
             </c:if>
-             <c:if test="${obj.document_type ne 'Link' }">
-              <button class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+             <c:if test="${obj.document_type ne 'Link' && obj.document_type ne 'Gallery' }">
+              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
                 View
-              </button>
+              </a>
              </c:if>
              
+             <c:if test="${obj.document_type ne 'Link' && obj.document_type eq 'Gallery' }">
+              <div x-data="{showModal:false}" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+    <button
+      @click="showModal = true"
+      class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
+    >
+      View
+    </button>
+    <template x-teleport="#x-teleport-target" >
+      <div
+        class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
+        x-show="showModal"
+        role="dialog"
+        @keydown.window.escape="showModal = false"
+      >
+        <div
+          class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
+          @click="showModal = false"
+          x-show="showModal"
+          x-transition:enter="ease-out"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        ></div>
+        <div
+          class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
+          x-show="showModal"
+          x-transition:enter="ease-out"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+
+          <div class="mt-4">
+            <div
+    x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))"
+    class="swiper rounded-lg"
+  >
+    <div class="swiper-wrapper">
+     <c:choose>
+  					 <c:when test="${  fn:contains( obj.attachments, ',' ) }">
+		  	                <c:set var="filesList" value="${fn:split(obj.attachments, ',')}" />
+			                 <c:choose>
+					         <c:when test ="${fn:length(filesList) gt 0}" >
+					             <c:forEach var="obj1" items="${filesList}">
+					             <div class="swiper-slide"> 
+					                <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}"><i class="fa fa-download" aria-hidden="true"></i></a>
+									 <img
+								          class="h-full w-full object-cover"
+								          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}"
+								          alt=""
+								        />
+								        </div>
+								    
+								</c:forEach>
+					         </c:when>
+					         <c:otherwise>
+					          <p >   <i class="fa-solid fa-file"></i> No Images Found!</p>
+					         </c:otherwise>
+					      </c:choose>
+			      </c:when>
+			       <c:otherwise>
+			       <c:if test="${ not empty fn:trim(obj.attachments) }">
+			        <div class="swiper-slide">
+			         <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}"><i class="fa fa-download" aria-hidden="true"></i></a>
+		        		 <img
+				          class="h-full w-full object-cover"
+				          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}"
+				          alt=""
+				        />
+				        </div>
+			       </c:if>
+			        <c:if test="${ empty fn:trim(obj.attachments) }">
+			         <p >   <i class="fa-solid fa-file"></i> No Images Found!</p>
+			        </c:if>
+			         </c:otherwise>
+			       </c:choose>
+    </div>
+    <div class="swiper-scrollbar"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+            <button
+              @click="showModal = false"
+              class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+             </c:if>
              <!--  <button class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                 Chat
               </button> -->
