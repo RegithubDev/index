@@ -3118,7 +3118,7 @@ z-index: 1000;
        }
        
        function ChangeSubCategoryForDept(department_code,dm_category){
-	   		$(".dept").html( $.trim(dm_category));
+	   		//$(".dept").html( $.trim(dm_category));
        if ($.trim(department_code) != "") {
        	 $("#deptList div").remove();
             $("#deptListERR p").remove();
