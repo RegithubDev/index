@@ -1439,7 +1439,7 @@ button.disabled {
           <!-- Header Items -->
           <div class="flex w-full items-center justify-between">
             <!-- Left: Sidebar Toggle Button -->
-            <div class="h-7 w-7">
+            <div class="h-7 w-7"style=" color: #e21e26; ">
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
                 :class="$store.global.isSidebarExpanded && 'active'"

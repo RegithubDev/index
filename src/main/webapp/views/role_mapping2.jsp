@@ -1439,7 +1439,7 @@ button.disabled {
           <!-- Header Items -->
           <div class="flex w-full items-center justify-between">
             <!-- Left: Sidebar Toggle Button -->
-            <div class="h-7 w-7">
+            <div class="h-7 w-7"style=" color: #e21e26; ">
             <button
                 class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-re outline-none focus:outline-none dark:text-accent-light/80"
                 :class="$store.global.isSidebarExpanded && 'active'"
@@ -2338,9 +2338,9 @@ button.disabled {
                  <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
                     <span>Add </span>
                   </button>
-                  <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                  <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
-                  </button>
+                  </a>
                 </div>
                 </form>
             </div>
