@@ -505,13 +505,27 @@ public class CompanyDao {
 					+ " left join [user_profile] up on c.created_by = up.user_id "
 					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
 					+ "where c.department_code is not null "; 
-			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			
-			/*
-			 * Set<String> nameSet = new HashSet<>(); employeesDistinctByName =
-			 * objsList.stream() .filter(e -> nameSet.add(e.getDepartment_code()))
-			 * .collect(Collectors.toList());
-			 */
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and c.department_code = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and c.category = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by c.category desc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);

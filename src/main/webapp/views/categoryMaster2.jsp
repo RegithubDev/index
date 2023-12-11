@@ -33,6 +33,14 @@
       rel="stylesheet"
     />
     <style>
+      .iconCLass i {
+	 	width: 4.5rem;
+	 	height: 4.5rem;
+	 	display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    font-size: 2em;
+	}
     .bg-slate-131{
     	background-color: #ffffff;
     }
@@ -878,37 +886,7 @@ z-index: 1000;
                     <ul
                       class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium" id="deptListLi"
                     >
-                          <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
-                          <c:if test="${obj.department_code eq 'BD' }">
-                      <li>
-                        <a
-                          class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>/Admin"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
-                          <span>${obj.dm_category }</span>
-                        </a>
-                      </li>
-                      </c:if>
-                          </c:forEach>  
-                              
-                        
-                       
-                
-                      
+                         
                     </ul>
                     
                   </div>
@@ -2625,7 +2603,7 @@ z-index: 1000;
       >
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8">
-          <div class="card bg-gradient-to-br  to-indigo-600 px-4 pb-4 sm:px-5">
+          <div class="card bg-gradient-to-br from-white to-indigo-600 px-4 pb-4 sm:px-5">
               <div class="flex items-center justify-between py-3 text-black">
                 <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
                 
@@ -2844,7 +2822,7 @@ z-index: 1000;
         
                 	<div class="  mt-4 flex h-8 ">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				<span class="text-xl font-semibold  dept"></span> 
+				<span class="text-xl font-semibold  cat"></span> 
               </h2>
             </div>
             
@@ -2948,6 +2926,7 @@ z-index: 1000;
 
     	  var encryptedURL;
     	  var decryptedURL; */
+    	  var dName = null;
       $(document).ready(function() {
     	 
     	/*   if(encryptedURL != null){
@@ -2957,10 +2936,12 @@ z-index: 1000;
     	  var currentURL = window.location.href;
     	  var parts = currentURL.split('/');
     	  var dCode = parts[5];
-    	  var dName = parts[6];
+    	  dName = parts[6];
     	  console.log(dName)
     	  dName = dName.replaceAll("%20", " ");
+    	  dName = dName.replaceAll("%22", " ");
     	  console.log(dName)
+    	 
     	  ChangeCategoryForDept(dCode,dName);
     	 // encryptedURL = encryptURL(currentURL);
     	 // window.history.pushState({}, document.title, encryptedURL);
@@ -3108,32 +3089,17 @@ z-index: 1000;
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                        	 $(".dept").html( $.trim(val.department_name));
-	                        	 var url = 'href=<%=request.getContextPath() %>'
-	                            		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.dm_category);
-	                        	var html='  <div class="card"> <div class="flex justify-center p-5"></div>'
-	                                +'<div class="px-4 pb-8 text-center sm:px-5">'
-	                                +'<h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'
-	                                +$.trim(val.dm_category)
-	                               +'</h4>' 
-	                               +'<a '
-	                               +url
-	                               +' class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
-	                               +'Sub Categories'
-	                              +' </a></div></div>';
-	                              $("#deptList").append(html);
-	                              
-	                            var html2= ' <li> <a class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
-	                            	  +url
-	                            	+'>'
+	                        	 $(".cat").html( $.trim(val.dm_category));
+	                        	 var department_data = "'"+val.department_code+"','"+val.dm_category+"'";
+	                            var html2= ' <li> <a id="'+val.dm_category+'" class=" clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
+	                            	 +'onclick="ChangeSubCategoryForDept('+department_data+');"'
+	                            	+'">'
 	                            	+' <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-secondary dark:text-secondary-light" fill="none"'
 	                            	+'  viewBox="0 0 24 24" stroke="#e21e26" stroke-width="1.5" >'
 	                            	+' <path  stroke-linecap="round" stroke-linejoin="round"'
 	                            	+'   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"'
 	                            	+'  /></svg> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
 	                                  
-	                            
-	                            
 	                             $("#deptListLi").append(html2);
 	                        });
 	                    }else{
@@ -3143,6 +3109,7 @@ z-index: 1000;
 	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
 	                        $("#deptListLi").append(html2); $("#deptListERR").append(html);
 	                    }
+;	                    //$('a.clickFirst:first').click()
 	                    $(".dept").html( $.trim(department_name));
 	                    
 	                },error: function (jqXHR, exception) {
@@ -3151,7 +3118,60 @@ z-index: 1000;
 	       	     	  }
 	            });
 	        }
+	        $('#'+dName).css('background-color','lavender');
+	        $('#'+dName).click()
        }
+       
+       function ChangeSubCategoryForDept(department_code,dm_category){
+	   		//$(".dept").html( $.trim(dm_category));
+	   		 $('.clickFirst').css('background-color','white');
+	   		 $('#'+dm_category).css('background-color','lavender');
+       if ($.trim(department_code) != "") {
+       	 $("#deptList div").remove();
+            $("#deptListERR p").remove();
+            if('${sessionScope.BASE_DEPARTMENT}' == department_code){
+           	 $('#cardBG').css('background-color','lavender');
+           	 $('#cardBG2').css('background-color','white');
+            }else{
+           	 $('#cardBG2').css('background-color','lavender');
+           	 $('#cardBG').css('background-color','white');
+            }
+       	var myParams = { department_code: department_code, dm_category : dm_category };
+           $.ajax({
+               url: "<%=request.getContextPath()%>/ajax/ChangeSubCategoryForDept",
+               data: myParams, cache: false,async: false,
+               success: function (data) {
+                   if (data.length > 0) {
+                       $.each(data, function (i, val) {
+                       	 $(".cat").html( $.trim(val.dm_category));
+                       	 var url = 'href=<%=request.getContextPath() %>'
+                       		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
+                       	var html='   <div class="card grow items-center p-4 text-center sm:p-5"><div class="avatar h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
+                               +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
+                             +' <div class="mt-3 flex space-x-1">'
+                             +'<a '
+                             +url
+                             +' class="btn mt-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
+                             +'View Content'
+                            +' </a>'
+                             +' </div></div>';
+                             $("#deptList").append(html);
+                       });
+                   }else{
+                   	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
+	                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Sub Categories Found in <b><span class="cat"></span></b>, Please Add (or) Contact Admin.'
+	                        +'</p>';
+                        $("#deptListERR").append(html);
+                   }
+                   $(".cat").html( $.trim(dm_category));
+                   
+               },error: function (jqXHR, exception) {
+   	   			      $(".page-loader").hide();
+      	          	  getErrorMessage(jqXHR, exception);
+      	     	  }
+           });
+       }
+  }
       </script>
   </body>
 </html>

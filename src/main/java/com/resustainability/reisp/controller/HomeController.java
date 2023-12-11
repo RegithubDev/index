@@ -37,6 +37,7 @@ import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.UserPaginationObject;
+import com.resustainability.reisp.service.CompanyService;
 import com.resustainability.reisp.service.IRMService;
 import com.resustainability.reisp.service.UserService;
 
@@ -54,6 +55,9 @@ public class HomeController {
 
 	@Autowired
 	IRMService service2;
+	
+	@Autowired
+	CompanyService serviceC;
 	
 	@Value("${Login.Form.Invalid}")
 	public String invalidUserName;
@@ -254,8 +258,25 @@ public class HomeController {
 		return model; 
 	}
 	
-	@RequestMapping(value = "/subcat/{department_code}/{dm_category}/{sub_category_title}", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/subcat/{department_code}/{dm_category}", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView subCategoryView(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("dm_category") String dm_category 
+			, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.categoryMaster2);
+	try {
+		user.setDepartment_code(department_code);
+		user.setCategory(dm_category);
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		List <User> reoneSubcategory = serviceC.getreoneSubcategory(user);
+        model.addObject("reoneSubcategory", reoneSubcategory);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	@RequestMapping(value = "/subcat/{department_code}/{dm_category}/{sub_category_title}", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView subDeptConView(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("dm_category") String dm_category 
 			,@PathVariable("sub_category_title") String sub_category_title , HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.subcategoryMaster);
 	try {
