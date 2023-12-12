@@ -47,6 +47,7 @@
 	    justify-content: center;
 	    align-items: center;
 	    font-size: 2em;
+	    color: #4f46e5;
 	}
  @media (min-width: 640px){
 		.sm\:grid-cols-4 {
@@ -2302,6 +2303,7 @@ z-index: 1000;
 								    <div class="avatar h-8 w-8">
 					                  <img class="rounded-full" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}" alt="avatar">
 					                </div>
+					                <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
 								</c:forEach>
 					         </c:when>
 					         
@@ -2313,31 +2315,46 @@ z-index: 1000;
 					                  <img class="rounded-full" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" alt="avatar">
 					                </div>
 			       </c:if>
+			         <c:if test="${ empty fn:trim(obj.attachments) && obj.document_type eq 'Link'}">
+			        <div class="avatar h-8 w-8">
+	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                    L
+	                  </div>
+	                </div>
+			        </c:if>
+			        
+			         <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Document' }">
+			        <div class="avatar h-8 w-8">
+	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                    D
+	                  </div>
+	                </div>
+			        </c:if>
 			         </c:otherwise>
 			       </c:choose>
                 
               </div>
             </div>
            
-            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 bg-primary  ">
+            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 hover:bg-primary hover:text-white">
             <c:if test="${obj.document_type eq 'Link' }">
-            <a href="${obj.link }" target="_blank" class="btn text-white h-11 w-full rounded-none rounded-bl-lg font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                Open &nbsp <i class="fa-solid fa-chevron-right"></i>
+            <a href="${obj.link }" target="_blank" class="btn  h-11 w-full rounded-none rounded-bl-lg font-medium  hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+                Open Link &nbsp <i class="fa-solid fa-chevron-right"></i>
               </a>
-            </c:if>
+            </c:if> 
              <c:if test="${obj.document_type ne 'Link' && obj.document_type ne 'Gallery' }">
-              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn text-white h-11 w-full rounded-none rounded-bl-lg font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
+              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn   h-11 w-full rounded-none rounded-bl-lg font-medium  hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+                Open Document &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
               </a>
              </c:if>
              
              <c:if test="${obj.document_type ne 'Link' && obj.document_type eq 'Gallery' }">
-              <div x-data="{showModal:false}" class="btn h-11 w-full rounded-none rounded-bl-lg text-white font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+              <div x-data="{showModal:false}" class="btn h-11 w-full rounded-none rounded-bl-lg  font-medium hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
     <button
       @click="showModal = true"
-      class="btn h-11 w-full rounded-none rounded-bl-lg font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
+      class="btn  h-11 w-full rounded-none rounded-bl-lg font-medium  active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
     >
-      View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
+      Open Gallary &nbsp<i class="fa fa-eye" aria-hidden="true"></i> 
     </button>
     <template x-teleport="#x-teleport-target" >
       <div
