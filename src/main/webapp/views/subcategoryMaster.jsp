@@ -2291,24 +2291,51 @@ z-index: 1000;
 	        	 ${obj.description}	                           
 	           </div>
               
+               <div class="my-3.5 flex flex-wrap space-x-2">
+               <c:choose>
+  					 <c:when test="${  fn:contains( obj.attachments, ',' ) }">
+		  	                <c:set var="filesList" value="${fn:split(obj.attachments, ',')}" />
+			                 <c:choose>
+					         <c:when test ="${fn:length(filesList) gt 0}" >
+					             <c:forEach var="obj1" items="${filesList}">
+					
+								    <div class="avatar h-8 w-8">
+					                  <img class="rounded-full" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}" alt="avatar">
+					                </div>
+								</c:forEach>
+					         </c:when>
+					         
+					      </c:choose>
+			      </c:when>
+			       <c:otherwise>
+			       <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Gallery' }">
+			         <div class="avatar h-8 w-8">
+					                  <img class="rounded-full" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" alt="avatar">
+					                </div>
+			       </c:if>
+			         </c:otherwise>
+			       </c:choose>
+                
+              </div>
             </div>
-            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500">
+           
+            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 bg-primary  ">
             <c:if test="${obj.document_type eq 'Link' }">
-            <a href="${obj.link }" target="_blank" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                Explore more &nbsp <i class="fa-solid fa-chevron-right"></i>
+            <a href="${obj.link }" target="_blank" class="btn text-white h-11 w-full rounded-none rounded-bl-lg font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+                Open &nbsp <i class="fa-solid fa-chevron-right"></i>
               </a>
             </c:if>
              <c:if test="${obj.document_type ne 'Link' && obj.document_type ne 'Gallery' }">
-              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn text-white h-11 w-full rounded-none rounded-bl-lg font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
                 View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
               </a>
              </c:if>
              
              <c:if test="${obj.document_type ne 'Link' && obj.document_type eq 'Gallery' }">
-              <div x-data="{showModal:false}" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
+              <div x-data="{showModal:false}" class="btn h-11 w-full rounded-none rounded-bl-lg text-white font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
     <button
       @click="showModal = true"
-      class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
+      class="btn h-11 w-full rounded-none rounded-bl-lg font-medium  hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
     >
       View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
     </button>
