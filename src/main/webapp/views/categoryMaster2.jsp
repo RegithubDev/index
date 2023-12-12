@@ -33,6 +33,14 @@
       rel="stylesheet"
     />
     <style>
+     .truncate {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .pp-1{
+    	padding: 0.1rem;
+    }
       .iconCLass i {
 	 	width: 4.5rem;
 	 	height: 4.5rem;
@@ -3146,7 +3154,7 @@ z-index: 1000;
                        	 $(".cat").html( $.trim(val.dm_category));
                        	 var url = 'href=<%=request.getContextPath() %>'
                        		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
-                       	var html='   <div class="card grow items-center p-4 text-center sm:p-5"><div class="avatar h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
+                       	var html='   <div class="card rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 pp-1"><div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-navy-900 sm:p-5"><div class="avatar h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
                                +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
                              +' <div class="mt-3 flex space-x-1">'
                              +'<a '
@@ -3154,7 +3162,7 @@ z-index: 1000;
                              +' class="btn mt-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
                              +'View Content'
                             +' </a>'
-                             +' </div></div>';
+                             +' </div></div></div>';
                              $("#deptList").append(html);
                        });
                    }else{

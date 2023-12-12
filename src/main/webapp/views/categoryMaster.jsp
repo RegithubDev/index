@@ -33,6 +33,14 @@
       rel="stylesheet"
     />
     <style>
+    .truncate {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .pp-1{
+    	padding: 0.1rem;
+    }
     .bg-slate-131{
     	background-color: #ffffff;
     }
@@ -3111,16 +3119,20 @@ z-index: 1000;
 	                        	 $(".dept").html( $.trim(val.department_name));
 	                        	 var url = 'href=<%=request.getContextPath() %>'
 	                            		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.dm_category);
-	                        	var html='  <div class="card"> <div class="flex justify-center p-5"></div>'
-	                                +'<div class="px-4 pb-8 text-center sm:px-5">'
+	                        	var html='  <div class="card rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 pp-1"> '
+	                        		+'<div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-navy-900 sm:p-5"><div class="flex justify-center">'
+	                                +'<div class=" text-center ">'
 	                                +'<h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'
-	                                +$.trim(val.dm_category)
+	                               	 +$.trim(val.dm_category)
 	                               +'</h4>' 
-	                               +'<a '
-	                               +url
+	                               +'<div class="truncate" x-tooltip="'+$.trim(val.description)+'" style="width:10rem;">'
+	                              	 +$.trim(val.description)	                           
+	                               +'</div>'
+	                               +'<a ' 
+	                              	 +url
 	                               +' class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
-	                               +'Sub Categories'
-	                              +' </a></div></div>';
+	                               +'Explore more &nbsp<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+	                              +' </a></div></div></div>';
 	                              $("#deptList").append(html);
 	                              
 	                            var html2= ' <li> <a class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
