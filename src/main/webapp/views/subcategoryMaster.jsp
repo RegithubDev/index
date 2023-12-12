@@ -2336,7 +2336,7 @@ z-index: 1000;
               </div>
             </div>
            
-            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 hover:bg-primary hover:text-white">
+            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 hover:bg-primary hover:text-white" style="color:blue";>
             <c:if test="${obj.document_type eq 'Link' }">
             <a href="${obj.link }" target="_blank" class="btn  h-11 w-full rounded-none rounded-bl-lg font-medium  hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
                 Open Link &nbsp <i class="fa-solid fa-chevron-right"></i>
