@@ -3155,12 +3155,12 @@ z-index: 1000;
                        	 $(".cat").html( $.trim(val.dm_category));
                        	 var url = 'href=<%=request.getContextPath() %>'
                        		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
-                       	var html='   <div class="card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50"><div class="rounded-xl bg-slate-50 p-4 text-center   sm:p-5"><div class="avatar h-18 w-18 iconCLass badge  h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
+                       	var html='   <div class="card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50"><div class="rounded-xl bg-slate-50 p-4   sm:p-5"><div class="avatar h-18 w-18 iconCLass badge  h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
                                +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
                                +'<div class="truncate"  style="width:10rem;">'
                             	 +$.trim(val.description)	                           
                                 +'</div>'
-                               +' <div class="mt-3 flex space-x-1 justify-center">'
+                               +' <div class="mt-3 flex space-x-1 justify-center">' 
                             
                              +'<a '
                              +url
