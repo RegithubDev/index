@@ -865,12 +865,12 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
              <h2 class="font-medium tracking-wide text-slate-700 dark:text-navy-100">            
-                <span class="dept"></span> Functions
+                <span class="dept"></span> Function
               </h2>
               <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <!--    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
+                </svg> -->
               </button>
             </div>
             
@@ -3156,11 +3156,15 @@ z-index: 1000;
                        		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
                        	var html='   <div class="card rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 pp-1"><div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-navy-900 sm:p-5"><div class="avatar h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
                                +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
-                             +' <div class="mt-3 flex space-x-1">'
+                               +'<div class="truncate"  style="width:10rem;">'
+                            	 +$.trim(val.description)	                           
+                                +'</div>'
+                               +' <div class="mt-3 flex space-x-1 justify-center">'
+                            
                              +'<a '
                              +url
                              +' class="btn mt-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
-                             +'View Content'
+                             +'Explore more &nbsp<i class="fa fa-arrow-right" aria-hidden="true"></i>'
                             +' </a>'
                              +' </div></div></div>';
                              $("#deptList").append(html);

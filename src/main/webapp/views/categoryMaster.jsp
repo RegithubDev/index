@@ -857,7 +857,7 @@ z-index: 1000;
             <!-- Sidebar Panel Header -->
             <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
              <h2 class="font-medium tracking-wide text-slate-700 dark:text-navy-100">            
-                <span class="dept"></span> Functions
+                <span class="dept"></span> Function
               </h2>
               <button @click="$store.global.isSidebarExpanded  = false" class="btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -3118,14 +3118,14 @@ z-index: 1000;
 	                        $.each(data, function (i, val) {
 	                        	 $(".dept").html( $.trim(val.department_name));
 	                        	 var url = 'href=<%=request.getContextPath() %>'
-	                            		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.dm_category);
+	                                url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.dm_category);
 	                        	var html='  <div class="card rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 pp-1"> '
 	                        		+'<div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-navy-900 sm:p-5"><div class="flex justify-center">'
 	                                +'<div class=" text-center ">'
 	                                +'<h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'
 	                               	 +$.trim(val.dm_category)
 	                               +'</h4>' 
-	                               +'<div class="truncate" x-tooltip="'+$.trim(val.description)+'" style="width:10rem;">'
+	                               +'<div class="truncate"  style="width:10rem;">'
 	                              	 +$.trim(val.description)	                           
 	                               +'</div>'
 	                               +'<a ' 
