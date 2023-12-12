@@ -2461,7 +2461,7 @@ z-index: 1000;
               </div>
               
               <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
-                <a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>
+                <a href="<%=request.getContextPath() %>/re-curls/${sessionScope.BASE_DEPARTMENT }/${sessionScope.DEPARTMENT_NAME }" class="text-xs text-success">My Department</a>
               </div>
             </div>
            
