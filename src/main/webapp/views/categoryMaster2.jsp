@@ -2949,13 +2949,17 @@ z-index: 1000;
     	  var currentURL = window.location.href;
     	  var parts = currentURL.split('/');
     	  var dCode = parts[5];
-    	  dName = parts[6];
+    	  var d_name = parts[6];
+    	  dName = parts[7];
     	  console.log(dName)
     	  dName = dName.replaceAll("%20", " ");
     	  dName = dName.replaceAll("%22", " ");
+    	  
+    	  d_name = d_name.replaceAll("%20", " ");
+    	  d_name = d_name.replaceAll("%22", " ");
     	  console.log(dName)
     	 
-    	  ChangeCategoryForDept(dCode,dName);
+    	  ChangeCategoryForDept(dCode,d_name);
     	 // encryptedURL = encryptURL(currentURL);
     	 // window.history.pushState({}, document.title, encryptedURL);
   	    // Decrypt the URL

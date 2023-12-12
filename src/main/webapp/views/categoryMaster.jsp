@@ -3117,8 +3117,8 @@ z-index: 1000;
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
 	                        	 $(".dept").html( $.trim(val.department_name));
-	                        	 var url = 'href=<%=request.getContextPath() %>'
-	                                url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.dm_category);
+	                        	 var url = 'href="<%=request.getContextPath() %>'
+	                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'"';
 	                        	var html='  <div class="card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50"> '
 	                        		+'<div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 	                                +'<div class="">'
