@@ -2275,7 +2275,7 @@ z-index: 1000;
              <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
           <div class="card">
             <div class="flex flex-col items-center p-4 text-center sm:p-5">
-              <div class="avatar h-20 w-20 iconCLass">
+              <div class="avatar h-20 w-20 iconCLass avatar h-18 w-18 iconCLass badge rounded-full bg-info text-white">
                 ${obj.title_icon }
               </div>
               <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100 mb-2">
