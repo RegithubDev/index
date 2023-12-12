@@ -2280,7 +2280,7 @@ z-index: 1000;
           <div class="col-span-12 lg:col-span-12">
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
              <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
-          <div class="card">
+          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
             <div class="flex flex-col items-center p-4 text-center sm:p-5">
               <div class="avatar h-20 w-20 iconCLass avatar h-18 w-18 iconCLass ">
                 ${obj.title_icon }
@@ -2299,9 +2299,8 @@ z-index: 1000;
 			                 <c:choose>
 					         <c:when test ="${fn:length(filesList) gt 0}" >
 					             <c:forEach var="obj1" items="${filesList}">
-					
-								    <div class="avatar h-8 w-8">
-					                  <img class="rounded-full" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}" alt="avatar">
+									<div class="avatar h-8 w-8 hover:z-10">
+					                  <img class="rounded-full ring ring-white dark:ring-navy-700" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}" alt="avatar">
 					                </div>
 					                <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
 								</c:forEach>
@@ -2311,8 +2310,9 @@ z-index: 1000;
 			      </c:when>
 			       <c:otherwise>
 			       <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Gallery' }">
-			         <div class="avatar h-8 w-8">
-					                  <img class="rounded-full" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" alt="avatar">
+			    
+					                <div class="avatar h-8 w-8 hover:z-10">
+					                  <img class="rounded-full ring ring-white dark:ring-navy-700" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" alt="avatar">
 					                </div>
 			       </c:if>
 			         <c:if test="${ empty fn:trim(obj.attachments) && obj.document_type eq 'Link'}">
