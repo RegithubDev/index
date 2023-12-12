@@ -33,6 +33,10 @@
       rel="stylesheet"
     />
     <style>
+    .bg-info {
+    background-color: #d9e3e7;
+}
+    
      .truncate {
       overflow: hidden;
       white-space: nowrap;
@@ -2839,7 +2843,7 @@ z-index: 1000;
          
          
         </div>
-            
+            <br>
             
             
            		<div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
@@ -3102,7 +3106,7 @@ z-index: 1000;
 	                            var html2= ' <li> <a id="'+val.dm_category+'" class=" clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
 	                            	 +'onclick="ChangeSubCategoryForDept('+department_data+');"'
 	                            	+'">'
-	                            	+' <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:red;"></div> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
+	                            	+' <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
 	                                  
 	                             $("#deptListLi").append(html2);
 	                        });
@@ -3150,7 +3154,7 @@ z-index: 1000;
                        	 $(".cat").html( $.trim(val.dm_category));
                        	 var url = 'href=<%=request.getContextPath() %>'
                        		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
-                       	var html='   <div class="card rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 pp-1"><div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-navy-900 sm:p-5"><div class="avatar h-18 w-18 iconCLass badge rounded-full bg-info text-white h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
+                       	var html='   <div class="card rounded-xl bg-gradient-to-br  pp-1"><div class="rounded-xl bg-slate-50 p-4 text-center   sm:p-5"><div class="avatar h-18 w-18 iconCLass badge  h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
                                +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
                                +'<div class="truncate"  style="width:10rem;">'
                             	 +$.trim(val.description)	                           
@@ -3164,7 +3168,7 @@ z-index: 1000;
                             +' </a>'
                              +' </div></div></div>';
                              $("#deptList").append(html);
-                       });
+                       }); 
                    }else{
                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
 	                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Sub Categories Found in <b><span class="cat"></span></b>, Please Add (or) Contact Admin.'

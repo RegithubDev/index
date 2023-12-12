@@ -34,6 +34,12 @@
       rel="stylesheet"
     />
     <style>
+    .truncate {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    
  .iconCLass i {
 	 	width: 4.5rem;
 	 	height: 4.5rem;
@@ -2275,31 +2281,26 @@ z-index: 1000;
              <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
           <div class="card">
             <div class="flex flex-col items-center p-4 text-center sm:p-5">
-              <div class="avatar h-20 w-20 iconCLass avatar h-18 w-18 iconCLass badge rounded-full bg-info text-white">
+              <div class="avatar h-20 w-20 iconCLass avatar h-18 w-18 iconCLass ">
                 ${obj.title_icon }
               </div>
               <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100 mb-2">
                 ${obj.content_title }
               </h3>
-              <%-- <div class="rounded-lg bg-primary px-4 py-4 text-white shadow-lg shadow-primary/50 dark:bg-accent dark:shadow-accent/50 sm:px-5" style=" width: -webkit-fill-available;">
-       
-            <div class="pt-2">
-              <p>
-               ${obj.description }
-              </p>
-            </div>
-          </div> --%>
+            <div class="truncate"  style="width:10rem;">
+	        	 ${obj.description}	                           
+	           </div>
               
             </div>
             <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500">
             <c:if test="${obj.document_type eq 'Link' }">
             <a href="${obj.link }" target="_blank" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                Open
+                Explore more &nbsp <i class="fa-solid fa-chevron-right"></i>
               </a>
             </c:if>
              <c:if test="${obj.document_type ne 'Link' && obj.document_type ne 'Gallery' }">
               <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                View
+                View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
               </a>
              </c:if>
              
@@ -2309,7 +2310,7 @@ z-index: 1000;
       @click="showModal = true"
       class="btn h-11 w-full rounded-none rounded-bl-lg font-medium text-slate-700 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
     >
-      View
+      View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
     </button>
     <template x-teleport="#x-teleport-target" >
       <div

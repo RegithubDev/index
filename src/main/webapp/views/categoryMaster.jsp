@@ -2862,7 +2862,7 @@ z-index: 1000;
          
         </div>
             
-            
+            <br>
             
            		<div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
 		   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
@@ -3119,7 +3119,7 @@ z-index: 1000;
 	                        	 $(".dept").html( $.trim(val.department_name));
 	                        	 var url = 'href=<%=request.getContextPath() %>'
 	                                url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.dm_category);
-	                        	var html='  <div class="card rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 pp-1"> '
+	                        	var html='  <div class="card rounded-xl bg-gradient-to-br  pp-1"> '
 	                        		+'<div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-navy-900 sm:p-5"><div class="flex justify-center">'
 	                                +'<div class=" text-center ">'
 	                                +'<h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'
@@ -3138,7 +3138,7 @@ z-index: 1000;
 	                            var html2= ' <li> <a class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
 	                            	  +url
 	                            	+'>'
-	                            	+' <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:red;"></div><span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
+	                            	+' <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div><span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
 	                                  
 	                            
 	                            
