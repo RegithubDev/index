@@ -34,6 +34,9 @@
       rel="stylesheet"
     />
     <style>
+    .requried {
+	color: red;
+}
     .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
@@ -2437,30 +2440,32 @@ z-index: 1000;
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                  <c:if test="${empty sCDetails.department_code}">
 	                  <label class="block">
-	                  <span>Department</span>
+	                  <span>Department</span><span class="requried">*</span> 
 	                  <select id="department_code" name="department_code" onchange="setCategory(this.value);" class="form-select select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
 	                    <option value="">Select Department</option>
 	             	<c:forEach var="obj" items="${departmentsList}">
 						<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
 					</c:forEach>
 	                  </select>
+	                  <span id="department_codeError" class="requried"></span>
 	                </label>
               
                   
                    <label class="block">
-	                  <span>Category</span>
+	                  <span>Category</span><span class="requried">*</span> 
 	                  <select id="dm_category_filter" name="category" class="form-select select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
 	                    <option  value="">Select Category</option>
 	                   <%--  <c:forEach var="obj" items="${catagoryList}">
 						<option value="${obj.dm_category }" >${obj.dm_category }</option>
 					</c:forEach> --%>
 	                  </select>
+	                  <span id="dm_category_filterError" class="requried"></span>
 	                </label>
                 </c:if>
                 
                  <c:if test="${not empty sCDetails.department_code}">
                     <label class="block">
-	                  <span>Department</span>
+	                  <span>Department</span><span class="requried">*</span> 
                    <button class="btn bg-primary/10 font-medium text-primary hover:bg-primary/20 mt-1.5 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
 	                  ${sCDetails.department_code} - ${sCDetails.department_name}
 	                </button>
@@ -2474,19 +2479,21 @@ z-index: 1000;
                  </c:if>
                  <input name="id" value="${sCDetails.id }" type="hidden" />
                 <label class="block">
-                      <span>Title</span>
+                      <span>Title</span><span class="requried">*</span> 
                       <input requried class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
                        px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                        dark:hover:border-navy-400 dark:focus:border-accent" 
                        id="sub_category_title" name="sub_category_title" placeholder="title" type="text" value='${sCDetails.sub_category_title }'>
+                   	        <span id="sub_category_titleError" class="requried"></span>
                     </label>
                     
                     <label class="block">
-                      <span>Icon</span>
+                      <span>Icon</span><span class="requried">*</span> 
                       <input requried class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
                        px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                        dark:hover:border-navy-400 dark:focus:border-accent" 
                        id="icon_text" name="icon_text" placeholder="Eg: Font Awsome Tags" type="text" value="${sCDetails.icon_text }" >
+                   	                  <span id="icon_textError" class="requried"></span>
                     </label>
                 
                 </div>
@@ -2497,7 +2504,7 @@ z-index: 1000;
                  
                  <div class="max-w-xl">
               <p>
-                Description
+                Description<span class="requried">*</span> 
               </p>
               <div >
                 <label class="block">
@@ -2505,16 +2512,19 @@ z-index: 1000;
                   class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 
                   placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                   dark:hover:border-navy-400 dark:focus:border-accent">${sCDetails.description }</textarea>
+                <span id="descriptionsError" class="requried"></span>
                 </label>
                 
               </div>
             </div>
             <label class="block">
-	                  <span>Status</span>
-	                  <select id="dm_category_filter" name="status" class="form-select  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+	                  <span>Status</span><span class="requried">*</span> 
+	                  <select id="status_filter" name="status" class="form-select  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+	                   <option value="">Select Status</option>
 	                    <option  value="Active" <c:if test="${sCDetails.status eq 'Active' }">selected</c:if>>Active</option>
 	                    <option  value="Inactive"  <c:if test="${sCDetails.status eq 'Inactive' }">selected</c:if>>Inactive</option>
 	                  </select>
+	                	 <span id="status_filterError" class="requried"></span>
 	                </label>
               <!--  <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept="image/*" multiple /> -->
        <!--  <div class="filepond fp-grid fp-bordered [--fp-grid:4] mt-4">
@@ -2650,6 +2660,8 @@ z-index: 1000;
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+	<script src="/index/resources/js/jquery-validation-1.19.1.min.js"></script>
+	<script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
 	        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
     <script>
@@ -2726,7 +2738,7 @@ z-index: 1000;
           
       });
      function getWeather(cityNplace){
-    	    
+    	
           const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
           const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
 
@@ -2777,7 +2789,77 @@ z-index: 1000;
            },
          });
        } */
-   
+       var validator =	$('#updateCategoryForm').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+				   		     "department_code": {
+						 			required: true
+						 	  },"category": {										
+						 			required: true
+						 	  },"sub_category_title": {										
+						 			required: true
+						 	  },"icon_text": {										
+						 			required: true
+						 	  },"description": {										
+						 			required: true
+						 	  },"status": {										
+						 			required: true
+						 	  }
+					 	},
+					    messages: {
+					 		 "department_code": {
+							 	required: 'Required',
+						 	  },"category": {
+						 		required: 'Required'
+						 	  },"sub_category_title": {
+						 		required: 'Required'
+						 	  },"icon_text": {
+						 		required: 'Required'
+						 	  },"sub_category": {
+						 		required: 'Required'
+						 	  },"description": {
+						 		required: 'Required'
+						 	  },"status": {
+						 		required: 'Required'
+						 	  }
+			   		},
+		      		errorPlacement:function(error, element){
+		      			if (element.attr("id") == "department_code" ){
+			   				 document.getElementById("department_codeError").innerHTML="";
+			   		 		 error.appendTo('#department_codeError');
+				   			}else if(element.attr("id") == "dm_category_filter" ){
+				   			   document.getElementById("dm_category_filterError").innerHTML="";
+				   		 	   error.appendTo('#dm_category_filterError');
+				   			}else if(element.attr("id") == "sub_category_title" ){
+					   			   document.getElementById("sub_category_titleError").innerHTML="";
+					   		 	   error.appendTo('#sub_category_titleError');
+					   			}else if(element.attr("id") == "icon_text" ){
+						    			   document.getElementById("icon_textError").innerHTML="";
+						   		 	   error.appendTo('#icon_textError');
+						   			}else if(element.attr("id") == "descriptions" ){
+											   			   document.getElementById("descriptionsError").innerHTML="";
+											   		 	   error.appendTo('#descriptionsError');
+											   	}else if(element.attr("id") == "status_filter" ){
+												   			   document.getElementById("status_filterError").innerHTML="";
+												   		 	   error.appendTo('#status_filterError');
+												   			}
+				   			else{
+				   				error.insertAfter(element);
+						   	        } 
+				      		},invalidHandler: function (form, validator) {
+				               var errors = validator.numberOfInvalids();
+				               if (errors) {
+				                   var position = validator.errorList[0].element;
+				                   jQuery('html, body').animate({
+				                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+				                   }, 1000);
+				               }
+				           },submitHandler:function(form){
+				   	    	//form.submit();
+				   	    }
+		   	});
        function setCategory(department_code){
     	 
 	        if ($.trim(department_code) != "") {
