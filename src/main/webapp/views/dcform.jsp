@@ -29,6 +29,28 @@
       rel="stylesheet"
     />
     <style>
+   .select2-container{
+   display : none;
+   }
+    .requried{
+    	color:red;
+    }
+   
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+     left: -25% !important;
+    margin-top: 1p% !important;
+}
+.select2-container--classic .select2-selection--single .select2-selection__arrow b, .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    background-image: url(data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23d8d6de\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'feather feather-chevron-down\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E);
+    background-size: 18px 14px,18px 14px !important;
+    background-repeat: no-repeat !important;
+    height: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    left: -8px !important;
+    border-style: none !important;
+}
     .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
@@ -2349,28 +2371,32 @@ z-index: 1000;
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
                   <label class="block">
-                  <span>company</span>
-                  <select id="company_code" name="company_code" onchange="setSBUList()" <c:if test="${action eq 'edit'}"> disabled </c:if> class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <span>company</span> <span class="requried">*</span>
+                  <select id="company_code" name="company_code" onchange="setSBUList()" <c:if test="${action eq 'edit'}"> disabled </c:if> 
+                  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Company</option>
-             	<c:forEach var="obj" items="${companiesList}">
-					<option value="${obj.company_code }" <c:if test="${DCFromDetails.company_code eq obj.company_code }">selected</c:if>>[${obj.company_code }] - ${obj.company_name }</option>
-				</c:forEach>
+	             	<c:forEach var="obj" items="${companiesList}">
+						<option value="${obj.company_code }" <c:if test="${DCFromDetails.company_code eq obj.company_code }">selected</c:if>>[${obj.company_code }] - ${obj.company_name }</option>
+					
+					</c:forEach>
                   </select>
+                  <span id="company_codeError" class="requried"></span>
                 </label>
               
                    <label class="block">
-                  <span>SBU</span>
+                  <span>SBU</span> <span class="requried">*</span>
                   <select onchange="setDeptList();"  id="sbu_code" name="sbu_code" <c:if test="${action eq 'edit'}"> disabled </c:if> class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Select SBU</option>
+                    <option value="">Select SBU</option>
                     <c:forEach var="obj" items="${sbuList}">
 						<option value="${obj.sbu_code }" <c:if test="${DCFromDetails.sbu_code eq obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
 					</c:forEach>
                   </select>
+                   <span id="sbu_codeError" class="requried"></span>
                 </label>
                   <label class="block">
                   <span>Department</span>
                   <select  onchange="setCategoryList();" id="department_code" <c:if test="${action eq 'edit'}"> disabled </c:if>  name="department_code" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Select Department</option>
+                    <option value="">Select Department</option>
                     	<c:forEach var="obj" items="${deptList}">
 						<option value="${obj.department_code }" <c:if test="${DCFromDetails.department_code eq obj.department_code }">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
 					</c:forEach>
@@ -2379,7 +2405,7 @@ z-index: 1000;
                   <label class="block">
                   <span>Category</span>
                   <select onchange="setSubCategoryList();" id="category" name="category" <c:if test="${action eq 'edit'}"> disabled </c:if> class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Select Category</option>
+                    <option value="">Select Category</option>
                     <c:forEach var="obj" items="${ceptList}">
 						<option value="${obj.dm_category }" <c:if test="${DCFromDetails.category eq obj.dm_category }">selected</c:if>>${obj.dm_category }</option>
 					</c:forEach>
@@ -2395,7 +2421,7 @@ z-index: 1000;
                   <label class="block">
                   <span>Sub Category</span>
                   <select  id="sub_category"  name="sub_category" <c:if test="${action eq 'edit'}"> disabled </c:if>  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>Select Sub Category</option>
+                    <option value="">Select Sub Category</option>
                     <c:forEach var="obj" items="${sceptList}">
 						<option value="${obj.sub_category_title }" <c:if test="${DCFromDetails.sub_category eq obj.sub_category_title }">selected</c:if>>${obj.sub_category_title }</option>
 					</c:forEach>
@@ -2729,6 +2755,8 @@ z-index: 1000;
         @see https://alpinejs.dev/directives/teleport
       -->
     <div id="x-teleport-target"></div>
+      <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+       <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
@@ -2948,8 +2976,51 @@ z-index: 1000;
 	    }
        
        function submit(){
-    	   document.getElementById("addDCForm").submit();	
+    	   if(validator.form()){ // validation perform
+    		   document.getElementById("addDCForm").submit();
+    	   }
        }
+       
+       var validator =	$('#addDCForm').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+				   		     "company_code": {
+						 			required: true
+						 	  },"sbu_code": {										
+						 			required: true
+						 	  }
+					 	},
+					    messages: {
+					 		 "company_code": {
+							 	required: 'Required',
+						 	  },"sbu_code": {
+						 		required: 'Required'
+						 	  }
+			   		},
+		      		errorPlacement:function(error, element){
+		      			if (element.attr("id") == "company_code" ){
+			   				 document.getElementById("company_codeError").innerHTML="";
+			   		 		 error.appendTo('#company_codeError');
+				   			}else if(element.attr("id") == "sbu_code" ){
+				   			   document.getElementById("sbu_codeError").innerHTML="";
+				   		 	   error.appendTo('#sbu_codeError');
+				   			}else{
+				   				error.insertAfter(element);
+						   	        } 
+				      		},invalidHandler: function (form, validator) {
+				               var errors = validator.numberOfInvalids();
+				               if (errors) {
+				                   var position = validator.errorList[0].element;
+				                   jQuery('html, body').animate({
+				                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+				                   }, 1000);
+				               }
+				           },submitHandler:function(form){
+				   	    	//form.submit();
+				   	    }
+		   	}); 
        
        function setDocType(type){
     	   if ($.trim(type) !=""  ) {
