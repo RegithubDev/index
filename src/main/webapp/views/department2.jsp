@@ -83,6 +83,17 @@
   font-size: 13px;
   margin-left: 0.3rem;
 }
+td{
+  padding-left: 2.25rem;
+    padding-right: 1.25rem; 
+   font-weight: 500;
+    color: #334155;
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    white-space: nowrap;
+
+}
+
 
 #select2-select2-multiple-assigned_to_sbu_add-container
 {

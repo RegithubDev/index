@@ -322,6 +322,9 @@ width: 123px!important;
     z-index: 1000;
     font-size: 15px !important;
 }
+.requried {
+	color: red;
+} 
 
 .Condition{
 z-index: 1000;
@@ -2452,15 +2455,16 @@ z-index: 1000;
 		            <c:if test="${empty CDetails.department_code}">
 		            
 		              <label class="block">
-	                  <span>Department</span>
+	                  <span>Department</span><span class="requried">*</span> 
 	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
 	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
 	                  name="department_code" id="department_code">
-	                    <option>Select Department</option>
+	                    <option value="">Select Department</option>
 	                     <c:forEach var="obj" items="${departmentsList}">
 	                     	<option value="${obj.department_code }" <c:if test="${CDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
 						  </c:forEach>
 	                  </select>
+	                   <span id="department_codeError" class="requried"></span>
 	                </label>
 		            
 		            </c:if>
@@ -2652,6 +2656,9 @@ z-index: 1000;
 	</form>
 	  <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
+           <script src="/index/resources/js/jquery-validation-1.19.1.min.js"></script>
+	<script
+		src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       $('.select2').select2();
@@ -2811,10 +2818,50 @@ z-index: 1000;
        function removeRow(rowNo){
 			$("#row"+rowNo).remove();
 		}
+       
+       
+       
+       var validator =	$('#addCategory').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+				   		     "department_code": {
+						 			required: true
+						 	  }
+					 	},
+					    messages: {
+					 		 "department_code": {
+							 	required: 'Required',
+						 	  }
+			   		},
+		      		errorPlacement:function(error, element){
+		      			if (element.attr("id") == "department_code" ){
+			   				 document.getElementById("department_codeError").innerHTML="";
+			   		 		 error.appendTo('#department_codeError');
+				   			}
+				   			else{
+				   				error.insertAfter(element);
+						   	        } 
+				      		},invalidHandler: function (form, validator) {
+				               var errors = validator.numberOfInvalids();
+				               if (errors) {
+				                   var position = validator.errorList[0].element;
+				                   jQuery('html, body').animate({
+				                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+				                   }, 1000);
+				               }
+				           },submitHandler:function(form){
+				   	    	//form.submit();
+				   	    }
+		   	}); 
+       
+       
+       
        function addCategory(){
-	    	//if(validator.form()){ // validation perform
+	    	if(validator.form()){ // validation perform
 	        	document.getElementById("addCategoryForm").submit();	
-	    	//}
+	    	}
 	    }
        
       </script>

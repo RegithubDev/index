@@ -69,6 +69,16 @@
 .pagination button:hover {
   background-color: #ddd;
 }
+td{
+  padding-left: 2.25rem;
+    padding-right: 1.25rem; 
+   font-weight: 500;
+    color: #334155;
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    white-space: nowrap;
+
+}
 
 .pagination .active button {
   background-color: #4f46e5!important;

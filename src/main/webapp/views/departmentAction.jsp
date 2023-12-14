@@ -44,6 +44,16 @@
     box-sizing: border-box;
 }
 
+td{
+  padding-left: 2.25rem;
+    padding-right: 1.25rem; 
+   font-weight: 500;
+    color: #334155;
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    white-space: nowrap;
+
+}
 .pagination{
   background-color: #e9eef5!important;
   border-bottom-left-radius: 0.5rem;
