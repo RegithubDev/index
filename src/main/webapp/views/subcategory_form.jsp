@@ -2586,7 +2586,7 @@ z-index: 1000;
               
            <div class="flex justify-center space-x-1 pt-4">
              
-               <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
+               <button class="btn border border-primary font-medium text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white active:bg-primary/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90" onclick="submit()">
              		Submit
               </button>
                <a href="<%=request.getContextPath() %>/reone-subcategory" class="btn border border-error font-medium text-error hover:bg-error hover:text-white focus:bg-error focus:text-white active:bg-error/90 dark:border-accent dark:text-accent-light dark:hover:bg-accent dark:hover:text-white dark:focus:bg-accent dark:focus:text-white dark:active:bg-accent/90">
@@ -2789,6 +2789,14 @@ z-index: 1000;
            },
          });
        } */
+       
+       function submit(){
+    	   if(validator.form()){ // validation perform
+    		   document.getElementById("updateCategoryForm").submit();
+    	   }
+       }
+       
+       
        var validator =	$('#updateCategoryForm').validate({
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",

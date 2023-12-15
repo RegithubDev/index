@@ -4118,6 +4118,7 @@
                       
                      <div class="mt-4 flex justify-between">
                               <div class="flex flex-wrap -space-x-2 justify-between flex-container">
+                              
                                 <a href="https://ithelpdesk.resustainability.com/" target="_blank">        <small class="mb-1 mr-3 font-12 text-center">
                                   <img src="/index/resources/images/icons/ITHD.png" height="64" width="58" title="IT HelpDesk"></small></a>
                                                          

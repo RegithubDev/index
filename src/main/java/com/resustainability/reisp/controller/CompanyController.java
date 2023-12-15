@@ -126,7 +126,7 @@ public class CompanyController {
 		try {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			reonecategoryList = service.getreonecategory(obj);
+			reonecategoryList = service.getreonecategory1(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getreonecategoryList : " + e.getMessage());
@@ -203,7 +203,7 @@ public class CompanyController {
 		try {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			getreoneSubcategory = service.getreoneSubcategory(obj);
+			getreoneSubcategory = service.getreoneSubcategory1(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getreoneSubcategory : " + e.getMessage());

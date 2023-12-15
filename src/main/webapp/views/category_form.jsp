@@ -33,6 +33,9 @@
       rel="stylesheet"
     />
     <style>
+    .requried {
+		color: red;
+	} 
     .select2-container--default .select2-selection--single .select2-selection__arrow b {
 	     left: -25% !important;
 	    margin-top: 1p% !important;
@@ -322,9 +325,6 @@ width: 123px!important;
     z-index: 1000;
     font-size: 15px !important;
 }
-.requried {
-	color: red;
-} 
 
 .Condition{
 z-index: 1000;
@@ -2436,17 +2436,18 @@ z-index: 1000;
                     
                     <span><i class="fa-solid fa-arrow-left"></i> Back</span>
                   </a>
-                  <a onclick="addCategory();" class="btn bg-primary font-medium text-white hover:bg-primary-focus hover:shadow-lg hover:shadow-primary/50 focus:bg-primary-focus focus:shadow-lg focus:shadow-primary/50 active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:hover:shadow-accent/50 dark:focus:bg-accent-focus dark:focus:shadow-accent/50 dark:active:bg-accent/90">
+                  <a
+                    class="btn bg-primary font-medium text-white hover:bg-primary-focus hover:shadow-lg hover:shadow-primary/50 focus:bg-primary-focus focus:shadow-lg focus:shadow-primary/50 active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:hover:shadow-accent/50 dark:focus:bg-accent-focus dark:focus:shadow-accent/50 dark:active:bg-accent/90" onclick="submit()">
                     
                     <span>Save <i class="fas fa-save"></i></span>
                   </a>
                 </div>
                 
                   <c:if test="${empty CDetails.department_code}">
-                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
+                                   <form id="addCategoryForm" name="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
                   </c:if>
                    <c:if test="${not empty CDetails.department_code}">
-                                   <form id="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
+                                   <form id="addCategoryForm" name="addCategoryForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
                   </c:if>
 			<div class="grid place-items-center">
 		          <div class="card  w-full max-w-xl p-4 sm:p-5" x-data="pages.initCreditCard">
@@ -2818,10 +2819,13 @@ z-index: 1000;
        function removeRow(rowNo){
 			$("#row"+rowNo).remove();
 		}
+       function submit(){
+	    	if(validator.form()){ // validation perform
+	        	document.getElementById("addCategoryForm").submit();	
+	    	}
+	    }
        
-       
-       
-       var validator =	$('#addCategory').validate({
+       var validator =	$('#addCategoryForm').validate({
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",
 		   	 ignore: ":hidden:not(.select2 form-select)",
@@ -2855,15 +2859,6 @@ z-index: 1000;
 				   	    	//form.submit();
 				   	    }
 		   	}); 
-       
-       
-       
-       function addCategory(){
-	    	if(validator.form()){ // validation perform
-	        	document.getElementById("addCategoryForm").submit();	
-	    	}
-	    }
-       
       </script>
   </body>
 </html>

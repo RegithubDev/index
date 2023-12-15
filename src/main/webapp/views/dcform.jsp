@@ -1931,8 +1931,9 @@ keyframes enlarge { 50%{
 							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
 								<div class="" id="imgSec" name="Attachments"
 									style="display: none">
-									<label class="block"> <span> Upload Images</span><span
-										class="requried">*</span> <input id="Attachments"
+									<label class="block"> <span> Upload Images</span>            
+									<span class="requried">*</span> 
+										<input id="Attachments"
 										name="mediaList" type="file" class="mt-2" accept="image/*"
 										multiple /> <span id="AttachmentsError" class="requried"></span>
 									</label>

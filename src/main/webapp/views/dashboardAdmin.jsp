@@ -143,6 +143,13 @@ width: 123px!important;
   display: flex;
   justify-content: center; /* Optional, to center the spans horizontally */
 }
+.fa-lg1 {
+    font-size: 4.25em;
+    line-height: 1.05em;
+    vertical-align: -0.075em;
+    color: #d32727;
+}
+
 
 .side-by-side {
   margin: 5px; /* Optional, add some spacing between the spans */
@@ -2607,7 +2614,31 @@ z-index: 1000;
                     </h3>
                   </a>
                 </div>
-                   <div
+                <div class="card swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-active" x-data="{showModal:false}" role="group" aria-label="4 / 18" style="margin-right: 14px;">
+                 <a href="#" class="flex flex-col items-center rounded-lg px-2 py-4 text-slate-600 dark:text-navy-100" @click="showModal = true" :class="selected === 'slide-0090' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' ">
+                    <img class="w-12" src="/index/resources/images/icons/SAP.svg" alt="image">
+                    <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
+                    SAP
+                    </h3>
+                  </a>
+                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                  <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                    <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                    <div class="scrollbar-sm relative flex max-w-lg flex-col overflow-y-auto rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                     <i class="fas fa-exclamation-triangle fa-lg1"></i>
+                      <div class="mt-4">
+                        <p class="btn font-medium text-warning hover:bg-warning/20 focus:bg-warning/20 active:bg-warning/25">
+                         Please Signin to VPN before proceeding forward.
+                        </p>
+                        <a target="_blank" href="http://cesusacipr01:8001/sap/bc/gui/sap/its/zforgot_otp?sap-client=300" @click="showModal = false" class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
+                          Open Link
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                </div>
+                      <div
             class="card swiper-slide w-24 shrink-0 cursor-pointer"
             @click="selected = 'slide-12'"
           >
