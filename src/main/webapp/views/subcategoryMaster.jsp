@@ -2279,21 +2279,31 @@ z-index: 1000;
         <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
           <div class="col-span-12 lg:col-span-12">
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+          
              <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
-          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
-            <div class="flex flex-col items-center p-4 text-center sm:p-5">
-              <div class="avatar h-20 w-20 iconCLass avatar h-18 w-18 iconCLass ">
-                ${obj.title_icon }
+         <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
+            <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
+              <img class="h-full w-full rounded-t-lg  object-center" src="https://appmint.resustainability.com/index/resources/images/REONE_03-01%20.jpg" alt="image" style="
+    filter: blur(4px);
+">
+            </div>
+            <div class="px-4 py-2 sm:px-5">
+              <div class="flex justify-between space-x-4">
+                <div class="avatar -mt-12 iconCLass h-18 w-18">
+               		<span class="rounded-full " ></span> ${obj.title_icon }
+                </div>
+                
               </div>
-              <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100 mb-2">
-                ${obj.content_title }
+              <h3 class="pt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
+               ${obj.content_title }
               </h3>
-            <div class="truncate"  style="width:10rem;">
-	        	 ${obj.description}	                           
-	           </div>
-              
-               <div class="my-3.5 flex flex-wrap space-x-2">
-               <c:choose>
+              <p class="text-xs truncate" style="width:14rem;"> ${obj.description}	</p>
+              <div class="flex items-center space-x-4 pt-2">
+                
+                
+              </div>
+              <div class="flex justify-center space-x-3 py-3">
+                <c:choose>
   					 <c:when test="${  fn:contains( obj.attachments, ',' ) }">
 		  	                <c:set var="filesList" value="${fn:split(obj.attachments, ',')}" />
 			                 <c:choose>
@@ -2332,10 +2342,9 @@ z-index: 1000;
 			        </c:if>
 			         </c:otherwise>
 			       </c:choose>
-                
+               
               </div>
             </div>
-           
             <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 hover:bg-primary hover:text-white" style="color:blue";>
             <c:if test="${obj.document_type eq 'Link' }">
             <a href="${obj.link }" target="_blank" class="btn  h-11 w-full rounded-none rounded-bl-lg font-medium  hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
@@ -2450,7 +2459,13 @@ z-index: 1000;
                 Chat
               </button> -->
             </div>
+            
           </div>
+          
+          
+          
+          
+          
           
            </c:forEach>
         </div>
