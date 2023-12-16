@@ -134,7 +134,9 @@ public class DepartmentController {
 			List <User> departmentsList = serviceU.getDepartmentsList(user);
 			model.addObject("departmentsList", departmentsList);
 			
-			List<Company> companiesList =  serviceC.getCompaniesList(null);
+			Company co = new Company();
+			co.setStatus("Active");
+			List<Company> companiesList =  serviceC.getCompaniesList(co);
 			model.addObject("companiesList", companiesList);
 			
 			SBU sObj = new SBU();

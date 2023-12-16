@@ -1797,7 +1797,7 @@ keyframes enlarge { 50%{
                 <path stroke-linecap="round" stroke-linejoin="round"
 								stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg></li>
-					<li>Department Content Form</li>
+					<li>Department Content</li>
 				</ul>
 			</div>
 
@@ -1845,8 +1845,9 @@ keyframes enlarge { 50%{
 												- ${obj.sbu_name }</option>
 										</c:forEach>
 								</select> <span id="sbu_codeError" class="requried"></span>
-								</label> <label class="block"> <span>Department</span> <select
-									onchange="setCategoryList();" id="department_code"
+								</label> <label class="block"> <span>Department</span>  <span
+									class="requried">*</span>
+								<select onchange="setCategoryList();" id="department_code"
 									<c:if test="${action eq 'edit'}"> disabled </c:if>
 									name="department_code"
 									class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">

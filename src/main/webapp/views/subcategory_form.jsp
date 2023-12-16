@@ -2420,7 +2420,7 @@ z-index: 1000;
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li> Sub Category Form</li>
+            <li> Sub Category</li>
           </ul>
         </div>
         <div class="col-span-12 sm:col-span-8">

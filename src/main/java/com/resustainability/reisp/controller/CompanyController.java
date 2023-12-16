@@ -203,7 +203,7 @@ public class CompanyController {
 		try {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			getreoneSubcategory = service.getreoneSubcategory1(obj);
+			getreoneSubcategory = service.getreoneSubcategory(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getreoneSubcategory : " + e.getMessage());
