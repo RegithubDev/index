@@ -2291,9 +2291,9 @@ z-index: 1000;
                       
                       <span class="cat"></span>
                     </a>
-                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <!--  <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
+                    </svg> -->
                   </li>
                    <!-- <li class="flex items-center space-x-2">
                     <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
@@ -2305,12 +2305,12 @@ z-index: 1000;
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                   </li> -->
-                  <li>
+                 <!--  <li>
                     <div class="flex items-center space-x-1.5">
                   
                       <span class="cont">Department Content</span>
                     </div>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
    <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-6 mb-2  from-purple-500 to-purple-600  tracking-wide text-white outline-none transition-all ">
@@ -2525,6 +2525,8 @@ z-index: 1000;
           
           
            </c:forEach>
+           
+           <c:if test="${empty departmentcontentList }"><i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.</c:if>
         </div>
 
             <div class="ax-transparent-gridline mt-2 px-2">
@@ -2606,14 +2608,24 @@ z-index: 1000;
     	  var deptURL = result.replace("subcat", "re-curls");
     	  deptURL = deptURL;
     	  console.log(deptURL)
-    	  $('.dept').text(dname)
-    	  $('.cat').text(cat)
+    	  $('.dept').text(cat)
+    	  $('.cat').text(scat)
     	  $('.sub_cat').text(scat)
     	  $("#depturl").attr("href", deptURL);
     	  var catURL = result.replace("subcat", "subcat1");
     	  $("#caturl").attr("href", catURL+'/'+cat);
     	  $("#cat_suburl").attr("href", result+'/'+cat+'/'+scat);
     	  deptURL = deptURL+'/';
+    	  
+    	  cat = cat.replaceAll("%20", " ");
+    	  cat = cat.replaceAll("%22", " ");
+    	  scat = scat.replaceAll("%20", " ");
+    	  scat = scat.replaceAll("%22", " ");
+    	  scat = scat.replaceAll("%20", " ");
+    	  scat = scat.replaceAll("%22", " ");
+    	  $('.dept').text(cat)
+    	  $('.cat').text(scat)
+    	  $('.sub_cat').text(scat)
         });
     	  
       
