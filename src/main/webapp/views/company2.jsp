@@ -278,19 +278,7 @@ button.disabled {
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                            href="<%=request.getContextPath() %>${obj.url }"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
+                        <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div>
                           </svg>
                           <span>${obj.department_name }</span>
                         </a>
@@ -2046,16 +2034,21 @@ button.disabled {
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full px-[var(--margin-x)] pb-8">
-      <div class="p-4 sm:p-5">
       <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            Companies
+              Companies
           </h2>
           <div class="hidden h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
           </div>
           <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
             <li class="flex items-center space-x-2">
+            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" href="<%=request.getContextPath() %>/settings">
+                  <path fill="#e21e26" fill-opacity=".3" d="M5 14.059c0-1.01 0-1.514.222-1.945.221-.43.632-.724 1.453-1.31l4.163-2.974c.56-.4.842-.601 1.162-.601.32 0 .601.2 1.162.601l4.163 2.974c.821.586 1.232.88 1.453 1.31.222.43.222.935.222 1.945V19c0 .943 0 1.414-.293 1.707C18.414 21 17.943 21 17 21H7c-.943 0-1.414 0-1.707-.293C5 20.414 5 19.943 5 19v-4.94Z"></path>
+                  <path fill="#e21e26" d="M3 12.387c0 .267 0 .4.084.441.084.041.19-.04.4-.204l7.288-5.669c.59-.459.885-.688 1.228-.688.343 0 .638.23 1.228.688l7.288 5.669c.21.163.316.245.4.204.084-.04.084-.174.084-.441v-.409c0-.48 0-.72-.102-.928-.101-.208-.291-.355-.67-.65l-7-5.445c-.59-.459-.885-.688-1.228-.688-.343 0-.638.23-1.228.688l-7 5.445c-.379.295-.569.442-.67.65-.102.208-.102.448-.102.928v.409Z"></path>
+                  <path fill="#e21e26" d="M11.5 15.5h1A1.5 1.5 0 0 1 14 17v3.5h-4V17a1.5 1.5 0 0 1 1.5-1.5Z"></path>
+                  <path fill="#e21e26" d="M17.5 5h-1a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5Z"></path>
+                </svg><div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
               <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
               <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -2064,6 +2057,8 @@ button.disabled {
             <li>Company</li>
           </ul>
         </div>
+      <div class="p-4 sm:p-5">
+     
                 
               
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">

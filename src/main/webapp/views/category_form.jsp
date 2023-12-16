@@ -642,20 +642,7 @@ z-index: 1000;
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                            href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
+                       <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div>
                           <span>${obj.department_name }</span>
                         </a>
                       </li>

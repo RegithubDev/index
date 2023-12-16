@@ -472,20 +472,7 @@ z-index: 1000;
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                            href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="#e21e26"
-                            stroke-width="1.5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                            />
-                          </svg>
+                          <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div>
                           <span>${obj.department_name }</span>
                         </a>
                       </li>
@@ -2249,7 +2236,7 @@ z-index: 1000;
                           <div class="flex space-x-2">
                             <div class="flex items-center">
 			                      <svg xmlns="http://www.w3.org/2000/svg" 
-			                      class="h-5 w-5 text-slate-100 transition-colors text-white group-hover:text-slate-500 group-focus:text-slate-500 
+			                      class="h-5 w-5 text-slate-100 transition-colors text-re group-hover:text-slate-500 group-focus:text-slate-500 
 			                      dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
 			                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
 			                    </svg>
@@ -2304,7 +2291,9 @@ z-index: 1000;
             <div class="whitespace-nowrap px-4 py-3 sm:px-5">
                           <div class="flex space-x-2">
                             <div class="flex items-center " >
-			                    <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+			                   <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500  dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="
+    color: #e21e26;
+">
 			                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
 			                    </svg>
                             </div>
