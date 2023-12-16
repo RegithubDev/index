@@ -276,7 +276,7 @@ public class HomeController {
 		return model; 
 	}
 	
-	@RequestMapping(value = "/subcat/{department_code}/{dm_category}/{sub_category_title}", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/subcat/{department_code}/{department_name}/{dm_category}/{sub_category_title}", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView subDeptConView(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("dm_category") String dm_category 
 			,@PathVariable("sub_category_title") String sub_category_title , HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.subcategoryMaster);

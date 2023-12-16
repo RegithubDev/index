@@ -3224,9 +3224,10 @@ z-index: 1000;
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
                        	 $(".cat").html( $.trim(val.dm_category));
-                       	 var url = 'href=<%=request.getContextPath() %>'
-                       		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
-                       	var html='   <div class=" subM card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
+                       	 
+                       	var url = 'href="<%=request.getContextPath() %>'
+                            url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title)+'"';
+                      	var html='   <div class=" subM card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
                        	  		+'<div class=" bg-slate-50 bg-slate-50 text-right">'
                        	  	+'<div  @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="inline-flex">'
                        	

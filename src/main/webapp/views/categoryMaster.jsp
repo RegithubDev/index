@@ -33,14 +33,42 @@
       rel="stylesheet"
     />
     <style>
-    .truncate {
+      .cursor{
+	    cursor: pointer;
+    }
+    .subM{
+	    cursor: pointer;
+	    background-color: lavender;
+    }
+    .bg-info {
+	    background-color: #d9e3e7;
+	}
+    .text-reone a{
+    	color: #e21e26!important;
+    }
+    .text-reone{
+    	color: #e21e26!important;
+    }
+     .truncate {
       overflow: hidden;
-      white-space: nowrap;
+     /*  white-space: nowrap; */
       text-overflow: ellipsis;
     }
     .pp-1{
     	padding: 0.1rem;
     }
+    .text_re{
+   	 background-color: #e21e26;
+    }
+      .iconCLass i {
+        color: #e21e26;
+	 	width: 4.5rem;
+	 	height: 4.5rem;
+	 	display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    font-size: 4em;
+	}
     .bg-slate-131{
     	background-color: #ffffff;
     }
@@ -2605,6 +2633,26 @@ z-index: 1000;
       <main
         class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
       >
+      <div class="mt-4 space-y-4 text-reone">
+                <ul class="flex flex-wrap items-center space-x-2">
+                  <li class="flex items-center space-x-2">
+                    <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/home">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                      </svg>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li>
+                    <div class="flex items-center space-x-1.5">
+                  
+                      <span class="dept"></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8">
           <div class="card bg-gradient-to-br  to-indigo-600 px-4 pb-4 sm:px-5">
@@ -3099,14 +3147,19 @@ z-index: 1000;
 	                                +'<h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'
 	                               	 +$.trim(val.dm_category)
 	                               +'</h4>' 
-	                               +'<div class="truncate"  style="width:10rem;">'
+	                               +'<div class="truncate" style="max-height: 2.5rem;width:10rem;">'
 	                              	 +$.trim(val.description)	                           
 	                               +'</div>'
-	                               +'<a ' 
-	                              	 +url
-	                               +' class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
-	                               +'Explore more &nbsp<i class="fa fa-arrow-right" aria-hidden="true"></i>'
-	                              +' </a></div></div></div>';
+	                               +'</div>'
+	                               +' <div class="mt-3  ml-1 flex space-x-1 justify-end">' 
+	                            
+	                               +'<a '
+	                               +url
+	                               +' class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">'
+	                               +'<i class="fa fa-arrow-right text-re" aria-hidden="true"></i> '
+	                            
+	                            +' </a>'
+	                             +' </div></div></div>';
 	                              $("#deptList").append(html);
 	                              
 	                            var html2= ' <li> <a class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'

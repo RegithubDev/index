@@ -34,21 +34,28 @@
       rel="stylesheet"
     />
     <style>
+     .text-reone a{
+    	color: #e21e26!important;
+    }
+    .text-reone{
+    	color: #e21e26!important;
+    }
+    .iconCLass i {
+    color: #e21e26;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+}
     .truncate {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
     
- .iconCLass i {
-	 	width: 4.5rem;
-	 	height: 4.5rem;
-	 	display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    font-size: 2em;
-	    color: #4f46e5;
-	}
+
  @media (min-width: 640px){
 		.sm\:grid-cols-4 {
 		    grid-template-columns: repeat(5,minmax(0,1fr));
@@ -2256,7 +2263,57 @@ z-index: 1000;
       <!-- Main Content Wrapper -->
    
    <main class="main-content w-full px-[var(--margin-x)] pb-8">
-   <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-4 mb-2  from-purple-500 to-purple-600  tracking-wide text-white outline-none transition-all ">
+   <div class="mt-6 space-y-4 text-reone">
+                <ul class="flex flex-wrap items-center space-x-2">
+                  <li class="flex items-center space-x-2">
+                    <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/home">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                      </svg>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li class="flex items-center space-x-2">
+                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                     id="depturl" href="#">
+                      
+                      <span class="dept"></span>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                   <li class="flex items-center space-x-2">
+                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                     id="caturl" href="#">
+                      
+                      <span class="cat"></span>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                   <!-- <li class="flex items-center space-x-2">
+                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                     id="cat_suburl" href="#">
+                      
+                      <span class="sub_cat"></span>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li> -->
+                  <li>
+                    <div class="flex items-center space-x-1.5">
+                  
+                      <span class="cont">Department Content</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+   <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-6 mb-2  from-purple-500 to-purple-600  tracking-wide text-white outline-none transition-all ">
           <div class="group flex items-center space-x-1">
             <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
             
@@ -2284,7 +2341,7 @@ z-index: 1000;
          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
             <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
               <img class="h-full w-full rounded-t-lg  object-center" src="https://appmint.resustainability.com/index/resources/images/REONE_03-01%20.jpg" alt="image" style="
-    filter: blur(4px);
+    filter: blur(1px);
 ">
             </div>
             <div class="px-4 py-2 sm:px-5">
@@ -2533,8 +2590,30 @@ z-index: 1000;
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       
       $(document).ready(function() {
-
-
+    	  var currentURL = window.location.href;
+    	  var parts = currentURL.split('/');
+    	  var dname = parts[6];
+    	  var cat = parts[7];
+    	  var scat = parts[8];
+    	  dName = parts[7];
+    	  console.log(parts)
+    	  
+    	   if (parts.length >= 4) {
+                   var result = parts.slice(0, 7).join('/');
+                   console.log(result);
+                 }
+    	  console.log(result+'/'+parts[7])
+    	  var deptURL = result.replace("subcat", "re-curls");
+    	  deptURL = deptURL;
+    	  console.log(deptURL)
+    	  $('.dept').text(dname)
+    	  $('.cat').text(cat)
+    	  $('.sub_cat').text(scat)
+    	  $("#depturl").attr("href", deptURL);
+    	  var catURL = result.replace("subcat", "subcat1");
+    	  $("#caturl").attr("href", catURL+'/'+cat);
+    	  $("#cat_suburl").attr("href", result+'/'+cat+'/'+scat);
+    	  deptURL = deptURL+'/';
         });
     	  
       

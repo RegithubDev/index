@@ -2417,7 +2417,7 @@ z-index: 1000;
           </ul>
         </div>
         <div class="col-span-12 sm:col-span-8">
-            <div class="card p-4 sm:p-5">
+            <div class=" p-4 sm:p-5">
 		<div  class="alert flex flex-row items-center justify-between  rounded-lg  px-4 py-3 text-center text-slate-800 dark:border-navy-450 dark:text-navy-50 sm:flex-row sm:space-y-0 sm:px-5">
                <a href="<%=request.getContextPath()%>/reone-category" class="btn bg-error font-medium text-white hover:bg-error-focus focus:bg-error-focus active:bg-error-focus/90">
                     
