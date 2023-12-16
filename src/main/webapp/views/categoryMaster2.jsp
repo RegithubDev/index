@@ -33,26 +33,41 @@
       rel="stylesheet"
     />
     <style>
+    .cursor{
+	    cursor: pointer;
+    }
+    .subM{
+	    cursor: pointer;
+	    background-color: lavender;
+    }
     .bg-info {
-    background-color: #d9e3e7;
-}
-    
+	    background-color: #d9e3e7;
+	}
+    .text-reone a{
+    	color: #e21e26!important;
+    }
+    .text-reone{
+    	color: #e21e26!important;
+    }
      .truncate {
       overflow: hidden;
-      white-space: nowrap;
+     /*  white-space: nowrap; */
       text-overflow: ellipsis;
     }
     .pp-1{
     	padding: 0.1rem;
     }
+    .text_re{
+   	 background-color: #e21e26;
+    }
       .iconCLass i {
-        color: #4f46e5;
+        color: #e21e26;
 	 	width: 4.5rem;
 	 	height: 4.5rem;
 	 	display: flex;
 	    justify-content: center;
 	    align-items: center;
-	    font-size: 2em;
+	    font-size: 4em;
 	}
     .bg-slate-131{
     	background-color: #ffffff;
@@ -2614,6 +2629,36 @@ z-index: 1000;
       <main
         class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
       >
+      <div class="mt-4 space-y-4 text-reone">
+                <ul class="flex flex-wrap items-center space-x-2">
+                  <li class="flex items-center space-x-2">
+                    <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/home">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                      </svg>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li class="flex items-center space-x-2">
+                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                     id="depturl" href="#">
+                      
+                      <span class="dept"></span>
+                    </a>
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li>
+                    <div class="flex items-center space-x-1.5">
+                  
+                      <span class="cat"></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8">
           <div class="card bg-gradient-to-br from-white to-indigo-600 px-4 pb-4 sm:px-5">
@@ -2951,7 +2996,19 @@ z-index: 1000;
     	  var dCode = parts[5];
     	  var d_name = parts[6];
     	  dName = parts[7];
-    	  console.log(dName)
+    	  console.log(parts)
+    	  
+    	   if (parts.length >= 4) {
+                   var result = parts.slice(0, 7).join('/');
+                   console.log(result);
+                 }
+    	  console.log(result+'/'+parts[7])
+    	  var deptURL = result.replace("subcat1", "re-curls");
+    	  deptURL = deptURL;
+    	  console.log(deptURL)
+    	  
+    	  $("#depturl").attr("href", deptURL);
+    	  
     	  dName = dName.replaceAll("%20", " ");
     	  dName = dName.replaceAll("%22", " ");
     	  
@@ -3099,6 +3156,16 @@ z-index: 1000;
                 	 $('#cardBG2').css('background-color','lavender');
                 	 $('#cardBG').css('background-color','white');
                  }
+                 var inputString = window.location.href;
+                 var delimiter = "/";
+
+                 var parts = inputString.split(delimiter);
+
+                 if (parts.length >= 4) {
+                   var result = parts.slice(0, 3).join(delimiter);
+                   console.log(result);
+                 }
+                 
 	        	var myParams = { department_code: department_code };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/ChangeCategoryForDept",
@@ -3108,7 +3175,7 @@ z-index: 1000;
 	                        $.each(data, function (i, val) {
 	                        	 $(".cat").html( $.trim(val.dm_category));
 	                        	 var department_data = "'"+val.department_code+"','"+val.dm_category+"'";
-	                            var html2= ' <li> <a id="'+val.dm_category+'" class=" clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
+	                            var html2= ' <li> <a id="'+val.dm_category+'" class="cursor clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
 	                            	 +'onclick="ChangeSubCategoryForDept('+department_data+');"'
 	                            	+'">'
 	                            	+' <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
@@ -3159,17 +3226,26 @@ z-index: 1000;
                        	 $(".cat").html( $.trim(val.dm_category));
                        	 var url = 'href=<%=request.getContextPath() %>'
                        		url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category_title);
-                       	var html='   <div class="card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50"><div class="rounded-xl bg-slate-50 p-4   sm:p-5"><div class="avatar h-18 w-18 iconCLass badge  h-18 w-18 iconCLass">'+ $.trim(val.icon_text)+'</div>'
+                       	var html='   <div class=" subM card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
+                       	  		+'<div class=" bg-slate-50 bg-slate-50 text-right">'
+                       	  	+'<div  @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="inline-flex">'
+                       	
+                       	 +'<div class="badge text_re text-white shadow-soft shadow-error/50">'
+                       	 + $.trim(val.sub_category_title)
+                         +'</div>'
+                       	 +' </div></div>'
+                       		   +'<div class=" bg-slate-50 bg-slate-50 px-4 pb-5 sm:px-5"><div class="avatar h-18 iconCLass badge  h-18  iconCLass">'+ $.trim(val.icon_text)+'</div>'
                                +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
-                               +'<div class="truncate"  style="width:10rem;">'
+                               +'<div class="truncate"  style="max-height: 2.5rem">'
                             	 +$.trim(val.description)	                           
                                 +'</div>'
-                               +' <div class="mt-3 flex space-x-1 justify-center">' 
+                               +' <div class="mt-3 flex space-x-1 justify-end">' 
                             
-                             +'<a '
-                             +url
-                             +' class="btn mt-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">'
-                             +'Explore more &nbsp<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+                               +'<a '
+                               +url
+                               +' class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">'
+                               +'<i class="fa fa-arrow-right text-re" aria-hidden="true"></i> '
+                            
                             +' </a>'
                              +' </div></div></div>';
                              $("#deptList").append(html);
