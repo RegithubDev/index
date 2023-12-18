@@ -2340,6 +2340,8 @@ z-index: 1000;
              <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
             <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
+            <div class="absolute right-0 badge bg-navy-700 text-white dark:bg-navy-900   border-2 border-white bg-error dark:border-navy-700" style="
+			    z-index: 1;"><span class="cat"></span></div>
               <img class="h-full w-full rounded-t-lg  object-center" src="https://appmint.resustainability.com/index/resources/images/REONE_03-01%20.jpg" alt="image" style="
     filter: blur(1px);
 ">
