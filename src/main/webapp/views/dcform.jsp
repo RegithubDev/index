@@ -1884,23 +1884,23 @@ keyframes enlarge { 50%{
             <div class="card">
               
               <div class="p-4 sm:p-5">
-                <label class="block mb-4"> <span>Content Title</span><span
+                <label class="block mb-4"> <span> Title</span><span
 									class="requried">*</span> <input id="content_title"
 									name="content_title"
 									class="form-input  mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 
                       py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
                       dark:focus:border-accent"
-									placeholder="Content Title" type="text"
+									placeholder="Title" type="text"
 									value="${DCFromDetails.content_title}"> <span
 									id="content_titleError" class="requried"></span>
 								</label> 
-								<label class="block mb-4"> <span> Title Icon</span><span
+								<label class="block mb-4"> <span> Icon</span><span
 									class="requried">*</span> <input id="title_icon"
 									name="title_icon"
 									class="form-input mt-1.5 w-full rounded-lg border 
                       border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 
                       focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-									placeholder="Title Icon" type="text"
+									placeholder=" Icon" type="text"
 									value="${DCFromDetails.title_icon}"> 
 									
 									<span id="title_iconError" class="requried"></span>
@@ -2134,7 +2134,7 @@ keyframes enlarge { 50%{
 							<div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
 								<div class="max-w-xl">
 									<p>
-										Content Description <span class="requried">*</span>
+									Description <span class="requried">*</span>
 									</p>
 									<div class="mt-5">
 										<label class="block mb-4"> <textarea id="description1"

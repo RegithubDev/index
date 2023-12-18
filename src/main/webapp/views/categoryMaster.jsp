@@ -32,7 +32,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-    <style>
+    <style>                                            
       .cursor{
 	    cursor: pointer;
     }
@@ -43,12 +43,12 @@
     .bg-info {
 	    background-color: #d9e3e7;
 	}
-    .text-reone a{
+   /*  .text-reone a{
     	color: #e21e26!important;
     }
     .text-reone{
     	color: #e21e26!important;
-    }
+    } */
      .truncate {
       overflow: hidden;
      /*  white-space: nowrap; */
@@ -2633,10 +2633,10 @@ z-index: 1000;
       <main
         class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
       >
-      <div class="mt-4 space-y-4 text-reone">
+      <div class="mt-4 space-y-4 ">
                 <ul class="flex flex-wrap items-center space-x-2">
-                  <li class="flex items-center space-x-2">
-                    <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/home">
+                  <li class="flex items-center space-x-2" >
+                    <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent text-re" href="<%=request.getContextPath() %>/home" >
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                       </svg>
