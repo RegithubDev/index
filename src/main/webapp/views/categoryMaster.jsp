@@ -2657,8 +2657,8 @@ z-index: 1000;
           <div class="col-span-12 lg:col-span-8">
           <div class="card bg-gradient-to-br  to-indigo-600 px-4 pb-4 sm:px-5">
               <div class="flex items-center justify-between py-3 text-black">
-                <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
-                
+<%--                 <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
+ --%>                
               </div>
               <div class="flex">
                 <div class=" flex-row justify-between space-x-2" id="iconsCLass">
