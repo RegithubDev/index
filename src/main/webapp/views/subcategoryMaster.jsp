@@ -51,7 +51,7 @@
 }
     .truncate {
       overflow: hidden;
-      white-space: nowrap;
+     /*  white-space: nowrap; */
       text-overflow: ellipsis;
     }
     
@@ -2341,7 +2341,7 @@ z-index: 1000;
          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
             <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
             <div class="absolute right-0 badge bg-navy-700 text-white dark:bg-navy-900   border-2 border-white bg-error dark:border-navy-700" style="
-			    z-index: 1;"><span class="cat"></span></div>
+			    z-index: 1; background: #e21e26;"><span class="cat"></span></div>
               <img class="h-full w-full rounded-t-lg  object-center" src="https://appmint.resustainability.com/index/resources/images/REONE_03-01%20.jpg" alt="image" style="
     filter: blur(1px);
 ">
@@ -2356,7 +2356,7 @@ z-index: 1000;
               <h3 class="pt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
                ${obj.content_title }
               </h3>
-              <p class="text-xs truncate" style="width:14rem;"> ${obj.description}	</p>
+              <p class="text-xs truncate" style="max-height: 2.5rem"> ${obj.description}	</p>
               <div class="flex items-center space-x-4 pt-2">
                 
                 
@@ -2386,17 +2386,17 @@ z-index: 1000;
 			       </c:if>
 			         <c:if test="${ empty fn:trim(obj.attachments) && obj.document_type eq 'Link'}">
 			        <div class="avatar h-8 w-8">
-	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                  <!-- <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
 	                    L
-	                  </div>
+	                  </div> -->
 	                </div>
 			        </c:if>
 			        
 			         <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Document' }">
 			        <div class="avatar h-8 w-8">
-	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                  <!-- <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
 	                    D
-	                  </div>
+	                  </div> -->
 	                </div>
 			        </c:if>
 			         </c:otherwise>
