@@ -34,9 +34,9 @@
       rel="stylesheet"
     />
     <style>
-     .text-reone a{
+     /* .text-reone a{
     	color: #e21e26!important;
-    }
+    } */
     .text-reone{
     	color: #e21e26!important;
     }
@@ -240,10 +240,10 @@ width: 123px!important;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-    a {
+   /*  a {
     color: blue;
     text-decoration: inherit;
-}
+} */
   .container{
     overflow: hidden;
     z-index: 10;
@@ -2263,10 +2263,10 @@ z-index: 1000;
       <!-- Main Content Wrapper -->
    
    <main class="main-content w-full px-[var(--margin-x)] pb-8">
-   <div class="mt-6 space-y-4 text-reone">
+   <div class="mt-6 space-y-4 ">
                 <ul class="flex flex-wrap items-center space-x-2">
                   <li class="flex items-center space-x-2">
-                    <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/home">
+                    <a class="text-reone transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/home">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                       </svg>
@@ -2276,7 +2276,7 @@ z-index: 1000;
                     </svg>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                    <a class="flex items-center space-x-1.5  transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
                      id="depturl" href="#">
                       
                       <span class="dept"></span>
@@ -2286,7 +2286,7 @@ z-index: 1000;
                     </svg>
                   </li>
                    <li class="flex items-center space-x-2">
-                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                    <a class="flex items-center space-x-1.5  transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
                      id="caturl" href="#">
                       
                       <span class="cat"></span>

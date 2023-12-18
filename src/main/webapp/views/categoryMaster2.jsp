@@ -270,10 +270,7 @@ width: 123px!important;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-    a {
-    color: blue;
-    text-decoration: inherit;
-}
+   
   .container{
     overflow: hidden;
     z-index: 10;
@@ -2642,7 +2639,7 @@ z-index: 1000;
                     </svg>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <a class="flex items-center space-x-1.5 text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
+                    <a class="flex items-center space-x-1.5 transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
                      id="depturl" href="#">
                       
                       <span class="dept"></span>
