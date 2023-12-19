@@ -159,4 +159,5 @@ public class UserService {
 	public List<User> getDeptContentListView(User user) throws Exception {
 		return dao.getDeptContentListView(user);
 	}
+
 }

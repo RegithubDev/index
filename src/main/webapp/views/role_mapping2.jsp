@@ -410,7 +410,7 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.url }"
+                           href="<%=request.getContextPath() %>/re-curls/${obj.department_code}/${obj.department_name}"
                         >
                          <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div>
                           <span>${obj.department_name }</span>

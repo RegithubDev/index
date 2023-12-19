@@ -95,62 +95,8 @@ public class HomeController {
 	
 	
 
-	@RequestMapping(value = "/HR", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView hr(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.hrPage);
-		try {
-			List <User> departmentsList = service.getDepartmentsList(user);
-			model.addObject("departmentsList", departmentsList);
-			
-			List <User> catagoryList = service.getCatagoryList(user);
-            model.addObject("catagoryList", catagoryList);
-		} catch (Exception e) { 
-			e.printStackTrace();  
-		} 
-		return model; 
-	}
 	
-	@RequestMapping(value = "/IT", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView it(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.itPage);
-		try {
-			List <User> departmentsList = service.getDepartmentsList(user);
-			model.addObject("departmentsList", departmentsList);
-			
-			List <User> catagoryList = service.getCatagoryList(user);
-            model.addObject("catagoryList", catagoryList);
-		} catch (Exception e) { 
-			e.printStackTrace();  
-		} 
-		return model; 
-	}
-	@RequestMapping(value = "/SCM", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView scm(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.scmPage);
-		try {
-			List <User> departmentsList = service.getDepartmentsList(user);
-			model.addObject("departmentsList", departmentsList);
-
-			List <User> catagoryList = service.getCatagoryList(user);
-            model.addObject("catagoryList", catagoryList);
-		} catch (Exception e) { 
-			e.printStackTrace();  
-		} 
-		return model; 
-	}
-	@RequestMapping(value = "/erm", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView erm(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.ermpage);
-		try {
-			List <User> departmentsList = service.getDepartmentsList(user);
-			model.addObject("departmentsList", departmentsList);
-			List <User> catagoryList = service.getCatagoryList(user);
-            model.addObject("catagoryList", catagoryList);
-		} catch (Exception e) { 
-			e.printStackTrace();  
-		} 
-		return model; 
-	}
+	
 	@RequestMapping(value = "/Projects", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView projects(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.projectsPage);

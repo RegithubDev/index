@@ -648,7 +648,7 @@ public class CompanyDao {
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
 					+ " left join [user_profile] up on c.created_by = up.user_id "
 					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
-					+ "where c.status is not null and c.status <> 'Inactive' "; 
+					+ "where c.status is not null  "; 
 			
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
