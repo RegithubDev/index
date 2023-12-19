@@ -2258,6 +2258,9 @@ button.disabled {
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Category
                       </th>
+                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                        Title
+                      </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
                       </th>
@@ -2587,6 +2590,7 @@ button.disabled {
 		                	//rowArray.push("["+ $.trim(val.assigned_to_sbu)+"]"+" - ");
 		                   	rowArray.push($.trim(val.department_code));
 		                   	rowArray.push($.trim(val.department_name));
+		                   	rowArray.push($.trim(val.sub_category_title));  
 		                   	var status = $.trim(val.status);
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
@@ -2594,7 +2598,7 @@ button.disabled {
 	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
 	                		}
 		                   	rowArray.push(status);
-		                	rowArray.push($.trim(val.user_name));
+		                	rowArray.push($.trim(val.created_by));
 		                   	rowArray.push($.trim(val.created_date));
 		                	rowArray.push($.trim(val.modified_by));
 		                   	rowArray.push($.trim(val.modified_date));
