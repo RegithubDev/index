@@ -2357,11 +2357,12 @@ z-index: 1000;
                ${obj.content_title }
               </h3>
               <p class="text-xs truncate" style="max-height: 2.5rem"> ${obj.description}	</p>
+              <p class="mt-1 text-xs text-right">${obj.created_date}</p>
               <div class="flex items-center space-x-4 pt-2">
                 
                 
               </div>
-              <div class="flex justify-center space-x-3 py-3">
+              <div class="flex justify-center space-x-3 py-3 ">
                 <c:choose>
   					 <c:when test="${  fn:contains( obj.attachments, ',' ) }">
 		  	                <c:set var="filesList" value="${fn:split(obj.attachments, ',')}" />
@@ -2385,18 +2386,18 @@ z-index: 1000;
 					                </div>
 			       </c:if>
 			         <c:if test="${ empty fn:trim(obj.attachments) && obj.document_type eq 'Link'}">
-			        <div class="avatar h-8 w-8">
-	                  <!-- <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
-	                    L
-	                  </div> -->
+			        <div class="avatar h-10 w-10">
+	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                    Link
+	                  </div> 
 	                </div>
 			        </c:if>
 			        
 			         <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Document' }">
-			        <div class="avatar h-8 w-8">
-	                  <!-- <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
-	                    D
-	                  </div> -->
+			        <div class="avatar h-10 w-10">
+	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                    Docs
+	                  </div>  
 	                </div>
 			        </c:if>
 			         </c:otherwise>

@@ -2164,7 +2164,7 @@ keyframes enlarge { 50%{
 							</c:if>
               </div>
 							</div>
-						
+						<input name="id" value="${DCFromDetails.id}" type="hidden" />
 					<div class="flex flex-col items-center space-y-4 border-b border-slate-200 p-4 dark:border-navy-500 sm:flex-row sm:justify-between sm:space-y-0 sm:px-5">
                 <h2 class="text-lg font-medium tracking-wide text-slate-700 dark:text-navy-100">
                 
