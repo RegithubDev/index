@@ -2356,8 +2356,7 @@ z-index: 1000;
               <h3 class="pt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
                ${obj.content_title }
               </h3>
-              <p class="text-xs truncate" style="max-height: 2.5rem"> ${obj.description}	</p>
-              <p class="mt-1 text-xs text-right">${obj.created_date}</p>
+              <p class="text-xs truncate" style="max-height: 2rem"> ${obj.description}	</p>
               <div class="flex items-center space-x-4 pt-2">
                 
                 
@@ -2387,17 +2386,17 @@ z-index: 1000;
 			       </c:if>
 			         <c:if test="${ empty fn:trim(obj.attachments) && obj.document_type eq 'Link'}">
 			        <div class="avatar h-10 w-10">
-	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                  <!-- <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
 	                    Link
-	                  </div> 
+	                  </div> --> 
 	                </div>
 			        </c:if>
 			        
 			         <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Document' }">
 			        <div class="avatar h-10 w-10">
-	                  <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
+	                  <!-- <div class="is-initial rounded-full bg-error text-xs+ uppercase text-white">
 	                    Docs
-	                  </div>  
+	                  </div>   -->
 	                </div>
 			        </c:if>
 			         </c:otherwise>
@@ -2405,26 +2404,35 @@ z-index: 1000;
                
               </div>
             </div>
-            <div class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500 hover:bg-primary hover:text-white" style="color:blue";>
+          
+          
+          
+            <div x-data="{showModal:false}" class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500"style="margin-top: auto;">
             <c:if test="${obj.document_type eq 'Link' }">
-            <a href="${obj.link }" target="_blank" class="btn  h-11 w-full rounded-none rounded-bl-lg font-medium  hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                Open Link &nbsp <i class="fa-solid fa-chevron-right"></i>
+           <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
+                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
+                </div>
+               <a href="${obj.link }" target="_blank" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+                 Link &nbsp <i class="fa-solid fa-chevron-right"></i>
               </a>
             </c:if> 
              <c:if test="${obj.document_type ne 'Link' && obj.document_type ne 'Gallery' }">
-              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn   h-11 w-full rounded-none rounded-bl-lg font-medium  hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-                Open Document &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
+             <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
+                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
+                </div>
+              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+                 View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
               </a>
              </c:if>
              
              <c:if test="${obj.document_type ne 'Link' && obj.document_type eq 'Gallery' }">
-              <div x-data="{showModal:false}" class="btn h-11 w-full rounded-none rounded-bl-lg  font-medium hover:text-white active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
-    <button
-      @click="showModal = true"
-      class="btn  h-11 w-full rounded-none rounded-bl-lg font-medium  active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
-    >
-      Open Gallary &nbsp<i class="fa fa-eye" aria-hidden="true"></i> 
-    </button>
+   <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
+                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
+                </div>
+ 
+     <a  @click="showModal = true" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+                 View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
+              </a>
     <template x-teleport="#x-teleport-target" >
       <div
         class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
@@ -2513,7 +2521,6 @@ z-index: 1000;
         </div>
       </div>
     </template>
-  </div>
              </c:if>
              <!--  <button class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                 Chat
@@ -2529,7 +2536,6 @@ z-index: 1000;
           
            </c:forEach>
            
-           <c:if test="${empty departmentcontentList }"><i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.</c:if>
         </div>
 
             <div class="ax-transparent-gridline mt-2 px-2">
@@ -2537,6 +2543,11 @@ z-index: 1000;
             </div>
           </div>
         </div>
+                   <c:if test="${empty departmentcontentList }">
+                   <p class="text-center">
+                <i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.</c:if>
+              </p>
+                   
         
         
       </main>

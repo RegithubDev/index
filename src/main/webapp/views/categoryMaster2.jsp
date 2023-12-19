@@ -433,7 +433,7 @@ z-index: 1000;
     </script>
   </head>
 
-  <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
+  <body x-data class="is-header-blur " x-bind="$store.global.documentBody">
     <!-- App preloader-->
     <div
       class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
@@ -1082,7 +1082,7 @@ z-index: 1000;
                                 <c:forEach var="obj" items="${departmentsList }"  varStatus="index">
                     
                       <li>
-                        <button onclick="ChangeCategoryForDept('${obj.department_code }','${obj.department_name }')"
+                        <button onclick="ChangeCategoryForDept('${obj.department_code }','${obj.department_name }','${obj.category }')"
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
                            <%-- href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}" --%>
                         >
@@ -2657,7 +2657,7 @@ z-index: 1000;
                 </ul>
               </div>
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-          <div class="col-span-12 lg:col-span-8">
+         <%--  <div class="col-span-12 lg:col-span-8">
           <div class="card bg-gradient-to-br from-white to-indigo-600 px-4 pb-4 sm:px-5">
               <div class="flex items-center justify-between py-3 text-black">
                 <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
@@ -2715,7 +2715,7 @@ z-index: 1000;
                 </div>
               </div>
             </div>
-          </div>
+          </div> --%>
           <div class="col-span-12 lg:col-span-4">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
               <div style="
@@ -3013,7 +3013,7 @@ z-index: 1000;
     	  d_name = d_name.replaceAll("%22", " ");
     	  console.log(dName)
     	 
-    	  ChangeCategoryForDept(dCode,d_name);
+    	  ChangeCategoryForDept(dCode,d_name,dName);
     	 // encryptedURL = encryptURL(currentURL);
     	 // window.history.pushState({}, document.title, encryptedURL);
   	    // Decrypt the URL
@@ -3139,7 +3139,7 @@ z-index: 1000;
          });
        } */
    
-       function ChangeCategoryForDept(department_code,department_name){
+       function ChangeCategoryForDept(department_code,department_name,dName){
     	   		$(".dept").html( $.trim(department_name));
 	        if ($.trim(department_code) != "") {
 	        	 $("#deptList div").remove();
@@ -3153,6 +3153,7 @@ z-index: 1000;
                 	 $('#cardBG2').css('background-color','lavender');
                 	 $('#cardBG').css('background-color','white');
                  }
+                 dName = dName.replaceAll(" ", "_");
                  var inputString = window.location.href;
                  var delimiter = "/";
 
@@ -3172,12 +3173,13 @@ z-index: 1000;
 	                        $.each(data, function (i, val) {
 	                        	 $(".cat").html( $.trim(val.dm_category));
 	                        	 var department_data = "'"+val.department_code+"','"+val.dm_category+"'";
-	                            var html2= ' <li> <a id="'+val.dm_category+'" class="cursor clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
+	                            var html2= ' <li> <a id="'+dName+'" class="cursor clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
 	                            	 +'onclick="ChangeSubCategoryForDept('+department_data+');"'
 	                            	+'">'
 	                            	+' <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div> <span>'+ $.trim(val.dm_category)+'</span> </a> </li>';
 	                                  
 	                             $("#deptListLi").append(html2);
+	                            
 	                        });
 	                    }else{
 	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
@@ -3195,8 +3197,9 @@ z-index: 1000;
 	       	     	  }
 	            });
 	        }
+	        
+	        $('#'+dName).click();
 	        $('#'+dName).css('background-color','lavender');
-	        $('#'+dName).click()
        }
        
        function ChangeSubCategoryForDept(department_code,dm_category){

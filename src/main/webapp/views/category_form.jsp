@@ -2443,7 +2443,7 @@ z-index: 1000;
 		            <c:if test="${empty CDetails.department_code}">
 		            
 		              <label class="block">
-	                  <span>Department</span><span class="requried">*</span> 
+	                  <span>ReONE Department</span><span class="requried">*</span> 
 	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
 	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
 	                  name="department_code" id="department_code">

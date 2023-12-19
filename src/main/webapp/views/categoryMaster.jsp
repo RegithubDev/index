@@ -2654,11 +2654,11 @@ z-index: 1000;
                 </ul>
               </div>
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-          <div class="col-span-12 lg:col-span-8">
+         <%--  <div class="col-span-12 lg:col-span-8">
           <div class="card bg-gradient-to-br  to-indigo-600 px-4 pb-4 sm:px-5">
               <div class="flex items-center justify-between py-3 text-black">
-<%--                 <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
- --%>                
+                <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
+                
               </div>
               <div class="flex">
                 <div class=" flex-row justify-between space-x-2" id="iconsCLass">
@@ -2712,7 +2712,7 @@ z-index: 1000;
                 </div>
               </div>
             </div>
-          </div>
+          </div> --%>
           <div class="col-span-12 lg:col-span-4">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
               <div style="
@@ -3145,7 +3145,7 @@ z-index: 1000;
 		                        		+'<div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
 	                                       +'<div class="my-2 grow"><h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
-	                                       +'<div class="truncate" style="max-height: 2.5rem;width:8.5rem;">'
+	                                       +'<div class="truncate" style="max-height: 2.5rem;">'
 	                                    	 +$.trim(val.description)	                           
 	                                        +'</div>'
 	                                        +'</div> ' +'</div> '

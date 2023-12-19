@@ -155,4 +155,8 @@ public class UserService {
 	public List<User> getSubCatagoryList(User user) throws Exception {
 		return dao.getSubCatagoryList(user);
 	}
+
+	public List<User> getDeptContentListView(User user) throws Exception {
+		return dao.getDeptContentListView(user);
+	}
 }

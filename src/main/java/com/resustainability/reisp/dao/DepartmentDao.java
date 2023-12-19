@@ -570,7 +570,7 @@ public class DepartmentDao {
 						+ "left join user_profile p1 on dc.modified_by = p1.user_id "
 	            		+ "left join company c on dc.company_code = c.company_code "
 	            		+ "left join sbu s on dc.sbu_code = s.sbu_code "
-	            		+ " where dc.status <> 'Inactive' ";
+	            		+ " where dc.[department_code] is not null ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
 				qry = qry + " and dc.id = ? ";
@@ -598,7 +598,7 @@ public class DepartmentDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String updateQry = "UPDATE [dept_content] set title_icon= :title_icon,content_title= :content_title,Attachments=:Attachments,status= :status,description= :description, modified_by= :modified_by,modified_date= getdate() "
+			String updateQry = "UPDATE [dept_content] set title_icon= :title_icon,content_title= :content_title,link=:link,status= :status,description= :description, modified_by= :modified_by,modified_date= getdate() "
 					+ " where id= :id ";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(updateQry, paramSource);

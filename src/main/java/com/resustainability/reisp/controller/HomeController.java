@@ -286,7 +286,7 @@ public class HomeController {
 		user.setSub_category(sub_category_title);
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
-		List <User> departmentcontentList = service.getDeptContentList(user);
+		List <User> departmentcontentList = service.getDeptContentListView(user);
         model.addObject("departmentcontentList", departmentcontentList);
 		} catch (Exception e) { 
 			e.printStackTrace();  

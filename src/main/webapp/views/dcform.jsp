@@ -1922,7 +1922,13 @@ keyframes enlarge { 50%{
 								</select> <span id="document_typeError" class="requried"></span>
 								</label>
 								<div class="">
-
+							<c:if test="${not empty DCFromDetails.link }"><label class="block mb-4"> <span> Link</span><span
+										class="requried">*</span> <input id="link"
+										value="${DCFromDetails.link}" name="link"
+										class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+										placeholder="textfileld" type="text"> <span
+										id="inputSecError" class="requried"></span>
+									</label></c:if>
 							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
 								<div class="" id="imgSec" name="Attachments"
 									style="display: none">
@@ -1942,6 +1948,7 @@ keyframes enlarge { 50%{
 										<span id="docSecError" class="requried"></span>
 									</label>
 								</div>
+								<c:if test="${empty DCFromDetails.link }">
 								<div class="row" id="inputSec" style="display: none">
 									<label class="block mb-4"> <span> Add Link</span><span
 										class="requried">*</span> <input id="link"
@@ -1951,6 +1958,7 @@ keyframes enlarge { 50%{
 										id="inputSecError" class="requried"></span>
 									</label>
 								</div>
+								</c:if>
 								<c:choose>
 									<c:when
 										test="${  fn:contains( DCFromDetails.attachments, ',' ) }">

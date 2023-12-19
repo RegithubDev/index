@@ -2427,7 +2427,7 @@ z-index: 1000;
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                  <c:if test="${empty sCDetails.department_code}">
 	                  <label class="block">
-	                  <span>Department</span><span class="requried">*</span> 
+	                  <span>ReONE Department</span><span class="requried">*</span> 
 	                  <select id="department_code" name="department_code" onchange="setCategory(this.value);" class="form-select select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
 	                    <option value="">Select Department</option>
 	             	<c:forEach var="obj" items="${departmentsList}">

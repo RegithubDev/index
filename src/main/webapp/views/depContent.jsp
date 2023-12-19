@@ -2523,6 +2523,7 @@ button.disabled {
 		                   	rowArray.push($.trim(val.category));
 		                   	rowArray.push($.trim(val.sub_category));
 		                   	var status = $.trim(val.status);
+		                   	console.log(status)
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
 	                		} else {

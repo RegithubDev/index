@@ -1743,7 +1743,7 @@ public class UserDao {
         try {
             String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
             		+ "dc.description,dc.url,dc.status,dm.department_name, dc.[status],"
-            		+ "dc.created_by,FORMAT(dc.created_date, 'dd-MMM-yy  HH:mm') as created_date,FORMAT(dc.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
+            		+ "dc.created_by,FORMAT(dc.created_date, 'dd-MMM-yy') as created_date,FORMAT(dc.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
             		+ "dc.modified_by,dm.department_name,p.user_name,p1.user_name as  modified_by "
             		+ " FROM [dept_content] dc "
             		+ "left join department_master dm on dc.department_code = dm.department_code "
@@ -1751,7 +1751,7 @@ public class UserDao {
 					+ "left join user_profile p1 on dc.modified_by = p1.user_id "
             		+ "left join company c on dc.company_code = c.company_code "
             		+ "left join sbu s on dc.sbu_code = s.sbu_code "
-            		+ " where dc.status <> 'Inactive' ";
+            		+ " where dc.[department_code] is not null ";
             int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
 				qry = qry + " and dc.department_code = ? ";
@@ -1813,6 +1813,57 @@ public class UserDao {
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
 				pValues[i++] = user.getCategory();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;
+	}
+
+	public List<User> getDeptContentListView(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+            String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
+            		+ "dc.description,dc.url,dc.status,dm.department_name, dc.[status],"
+            		+ "dc.created_by,FORMAT(dc.created_date, 'dd-MMM-yy') as created_date,FORMAT(dc.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
+            		+ "dc.modified_by,dm.department_name,p.user_name,p1.user_name as  modified_by "
+            		+ " FROM [dept_content] dc "
+            		+ "left join department_master dm on dc.department_code = dm.department_code "
+            		+ "left join user_profile p on dc.created_by = p.user_id "
+					+ "left join user_profile p1 on dc.modified_by = p1.user_id "
+            		+ "left join company c on dc.company_code = c.company_code "
+            		+ "left join sbu s on dc.sbu_code = s.sbu_code "
+            		+ " where dc.status <> 'Inactive' ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and dc.department_code = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
+				qry = qry + " and dc.category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
+				qry = qry + " and dc.sub_category = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by dc.category desc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
+				pValues[i++] = user.getCategory();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
+				pValues[i++] = user.getSub_category();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {

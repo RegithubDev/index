@@ -413,7 +413,7 @@ public class CompanyDao {
 					+ "VALUES "
 					+ "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
 			
-			String updateQry = "UPDATE [department_category] SET dm_category = :dm_category, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
+			String updateQry = "UPDATE [department_category] SET dm_category = :dm_category,description = :description, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
 			String [] categorys = obj.getDm_category().split(",");
 			String [] description = obj.getDescription().split(",");
 			String [] statuss = obj.getStatus().split(",");
