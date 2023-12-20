@@ -2456,10 +2456,20 @@ button.disabled {
 		                    var actions = '<a href="javascript:void(0);"   onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
 		                    key++;
 		                   	var rowArray = [];    	                 
-		            		
+		            		var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
+		            				if($.trim(val.dept_status) == 'Active'){
+		            					dept = '<div class="relative cursor-pointer">'
+		                               + '<p class="btn  dark:bg-accent-light/10  text-slate-400 dark:text-navy-300 dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">'
+		                                +dept+
+		                                '</p>'
+		                               + '<div class="absolute top-0 right-0 -m-1 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-error text-white shadow-soft  px-1 text-tiny font-medium leading-none text-white dark:bg-accent">'
+		                               + ' <i class="fa-solid fa-flag"></i>'
+		                               + '</div>'
+		                              +'</div>'
+		            				}
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push($.trim('['+val.department_code) +'] - '+$.trim(val.department_name));
+		                   	rowArray.push(dept);
 		                   	rowArray.push($.trim(val.dm_category));  
 		                    	var status = $.trim(val.status);
 		                	if (status == 'Active') {

@@ -11,7 +11,7 @@ public class User {
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,description,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
 	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text,document_type,
-	sub_category,	content_title,	title_icon,Attachments,	link;
+	sub_category,	content_title,	title_icon,Attachments,	link,dept_status,cat_status,subcat_status;
 	int session_count,time_period;
 	
 	private String [] docs;
@@ -22,6 +22,30 @@ public class User {
 	
 	private List<User> depContentList;
 	
+	public String getDept_status() {
+		return dept_status;
+	}
+
+	public void setDept_status(String dept_status) {
+		this.dept_status = dept_status;
+	}
+
+	public String getCat_status() {
+		return cat_status;
+	}
+
+	public void setCat_status(String cat_status) {
+		this.cat_status = cat_status;
+	}
+
+	public String getSubcat_status() {
+		return subcat_status;
+	}
+
+	public void setSubcat_status(String subcat_status) {
+		this.subcat_status = subcat_status;
+	}
+
 	public String[] getDocs() {
 		return docs;
 	}

@@ -558,7 +558,7 @@ public class CompanyDao {
 				}
 			  String stringWithSingleQuotes =  null;
 			if(!StringUtils.isEmpty(obj.getIcon_text())) {
-				stringWithSingleQuotes = obj.getIcon_text().replace("\"", "'");
+				stringWithSingleQuotes = obj.getIcon_text().replaceAll("\"", "'");
 			}
 	        obj.setIcon_text(stringWithSingleQuotes);
 			obj.setStatus("Active");
@@ -587,6 +587,11 @@ public class CompanyDao {
 		TransactionDefinition def = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
+			  String stringWithSingleQuotes =  null;
+				if(!StringUtils.isEmpty(obj.getIcon_text())) {
+					stringWithSingleQuotes = obj.getIcon_text().replaceAll("\"", "'");
+				}
+		        obj.setIcon_text(stringWithSingleQuotes);
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String updateQry = "UPDATE [sub_category] SET sub_category_title = :sub_category_title,icon_text =:icon_text,description =:description,"
 					+ " status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
@@ -642,7 +647,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,dm.status as dept_status,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
