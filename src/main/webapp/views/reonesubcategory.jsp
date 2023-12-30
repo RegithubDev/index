@@ -2196,14 +2196,26 @@ button.disabled {
                 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
-                  <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
+                  <select    id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
                     <option value="">Select Department</option>
                    
                   </select>
                 </label>
                   <label class="block">
-                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
+                  <select id="select2-category_filter-container" onchange="getCategoryFilterList();"  class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
                     <option value="">Select Category</option>
+                    
+                  </select>
+                </label> 
+                <label class="block">
+                  <select id="select2-sub_category_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
+                    <option value="">Select Sub Category</option>
+                    
+                  </select>
+                </label> 
+                <label class="block">
+                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
+                    <option value="">Select Status</option>
                     
                   </select>
                 </label> 
@@ -2437,20 +2449,22 @@ button.disabled {
       
       function clearFilter(){
 		    	$("#select2-department_filter-container").val(""); 
-		    	$("#select2-assigned_to_sbu_filter-container").val("");
+		    	$("#select2-category_filter-container").val("");
+		    	$("#select2-sub_category_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
 		    	window.location = "<%=request.getContextPath()%>/reone-subcategory";
 	    }
       
       function getDepartmentFilterList() {
 	        var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(department_code) == "") {
 	        	$("#select2-department_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status :status };
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForSubCategory",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2465,20 +2479,23 @@ button.disabled {
 	            });
 	        }
 	    }
-      function getSBUFilterList() {
-    	  var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
+      
+      
+      function getCategoryFilterList() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(sbu_code) == "") {
-	        	$("#select2-assigned_to_sbu_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status : status };
+	        if ($.trim(category) == "") {
+	        	$("#select2-category_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getSBUsFilterListFromDepartment",
+	                url: "<%=request.getContextPath()%>/ajax/getCategoryFilterListForSubCategory",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-assigned_to_sbu_filter-container").append('<option value="' + val.sbu_code + '">' + "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name)  +'</option>');
+	                             $("#select2-category_filter-container").append('<option value="' + val.category + '">'+$.trim(val.dm_category) +' - '+ val.department_code+'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2488,31 +2505,6 @@ button.disabled {
 	            });
 	        }
 	    }
-
-      function getStatusFilterList() {
-    	  var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(status) == "") {
-	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status : status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromDepartment",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-
       
 	    function exportDepartment(){
 	    	 var department_code = $("#select2-department_filter-container").val();
@@ -2527,8 +2519,7 @@ button.disabled {
 	    
 	    function getDepartmentList(){
 	    	getDepartmentFilterList('');
-	    	getSBUFilterList('');
-	    	getStatusFilterList('');
+	    	getCategoryFilterList('');
 	    	var department_code = $("#select2-department_filter-container").val();
 	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();

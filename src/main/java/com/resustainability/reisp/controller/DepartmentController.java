@@ -254,6 +254,36 @@ public class DepartmentController {
 		return model;
 	}
 	
+
+	
+	@RequestMapping(value = "/ajax/getCategoryFilterListForSubCategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>getCategoryFilterListForSubCategory(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getCategoryFilterListForSubCategory(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryFilterListForSubCategory : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/ajax/getDepartmentFilterListForSubCategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getDepartmentFilterListForSubCategory(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getDepartmentFilterListForSubCategory(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentFilterListForSubCategory : " + e.getMessage());
+		}
+		return objList;
+	}
+	
 	@RequestMapping(value = "/ajax/getSBUFilterListForDCForm", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<SBU> getSBUFilterListForDCForm(@ModelAttribute SBU obj,HttpSession session) {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.resustainability.reisp.dao.SBUDao;
 import com.resustainability.reisp.model.Company;
 import com.resustainability.reisp.model.SBU;
+import com.resustainability.reisp.model.User;
 
 @Service
 public class SBUService {
@@ -45,6 +46,14 @@ public class SBUService {
 
 	public List<SBU> checkUniqueIfForSBU(SBU obj) throws Exception {
 		return dao.checkUniqueIfForSBU(obj);
+	}
+
+	public List<User> getDepartmentFilterListForSubCategory(User obj) throws Exception {
+		return dao.getDepartmentFilterListForSubCategory(obj);
+	}
+
+	public List<User> getCategoryFilterListForSubCategory(User obj) throws Exception {
+		return dao. getCategoryFilterListForSubCategory(obj);
 	}
 	
 }
