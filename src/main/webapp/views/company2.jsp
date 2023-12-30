@@ -2065,23 +2065,23 @@ button.disabled {
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           <label class="block">
-                  <select id="select2-company_filter-container" id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Company</option>
+                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
                    	
                   </select>
                 </label>
-      
+     
                   <label class="block">
-                  <select id="select2-status_filter-container"  onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
                 </label>
-                <label class="block hidden sm:flex">
+               <!--  <label class="block hidden sm:flex">
                 </label>
-                
+                 -->
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            <button onclick="getCompanyList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+            <button onclick="getCatList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
                 </button>
@@ -2099,9 +2099,77 @@ button.disabled {
           </div>
           <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-             <a x-tooltip.placement.top-end.success="'Add New Category'" @click="showModal = true" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+             <%-- <a x-tooltip.placement.top-end.success="'Add New Category'" href="<%=request.getContextPath()%>/category" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
+                </a> --%>
+                <div x-data="{showModal:false}">
+                
+                    <button x-tooltip.placement.top-end.success="'Add New Record'"  @click="showModal = true" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+             <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                Add Company
+              </p>
+              <div class="mt-4 space-y-4">
+                <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
+                <label class="block  text-left">
+                 <span>Company Name </span><span class="required"> *</span>
+                  <span class="relative mt-1.5 ">
+                    <input 
+                      id="company_name_add"
+		              name="company_name" 
+                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text"/>
+                   <span id="company_name_addError"></span>
+                    
+                  </span>
+                </label>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <label class="block  text-left">
+                    <span>Company Code </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 ">
+                      <input 
+                       id="company_code_add"
+              		   name="company_code" 
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                     
+                    </span>
+                     <span class="required" id="sbu_code_addError"></span>
+                  </label>
+                 <label class="block  text-left">
+                    <span>Status</span><span class="required"> *</span>
+                    
+                  <select
+                   id="select2-status_add-container"
+              		name="status" 
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
+                </div>
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90"   onclick="addCompany()">
+                    <span>Add </span>
+                  </button>
+                  <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                    Discard
+                  </a>
+                </div>
+                 </form>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+            </template>
+                </div>
                   <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
                   <i class="fas fa-file-export"></i>  &nbsp;Export
                 </a>   
@@ -2110,43 +2178,9 @@ button.disabled {
             </div>
           </div> 
         </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+    
               
-            <%--     <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+             <%-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <label class="block">
                   <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" style="width: 19rem;">
                     <option value="">Select Company</option>
@@ -2247,7 +2281,7 @@ button.disabled {
                   <i class="fa fa-download" aria-hidden="true"></i>  &nbsp;Export
                 </button>
                     </div>
-                </div> --%>
+                </div>  --%>
               </div>
 		<br>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
