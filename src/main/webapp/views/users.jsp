@@ -2224,7 +2224,7 @@
 
       <!-- Main Content Wrapper -->
       <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+        class="main-content pos-app w-full p-6 pb-6 transition-all duration-[.25s]"
       >
       <div class="flex items-center justify-between py-5 lg:py-6">
           <div class="flex items-center space-x-1">

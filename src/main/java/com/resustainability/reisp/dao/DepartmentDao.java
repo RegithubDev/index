@@ -383,6 +383,14 @@ public class DepartmentDao {
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {
 				flag = true;
+				obj.setDm_category("Dashboard");
+				obj.setDescription("Dashboard( "+obj.getDepartment_code()+" ) is a visual representation of data insights and metrics, often displayed on a single screen or interface");
+				String insertCatQry = "INSERT INTO [department_category] "
+						+ "		   (department_code,dm_category,description,status,created_by,created_date)"
+						+ " VALUES (:department_code,:dm_category,:description,:status,:craeted_by,getdate())";
+				
+				 paramSource = new BeanPropertySqlParameterSource(obj);		 
+			     count = namedParamJdbcTemplate.update(insertCatQry, paramSource);
 			}
 			transactionManager.commit(status);
 		}catch (Exception e) {
@@ -419,7 +427,7 @@ public class DepartmentDao {
 	public List<User> getCategoryFilterListForDCForm(User obj) throws Exception {
 		List<User> objsList = new ArrayList<User>();
 		try {
-			String qry = "SELECT dm_category from [department_category] s "
+			String qry = "SELECT id as catID,dm_category from [department_category] s "
 					+ " where s.dm_category is not null and s.dm_category <> '' ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
@@ -449,7 +457,8 @@ public class DepartmentDao {
 	public List<User> getSubCategoryFilterListForDCForm(User obj) throws Exception {
 		List<User> objsList = new ArrayList<User>();
 		try {
-			String qry = "SELECT sub_category_title from [sub_category] s "
+			String qry = "SELECT s.id as subCatId, sub_category_title from [sub_category] s "
+					+ "left join department_category dc on s.category = dc.id "
 					+ " where s.sub_category_title is not null and s.sub_category_title <> '' ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {

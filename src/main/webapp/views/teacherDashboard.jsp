@@ -57,7 +57,7 @@
       <!-- Sidebar -->
     <jsp:include page="../views/layout/header.jsp"></jsp:include> 
       <!-- Main Content Wrapper -->
-      <main class="main-content w-full px-[var(--margin-x)] pb-8">
+      <main class="main-content w-full p-6 pb-8">
         <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-5 sm:mt-0 sm:flex-row via-purple-300">

@@ -100,22 +100,58 @@ public class CompanyController {
 	}
 	
 	
-	@RequestMapping(value = "/ajax/getCompanies", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/ajax/getDepartmentfilterInCat", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Company> getCompaniesList(@ModelAttribute Company obj,HttpSession session) {
-		List<Company> companiesList = null;
+	public List<User> getDepartmentfilterInCat(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
 		String userId = null;
 		String userName = null;
 		try {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			companiesList = service.getCompaniesList(obj);
+			objList = service.getDepartmentfilterInCat(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
-			logger.error("getCompaniesList : " + e.getMessage());
+			logger.error("getDepartmentfilterInCat : " + e.getMessage());
 		}
-		return companiesList;
+		return objList;
 	}
+	
+	@RequestMapping(value = "/ajax/getCategoryfilterInCat", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getCategoryfilterInCat(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			objList = service.getCategoryfilterInCat(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryfilterInCat : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	
+	@RequestMapping(value = "/ajax/getStatusfilterInCat", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getCompaniesList(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			objList = service.getStatusfilterInCat(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getStatusfilterInCat : " + e.getMessage());
+		}
+		return objList;
+	}
+	
 	
 	@RequestMapping(value = "/ajax/getreonecategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -169,7 +205,7 @@ public class CompanyController {
 				obj.setDepartment_code(departmentsList.get(0).getDepartment_code());	
         	}
 			obj.setCategory(obj.getDm_category());
-			reonesubcategoryList = serviceU.getSubCatagoryList(obj);
+			reonesubcategoryList = service.getreoneSubcategory(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getreonecategoryList : " + e.getMessage());
@@ -444,6 +480,137 @@ public class CompanyController {
 	}
 	
 	
+
+	@RequestMapping(value = "/export-category", method = {RequestMethod.GET,RequestMethod.POST})
+	public void exportCategory(HttpServletRequest request, HttpServletResponse response,HttpSession session,@ModelAttribute User obj,RedirectAttributes attributes){
+		ModelAndView view = new ModelAndView(PageConstants.reonecategory);
+		List<User> dataList = new ArrayList<User>();
+		String userId = null;String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");userName = (String) session.getAttribute("USER_NAME");
+			view.setViewName("redirect:/reone-category");
+			dataList = service.getreonecategory1(obj); 
+			if(dataList != null && dataList.size() > 0){
+	            XSSFWorkbook  workBook = new XSSFWorkbook ();
+	            XSSFSheet sheet = workBook.createSheet(WorkbookUtil.createSafeSheetName("Category"));
+		        workBook.setSheetOrder(sheet.getSheetName(), 0);
+		        
+		        byte[] blueRGB = new byte[]{(byte)0, (byte)176, (byte)240};
+		        byte[] yellowRGB = new byte[]{(byte)255, (byte)192, (byte)0};
+		        byte[] greenRGB = new byte[]{(byte)146, (byte)208, (byte)80};
+		        byte[] redRGB = new byte[]{(byte)255, (byte)0, (byte)0};
+		        byte[] whiteRGB = new byte[]{(byte)255, (byte)255, (byte)255};
+		        
+		        boolean isWrapText = true;boolean isBoldText = true;boolean isItalicText = false; int fontSize = 11;String fontName = "Times New Roman";
+		        CellStyle blueStyle = cellFormating(workBook,blueRGB,HorizontalAlignment.CENTER,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        CellStyle yellowStyle = cellFormating(workBook,yellowRGB,HorizontalAlignment.CENTER,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        CellStyle greenStyle = cellFormating(workBook,greenRGB,HorizontalAlignment.CENTER,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        CellStyle redStyle = cellFormating(workBook,redRGB,HorizontalAlignment.CENTER,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        CellStyle whiteStyle = cellFormating(workBook,whiteRGB,HorizontalAlignment.CENTER,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        
+		        CellStyle indexWhiteStyle = cellFormating(workBook,whiteRGB,HorizontalAlignment.LEFT,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        
+		        isWrapText = true;isBoldText = false;isItalicText = false; fontSize = 9;fontName = "Times New Roman";
+		        CellStyle sectionStyle = cellFormating(workBook,whiteRGB,HorizontalAlignment.LEFT,VerticalAlignment.CENTER,isWrapText,isBoldText,isItalicText,fontSize,fontName);
+		        
+		        
+	            XSSFRow headingRow = sheet.createRow(0);
+	        	String headerString = "Department,Category,Status,Created By,Created Date,Modified By,Modified Date" + 
+	    				"";
+	            String[] firstHeaderStringArr = headerString.split("\\,");
+	            
+	            for (int i = 0; i < firstHeaderStringArr.length; i++) {		        	
+		        	Cell cell = headingRow.createCell(i);
+			        cell.setCellStyle(greenStyle);
+					cell.setCellValue(firstHeaderStringArr[i]);
+				}
+	            
+	            short rowNo = 1;
+	            for (User obj1 : dataList) {
+	                XSSFRow row = sheet.createRow(rowNo);
+	                int c = 0;
+	            
+	                Cell cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue(obj1.getDepartment_code() +" - "+obj1.getDepartment_name());
+					
+	                cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue (obj1.getDm_category());
+					
+					cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue (obj1.getStatus());
+					
+					cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue (obj1.getCreated_by());
+					
+					cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue (obj1.getCreated_date());
+					
+					cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue (obj1.getModified_by());
+					
+					cell = row.createCell(c++);
+					cell.setCellStyle(sectionStyle);
+					cell.setCellValue (obj1.getModified_date());
+					
+	                rowNo++;
+	            }
+	            for(int columnIndex = 0; columnIndex < firstHeaderStringArr.length; columnIndex++) {
+	        		sheet.setColumnWidth(columnIndex, 25 * 200);
+				}
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
+                Date date = new Date();
+                String fileName = "Company_"+dateFormat.format(date);
+                
+	            try{
+	                /*FileOutputStream fos = new FileOutputStream(fileDirectory +fileName+".xls");
+	                workBook.write(fos);
+	                fos.flush();*/
+	            	
+	               response.setContentType("application/.csv");
+	 			   response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+	 			   response.setContentType("application/vnd.ms-excel");
+	 			   // add response header
+	 			   response.addHeader("Content-Disposition", "attachment; filename=" + fileName+".xlsx");
+	 			   
+	 			    //copies all bytes from a file to an output stream
+	 			   workBook.write(response.getOutputStream()); // Write workbook to response.
+		           workBook.close();
+	 			    //flushes output stream
+	 			    response.getOutputStream().flush();
+	            	
+	                
+	                attributes.addFlashAttribute("success",dataExportSucess);
+	            	//response.setContentType("application/vnd.ms-excel");
+	            	//response.setHeader("Content-Disposition", "attachment; filename=filename.xls");
+	            	//XSSFWorkbook  workbook = new XSSFWorkbook ();
+	            	// ...
+	            	// Now populate workbook the usual way.
+	            	// ...
+	            	//workbook.write(response.getOutputStream()); // Write workbook to response.
+	            	//workbook.close();
+	            }catch(FileNotFoundException e){
+	                //e.printStackTrace();
+	                attributes.addFlashAttribute("error",dataExportInvalid);
+	            }catch(IOException e){
+	                //e.printStackTrace();
+	                attributes.addFlashAttribute("error",dataExportError);
+	            }
+         }else{
+        	 attributes.addFlashAttribute("error",dataExportNoData);
+         }
+		}catch(Exception e){	
+			e.printStackTrace();
+			logger.error("exportCompany : : User Id - "+userId+" - User Name - "+userName+" - "+e.getMessage());
+			attributes.addFlashAttribute("error", commonError);			
+		}
+		//return view;
+	}
 	
 	
 	

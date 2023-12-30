@@ -2227,8 +2227,8 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
    
-   <main class="main-content w-full px-[var(--margin-x)] pb-8">
-   <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-4 mb-2   tracking-wide text-white outline-none transition-all ">
+   <main class="main-content w-full p-4 pb-8">
+   <div class="flex card   rounded-lg bg-slate-150 bg-gradient-to-r mt-4 mb-2   tracking-wide text-white outline-none transition-all ">
           <div class="group flex items-center space-x-1">
             <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
             
@@ -2285,7 +2285,7 @@ z-index: 1000;
             </div>
           </div>
         </div>
-         <div class="flex rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2  tracking-wide text-white outline-none transition-all">
+         <div class="flex card  rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2  tracking-wide text-white outline-none transition-all">
           <div class="group flex items-center space-x-1">
             <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
             <div class="whitespace-nowrap px-4 py-3 sm:px-5">

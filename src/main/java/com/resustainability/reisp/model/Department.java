@@ -2,8 +2,24 @@ package com.resustainability.reisp.model;
 
 public class Department {
 
-	private String id,	department_code	,department_name,assigned_to_sbu_multiple,	assigned_to_sbu,sbu_code,sbu_name,
-	status,	craeted_by,user_name,user_id,created_date,created_by,priority,common_url	,craeted_date,	modified_by	,modified_date,all_department,active_department,inActive_department;
+	private String id,	department_code	,description,department_name,assigned_to_sbu_multiple,	assigned_to_sbu,sbu_code,sbu_name,
+	status,	craeted_by,user_name,user_id,created_date,created_by,priority,common_url,dm_category	,craeted_date,	modified_by	,modified_date,all_department,active_department,inActive_department;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDm_category() {
+		return dm_category;
+	}
+
+	public void setDm_category(String dm_category) {
+		this.dm_category = dm_category;
+	}
 
 	public String getCommon_url() {
 		return common_url;

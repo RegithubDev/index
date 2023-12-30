@@ -2595,7 +2595,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
    
-   <main class="main-content w-full px-[var(--margin-x)] pb-8">
+   <main class="main-content w-full p-6 pb-8">
  
     
       </main>

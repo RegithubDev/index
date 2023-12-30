@@ -129,20 +129,20 @@
  
       <!-- Main Content Wrapper -->
       <main class="main-content w-full pb-8">
-           <div class="mt-5 px-[var(--margin-x)] transition-all duration-[.25s]">
+           <div class="mt-5 p-6 transition-all duration-[.25s]">
           <p class="text-base font-medium text-right text-slate-700 dark:text-navy-100">
           <fmt:formatNumber value="${sessionScope.CREDITS }" pattern="#0.00" /> Wallet Amount <i class="fa-solid fa-wallet"></i><br>
           <button onclick="openRazorpay()" class="btn bg-gradient-to-r from-sky-400 to-blue-600 font-medium text-white">+ TopUp</button>
           </p>
         </div>
-        <div class="mt-5 px-[var(--margin-x)] transition-all duration-[.25s]">
+        <div class="mt-5 p-6 transition-all duration-[.25s]">
           <p class="text-base font-medium text-slate-700 dark:text-navy-100">
             Upcoming Courses
           </p>
         </div>
         <div class="flex">
         
-          <div class="swiper mx-0 mt-4 px-[var(--margin-x)] transition-all duration-[.25s] swiper-initialized swiper-horizontal swiper-backface-hidden" 
+          <div class="swiper mx-0 mt-4 p-6 transition-all duration-[.25s] swiper-initialized swiper-horizontal swiper-backface-hidden" 
           x-init="$nextTick(()=>new Swiper($el,{  slidesPerView: 'auto', spaceBetween: 18}))">
          
 				
@@ -173,7 +173,7 @@
             </div>
             </div>
             <c:if test="${fn:length(allCoursessList) eq 0}">
-             <div class="mt-1 px-[var(--margin-x)] transition-all duration-[.25s]">
+             <div class="mt-1 p-6 transition-all duration-[.25s]">
 		          <p class=" font-medium text-slate-600 dark:text-navy-100">
 		          No Upcoming Courses....
 		        <%--     <div class="mt-2 flex items-center justify-between text-primary dark:text-accent-light">
@@ -190,14 +190,14 @@
           <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
         </div>
    
-       <!--  <div class="mt-5 px-[var(--margin-x)] transition-all duration-[.25s]">
+       <!--  <div class="mt-5 p-6 transition-all duration-[.25s]">
           <p class="text-base font-medium text-slate-700 dark:text-navy-100">
             All Courses
           </p>
         </div> -->
          <%-- <div class="flex">
          
-          <div class="swiper mx-0 mt-4 px-[var(--margin-x)] transition-all duration-[.25s] swiper-initialized swiper-horizontal swiper-backface-hidden" 
+          <div class="swiper mx-0 mt-4 p-6 transition-all duration-[.25s] swiper-initialized swiper-horizontal swiper-backface-hidden" 
           style="padding-right: 0rem !important;" x-init="$nextTick(()=>new Swiper($el,{  slidesPerView: 'auto', spaceBetween: 18}))">
          
 				
@@ -354,7 +354,7 @@
                 </div>
               </div>
             </div>
-<%--         <div class="mt-4 grid grid-cols-12 gap-4 px-[var(--margin-x)] transition-all duration-[.25s] sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+<%--         <div class="mt-4 grid grid-cols-12 gap-4 p-6 transition-all duration-[.25s] sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="card col-span-12 pb-3 lg:col-span-6">
             <div class="mt-3 flex h-8 items-center justify-between px-4 sm:px-5">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">

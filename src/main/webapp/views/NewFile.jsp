@@ -120,7 +120,7 @@ h1{
       <!-- Right Sidebar -->
 
       <!-- Main Content Wrapper -->
-      <main class="main-content w-full px-[var(--margin-x)] pb-8">
+      <main class="main-content w-full p-6 pb-8">
         <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
           <div class="col-span-12 sm:col-span-10">
             <div class="card p-4 sm:p-5">

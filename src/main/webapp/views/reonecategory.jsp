@@ -31,7 +31,15 @@
       rel="stylesheet"
     />
     <style>
-     
+     table.is-hoverable>tbody>tr:hover>td, table.is-zebra>tbody>tr:nth-child(2n)>td {
+		    background-color: #f1f5f9!important;
+		}
+     .truncate {
+      overflow: hidden;
+      max-height: 2.5rem;
+     /*  white-space: nowrap; */
+      text-overflow: ellipsis;
+    }
      th,td{
     	text-align:left;
     }
@@ -2027,137 +2035,80 @@ button.disabled {
 
       <!-- Main Content Wrapper -->
      
-     <main class="main-content w-full px-[var(--margin-x)] pb-8">
+     <main class="main-content w-full pb-8">
       <div class="p-4 sm:p-5">
-      <div class="flex items-center space-x-4 py-5 lg:py-6">
-          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+       <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
             ReOne Category
-          </h2>
-          <div class="hidden h-full py-1 sm:flex">
+          </h2> 
+          <div class=" h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
           </div>
-          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+          <ul class=" flex-wrap items-center space-x-2 sm:flex">
             <li class="flex items-center space-x-2">
-              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
-              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <a x-tooltip.placement.top-end.success="'Go Back to Settings Page'" class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden sm:flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li>ReOne Category</li>
+            <li class="hidden sm:flex">ReOne Category</li>
           </ul>
+         
         </div>
-                
-              
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                 <!--  <label class="block">
-                  <select  id="select2-company_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+          <div class="col-span-12 lg:col-span-8 xl:col-span-9">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          <label class="block">
+                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Department</option>
-                   
+                   	
+                  </select>
+                </label>
+      <label class="block">
+                  <select id="select2-category_filter-container" onchange="getCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Category</option>
+                    
                   </select>
                 </label>
                   <label class="block">
-                  <select  id="select2-status_filter-container"  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
-                </label> -->
-                <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                   
-                    </div>
-                <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                  
-                    </div>
-                    <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <!-- <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
-                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
+                </label>
+                <label class="block hidden sm:flex">
+                </label>
+                
+              <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+            <button onclick="getCatList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
+                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
                 </button>
                 <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
-                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
-                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
-                </button> -->
-                    </div>
-                       <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                      <div x-data="{showModal:false}">
-                
-                    <a href="<%=request.getContextPath()%>/category"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px;color: white !important;">
+                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Refresh </span>
+                </button> 
+              
+            </div>
+            </div>
+
+            
+
+            
+          </div>
+          <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+             <a x-tooltip.placement.top-end.success="'Add New Category'" href="<%=request.getContextPath()%>/category" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </a>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-            <div class="card p-4 sm:p-5">
-             <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
-              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Add ReOne Category
-              </p>
-              <div class="mt-4 space-y-4">
-             
-                  <label class="block  text-left">
-                    <span>Department</span><span class="required"> *</span>
-                  <select
-                   id="select2-department_code_edit-container"
-              name="department_code"
-                   class=" select2 form-select form-select3 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                   <option value="">Select Department</option>
-              <c:forEach var="obj" items="${departmentsList}">
-					<option value="${obj.department_code }" >[${obj.department_code }] - ${obj.department_name }</option>
-				</c:forEach>
-                  </select>
-                  <span id="select2-department_code_edit-containerError" class="error-msg" ></span>
-                  
-                  </label>
-                <label class="block">
-               
-				    <input name="dm_category"  id="dm_category_add"
-				      class="mt-1.5 w-full"
-				      x-init="$el._tom = new Tom($el,{
-				            plugins: ['remove_button'],
-				            create: true,
-				            onItemRemove: function (val) {
-				              $notification({text:`${val} removed`})
-				            }
-				          })"
-				      placeholder="Enter Category"
-				      type="text"
-				    />
-				     <span id="dm_category_add_edit-containerError" class="error-msg" ></span>
-				  </label>
-		
-                
-                 		  
-			    <div class="flex justify-center space-x-2 pt-4">
-                 <a class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
-                    <span>Add </span>
-                  </a>
-                  <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
-                          Discard
-                  </a>
-                </div>
-                
-              </div>
-               </form>
-            </div>
-          </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
-                </div>
-                 
-                
-                    
-                    </div>
-                
-                </div>
+                  <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
+                  <i class="fas fa-file-export"></i>  &nbsp;Export
+                </a>   
               
-              </div>
+              
+            </div>
+          </div> 
+        </div>
 		<br>
 		
               
@@ -2170,7 +2121,7 @@ button.disabled {
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table" id="datatable-company">
+                <table class="invoice-list-table table is-zebra w-full text-left is-zebra w-full text-left" id="datatable-company">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
@@ -2220,93 +2171,7 @@ button.disabled {
         
       </main>
        
-     <div x-data="{showModal:false}">
-       <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </button>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-            <div class="card p-4 sm:p-5">
-              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                update ReOne Category
-              </p>
-              <div class="mt-4 space-y-4">
-               <form id="updateCompany" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
-               
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label class="block  text-left">
-                    <span>Department Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                       value="" readonly
-                       id="department_code_edit"
-              		   name="department_code"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-                  </label>
-                 <label class="block  text-left" style="
-  
-    padding-top: 1rem;">
-                    <span>Status</span><span class="required"> *</span>
-                  <select
-                   id="select2-status_add-container"
-              		name="status"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                  </select>
-                  </label>
-                </div>
-                <label class="block">
-                <input type="hidden"  name="dm_category" id="company_name_edit" value="" />
-				    <input 
-				      class="mt-1.5 w-full"
-				      x-init="$el._tom = new Tom($el,{
-				            plugins: ['remove_button'],
-				            create: true,
-				            onItemRemove: function (val) {
-				              $notification({text:`${val} removed`})
-				            }
-				          })"
-				      placeholder="Enter Category"
-				      type="text"
-				    />
-				  </label>
-                
-              
-                <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addaCompany();">
-                    <span>update </span>
-                  </button>
-              <!--    <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="updateCompany();">
-                    <span>update </span>
-                   
-                  </button> -->
-                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
-                          Discard
-                        </button>
-                 
-                </div>
-                  </form>
-              </div>
-            </div>
-          </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
-                </div>
-           
-      
-
+     
 
      <!--  <div
         class="fixed right-3 bottom-3 rounded-full bg-white dark:bg-navy-700"
@@ -2345,32 +2210,54 @@ button.disabled {
 	 <form action="<%=request.getContextPath()%>/get-dm" name="updatereonecategory" id="updatereonecategory" method="post">	
 		<input id="id" name="id" type="hidden" />
 	</form>
+	
+	 <form action="<%=request.getContextPath()%>/export-category" name="exportCatForm" id="exportCatForm" method="post">	
+		<input id="exportDept_filter" name="department_code" type="hidden" />
+		<input id="exportStatus_filter" name="dm_category" type="hidden" />
+		<input id="exportCat_filter" name="status" type="hidden" />
+	</form>
+	
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
  $(window).on("load",(function(){
-	 $('select').select2();
-          getCompanyList();
+	 $('.form-selects').select2();
+          getCatList();
          }));
       
+
+ function exportCat(){
+ 	 var department_code = $("#select2-department_filter-container").val();
+      var status = $("#select2-status_filter-container").val();
+      var dm_category = $("#select2-category_filter-container").val();
+ 	 $("#exportDept_filter").val(department_code);
+  	 $("#exportStatus_filter").val(status);
+ 	 $("#exportCat_filter").val(status);
+  	 $("#exportCatForm ").submit();
+	}
+ 
+ 
       function clearFilter(){
-		    	$("#select2-company_filter-container").val("");
+		    	$("#select2-department_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
+		    	$("#select2-category_filter-container").val("");
 		    	window.location.href= "<%=request.getContextPath()%>/reone-category";
 	    }
       
-      function getCompanyFilterList() {
-	        var department_code = $("#select2-company_filter-container").val();
+     
+      function getDepartmentfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var dm_category = $("#select2-category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(department_code) == "") {
-	        	$("#select2-company_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, status: status };
+	        	$("#select2-department_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentfilterInCat",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-company_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.company_name) +'</option>');
+	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2380,14 +2267,40 @@ button.disabled {
 	            });
 	        }
 	    }
-      function getStatusFilterList() {
-    	  var department_code = $("#select2-company_filter-container").val();
+      
+      function getCategoryfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var dm_category = $("#select2-category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(dm_category) == "") {
+	        	$("#select2-category_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getCategoryfilterInCat",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-category_filter-container").append('<option value="' + val.dm_category + '">'+ $.trim(val.dm_category) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      
+      function getStatusfilter() {
+    	  var department_code = $("#select2-department_filter-container").val();
+    	  var dm_category = $("#select2-category_filter-container").val();
+	      var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, status: status };
+	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterInCat",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2403,17 +2316,13 @@ button.disabled {
 	        }
 	    }
 
-	    function exportCompany(){
-	    	 var department_code = $("#select2-company_filter-container").val();
+	    function getCatList(){
+	         var department_code = $("#select2-department_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
-	    	
-	    	 $("#exportCompany_filter").val(department_code);
-	     	 $("#exportStatus_filter").val(status);
-	     	 $("#exportCompanyForm ").submit();
-	  	}
-	    
-	    function getCompanyList(){
-	    	
+	         var dm_category = $("#select2-category_filter-container").val();
+	         getDepartmentfilter();
+	         getCategoryfilter();
+	         getStatusfilter();
 	     	table = $('#datatable-company').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
@@ -2429,8 +2338,8 @@ button.disabled {
 					},
 	           columnDefs: [
 	            	{
-	                    targets: [0, 1, 2, 3, 4, 5,6],
-	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
+	                    targets: [0, 1, 2, 3, 4, 5,6,7,8],
+	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100  truncate' //lg:px-5
 	                  
 	                }
 	            ],
@@ -2448,30 +2357,27 @@ button.disabled {
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-		 	var myParams = {};
+			var myParams = { department_code: department_code, status: status, dm_category : dm_category };
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreonecategory",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
 		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.id+"'";
-		                    var actions = '<a href="javascript:void(0);"   onclick="getCompany('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
+		                    var actions = '<a href="javascript:void(0);"   onclick="getCat('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
 		                    key++;
 		                   	var rowArray = [];    	                 
 		            		var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
-		            				if($.trim(val.dept_status) == 'Active'){
-		            					dept = '<div class="relative cursor-pointer">'
-		                               + '<p class="btn  dark:bg-accent-light/10  text-slate-400 dark:text-navy-300 dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">'
-		                                +dept+
-		                                '</p>'
-		                               + '<div class="absolute top-0 right-0 -m-1 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-error text-white shadow-soft  px-1 text-tiny font-medium leading-none text-white dark:bg-accent">'
-		                               + ' <i class="fa-solid fa-flag"></i>'
-		                               + '</div>'
-		                              +'</div>'
+		            				if($.trim(val.dept_status) != 'Active'){
+		            					dept = '<div class=" text-error">'
+		            		                  +' <span>'+dept+'</span>'
+		            		                  +'</div>'
 		            				}
+		            		var cat = $.trim($.trim(val.dm_category));
+		            		var status = $.trim(val.status);
+		                	
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                   	rowArray.push(dept);
-		                   	rowArray.push($.trim(val.dm_category));  
-		                    	var status = $.trim(val.status);
+		                   	rowArray.push(cat);  
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
 	                		} else {
@@ -2495,7 +2401,7 @@ button.disabled {
 	    	 $("#x-teleport-target").css("display","none");
 	      });
 	    
-	    function getCompany(department_code,status,company_name,id){
+	    function getCat(department_code,status,company_name,id){
 	    	
 		 $('#id').val($.trim(id));
 		 $("#updatereonecategory ").submit();
@@ -2525,13 +2431,13 @@ button.disabled {
 	  	    console.log(msg);
         }
 	 
-	    function updateCompany(){
+	    function updateCat(){
 	    	
 	    	if(validator1.form()){ // validation perform
-	        	document.getElementById("updateCompany").submit();	
+	        	document.getElementById("updateCat").submit();	
 	    	}
 	    }
-	    var validator1 =	$('#updateCompanyForm').validate({
+	    var validator1 =	$('#updateCatForm').validate({
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",
 		   	 ignore: ":hidden:not(.select2 form-select)",
@@ -2593,7 +2499,7 @@ button.disabled {
 	   	    }
 	   	});
 	    
-	    function addaCompany(){
+	    function addaCat(){
 	    	 var textArray = [];
 		      $('.ts-control:eq(1)').children('div').each(function() {
 		    	    textArray.push($(this).text().replace("×", ""));
@@ -2601,13 +2507,13 @@ button.disabled {
 		    	var commaSeparatedText = textArray.join(', ');
 		    	$('#company_name_edit').val(commaSeparatedText);
 		    	if(validator1.form()){ // validation perform
-		        	document.getElementById("updateCompany").submit();	
+		        	document.getElementById("updateCat").submit();	
 		    	}
 	    		
 	    }
-	    function addCompany(){
+	    function addCat(){
 	    	var flag =  
-	   	     $('#addCompanyForm').validate({
+	   	     $('#addCatForm').validate({
 	   		   	 errorClass: "my-error-class",
 	   		   	 validClass: "my-valid-class",
 	   		   	 ignore: ":hidden:not(.select2 form-select)",
@@ -2649,7 +2555,7 @@ button.disabled {
 	   		   	    }
 	   		   	}); 
 	    	if(flag){ // validation perform
-	        	document.getElementById("addCompanyForm").submit();	
+	        	document.getElementById("addCatForm").submit();	
 	    	}
 	    }
 	   	function checkUniqueId(){
@@ -2657,7 +2563,7 @@ button.disabled {
 	        if ($.trim(department_code) != "" ) {
 	        	var myParams = {department_code: department_code };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
+	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCat",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {

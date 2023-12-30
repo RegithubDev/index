@@ -4342,13 +4342,13 @@
 
       <!-- Main Content Wrapper -->
       <main class="main-content w-full pb-8">
-        <div class="mt-5 px-[var(--margin-x)] transition-all duration-[.25s]">
+        <div class="mt-5 p-6 transition-all duration-[.25s]">
           <p class="text-base font-medium text-slate-700 dark:text-navy-100">
             My Courses
           </p>
         </div>
         <div class="flex">
-          <div class="swiper mx-0 mt-4 px-[var(--margin-x)] transition-all duration-[.25s] swiper-initialized swiper-horizontal swiper-backface-hidden" x-init="$nextTick(()=>new Swiper($el,{  slidesPerView: 'auto', spaceBetween: 18}))">
+          <div class="swiper mx-0 mt-4 p-6 transition-all duration-[.25s] swiper-initialized swiper-horizontal swiper-backface-hidden" x-init="$nextTick(()=>new Swiper($el,{  slidesPerView: 'auto', spaceBetween: 18}))">
             <div class="swiper-wrapper" id="swiper-wrapper-7897efa45886d736" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
               <div class="card swiper-slide flex w-72 shrink-0 justify-between rounded-xl border-l-4 border-primary p-4 swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 18px;">
                 <div>
@@ -4491,7 +4491,7 @@
             </div>
           <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
         </div>
-        <div class="mt-4 grid grid-cols-12 gap-4 px-[var(--margin-x)] transition-all duration-[.25s] sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+        <div class="mt-4 grid grid-cols-12 gap-4 p-6 transition-all duration-[.25s] sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="card col-span-12 pb-3 lg:col-span-6">
             <div class="mt-3 flex h-8 items-center justify-between px-4 sm:px-5">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">

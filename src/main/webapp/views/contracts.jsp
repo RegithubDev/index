@@ -2464,7 +2464,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
       <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+        class="main-content pos-app w-full p-6 pb-6 transition-all duration-[.25s]"
       >
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
           <div class="card flex-row justify-between space-x-2 ">

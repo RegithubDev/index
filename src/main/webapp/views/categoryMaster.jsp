@@ -2631,7 +2631,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
       <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+        class="main-content pos-app w-full p-6 pb-6 transition-all duration-[.25s]"
       >
       <div class="mt-4 space-y-4 ">
                 <ul class="flex flex-wrap items-center space-x-2">
@@ -2713,6 +2713,31 @@ z-index: 1000;
               </div>
             </div>
           </div> --%>
+          <div class="col-span-12 lg:col-span-8 xl:col-span-8">
+            <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-5 sm:mt-0 sm:flex-row via-purple-300">
+              <div class="flex justify-center sm:order-last">
+                <img class="-mt-16 h-40 sm:mt-0" src="images/illustrations/teacher.svg" alt="">
+              </div>
+              <div class="mt-2 flex-1 pt-2 text-center text-white sm:mt-0 sm:text-left">
+                <h3 class="text-xl">
+                 Content Box <!-- <span class="font-semibold">Caleb</span> -->
+                </h3>
+               <!--  <p class="mt-2 leading-relaxed">
+                  Your student completed
+                  <span class="font-semibold text-navy-700">85%</span> of tasks
+                </p>
+                <p>Progress is <span class="font-semibold">excellent!</span></p> -->
+<!-- 
+                <button class="btn mt-6 bg-slate-50 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80">
+                  View Lessons
+                </button> -->
+              </div>
+            </div>
+
+            
+
+            
+          </div>
           <div class="col-span-12 lg:col-span-4">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
               <div style="
@@ -2874,7 +2899,8 @@ z-index: 1000;
         
                 	<div class="  mt-4 flex h-8 ">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				<span class="text-xl font-semibold  dept"></span> 
+				<!-- <span class="text-xl font-semibold  dept"></span>  -->
+				<span class="text-xl font-semibold ">Dashboard</span> 
               </h2>
             </div>
             
@@ -3195,9 +3221,9 @@ z-index: 1000;
 	                        });
 	                    }else{
 	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
-		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
 		                        +'</p>';
-	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
+	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
 	                        $("#deptListLi").append(html2); $("#deptListERR").append(html);
 	                    }
 	                    $(".dept").html( $.trim(department_name));

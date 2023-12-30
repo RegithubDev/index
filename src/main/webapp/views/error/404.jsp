@@ -396,7 +396,7 @@ z-index: 1000;
 
   <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
     <!-- App preloader-->
-<main class="main-content w-full place-content-center px-[var(--margin-x)]">
+<main class="main-content w-full place-content-center p-6">
         <div class="flex flex-col items-center p-6 text-center">
           <div class="w-full max-w-xs">
             <img class="w-full" x-show="!$store.global.isDarkModeEnabled" src="/index/resources/images/illustrations/error-404.svg" alt="image">

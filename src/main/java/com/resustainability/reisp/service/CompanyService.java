@@ -82,4 +82,16 @@ public class CompanyService {
 	public List<User> getreoneSubcategory1(User obj) throws Exception {
 		return dao. getreoneSubcategory1(obj);
 	}
+
+	public List<User> getDepartmentfilterInCat(User obj)   throws Exception {
+		return dao. getDepartmentfilterInCat(obj);
+	}
+
+	public List<User> getCategoryfilterInCat(User obj)   throws Exception {
+		return dao. getCategoryfilterInCat(obj);
+	}
+
+	public List<User> getStatusfilterInCat(User obj)   throws Exception {
+		return dao. getStatusfilterInCat(obj);
+	}
 }

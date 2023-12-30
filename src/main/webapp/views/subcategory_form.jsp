@@ -2391,7 +2391,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
       <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+        class="main-content pos-app w-full p-6 pb-6 transition-all duration-[.25s]"
       >
     <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
@@ -2866,7 +2866,7 @@ z-index: 1000;
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#dm_category_filter").append('<option value="' + val.dm_category + '">' + $.trim(val.dm_category) +'</option>');
+	                             $("#dm_category_filter").append('<option value="' + val.catID + '">' + $.trim(val.dm_category) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {

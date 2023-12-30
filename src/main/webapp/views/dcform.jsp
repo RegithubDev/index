@@ -1771,7 +1771,7 @@ keyframes enlarge { 50%{
 		<!-- Main Content Wrapper -->
 		<div></div>
 		<main
-			class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]">
+			class="main-content pos-app w-full p-6 pb-6 transition-all duration-[.25s]">
 			<div class="flex items-center space-x-4 py-5 lg:py-6">
 				<h2
 					class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
@@ -1857,8 +1857,8 @@ keyframes enlarge { 50%{
 									class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
 										<option value="">Select Category</option>
 										<c:forEach var="obj" items="${ceptList}">
-											<option value="${obj.dm_category }"
-												<c:if test="${DCFromDetails.category eq obj.dm_category }">selected</c:if>>${obj.dm_category }</option>
+											<option value="${obj.catID }"
+												<c:if test="${DCFromDetails.category eq obj.catID }">selected</c:if>>${obj.dm_category }</option>
 										</c:forEach>
 								</select> <span id="categoryError" class="requried"></span>
 								</label>
@@ -1869,8 +1869,8 @@ keyframes enlarge { 50%{
 									class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
 										<option value="">Select Sub Category</option>
 										<c:forEach var="obj" items="${sceptList}">
-											<option value="${obj.sub_category_title }"
-												<c:if test="${DCFromDetails.sub_category eq obj.sub_category_title }">selected</c:if>>${obj.sub_category_title }</option>
+											<option value="${obj.subCatId }"
+												<c:if test="${DCFromDetails.sub_category eq obj.subCatId }">selected</c:if>>${obj.sub_category_title }</option>
 										</c:forEach>
 								</select> <span id="sub_categoryError" class="requried"></span>
 								</label>
@@ -2815,7 +2815,7 @@ keyframes enlarge { 50%{
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#category").append('<option value="' + val.dm_category + '">'+ $.trim(val.dm_category) + '</option>');
+	                             $("#category").append('<option value="' + val.catID + '">'+ $.trim(val.dm_category) + '</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2838,7 +2838,7 @@ keyframes enlarge { 50%{
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#sub_category").append('<option value="' + val.sub_category_title + '">'+ $.trim(val.sub_category_title) + '</option>');
+	                             $("#sub_category").append('<option value="' + val.subCatId + '">'+ $.trim(val.sub_category_title) + '</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {

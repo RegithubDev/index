@@ -15,6 +15,9 @@ div.main-menu-content {
   position: sticky;
  
 }
+:is(.dark .dark\:text-accent-light\/80) {
+    color: rgb(255 71 71 / 80%)!important;
+}
 </style>
 </head>
 <body>

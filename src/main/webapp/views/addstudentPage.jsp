@@ -127,7 +127,7 @@ h1{
       <jsp:include page="../views/layout/header.jsp"></jsp:include> 
 
       <!-- Main Content Wrapper -->
-      <main class="main-content w-full px-[var(--margin-x)] pb-8">
+      <main class="main-content w-full p-6 pb-8">
        <div class="row clearfix">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
 												

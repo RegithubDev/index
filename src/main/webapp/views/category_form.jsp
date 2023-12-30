@@ -2397,7 +2397,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
       <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+        class="main-content pos-app w-full p-4 pb-6 transition-all duration-[.25s]"
       >
     <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
@@ -2436,8 +2436,8 @@ z-index: 1000;
                    <c:if test="${not empty CDetails.department_code}">
                                    <form id="addCategoryForm" name="addCategoryForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
                   </c:if>
-			<div class="grid place-items-center">
-		          <div class="card  w-full max-w-xl p-4 sm:p-5" x-data="pages.initCreditCard">
+			<div class=" place-items-center">
+		          <div class="card p-4 sm:p-5" x-data="pages.initCreditCard">
 		            
 		            <div class="grid place-items-center">
 		            <c:if test="${empty CDetails.department_code}">

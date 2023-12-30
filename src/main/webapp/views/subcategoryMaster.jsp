@@ -2262,7 +2262,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
    
-   <main class="main-content w-full px-[var(--margin-x)] pb-8">
+   <main class="main-content w-full p-6 pb-8">
    <div class="mt-6 space-y-4 ">
                 <ul class="flex flex-wrap items-center space-x-2">
                   <li class="flex items-center space-x-2">
@@ -2369,7 +2369,7 @@ z-index: 1000;
 					         <c:when test ="${fn:length(filesList) gt 0}" >
 					             <c:forEach var="obj1" items="${filesList}">
 									<div class="avatar h-8 w-8 hover:z-10">
-					                  <img class="rounded-full ring ring-white dark:ring-navy-700" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}" alt="avatar">
+					                  <img class="rounded-full ring ring-white dark:ring-navy-700" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj1}" alt="avatar">
 					                </div>
 					                <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
 								</c:forEach>
@@ -2381,7 +2381,7 @@ z-index: 1000;
 			       <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Gallery' }">
 			    
 					                <div class="avatar h-8 w-8 hover:z-10">
-					                  <img class="rounded-full ring ring-white dark:ring-navy-700" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" alt="avatar">
+					                  <img class="rounded-full ring ring-white dark:ring-navy-700" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}" alt="avatar">
 					                </div>
 			       </c:if>
 			         <c:if test="${ empty fn:trim(obj.attachments) && obj.document_type eq 'Link'}">
@@ -2420,7 +2420,7 @@ z-index: 1000;
              <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
                   <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
                 </div>
-              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+              <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                  View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
               </a>
              </c:if>
@@ -2475,10 +2475,10 @@ z-index: 1000;
 					         <c:when test ="${fn:length(filesList) gt 0}" >
 					             <c:forEach var="obj1" items="${filesList}">
 					             <div class="swiper-slide"> 
-					                <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}"><i class="fa fa-download" aria-hidden="true"></i></a>
+					                <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj1}"><i class="fa fa-download" aria-hidden="true"></i></a>
 									 <img
 								          class="h-full w-full object-cover"
-								          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj1}"
+								          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj1}"
 								          alt=""
 								        />
 								        </div>
@@ -2493,10 +2493,10 @@ z-index: 1000;
 			       <c:otherwise>
 			       <c:if test="${ not empty fn:trim(obj.attachments) }">
 			        <div class="swiper-slide">
-			         <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}"><i class="fa fa-download" aria-hidden="true"></i></a>
+			         <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}"><i class="fa fa-download" aria-hidden="true"></i></a>
 		        		 <img
 				          class="h-full w-full object-cover"
-				          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.category }/${obj.sub_category }/${obj.attachments}"
+				          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}"
 				          alt=""
 				        />
 				        </div>
@@ -2545,7 +2545,7 @@ z-index: 1000;
         </div>
                    <c:if test="${empty departmentcontentList }">
                    <p class="text-center">
-                <i class="fa-solid fa-face-frown"></i> Oops. No Categories Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.</c:if>
+                <i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class=sub_cat></span></b>, Please Add (or) Contact Admin.</c:if>
               </p>
                    
         

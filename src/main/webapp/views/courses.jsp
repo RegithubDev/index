@@ -4366,7 +4366,7 @@
       </div>
 
       <!-- Main Content Wrapper -->
-      <main class="main-content w-full px-[var(--margin-x)] pb-8">
+      <main class="main-content w-full p-6 pb-8">
         <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
             Courses
@@ -4407,7 +4407,7 @@
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table" id="coursesTable">
+                <table class="invoice-list-table table is-zebra w-full text-left" id="coursesTable">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">

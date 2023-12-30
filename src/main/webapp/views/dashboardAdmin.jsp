@@ -2364,7 +2364,7 @@ z-index: 1000;
 
       <!-- Main Content Wrapper -->
       <main
-        class="main-content pos-app w-full px-[var(--margin-x)] pb-6 transition-all duration-[.25s]"
+        class="main-content pos-app w-full p-6 pb-6 transition-all duration-[.25s]"
       >
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
           <div class="card flex-row justify-between space-x-2 ">
@@ -5152,7 +5152,7 @@ z-index: 1000;
             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
               <div class="mt-4 grid grid-cols-12 gap-4  py-5 dark:bg-navy-800 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6" id="iconsCLass">
 
-            <div class="is-scrollbar-hidden col-span-12 flex space-x-4 overflow-x-auto px-[var(--margin-x)] transition-all duration-[.25s] lg:pl-0">
+            <div class="is-scrollbar-hidden col-span-12 flex space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:pl-0">
                 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0" nonce="j0wHEvi1"></script>
               <div class="card w-72 shrink-0 space-y-9 rounded-xl p-4 sm:px-5">

@@ -3721,7 +3721,7 @@
       </div>
 
       <!-- Main Content Wrapper -->
-      <main class="main-content w-full px-[var(--margin-x)] pb-8" style=" background-color: white;">
+      <main class="main-content w-full p-6 pb-8" style=" background-color: white;">
 
         <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 space-y-4 sm:space-y-5 lg:col-span-9 lg:space-y-6">
@@ -3795,14 +3795,14 @@
               </div>
             </div>
             <div class="mt-4 grid grid-cols-12 gap-4  py-5 dark:bg-navy-800 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-            <div class="is-scrollbar-hidden col-span-12 reimagining reimaginingIMG space-x-4 overflow-x-auto px-[var(--margin-x)] transition-all duration-[.25s] lg:col-span-3 lg:pl-0">
+            <div class="is-scrollbar-hidden col-span-12 reimagining reimaginingIMG space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:col-span-3 lg:pl-0">
               <div class="mt-2">
                 <div class="mt-1.5 flex items-center space-x-2">
                     <img class="w-full max-w-xs" src="/index/resources/images/illustrations/awards-man.svg" alt="image" style="width: 198px;height: 163px;">                                  
                 </div>
               </div>
             </div>
-            <div class="is-scrollbar-hidden col-span-12 flex items-center space-x-4 overflow-x-auto px-[var(--margin-x)] transition-all duration-[.25s] lg:col-span-9 lg:pl-0">
+            <div class="is-scrollbar-hidden col-span-12 flex items-center space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:col-span-9 lg:pl-0">
               
                <div class="swiper-slide relative flex items-center h-38 cardsWH w-48 flex-col overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 p-3">
                       <div class="grow">
@@ -3878,7 +3878,7 @@
         </div>
   
         <div class="mt-4 grid grid-cols-12 gap-4  py-5 dark:bg-navy-800 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-        <div class="is-scrollbar-hidden col-span-12 reimagining space-x-4 overflow-x-auto px-[var(--margin-x)] transition-all duration-[.25s] lg:col-span-3 lg:pl-0">
+        <div class="is-scrollbar-hidden col-span-12 reimagining space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:col-span-3 lg:pl-0">
           <p class="mt-2 grow" style="
     width: 14rem;
 ">
@@ -3896,7 +3896,7 @@
             </div>
           </div>
         </div>
-        <div class="is-scrollbar-hidden col-span-12 flex space-x-4 overflow-x-auto px-[var(--margin-x)] transition-all duration-[.25s] lg:col-span-9 lg:pl-0">
+        <div class="is-scrollbar-hidden col-span-12 flex space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:col-span-9 lg:pl-0">
           
             <div
             class="card swiper-slide flex w-72 shrink-0 justify-between rounded-xl border-l-4 border-warning p-4"

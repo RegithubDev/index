@@ -1741,12 +1741,14 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
+            String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dm_category,sub_category_title,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
             		+ "dc.description,dc.url,dc.status,dm.department_name, dc.[status],"
             		+ "dc.created_by,FORMAT(dc.created_date, 'dd-MMM-yy') as created_date,FORMAT(dc.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
             		+ "dc.modified_by,dm.department_name,p.user_name,p1.user_name as  modified_by "
             		+ " FROM [dept_content] dc "
             		+ "left join department_master dm on dc.department_code = dm.department_code "
+            		+ "left join department_category dcc on dc.category = dcc.id "
+            		+ "left join sub_category sc on dc.sub_category = sc.id "
             		+ "left join user_profile p on dc.created_by = p.user_id "
 					+ "left join user_profile p1 on dc.modified_by = p1.user_id "
             		+ "left join company c on dc.company_code = c.company_code "
@@ -1792,17 +1794,18 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dc.[department_code],department_name, dc.[status], dc.category,sub_category_title"
-            		+ ",icon_text,description,document_type,documants FROM [sub_category] dc "
+            String qry = "SELECT dc.[department_code],department_name, dc.[status], dcc.dm_category as category,dc.sub_category_title"
+            		+ ",dc.icon_text,dc.description,document_type,dc.documants FROM [sub_category] dc "
             		+ "left join department_master dm on dc.department_code = dm.department_code "
+            		+ "left join department_category dcc on dc.category = dcc.id "
             		+ " where dc.status <> 'Inactive' ";
             int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
 				qry = qry + " and dc.department_code = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
-				qry = qry + " and dc.category = ? ";
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDm_category())) {
+				qry = qry + " and dcc.dm_category = ? ";
 				arrSize++;
 			}
 			qry = qry + "order by dc.category desc";
@@ -1811,8 +1814,8 @@ public class UserDao {
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
 				pValues[i++] = user.getDepartment_code();
 			}
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
-				pValues[i++] = user.getCategory();
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDm_category())) {
+				pValues[i++] = user.getDm_category();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
@@ -1829,12 +1832,14 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
+            String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,dcc.id as catID,sc.id as subCatId,sbu_name,dc.sbu_code,dc.category,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
             		+ "dc.description,dc.url,dc.status,dm.department_name, dc.[status],"
             		+ "dc.created_by,FORMAT(dc.created_date, 'dd-MMM-yy') as created_date,FORMAT(dc.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
             		+ "dc.modified_by,dm.department_name,p.user_name,p1.user_name as  modified_by "
             		+ " FROM [dept_content] dc "
             		+ "left join department_master dm on dc.department_code = dm.department_code "
+            		+ "left join department_category dcc on dc.category = dcc.id "
+            		+ "left join sub_category sc on dc.sub_category = sc.id "
             		+ "left join user_profile p on dc.created_by = p.user_id "
 					+ "left join user_profile p1 on dc.modified_by = p1.user_id "
             		+ "left join company c on dc.company_code = c.company_code "
@@ -1846,11 +1851,11 @@ public class UserDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
-				qry = qry + " and dc.category = ? ";
+				qry = qry + " and dcc.dm_category = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
-				qry = qry + " and dc.sub_category = ? ";
+				qry = qry + " and sc.sub_category_title = ? ";
 				arrSize++;
 			}
 			qry = qry + "order by dc.category desc";

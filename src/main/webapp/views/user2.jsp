@@ -31,7 +31,35 @@
       rel="stylesheet"
     />
     <style>
-     
+    .mdl-grid{
+	display: flex !important;
+    padding: 4px;
+    justify-content: space-between;
+    height: 4.5rem;
+} 
+.dt-table{
+display: block !important;
+height: 100%;
+}
+    .input-field .searchable_label{
+      		font-size:0.85rem;
+        } 
+        td,th{
+        	box-sizing:content-box !important;
+        }
+ 	 .dataTables_filter label{
+         	content:'';
+         }
+         .right-btns .fa{
+         	    visibility: hidden;
+         }
+         .right-btns .fa+.fa{
+         	    visibility: hidden;
+         }
+         
+     table tr td:first-child {
+    text-align: center;
+}
      th,td{
     	text-align:left;
     }
@@ -2168,7 +2196,7 @@ button.disabled {
 
       <!-- Main Content Wrapper -->
      
-     <main class="main-content w-full px-[var(--margin-x)] pb-8">
+     <main class="main-content w-full p-6 pb-8">
       <div class="p-4 sm:p-5">
                   <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
@@ -2496,7 +2524,7 @@ button.disabled {
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table" id="datatable-user">
+                <table class="invoice-list-table table is-zebra w-full text-left is-zebra w-full text-left" id="datatable-user">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
@@ -2821,8 +2849,183 @@ button.disabled {
 	            });
 	        }
 	    }
-	    
-	    function getUserList(){
+	    function getUserList() {
+	    	getUserFilterList();
+	    	getStatusFilterList();
+	    	getSBUFilterList();
+	    	getProjectFilterList();
+	    	getRoleFilterList();
+	    	var key =1;
+	    	var user_id = $("#select2-user_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        var time_period = $("#select2-time_period_filter-container").val();
+	        var project = $("#select2-project_filter-container").val();
+	        var sbu = $("#select2-sbu_filter-container").val();
+	        var base_role = $("#select2-role_filter-container").val();
+	        if(time_period == ''){
+	        	time_period = 0;
+	        }
+	        $('#days').html(0)
+	        $('#allUsers').html(0)
+    		$('#activeUsers').html(0)
+    		$('#inActiveUsers').html(0)
+	    	   	table = $('#datatable-user').DataTable();
+	    		table.destroy();
+				var i = 0;
+	    		$.fn.dataTable.moment('DD-MMM-YYYY');
+	    		var rowLen = 0;
+	    		var myParams =  "user_id="
+	    				+ user_id + "&status="+ status+ "&time_period="+ time_period+ "&project="+ project+ "&sbu="+ sbu+ "&base_role="+ base_role;
+
+	    		/***************************************************************************************************/
+
+	    		$("#datatable-user")
+	    				.DataTable(
+	    						{
+	    							"bProcessing" : true,
+	    							"bServerSide" : true,
+	    							"sort" : "position",
+	    							//bStateSave variable you can use to save state on client cookies: set value "true" 
+	    							"bStateSave" : false,
+	    							 stateSave: true,
+	    							 "fnStateSave": function (oSettings, oData) {
+	    							 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+	    							},
+	    							 "fnStateLoad": function (oSettings) {
+	    								return JSON.parse(localStorage.getItem('MRVCDataTables'));
+	    							 },
+	    							//Default: Page display length
+	    							"iDisplayLength" : 10,
+	    							"iData" : {
+	    								"start" : 52
+	    							},
+	    							//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+	    							"iDisplayStart" : 0,
+	    							"fnDrawCallback" : function() {
+	    								//Get page numer on client. Please note: number start from 0 So
+	    								//for the first page you will see 0 second page 1 third page 2...
+	    								//Un-comment below alert to see page number
+	    								//alert("Current page number: "+this.fnPagingInfo().iPage);
+	    							},
+	    							//"sDom": 'l<"toolbar">frtip',
+	    							"initComplete" : function() {
+	    								$('.dataTables_filter input[type="search"]')
+	    										.attr('placeholder', 'Search')
+	    										.css({
+	    											'width' : '350px ',
+	    											'display' : 'inline-block'
+	    										});
+
+	    								var input = $('.dataTables_filter input')
+	    										.unbind()
+	    										.bind('keyup',function(e){
+	    										    if (e.which == 13){
+	    										    	self.search(input.val()).draw();
+	    										    }
+	    										}), self = this.api(), $searchButton = $(
+	    										'<i class="fa fa-search" title="Go" >')
+	    								//.text('Go')
+	    								.click(function() {
+	    									self.search(input.val()).draw();
+	    								}), $clearButton = $(
+	    										'<i class="fa fa-close" title="Reset">')
+	    								//.text('X')
+	    								.click(function() {
+	    									input.val('');
+	    									$searchButton.click();
+	    								})
+	    								$('.dataTables_filter').append(
+	    										'<div class="right-btns"></div>');
+	    								$('.dataTables_filter div').append(
+	    										$searchButton, $clearButton);
+	    								rowLen = $('#datatable-user tbody tr:visible').length
+	    								/* var input = $('.dataTables_filter input').unbind(),
+	    								self = this.api(),
+	    								$searchButton = $('<i class="fa fa-search">')
+	    								           //.text('Go')
+	    								           .click(function() {			   	                    	 
+	    								              self.search(input.val()).draw();
+	    								           })			   	        
+	    								  $('.dataTables_filter label').append($searchButton); */
+	    							}
+	    							,
+	    							columnDefs : [ {
+	    								"targets" : '',
+	    								"orderable" : false,
+	    							}
+	    			                ],
+	    							"sScrollX" : "100%",
+	    							"sScrollXInner" : "100%",
+	    							"ordering":false,
+	    							"bScrollCollapse" : true,
+	    							"language" : {
+	    								"info" : "_START_ - _END_ of _TOTAL_",
+	    								paginate : {
+	    									next : '<i class="fa fa-angle-right"></i>', 
+	    									previous : '<i class="fa fa-angle-left"></i>'  
+	    								}
+	    							},
+	    							
+	    							"bDestroy" : true,
+	    							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/getUserList?"+myParams,
+	    		        "aoColumns": [
+	    		        
+	      		         	{ "mData": function(data,type,row){
+
+	                               $('#days').html(data.days)
+		 		            		var c = data.days
+		 		            		if(c == null){ $('#days').html(0)}
+		 		            		$('#hours').html(Number(data.hours))   //.toFixed(2)
+		 		            		$('#active').html(data.active_users)
+		 		            		$('#inactive').html(data.inActive_users)
+	                             if($.trim(data.id) == ''){ return '-'; }else{ return key++ ; }
+	      		            } },
+	      		          { "mData": function(data,type,row){
+	    		            	var user_data = "'"+data.user_id+"','"+data.base_sbu+"','"+data.project_code+"','"+data.department_code+"','"+data.user_role+"','"+data.status+"','"+data.user_name+"','"+data.reporting_to_id+"','"+data.email_id+"','"+data.contact_number+"'";
+			                    var actions = '<a href="javascript:void(0);"  onclick="getUser('+user_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
+	    		            	return actions;
+	    		            } },
+	    		         	{ "mData": function(data,type,row){
+	    		         		  var user_name = '';
+	    		         		  if ($.trim(data.user_name) != '') { user_name = ' - ' + $.trim(data.user_name) }    	
+		                             if($.trim(data.user_id) == ''){ return '-'; }else{ return data.user_id +user_name; }
+	    		            } },
+	    		            { "mData": function(data,type,row){
+		                             if($.trim(data.email_id) == ''){ return '-'; }else{ return data.email_id ; }
+	    		            } },
+	    		            { "mData": function(data,type,row){
+	    		            	 var sbu_name = '';
+	    		            	  if ($.trim(data.sbu_name) != '') { sbu_name = ' - ' + $.trim(data.sbu_name) }    	
+		                             if($.trim(data.base_sbu) == ''){ return '-'; }else{ return data.base_sbu +sbu_name; }
+	    		            }},
+	    		         	{ "mData": function(data,type,row){
+	    		         		 var base_project = '';
+	    		         		  if ($.trim(data.base_project) != '') { base_project = ' - ' + $.trim(data.base_project) }    	
+		                             if($.trim(data.project_code) == ''){ return '-'; }else{ return data.project_code +base_project; }
+	    		            } },
+	    		            { "mData": function(data,type,row){
+	    		            	 var base_department = '';
+	    		            	 if ($.trim(data.base_department) != '') { base_department = ' - ' + $.trim(data.base_department) }    	
+	                             if($.trim(data.department_code) == ''){ return '-'; }else{ return data.department_code +base_department; }
+	    		            } }, 
+	    		            { "mData": function(data,type,row){
+	                             if($.trim(data.base_role) == ''){ return '-'; }else{ return data.base_role ; }
+   		            		} },
+   		            	 	{ "mData": function(data,type,row){
+                             if($.trim(data.status) == ''){ return '-'; }else{ return data.status ; }
+		            		} },
+		            		 { "mData": function(data,type,row){
+	                             if($.trim(data.last_login) == ''){ return '-'; }else{ return data.last_login ; }
+   		            		} }
+	    		        ]
+	    		    });
+	    	
+	    	
+		  $(".page-loader-2").hide();  		     
+	  	
+	 }
+
+	    function getUserList1(){
 	    	getUserFilterList();
 	    	getStatusFilterList();
 	    	getSBUFilterList();
