@@ -2036,10 +2036,10 @@ button.disabled {
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full pb-8">
-      <div class="p-4 sm:p-5">
+      
        <div class="flex items-center space-x-4 py-5 lg:py-6">
           <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            ReOne Category
+             Category
           </h2> 
           <div class=" h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
@@ -2051,10 +2051,11 @@ button.disabled {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li class="hidden sm:flex">ReOne Category</li>
+            <li class="hidden sm:flex">Category</li>
           </ul>
          
         </div>
+        <div class="p-4 sm:p-5">
                 <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">

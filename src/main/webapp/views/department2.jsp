@@ -2188,26 +2188,164 @@ button.disabled {
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full p-6 pb-8">
-      <div class="p-4 sm:p-5">
-         <div class="flex items-center space-x-4 py-5 lg:py-6">
-          <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            Department
-          </h2>
-          <div class="hidden h-full py-1 sm:flex">
+   
+     
+       <div class="flex items-center space-x-4 py-5 lg:py-6">
+          <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+          Department
+          </h2> 
+          <div class=" h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
           </div>
-          <ul class="hidden flex-wrap items-center space-x-2 sm:flex">
+          <ul class=" flex-wrap items-center space-x-2 sm:flex">
             <li class="flex items-center space-x-2">
-              <a class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"  href="<%=request.getContextPath() %>/settings">Masters</a>
-              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <a x-tooltip.placement.top-end.success="'Go Back to Settings Page'" class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
+              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden sm:flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li>Department</li>
+            <li class="hidden sm:flex">Department</li>
           </ul>
+         
+        </div>
+      
+       
+        <div class="p-4 sm:p-5">
+           <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+          <div class="col-span-12 lg:col-span-8 xl:col-span-9">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          <label class="block">
+                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
+                   	
+                  </select>
+                </label>
+     
+                  <label class="block">
+                  <select  id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Status</option>
+                    
+                  </select>
+                </label>
+               <!--  <label class="block hidden sm:flex">
+                </label>
+                 -->
+              <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+            <button onclick="getCompanyList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
+                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
+                </button>
+                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
+                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px;color: white !important;">
+                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Refresh </span>
+                </button> 
+              
+            </div>
+            </div>
+
+            
+
+            
+          </div>
+          <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+         
+                <div x-data="{showModal:false}">
+                
+                    <button x-tooltip.placement.top-end.success="'Add New Record'"  @click="showModal = true" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
+                </button>
+             <template x-teleport="#x-teleport-target" data-teleport-template="true">
+                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
+                       <div class="col-span-12 sm:col-span-8">
+            <div class="card p-4 sm:p-5">
+              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
+                Add Company
+              </p>
+              <div class="mt-4 space-y-4">
+               <form id="addDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-department" method="post" class="form-horizontal" role="form" >
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  
+                  <label class="block  text-left">
+                    <span>Department Code </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 ">
+                      <input 
+                    type="text"
+              id="department_code_add"
+              name="department_code"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                       <span id="department_name_addError"></span>
+
+                    </span>
+                     <span class="required" id="sbu_code_addError"> </span>
+                  </label>
+                    <label class="block  text-left">
+                    <span>Department Name </span><span class="required"> *</span>
+                    <span class="relative mt-1.5 ">
+                      <input 
+                         type="text"
+              id="department_name_add"
+              name="department_name"
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE"  type="text">
+                     
+                    </span>
+                  </label>
+                     <label class="block  text-left">
+                    <span>Status</span><span class="required"> *</span>
+                  <select
+                   id="select2-status_add-container"
+              name="status"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Status</option>
+             	<option value="Active">Active</option>
+             	<option value="Inactive">Inactive</option>
+                  </select>
+                  </label>
+                 <label class="block  text-left">
+                    <span>Select Assigned To SBU</span><span class="required"> *</span>
+                  <select
+                   id="select2-select2-multiple-assigned_to_sbu_add-container"
+              name="assigned_to_sbu"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select SBU</option>
+              <c:forEach var="obj" items="${objList}">
+					<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+				</c:forEach>
+                  </select>
+                  </label>
+                 
+                </div>
+               
+                <div class="flex justify-center space-x-2 pt-4">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addDepartment();">
+                    <span>Add </span>
+                   
+                  </button>
+                  <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                          Discard
+                        </a>
+                 
+                </div>
+                 </form>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+            </template>
+                </div>
+                  <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
+                  <i class="fas fa-file-export"></i>  &nbsp;Export
+                </a>   
+              
+              
+            </div>
+          </div> 
         </div>
                 
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+           <%--      <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
                   <select    id="select2-department_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
                     <option value="">Select Department</option>
@@ -2332,7 +2470,7 @@ button.disabled {
                     </div>
                 
                 </div>
-              
+               --%>
               </div>
 		<br>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
