@@ -1737,7 +1737,7 @@ public class UserDao {
         return objsList;
 	}
 
-	public List<User> getDeptContentList(User user) throws Exception {
+	public List<User> getDeptContentList(User obj) throws Exception {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
@@ -1755,29 +1755,36 @@ public class UserDao {
             		+ "left join sbu s on dc.sbu_code = s.sbu_code "
             		+ " where dc.[department_code] is not null ";
             int arrSize = 0;
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
-				qry = qry + " and dc.department_code = ? ";
+            if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and dc.department_code = ?";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
-				qry = qry + " and dc.category = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and dc.category = ?";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
-				qry = qry + " and dc.sub_category = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and dc.status = ? ";
 				arrSize++;
 			}
 			qry = qry + "order by dc.category desc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
-				pValues[i++] = user.getDepartment_code();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
 			}
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
-				pValues[i++] = user.getCategory();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
 			}
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
-				pValues[i++] = user.getSub_category();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {

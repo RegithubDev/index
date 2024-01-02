@@ -2168,7 +2168,7 @@ button.disabled {
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full pb-8">
-      <div class="flex items-center space-x-4 py-5 lg:py-6">
+      <div class="flex items-center space-x-4 py-5 lg:py-6 p-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
              Department Content
           </h2>
@@ -2189,14 +2189,20 @@ button.disabled {
          <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          <label class="block">
-                  <select id="select2-company_code_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Category</option>
+      <label class="block">
+                  <select id="select2-department_filter-container" onchange="getDepartmentfilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
                    	
                   </select>
                 </label>
       <label class="block">
-                  <select id="select2-sbu_filter-container" onchange="getCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-category_filter-container" onchange="getCategoryfilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Category</option>
+                    
+                  </select>
+                </label>
+                <label class="block">
+                  <select id="select2-sub_category_filter-container" onchange="getSubCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Sub Category</option>
                     
                   </select>
@@ -2207,9 +2213,7 @@ button.disabled {
                     
                   </select>
                 </label>
-                <label class="block hidden sm:flex">
-                </label>
-                
+               
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
             <button onclick="getSBUList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
@@ -2315,7 +2319,7 @@ button.disabled {
 		       <div class="dt-buttons" style="height : 0.5em;">
 		      
 		        </div>
-                <table class="invoice-list-table table is-zebra w-full text-left" id="datatable-sbu">
+                <table class="invoice-list-table table is-zebra w-full text-left" id="datatable-dc">
                   <thead>
                     <tr>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
@@ -2426,26 +2430,29 @@ button.disabled {
          }));
       
       function clearFilter(){
-		    	$("#select2-sbu_filter-container").val(""); 
-		    	$("#select2-company_code_filter-container").val("");
-		    	$("#select2-status_filter-container").val("");
+    	  $("#select2-department_filter-container").val("");
+	      $("#select2-category_filter-container").val("");
+	      $("#select2-sub_category_filter-container").val("");
+	      $("#select2-status_filter-container").val("");
 		    	window.location.href= "<%=request.getContextPath()%>/dep-content";
 	    }
       
-      function getSBUFilterList() {
-	        var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
+      
+      function getDepartmentFilterList() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(sbu_code) == "") {
-	        	$("#select2-sbu_filter-container option:not(:first)").remove();
-	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status :status };
+	        if ($.trim(department_code) == "") {
+	        	$("#select2-department_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getSBUFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForDeptContnt",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-sbu_filter-container").append('<option value="' + val.sbu_code + '">'+ "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name) +'</option>');
+	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2455,20 +2462,23 @@ button.disabled {
 	            });
 	        }
 	    }
-      function getCompanyFilterList() {
-    	  var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
+      
+      
+      function getCategoryFilterList() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(company_code) == "") {
-	        	$("#select2-company_code_filter-container option:not(:first)").remove();
-	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status : status };
+	        if ($.trim(category) == "") {
+	        	$("#select2-category_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCompanyFilterListFromSBU",
+	                url: "<%=request.getContextPath()%>/ajax/getCategoryFilterListForDeptContnt",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-company_code_filter-container").append('<option value="' + val.company_code + '">' + "[ "+$.trim(val.company_code) +" ]"+" - " + $.trim(val.company_name)  +'</option>');
+	                             $("#select2-category_filter-container").append('<option value="' + val.category + '">'+$.trim(val.dm_category) +' - '+ val.department_code+'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2478,21 +2488,47 @@ button.disabled {
 	            });
 	        }
 	    }
-
-      function getStatusFilterList() {
-    	  var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
+      
+      function getSubCategoryfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(sub_category_title) == "") {
+	        	$("#select2-sub_category_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getSubCategoryfilterListForDeptContnt",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-sub_category_filter-container").append('<option value="' + val.sub_category_title + '">'+$.trim(val.sub_category_title) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      
+      function getStatusfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { sbu_code: sbu_code, company_code: company_code, status : status };
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromSBU",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterListForDeptContnt",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
+	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">'+$.trim(val.status) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2502,7 +2538,7 @@ button.disabled {
 	            });
 	        }
 	    }
-
+    
       
 	    function exportSBU(){
 	    	 var sbu_code = $("#select2-sbu_filter-container").val();
@@ -2517,19 +2553,19 @@ button.disabled {
 	    
 	    
 	    function getSBUList(){
-	    	getSBUFilterList('');
-	    	getCompanyFilterList('');
-	    	getStatusFilterList('');
-	    	var sbu_code = $("#select2-sbu_filter-container").val();
-	        var company_code = $("#select2-company_code_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	    	$('#allSBU').html(0)
-    		$('#activeSBU').html(0)
-    		$('#inActiveSBU').html(0)
-	     	table = $('#datatable-sbu').DataTable();
+	    	getDepartmentFilterList('');
+	    	getCategoryFilterList('');
+	    	getSubCategoryfilter('');
+	    	getStatusfilter('');
+	    	var department_code = $("#select2-department_filter-container").val();
+		    var category = $("#select2-category_filter-container").val();
+		    var sub_category_title = $("#select2-sub_category_filter-container").val();
+		    var status = $("#select2-status_filter-container").val();
+	    	
+	     	table = $('#datatable-dc').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
-			table = $('#datatable-sbu').DataTable({
+			table = $('#datatable-dc').DataTable({
 				"bStateSave": true,  
 	     		fixedHeader: true,
 	         	//Default: Page display length
@@ -2559,7 +2595,7 @@ button.disabled {
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-		 	var myParams = {sbu_code: sbu_code, company_code: company_code, status : status};
+			var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getDepartmentContentList",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){

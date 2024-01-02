@@ -434,6 +434,279 @@ public class SBUDao {
 		}
 		return objsList;
 	}
+
+	public List<User> getSubCategoryfilterListForSubCategory(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT (s.sub_category_title) FROM [sub_category] s "
+					+ " where s.sub_category_title is not null and s.sub_category_title <> ''  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and s.category = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category_title = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by s.sub_category_title asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getStatusfilterListForSubCategory(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT (s.status) FROM [sub_category] s "
+					+ " where s.status is not null and s.status <> ''  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and s.category = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category_title = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " group by s.status order by s.status asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getSubCategoryfilterListForDeptContnt(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT distinct(s.sub_category),dm.sub_category_title FROM [dept_content] s "
+					+ "LEFT JOIN sub_category dm on s.sub_category = dm.id "
+					+ " where s.sub_category is not null and s.sub_category <> ''  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and s.category = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by s.sub_category asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getStatusfilterListForDeptContnt(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT (s.status) FROM [dept_content] s "
+					+ " where s.status is not null and s.status <> ''  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and s.category = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " group by s.status order by s.status asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getCategoryFilterListForDeptContnt(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT distinct(s.category),dm.dm_category,s.department_code FROM [dept_content] s "
+					+ "LEFT JOIN department_category dm on s.category = dm.id "
+					+ " where s.category is not null and s.category <> ''  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and s.category = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " group by s.category,dm.dm_category,s.department_code  order by s.category asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getDepartmentFilterListForDeptContnt(User obj) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+		try {
+			String qry = "SELECT distinct(s.department_code),dm.department_name FROM [dept_content] s "
+					+ "LEFT JOIN department_master dm on s.department_code = dm.department_code "
+					+ " where s.department_code is not null and s.department_code <> ''  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and s.category = ?";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by s.department_code asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
 	
 	
 	

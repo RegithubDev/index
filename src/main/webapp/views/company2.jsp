@@ -2038,7 +2038,7 @@ button.disabled {
      
      
    
-       <div class="flex items-center space-x-4 py-5 lg:py-6">
+       <div class="flex items-center space-x-4 py-5 lg:py-6 p-6">
        
           <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
          Companies

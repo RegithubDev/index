@@ -255,6 +255,33 @@ public class DepartmentController {
 	}
 	
 
+	@RequestMapping(value = "/ajax/getSubCategoryfilterListForSubCategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>getSubCategoryfilterListForSubCategory(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getSubCategoryfilterListForSubCategory(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getSubCategoryfilterListForSubCategory : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/ajax/getStatusfilterListForSubCategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>getStatusfilterListForSubCategory(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getStatusfilterListForSubCategory(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getStatusfilterListForSubCategory : " + e.getMessage());
+		}
+		return objList;
+	}
 	
 	@RequestMapping(value = "/ajax/getCategoryFilterListForSubCategory", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -280,6 +307,62 @@ public class DepartmentController {
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getDepartmentFilterListForSubCategory : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/ajax/getSubCategoryfilterListForDeptContnt", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>getSubCategoryfilterListForDeptContnt(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getSubCategoryfilterListForDeptContnt(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getSubCategoryfilterListForDeptContnt : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/ajax/getStatusfilterListForDeptContnt", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>getStatusfilterListForDeptContnt(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getStatusfilterListForDeptContnt(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getStatusfilterListForDeptContnt : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/ajax/getCategoryFilterListForDeptContnt", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>getCategoryFilterListForDeptContnt(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getCategoryFilterListForDeptContnt(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryFilterListForDeptContnt : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/ajax/getDepartmentFilterListForDeptContnt", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getDepartmentFilterListForDeptContnt(@ModelAttribute User obj,HttpSession session) {
+		List<User> objList = null;
+		try {
+			objList  = serviceS.getDepartmentFilterListForDeptContnt(obj);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentFilterListForDeptContnt : " + e.getMessage());
 		}
 		return objList;
 	}

@@ -2714,7 +2714,9 @@ z-index: 1000;
             </div>
           </div> --%>
           <div class="col-span-12 lg:col-span-8 xl:col-span-8">
-            <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-5 sm:mt-0 sm:flex-row via-purple-300">
+            <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" 
+            style=" height: 10.7rem;"
+            class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-5 sm:mt-0 sm:flex-row via-purple-300">
               <div class="flex justify-center sm:order-last">
                 <img class="-mt-16 h-40 sm:mt-0" src="images/illustrations/teacher.svg" alt="">
               </div>

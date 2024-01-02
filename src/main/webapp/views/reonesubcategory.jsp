@@ -2176,7 +2176,7 @@ button.disabled {
      
      <main class="main-content w-full p-6 pb-8">
      
-       <div class="flex items-center space-x-4 py-5 lg:py-6">
+       <div class="flex items-center space-x-4 py-5 lg:py-6 p-2">
           <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
             Sub Category
           </h2> 
@@ -2206,13 +2206,13 @@ button.disabled {
                   </select>
                 </label>
       <label class="block">
-                  <select id="select2-category_filter-container" onchange="getCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-category_filter-container" onchange="getCategoryFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Category</option>
                     
                   </select>
                 </label>
                 <label class="block">
-                  <select id="select2-sub_category_filter-container" onchange="getCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-sub_category_filter-container" onchange="getSubCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Sub Category</option>
                     
                   </select>
@@ -2227,7 +2227,7 @@ button.disabled {
                 </label>
                 
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            <button  onclick="getCompanyList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+            <button  onclick="getSubCategoryList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
                 </button>
@@ -2504,7 +2504,7 @@ button.disabled {
       $(window).on("load",(function(){
     	  $('.form-select2').select2();
     	// $("#x-teleport-target").hide();
-          getDepartmentList();
+          getSubCategoryList();
       
          }));
       
@@ -2516,7 +2516,7 @@ button.disabled {
 		    	window.location = "<%=request.getContextPath()%>/reone-subcategory";
 	    }
       
-      function getDepartmentFilterList() {
+      function getDepartmentFilter() {
 	        var department_code = $("#select2-department_filter-container").val();
 	        var category = $("#select2-category_filter-container").val();
 	        var sub_category_title = $("#select2-sub_category_filter-container").val();
@@ -2567,6 +2567,56 @@ button.disabled {
 	        }
 	    }
       
+      function getSubCategoryfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(sub_category_title) == "") {
+	        	$("#select2-sub_category_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getSubCategoryfilterListForSubCategory",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-sub_category_filter-container").append('<option value="' + val.sub_category_title + '">'+$.trim(val.sub_category_title) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      
+      function getStatusfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(status) == "") {
+	        	$("#select2-status_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterListForSubCategory",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">'+$.trim(val.status) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+    
 	    function exportDepartment(){
 	    	 var department_code = $("#select2-department_filter-container").val();
 	         var assigned_to_sbu = $("#select2-assigned_to_sbu_filter-container").val();
@@ -2578,11 +2628,14 @@ button.disabled {
 	     	 $("#exportDepartmentForm ").submit();
 	  	}
 	    
-	    function getDepartmentList(){
+	    function getSubCategoryList(){
 	    	getDepartmentFilterList('');
 	    	getCategoryFilterList('');
+	    	getSubCategoryfilter('');
+	    	getStatusfilter('');
 	    	var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
+	        var category = $("#select2-category_filter-container").val();
+	        var sub_category_title = $("#select2-sub_category_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	    	$('#allDepartment').html(0)
     		$('#activeDepartment').html(0)
@@ -2603,7 +2656,7 @@ button.disabled {
 					
 					columnDefs: [
 		            	{
-		            		  targets: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+		            		  targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 		                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
 		                  
 		                }
@@ -2625,7 +2678,7 @@ button.disabled {
 	        }).rows().remove().draw();
 			table.state.clear();		
 
-		 	var myParams = {department_code: department_code, sbu_code: sbu_code, status : status};
+			var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreoneSubcategory",type:"POST",data:myParams,success : function(data){    				
 				
 					if(data != null && data != '' && data.length > 0){    					

@@ -2399,7 +2399,7 @@ z-index: 1000;
       <main
         class="main-content pos-app w-full p-4 pb-6 transition-all duration-[.25s]"
       >
-    <div class="flex items-center space-x-4 py-5 lg:py-6">
+    <div class="flex items-center space-x-4 py-5 lg:py-6 p-6">
           <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
              ReOne  Category
           </h2>

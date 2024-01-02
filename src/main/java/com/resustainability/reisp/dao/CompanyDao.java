@@ -509,21 +509,35 @@ public class CompanyDao {
 			
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
-				qry = qry + " and c.department_code = ? ";
+				qry = qry + " and c.department_code = ?";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDm_category())) {
-				qry = qry + " and dc.dm_category = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				qry = qry + " and c.category = ?";
 				arrSize++;
 			}
-			qry = qry + "order by c.category desc";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				qry = qry + " and sub_category_title = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and c.status = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by c.category desc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
 				pValues[i++] = obj.getDepartment_code();
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDm_category())) {
-				pValues[i++] = obj.getDm_category();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
+				pValues[i++] = obj.getCategory();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
+				pValues[i++] = obj.getSub_category_title();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
 			

@@ -55,5 +55,29 @@ public class SBUService {
 	public List<User> getCategoryFilterListForSubCategory(User obj) throws Exception {
 		return dao. getCategoryFilterListForSubCategory(obj);
 	}
+
+	public List<User> getSubCategoryfilterListForSubCategory(User obj) throws Exception {
+		return dao. getSubCategoryfilterListForSubCategory(obj);
+	}
+
+	public List<User> getStatusfilterListForSubCategory(User obj) throws Exception {
+		return dao. getStatusfilterListForSubCategory(obj);
+	}
+
+	public List<User> getSubCategoryfilterListForDeptContnt(User obj)throws Exception {
+		return dao. getSubCategoryfilterListForDeptContnt(obj);
+	}
+
+	public List<User> getStatusfilterListForDeptContnt(User obj)throws Exception {
+		return dao. getStatusfilterListForDeptContnt(obj);
+	}
+
+	public List<User> getCategoryFilterListForDeptContnt(User obj)throws Exception {
+		return dao. getCategoryFilterListForDeptContnt(obj);
+	}
+
+	public List<User> getDepartmentFilterListForDeptContnt(User obj)throws Exception {
+		return dao. getDepartmentFilterListForDeptContnt(obj);
+	}
 	
 }
