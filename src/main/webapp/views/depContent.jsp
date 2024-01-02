@@ -2503,7 +2503,7 @@ button.disabled {
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-sub_category_filter-container").append('<option value="' + val.sub_category_title + '">'+$.trim(val.sub_category_title) +'</option>');
+	                             $("#select2-sub_category_filter-container").append('<option value="' + val.sub_category + '">'+$.trim(val.sub_category_title) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
