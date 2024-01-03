@@ -2690,13 +2690,32 @@ button.disabled {
 		                   	$('#allDepartment').html(val.all_department)
 		            		$('#activeDepartment').html(val.active_department)
 		            		$('#inActiveDepartment').html(val.inActive_department)
+		            		
+		            		var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
+            				if($.trim(val.dept_status) != 'Active'){
+            					dept = '<div class=" text-error">'
+            		                  +' <span>'+dept+'</span>'
+            		                  +'</div>';
+            				}
+		                   	var cat = $.trim(val.dm_category)
+            				if($.trim(val.cat_status) != 'Active'){
+            					cat = '<div class=" text-error">'
+            		                  +' <span>'+cat+'</span>'
+            		                  +'</div>';
+            				}
+		            		var status = $.trim(val.status);
+		            		var sub_category_title = $.trim(val.sub_category_title);
+            				if($.trim(status) != 'Active'){
+            					sub_category_title = '<div class=" text-error">'
+            		                  +' <span>'+sub_category_title+'</span>'
+            		                  +'</div>';
+            				}
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
-		                	//rowArray.push("["+ $.trim(val.assigned_to_sbu)+"]"+" - ");
-		                   	rowArray.push($.trim(val.department_code));
-		                   	rowArray.push($.trim(val.department_name));
-		                   	rowArray.push($.trim(val.sub_category_title));  
-		                   	var status = $.trim(val.status);
+		                	rowArray.push(dept);
+		                   	rowArray.push($.trim(cat));
+		                   	rowArray.push($.trim(sub_category_title));  
+		                   	
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
 	                		} else {

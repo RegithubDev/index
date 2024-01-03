@@ -331,7 +331,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id as catID,c.department_code,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id as catID,c.department_code,dm.department_name,dm_category,c.status,dm.status as dept_status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -498,7 +498,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id,c.department_code,c.icon_text,dm.department_name,c.category,c.sub_category_title,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,dm.status as dept_status ,dc.status as cat_status, c.icon_text,dm.department_name,c.category,c.sub_category_title,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [sub_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -631,10 +631,11 @@ public class CompanyDao {
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		User obj = null;
 		try {
-			String qry = "SELECT  c.id,c.department_code,c.description,dm.department_name,category,sub_category_title,icon_text,documants,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,c.description,dm.department_name,category,dm_category,sub_category_title,icon_text,documants,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [sub_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
+					+ " left join [department_category] dc on c.category = dc.id "
 					+ " left join [user_profile] up on c.created_by = up.user_id "
 					+ " left join [user_profile] up1 on c.modified_by = up1.user_id "
 					+ "where c.status is not null "; 
@@ -662,7 +663,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm.status as dept_status,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id  as catID,c.department_code,dm.status as dept_status,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -697,14 +698,15 @@ public class CompanyDao {
 			
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
 			Set<String> nameSet = new HashSet<>();
-			employeesDistinctByName = objsList.stream()
-			            .filter(e -> nameSet.add(e.getDepartment_code()))
-			            .collect(Collectors.toList());
+			/*
+			 * employeesDistinctByName = objsList.stream() .filter(e ->
+			 * nameSet.add(e.getDepartment_code())) .collect(Collectors.toList());
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return employeesDistinctByName;
+		return objsList;
 	}
 
 	public List<User> getreoneSubcategory1(User obj) throws Exception {

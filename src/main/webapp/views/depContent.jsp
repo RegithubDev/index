@@ -2607,12 +2607,18 @@ button.disabled {
 		            		$('#activeSBU').html(val.active_sbu)
 		            		$('#inActiveSBU').html(val.inActive_sbu)
 		            		rowArray.push($.trim(key));
-		                   	
+		                   	var status = $.trim(val.status);
+		            		var sub_category_title = $.trim(val.sub_category_title);
+            				if($.trim(status) != 'Active'){
+            					sub_category_title = '<div class=" text-error">'
+            		                  +' <span>'+sub_category_title+'</span>'
+            		                  +'</div>';
+            				}
 		                	rowArray.push($.trim(actions));  
 		                	rowArray.push("["+ $.trim(val.sbu_code)+"]"+" - "+ $.trim(val.sbu_name));
 		                	rowArray.push("["+ $.trim(val.department_code)+"]"+" - "+ $.trim(val.department_name));
 		                   	rowArray.push($.trim(val.dm_category));
-		                   	rowArray.push($.trim(val.sub_category_title));
+		                   	rowArray.push($.trim(sub_category_title));
 		                   	var status = $.trim(val.status);
 		                   	console.log(status)
 		                	if (status == 'Active') {

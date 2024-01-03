@@ -2362,19 +2362,23 @@ button.disabled {
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreonecategory",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.id+"'";
+		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.catID+"'";
 		                    var actions = '<a href="javascript:void(0);"   onclick="getCat('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
 		                    key++;
 		                   	var rowArray = [];    	                 
 		            		var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
-		            				if($.trim(val.dept_status) != 'Active'){
-		            					dept = '<div class=" text-error">'
-		            		                  +' <span>'+dept+'</span>'
-		            		                  +'</div>'
-		            				}
+            				if($.trim(val.dept_status) != 'Active'){
+            					dept = '<div class=" text-error">'
+            		                  +' <span>'+dept+'</span>'
+            		                  +'</div>'
+            				}
 		            		var cat = $.trim($.trim(val.dm_category));
 		            		var status = $.trim(val.status);
-		                	
+		            		if($.trim(status) != 'Active'){
+		            			cat = '<div class=" text-error">'
+            		                  +' <span>'+cat+'</span>'
+            		                  +'</div>'
+            				}
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                   	rowArray.push(dept);
