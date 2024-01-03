@@ -1741,7 +1741,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dc.id,dc.[department_code],dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dm_category,sub_category_title,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
+            String qry = "SELECT dc.id,dc.[department_code],dm.status as dept_status ,dcc.status as cat_status,sc.status as subcat_status,dc.company_code,company_name,sbu_name,dc.sbu_code,dc.category,dm_category,sub_category_title,dc.sub_category,dc.content_title,dc.title_icon,dc.document_type,dc.Attachments,dc.link,"
             		+ "dc.description,dc.url,dc.status,dm.department_name, dc.[status],"
             		+ "dc.created_by,FORMAT(dc.created_date, 'dd-MMM-yy') as created_date,FORMAT(dc.modified_date, 'dd-MMM-yy  HH:mm') as modified_date,"
             		+ "dc.modified_by,dm.department_name,p.user_name,p1.user_name as  modified_by "

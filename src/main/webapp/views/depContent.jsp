@@ -2614,10 +2614,29 @@ button.disabled {
             		                  +' <span>'+sub_category_title+'</span>'
             		                  +'</div>';
             				}
+            				var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
+            				if($.trim(val.dept_status) != 'Active'){
+            					dept = '<div class=" text-error">'
+            		                  +' <span>'+dept+'</span>'
+            		                  +'</div>'
+            				}
+            			  	var cat = $.trim(val.dm_category)
+            				if($.trim(val.cat_status) != 'Active'){
+            					cat = '<div class=" text-error">'
+            		                  +' <span>'+cat+'</span>'
+            		                  +'</div>';
+            				}
+		            		var subcat_status = $.trim(val.subcat_status);
+		            		var sub_category_title = $.trim(val.sub_category_title);
+            				if($.trim(subcat_status) != 'Active'){
+            					sub_category_title = '<div class=" text-error">'
+            		                  +' <span>'+sub_category_title+'</span>'
+            		                  +'</div>';
+            				}
 		                	rowArray.push($.trim(actions));  
 		                	rowArray.push("["+ $.trim(val.sbu_code)+"]"+" - "+ $.trim(val.sbu_name));
-		                	rowArray.push("["+ $.trim(val.department_code)+"]"+" - "+ $.trim(val.department_name));
-		                   	rowArray.push($.trim(val.dm_category));
+		                	rowArray.push(dept);
+		                   	rowArray.push($.trim(cat));
 		                   	rowArray.push($.trim(sub_category_title));
 		                   	var status = $.trim(val.status);
 		                   	console.log(status)
