@@ -2227,7 +2227,7 @@ button.disabled {
                 </label>
                  -->
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+            <button onclick="getDepartmentList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
                 </button>
@@ -2544,10 +2544,7 @@ button.disabled {
                         SBU
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                       Department Code
-                      </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Department Name
+                       Department
                       </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
@@ -2735,20 +2732,18 @@ button.disabled {
       
       function clearFilter(){
 		    	$("#select2-department_filter-container").val(""); 
-		    	$("#select2-assigned_to_sbu_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
 		    	window.location = "<%=request.getContextPath()%>/department-action";
 	    }
       
       function getDepartmentFilterList() {
 	        var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(department_code) == "") {
 	        	$("#select2-department_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status :status };
+	        	var myParams = { department_code: department_code, status : status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterList",
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentActionFilterList",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2765,18 +2760,18 @@ button.disabled {
 	    }
       function getSBUFilterList() {
     	  var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
+	        var sbu_code = $("#select2-department_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(sbu_code) == "") {
-	        	$("#select2-assigned_to_sbu_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status : status };
+	        	$("#select2-department_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, status : status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getSBUsFilterListFromDepartment",
+	                url: "<%=request.getContextPath()%>/ajax/getSBUsFilterListFromDepartmentAction",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-assigned_to_sbu_filter-container").append('<option value="' + val.sbu_code + '">' + "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name)  +'</option>');
+	                             $("#select2-department_filter-container").append('<option value="' + val.sbu_code + '">' + "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name)  +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2789,13 +2784,12 @@ button.disabled {
 
       function getStatusFilterList() {
     	  var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, sbu_code: sbu_code, status : status };
+	        	var myParams = { department_code: department_code, status : status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromDepartment",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusActionFilterList",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2814,21 +2808,17 @@ button.disabled {
       
 	    function exportDepartment(){
 	    	 var department_code = $("#select2-department_filter-container").val();
-	         var assigned_to_sbu = $("#select2-assigned_to_sbu_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
 	    	
 	    	 $("#exportDepartment_filter").val(department_code);
-	     	 $("#exportSBU_Code_filter").val(assigned_to_sbu);
 	     	 $("#exportStatus_filter").val(assigned_to_sbu);
 	     	 $("#exportDepartmentForm ").submit();
 	  	}
 	    
 	    function getDepartmentList(){
 	    	getDepartmentFilterList('');
-	    	getSBUFilterList('');
 	    	getStatusFilterList('');
 	    	var department_code = $("#select2-department_filter-container").val();
-	        var sbu_code = $("#select2-assigned_to_sbu_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	    	$('#allDepartment').html(0)
     		$('#activeDepartment').html(0)
@@ -2870,8 +2860,7 @@ button.disabled {
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-
-		 	var myParams = {department_code: department_code, sbu_code: sbu_code, status : status};
+			var myParams = { department_code: department_code, status : status };
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getDepartmentMasterList",type:"POST",data:myParams,success : function(data){    				
 				
 					if(data != null && data != '' && data.length > 0){    					
@@ -2886,9 +2875,15 @@ button.disabled {
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                	rowArray.push("["+ $.trim(val.sbu_code)+"]"+" - "+ $.trim(val.sbu_name));
-		                   	rowArray.push($.trim(val.department_code));
-		                   	rowArray.push($.trim(val.department_name));
-		                   	var status = $.trim(val.status);
+		                	var status = $.trim(val.status);
+		                	if (status == 'Active') {
+		                		var dept = "["+ $.trim(val.department_code)+"]"+" - "+ $.trim(val.department_name)
+		                	 	rowArray.push(dept);
+	                		} else {
+	                			var dept = "["+ $.trim(val.department_code)+"]"+" - "+ $.trim(val.department_name)
+	                			dept = '<p class="text-error">'+$.trim(dept)+' </p>'
+	                		 	rowArray.push(dept);
+	                		}
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
 	                		} else {
@@ -2899,7 +2894,7 @@ button.disabled {
 		                   	rowArray.push($.trim(val.created_date));
 		                	rowArray.push($.trim(val.modified_by));
 		                   	rowArray.push($.trim(val.modified_date));
-		        		    $("#datatable-department td").addClass("whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5");
+		        		  //  $("#datatable-department td").addClass("whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5");
 
 		                    table.row.add(rowArray).draw( true );
 						});

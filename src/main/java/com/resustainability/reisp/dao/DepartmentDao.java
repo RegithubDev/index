@@ -344,8 +344,8 @@ public class DepartmentDao {
 					+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 					+ " where s.department_code is not null and s.department_code <> '' ";
 			int arrSize = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				qry = qry + " and s.sbu_code = ?";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
 				arrSize++;
 			}	
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
@@ -354,8 +354,8 @@ public class DepartmentDao {
 			}	
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				pValues[i++] = obj.getSbu_code();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();
@@ -621,6 +621,66 @@ public class DepartmentDao {
 			throw new Exception(e);
 		}
 		return flag;
+	}
+
+	public List<Department> getDepartmentActionFilterList(Department obj) throws Exception {
+		List<Department> objsList = new ArrayList<Department>();
+		try {
+			String qry = "SELECT department_code,s.department_name from [department_master] s "
+					+ " where s.department_code is not null and s.department_code <> '' ";
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}	
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ?";
+				arrSize++;
+			}	
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<Department>(Department.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<Department> getStatusActionFilterList(Department obj) throws Exception {
+		List<Department> objsList = new ArrayList<Department>();
+		try {
+			String qry = "SELECT distinct(status) from [department_master] s "
+					+ " where s.status is not null and s.status <> '' ";
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				qry = qry + " and s.department_code = ?";
+				arrSize++;
+			}	
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				qry = qry + " and s.status = ?";
+				arrSize++;
+			}	
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+				pValues[i++] = obj.getDepartment_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
+				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry, pValues, new BeanPropertyRowMapper<Department>(Department.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
 	}
 
 

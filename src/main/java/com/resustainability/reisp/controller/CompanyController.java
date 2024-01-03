@@ -162,7 +162,7 @@ public class CompanyController {
 		try {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			reonecategoryList = service.getreonecategory1(obj);
+			reonecategoryList = service.getreonecategory(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getreonecategoryList : " + e.getMessage());

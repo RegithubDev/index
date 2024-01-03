@@ -79,4 +79,12 @@ public class DepartmentService {
 	public boolean updateDCForm(User obj)  throws Exception {
 		return dao. updateDCForm(obj);
 	}
+
+	public List<Department> getDepartmentActionFilterList(Department obj) throws Exception {
+		return dao. getDepartmentActionFilterList(obj);
+	}
+
+	public List<Department> getStatusActionFilterList(Department obj)  throws Exception {
+		return dao. getStatusActionFilterList(obj);
+	}
 }

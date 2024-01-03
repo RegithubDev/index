@@ -462,6 +462,40 @@ public class DepartmentController {
 		return companiesList;
 	}
 
+	@RequestMapping(value = "/ajax/getDepartmentActionFilterList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Department> getDepartmentActionFilterList(@ModelAttribute Department obj,HttpSession session) {
+		List<Department> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.getDepartmentActionFilterList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentActionFilterList : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	@RequestMapping(value = "/ajax/getStatusActionFilterList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Department> getStatusActionFilterList(@ModelAttribute Department obj,HttpSession session) {
+		List<Department> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.getStatusActionFilterList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getStatusActionFilterList : " + e.getMessage());
+		}
+		return companiesList;
+	}
+
 	@RequestMapping(value = "/ajax/getDepartmentMasterList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Department> getDepartmentMasterList(@ModelAttribute Department obj,HttpSession session) {

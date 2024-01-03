@@ -2200,7 +2200,7 @@ button.disabled {
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           <label class="block">
-                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Department</option>
                    	
                   </select>
@@ -2516,7 +2516,7 @@ button.disabled {
 		    	window.location = "<%=request.getContextPath()%>/reone-subcategory";
 	    }
       
-      function getDepartmentFilter() {
+      function getDepartmentFilterList() {
 	        var department_code = $("#select2-department_filter-container").val();
 	        var category = $("#select2-category_filter-container").val();
 	        var sub_category_title = $("#select2-sub_category_filter-container").val();
@@ -2707,7 +2707,7 @@ button.disabled {
 		                   	rowArray.push($.trim(val.created_date));
 		                	rowArray.push($.trim(val.modified_by));
 		                   	rowArray.push($.trim(val.modified_date));
-		        		    $("#datatable-department td").addClass("whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5");
+		        		  //  $("#datatable-department td").addClass("whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5");
 
 		                    table.row.add(rowArray).draw( true );
 						});
