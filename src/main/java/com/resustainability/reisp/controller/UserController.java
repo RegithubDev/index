@@ -129,6 +129,19 @@ public class UserController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/users", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView users(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.user);
+		User obj = null;
+		try {
+		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/update-user-details", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView updateUserSelf(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.updateSelfUser);
