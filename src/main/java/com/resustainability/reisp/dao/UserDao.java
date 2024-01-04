@@ -1712,7 +1712,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dc.[department_code],department_name,description, dc.[status], dc.dm_category FROM [department_category] dc "
+            String qry = "SELECT dc.id,dc.[department_code],department_name,description, dc.[status], dc.dm_category FROM [department_category] dc "
             		+ "left join department_master dm on dc.department_code = dm.department_code "
             		+ " where dc.status <> 'Inactive' ";
             int arrSize = 0;

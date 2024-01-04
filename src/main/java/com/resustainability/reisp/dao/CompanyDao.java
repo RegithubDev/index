@@ -513,7 +513,7 @@ public class CompanyDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
-				qry = qry + " and c.category = ?";
+				qry = qry + " and dc.dm_category = ?";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
