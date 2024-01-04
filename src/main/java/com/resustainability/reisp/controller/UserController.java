@@ -180,6 +180,24 @@ public class UserController {
 		return companiesList;
 	}
 	
+	@RequestMapping(value = "/ajax/usersForDept", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> usersForDept(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.usersForDept(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("usersForDept : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
 	@RequestMapping(value = "/update-self-user", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView updateUserSelf(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
 		boolean flag = false;

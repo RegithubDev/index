@@ -383,14 +383,7 @@ public class DepartmentDao {
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {
 				flag = true;
-				obj.setDm_category("Dashboard");
-				obj.setDescription("Dashboard( "+obj.getDepartment_code()+" ) is a visual representation of data insights and metrics, often displayed on a single screen or interface");
-				String insertCatQry = "INSERT INTO [department_category] "
-						+ "		   (department_code,dm_category,description,status,created_by,created_date)"
-						+ " VALUES (:department_code,:dm_category,:description,:status,:craeted_by,getdate())";
 				
-				 paramSource = new BeanPropertySqlParameterSource(obj);		 
-			     count = namedParamJdbcTemplate.update(insertCatQry, paramSource);
 			}
 			transactionManager.commit(status);
 		}catch (Exception e) {

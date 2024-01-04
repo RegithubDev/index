@@ -1888,5 +1888,37 @@ public class UserDao {
         return objsList;
 	}
 
+	public List<User> usersForDept(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+            String qry = "SELECT dc.user_id,dc.[user_name],dm.department_code,department_name,base_project as project_code,project_name  "
+            		+ " FROM [user_profile] dc "
+            		+ "left join department_master dm on dc.base_department = dm.department_code "
+            		+ "left join project p on dc.base_project = p.project_code "
+            		+ "left join user_accounts ua on dc.user_id = ua.user_id "
+            		+ " where ua.status <> 'Inactive' ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and dc.base_department = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by dc.user_name asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;
+	}
+
 
 }

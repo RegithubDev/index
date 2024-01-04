@@ -32,7 +32,13 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-    <style>                                            
+    <style>   
+    .scrollable-div {
+  height: 400px;     /* Set a height for the div */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: add a border for better visualization */
+  padding: 10px;     /* Optional: add some padding inside the div */
+}                                         
       .cursor{
 	    cursor: pointer;
     }
@@ -2721,7 +2727,7 @@ z-index: 1000;
                 <img class="-mt-16 h-40 sm:mt-0" src="images/illustrations/teacher.svg" alt="">
               </div>
               <div class="mt-2 flex-1 pt-2 text-center text-white sm:mt-0 sm:text-left">
-                <h3 class="text-xl">
+                <h3 class="text-xl dept">
                  Content Box <!-- <span class="font-semibold">Caleb</span> -->
                 </h3>
                <!--  <p class="mt-2 leading-relaxed">
@@ -2906,6 +2912,48 @@ z-index: 1000;
               </h2>
             </div>
             
+            <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+         
+	          <div class="col-span-12 lg:col-span-8 xl:col-span-8">
+	          <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-1" id="deptList"> 
+				   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
+				   <c:if test="${obj.department_code eq 'BD' }">
+				   
+				   <div class="card"> <div class="flex justify-center p-5"></div>
+		            <div class="px-4 pb-8 text-center sm:px-5">
+		              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
+		                 ${obj.dm_category }
+		              </h4>
+		              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+		                Sub Categories
+		              </a>
+		            </div>
+		          </div>
+		          </c:if>
+		    </c:forEach> 
+        </div>
+	          </div>
+	          <div class="col-span-12 lg:col-span-4">
+	           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-1 lg:gap-6">
+              <div class="card px-4 pb-4 sm:px-5">
+                <div class="my-3 flex h-8 items-center justify-between">
+                  <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
+                  <!--  <span id="dCode"></span> - --> Associates
+                  </h2>
+					<a href="<%=request.getContextPath() %>/user" class="border-b border-dotted border-current pb-0.5 text-xs+ font-medium text-primary outline-none 
+					transition-colors duration-300 hover:text-primary/70 focus:text-primary/70 dark:text-accent-light 
+					dark:hover:text-accent-light/70 dark:focus:text-accent-light/70">View All</a>
+                  
+                </div>
+                <div class="space-y-4 scrollable-div" id="depUsersList" >
+
+                      
+                    </div>
+                </div>
+            </div>
+	          </div>
+	       </div>
+        
             
             <div class=" text-center"  id="deptListERR">
          
@@ -2914,28 +2962,25 @@ z-index: 1000;
             
             <br>
             
-           		<div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
-		   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
-		   <c:if test="${obj.department_code eq 'BD' }">
-		   
-		   <div class="card"> <div class="flex justify-center p-5"></div>
-            <div class="px-4 pb-8 text-center sm:px-5">
-              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
-                 ${obj.dm_category }
-              </h4>
-              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                Sub Categories
-              </a>
-            </div>
-          </div>
-          
-		   
-          </c:if>
-    </c:forEach> 
-      
+           		<%-- <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
+				   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
+				   <c:if test="${obj.department_code eq 'BD' }">
+				   
+				   <div class="card"> <div class="flex justify-center p-5"></div>
+		            <div class="px-4 pb-8 text-center sm:px-5">
+		              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
+		                 ${obj.dm_category }
+		              </h4>
+		              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+		                Sub Categories
+		              </a>
+		            </div>
+		          </div>
+		          </c:if>
+		    </c:forEach> 
         </div>
              
-             
+              --%>
 
         </div>
 
@@ -3147,8 +3192,11 @@ z-index: 1000;
    
        function ChangeCategoryForDept(department_code,department_name){
     	   		$(".dept").html( $.trim(department_name));
+    	   		$("#dCode").html( $.trim(department_code));
+    	   		
 	        if ($.trim(department_code) != "") {
 	        	 $("#deptList div").remove();
+	        	 $("#depUsersList div").remove();
                  $("#deptListLi li").remove();
                  $("#deptListLi").text('');
                  $("#deptListERR p").remove();
@@ -3230,6 +3278,31 @@ z-index: 1000;
 	                    }
 	                    $(".dept").html( $.trim(department_name));
 	                    
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/usersForDept",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                        	 $(".dept").html( $.trim(val.department_name));
+	                        	 var url = 'href="<%=request.getContextPath() %>'
+		                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'"';
+		                        	var html= '<div class="flex cursor-pointer items-center justify-between space-x-2"><div class="flex items-center space-x-3">'
+					                      +'<div><div class="flex items-center space-x-2"><p class="font-medium text-slate-700 dark:text-navy-100">'+$.trim(val.user_name)+'</p>'
+					                      +' </div><p class="text-xs text-slate-400 line-clamp-1 dark:text-navy-300">['+$.trim(val.project_code)+'] - '+$.trim(val.project_name)+'</p> </div></div></div>';
+	                                     $("#depUsersList").append(html);
+	                        });
+	                    }else{
+	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
+		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+		                        +'</p>';
+	                        $("#usertdeptListERR").append(html);
+	                    }
 	                },error: function (jqXHR, exception) {
 	    	   			      $(".page-loader").hide();
 	       	          	  getErrorMessage(jqXHR, exception);

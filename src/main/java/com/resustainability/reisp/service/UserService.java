@@ -160,4 +160,8 @@ public class UserService {
 		return dao.getDeptContentListView(user);
 	}
 
+	public List<User> usersForDept(User obj)  throws Exception {
+		return dao.usersForDept(obj);
+	}
+
 }
