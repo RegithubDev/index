@@ -373,18 +373,18 @@ public class CompanyDao {
 			String insertQry = "INSERT INTO [department_category] (department_code,description,dm_category,status,created_by,created_date) "
 					+ "VALUES "
 					+ "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
-			String [] categorys = obj.getDm_category().split(",");
-			String [] description = obj.getDescription().split(",");
-			String [] statuss = obj.getStatus().split(",");
-			int i = 0;
-			for (String set : categorys) {
-				obj.setDm_category(categorys[i]);
-				obj.setDescription(description[i]);
-				obj.setStatus(statuss[i]);
+			//String [] categorys = obj.getDm_category().split(",");
+			//String [] description = obj.getDescription().split(",");
+			//String [] statuss = obj.getStatus().split(",");
+			//int i = 0;
+			//for (String set : categorys) {
+				//obj.setDm_category(categorys[i]);
+				//obj.setDescription(description[i]);
+				//obj.setStatus(statuss[i]);
 				BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 			    count = namedParamJdbcTemplate.update(insertQry, paramSource);
-			    i++;
-			}
+			  //  i++;
+			//}
 			
 			if(count > 0) {
 				flag = true;
@@ -406,36 +406,38 @@ public class CompanyDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			
-
-			
-			String insertQry = "INSERT INTO [department_category] (department_code,description,dm_category,status,created_by,created_date) "
-					+ "VALUES "
-					+ "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
-			
+			/*
+			 * 
+			 * 
+			 * String insertQry =
+			 * "INSERT INTO [department_category] (department_code,description,dm_category,status,created_by,created_date) "
+			 * + "VALUES " +
+			 * "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
+			 */
 			String updateQry = "UPDATE [department_category] SET dm_category = :dm_category,description = :description, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
-			String [] categorys = obj.getDm_category().split(",");
-			String [] description = obj.getDescription().split(",");
-			String [] statuss = obj.getStatus().split(",");
-			String [] ids = obj.getId().split(",");
-			int i = 0;
-			for (String set : categorys) {
+			/*
+			 * String [] categorys = obj.getDm_category().split(","); String [] description
+			 * = obj.getDescription().split(","); String [] statuss =
+			 * obj.getStatus().split(","); String [] ids = obj.getId().split(",");
+			 */
+			//int i = 0;
+			/*for (String set : categorys) {
 				obj.setDm_category(categorys[i]);
 				obj.setDescription(description[i]);
 				obj.setStatus(statuss[i]);
-				obj.setId(ids[i]);
+				obj.setId(ids[i]);*/
 				
-				if(ids[i].equalsIgnoreCase("New")) {
+				/*if(ids[i].equalsIgnoreCase("New")) {
 					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 				    count = namedParamJdbcTemplate.update(insertQry, paramSource);
-				}else {
+				}else {*/
 					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 				    count = namedParamJdbcTemplate.update(updateQry, paramSource);
-				}
+				//}
 				
-				i++;
-			}
-			
+				/*
+				 * i++; }
+				 */
 			if(count > 0) {
 				flag = true;
 			}
@@ -453,7 +455,7 @@ public class CompanyDao {
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		User obj = null;
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -473,7 +475,7 @@ public class CompanyDao {
 			}
 			obj = (User)jdbcTemplate.queryForObject(qry, pValues, new BeanPropertyRowMapper<User>(User.class));
 			
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
+			if(StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
 				String qryDetails =  "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.description,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 						+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 						+ "up1.user_name as  modified_by FROM [department_category] c "
@@ -498,7 +500,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm.status as dept_status ,dc.status as cat_status, c.icon_text,dm.department_name,c.category,c.sub_category_title,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id as subCatId, dc.id as catID,c.department_code,dm.status as dept_status ,dc.status as cat_status, c.icon_text,dm.department_name,c.category,c.sub_category_title,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [sub_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -513,11 +515,11 @@ public class CompanyDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
-				qry = qry + " and dc.dm_category = ?";
+				qry = qry + " and dc.id = ?";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
-				qry = qry + " and sub_category_title = ? ";
+				qry = qry + " and c.id = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
@@ -754,7 +756,7 @@ public class CompanyDao {
 	public List<User> getDepartmentfilterInCat(User obj) throws Exception {
 		List<User> objsList = new ArrayList<User>();
 		try {
-			String qry = "SELECT  distinct(c.department_code) as department_code,dm.department_name,c.dm_category,c.status FROM [department_category] c "
+			String qry = "SELECT  distinct(c.department_code) as department_code,dm.department_name FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
 					+ "where c.department_code is not null "; 
 			
@@ -771,7 +773,7 @@ public class CompanyDao {
 				qry = qry + " and c.status = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by c.department_code desc";
+			qry = qry + " group by c.department_code,dm.department_name order by c.department_code desc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {

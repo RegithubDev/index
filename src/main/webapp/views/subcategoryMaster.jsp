@@ -92,6 +92,9 @@
     top: 0;
     width: 100%;
 }
+.m-7{
+	    margin-left: 3rem;
+}
     
        @media (min-width: 766px) and (max-width: 1200px){
       .qutt{
@@ -2338,6 +2341,70 @@ z-index: 1000;
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
           
              <c:forEach var="obj" items="${departmentcontentList }"  varStatus="index">
+             
+               <%-- <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Gallery' }">
+               <div class="flex w-72 shrink-0 flex-col">
+               <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper h-48 w-full rounded-2xl object-cover object-center rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden" style="
+    /* height: 37vh; */
+    /* width: 18rem; */
+">
+                    <div class="swiper-wrapper" id="swiper-wrapper-60e1c2d6f10ceb846" aria-live="off" style="transition-duration: 300ms; transform: translate3d(-576px, 0px, 0px);">
+                     <c:choose>
+  					 <c:when test="${  fn:contains( obj.attachments, ',' ) }">
+		  	                <c:set var="filesList" value="${fn:split(obj.attachments, ',')}" />
+			                 <c:choose>
+					         <c:when test ="${fn:length(filesList) gt 0}" >
+					             <c:forEach var="obj1" items="${filesList}">
+					             <div class="swiper-slide justify-content" role="group" aria-label="1 / 4" style="width: 288px;">
+			                        <img class="h-full m-7 w-half object-cover" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj1}" alt="">
+			                      </div> 
+								</c:forEach>
+					         </c:when>
+					         
+					      </c:choose>
+			      </c:when>
+			       <c:otherwise>
+			      
+			       
+			        
+			         <c:if test="${ not empty fn:trim(obj.attachments) && obj.document_type eq 'Document' }">
+			       		<div class="swiper-slide" role="group" aria-label="1 / 4" style="width: 288px;">
+			                        <img class="h-full w-full object-cover" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj1}" alt="">
+			           </div>
+			        </c:if>
+			         </c:otherwise>
+			       </c:choose>
+                    </div>
+                    <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(141px, 0px, 0px); transition-duration: 300ms; width: 70.5px;"></div></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-60e1c2d6f10ceb846" aria-disabled="false"></div>
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-60e1c2d6f10ceb846" aria-disabled="false"></div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+                <div class="card mx-2 -mt-8 grow rounded-2xl p-3.5">
+                  <div class="flex space-x-2">
+                    <div class="badge  py-1 iconCLass uppercase ">
+                       ${obj.title_icon }
+                    </div>
+                    
+                  </div>
+                  <div class="mt-2">
+                    <a href="#" class="text-sm+ font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"> ${obj.content_title }</a>
+                  </div>
+                  <div class="flex items-end justify-between">
+                    <p class="mt-2">
+                      <span class="text-base font-medium text-slate-700 dark:text-navy-100">$100</span>
+                      <span class="text-xs text-slate-400 dark:text-navy-300">/day</span>
+                    </p>
+                    <p class="flex shrink-0 items-center space-x-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="size-3.5 text-slate-400 dark:text-navy-300" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.948 4.29l1.643 3.169c.224.44.82.864 1.325.945l2.977.477c1.905.306 2.353 1.639.98 2.953l-2.314 2.233c-.392.378-.607 1.107-.486 1.63l.663 2.763c.523 2.188-.681 3.034-2.688 1.89l-2.791-1.593c-.504-.288-1.335-.288-1.848 0l-2.791 1.594c-1.997 1.143-3.21.288-2.688-1.89l.663-2.765c.12-.522-.094-1.251-.486-1.63l-2.315-2.232c-1.362-1.314-.924-2.647.98-2.953l2.978-.477c.495-.081 1.092-.504 1.316-.945l1.643-3.17c.896-1.719 2.352-1.719 3.239 0z"></path>
+                      </svg>
+                      <span>4.9</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+               </c:if> --%>
          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
             <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
             <div class="absolute right-0 badge bg-navy-700 text-white dark:bg-navy-900   border-2 border-white bg-error dark:border-navy-700" style="
@@ -2611,6 +2678,8 @@ z-index: 1000;
     	  var dname = parts[6];
     	  var cat = parts[7];
     	  var scat = parts[8];
+    	  var catId = parts[9];
+    	  var scatId = parts[10];
     	  dName = parts[7];
     	  console.log(parts)
     	  
@@ -2627,8 +2696,8 @@ z-index: 1000;
     	  $('.sub_cat').text(scat)
     	  $("#depturl").attr("href", deptURL);
     	  var catURL = result.replace("subcat", "subcat1");
-    	  $("#caturl").attr("href", catURL+'/'+cat);
-    	  $("#cat_suburl").attr("href", result+'/'+cat+'/'+scat);
+    	  $("#caturl").attr("href", catURL+'/'+cat+'/'+catId);
+    	  $("#cat_suburl").attr("href", result+'/'+cat+'/'+scat+'/'+catId+'/'+scatId);
     	  deptURL = deptURL+'/';
     	  
     	  cat = cat.replaceAll("%20", " ");

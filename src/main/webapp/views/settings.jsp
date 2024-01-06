@@ -2333,6 +2333,50 @@ z-index: 1000;
             </div>
           </div>
         </div>
+        <div class="flex card  rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2  tracking-wide text-white outline-none transition-all">
+          <div class="group flex items-center space-x-1">
+            <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
+            <div class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          <div class="flex space-x-2">
+                            <div class="flex items-center " >
+                            <i class="fas fa-analytics" style="color: #e21e26;"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500  dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="
+    color: #e21e26;
+">
+			                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+			                    </svg>
+                            </div>
+                            <span class="text">Reports</span>
+                          </div>
+                        </div>
+              
+            </h2>
+          </div> 
+  </div>
+  <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
+          <div class="col-span-12 lg:col-span-12">
+            <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">
+               <div class="card swiper-slide  shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
+                 <div class=" flex cursor-pointer flex justify-between space-x-1 rounded px-2 py-1 tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+                 <div class=" flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+              	 <span> &nbsp;User Report</span></div>
+                  <div>
+                  <a href="<%=request.getContextPath() %>/user-report" class=" btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45 text-re" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
+                      </svg>
+                    </a>
+                    </div> 
+                  </div>
+                </div>
+               
+                </div>
+
+            <div class="ax-transparent-gridline mt-2 px-2">
+              
+            </div>
+          </div>
+        </div>
       </main>
       <div class="mt-5" x-data="{showModal:false}">
                

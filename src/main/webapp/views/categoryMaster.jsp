@@ -34,11 +34,34 @@
     />
     <style>   
     .scrollable-div {
-  height: 400px;     /* Set a height for the div */
+       /* Set a height for the div */
   overflow-y: auto;  /* Enable vertical scrolling */
   border: 1px solid #ccc; /* Optional: add a border for better visualization */
   padding: 10px;     /* Optional: add some padding inside the div */
-}                                         
+}          
+	     
+	     .parent-div {
+    overflow-y: auto; 
+       /*  overflow: hidden; */
+        border: 1px solid #ccc;
+        position: relative; /* Ensure relative position for child content */
+    }
+    
+     #depUsersList {
+      position: absolute;
+        top: 0;
+        left: 0;
+        animation: scrollAnimation 10s infinite linear;
+    }
+
+    @keyframes scrollAnimation {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-100%);
+        }
+    }   
       .cursor{
 	    cursor: pointer;
     }
@@ -2935,7 +2958,7 @@ z-index: 1000;
 	          </div>
 	          <div class="col-span-12 lg:col-span-4">
 	           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-1 lg:gap-6">
-              <div class="card px-4 pb-4 sm:px-5">
+              <div class="card px-4 pb-4 sm:px-5 " >
                 <div class="my-3 flex h-8 items-center justify-between">
                   <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
                   <!--  <span id="dCode"></span> - --> Associates
@@ -2945,8 +2968,10 @@ z-index: 1000;
 					dark:hover:text-accent-light/70 dark:focus:text-accent-light/70">View All</a>
                   
                 </div>
-                <div class="space-y-4 scrollable-div" id="depUsersList" >
-
+                <div class="parent-div"  id="parentDiv" style="height: 20rem;" >
+				 <div class="space-y-4 scrollable-div" id="depUsersList" >
+				
+				</div>
                       
                     </div>
                 </div>
@@ -2959,7 +2984,7 @@ z-index: 1000;
          
          
         </div>
-            
+             
             <br>
             
            		<%-- <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
@@ -3189,7 +3214,41 @@ z-index: 1000;
            },
          });
        } */
+       
+       var parentDiv = document.getElementById('parentDiv');
+       var childContent = document.getElementById('depUsersList');
+       
+       parentDiv.addEventListener('mouseleave', function() {
+    	   childContent.style.animationPlayState = 'running';
+       });
    
+       window.onload = function() {
+           var scrollDiv = document.getElementById('depUsersList');
+           var scrollHeight = scrollDiv.scrollHeight;
+           var clientHeight = scrollDiv.clientHeight;
+           var animationDuration = (scrollHeight / clientHeight) * 150; // Calculate animation duration based on content height and client height
+
+           // Set animation duration
+           scrollDiv.style.animationDuration = animationDuration + 's';
+
+           // Add a class to start the animation
+           scrollDiv.classList.add('scroll-animation');
+
+           // Remove the class after the animation completes
+           setTimeout(function() {
+               scrollDiv.classList.remove('scroll-animation');
+               scrollDiv.scrollTop = 0; // Scroll back to the top
+           }, animationDuration * 1000); // Convert animation duration to milliseconds
+       };
+       
+       document.getElementById('parentDiv').addEventListener('mouseenter', function() {
+           // Get the child content element
+           var childContent = document.getElementById('depUsersList');
+           childContent.style.animationPlayState = 'paused';
+           // Move the child content to the top
+           childContent.style.transform = 'translateY(0)';
+       });
+       
        function ChangeCategoryForDept(department_code,department_name){
     	   		$(".dept").html( $.trim(department_name));
     	   		$("#dCode").html( $.trim(department_code));
@@ -3216,7 +3275,7 @@ z-index: 1000;
 	                        $.each(data, function (i, val) {
 	                        	 $(".dept").html( $.trim(val.department_name));
 	                        	 var url = 'href="<%=request.getContextPath() %>'
-		                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'"';
+		                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'/'+$.trim(val.catID)+'"';
 		                        	var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
 		                        		+'<div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
@@ -3292,7 +3351,7 @@ z-index: 1000;
 	                        	 $(".dept").html( $.trim(val.department_name));
 	                        	 var url = 'href="<%=request.getContextPath() %>'
 		                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'"';
-		                        	var html= '<div class="flex cursor-pointer items-center justify-between space-x-2"><div class="flex items-center space-x-3">'
+		                        	var html= '<div class="flex cursor-pointer items-center justify-between space-x-2 child-div p-2 bg-primary/10 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-accent-light/10 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25"><div class="flex items-center space-x-3">'
 					                      +'<div><div class="flex items-center space-x-2"><p class="font-medium text-slate-700 dark:text-navy-100">'+$.trim(val.user_name)+'</p>'
 					                      +' </div><p class="text-xs text-slate-400 line-clamp-1 dark:text-navy-300">['+$.trim(val.project_code)+'] - '+$.trim(val.project_name)+'</p> </div></div></div>';
 	                                     $("#depUsersList").append(html);

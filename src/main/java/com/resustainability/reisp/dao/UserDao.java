@@ -1694,8 +1694,8 @@ public class UserDao {
 		try {
 			String qry = "SELECT dm.department_code,department_name "
 					+ "FROM department_master dm "
-					+ "LEFT JOIN department_category dc ON dm.department_code = dc.department_code "
-					+ "WHERE dc.department_code IS NULL and dm.status <> 'Inactive'; ";
+				//	+ "LEFT JOIN department_category dc ON dm.department_code = dc.department_code "
+					+ "WHERE dm.department_code IS not NULL and dm.status <> 'Inactive'; ";
 		
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			if(objsList.size() > 0) {
@@ -1712,7 +1712,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dc.id,dc.[department_code],department_name,description, dc.[status], dc.dm_category FROM [department_category] dc "
+            String qry = "SELECT dc.id as catID,dc.[department_code],department_name,description, dc.[status], dc.dm_category FROM [department_category] dc "
             		+ "left join department_master dm on dc.department_code = dm.department_code "
             		+ " where dc.status <> 'Inactive' ";
             int arrSize = 0;
@@ -1858,11 +1858,11 @@ public class UserDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getCategory())) {
-				qry = qry + " and dcc.dm_category = ? ";
+				qry = qry + " and dc.category = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getSub_category())) {
-				qry = qry + " and sc.sub_category_title = ? ";
+				qry = qry + " and dc.sub_category = ? ";
 				arrSize++;
 			}
 			qry = qry + "order by dc.category desc";

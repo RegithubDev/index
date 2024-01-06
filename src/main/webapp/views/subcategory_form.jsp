@@ -2507,7 +2507,6 @@ z-index: 1000;
             <label class="block">
 	                  <span>Status</span><span class="requried">*</span> 
 	                  <select id="status_filter" name="status" class="form-select  mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-	                   <option value="">Select Status</option>
 	                    <option  value="Active" <c:if test="${sCDetails.status eq 'Active' }">selected</c:if>>Active</option>
 	                    <option  value="Inactive"  <c:if test="${sCDetails.status eq 'Inactive' }">selected</c:if>>Inactive</option>
 	                  </select>

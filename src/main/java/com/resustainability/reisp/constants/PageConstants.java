@@ -46,6 +46,7 @@ public class PageConstants {
 		public static final String department = "department";
 		public static final String location = "location";
 		public static final String user = "users"; 
+		public static final String usersReport = "usersReport"; 
 		public static final String hrPage = "hr"; 
 		public static final String itPage = "it";
 		public static final String scmPage = "SCM";

@@ -2469,7 +2469,47 @@ z-index: 1000;
 		            </div>
 		            <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
 		             <div class="space-y-4" id="addNewRow">
-		              <c:choose>
+		             <div id="row${index.count }">
+					                
+		           					 <input name="id"  value="${CDetails.id}"  type="hidden" />
+					              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
+			                  <label class="block sm:col-span-8">
+			                    <span>Category Title</span>
+			                    <div class="relative mt-1.5 flex">
+			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
+								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
+								                placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
+			                     
+			                    </div>
+			                  </label>
+			                  <label class="block sm:col-span-4">
+			                    <span>Status</span>
+			                    <div class="relative mt-1.5 flex">
+			                      <select
+					                   id="select2-status_add-container"
+					              		name="status"
+					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+					                    <option value="Active" <c:if test="${CDetails.status eq 'Active'}">selected</c:if>>Active</option>
+					                    <option value="Inactive" <c:if test="${CDetails.status eq 'Inactive'}">selected</c:if>>Inactive</option>
+					                  </select>
+			                    </div>
+			                  </label>
+			                </div>
+			                
+					              <label class="block mt-2">
+					                <span>Content Description</span>
+					                <textarea rows="4" placeholder="`Description" class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
+					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
+					                dark:focus:border-accent" id="description${index.count }" name="description">${CDetails.description}</textarea>
+					              </label>
+					               <%-- <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
+					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+					                  </svg>
+					                  
+					                </a> --%>
+					             </div>
+		              <%-- <c:choose>
 					         <c:when test ="${fn:length(CDetails.categoryList) gt 0}" >
 					             <c:forEach var="obj" items="${CDetails.categoryList}" varStatus="index">
 					             <div id="row${index.count }">
@@ -2558,19 +2598,19 @@ z-index: 1000;
 				                </div>
 				                 <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
 					         </c:otherwise>
-					      </c:choose>
+					      </c:choose> --%>
 					      
 		       
 		             
 		            </div>
-		             <div class="flex justify-center space-x-2 pt-4">
+		            <!--  <div class="flex justify-center space-x-2 pt-4">
 				          <a  onclick="addNewRow();" class="btn space-x-2 bg-warning font-medium text-white shadow-lg shadow-warning/50 hover:bg-warning-focus focus:bg-warning-focus active:bg-warning-focus/90">
 		                  <span>Add New Row</span>
 		                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 		                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
 		                  </svg>
 		                </a>
-		              </div>
+		              </div> -->
 		          </div>
 		        </div>            
             </form>
@@ -2653,104 +2693,8 @@ z-index: 1000;
       $(document).ready(function() {
 
 
-          function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-based
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? '0' + hours : hours;
-            minutes = (minutes < 10) ? '0' + minutes : minutes;
-            seconds = (seconds < 10) ? '0' + seconds : seconds;
-            day = (day < 10) ? '0' + day : day;
-            month = (month < 10) ? '0' + month : month;
-
-            var time = hours + ':' + minutes + ':' + seconds; 
-            var date = day + '-' + month + '-' + year;
-
-            var clock1 =  '<i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
-
-            var clock =  ' <div class="mt-5 space-y-4 " style=" margin-left: 2rem;"> <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
-            $('#clock').html(clock);
-            $('#clock1').html(clock1);
-          }
-
-          setInterval(updateClock, 1000);
-
-          var cityName;
-          if (navigator.geolocation) {
-              // Get current position
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                // Make API request to fetch city name
-                $.ajax({
-                  url: 'https://nominatim.openstreetmap.org/reverse',
-                  type: 'GET',
-                  data: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude,
-                    zoom: 10,
-                    addressdetails: 1
-                  },
-                  success: function(response) {
-                    var city = response.address.city || response.address.town || response.address.village || '';
-                    var country = response.address.country || '';
-
-                    // Update HTML element with city name
-                    cityName = city;
-                    $('#city').text(city + ', ' + country);
-                    var cityNplace = city + ',' + country
-                    getWeather(cityNplace);
-                  },
-                  error: function(xhr, status, error) {
-                    console.log(error);
-                  }
-                });
-              });
-            } else {
-              console.log('Geolocation is not supported by this browser.');
-            }
-          
-      
-          
-      });
-     function getWeather(cityNplace){
-    	    
-          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
-          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
-
-          $.ajax({
-              url: apiUrl,
-              method: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  const temperatureElement = $('#temperature');
-                  const descriptionElement = $('#description');
-                  const windSpeedElement = $('#wind-speed');
-                  const weatherIconElement = $('#weather-icon');
-
-                  const temperature = Math.round(data.main.temp);
-                  const description = data.weather[0].description;
-                  const windSpeed = data.wind.speed;
-                  const weatherIcon = data.weather[0].icon;
-
-                  temperatureElement.text(temperature +'°C');
-                  descriptionElement.text(description);
-                  windSpeedElement.text(windSpeed+' m/s');
-                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
-              },
-              error: function(error) {
-                  console.error('Error:', error);
-              }
         });
     	  
-      }
      
      const button = document.getElementById("signout_button");
      button.onclick = () => {

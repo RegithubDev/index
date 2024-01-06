@@ -2979,6 +2979,7 @@ z-index: 1000;
     	  var dCode = parts[5];
     	  var d_name = parts[6];
     	  dName = parts[7];
+    	  var catID = parts[8];
     	  console.log(parts)
     	  
     	   if (parts.length >= 4) {
@@ -2999,111 +3000,13 @@ z-index: 1000;
     	  d_name = d_name.replaceAll("%22", " ");
     	  console.log(dName)
     	 
-    	  ChangeCategoryForDept(dCode,d_name,dName);
+    	  ChangeSubCategoryForDept(dCode,dName,catID);
     	 // encryptedURL = encryptURL(currentURL);
     	 // window.history.pushState({}, document.title, encryptedURL);
   	    // Decrypt the URL
-    	
-    	
-          function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-based
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? '0' + hours : hours;
-            minutes = (minutes < 10) ? '0' + minutes : minutes;
-            seconds = (seconds < 10) ? '0' + seconds : seconds;
-            day = (day < 10) ? '0' + day : day;
-            month = (month < 10) ? '0' + month : month;
-
-            var time = hours + ':' + minutes + ':' + seconds; 
-            var date = day + '-' + month + '-' + year;
-
-            var clock1 =  '<a href="https://calendar.google.com/"><i class="fa fa-calendar" aria-hidden="true" style="color:#e21e26;"></i></a>  &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</span> &nbsp;  &nbsp; <i class="fa-solid fa-clock" style="color:#e21e26;"></i> &nbsp;<span class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</span>';
-
-            var clock =  ' <div class="mt-5 space-y-4 " > <div class="flex items-center justify-between"> <div class="flex items-center space-x-2"> <img class="h-10 w-1w mgi" src="/index/resources/images/avatar/Paomedia-Small-N-Flat-Calendar.png" alt="calander">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">'+date+ '</p>   </div></div><div class="flex items-center justify-between"><div class="flex items-center space-x-2"> <img class=" mgi h-10 w-1w" src="/index/resources/images/avatar/Red_clock.png" alt="image">  &nbsp;<p class="text-base font-medium text-slate-700 dark:text-navy-100">' +time+'</p></div></div></div>';
-            $('#clock').html(clock);
-            $('#clock1').html(clock1);
-          }
-
-          setInterval(updateClock, 1000);
-
-          var cityName;
-          if (navigator.geolocation) {
-              // Get current position
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-
-                // Make API request to fetch city name
-                $.ajax({
-                  url: 'https://nominatim.openstreetmap.org/reverse',
-                  type: 'GET',
-                  data: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude,
-                    zoom: 10,
-                    addressdetails: 1
-                  },
-                  success: function(response) {
-                    var city = response.address.city || response.address.town || response.address.village || '';
-                    var country = response.address.country || '';
-
-                    // Update HTML element with city name
-                    cityName = city;
-                    $('#city').text(city + ', ' + country);
-                    var cityNplace = city + ',' + country
-                    getWeather(cityNplace);
-                  },
-                  error: function(xhr, status, error) {
-                    console.log(error);
-                  }
-                });
-              });
-            } else {
-              console.log('Geolocation is not supported by this browser.');
-            }
-          
-      
-          
+       
       });
-     function getWeather(cityNplace){
-    	    
-          const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
-          const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityNplace+'&appid=d0f0b62e939d9341794ce5b3bb3d09cb&units=metric';
-
-          $.ajax({
-              url: apiUrl,
-              method: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  const temperatureElement = $('#temperature');
-                  const descriptionElement = $('#description');
-                  const windSpeedElement = $('#wind-speed');
-                  const weatherIconElement = $('#weather-icon');
-
-                  const temperature = Math.round(data.main.temp);
-                  const description = data.weather[0].description;
-                  const windSpeed = data.wind.speed;
-                  const weatherIcon = data.weather[0].icon;
-
-                  temperatureElement.text(temperature +'°C');
-                  descriptionElement.text(description);
-                  windSpeedElement.text(windSpeed+' m/s');
-                  weatherIconElement.attr('src', 'https://openweathermap.org/img/w/'+weatherIcon+'.png');
-              },
-              error: function(error) {
-                  console.error('Error:', error);
-              }
-        });
-    	  
-      }
-     
+    
      const button = document.getElementById("signout_button");
      button.onclick = () => {
        google.accounts.id.disableAutoSelect();
@@ -3125,7 +3028,7 @@ z-index: 1000;
          });
        } */
    
-       function ChangeCategoryForDept(department_code,department_name,dName){
+      <%--  function ChangeCategoryForDept(department_code,department_name,dName){
     	   		$(".dept").html( $.trim(department_name));
 	        if ($.trim(department_code) != "") {
 	        	 $("#deptList div").remove();
@@ -3159,7 +3062,7 @@ z-index: 1000;
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
 	                        	 $(".cat").html( $.trim(val.dm_category));
-	                        	 var department_data = "'"+val.department_code+"','"+cat+"'";
+	                        	 var department_data = "'"+val.department_code+"','"+cat+"','"+val.catID+"'";
 	                            var html2= ' <li> <a id="'+dName+'" class="cursor clickFirst group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"'
 	                            	 +'onclick="ChangeSubCategoryForDept('+department_data+');"'
 	                            	+'">'
@@ -3187,9 +3090,9 @@ z-index: 1000;
 	        
 	        $('#'+dName).click();
 	        $('#'+dName).css('background-color','lavender');
-       }
+       } --%>
        
-       function ChangeSubCategoryForDept(department_code,dm_category){
+       function ChangeSubCategoryForDept(department_code,dm_category,catID){
 	   		//$(".dept").html( $.trim(dm_category));
 	   		 $('.clickFirst').css('background-color','white');
 	   		 $('#'+dm_category).css('background-color','lavender');
@@ -3203,7 +3106,7 @@ z-index: 1000;
            	 $('#cardBG2').css('background-color','lavender');
            	 $('#cardBG').css('background-color','white');
             }
-       	var myParams = { department_code: department_code, dm_category : dm_category };
+       	var myParams = { department_code: department_code, dm_category : dm_category,catID : catID };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/ChangeSubCategoryForDept",
                data: myParams, cache: false,async: false,
@@ -3213,7 +3116,7 @@ z-index: 1000;
                        	 $(".cat").html( $.trim(val.dm_category));
                        	 
                        	var url = 'href="<%=request.getContextPath() %>'
-                            url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(dm_category)+'/'+$.trim(val.sub_category_title)+'"';
+                            url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(dm_category)+'/'+$.trim(val.sub_category_title)+'/'+$.trim(val.catID)+'/'+$.trim(val.subCatId)+'"';
                       	var html='   <div class=" subM card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
                        	  		+'<div class=" bg-slate-50 bg-slate-50 text-right">'
                        	  	+'<div  @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="inline-flex">'

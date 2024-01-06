@@ -85,8 +85,10 @@ public class HomeController {
 			List <User> departmentsList = service.getDepartmentsListForCategory(user);
 			model.addObject("departmentsList", departmentsList);
 			
-			List <User> catagoryList = service.getCatagoryList(user);
-            model.addObject("catagoryList", catagoryList);
+			/*
+			 * List <User> catagoryList = service.getCatagoryList(user);
+			 * model.addObject("catagoryList", catagoryList);
+			 */
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
@@ -204,14 +206,14 @@ public class HomeController {
 		return model; 
 	}
 	
-	@RequestMapping(value = "/subcat1/{department_code}/{department_name}/{dm_category}", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/subcat1/{department_code}/{department_name}/{dm_category}/{catID}", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView subCategoryView(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("department_name") String department_name 
-			,@PathVariable("dm_category") String dm_category 
+			,@PathVariable("dm_category") String dm_category ,@PathVariable("catID") String catID 
 			, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.categoryMaster2);
 	try {
 		user.setDepartment_code(department_code);
-		user.setCategory(dm_category);
+		user.setCategory(catID);
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
 		List <User> reoneSubcategory = serviceC.getreoneSubcategory(user);
@@ -222,14 +224,14 @@ public class HomeController {
 		return model; 
 	}
 	
-	@RequestMapping(value = "/subcat/{department_code}/{department_name}/{dm_category}/{sub_category_title}", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/subcat/{department_code}/{department_name}/{dm_category}/{sub_category_title}/{catID}/{subCatId}", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView subDeptConView(@ModelAttribute User user,@PathVariable("department_code") String department_code,@PathVariable("dm_category") String dm_category 
-			,@PathVariable("sub_category_title") String sub_category_title , HttpSession session) {
+			,@PathVariable("sub_category_title") String sub_category_title,@PathVariable("catID") String catID,@PathVariable("subCatId") String subCatId , HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.subcategoryMaster);
 	try {
 		user.setDepartment_code(department_code);
-		user.setCategory(dm_category);
-		user.setSub_category(sub_category_title);
+		user.setCategory(catID);
+		user.setSub_category(subCatId);
 		List <User> departmentsList = service.getDepartmentsList(user);
 		model.addObject("departmentsList", departmentsList);
 		List <User> departmentcontentList = service.getDeptContentListView(user);

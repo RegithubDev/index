@@ -30,8 +30,39 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
-     <style>
-     
+    <style>
+    .mdl-grid{
+	display: flex !important;
+    padding: 4px;
+    justify-content: space-between;
+    height: 4.5rem;
+} 
+.reversed-div {
+  transform: scaleX(-1) scaleY(-1);
+}
+.dt-table{
+display: block !important;
+height: 100%;
+}
+    .input-field .searchable_label{
+      		font-size:0.85rem;
+        } 
+        td,th{
+        	box-sizing:content-box !important;
+        }
+ 	 .dataTables_filter label{
+         	content:'';
+         }
+         .right-btns .fa{
+         	    visibility: hidden;
+         }
+         .right-btns .fa+.fa{
+         	    visibility: hidden;
+         }
+         
+     table tr td:first-child {
+    text-align: center;
+}
      th,td{
     	text-align:left;
     }
@@ -69,17 +100,11 @@
 .pagination button:hover {
   background-color: #ddd;
 }
-td{
-  padding-left: 2.25rem;
-    padding-right: 1.25rem; 
-   font-weight: 500;
-    color: #334155;
-    padding-bottom: 0.75rem;
-    padding-top: 0.75rem;
-    white-space: nowrap;
 
+.topbr{
+    border-top-right-radius: 0px!important;
+    border-top-left-radius: 0px!important;
 }
-
 .pagination .active button {
   background-color: #4f46e5!important;
   color: #fff;
@@ -93,7 +118,11 @@ td{
   font-size: 13px;
   margin-left: 0.3rem;
 }
-
+.toph{
+    margin-bottom: 1.25rem;
+	transform-origin: top;  /* Set the origin to the top */
+  transform: scaleY(-0.1);
+}
 .input-sm::after {
   padding: 8px 30px 8px 10px; /* Adjust padding to make room for the icon */
 
@@ -378,7 +407,7 @@ button.disabled {
             
 
             <!-- Sidebar Panel Body -->
-           <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
+            <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
               <div class="is-scrollbar-hidden grow overflow-y-auto">
                 <div class="mt-2 px-4">
                  
@@ -411,7 +440,8 @@ button.disabled {
                       </button>
                     </div>
                   </div>
-                 <div x-show="expanded" x-collapse>
+               
+                   <div x-show="expanded" x-collapse>
                     <ul
                       class="mt-1 space-y-1.5 px-2 font-inter text-xs+ font-medium"
                     >
@@ -420,9 +450,9 @@ button.disabled {
                       <li>
                         <a
                           class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
-                           href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}"
+                           href="<%=request.getContextPath() %>/re-curls/${obj.department_code}/${obj.department_name}"
                         >
-                        <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div>
+                          <div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div>
                           <span>${obj.department_name }</span>
                         </a>
                       </li>
@@ -442,6 +472,9 @@ button.disabled {
                
               </div>
             </div>
+            
+            
+            
             
             
             
@@ -1508,130 +1541,6 @@ button.disabled {
                 </svg>
               </button>
               <!-- Notification-->
-              <div x-effect="if($store.global.isSearchbarActive) isShowPopper = false" x-data="usePopper({placement:'bottom-end',offset:12})" @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="flex">
-                <button @click="isShowPopper = !isShowPopper" x-ref="popperRef" class="btn relative h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-500 dark:text-navy-100" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.375 17.556h-6.75m6.75 0H21l-1.58-1.562a2.254 2.254 0 01-.67-1.596v-3.51a6.612 6.612 0 00-1.238-3.85 6.744 6.744 0 00-3.262-2.437v-.379c0-.59-.237-1.154-.659-1.571A2.265 2.265 0 0012 2c-.597 0-1.169.234-1.591.65a2.208 2.208 0 00-.659 1.572v.38c-2.621.915-4.5 3.385-4.5 6.287v3.51c0 .598-.24 1.172-.67 1.595L3 17.556h12.375zm0 0v1.11c0 .885-.356 1.733-.989 2.358A3.397 3.397 0 0112 22a3.397 3.397 0 01-2.386-.976 3.313 3.313 0 01-.989-2.357v-1.111h6.75z"></path>
-                  </svg>
-
-                  <span class="absolute -top-px -right-px flex h-3 w-3 items-center justify-center">
-                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-80"></span>
-                    <span class="inline-flex h-2 w-2 rounded-full bg-secondary"></span>
-                  </span>
-                </button>
-                <div :class="isShowPopper &amp;&amp; 'show'" class="popper-root" x-ref="popperRoot" style="position: fixed; inset: 0px 0px auto auto; margin: 0px; transform: translate(-98px, 58px);" data-popper-placement="bottom-end">
-                  <div x-data="{activeTab:'tabAll'}" class="popper-box mx-4 mt-1 flex max-h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] flex-col rounded-lg border border-slate-150 bg-white shadow-soft dark:border-navy-800 dark:bg-navy-700 dark:shadow-soft-dark sm:m-0 sm:w-80">
-                    <div class="rounded-t-lg bg-slate-100 text-slate-600 dark:bg-navy-800 dark:text-navy-200">
-                      <div class="flex items-center justify-between px-4 pt-2">
-                        <div class="flex items-center space-x-2">
-                          <h3 class="font-medium text-slate-700 dark:text-navy-100">
-                            Notifications
-                          </h3>
-                          <div class="badge h-5 rounded-full bg-primary/10 px-1.5 text-primary dark:bg-accent-light/15 dark:text-accent-light">
-                            07
-                          </div>
-                        </div>
-
-                      
-                      </div>
-
-                      <div class="is-scrollbar-hidden flex shrink-0 overflow-x-auto px-3">
-                        <button @click="activeTab = 'tabAll'" :class="activeTab === 'tabAll' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'" class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5 border-primary dark:border-accent text-primary dark:text-accent-light">
-                          <span>All</span>
-                        </button>
-                        <button @click="activeTab = 'tabAlerts'" :class="activeTab === 'tabAlerts' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'" class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5 border-primary dark:border-accent text-primary dark:text-accent-light">
-                          <span>Alerts</span>
-                        </button>
-                        <button @click="activeTab = 'tabEvents'" :class="activeTab === 'tabEvents' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'" class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5 border-primary dark:border-accent text-primary dark:text-accent-light">
-                          <span>Events</span>
-                        </button>
-                       
-
-                       
-                      </div>
-                    </div>
-
-                    <div class="tab-content flex flex-col overflow-hidden">
-                      <div x-show="activeTab === 'tabAll'" x-transition:enter="transition-all duration-300 easy-in-out" x-transition:enter-start="opacity-0 [transform:translate3d(1rem,0,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" class="is-scrollbar-hidden space-y-4 overflow-y-auto px-4 py-4">
-                        <div class="flex items-center space-x-3">
-                          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10 dark:bg-secondary-light/15">
-                            <i class="fa fa-user-edit text-secondary dark:text-secondary-light"></i>
-                          </div>
-                          <div>
-                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                            Job alert
-                            </p>
-                            <div class="mt-1 text-xs text-slate-400 line-clamp-1 dark:text-navy-300">
-                             Senior Developer
-                            </div>
-                          </div>
-                        </div>
-                         <div class="flex items-center space-x-3">
-                          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-info/10 dark:bg-info/15">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                          </div>
-                          <div>
-                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                              Tue, Nov 07, 2023
-                            </p>
-                            <div class="mt-1 flex text-xs text-slate-400 dark:text-navy-300">
-                              <span class="shrink-0">08:00 - 09:00</span>
-                              <div class="mx-2 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-
-                              <span class="line-clamp-1">Sports</span>
-                            </div>
-                          </div>
-                        </div>
-         
-                      
-                      </div>
-                      <div x-show="activeTab === 'tabAlerts'" x-transition:enter="transition-all duration-300 easy-in-out" x-transition:enter-start="opacity-0 [transform:translate3d(1rem,0,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" class="is-scrollbar-hidden space-y-4 overflow-y-auto px-4 py-4" style="display: none;">
-                        <div class="flex items-center space-x-3">
-                          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10 dark:bg-secondary-light/15">
-                            <i class="fa fa-user-edit text-secondary dark:text-secondary-light"></i>
-                          </div>
-                          <div>
-                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                             Job alert
-                            </p>
-                            <div class="mt-1 text-xs text-slate-400 line-clamp-1 dark:text-navy-300">
-                              Senior Developer
-                            </div>
-                          </div>
-                        </div>
-              </div>
-              
-              
-                      <div x-show="activeTab === 'tabEvents'" x-transition:enter="transition-all duration-300 easy-in-out" x-transition:enter-start="opacity-0 [transform:translate3d(1rem,0,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" class="is-scrollbar-hidden space-y-4 overflow-y-auto px-4 py-4" style="display: none;">
-                        <div class="flex items-center space-x-3">
-                          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-info/10 dark:bg-info/15">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                          </div>
-                          <div>
-                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                              Tue, Nov 07, 2023
-                            </p>
-                            <div class="mt-1 flex text-xs text-slate-400 dark:text-navy-300">
-                              <span class="shrink-0">08:00 - 09:00</span>
-                              <div class="mx-2 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-
-                              <span class="line-clamp-1">Sports</span>
-                            </div>
-                          </div>
-                        </div>
-                     
-                      
-                      
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
               
               
               
@@ -1661,807 +1570,34 @@ button.disabled {
       </nav>
 
       <!-- Mobile Searchbar -->
-      <div
-        x-show="$store.breakpoints.isXs && $store.global.isSearchbarActive"
-        x-transition:enter="easy-out transition-all"
-        x-transition:enter-start="opacity-0 scale-105"
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="easy-in transition-all"
-        x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-95"
-        class="fixed inset-0 z-[100] flex flex-col bg-white dark:bg-navy-700 sm:hidden"
-      >
-        <div
-          class="flex items-center space-x-2 bg-slate-100 px-3 pt-2 dark:bg-navy-800"
-        >
-          <button
-            class="btn -ml-1.5 h-7 w-7 shrink-0 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
-            @click="$store.global.isSearchbarActive = false"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              stroke="#e21e26"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <input
-            x-effect="$store.global.isSearchbarActive && $nextTick(() => $el.focus() );"
-            class="form-input h-8 w-full bg-transparent placeholder-slate-400 dark:placeholder-navy-300"
-            type="text"
-            placeholder="Search here..."
-          />
-        </div>
-
-        <div
-          x-data="{activeTab:'tabAll'}"
-          class="is-scrollbar-hidden flex shrink-0 overflow-x-auto bg-slate-100 px-2 text-slate-600 dark:bg-navy-800 dark:text-navy-200"
-        >
-          <button
-            @click="activeTab = 'tabAll'"
-            :class="activeTab === 'tabAll' ? 'border-primary dark:border-accent text-re dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            All
-          </button>
-          <button
-            @click="activeTab = 'tabFiles'"
-            :class="activeTab === 'tabFiles' ? 'border-primary dark:border-accent text-re dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Files
-          </button>
-          <button
-            @click="activeTab = 'tabChats'"
-            :class="activeTab === 'tabChats' ? 'border-primary dark:border-accent text-re dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Chats
-          </button>
-          <button
-            @click="activeTab = 'tabEmails'"
-            :class="activeTab === 'tabEmails' ? 'border-primary dark:border-accent text-re dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Emails
-          </button>
-          <button
-            @click="activeTab = 'tabProjects'"
-            :class="activeTab === 'tabProjects' ? 'border-primary dark:border-accent text-re dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Projects
-          </button>
-          <button
-            @click="activeTab = 'tabTasks'"
-            :class="activeTab === 'tabTasks' ? 'border-primary dark:border-accent text-re dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Tasks
-          </button>
-        </div>
-
-        <div
-          class="is-scrollbar-hidden overflow-y-auto overscroll-contain pb-2"
-        >
-          <div
-            class="is-scrollbar-hidden mt-3 flex space-x-4 overflow-x-auto px-3"
-          >
-            <a href="apps-kanban.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-success text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Kanban
-              </p>
-            </a>
-            <a href="dashboards-crm-analytics.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-secondary text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Analytics
-              </p>
-            </a>
-            <a href="apps-chat.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-info text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Chat
-              </p>
-            </a>
-            <a href="apps-filemanager.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-error text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Files
-              </p>
-            </a>
-            <a href="dashboards-crypto-1.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-secondary text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 9a2 2 0 10-4 0v5a2 2 0 01-2 2h6m-6-4h4m8 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Crypto
-              </p>
-            </a>
-            <a href="dashboards-banking-1.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div
-                  class="is-initial rounded-full bg-primary text-white dark:bg-accent"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Banking
-              </p>
-            </a>
-            <a href="apps-todo.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-info text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M12.5293 18L20.9999 8.40002"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M3 13.2L7.23529 18L17.8235 6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Todo
-              </p>
-            </a>
-
-            <a href="dashboards-orders.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-warning text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#e21e26"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Orders
-              </p>
-            </a>
-          </div>
-
-          <div
-            class="mt-3 flex items-center justify-between bg-slate-100 py-1.5 px-3 dark:bg-navy-800"
-          >
-            <p class="text-xs uppercase">Recent</p>
-            <a
-              href="#"
-              class="text-tiny+ font-medium uppercase text-re outline-none transition-colors duration-300 hover:text-re/70 focus:text-re/70 dark:text-accent-light dark:hover:text-accent-light/70 dark:focus:text-accent-light/70"
-            >
-              View All
-            </a>
-          </div>
-
-          <div class="mt-1 font-inter font-medium">
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-chat.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
-              <span>Chat App</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-filemanager.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                />
-              </svg>
-              <span>File Manager App</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="404-3.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <span>Email App</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-kanban.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-                />
-              </svg>
-              <span>Kanban Board</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-todo.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 13.2L7.23529 18L17.8235 6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M12.5293 18L20.9999 8.40002"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>Todo App</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-crypto-2.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15 9a2 2 0 10-4 0v5a2 2 0 01-2 2h6m-6-4h4m8 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-
-              <span>Crypto Dashboard</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-banking-2.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                />
-              </svg>
-
-              <span>Banking Dashboard</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-crm-analytics.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                />
-              </svg>
-
-              <span>Analytics Dashboard</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-influencer.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="#e21e26"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-
-              <span>Influencer Dashboard</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       <!-- Main Content Wrapper -->
      
      <main class="main-content w-full p-6 pb-8">
+     <div class="card px-4 pb-4 sm:px-5">
+            <div class="my-3 flex h-8 items-center justify-between">
+              <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
+                 User Activity
+              </h2>
+              
+            </div>
+            <div class="max-w-xl reversed-div">
+              <div class="inline-space flex flex-wrap">
+                <div class="h-16 w-10 topbr rounded-lg bg-primary dark:bg-accent"></div>
+              </div>
+            </div>
+            
+          <div class="mb-4 h-px bg-slate-200 dark:bg-navy-500"></div>
+          <div class="max-w-xl reversed-div">
+              <div class="inline-space flex flex-wrap">
+                <div class="topbr  w-10 text-center rounded-lg dark:bg-accent reversed-div">Jan</div> 
+              </div>
+            </div>
+          </div>
      
-       <div class="flex items-center space-x-4 py-5 lg:py-6 p-2">
-          <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-            Sub Category
-          </h2> 
-          <div class=" h-full py-1 sm:flex">
-            <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
-          </div>
-          <ul class=" flex-wrap items-center space-x-2 sm:flex">
-            <li class="flex items-center space-x-2">
-              <a x-tooltip.placement.top-end.success="'Go Back to Settings Page'" class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
-              <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden sm:flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </li>
-            <li class="hidden sm:flex">Sub Category</li>
-          </ul>
-         
-        </div>
-      <div class="p-4 sm:p-5">
-      
-                 <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-          <div class="col-span-12 lg:col-span-8 xl:col-span-9">
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          <label class="block">
-                  <select id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Department</option>
-                   	
-                  </select>
-                </label>
-      <label class="block">
-                  <select id="select2-category_filter-container" onchange="getCategoryFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Category</option>
-                    
-                  </select>
-                </label>
-                <label class="block">
-                  <select id="select2-sub_category_filter-container" onchange="getSubCategoryfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Sub Category</option>
-                    
-                  </select>
-                </label>
-                  <label class="block">
-                  <select id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Status</option>
-                    
-                  </select>
-                </label>
-                <label class="block hidden sm:flex">
-                </label>
-                
-              <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            <button  onclick="getSubCategoryList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
-                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
-                </button>
-                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
-                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px;color: white !important;">
-                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Refresh </span>
-                </button> 
-              
-            </div>
-            </div>
-
-            
-
-            
-          </div>
-          <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-             <a x-tooltip.placement.top-end.success="'Add New Category'" href="<%=request.getContextPath()%>/subcategory_form" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
-                  <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
-                  <i class="fas fa-file-export"></i>  &nbsp;Export
-                </a>   
-              
-              
-            </div>
-          </div> 
-              <%--   <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                  <label class="block">
-                  <select    id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Department</option>
-                   
-                  </select>
-                </label>
-                  <label class="block">
-                  <select id="select2-category_filter-container" onchange="getCategoryFilterList();"  class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Category</option>
-                    
-                  </select>
-                </label> 
-                <label class="block">
-                  <select id="select2-sub_category_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Sub Category</option>
-                    
-                  </select>
-                </label> 
-                <label class="block">
-                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Status</option>
-                    
-                  </select>
-                </label> 
-             <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
-                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
-                </button>
-                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
-                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
-                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
-                </button>
-                    </div>
-           
-           
-                    <a href= "<%=request.getContextPath()%>/subcategory_form" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 30%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
-           
-           
-                
-                </div> --%>
-              
-              </div>
-		<br>
-		
-          <div class="row">
-
-            <div class="card mt-3">
-		     <div class="card invoice-list-wrapper">
-		      <div class="card-datatable table-responsive">
-		       <div class="dt-buttons" style="height : 0.5em;">
-		      
-		        </div>
-                <table class="invoice-list-table table is-zebra w-full text-left" id="datatable-department">
-                  <thead>
-                    <tr>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        #
-                      </th>
-                    <%--  <c:if test="${sessionScope.ROLE eq 'Admin' }" > --%>
-                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Action
-                      </th>
-                      <%-- </c:if> --%>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Department 
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Category
-                      </th>
-                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Title
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Status
-                      </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created By
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Created Date
-                      </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified By
-                      </th>
-                        <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                        Modified Date
-                      </th>
-                     
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    
-                  </tbody>
-                </table>
-              </div>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-          
-                
-             
-   
-                
-              </div>
-         
-        
       </main>
        
-     <div x-data="{showModal:false}">
-       <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </button>
-                  <template x-teleport="#x-teleport-target" data-teleport-template="true">
-                    <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false">
-                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-                      <div class="scrollbar-sm relative flex max-w-md flex-col overflow-y-auto rounded-lg bg-white pt-10 pb-4 text-center transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]" x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 [transform:translate3d(0,0,0)]" x-transition:leave-end="opacity-0 [transform:translate3d(0,1rem,0)]">
-                       <div class="col-span-12 sm:col-span-8">
-                       
-             <div class="card p-4 sm:p-5">
-              <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Update Department
-              </p>
-              <div class="mt-4 space-y-4">
-        <form id="updateDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-department-master" method="post" class="form-horizontal" role="form" >
-                 
-                 <input type="hidden" id="id" name="id" />
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              
-                   <label class="block  text-left">
-                    <span>Department Code </span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                      type="text"
-              id="department_code_edit"
-              name="department_code"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" >
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-                     <span id="department_code_editError" class="error-msg" ></span>
-                    
-                  </label>
-                 <label class="block  text-left">
-                    <span>Department Name</span><span class="required"> *</span>
-                    <span class="relative mt-1.5 flex">
-                      <input 
-                     type="text"
-              id="department_name_edit"
-              name="department_name"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" >
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="far fa-user text-base"></i>
-                      </span>
-                    </span>
-             <span id="department_name_editError" class="error-msg" ></span>
-                    
-                  </label>
-                </div>
-                <label class="block  text-left">
-                    <span>Status</span><span class="required"> *</span>
-                  <select
-                  	id="select2-status_edit-container"
-              name="status"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                     <option value="">Select Status</option>
-             	<option value="Active">Active</option>
-             	<option value="Inactive">Inactive</option>
-                  </select>
-                               <span id="select2-status_edit-containerError" class="error-msg" ></span>
-                  
-                  </label>
-               
-                <div class="flex justify-center space-x-2 pt-4">
-                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
-                    <span>update </span>
-                   
-                  </button>
-                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
-                          Discard
-                        </button>
-                 
-                </div>
-                  </form>
-              </div>
-            </div>
-          </div>
-                       
-                       
-                      </div>
-                    </div>
-                  </template>
-                </div>
-           
-      
-
+     
 
      <!--  <div
         class="fixed right-3 bottom-3 rounded-full bg-white dark:bg-navy-700"
@@ -2496,258 +1632,110 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
-	<form action="<%=request.getContextPath()%>/get-sub-c" name="updatereonecategory" id="updatereonecategory" method="post">	
-		<input id="idVal" name="id" type="hidden" />
+	 <form action="<%=request.getContextPath()%>/export-user" name="exportUserForm" id="exportUserForm" target="_blank" method="post">	
+      
+        <input type="hidden" name="user_id" id="exportUser_filter" />
+        <input type="hidden" name="status" id="exportStatus_filter" />
+        <input type="hidden" name="timePeriod" id="exportTime_period_filter" />
+        <input type="hidden" name="sbu" id="exportSBU_filter" />
+        <input type="hidden" name="project" id="exportProject_filter" />
+        <input type="hidden" name="base_role" id="exportRole_filter" />
 	</form>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $(window).on("load",(function(){
-    	  $('.form-select2').select2();
-    	// $("#x-teleport-target").hide();
-          getSubCategoryList();
-      
+ $(window).on("load",(function(){
+	 /* $('select').select2(); */
+          getUserList();
          }));
       
       function clearFilter(){
-		    	$("#select2-department_filter-container").val(""); 
-		    	$("#select2-category_filter-container").val("");
-		    	$("#select2-sub_category_filter-container").val("");
+		    	$("#select2-company_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	window.location = "<%=request.getContextPath()%>/reone-subcategory";
+		    	window.location.href= "<%=request.getContextPath()%>/user";
 	    }
       
-      function getDepartmentFilterList() {
-	        var department_code = $("#select2-department_filter-container").val();
-	        var category = $("#select2-category_filter-container").val();
-	        var sub_category_title = $("#select2-sub_category_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(department_code) == "") {
-	        	$("#select2-department_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForSubCategory",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-      
-      
-      function getCategoryFilterList() {
-	        var department_code = $("#select2-department_filter-container").val();
-	        var category = $("#select2-category_filter-container").val();
-	        var sub_category_title = $("#select2-sub_category_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(category) == "") {
-	        	$("#select2-category_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCategoryFilterListForSubCategory",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-category_filter-container").append('<option value="' + val.category + '">'+$.trim(val.dm_category) +' - '+ val.department_code+'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-      
-      function getSubCategoryfilter() {
-	        var department_code = $("#select2-department_filter-container").val();
-	        var category = $("#select2-category_filter-container").val();
-	        var sub_category_title = $("#select2-sub_category_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(sub_category_title) == "") {
-	        	$("#select2-sub_category_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getSubCategoryfilterListForSubCategory",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-sub_category_filter-container").append('<option value="' + val.sub_category_title + '">'+$.trim(val.sub_category_title) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-      
-      function getStatusfilter() {
-	        var department_code = $("#select2-department_filter-container").val();
-	        var category = $("#select2-category_filter-container").val();
-	        var sub_category_title = $("#select2-sub_category_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(status) == "") {
-	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterListForSubCategory",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">'+$.trim(val.status) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-    
-	    function exportDepartment(){
-	    	 var department_code = $("#select2-department_filter-container").val();
-	         var assigned_to_sbu = $("#select2-assigned_to_sbu_filter-container").val();
+  
+	    function exportCompany(){
+	    	 var company_code = $("#select2-company_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
 	    	
-	    	 $("#exportDepartment_filter").val(department_code);
-	     	 $("#exportSBU_Code_filter").val(assigned_to_sbu);
-	     	 $("#exportStatus_filter").val(assigned_to_sbu);
-	     	 $("#exportDepartmentForm ").submit();
+	    	 $("#exportCompany_filter").val(company_code);
+	     	 $("#exportStatus_filter").val(status);
+	     	 $("#exportCompanyForm ").submit();
 	  	}
 	    
-	    function getSubCategoryList(){
-	    	getDepartmentFilterList('');
-	    	getCategoryFilterList('');
-	    	getSubCategoryfilter('');
-	    	getStatusfilter('');
-	    	var department_code = $("#select2-department_filter-container").val();
-	        var category = $("#select2-category_filter-container").val();
-	        var sub_category_title = $("#select2-sub_category_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	    	$('#allDepartment').html(0)
-    		$('#activeDepartment').html(0)
-    		$('#inActiveDepartment').html(0)
-	     	table = $('#datatable-department').DataTable();
-			table.destroy();
-			$.fn.dataTable.moment('DD-MMM-YYYY');
-			table = $('#datatable-department').DataTable({
-				"bStateSave": true,  
-	     		fixedHeader: true,
-	         	//Default: Page display length
-					"iDisplayLength" : 10,
-					"iData" : {
-						"start" : 52
-					},"iDisplayStart" : 0,
-					"drawCallback" : function() {
-					},
-					
-					columnDefs: [
-		            	{
-		            		  targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-		                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
-		                  
-		                }
-		            ],
-		            rowCallback: function(row, data, index) {
-		                // Check a condition based on a column value
-		                  $(row).addClass('border-y border-transparent border-b-slate-200 dark:border-b-navy-500');
-		            },
-					
-	            columnDefs: [],
-	            // "ScrollX": true,
-	            //"scrollCollapse": true,
-	            "sScrollX": "100%",
-	            "sScrollXInner": "100%",
-	            "bScrollCollapse": true,
-	            "initComplete" : function() {
-					
-					}
-	        }).rows().remove().draw();
-			table.state.clear();		
-
-			var myParams = { department_code: department_code, category: category,sub_category_title : sub_category_title, status :status };
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreoneSubcategory",type:"POST",data:myParams,success : function(data){    				
-				
-					if(data != null && data != '' && data.length > 0){    					
-		         		$.each(data,function(key,val){
-		         			var department_data = "'"+val.department_code+"','"+val.assigned_to_sbu_multiple+"','"+val.department_name+"','"+val.subCatId+"','"+val.status+"'";
-		                    var actions = '<a href="javascript:void(0);"  onclick="getDepartment('+department_data+');setSearchble();" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';    	                   	
-		                    key++;
-		                    var rowArray = [];    	                 
-		                   	$('#allDepartment').html(val.all_department)
-		            		$('#activeDepartment').html(val.active_department)
-		            		$('#inActiveDepartment').html(val.inActive_department)
-		            		
-		            		var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
-            				if($.trim(val.dept_status) != 'Active'){
-            					dept = '<div class=" text-error">'
-            		                  +' <span>'+dept+'</span>'
-            		                  +'</div>';
-            				}
-		                   	var cat = $.trim(val.dm_category)
-            				if($.trim(val.cat_status) != 'Active'){
-            					cat = '<div class=" text-error">'
-            		                  +' <span>'+cat+'</span>'
-            		                  +'</div>';
-            				}
-		            		var status = $.trim(val.status);
-		            		var sub_category_title = $.trim(val.sub_category_title);
-            				if($.trim(status) != 'Active'){
-            					sub_category_title = '<div class=" text-error">'
-            		                  +' <span>'+sub_category_title+'</span>'
-            		                  +'</div>';
-            				}
-		                   	rowArray.push($.trim(key));
-		                	rowArray.push($.trim(actions));  
-		                	rowArray.push(dept);
-		                   	rowArray.push($.trim(cat));
-		                   	rowArray.push($.trim(sub_category_title));  
-		                   	
-		                	if (status == 'Active') {
-		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
-	                		} else {
-	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
-	                		}
-		                   	rowArray.push(status);
-		                	rowArray.push($.trim(val.created_by));
-		                   	rowArray.push($.trim(val.created_date));
-		                	rowArray.push($.trim(val.modified_by));
-		                   	rowArray.push($.trim(val.modified_date));
-		        		  //  $("#datatable-department td").addClass("whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5");
-
-		                    table.row.add(rowArray).draw( true );
-						});
-					}
-				},error: function (jqXHR, exception) {
-		         	getErrorMessage(jqXHR, exception);
-		     }});
-	    } 
+	    function getDesignationFilterList(work) {
+	        var designation = $("#designation_filter").val();
+	        if ($.trim(designation) == "") {
+	        	
+	        	$("#designation_filter option:not(:first)").remove();
+	        	var myParams = { designation: designation };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getDesignationFilterListInUser",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#designation_filter").append('<option name="' + val.count + '" total="' + val.totalCount + '" value="' + val.designation + '">' + $.trim(val.designation) +'</option>');
+	                        });
+	                    }
+	                    $('.searchable').select2();
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	               
+	            });
+	        }
+	    }
+	 
+	    $("#toggleElementButton").click(function() {
+	    	 $("#x-teleport-target").css("display","none");
+	      });
 	    
-	    function getDepartment(department_code,assigned_to_sbu,department_name,id,status){
-		      $('#idVal').val($.trim(id));
-		      $("#updatereonecategory ").submit();
-	   }
+	    function getUser(userId,sbu,project,dept,role,status,user_name,reporting_to,email,mobile){
+	    	 $("#updateModal").click();
+  		  $('#user_name_edit').val('');
+  		  $('#email_edit').val('');
+  		  $('#contact_number_edit').val('');              
+  		  $('#select2-status_edit-container').removeAttr("selected");
+  		  $('#select2-reporting_to_edit-container').removeAttr("selected");
+  		 
+  		  $('#select2-base_sbu_edit-container').removeAttr("selected");
+  		  $('#select2-base_project_edit-container').removeAttr("selected");
+  		 
+  		  $('#select2-base_department_edit-container').removeAttr("selected");
+  		  $('#select2-base_role_edit-container').removeAttr("selected");
+  		
+  		  $('#status_edit').prop("selected", false);
+  		 
+  		  if(email == null || email == "undefined"){email = '' }
+  		  if(mobile == null || mobile == "undefined"){mobile = '' }
+  	      $('#updateUserForm #user_id_edit').val($.trim(userId)).focus();
+  	      $('#updateUserForm #user_name_edit').val($.trim(user_name)).focus();
+  	      $('#updateUserForm #email_edit').val($.trim(email)).focus();
+  	      $('#updateUserForm #contact_number_edit').val($.trim(mobile)).focus();
+  	      if(status != null && status != ''  && status != "undefined"){
+	    	    	$('select[name^="status"] option[value="'+ status +'"]').attr("selected","selected");
+	    	    	$('select[name^="reporting_to"] option[value="'+ reporting_to +'"]').attr("selected","selected");
+	    	    	
+	    	    	$('select[name^="base_sbu"] option[value="'+ sbu +'"]').attr("selected","selected");
+	    	    	$('select[name^="base_project"] option[value="'+ project +'"]').attr("selected","selected");
+	    	    	$('select[name^="base_department"] option[value="'+ dept +'"]').attr("selected","selected");
+	    	    	$('select[name^="base_role"] option[value="'+ role +'"]').attr("selected","selected");
+  	      }
+  	      $('.select2-selection--single').css("width","12rem !important");
+  	    $('.form-select3').select2();
+  	    //  $('.formSelect').select2();
+  }
 	    
 	    function getErrorMessage(jqXHR, exception) {
 	  	    var msg = '';
-	  	    if (jqXHR.assigned_to_sbu === 0) {
+	  	    if (jqXHR.status === 0) {
 	  	        msg = 'Not connect.\n Verify Network.';
-	  	    } else if (jqXHR.assigned_to_sbu == 404) {
+	  	    } else if (jqXHR.status == 404) {
 	  	        msg = 'Requested page not found. [404]';
-	  	    } else if (jqXHR.assigned_to_sbu == 500) {
+	  	    } else if (jqXHR.status == 500) {
 	  	        msg = 'Internal Server Error [500].';
 	  	    } else if (exception === 'parsererror') {
 	  	        msg = 'Requested JSON parse failed.';
@@ -2760,8 +1748,352 @@ button.disabled {
 	  	    }
 	  	    console.log(msg);
         }
-	   
-	
+	    
+	    function addCompany(){
+	    	
+	    	var validator =	$('#addCompanyForm').validate({
+	   	   	 errorClass: "my-error-class",
+	   	   	 validClass: "my-valid-class",
+	   	   	 ignore: ":hidden:not(.select2 form-select)",
+	   	   		    rules: {
+	   	   		  "user_name": {
+  			 		required: true
+  			 	  },"user_id": {										
+  			 		required: true
+  			 	  },"contact_number": {
+  			 		  required: false,
+  			 		  minlength:10,
+  			 		  maxlength:14,
+  			 		  number: true
+  			 	  },"email_id": {
+  		 		    required: true,
+  	                   email: true
+  			 	  },"status": {										
+	    			 		required: true
+	  			 	  },"reporting_to": {
+  		 			required: false
+  		 	  	  },"base_project": {										
+	    			 		required: true
+	  			 	  },"base_sbu": {										
+	    			 		required: true
+	  			 	  },"base_department": {										
+	    			 		required: true
+	  			 	  },"base_role": {
+	  			 		required: true
+	  		 	  	  }
+	   	   		 	},
+	   	   		    messages: {
+	   	   		  "user_name": {
+	  				 	required: 'Required',
+	  			 	  },"user_id": {
+	  			 		required: 'Required'
+	  			 	  },"contact_number": {
+	  		 			required: 'Required'
+	  		 	  	  },"email_id": {
+	  		 			required: 'Required'
+	  		 	  	  },"status": {
+	  		 			required: 'Required'
+	  		 	  	  },"reporting_to": {
+  		 			required: 'Required'
+  		 	  	  },"base_project": {
+	  		 			required: 'Required'
+	  		 	  	  },"base_sbu": {
+	  		 			required: 'Required'
+	  		 	  	  },"base_department": {
+	  		 			required: 'Required'
+	  		 	  	  },"base_role": {
+	  		 			required: 'Required'
+	  		 	  	  }
+	   	      		},
+	   	      		errorPlacement:function(error, element){
+	   	      		 	/* if (element.attr("id") == "company_name_add" ){
+	   	   				 document.getElementById("company_name_addError").innerHTML="";
+	   	   		 		 error.appendTo('#company_name_addError');
+	   	   			}else if(element.attr("id") == "company_code_add" ){
+	   	   			   document.getElementById("company_code_addError").innerHTML="";
+	   	   		 	   error.appendTo('#company_code_addError');
+	   	   			}else if(element.attr("id") == "select2-status_add-container" ){
+	   	   				document.getElementById("select2-status_add-containerError").innerHTML="";
+	   	   			 	error.appendTo('#select2-status_add-containerError');
+	   	   			}else{ */
+	   	   					error.insertAfter(element);
+	   	   	       // } 
+	   	      		},invalidHandler: function (form, validator) {
+	   	               var errors = validator.numberOfInvalids();
+	   	               if (errors) {
+	   	                   var position = validator.errorList[0].element;
+	   	                   jQuery('html, body').animate({
+	   	                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+	   	                   }, 1000);
+	   	               }
+	   	           },submitHandler:function(form){
+	   	        	 console.log('submit handler')
+	   	   	    }
+	   	   	}); 
+	    	console.log(validator.form());
+	    	if(validator.form()){ // validation perform
+	        	document.getElementById("addCompanyForm").submit();	
+	    	}
+	    }
+	    function updateCompany(){
+	    	if(validator1.form()){ // validation perform
+	        	document.getElementById("updateCompany").submit();	
+	    	}
+	    }
+	    var validator1 =	$('#updateCompanyForm').validate({
+		   	 errorClass: "my-error-class",
+		   	 validClass: "my-valid-class",
+		   	 ignore: ":hidden:not(.select2 form-select)",
+		   		    rules: {
+		   		 		  "company_name": {
+		   			 			required: true
+		   			 	  },"company_code": {										
+		   			 			required: true
+		   			 	  },"status": {
+		   	                 	required: true,
+		   			 	  }
+		   		 	},
+		   		    messages: {
+		   		 		 "company_name": {
+		   				 	required: 'Required',
+		   			 	  },"company_code": {
+		   			 		required: 'Required'
+		   			 	  },"status": {
+		   		 			required: 'Required'
+		   		 	  	  }
+		      		},
+		      		errorPlacement:function(error, element){
+		      		 	if (element.attr("id") == "company_name_edit" ){
+		   				 document.getElementById("company_name_editError").innerHTML="";
+		   		 		 error.appendTo('#company_name_editError');
+		   			}else if(element.attr("id") == "company_code_edit" ){
+		   			   document.getElementById("company_code_editError").innerHTML="";
+		   		 	   error.appendTo('#company_code_editError');
+		   			}else if(element.attr("id") == "select2-status_edit-container" ){
+		   				document.getElementById("select2-status_edit-containerError").innerHTML="";
+		   			 	error.appendTo('#select2-status_edit-containerError');
+		   			}else{
+		   					error.insertAfter(element);
+		   	        } 
+		      		},invalidHandler: function (form, validator) {
+		               var errors = validator.numberOfInvalids();
+		               if (errors) {
+		                   var position = validator.errorList[0].element;
+		                   jQuery('html, body').animate({
+		                       scrollTop:jQuery(validator.errorList[0].element).offset().top - 100
+		                   }, 1000);
+		               }
+		           },submitHandler:function(form){
+		   	    	//form.submit();
+		   	    }
+		   	});
+	    
+	   	$('.formSelect').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	   	
+	   	$('input').change(function(){
+	   	    if ($(this).val() != ""){
+	   	        $(this).valid();
+	   	    }
+	   	});
+	   	
+	   	function checkUniqueId(){
+	   		var company_code = $('#company_code_add').val();
+	        if ($.trim(company_code) != "" ) {
+	        	var myParams = {company_code: company_code };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/checkUniqueIfForCompany",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+		                      $("#company_code_addError").html(company_code+" Already Exists!").css("color","red");
+		                      $('#company_code_add').removeClass("is-valid")
+		                      $('#company_code_add').addClass("is-invalid")
+		                      $("#addBtn").prop("disabled",true);
+	                    	});
+	                     }else{
+	                    	  $("#company_code_addError").text("");
+	                    	  $('#company_code_add').removeClass("is-invalid")
+		                      $('#company_code_add').addClass("is-valid")
+		                      $("#addBtn").prop("disabled",false);
+	                     }           
+	                    
+	                    },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	   		
+	   	}
+	   	
+	    function getUserFilterList() {
+	        var user_id = $("#select2-user_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        var time_period = $("#select2-time_period_filter-container").val();
+	        var project = $("#select2-project_filter-container").val();
+	        var sbu = $("#select2-sbu_filter-container").val();
+	        var base_role = $("#select2-role_filter-container").val();
+	        if(time_period == ''){
+	        	time_period = 0;
+	        }
+	        if ($.trim(user_id) == "") {
+	        	$("#select2-user_filter-container option:not(:first)").remove();
+	        	var myParams = { user_id: user_id, status: status,time_period : time_period ,project : project, sbu : sbu, base_role : base_role};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getUserFilterList",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-user_filter-container").append('<option value="' + val.user_id + '">'+ "[ "+$.trim(val.user_id) +" ]"+" - " + $.trim(val.user_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function getProjectFilterList() {
+	        var user_id = $("#select2-user_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        var time_period = $("#select2-time_period_filter-container").val();
+	        var project = $("#select2-project_filter-container").val();
+	        var sbu = $("#select2-sbu_filter-container").val();
+	        var base_role = $("#select2-role_filter-container").val();
+	        if(time_period == ''){
+	        	time_period = 0;
+	        }
+	        if ($.trim(project) == "") {
+	        	$("#select2-project_filter-container option:not(:first)").remove();
+	        	var myParams = { user_id: user_id, status: status,time_period : time_period ,project : project, sbu : sbu, base_role : base_role};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getProjectFilterListInUser",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-project_filter-container").append('<option value="' + val.project_code + '">'+ "[ "+$.trim(val.project_code) +" ]"+" - " + $.trim(val.project_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      
+      function getSBUFilterList() {
+	        var user_id = $("#select2-user_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        var time_period = $("#select2-time_period_filter-container").val();
+	        var project = $("#select2-project_filter-container").val();
+	        var sbu = $("#select2-sbu_filter-container").val();
+	        var base_role = $("#select2-role_filter-container").val();
+	        if(time_period == ''){
+	        	time_period = 0;
+	        }
+	        if ($.trim(sbu) == "") {
+	        	$("#select2-sbu_filter-container option:not(:first)").remove();
+	        	var myParams = { user_id: user_id, status: status,time_period : time_period ,project : project, sbu : sbu, base_role : base_role};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getSBUFilterListInUser",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-sbu_filter-container").append('<option value="' + val.sbu_code + '">'+ "[ "+$.trim(val.sbu_code) +" ]"+" - " + $.trim(val.sbu_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      
+      function getRoleFilterList() {
+	        var user_id = $("#select2-user_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        var time_period = $("#select2-time_period_filter-container").val();
+	        var project = $("#select2-project_filter-container").val();
+	        var sbu = $("#select2-sbu_filter-container").val();
+	        var base_role = $("#select2-role_filter-container").val();
+	        if(time_period == ''){
+	        	time_period = 0;
+	        }
+	        if ($.trim(base_role) == "") {
+	        	$("#select2-role_filter-container option:not(:first)").remove();
+	        	var myParams = { user_id: user_id, status: status,time_period : time_period ,project : project, sbu : sbu, base_role : base_role};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getRoleFilterListInUser",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-role_filter-container").append('<option value="' + val.base_role + '">'+ $.trim(val.base_role) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function getStatusFilterList() {
+    	  var user_id = $("#select2-user_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        var time_period = $("#select2-time_period_filter-container").val();
+	        var project = $("#select2-project_filter-container").val();
+	        var sbu = $("#select2-sbu_filter-container").val();
+	        var base_role = $("#select2-role_filter-container").val();
+	        if(time_period == ''){
+	        	time_period = 0;
+	        }
+	        if ($.trim(status) == "") {
+	        	$("#select2-status_filter-container option:not(:first)").remove();
+	        	var myParams = { user_id: user_id, status: status,time_period : time_period ,project : project, sbu : sbu, base_role : base_role};
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getStatusFilterListFromUser",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-status_filter-container").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      function exportUser(){
+	    	 var user_id = $("#select2-user_filter-container").val();
+	         var status = $("#select2-status_filter-container").val();
+	         var time_period_filter = $("#select2-time_period_filter-container").val();
+	         var project = $("#select2-project_filter-container").val();
+		     var sbu = $("#select2-sbu_filter-container").val();
+		     var base_role = $("#select2-role_filter-container").val();
+	    	 $("#exportUser_filter").val(user_id);
+	     	 $("#exportStatus_filter").val(status);
+	     	 $("#exportTime_period_filter").val(time_period_filter);
+	     	 $("#exportSBU_filter").val(sbu);
+	     	 $("#exportProject_filter").val(project);
+	     	 $("#exportRole_filter").val(base_role);
+	     	 $("#exportUserForm ").submit();
+	  	}
+	    
       </script>
   </body>
 </html>

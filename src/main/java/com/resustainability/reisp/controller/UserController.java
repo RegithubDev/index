@@ -134,7 +134,22 @@ public class UserController {
 		ModelAndView model = new ModelAndView(PageConstants.user);
 		User obj = null;
 		try {
-		
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/user-report", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView usersReport(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.usersReport);
+		User obj = null;
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

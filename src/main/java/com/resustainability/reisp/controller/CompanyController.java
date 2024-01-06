@@ -204,7 +204,7 @@ public class CompanyController {
 			if(obj.getDepartment_code().equals("doc")) {
 				obj.setDepartment_code(departmentsList.get(0).getDepartment_code());	
         	}
-			obj.setCategory(obj.getDm_category());
+			obj.setCategory(obj.getCatID());
 			reonesubcategoryList = service.getreoneSubcategory(obj);
 		}catch (Exception e) {
 			e.printStackTrace();
