@@ -157,7 +157,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/app_master", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/app-master", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView appmaster(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.appmaster);
 		User obj = null;

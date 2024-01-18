@@ -3000,7 +3000,7 @@ z-index: 1000;
     	  d_name = d_name.replaceAll("%22", " ");
     	  console.log(dName)
     	 
-    	  ChangeSubCategoryForDept(dCode,dName,catID);
+    	  ChangeSubCategoryForDept(dCode,d_name,dName,catID);
     	 // encryptedURL = encryptURL(currentURL);
     	 // window.history.pushState({}, document.title, encryptedURL);
   	    // Decrypt the URL
@@ -3092,7 +3092,7 @@ z-index: 1000;
 	        $('#'+dName).css('background-color','lavender');
        } --%>
        
-       function ChangeSubCategoryForDept(department_code,dm_category,catID){
+       function ChangeSubCategoryForDept(department_code,d_name,dm_category,catID){
 	   		//$(".dept").html( $.trim(dm_category));
 	   		 $('.clickFirst').css('background-color','white');
 	   		 $('#'+dm_category).css('background-color','lavender');
@@ -3148,7 +3148,7 @@ z-index: 1000;
                         $("#deptListERR").append(html);
                    }
                    $(".cat").html( $.trim(dm_category));
-                   
+                   $(".dept").html( $.trim(d_name));
                },error: function (jqXHR, exception) {
    	   			      $(".page-loader").hide();
       	          	  getErrorMessage(jqXHR, exception);
