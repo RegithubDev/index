@@ -164,4 +164,8 @@ public class UserService {
 		return dao.usersForDept(obj);
 	}
 
+	public List<User> getappmaster(User obj)  throws Exception {
+		return dao.getappmaster(obj);
+	}
+
 }

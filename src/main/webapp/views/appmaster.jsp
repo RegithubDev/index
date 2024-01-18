@@ -2039,7 +2039,7 @@ button.disabled {
       
        <div class="flex items-center space-x-4 py-5 lg:py-6 p-6">
           <h2 class=" sm:text-sm font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
-             Application
+             App Master
           </h2> 
           <div class=" h-full py-1 sm:flex">
             <div class="h-full w-px bg-slate-300 dark:bg-navy-600"></div>
@@ -2051,7 +2051,7 @@ button.disabled {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </li>
-            <li class="hidden sm:flex">Application</li>
+            <li class="hidden sm:flex">App Master</li>
           </ul>
          
         </div>
@@ -2094,7 +2094,7 @@ button.disabled {
           </div>
           <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-             <a x-tooltip.placement.top-end.success="'Add New Category'" href="<%=request.getContextPath()%>/app_masterform" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+             <a x-tooltip.placement.top-end.success="'Add New App Master'" href="<%=request.getContextPath()%>/app_masterform" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </a>
                   <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
@@ -2354,7 +2354,7 @@ button.disabled {
 	        }).rows().remove().draw();
 			table.state.clear();		
 			var myParams = { department_code: department_code, status: status, dm_category : dm_category };
-			$.ajax({url : "<%=request.getContextPath()%>/ajax/getreonecategory",type:"POST",data:myParams,success : function(data){    				
+			$.ajax({url : "<%=request.getContextPath()%>/ajax/getappmaster",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
 		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.catID+"'";

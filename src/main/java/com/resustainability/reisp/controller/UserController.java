@@ -171,7 +171,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/app_masterform", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/app-masterform", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView appmasterform(@ModelAttribute User ss, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.appmasterform);
 		try { 
@@ -298,6 +298,26 @@ public class UserController {
 		}
 		return companiesList;
 	}
+	@RequestMapping(value = "/ajax/getappmaster", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getappmaster(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.getappmaster(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getappmaster : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/ajax/getUserList", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,
