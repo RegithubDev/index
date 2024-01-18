@@ -157,6 +157,34 @@ public class UserController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/app_master", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView appmaster(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.appmaster);
+		User obj = null;
+		try {
+			List <User> departmentsList = service.getDepartmentsList(user);
+			model.addObject("departmentsList", departmentsList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/app_masterform", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView appmasterform(@ModelAttribute User ss, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.appmasterform);
+		try { 
+			List <User> departmentsList = service.getDepartmentsList(null);
+			model.addObject("departmentsList", departmentsList);
+			  
+			List <User> settingList = service.getSettingsList(ss);
+			model.addObject("settingList", settingList);
+		} catch (Exception e) { 
+			e.printStackTrace();    
+		} 
+		return model; 
+	}
 	@RequestMapping(value = "/update-user-details", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView updateUserSelf(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.updateSelfUser);

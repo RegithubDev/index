@@ -11,7 +11,23 @@ public class User {
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,description,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
 	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text,document_type,
-	sub_category,	content_title,	title_icon,Attachments,	link,dept_status,cat_status,subcat_status,catID,subCatId;
+	sub_category,	content_title,	title_icon,Attachments,	link,dept_status,cat_status,subcat_status,catID,subCatId,app_name,logo;
+	public String getApp_name() {
+		return app_name;
+	}
+
+	public void setApp_name(String app_name) {
+		this.app_name = app_name;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
 	int session_count,time_period;
 	
 	private String [] docs;

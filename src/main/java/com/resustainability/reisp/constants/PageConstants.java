@@ -99,7 +99,10 @@ public class PageConstants {
 		public static final String test = "test";
 		public static final String bbForm = "bbForm";
 		public static final String helpCenter = "helpCenter";
+		public static final String appmaster = "appmaster";
+		public static final String appmasterform = "appmasterform";
 		
+	
 
 
 
