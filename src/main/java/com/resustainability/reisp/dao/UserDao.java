@@ -1924,22 +1924,29 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT dm.department_code,department_name,base_project as project_code,project_name  "
-            		+ " FROM [user_profile] dc "
-            		+ "left join department_master dm on dc.base_department = dm.department_code "
-            		+ "left join project p on dc.base_project = p.project_code "
-            		+ "left join user_accounts ua on dc.user_id = ua.user_id "
-            		+ " where ua.status <> 'Inactive' ";
+            String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,"
+            		+"FORMAT (up.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
+        			+ "created_by,FORMAT	(up.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
+            		+ " FROM [app_master] am "
+            		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
+        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status <> 'Inactive' ";
             int arrSize = 0;
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
-				qry = qry + " and dc.base_department = ? ";
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				qry = qry + " and am.app_name = ? ";
 				arrSize++;
 			}
-			qry = qry + "order by dc.user_name asc";
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				qry = qry + " and am.status = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by am.priority asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
-				pValues[i++] = user.getDepartment_code();
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				pValues[i++] = user.getApp_name();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				pValues[i++] = user.getStatus();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
