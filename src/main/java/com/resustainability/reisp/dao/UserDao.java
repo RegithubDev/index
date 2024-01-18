@@ -1924,7 +1924,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-            String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,"
+        	String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,"
             		+"FORMAT (up.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
         			+ "created_by,FORMAT	(up.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
             		+ " FROM [app_master] am "
