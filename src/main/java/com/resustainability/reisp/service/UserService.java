@@ -168,4 +168,16 @@ public class UserService {
 		return dao.getappmaster(obj);
 	}
 
+	public boolean addAppMaster(User obj) throws Exception {
+		return dao.addAppMaster(obj);
+	}
+
+	public User getAppMaster(User user) throws Exception {
+		return dao.getAppMaster(user);
+	}
+
+	public boolean updateAppMaster(User obj) throws Exception {
+		return dao.updateAppMaster(obj);
+	}
+
 }

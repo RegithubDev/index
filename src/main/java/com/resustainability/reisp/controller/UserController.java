@@ -185,6 +185,78 @@ public class UserController {
 		} 
 		return model; 
 	}
+	
+	@RequestMapping(value = "/add-app-master", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addAppMaster(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/app-master");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+		    String dt = formatter.format(new Date());
+			String endDate = DateForUser.date();
+			obj.setEnd_date(endDate);
+			obj.setCreated_by(userId);
+			obj.setCreated_date(dt);
+			flag = service.addAppMaster(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "New App Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding New App is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding New App is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/get-app-master", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView getAppMasterDetails(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.appmasterform);
+		try {
+			
+			User AMDetails = service.getAppMaster(user);
+			model.addObject("AMDetails", AMDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-app-master", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateAppMaster(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/app-master");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+		    String dt = formatter.format(new Date());
+			obj.setModified_by(userId);
+			obj.setModified_date(dt);
+			flag = service.updateAppMaster(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Record Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating Record is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			attributes.addFlashAttribute("error","Updating Record is failed. Try again.");
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/update-user-details", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView updateUserSelf(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.updateSelfUser);
@@ -298,6 +370,7 @@ public class UserController {
 		}
 		return companiesList;
 	}
+	
 	@RequestMapping(value = "/ajax/getappmaster", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<User> getappmaster(@ModelAttribute User obj,HttpSession session) {
@@ -314,10 +387,6 @@ public class UserController {
 		}
 		return companiesList;
 	}
-	
-	
-	
-	
 	
 	@RequestMapping(value = "/ajax/getUserList", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@page import="com.resustainability.reisp.constants.CommonConstants"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2433,11 +2434,11 @@ z-index: 1000;
                   </a>
                 </div>
                 
-                  <c:if test="${empty CDetails.department_code}">
-                                   <form id="addCategoryForm" name="addCategoryForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-reonecategory" method="post" class="form-horizontal" role="form" >
+                  <c:if test="${empty AMDetails.id}">
+                  <form class="form " action="<%=request.getContextPath() %>/add-app-master" id="addCategoryForm" name="addCategoryForm" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                   </c:if>
-                   <c:if test="${not empty CDetails.department_code}">
-                                   <form id="addCategoryForm" name="addCategoryForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-reonecategory" method="post" class="form-horizontal" role="form" >
+                   <c:if test="${not empty AMDetails.id}">
+                      <form id="addCategoryForm" name="addCategoryForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-app-master" method="post" class="form-horizontal" role="form"  enctype="multipart/form-data">
                   </c:if>
 			<div class=" place-items-center">
 		          <div class="card p-4 sm:p-5" x-data="pages.initCreditCard">
@@ -2452,11 +2453,11 @@ z-index: 1000;
            name="app_name"
       class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
       placeholder="Name"
-      type="text"
+      type="text" value="${AMDetails.app_name }"
     />
     <span id="app_nameError" class="requried"></span> 
   </label>
-                 
+                 <input type="hidden" name="id" id="ids" value="${AMDetails.id }"/>
                   <label class="block">
                     <span>URL</span><span   class="requried">*</span> 
                     
@@ -2464,22 +2465,26 @@ z-index: 1000;
             name="url"
       class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
       placeholder="Url"
-      type="text"
+      type="text" value="${AMDetails.url }"
     />
     <span id="urlError" class="requried"></span>
+    
   </label>
                 
                 </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
                     <span>logo</span><span class="requried">*</span> 
-                   <div class="filepond fp-grid fp-bordered [--fp-grid:2]">
-    <input id="logo"
-            name="logo"
-    type="file"  x-init="$el._x_filepond = FilePond.create($el)" multiple />
-  </div>
+				    <input     <c:if test="${empty AMDetails.id}"> id="logo"  name="logos"</c:if>
+				     <c:if test="${empty AMDetails.id}"> id="logos"  name="logoss"</c:if>
+				           
+				    type="file"  value="${AMDetails.logo }" />
   <span id="logoError" class="requried"></span>
+                   <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${AMDetails.app_name }/${AMDetails.logo }" class="filevalue" download ="${AMDetails.logo }"><i class="fa fa-arrow-down"></i> ${AMDetails.logo }</a>
+  
                   </label>
+                   <input type="hidden" name="logoExi" id="logoExi" value="${AMDetails.logo }"/>
+
                  <label class="block">
     <span>Description</span><span class="requried">*</span> 
      <label class="block">
@@ -2488,7 +2493,7 @@ z-index: 1000;
       rows="4"
       placeholder=" Enter Text"
       class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-    ></textarea>
+    >${AMDetails.description }</textarea>
      <span id="descriptionError" class="requried"></span>
   </label>
   </label>
@@ -2498,7 +2503,7 @@ z-index: 1000;
                     <span>Priority</span><span class="requried">*</span> 
                   
     <input id="priority"
-            name="priority"
+            name="priority" value="${AMDetails.priority }" 
       class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
       placeholder="Priority "
       type="text"
@@ -2511,163 +2516,23 @@ z-index: 1000;
             name="status"
       class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
     >
-       <option value="Active">Active</option>
-       <option value="Inactive">Inactive</option>
+       <option value="Active" <c:if test="${AMDetails.priority eq 'Active' }">selected</c:if>>Active</option>
+       <option value="Inactive" <c:if test="${AMDetails.priority eq 'Inactive' }">selected</c:if>>Inactive</option>
      
     </select>
     <span id="statusError" class="requried"></span>
   </label>
    
                 </div>
-   
-		         <%--     <div id="row${index.count }">
-					                
-		           					 <input name="id"  value="${CDetails.id}"  type="hidden" />
-					              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
-			                  <label class="block sm:col-span-8">
-			                    <span>Name</span>
-			                    <div class="relative mt-1.5 flex">
-			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
-								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
-			                     
-			                    </div>
-			                  </label>
-			                  <label class="block sm:col-span-8">
-			                    <span>Status</span>
-			                    <div class="relative mt-1.5 flex">
-			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
-								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
-			                     
-			                    </div>
-			                  </label>
-			                </div>
-			                
-					              
-					               <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
-					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-					                  </svg>
-					                  
-					                </a>
-					             </div> --%>
-		              <%-- <c:choose>
-					         <c:when test ="${fn:length(CDetails.categoryList) gt 0}" >
-					             <c:forEach var="obj" items="${CDetails.categoryList}" varStatus="index">
-					             <div id="row${index.count }">
-					                
-		           					 <input name="id"  value="${obj.id}"  type="hidden" />
-					              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
-			                  <label class="block sm:col-span-8">
-			                    <span>Category Title</span>
-			                    <div class="relative mt-1.5 flex">
-			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
-								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${obj.dm_category}">
-			                     
-			                    </div>
-			                  </label>
-			                  <label class="block sm:col-span-4">
-			                    <span>Status</span>
-			                    <div class="relative mt-1.5 flex">
-			                      <select
-					                   id="select2-status_add-container"
-					              		name="status"
-					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-					                    <option value="Active" <c:if test="${obj.status eq 'Active'}">selected</c:if>>Active</option>
-					                    <option value="Inactive" <c:if test="${obj.status eq 'Inactive'}">selected</c:if>>Inactive</option>
-					                  </select>
-			                    </div>
-			                  </label>
-			                </div>
-			                
-					              <label class="block mt-2">
-					                <span>Content Description</span>
-					                <textarea rows="4" placeholder="`Description" class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
-					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
-					                dark:focus:border-accent" id="description${index.count }" name="description">${obj.description}</textarea>
-					              </label>
-					               <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
-					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-					                  </svg>
-					                  
-					                </a>
-					             </div>
-					              <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
-								</c:forEach>
-					         </c:when>
-					         <c:otherwise>
-					         <div id="row0">
-				               <input name="id"  value="new"  type="hidden" />
-				              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
-			                  <label class="block sm:col-span-8">
-			                    <span>Category Title</span>
-			                    <div class="relative mt-1.5 flex">
-			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
-								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text" id="dm_category0" name="dm_category">
-			                     
-			                    </div>
-			                  </label>
-			                  <label class="block sm:col-span-4">
-			                    <span>Status</span>
-			                    <div class="relative mt-1.5 flex">
-			                      <select
-					                   id="select2-status_add-container"
-					              		name="status"
-					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-					                    <option value="Active">Active</option>
-					                    <option value="Inactive">Inactive</option>
-					                  </select>
-			                    </div>
-			                  </label>
-			                </div>
-                
-                
-				              <label class="block mt-2">
-				                <span>Content Description</span>
-				                <textarea rows="4" placeholder="Content Description...." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 
-				                bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
-				                dark:hover:border-navy-400 dark:focus:border-accent" id="description0" name="description"></textarea>
-				              </label>
-				               <a  onclick="removeRow('0');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
-				                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-				                  </svg>
-				                  
-				                </a>
-				                </div>
-				                 <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
-					         </c:otherwise>
-					      </c:choose> --%>
-					      
-		       
 		             
 		            </div>
-		            <!--  <div class="flex justify-center space-x-2 pt-4">
-				          <a  onclick="addNewRow();" class="btn space-x-2 bg-warning font-medium text-white shadow-lg shadow-warning/50 hover:bg-warning-focus focus:bg-warning-focus active:bg-warning-focus/90">
-		                  <span>Add New Row</span>
-		                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-		                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
-		                  </svg>
-		                </a>
-		              </div> -->
+		           
 		          </div>
 		        </div>            
             </form>
             
           </div>
           
-           <c:choose>
-		         <c:when test ="${fn:length(CDetails.categoryList) gt 0}" >
-		            	<input id="rowCount" type="hidden" value="${fn:length(CDetails.categoryList)}" />
-		         </c:when>
-		         <c:otherwise>
-		        		<input id="rowCount" type="hidden" value="${fn:length(CDetails.categoryList)}" />
-		         </c:otherwise>
-		      </c:choose>
 		      
         </main>
         </div>
@@ -2746,53 +2611,7 @@ z-index: 1000;
        $("#email").val('');
  		$("#logoutForm").submit();
      }
-    // https://www.youtube.com/watch?v=zJkS24mEBbU&pp=ygUQcmVzdXN0YWluYWJpbGl0eQ%3D%3D
-    /*  function onYouTubeIframeAPIReady() {
-         // Create an instance of the YouTube player
-         new YT.Player('player', {
-           videoId: 'z8-Ghz4YSMY',
-           playerVars: {
-             autoplay: 0, // Autoplay the video
-             controls: 1, // Show video controls
-             modestbranding: 1, // Hide YouTube logo
-             fs: 1, // Show fullscreen button
-           },
-         });
-       } */
-   
-       function addNewRow(){
-    	   var count = $('#rowCount').val();
-    	   var rNo = Number(count)+1;
-    	   var html = '<div id="row'+rNo+'"> <input name="id"  value="new"  type="hidden" />'
-    	   
-    	   
-    	   +'<div class="grid grid-cols-1 gap-4 sm:grid-cols-12">'
-    	   +'<label class="block sm:col-span-8"><span>Category Title</span><div class="relative mt-1.5 flex">'
-    	   +'<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" '
-    	   +'placeholder="Category Title..." type="text" id="dm_category0" name="dm_category"></div></label>'
-    	   +'<label class="block sm:col-span-4"> <span>Status</span><div class="relative mt-1.5 flex">'
-    	   +'<select id="select2-status_add-container" name="status" class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">'
-    	   +'<option value="Active">Active</option>'
-    	   +'<option value="Inactive">Inactive</option>'
-    	   +'</select> </div> </label></div>'
-               +'<label class="block mt-2"><span>Content Description</span>' 
-               +'<textarea rows="4" placeholder="Content Description..." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 '
-               +'bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450' 
-               +'dark:hover:border-navy-400 dark:focus:border-accent" id="description'+rNo+'" name="description"></textarea></label>'
-               +'<a onclick="removeRow('+rNo+');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">'
-           +'<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">'
-             +' <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>'
-           +'</svg>'
-           +'</a></div> <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>';
-           
-    	   $('#addNewRow').append(html);
-			 $("#rowCount").val(rNo);
-           }
-     
-     
-       function removeRow(rowNo){
-			$("#row"+rowNo).remove();
-		}
+
        function submit(){
 	    	if(validator.form()){ // validation perform
 	        	document.getElementById("addCategoryForm").submit();	
@@ -2816,9 +2635,8 @@ z-index: 1000;
 			 			required: true
 			 	  },"status": {										
 			 			required: true
-			 	  },"logo": {										
-			 			required: true,
-			 			extension: "jpg|jpeg|png|gif|pdf"
+			 	  },"logos": {										
+			 			required: true
 			 	  }
 		 	},
 					    messages: {
@@ -2834,9 +2652,8 @@ z-index: 1000;
 							 	required: 'Required',
 						 	  },"status": {
 							 	required: 'Required',
-						 	  },"logo": {
+						 	  },"logos": {
 							 	required: 'Required',
-							 	extension: "Please choose a valid file type (jpg, jpeg, png, gif, pdf)"
 						 	  }
 			   		},
 		      		errorPlacement:function(error, element){

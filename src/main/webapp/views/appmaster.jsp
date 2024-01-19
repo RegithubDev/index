@@ -2127,9 +2127,7 @@ button.disabled {
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                        Name 
                       </th>
-                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                       Logo
-                      </th>
+                    
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
                       </th>
@@ -2199,7 +2197,7 @@ button.disabled {
       <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
         <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
     
-	 <form action="<%=request.getContextPath()%>/get-dm" name="updatereonecategory" id="updatereonecategory" method="post">	
+	 <form action="<%=request.getContextPath()%>/get-app-master" name="updatereonecategory" id="updatereonecategory" method="post">	
 		<input id="id" name="id" type="hidden" />
 	</form>
 	
@@ -2330,7 +2328,7 @@ button.disabled {
 					},
 	           columnDefs: [
 	            	{
-	                    targets: [0, 1, 2, 3, 4, 5,6,7,8],
+	                    targets: [0, 1, 2, 3, 4, 5,6,7],
 	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100  truncate' //lg:px-5
 	                  
 	                }
@@ -2353,17 +2351,10 @@ button.disabled {
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getappmaster",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
-		         			var company_data = "'"+val.department_code+"','"+val.status+"','"+val.dm_category+"','"+val.catID+"'";
+		         			var company_data = "'"+val.app_name+"','"+val.id+"'";
 		                    var actions = '<a href="javascript:void(0);"   onclick="getCat('+company_data+');" class="btn btn-primary"  title="Edit"><i class="fa fa-pencil"></i></a>';
 		                    key++;
 		                   	var rowArray = [];    	                 
-		            		var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
-            				if($.trim(val.dept_status) != 'Active'){
-            					dept = '<div class=" text-error">'
-            		                  +' <span>'+dept+'</span>'
-            		                  +'</div>'
-            				}
-		            		var cat = $.trim($.trim(val.dm_category));
 		            		var status = $.trim(val.status);
 		            		if($.trim(status) != 'Active'){
 		            			cat = '<div class=" text-error">'
@@ -2372,8 +2363,7 @@ button.disabled {
             				}
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
-		                   	rowArray.push(dept);
-		                   	rowArray.push(cat);  
+		                   	rowArray.push(val.app_name);
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'
 	                		} else {
@@ -2397,7 +2387,7 @@ button.disabled {
 	    	 $("#x-teleport-target").css("display","none");
 	      });
 	    
-	    function getCat(department_code,status,company_name,id){
+	    function getCat(name,id){
 	    	
 		 $('#id').val($.trim(id));
 		 $("#updatereonecategory ").submit();

@@ -1,5 +1,6 @@
 package com.resustainability.reisp.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,8 +21,10 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.resustainability.reisp.common.EncryptDecrypt;
+import com.resustainability.reisp.common.FileUploads;
 import com.resustainability.reisp.common.Mail;
 import com.resustainability.reisp.constants.CommonConstants;
 import com.resustainability.reisp.common.DBConnectionHandler;
@@ -1925,8 +1928,8 @@ public class UserDao {
         boolean flag = false ;
         try {
         	String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,"
-            		+"FORMAT (up.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
-        			+ "created_by,FORMAT	(up.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
+            		+"FORMAT (am.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
+        			+ "created_by,FORMAT	(am.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
             		+ " FROM [app_master] am "
             		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
         			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status <> 'Inactive' ";
@@ -1957,6 +1960,112 @@ public class UserDao {
             throw new Exception(e);
         }
         return objsList;
+	}
+
+	public boolean addAppMaster(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			 String fileName  = null;
+			    	MultipartFile multipartFile = obj.getLogos();
+					if (null != multipartFile && !multipartFile.isEmpty() || !StringUtils.isEmpty(obj.getDocs()) && obj.getDocs().length > 0) {
+						if(null != multipartFile && !multipartFile.isEmpty()) {
+							String saveDirectory = CommonConstants.FILE_SAVING_PATH + obj.getApp_name() + File.separator;
+							fileName = multipartFile.getOriginalFilename();
+							if (null != multipartFile && !multipartFile.isEmpty()) {
+								FileUploads.singleFileSaving(multipartFile, saveDirectory, fileName);
+							}
+						}
+						obj.setLogo(fileName);
+					}
+			String insertQry = "INSERT INTO [app_master] "
+					+ "(app_name,	logo,	url,	priority,	description,	status,	created_date,	created_by)"
+					+ " VALUES "
+					+ "(:app_name,	:logo,	:url,	:priority,	:description,	:status,	getdate(),	:created_by)";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public User getAppMaster(User user) throws Exception {
+		User obj = null;
+		try {
+			String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,am.description,"
+            		+"FORMAT (am.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
+        			+ "created_by,FORMAT	(am.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
+            		+ " FROM [app_master] am "
+            		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
+        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status <> 'Inactive' ";
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
+				qry = qry + " and am.id = ? ";
+				arrSize++;
+			}
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
+				pValues[i++] = user.getId();
+			}
+			obj = (User)jdbcTemplate.queryForObject(qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return obj;
+
+	}
+
+	public boolean updateAppMaster(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String fileName  = null;
+			MultipartFile multipartFile = obj.getLogoss();
+			if (null != multipartFile && !multipartFile.isEmpty() || !StringUtils.isEmpty(obj.getLogoExi())) {
+				if(null != multipartFile && !multipartFile.isEmpty()) {
+					String saveDirectory = CommonConstants.FILE_SAVING_PATH + obj.getApp_name() + File.separator;
+					fileName = multipartFile.getOriginalFilename();
+					if (null != multipartFile && !multipartFile.isEmpty()) {
+						FileUploads.singleFileSaving(multipartFile, saveDirectory, fileName);
+					}
+				}else {
+					fileName = obj.getLogoExi();
+					obj.setLogo(fileName);
+				}
+				obj.setLogo(fileName);
+			}
+			String insertQry = "UPDATE [app_master] set "
+					+ "app_name= :app_name,	logo= :logo,	url= :url,	priority= :priority,	description= :description,	status= :status,"
+					+ "	modified_date= getdate(),	modified_by= :modified_by "
+					+ " where id = :id ";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
 	}
 
 
