@@ -2443,7 +2443,7 @@ z-index: 1000;
 		             <div class="space-y-4" id="addNewRow">
 		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
-                    <span>Name</span><span class="requried">*</span> 
+                    <span>App Name</span><span class="requried">*</span> 
                     
     <input id="app_name"
            name="app_name"
@@ -2456,16 +2456,16 @@ z-index: 1000;
                  
                   <label class="block">
                     <span>URL</span><span   class="requried">*</span> 
-                     <label class="block">
+                    
     <input id="url"
             name="url"
       class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
       placeholder="Url"
       type="text"
     />
+    <span id="urlError" class="requried"></span>
   </label>
-                  </label>
-                  
+                
                 </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
@@ -2475,6 +2475,7 @@ z-index: 1000;
             name="logo"
     type="file"  x-init="$el._x_filepond = FilePond.create($el)" multiple />
   </div>
+  <span id="logoError" class="requried"></span>
                   </label>
                  <label class="block">
     <span>Description</span><span class="requried">*</span> 
@@ -2485,20 +2486,21 @@ z-index: 1000;
       placeholder=" Enter Text"
       class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
     ></textarea>
+     <span id="descriptionError" class="requried"></span>
   </label>
   </label>
       </div>
                  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                    <label class="block">
                     <span>Priority</span><span class="requried">*</span> 
-                    <label class="block">
+                  
     <input id="priority"
             name="priority"
       class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
       placeholder="Priority "
       type="text"
     />
-  </label>
+   <span id="priorityError" class="requried"></span>
                   </label>
                  <label class="block">
     <span>Status</span><span class="requried">*</span> 
@@ -2509,6 +2511,7 @@ z-index: 1000;
       <option value="">Select Status</option>
      
     </select>
+    <span id="statusError" class="requried"></span>
   </label>
    
                 </div>
