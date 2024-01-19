@@ -36,6 +36,9 @@
     .requried {
 		color: red;
 	} 
+	.my-error-class{
+	color: red;
+	}
     .select2-container--default .select2-selection--single .select2-selection__arrow b {
 	     left: -25% !important;
 	    margin-top: 1p% !important;
@@ -2508,7 +2511,8 @@ z-index: 1000;
             name="status"
       class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
     >
-      <option value="">Select Status</option>
+       <option value="Active">Active</option>
+       <option value="Inactive">Inactive</option>
      
     </select>
     <span id="statusError" class="requried"></span>
@@ -2812,6 +2816,9 @@ z-index: 1000;
 			 			required: true
 			 	  },"status": {										
 			 			required: true
+			 	  },"logo": {										
+			 			required: true,
+			 			extension: "jpg|jpeg|png|gif|pdf"
 			 	  }
 		 	},
 					    messages: {
@@ -2827,6 +2834,9 @@ z-index: 1000;
 							 	required: 'Required',
 						 	  },"status": {
 							 	required: 'Required',
+						 	  },"logo": {
+							 	required: 'Required',
+							 	extension: "Please choose a valid file type (jpg, jpeg, png, gif, pdf)"
 						 	  }
 			   		},
 		      		errorPlacement:function(error, element){
