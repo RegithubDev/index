@@ -2245,7 +2245,7 @@ button.disabled {
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-appname_filter-container").append('<option value="' + val.app_name + '">'+ "[ "+$.trim(val.app_name) +" ]"+" - " + $.trim(val.department_name) +'</option>');
+	                             $("#select2-appname_filter-container").append('<option value="' + val.app_name + '">'+ $.trim(val.app_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2328,11 +2328,7 @@ button.disabled {
 		                    key++;
 		                   	var rowArray = [];    	                 
 		            		var status = $.trim(val.status);
-		            		if($.trim(status) != 'Active'){
-		            			cat = '<div class=" text-error">'
-            		                  +' <span>'+cat+'</span>'
-            		                  +'</div>'
-            				}
+		            	
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
 		                   	rowArray.push(val.app_name);
