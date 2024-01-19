@@ -2056,27 +2056,29 @@ button.disabled {
          
         </div>
         <div class="p-4 sm:p-5">
-                <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+               
+          <div class="p-4 sm:p-5">
+            <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           <label class="block">
-                  <select id="select2-appname_filter-container" onchange="getAppnamefilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option value="">Select Name</option>
+                 <select id="select2-appname_filter-container" onchange="getAppnamefilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select App Name</option>
                    	
                   </select>
                 </label>
      
                   <label class="block">
-                  <select id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                 <select id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
                 </label>
-                <label class="block hidden sm:flex">
+               <!--  <label class="block hidden sm:flex">
                 </label>
-                
+                 -->
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            <button onclick="getCatList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+           <button onclick="getCatList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
                 </button>
@@ -2084,23 +2086,26 @@ button.disabled {
                 active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px;color: white !important;">
                   <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Refresh </span>
                 </button> 
-              
             </div>
             </div>
+
+            
           </div>
           <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
              <a x-tooltip.placement.top-end.success="'Add New App Master'" href="<%=request.getContextPath()%>/app-masterform" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </a>
-                  <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
-                  <i class="fas fa-file-export"></i>  &nbsp;Export
-                </a>   
               
               
             </div>
           </div> 
         </div>
+              
+        
+              
+              </div>
+        
 		<br>
 		
               
