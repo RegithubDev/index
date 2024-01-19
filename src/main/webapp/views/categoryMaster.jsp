@@ -78,10 +78,11 @@
     .text-reone{
     	color: #e21e26!important;
     } */
-     .truncate {
+ .truncate {
+      white-space: nowrap;
       overflow: hidden;
-     /*  white-space: nowrap; */
       text-overflow: ellipsis;
+      max-width: 10em; /* Adjust the max-width to accommodate 2-3 words */
     }
     .pp-1{
     	padding: 0.1rem;
@@ -2944,7 +2945,7 @@ z-index: 1000;
 				   
 				   <div class="card"> <div class="flex justify-center p-5"></div>
 		            <div class="px-4 pb-8 text-center sm:px-5">
-		              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
+		              <h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">
 		                 ${obj.dm_category }
 		              </h4>
 		              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
@@ -3279,7 +3280,7 @@ z-index: 1000;
 		                        	var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
 		                        		+'<div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
-	                                       +'<div class="my-2 grow"><h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
+	                                       +'<div class="my-2 grow"><h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
 	                                       +'<div class="truncate" style="max-height: 2.5rem;">'
 	                                    	 +$.trim(val.description)	                           
 	                                        +'</div>'

@@ -2046,7 +2046,7 @@ button.disabled {
           </div>
           <ul class=" flex-wrap items-center space-x-2 sm:flex">
             <li class="flex items-center space-x-2">
-              <a x-tooltip.placement.top-end.success="'Go Back to Settings Page'" class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent">Masters</a>
+              <a x-tooltip.placement.top-end.success="'Go Back to Settings Page'" class="text-primary transition-colors hover:text-primary-focus dark:text-accent-light dark:hover:text-accent" href="<%=request.getContextPath() %>/settings">Masters</a>
               <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden sm:flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
@@ -2090,7 +2090,7 @@ button.disabled {
           </div>
           <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-             <a x-tooltip.placement.top-end.success="'Add New App Master'" href="<%=request.getContextPath()%>/app_masterform" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
+             <a x-tooltip.placement.top-end.success="'Add New App Master'" href="<%=request.getContextPath()%>/app-masterform" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </a>
                   <a onclick="exportCat();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
