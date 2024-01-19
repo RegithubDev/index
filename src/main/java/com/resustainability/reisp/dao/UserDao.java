@@ -1932,7 +1932,7 @@ public class UserDao {
         			+ "created_by,FORMAT	(am.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
             		+ " FROM [app_master] am "
             		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
-        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status <> 'Inactive' ";
+        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id where am.status is not null ";
             int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
 				qry = qry + " and am.app_name = ? ";
@@ -2007,7 +2007,7 @@ public class UserDao {
         			+ "created_by,FORMAT	(am.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
             		+ " FROM [app_master] am "
             		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
-        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status <> 'Inactive' ";
+        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status is not null  ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
 				qry = qry + " and am.id = ? ";
@@ -2067,6 +2067,78 @@ public class UserDao {
 		}
 		return flag;
 	}
+
+	public List<User> getAppnamefilter(User user) throws Exception { 
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+        	String qry = "SELECT am.app_name"
+            		+ " FROM [app_master] am "
+        			+ "where am.status is not null  ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				qry = qry + " and am.app_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				qry = qry + " and am.status = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by  am.status asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				pValues[i++] = user.getApp_name();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				pValues[i++] = user.getStatus();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;
+	}
+
+	public List<User> getStatusfilterinappmaaster(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+        	String qry = "SELECT distinct(am.status)"
+            		
+            		+ " FROM [app_master] am "
+        			+ "where am.status is not null ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				qry = qry + " and am.app_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				qry = qry + " and am.status = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by  am.status asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				pValues[i++] = user.getApp_name();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				pValues[i++] = user.getStatus();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;	}
 
 
 }

@@ -2060,7 +2060,7 @@ button.disabled {
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           <label class="block">
-                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-appname_filter-container" onchange="getAppnamefilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Name</option>
                    	
                   </select>
@@ -2227,27 +2227,25 @@ button.disabled {
  
  
       function clearFilter(){
-		    	$("#select2-department_filter-container").val("");
+		    	$("#select2-appname_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
-		    	$("#select2-category_filter-container").val("");
-		    	window.location.href= "<%=request.getContextPath()%>/reone-category";
+		    	window.location.href= "<%=request.getContextPath()%>/app-master";
 	    }
       
      
-      function getDepartmentfilter() {
-	        var department_code = $("#select2-department_filter-container").val();
-	        var dm_category = $("#select2-category_filter-container").val();
+      function getAppnamefilter() {
+	        var app_name = $("#select2-appname_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(department_code) == "") {
-	        	$("#select2-department_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
+	        if ($.trim(app_name) == "") {
+	        	$("#select2-appname_filter-container option:not(:first)").remove();
+	        	var myParams = {app_name: app_name, status: status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getDepartmentfilterInCat",
+	                url: "<%=request.getContextPath()%>/ajax/getAppnamefilter",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
+	                             $("#select2-appname_filter-container").append('<option value="' + val.app_name + '">'+ "[ "+$.trim(val.app_name) +" ]"+" - " + $.trim(val.department_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -2258,39 +2256,15 @@ button.disabled {
 	        }
 	    }
       
-      function getCategoryfilter() {
-	        var department_code = $("#select2-department_filter-container").val();
-	        var dm_category = $("#select2-category_filter-container").val();
-	        var status = $("#select2-status_filter-container").val();
-	        if ($.trim(dm_category) == "") {
-	        	$("#select2-category_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
-	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getCategoryfilterInCat",
-	                data: myParams, cache: false,async: false,
-	                success: function (data) {
-	                    if (data.length > 0) {
-	                        $.each(data, function (i, val) {
-	                             $("#select2-category_filter-container").append('<option value="' + val.dm_category + '">'+ $.trim(val.dm_category) +'</option>');
-	                        });
-	                    }
-	                },error: function (jqXHR, exception) {
-	    	   			      $(".page-loader").hide();
-	       	          	  getErrorMessage(jqXHR, exception);
-	       	     	  }
-	            });
-	        }
-	    }
-      
+
       function getStatusfilter() {
-    	  var department_code = $("#select2-department_filter-container").val();
-    	  var dm_category = $("#select2-category_filter-container").val();
+    	  var app_name = $("#select2-appname_filter-container").val();
 	      var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
+	        	var myParams = { app_name: app_name, status: status };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterInCat",
+	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterinappmaaster",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2307,11 +2281,9 @@ button.disabled {
 	    }
 
 	    function getCatList(){
-	         var department_code = $("#select2-department_filter-container").val();
+	         var app_name = $("#select2-appname_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
-	         var dm_category = $("#select2-category_filter-container").val();
-	         getDepartmentfilter();
-	         getCategoryfilter();
+	         getAppnamefilter();
 	         getStatusfilter();
 	     	table = $('#datatable-company').DataTable();
 			table.destroy();
@@ -2347,7 +2319,7 @@ button.disabled {
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-			var myParams = { department_code: department_code, status: status, dm_category : dm_category };
+			var myParams = { app_name: app_name, status: status};
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getappmaster",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){

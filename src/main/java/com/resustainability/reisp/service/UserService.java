@@ -180,4 +180,12 @@ public class UserService {
 		return dao.updateAppMaster(obj);
 	}
 
+	public List<User> getAppnamefilter(User obj) throws Exception {
+		return dao.getAppnamefilter(obj);
+	}
+
+	public List<User> getStatusfilterinappmaaster(User obj) throws Exception {
+		return dao.getStatusfilterinappmaaster(obj);
+	}
+		
 }

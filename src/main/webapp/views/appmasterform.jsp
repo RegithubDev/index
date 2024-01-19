@@ -2476,15 +2476,13 @@ z-index: 1000;
                   <label class="block">
                     <span>logo</span><span class="requried">*</span> 
 				    <input     <c:if test="${empty AMDetails.id}"> id="logo"  name="logos"</c:if>
-				     <c:if test="${empty AMDetails.id}"> id="logos"  name="logoss"</c:if>
+				     <c:if test="${not empty AMDetails.id}"> id="logos"  name="logoss"</c:if>
 				           
 				    type="file"  value="${AMDetails.logo }" />
   <span id="logoError" class="requried"></span>
-                   <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${AMDetails.app_name }/${AMDetails.logo }" class="filevalue" download ="${AMDetails.logo }"><i class="fa fa-arrow-down"></i> ${AMDetails.logo }</a>
-  
+   <c:if test="${not empty AMDetails.id}">  <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${AMDetails.app_name }/${AMDetails.logo }" class="filevalue" download ="${AMDetails.logo }"><i class="fa fa-arrow-down"></i> ${AMDetails.logo }</a></c:if>
                   </label>
                    <input type="hidden" name="logoExi" id="logoExi" value="${AMDetails.logo }"/>
-
                  <label class="block">
     <span>Description</span><span class="requried">*</span> 
      <label class="block">

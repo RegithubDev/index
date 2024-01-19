@@ -388,6 +388,51 @@ public class UserController {
 		return companiesList;
 	}
 	
+	@RequestMapping(value = "/ajax/getAppnamefilter", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User>  getAppnamefilter(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service. getAppnamefilter(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error(" getAppnamefilter : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	@RequestMapping(value = "/ajax/getStatusfilterinappmaaster", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getStatusfilterinappmaaster(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service. getStatusfilterinappmaaster(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getStatusfilterinappmaaster: " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/ajax/getUserList", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {
