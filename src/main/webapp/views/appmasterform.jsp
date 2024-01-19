@@ -2443,7 +2443,7 @@ z-index: 1000;
 		             <div class="space-y-4" id="addNewRow">
 		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
-                    <span>Name</span><span id="app_nameError" class="requried">*</span> 
+                    <span>Name</span><span class="requried">*</span> 
                     
     <input id="app_name"
            name="app_name"
@@ -2451,10 +2451,11 @@ z-index: 1000;
       placeholder="Name"
       type="text"
     />
+    <span id="app_nameError" class="requried"></span> 
   </label>
                  
                   <label class="block">
-                    <span>URL</span><span class="requried">*</span> 
+                    <span>URL</span><span   class="requried">*</span> 
                      <label class="block">
     <input id="url"
             name="url"
