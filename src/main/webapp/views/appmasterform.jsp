@@ -2443,42 +2443,74 @@ z-index: 1000;
 		             <div class="space-y-4" id="addNewRow">
 		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
-                    <span>Name</span>
-                    <span class="relative mt-1.5 flex">
-                      <input class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Name" type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                    
-                      </span>
-                    </span>
+                    <span>Name</span><span class="requried">*</span> 
+                    <label class="block">
+    <input id="app_name"
+           name="app_name"
+      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+      placeholder="Name"
+      type="text"
+    />
+  </label>
                   </label>
                   <label class="block">
-                    <span>URL</span>
-                    <span class="relative mt-1.5 flex">
-                      <input class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="URL" type="text" x-input-mask="{numericOnly: true, blocks: [0, 3, 3, 4], delimiters: ['(', ') ', '-']}">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                       
-                      </span>
-                    </span>
+                    <span>URL</span><span class="requried">*</span> 
+                     <label class="block">
+    <input id="url"
+            name="url"
+      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+      placeholder="Url"
+      type="text"
+    />
+  </label>
                   </label>
+                  
                 </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <label class="block">
-                    <span>logo</span>
+                    <span>logo</span><span class="requried">*</span> 
                    <div class="filepond fp-grid fp-bordered [--fp-grid:2]">
-    <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" multiple />
+    <input id="logo"
+            name="logo"
+    type="file"  x-init="$el._x_filepond = FilePond.create($el)" multiple />
   </div>
                   </label>
                  <label class="block">
-    <span>Status</span>
-    <select
+    <span>Description</span><span class="requried">*</span> 
+     <label class="block">
+    <textarea id="description"
+            name="description"
+      rows="4"
+      placeholder=" Enter Text"
+      class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+    ></textarea>
+  </label>
+  </label>
+      </div>
+                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                   <label class="block">
+                    <span>Priority</span><span class="requried">*</span> 
+                    <label class="block">
+    <input id="priority"
+            name="priority"
+      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+      placeholder="Priority "
+      type="text"
+    />
+  </label>
+                  </label>
+                 <label class="block">
+    <span>Status</span><span class="requried">*</span> 
+    <select id="status"
+            name="status"
       class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
     >
-      <option>Corporate event</option>
+      <option value="">Select Status</option>
      
     </select>
   </label>
+   
                 </div>
-                
    
 		         <%--     <div id="row${index.count }">
 					                
@@ -2763,21 +2795,56 @@ z-index: 1000;
 		   	 errorClass: "my-error-class",
 		   	 validClass: "my-valid-class",
 		   	 ignore: ":hidden:not(.select2 form-select)",
-		   		    rules: {
-				   		     "department_code": {
-						 			required: true
-						 	  }
-					 	},
+		   	rules: {
+	   		     "app_name": {
+			 			required: true
+			 	  },"logo": {										
+			 			required: true
+			 	  },"url": {										
+			 			required: true
+			 	  },"description": {										
+			 			required: true
+			 	  },"priority": {										
+			 			required: true
+			 	  },"status": {										
+			 			required: true
+			 	  }
+		 	},
 					    messages: {
-					 		 "department_code": {
+					 		 "app_name": {
+							 	required: 'Required',
+						 	  },"logo": {
+							 	required: 'Required',
+						 	  },"url": {
+							 	required: 'Required',
+						 	  },"description": {
+							 	required: 'Required',
+						 	  },"priority": {
+							 	required: 'Required',
+						 	  },"status": {
 							 	required: 'Required',
 						 	  }
 			   		},
 		      		errorPlacement:function(error, element){
-		      			if (element.attr("id") == "department_code" ){
-			   				 document.getElementById("department_codeError").innerHTML="";
-			   		 		 error.appendTo('#department_codeError');
-				   			}
+		      			if (element.attr("id") == "app_name" ){
+			   				 document.getElementById("app_nameError").innerHTML="";
+			   		 		 error.appendTo('#app_nameError');
+				   			}else if(element.attr("id") == "logo" ){
+				   			   document.getElementById("logoError").innerHTML="";
+				   		 	   error.appendTo('#logoError');
+				   			}else if(element.attr("id") == "url" ){
+					   			   document.getElementById("urlError").innerHTML="";
+					   		 	   error.appendTo('#urlError');
+					   			}else if(element.attr("id") == "description" ){
+						   			   document.getElementById("descriptionError").innerHTML="";
+						   		 	   error.appendTo('#descriptionError');
+						   			}else if(element.attr("id") == "priority" ){
+							   			   document.getElementById("priorityError").innerHTML="";
+							   		 	   error.appendTo('#priorityError');
+							   			}else if(element.attr("id") == "status" ){
+								   			   document.getElementById("statusError").innerHTML="";
+								   		 	   error.appendTo('#statusError');
+								   			}
 				   			else{
 				   				error.insertAfter(element);
 						   	        } 
