@@ -2132,7 +2132,9 @@ button.disabled {
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                        Name 
                       </th>
-                    
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                       Logo 
+                      </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                         Status
                       </th>
@@ -2305,7 +2307,7 @@ button.disabled {
 					},
 	           columnDefs: [
 	            	{
-	                    targets: [0, 1, 2, 3, 4, 5,6,7],
+	                    targets: [0, 1, 2, 3, 4, 5,6,7,8],
 	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100  truncate' //lg:px-5
 	                  
 	                }
@@ -2342,6 +2344,9 @@ button.disabled {
 	                		} else {
 	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
 	                		}
+		                	
+		                	
+		                 	rowArray.push('<img class="w-12" src="CommonConstants.FILE_SAVING_PATH_LOC%>${val.app_name }/${val.logo }" alt="image">'); 
 		                   	rowArray.push(status); 
 		                	rowArray.push($.trim(val.created_date));  
 		                   	rowArray.push($.trim(val.created_by));
