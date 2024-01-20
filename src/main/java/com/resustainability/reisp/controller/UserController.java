@@ -296,6 +296,22 @@ public class UserController {
 		}
 		return companiesList;
 	}
+	@RequestMapping(value = "/ajax/getDepartmentfilterappmaster", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getDepartmentfilterappmaster(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.getDepartmentfilterappmaster(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentfilterappmaster: " + e.getMessage());
+		}
+		return companiesList;
+	}
 	
 	@RequestMapping(value = "/ajax/usersForDept", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody

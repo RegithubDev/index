@@ -2242,12 +2242,14 @@ button.disabled {
       function clearFilter(){
 		    	$("#select2-appname_filter-container").val("");
 		    	$("#select2-status_filter-container").val("");
+		    	$("#select2-department_filter-container").val("");
 		    	window.location.href= "<%=request.getContextPath()%>/app-master";
 	    }
       
      
       function getAppnamefilter() {
 	        var app_name = $("#select2-appname_filter-container").val();
+	        var department_code = $("#select2-department_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(app_name) == "") {
 	        	$("#select2-appname_filter-container option:not(:first)").remove();
@@ -2271,13 +2273,13 @@ button.disabled {
       
       function getDepartmentfilter() {
 	        var department_code = $("#select2-department_filter-container").val();
-	        var dm_category = $("#select2-category_filter-container").val();
+	        var app_name = $("#select2-appname_filter-container").val();
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(department_code) == "") {
 	        	$("#select2-department_filter-container option:not(:first)").remove();
 	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
 	            $.ajax({
-	                url: "<%=request.getContextPath()%>/ajax/getDepartmentfilterInCat",
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentfilterappmaster",
 	                data: myParams, cache: false,async: false,
 	                success: function (data) {
 	                    if (data.length > 0) {
@@ -2295,6 +2297,7 @@ button.disabled {
       
 
       function getStatusfilter() {
+    	  var department_code = $("#select2-department_filter-container").val();
     	  var app_name = $("#select2-appname_filter-container").val();
 	      var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
@@ -2318,10 +2321,12 @@ button.disabled {
 	    }
 
 	    function getCatList(){
+	    	 var department_code = $("#select2-department_filter-container").val();
 	         var app_name = $("#select2-appname_filter-container").val();
 	         var status = $("#select2-status_filter-container").val();
 	         getAppnamefilter();
 	         getStatusfilter();
+	         getDepartmentfilter
 	     	table = $('#datatable-company').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');

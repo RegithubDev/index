@@ -57,7 +57,7 @@ public class UrlGenerator {
 	}
 
 	private static final String SERVER_PATH = "C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/";
-	private static final String LOCAL_PATH = "C:/Users/saidileep.p/git/index/src/main/webapp/";
+	private static final String LOCAL_PATH = "C:/Users/saishree.s/git/index/src/main/webapp/";
   //C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\brainbox\resources\gallery
 	public String getNGINXFilesBasePath(){
 		String base_path = "";
@@ -67,7 +67,7 @@ public class UrlGenerator {
 			String ip_address = request.getServerName().toString();
 
 		    if("10.203.10.158".equals(ip_address) || "203.153.40.44".equals(ip_address)) {
-		    	base_path = "C:/Users/Saidileep.p/eclipse-workspace/"+getContextPath();
+		    	base_path = "C:/Users/saishree.s/eclipse-workspace/"+getContextPath();
 		    }else if("13.235.73.61".equals(ip_address)) {
 		    	base_path = "usr/share/nginx/html/"+getContextPath();
 		    }else if("127.0.0.1".equals(ip_address) || "localhost".contains(ip_address)) {

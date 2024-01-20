@@ -187,5 +187,9 @@ public class UserService {
 	public List<User> getStatusfilterinappmaaster(User obj) throws Exception {
 		return dao.getStatusfilterinappmaaster(obj);
 	}
+
+	public List<User> getDepartmentfilterappmaster(User obj) throws Exception {
+		return dao.getDepartmentfilterappmaster(obj);
+	}
 		
 }

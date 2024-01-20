@@ -2142,5 +2142,42 @@ public class UserDao {
         }
         return objsList;	}
 
+	public List<User> getDepartmentfilterappmaster(User user) throws Exception {
+		List<User> objsList = new ArrayList<User>();
+        boolean flag = false ;
+        try {
+        	String qry = "SELECT distinct(am.department_code),department_name"
+            		+ " FROM [app_master] am "
+            		+ "left join department_master dm on am.department_code = dm.department_code "
+        			+ "where am.status is not null ";
+            int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				qry = qry + " and am.app_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				qry = qry + " and am.status = ? ";
+				arrSize++;
+			}
+			qry = qry + "order by  am.department_code asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
+				pValues[i++] = user.getApp_name();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
+				pValues[i++] = user.getStatus();
+			}
+            objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
+            if(objsList.size() > 0) {
+                flag = true ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+        return objsList;
+	}
+
 
 }
