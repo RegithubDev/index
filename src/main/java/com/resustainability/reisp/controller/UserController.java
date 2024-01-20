@@ -220,6 +220,8 @@ public class UserController {
 	public ModelAndView getAppMasterDetails(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.appmasterform);
 		try {
+			List <User> departmentsList = service.getDepartmentsList(null);
+			model.addObject("departmentsList", departmentsList);
 			
 			User AMDetails = service.getAppMaster(user);
 			model.addObject("AMDetails", AMDetails);

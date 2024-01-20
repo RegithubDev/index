@@ -1927,10 +1927,11 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
         boolean flag = false ;
         try {
-        	String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,"
+        	String qry = "SELECT am.id ,app_name ,am.description,department_name,am.department_code,logo,am.url,am.priority ,am.status ,"
             		+"FORMAT (am.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
         			+ "created_by,FORMAT	(am.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
             		+ " FROM [app_master] am "
+            		+ "left join department_master dm on am.department_code = dm.department_code "
             		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
         			+ "left join [user_profile] up2 on am.modified_by = up2.user_id where am.status is not null ";
             int arrSize = 0;
