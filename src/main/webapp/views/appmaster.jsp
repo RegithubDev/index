@@ -2099,6 +2099,7 @@ button.disabled {
           </div>
           <div class="col-span-12 lg:col-span-4 xl:col-span-3 px-4 py-3 sm:px-5">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+            <div></div>
              <a x-tooltip.placement.top-end.success="'Add New App Master'" href="<%=request.getContextPath()%>/app-masterform" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 100%;">
                   <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
                 </a>
@@ -2135,6 +2136,9 @@ button.disabled {
                         Action
                       </th>
                       <%-- </c:if> --%>
+                      <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                       Department 
+                      </th>
                       <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                        Name 
                       </th>
@@ -2253,7 +2257,7 @@ button.disabled {
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(app_name) == "") {
 	        	$("#select2-appname_filter-container option:not(:first)").remove();
-	        	var myParams = {app_name: app_name, status: status };
+	        	var myParams = { app_name: app_name, status: status,department_code : department_code };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/getAppnamefilter",
 	                data: myParams, cache: false,async: false,
@@ -2277,7 +2281,7 @@ button.disabled {
 	        var status = $("#select2-status_filter-container").val();
 	        if ($.trim(department_code) == "") {
 	        	$("#select2-department_filter-container option:not(:first)").remove();
-	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
+	        	var myParams = { app_name: app_name, status: status,department_code : department_code };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/getDepartmentfilterappmaster",
 	                data: myParams, cache: false,async: false,
@@ -2302,7 +2306,7 @@ button.disabled {
 	      var status = $("#select2-status_filter-container").val();
 	        if ($.trim(status) == "") {
 	        	$("#select2-status_filter-container option:not(:first)").remove();
-	        	var myParams = { app_name: app_name, status: status };
+	        	var myParams = { app_name: app_name, status: status,department_code : department_code };
 	            $.ajax({
 	                url: "<%=request.getContextPath()%>/ajax/getStatusfilterinappmaaster",
 	                data: myParams, cache: false,async: false,
@@ -2326,7 +2330,7 @@ button.disabled {
 	         var status = $("#select2-status_filter-container").val();
 	         getAppnamefilter();
 	         getStatusfilter();
-	         getDepartmentfilter
+	         getDepartmentfilter();
 	     	table = $('#datatable-company').DataTable();
 			table.destroy();
 			$.fn.dataTable.moment('DD-MMM-YYYY');
@@ -2342,7 +2346,7 @@ button.disabled {
 					},
 	           columnDefs: [
 	            	{
-	                    targets: [0, 1, 2, 3, 4, 5,6,7,8],
+	                    targets: [0, 1, 2, 3, 4, 5,6,7,8,9], 
 	                    className: ' px-3 py-3 font-medium text-slate-700 dark:text-navy-100  truncate' //lg:px-5
 	                  
 	                }
@@ -2361,7 +2365,7 @@ button.disabled {
 					}
 	        }).rows().remove().draw();
 			table.state.clear();		
-			var myParams = { app_name: app_name, status: status};
+			var myParams = { app_name: app_name, status: status,department_code : department_code };
 			$.ajax({url : "<%=request.getContextPath()%>/ajax/getappmaster",type:"POST",data:myParams,success : function(data){    				
 					if(data != null && data != '' && data.length > 0){    					
 		         		$.each(data,function(key,val){
@@ -2373,6 +2377,8 @@ button.disabled {
 		            	
 		                   	rowArray.push($.trim(key));
 		                	rowArray.push($.trim(actions));  
+		                	var dept = $.trim('['+val.department_code) +'] - '+$.trim(val.department_name)
+		                	rowArray.push(dept);
 		                   	rowArray.push(val.app_name);
 		                	if (status == 'Active') {
 		                		status = '<p class="badge bg-success/10 text-success dark:bg-success/15">'+$.trim(val.status)+' </p>'

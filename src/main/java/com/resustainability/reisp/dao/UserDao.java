@@ -1943,6 +1943,10 @@ public class UserDao {
 				qry = qry + " and am.status = ? ";
 				arrSize++;
 			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and am.department_code = ? ";
+				arrSize++;
+			}
 			qry = qry + "order by am.priority asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
@@ -1951,6 +1955,9 @@ public class UserDao {
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
 				pValues[i++] = user.getStatus();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
@@ -2086,6 +2093,10 @@ public class UserDao {
 				qry = qry + " and am.status = ? ";
 				arrSize++;
 			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and am.department_code = ? ";
+				arrSize++;
+			}
 			qry = qry + "order by  am.status asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
@@ -2094,6 +2105,9 @@ public class UserDao {
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
 				pValues[i++] = user.getStatus();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
@@ -2123,6 +2137,10 @@ public class UserDao {
 				qry = qry + " and am.status = ? ";
 				arrSize++;
 			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and am.department_code = ? ";
+				arrSize++;
+			}
 			qry = qry + "order by  am.status asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
@@ -2131,6 +2149,9 @@ public class UserDao {
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
 				pValues[i++] = user.getStatus();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
@@ -2149,7 +2170,7 @@ public class UserDao {
         	String qry = "SELECT distinct(am.department_code),department_name"
             		+ " FROM [app_master] am "
             		+ "left join department_master dm on am.department_code = dm.department_code "
-        			+ "where am.status is not null ";
+        			+ "where am.department_code is not null ";
             int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getApp_name())) {
 				qry = qry + " and am.app_name = ? ";
@@ -2157,6 +2178,10 @@ public class UserDao {
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
 				qry = qry + " and am.status = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				qry = qry + " and am.department_code = ? ";
 				arrSize++;
 			}
 			qry = qry + "order by  am.department_code asc";
@@ -2167,6 +2192,9 @@ public class UserDao {
 			}
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getStatus())) {
 				pValues[i++] = user.getStatus();
+			}
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getDepartment_code())) {
+				pValues[i++] = user.getDepartment_code();
 			}
             objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
             if(objsList.size() > 0) {
