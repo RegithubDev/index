@@ -1659,7 +1659,7 @@ public class UserDao {
 		List<User> objsList = new ArrayList<User>();
 		boolean flag = false ;
 		try {
-			String qry = "SELECT  id,module,module_name,url ,priority,status FROM settings_master where [status] <> 'Inactive'  ORDER BY priority asc ";
+			String qry = "SELECT  id,module,module_name,url ,description,priority,status FROM settings_master where [status] <> 'Inactive'  ORDER BY priority asc ";
 		
 			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			if(objsList.size() > 0) {

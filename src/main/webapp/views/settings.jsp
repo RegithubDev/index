@@ -2248,6 +2248,47 @@ z-index: 1000;
             </h2>
           </div> 
   </div>
+  
+  <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50"><div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5">
+  <div class="flex ">
+  <div class="">
+  <div class="my-2 grow">
+  <h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">Awards &amp; Recognition</h4>
+  <div>
+  </div>
+  </div>
+  <div class="truncate" style="max-height: 2.5rem;">Awards and Recognition</div>
+  </div> </div>  
+  <div class="mt-3 flex space-x-1 justify-end">
+  <a href="/index/sbu" class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45 text-re" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
+                      </svg>
+                    </a> </div></div></div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
         <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
           <div class="col-span-12 lg:col-span-12">
             <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">
