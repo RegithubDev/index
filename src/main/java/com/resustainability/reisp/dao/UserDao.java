@@ -1983,9 +1983,9 @@ public class UserDao {
 						obj.setLogo(fileName);
 					}
 			String insertQry = "INSERT INTO [app_master] "
-					+ "(app_name,	logo,	url,	priority,	description,	status,	created_date,	created_by)"
+					+ "(app_name,	logo,	url,	priority,	description,department_code,	status,	created_date,	created_by)"
 					+ " VALUES "
-					+ "(:app_name,	:logo,	:url,	:priority,	:description,	:status,	getdate(),	:created_by)";
+					+ "(:app_name,	:logo,	:url,	:priority,	:description,:department_code,	:status,	getdate(),	:created_by)";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {
@@ -2003,12 +2003,13 @@ public class UserDao {
 	public User getAppMaster(User user) throws Exception {
 		User obj = null;
 		try {
-			String qry = "SELECT am.id ,app_name ,logo,am.url,am.priority ,am.status ,am.description,"
+			String qry = "SELECT am.id ,app_name ,am.description,department_name,am.department_code,logo,am.url,am.priority ,am.status ,"
             		+"FORMAT (am.created_date, 'dd-MMM-yy') as created_date,up1.user_name as 	"
         			+ "created_by,FORMAT	(am.modified_date, 'dd-MMM-yy') as modified_date,up2.user_name as  modified_by "
             		+ " FROM [app_master] am "
+            		+ "left join department_master dm on am.department_code = dm.department_code "
             		+ "left join [user_profile] up1 on am.created_by = up1.user_id "
-        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id  where am.status is not null  ";
+        			+ "left join [user_profile] up2 on am.modified_by = up2.user_id where am.status is not null ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
 				qry = qry + " and am.id = ? ";
@@ -2052,7 +2053,7 @@ public class UserDao {
 				obj.setLogo(fileName);
 			}
 			String insertQry = "UPDATE [app_master] set "
-					+ "app_name= :app_name,	logo= :logo,	url= :url,	priority= :priority,	description= :description,	status= :status,"
+					+ "app_name= :app_name,	logo= :logo,	url= :url,	priority= :priority,department_code=:department_code,	description= :description,	status= :status,"
 					+ "	modified_date= getdate(),	modified_by= :modified_by "
 					+ " where id = :id ";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 

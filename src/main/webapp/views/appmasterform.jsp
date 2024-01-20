@@ -2458,13 +2458,13 @@ z-index: 1000;
     <span id="app_nameError" class="requried"></span> 
   </label>
   <label class="block">
-	                  <span>ReONE Department</span><span class="requried">*</span> 
+	                  <span>Department</span><span class="requried">*</span> 
 	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
 	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
 	                  name="department_code" id="department_code">
 	                    <option value="">Select Department</option>
 	                     <c:forEach var="obj" items="${departmentsList}">
-	                     	<option value="${obj.department_code }" <c:if test="${CDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
+	                     	<option value="${obj.department_code }" <c:if test="${AMDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
 						  </c:forEach>
 	                  </select>
 	                   <span id="department_codeError" class="requried"></span>
