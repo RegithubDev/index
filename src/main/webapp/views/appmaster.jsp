@@ -2374,9 +2374,9 @@ button.disabled {
 	                		} else {
 	                			status = '<p class="badge bg-error/10 text-error dark:bg-error/15">'+$.trim(val.status)+' </p>'
 	                		}
-		                	
-		                	
-		                 	rowArray.push('<img class="w-12" src="CommonConstants.FILE_SAVING_PATH_LOC%>${val.app_name }/${val.logo }" alt="image">'); 
+		                	var link = "/index/resources/gallery/"+val.app_name+"/"+val.logo
+		                	var logo = '<img class="w-12" src="'+link+'">'
+		                 	rowArray.push(logo); 
 		                   	rowArray.push(status); 
 		                	rowArray.push($.trim(val.created_date));  
 		                   	rowArray.push($.trim(val.created_by));
