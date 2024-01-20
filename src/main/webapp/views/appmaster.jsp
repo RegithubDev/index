@@ -2067,6 +2067,12 @@ button.disabled {
                    	
                   </select>
                 </label>
+                 <label class="block">
+                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                    <option value="">Select Department</option>
+                   	
+                  </select>
+                </label>
      
                   <label class="block">
                  <select id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
@@ -2251,6 +2257,30 @@ button.disabled {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
 	                             $("#select2-appname_filter-container").append('<option value="' + val.app_name + '">'+ $.trim(val.app_name) +'</option>');
+	                        });
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	        }
+	    }
+      
+      function getDepartmentfilter() {
+	        var department_code = $("#select2-department_filter-container").val();
+	        var dm_category = $("#select2-category_filter-container").val();
+	        var status = $("#select2-status_filter-container").val();
+	        if ($.trim(department_code) == "") {
+	        	$("#select2-department_filter-container option:not(:first)").remove();
+	        	var myParams = { department_code: department_code, status: status, dm_category : dm_category };
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getDepartmentfilterInCat",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+	                             $("#select2-department_filter-container").append('<option value="' + val.department_code + '">'+ "[ "+$.trim(val.department_code) +" ]"+" - " + $.trim(val.department_name) +'</option>');
 	                        });
 	                    }
 	                },error: function (jqXHR, exception) {

@@ -2445,7 +2445,7 @@ z-index: 1000;
 		           
 		            
 		             <div class="space-y-4" id="addNewRow">
-		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                   <label class="block">
                     <span>App Name</span><span class="requried">*</span> 
                     
@@ -2457,6 +2457,18 @@ z-index: 1000;
     />
     <span id="app_nameError" class="requried"></span> 
   </label>
+  <label class="block">
+	                  <span>ReONE Department</span><span class="requried">*</span> 
+	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
+	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
+	                  name="department_code" id="department_code">
+	                    <option value="">Select Department</option>
+	                     <c:forEach var="obj" items="${departmentsList}">
+	                     	<option value="${obj.department_code }" <c:if test="${CDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
+						  </c:forEach>
+	                  </select>
+	                   <span id="department_codeError" class="requried"></span>
+	                </label>
     <label class="block">
                     <span>Priority</span><span class="requried">*</span> 
                   
@@ -2633,6 +2645,8 @@ z-index: 1000;
 			 			required: true
 			 	  },"logos": {										
 			 			required: true
+			 	  },"department_code": {										
+			 			required: true
 			 	  }
 		 	},
 					    messages: {
@@ -2648,7 +2662,7 @@ z-index: 1000;
 							 	required: 'Required',
 						 	  },"status": {
 							 	required: 'Required',
-						 	  },"logos": {
+						 	  },"department_code": {
 							 	required: 'Required',
 						 	  }
 			   		},
@@ -2671,7 +2685,10 @@ z-index: 1000;
 							   			}else if(element.attr("id") == "status" ){
 								   			   document.getElementById("statusError").innerHTML="";
 								   		 	   error.appendTo('#statusError');
-								   			}
+								   			}else if (element.attr("id") == "department_code" ){
+								   				 document.getElementById("department_codeError").innerHTML="";
+								   		 		 error.appendTo('#department_codeError');
+									   			}
 				   			else{
 				   				error.insertAfter(element);
 						   	        } 
