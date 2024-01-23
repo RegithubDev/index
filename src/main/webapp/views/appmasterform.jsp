@@ -2445,7 +2445,20 @@ z-index: 1000;
 		           
 		            
 		             <div class="space-y-4" id="addNewRow">
-		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
+		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+		                
+	                <label class="block">
+    <span>Department</span><span class="requried">*</span> 
+    <select  name="department_code" id="department_code"
+      class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
+    >
+        <option value="">Select Department</option>
+	                     <c:forEach var="obj" items="${departmentsList}">
+	                     	<option value="${obj.department_code }" <c:if test="${AMDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
+						  </c:forEach>
+    </select>
+    <span id="statusError" class="requried"></span>
+  </label>
                   <label class="block">
                     <span>App Name</span><span class="requried">*</span> 
                     
@@ -2457,31 +2470,23 @@ z-index: 1000;
     />
     <span id="app_nameError" class="requried"></span> 
   </label>
-  <label class="block">
-	                  <span>Department</span><span class="requried">*</span> 
-	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
-	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
-	                  name="department_code" id="department_code">
-	                    <option value="">Select Department</option>
-	                     <c:forEach var="obj" items="${departmentsList}">
-	                     	<option value="${obj.department_code }" <c:if test="${AMDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
-						  </c:forEach>
-	                  </select>
-	                   <span id="department_codeError" class="requried"></span>
-	                </label>
-    <label class="block">
-                    <span>Priority</span><span class="requried">*</span> 
+   
+
+	         
+	   
+	
+          
+                
+                </div>
+                
+                
+            
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              
+   
                   
-    <input id="priority"
-            name="priority" value="${AMDetails.priority }" 
-      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-      placeholder="Priority "
-      type="text"
-    />
-   <span id="priorityError" class="requried"></span>
-                  </label>
-                 <input type="hidden" name="id" id="ids" value="${AMDetails.id }"/>
-                  <label class="block">
+                  
+                   <label class="block">
                     <span>URL</span><span   class="requried">*</span> 
                     
     <input id="url"
@@ -2493,32 +2498,23 @@ z-index: 1000;
     <span id="urlError" class="requried"></span>
     
   </label>
-                
-                </div>
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <label class="block">
-                    <span>logo</span><span class="requried">*</span> 
-				    <input     <c:if test="${empty AMDetails.id}"> id="logo"  name="logos"</c:if>
-				     <c:if test="${not empty AMDetails.id}"> id="logos"  name="logoss"</c:if>
-				           
-				    type="file"  value="${AMDetails.logo }" />
-  <span id="logoError" class="requried"></span>
-   <c:if test="${not empty AMDetails.id}">  <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${AMDetails.app_name }/${AMDetails.logo }" class="filevalue" download ="${AMDetails.logo }"><i class="fa fa-arrow-down"></i> ${AMDetails.logo }</a></c:if>
+           
+   <div class="grid grid-cols-2 gap-4">
+               <label class="block">
+                    <span>Priority</span><span class="requried">*</span> 
+                  
+    <input id="priority"
+            name="priority" value="${AMDetails.priority }" 
+      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+      placeholder="Priority "
+      type="text"
+    />
+   <span id="priorityError" class="requried"></span>
                   </label>
-                   <input type="hidden" name="logoExi" id="logoExi" value="${AMDetails.logo }"/>
-                 <label class="block">
-    <span>Description</span><span class="requried">*</span> 
-     <label class="block">
-    <textarea id="description"
-            name="description"
-      rows="4"
-      placeholder=" Enter Text"
-      class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-    >${AMDetails.description }</textarea>
-     <span id="descriptionError" class="requried"></span>
-  </label>
-  </label>
-     <label class="block">
+                  
+
+
+<label class="block">
     <span>Status</span><span class="requried">*</span> 
     <select id="status"
             name="status"
@@ -2530,8 +2526,42 @@ z-index: 1000;
     </select>
     <span id="statusError" class="requried"></span>
   </label>
+     
+                  </div>    
+    
       </div>
-                 
+                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                     <input type="hidden" name="logoExi" id="logoExi" value="${AMDetails.logo }"/>
+                 <label class="block">
+    <span>Description</span><span class="requried">*</span> 
+                          <div class="relative mt-1.5 flex">
+     <label class="block">
+    <textarea id="description"
+            name="description"
+      rows="4"
+      placeholder=" Enter Text"
+      class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+   style="
+    width: 36rem;
+" >${AMDetails.description }</textarea>
+     <span id="descriptionError" class="requried"></span>
+  </label>
+ </div> 
+  </label>
+                  <label class="block">
+                    <span>logo</span><span class="requried">*</span> 
+                    <div class="relative mt-1.5 flex">
+				    <input     <c:if test="${empty AMDetails.id}"> id="logo"  name="logos"</c:if>
+				     <c:if test="${not empty AMDetails.id}"> id="logos"  name="logoss"</c:if>
+				           
+				    type="file"  value="${AMDetails.logo }" />
+  <span id="logoError" class="requried"></span>
+   <c:if test="${not empty AMDetails.id}">  <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${AMDetails.app_name }/${AMDetails.logo }" class="filevalue" download ="${AMDetails.logo }"><i class="fa fa-arrow-down"></i> ${AMDetails.logo }</a></c:if>
+                </div>
+                  </label>
+               
+     
+      </div>
 		             
 		            </div>
 		           
@@ -2605,7 +2635,7 @@ z-index: 1000;
 		src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $('.select2').select2();
+    
       $(document).ready(function() {
 
 

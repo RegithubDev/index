@@ -3285,7 +3285,7 @@ z-index: 1000;
 	                        	 var url = 'href="<%=request.getContextPath() %>'
 		                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'/'+$.trim(val.catID)+'"';
 		                        	var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
-		                        		+'<div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
+		                        		+'<div class="rounded-xl  p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
 	                                       +'<div class="my-2 grow"><h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
 	                                       +'<div class="truncates" style="max-height: 2.5rem;">'
