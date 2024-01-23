@@ -2495,10 +2495,10 @@ z-index: 1000;
               </p>
               <div >
                 <label class="block">
-                  <textarea requried rows="4" id="descriptions" name="description" placeholder=" Enter Text" 
+                  <textarea requried rows="4" id="descriptions" name="description" placeholder=" Enter Text" oninput="limitWords(this, 10)"
                   class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 
                   placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
-                  dark:hover:border-navy-400 dark:focus:border-accent">${sCDetails.description }</textarea>
+                  dark:hover:border-navy-400 dark:focus:border-accent" >${sCDetails.description }</textarea>
                 <span id="descriptionsError" class="requried"></span>
                 </label>
                 
@@ -2875,6 +2875,27 @@ z-index: 1000;
 	            });
 	        }
        }
+       function limitWords(textarea, maxWords) {
+    	    var words = textarea.value.split(/\s+/);
+    	    
+    	    // Allow up to maxWords words
+    	    if (words.length > maxWords) {
+    	        // Truncate the text to the first maxWords words
+    	        var truncatedText = words.slice(0, maxWords).join(" ");
+    	        textarea.value = truncatedText;
+    	    }
+
+    	    // Prevent adding any additional words or letters after the 10th word
+    	    textarea.addEventListener("input", function () {
+    	        var currentWords = textarea.value.split(/\s+/);
+    	        if (currentWords.length > maxWords) {
+    	            var truncatedText = currentWords.slice(0, maxWords).join(" ");
+    	            textarea.value = truncatedText;
+    	        }
+    	    });
+    	}
+
+
       </script>
   </body>
 </html>

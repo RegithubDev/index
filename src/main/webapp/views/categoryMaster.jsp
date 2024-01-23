@@ -78,11 +78,18 @@
     .text-reone{
     	color: #e21e26!important;
     } */
- .truncate {
-      white-space: nowrap;
+.truncate {
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 10em; /* Adjust the max-width to accommodate 2-3 words */
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Number of lines to show */
+      -webkit-box-orient: vertical;
+    }
+    
+     .truncates {
+      overflow: hidden;
+     /*  white-space: nowrap; */
+      text-overflow: ellipsis;
     }
     .pp-1{
     	padding: 0.1rem;
@@ -2745,7 +2752,7 @@ z-index: 1000;
           </div> --%>
           <div class="col-span-12 lg:col-span-8 xl:col-span-8">
             <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" 
-            style=" height: 10.7rem;"
+            style=" height: 9.7rem;"
             class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-5 sm:mt-0 sm:flex-row via-purple-300">
               <div class="flex justify-center sm:order-last">
                 <img class="-mt-16 h-40 sm:mt-0" src="images/illustrations/teacher.svg" alt="">
@@ -2929,14 +2936,14 @@ z-index: 1000;
          
 
         
-                	<div class="  mt-4 flex h-8 ">
+            <!--   	<div class="  mt-4 flex h-8 ">
               <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				<!-- <span class="text-xl font-semibold  dept"></span>  -->
+				<span class="text-xl font-semibold  dept"></span> 
 				<span class="text-xl font-semibold ">Dashboard</span> 
               </h2>
-            </div>
-            
-            <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+            </div> 
+             -->
+           <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
          
 	          <div class="col-span-12 lg:col-span-8 xl:col-span-8">
 	          <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-1" id="deptList"> 
@@ -3281,7 +3288,7 @@ z-index: 1000;
 		                        		+'<div class="rounded-xl bg-slate-50 p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
 	                                       +'<div class="my-2 grow"><h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
-	                                       +'<div class="truncate" style="max-height: 2.5rem;">'
+	                                       +'<div class="truncates" style="max-height: 2.5rem;">'
 	                                    	 +$.trim(val.description)	                           
 	                                        +'</div>'
 	                                        +'</div> ' +'</div> '

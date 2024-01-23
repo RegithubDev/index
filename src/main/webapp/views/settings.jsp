@@ -2313,20 +2313,16 @@ z-index: 1000;
             <div class="whitespace-nowrap px-4 py-3 sm:px-5">
                           <div class="flex space-x-2">
                             <div class="flex items-center " >
-			                   <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500  dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="
-    color: #e21e26;
-">
-			                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-			                    </svg>
-                            </div>
-
-                            <span class="text">Management</span>
+			               <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500  dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="color: #e21e26;">
+			                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+			              </svg>
                           </div>
-                        </div>
-              
-            </h2>
-          </div> 
-  </div>
+               <span class="text">Management</span>
+                </div>
+                    </div>
+                 </h2>
+              </div> 
+           </div>
          <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
           <div class="col-span-12 lg:col-span-12">
             <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">
@@ -2353,10 +2349,7 @@ z-index: 1000;
                </c:forEach>
                
                 </div>
-
-            <div class="ax-transparent-gridline mt-2 px-2">
-              
-            </div>
+            <div class="ax-transparent-gridline mt-2 px-2"></div>
           </div>
         </div>
         <div class="flex card  rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2  tracking-wide text-white outline-none transition-all">
