@@ -3204,6 +3204,8 @@ button.disabled {
 	    							columnDefs : [ {
 	    								"targets" : '',
 	    								"orderable" : false,
+	    								 targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+	    				                    className: 'whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5 '
 	    							}
 	    			                ],
 	    							"sScrollX" : "100%",
