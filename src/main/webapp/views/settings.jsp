@@ -110,7 +110,7 @@
  .truncate {
       overflow: hidden;
       height: 2.5rem;
-      width: 11rem!important;
+      width: 13rem!important;
      /*  white-space: nowrap; */
       text-overflow: ellipsis;
     }
@@ -2282,23 +2282,22 @@ z-index: 1000;
             <c:forEach var="obj" items="${settingList }"  varStatus="index">
 			<c:if test="${obj.module eq 'Masters' }">
 			
-			 <div class="  card rounded-xl bg-gradient-to-br  pp-1  duration-300 "><div class="rounded-xl  p-4  dark:bg-navy-900 sm:p-5">
-				  <div class="flex ">
-				  <div class="">
-				  <div class="my-2 grow">
-				  <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+			<div class="card px-4 py-4 sm:px-5">
+            <div>
+              <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
               	 <span> &nbsp;${obj.module_name }</span></div>
-				  <div>
-				  </div>
-				  </div>
-				  <div class=" text-lgresl truncate ">${obj.description }</div>
-				  </div> </div>  
-  					<div class="mt-3 flex space-x-1 justify-end">
+            </div>
+            <div class="pt-2 ">
+              <p>${obj.description }</p>
+            </div>
+   				<div class="mt-3 flex space-x-1 justify-end">
   					 <a href="<%=request.getContextPath() %>${obj.url}" class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45 text-re" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                       </svg>
-                    </a></div></div></div>
+                    </a></div>
+          </div>
+          
               <%--    
                <div class="card swiper-slide  shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
                  <div class=" flex cursor-pointer flex justify-between space-x-1 rounded px-2 py-1 tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
@@ -2353,23 +2352,21 @@ z-index: 1000;
             <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">
             <c:forEach var="obj" items="${settingList }"  varStatus="index">
 			<c:if test="${obj.module eq 'Content Management' }">
-                <div class="  card rounded-xl bg-gradient-to-br  pp-1  duration-300 "><div class="rounded-xl  p-4  dark:bg-navy-900 sm:p-5">
-				  <div class="flex ">
-				  <div class="">
-				  <div class="my-2 grow">
-				  <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+               <div class="card px-4 py-4 sm:px-5">
+            <div>
+              <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
               	 <span> &nbsp;${obj.module_name }</span></div>
-				  <div>
-				  </div>
-				  </div>
-				  <div class="text-lgresl truncate" >${obj.description }</div>
-				  </div> </div>  
-  					<div class="mt-3 flex space-x-1 justify-end">
+            </div>
+            <div class="pt-2 ">
+              <p>${obj.description }</p>
+            </div>
+   				<div class="mt-3 flex space-x-1 justify-end">
   					 <a href="<%=request.getContextPath() %>${obj.url}" class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45 text-re" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                       </svg>
-                    </a></div></div></div>
+                    </a></div>
+          </div>
                </c:if>
                </c:forEach>
                
