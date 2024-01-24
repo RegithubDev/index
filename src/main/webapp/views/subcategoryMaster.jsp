@@ -2416,7 +2416,7 @@ z-index: 1000;
               </div>
                </c:if> --%>
          <div class="card transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">
-            <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
+            <div class="h-24 rounded-t-lg  dark:bg-accent">
             <div class="absolute right-0 badge bg-navy-700 text-white dark:bg-navy-900   border-2 border-white bg-error dark:border-navy-700" style="
 			    z-index: 1; background: #e21e26;"><span class="cat"></span></div>
               <img class="h-full w-full rounded-t-lg  object-center" src="https://appmint.resustainability.com/index/resources/images/REONE_03-01%20.jpg" alt="image" style="
@@ -2504,7 +2504,7 @@ z-index: 1000;
              
              <c:if test="${obj.document_type ne 'Link' && obj.document_type eq 'Gallery' }">
    <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
-                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
+                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100" > Published on <br><br> ${obj.created_date}</span>
                 </div>
  
      <a  @click="showModal = true" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">

@@ -2668,9 +2668,9 @@ button.disabled {
                     <span>update </span>
                    
                   </button>
-                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                  <a  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
-                        </button>
+                        </a>
                  
                 </div>
                   </form>

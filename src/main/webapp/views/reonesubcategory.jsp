@@ -2198,7 +2198,7 @@ button.disabled {
       
                  <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-6">
           <label class="block">
                   <select id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Department</option>
@@ -2255,53 +2255,7 @@ button.disabled {
               
             </div>
           </div> 
-              <%--   <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                  <label class="block">
-                  <select    id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Department</option>
-                   
-                  </select>
-                </label>
-                  <label class="block">
-                  <select id="select2-category_filter-container" onchange="getCategoryFilterList();"  class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Category</option>
-                    
-                  </select>
-                </label> 
-                <label class="block">
-                  <select id="select2-sub_category_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Sub Category</option>
-                    
-                  </select>
-                </label> 
-                <label class="block">
-                  <select id="select2-status_filter-container" class="form-select form-select2 mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="width: 14rem;">
-                    <option value="">Select Status</option>
-                    
-                  </select>
-                </label> 
-             <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
-                     active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                     style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
-                </button>
-                <button onclick="clearFilter();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus 
-                active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                style="margin-top: 17px; width: 42%;     !important;color: white !important;">
-                  <i class="fa fa-undo" aria-hidden="true"></i> &nbsp;Refresh
-                </button>
-                    </div>
-           
-           
-                    <a href= "<%=request.getContextPath()%>/subcategory_form" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 
-                    dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: orange !important; width: 30%;">
-                  <i class="fa fa-add" aria-hidden="true"></i>  &nbsp;Add
-                </a>
-           
-           
-                
-                </div> --%>
+             
               
               </div>
 		<br>
