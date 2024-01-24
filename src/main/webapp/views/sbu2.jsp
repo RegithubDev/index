@@ -2248,14 +2248,17 @@ button.disabled {
                 Add SBU
               </p>
               <div class="mt-4 space-y-4">
-                <form id="addCompanyForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
+                <form id="addSBUForm"  class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-company" method="post" class="form-horizontal" role="form" >
                 <label class="block  text-left">
                  <span>Company Name </span><span class="required"> *</span>
                   <span class="relative mt-1.5 ">
                     <input 
                       id="company_name_add"
 		              name="company_name" 
-                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : Re Sustainablity" type="text"/>
+                    class=" form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 
+                    placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400
+                     dark:focus:border-accent"style="
+    color: black;" placeholder="eg : Re Sustainablity" type="text"/>
                    <span id="company_name_addError"></span>
                     
                   </span>
@@ -2267,7 +2270,10 @@ button.disabled {
                       <input 
                        id="company_code_add"
               		   name="company_code" 
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 
+                      bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 
+                      focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" style="
+    color: black;" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                      
                     </span>
                      <span class="required" id="sbu_code_addError"></span>
@@ -2278,15 +2284,20 @@ button.disabled {
                   <select
                    id="select2-status_add-container"
               		name="status" 
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400
+                    focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                     <option value="">Select status</option>
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
                   </select>
                   </label>
                 </div>
-                <div class="flex justify-center space-x-2 pt-4">
-                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90"   onclick="addCompany()">
+               
+                
+                 <div class="flex justify-center space-x-2 pt-4">
+                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                  active:bg-primary-focus/90"   onclick="addSBU()">
                     <span>Add </span>
                   </button>
                   <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
@@ -2896,9 +2907,7 @@ button.disabled {
 	    	   	 validClass: "my-valid-class",
 	    	   	 ignore: ":hidden:not(.select2 form-select)",
 	    	   		    rules: {
-	    	   		 		  "sbu_name": {
-	    	   			 			required: true
-	    	   			 	  },"sbu_code": {										
+	    	   		 		  "company_name_add": {										
 	    	   			 			required: true
 	    	   			 	  },"company_code": {
 	    	   	                 	required: true,
@@ -2907,9 +2916,7 @@ button.disabled {
 	    	   			 	  }
 	    	   		 	},
 	    	   		    messages: {
-	    	   		 		 "sbu_name": {
-	    	   				 	required: 'Required',
-	    	   			 	  },"sbu_code": {
+	    	   		 		"company_name_add": {
 	    	   			 		required: 'Required'
 	    	   			 	  },"company_code": {
 	    	   		 			required: 'Required'

@@ -2309,7 +2309,10 @@ button.disabled {
                         type="text"
               id="user_id_add"
               name="user_id"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="enter ID"   type="text"/>
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 
+                      py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
+                      dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;" placeholder="enter ID"   type="text"/>
                       <span id="company_name_addError"></span>
                       
                     </span>
@@ -2322,7 +2325,8 @@ button.disabled {
                        type="text"
               id="user_name_add"
               name="user_name"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="enter name"   type="text">
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" style="
+    color: black;"placeholder="enter name"   type="text">
                       
                     </span>
              <span id="user_name_addError" class="error-msg" ></span>
@@ -2334,7 +2338,8 @@ button.disabled {
                        type="number"
               id="contact_number_add"
               name="contact_number"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : +91 ##########"   type="text">
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" style="
+    color: black;"placeholder="eg : +91 ##########"   type="text">
                       
                     </span>
              <span id="contact_number_addError" class="error-msg" ></span>
@@ -2346,7 +2351,8 @@ button.disabled {
                         type="email"
               id="email_add"
               name="email_id"
-                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : email@gmail.com"   type="text">
+                      class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;" placeholder="eg : email@gmail.com"   type="text">
                      
                     </span>
              <span id="email_addError" class="error-msg" ></span>
@@ -2356,7 +2362,8 @@ button.disabled {
                   <select
                   id="select2-reporting_to_add-container"
               name="reporting_to"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                     <option value="">Select Reporting To</option>
              	 <c:forEach var="obj" items="${objList}">
 					<option value="${obj.user_id }" >[${obj.user_id }] - ${obj.user_name }</option>
@@ -2370,7 +2377,8 @@ button.disabled {
                   <select
                  id="select2-base_department_add-container"
               name="base_department"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                    <option value="">Select Department</option>
              	<c:forEach var="obj" items="${deptList}">
 					<option value="${obj.department_code }"  >[${obj.department_code }] - ${obj.department_name }</option>
@@ -2385,7 +2393,8 @@ button.disabled {
                   <select
                    id="select2-base_project_add-container"
               name="base_project"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                     <option value="">Select Project</option>
              	<c:forEach var="obj" items="${projectsList}">
 					<option value="${obj.project_code }"   >[${obj.project_code }] - ${obj.project_name }</option>
@@ -2402,7 +2411,8 @@ button.disabled {
                   <select
                    id="select2-base_sbu_add-container"
               name="base_sbu"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                     <option value="">Select SBU</option>
              	 <c:forEach var="obj" items="${sbuList}">
 					<option value="${obj.sbu_code }"  >[${obj.sbu_code }] - ${obj.sbu_name }</option>
@@ -2417,7 +2427,8 @@ button.disabled {
                   <select
                    id="select2-base_role_add-container"
               name="base_role"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                     <option value="">Select Role</option>
               <option value="Admin">Admin</option>
               <option value="Management">Management</option>
@@ -2432,7 +2443,8 @@ button.disabled {
                   <select
                    id="select2-status_add-container"
               name="status"
-                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
                  <option value="">Select Status</option>
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
