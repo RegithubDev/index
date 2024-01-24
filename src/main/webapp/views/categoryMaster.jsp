@@ -2710,29 +2710,22 @@ z-index: 1000;
             style=" height: 10.7rem;"
             class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-2 sm:mt-0 sm:flex-row via-purple-300">
              <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true},
-              navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper w-half rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
+              navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
                     <div class="swiper-wrapper" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
-                      <div class="swiper-slide" role="group" aria-label="1 / 4" style="width: 439px;">
-                        <img class="object-cover" src="/index/resources/images/object/object-5.jpg" alt="">
+                     
+                      <div class="swiper-slide swiper-slide-prev" role="group" aria-label="2 / 4" style="width: 212px;">
+                        <img class="object-cover object-top" src="/index/resources/images/icons/Comp 1.jpg" alt="">
                       </div>
-                      <div class="swiper-slide swiper-slide-prev" role="group" aria-label="2 / 4" style="width: 439px;">
-                        <img class="object-cover object-top" src="/index/resources/images/object/object-1.jpg" alt="">
+                      <div class="swiper-slide swiper-slide-active" role="group" aria-label="3 / 4" style="width: 212px;">
+                        <img class="object-cover object-top" src="/index/resources/images/icons/Comp 2.jpg" alt="">
                       </div>
-                      <div class="swiper-slide swiper-slide-active" role="group" aria-label="3 / 4" style="width: 439px;">
-                        <img class="object-cover object-center" src="/index/resources/images/object/object-2.jpg" alt="">
-                      </div>
-                      <div class="swiper-slide swiper-slide-next" role="group" aria-label="4 / 4" style="width: 439px;">
-                        <img class="object-cover object-center" src="/index/resources/images/object/object-9.jpg" alt="">
-                      </div>
+                    
                     </div>
                     <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(215px, 0px, 0px); width: 107.5px; transition-duration: 0ms;"></div></div>
                     <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
                     <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
                   <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                  <div class="mt-2 flex-1 pt-2 text-center text-white">
-	                	News
-	              </div>
-	            </div>
+            </div>
 
             
 
