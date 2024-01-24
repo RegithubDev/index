@@ -36,18 +36,6 @@
     .cursor{
 	    cursor: pointer;
     }
-     .text-lgre {
-    font-size: .9rem;
-    line-height: 1.25rem;
-	}
-	
-	.text-lgresl {
-    font-size: .8rem;
-    line-height: 1.25rem;
-	}
-    
-    
-    
     .subM{
 	    cursor: pointer;
 	    background-color: lavender;
@@ -3129,17 +3117,17 @@ z-index: 1000;
                        	 
                        	var url = 'href="<%=request.getContextPath() %>'
                             url = url+'/subcat/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(dm_category)+'/'+$.trim(val.sub_category_title)+'/'+$.trim(val.catID)+'/'+$.trim(val.subCatId)+'"';
-                      	var html='   <div class="  card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 ">'
+                      	var html='   <div class="  card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
                        	  		+'<div class="text-right">'
                        	  	+'<div  @click.outside="isShowPopper &amp;&amp; (isShowPopper = false)" class="inline-flex">'
                        	
-                       	 +'<div class="badge text_re text-white shadow-soft shadow-error/50">'
+                       	 +'<div class="badge text_re text-white">'
                        	 + $.trim(val.sub_category_title)
                          +'</div>'
                        	 +' </div></div>'
                        		   +'<div class="  px-4 pb-5 sm:px-5"><div class="avatar h-18 iconCLass badge  h-18  iconCLass">'+ $.trim(val.icon_text)+'</div>'
-                               +'<div class="my-2 grow"><h3 class="text-lgre text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
-                               +'<div class="text-lgresl truncate"  style="max-height: 2.5rem">'
+                               +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
+                               +'<div class="truncate"  style="max-height: 2.5rem">'
                             	 +$.trim(val.description)	                           
                                 +'</div>'
                                +' <div class="mt-3 flex space-x-1 justify-end">' 
