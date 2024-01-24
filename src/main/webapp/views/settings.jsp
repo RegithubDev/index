@@ -97,7 +97,12 @@
 .child1 {
   background-color: #f0f0f0; /* Optional, add background color to the items */
 }
-
+ .truncate {
+      overflow: hidden;
+      max-height: 2.5rem;
+     /*  white-space: nowrap; */
+      text-overflow: ellipsis;
+    }
    .parents {
  display: flex;
   justify-content: center;
@@ -2352,7 +2357,7 @@ z-index: 1000;
             <div class="ax-transparent-gridline mt-2 px-2"></div>
           </div>
         </div>
-        <div class="flex card  rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2  tracking-wide text-white outline-none transition-all">
+        <!-- <div class="flex card  rounded-lg bg-slate-150 bg-gradient-to-r mt-4  mb-2  tracking-wide text-white outline-none transition-all">
           <div class="group flex items-center space-x-1">
             <h2 class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl align:center ">
             <div class="whitespace-nowrap px-4 py-3 sm:px-5">
@@ -2371,8 +2376,8 @@ z-index: 1000;
               
             </h2>
           </div> 
-  </div>
-  <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
+  </div> -->
+  <%-- <div class="grid grid-cols-12 gap-4  sm:gap-5 lg:gap-6">
           <div class="col-span-12 lg:col-span-12">
             <div class="mt-4 grid grid-cols-2 gap-3 px-4 sm:mt-5 sm:grid-cols-4 sm:gap-5 sm:px-5 lg:mt-6">
                <div class="card swiper-slide  shrink-0 p-3 pt-4 swiper-slide-active" role="group" aria-label="1 / 1" style="margin-right: 20px;">
@@ -2395,7 +2400,7 @@ z-index: 1000;
               
             </div>
           </div>
-        </div>
+        </div> --%>
       </main>
       <div class="mt-5" x-data="{showModal:false}">
                
