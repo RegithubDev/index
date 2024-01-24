@@ -1890,7 +1890,7 @@ keyframes enlarge { 50%{
 									class="form-input  mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 
                       py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
                       dark:focus:border-accent"
-									placeholder="Title" type="text"
+									mixlength="25"  maxlength="50" placeholder="Title" type="text"
 									value="${DCFromDetails.content_title}"> <span
 									id="content_titleError" class="requried"></span>
 								</label> 
@@ -2149,9 +2149,9 @@ keyframes enlarge { 50%{
 												name="description" rows="4" placeholder=" Enter Text"
 												class="form-textarea w-full 
                   rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 
-                  focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" oninput="limitWords(this, 10)">${DCFromDetails.description}</textarea>
+                  focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" mixlength="50"  maxlength="100">${DCFromDetails.description}</textarea>
     <span id="descriptionError" class="required"></span>
-    <p class="word-limit-feedback" id="wordLimitFeedback1">0 words out of 10</p>
+   
   </label>
 
 									</div>
@@ -2965,119 +2965,7 @@ keyframes enlarge { 50%{
     		   }
     	   }
        }
-    /*    function limitWords(textarea, maxWords) {
-    	      var words = textarea.value.split(/\s+/);
-    	      var wordCount = words.length;
-
-    	      // Get the element to display word count feedback
-    	      var wordLimitFeedback = document.getElementById('wordLimitFeedback1');
-
-    	      // Display word count feedback
-    	      wordLimitFeedback.textContent = wordCount + ' words out of ' + maxWords;
-
-    	      // Trim the text if it exceeds the word limit
-    	      if (wordCount > maxWords) {
-    	        textarea.value = words.slice(0, maxWords).join(' ');
-    	        wordLimitFeedback.style.color = 'red';
-    	      } else {
-    	        wordLimitFeedback.style.color = '#999';
-    	      }
-    	    }       
-       function deleteDocRow(index){
-    	   $('#fields'+index).remove();
-       } */
-       
-     /*   
-       function limitWords(textarea, maxWords) {
-    	      var words = textarea.value.split(/\s+/);
-    	      var wordCount = words.length;
-
-    	      // Display error message if exceeding word limit
-    	      var descriptionError = document.getElementById('descriptionError');
-    	      if (wordCount > maxWords) {
-    	        descriptionError.textContent = 'Maximum of ' + maxWords + ' words allowed.';
-    	        descriptionError.style.color = 'red';
-    	      } else {
-    	        descriptionError.textContent = '';
-    	      }
-
-    	      // Trim the text if it exceeds the word limit
-    	      if (wordCount > maxWords) {
-    	        textarea.value = words.slice(0, maxWords).join(' ');
-    	      }
-    	    } */
-       
-       
-       
-       
-   /*     function limitWords(textarea, maxWords) {
-    	      var words = textarea.value.split(/\s+/);
-    	      var wordCount = words.length;
-
-    	      // Get the element to display word count feedback
-    	      var wordLimitFeedback = document.getElementById('wordLimitFeedback1');
-
-    	      // Display word count feedback
-    	      wordLimitFeedback.textContent = wordCount + ' words out of ' + maxWords;
-
-    	      // Trim the text if it exceeds the word limit
-    	      if (wordCount > maxWords) {
-    	        textarea.value = words.slice(0, maxWords).join(' ');
-    	        wordLimitFeedback.style.color = 'red';
-    	      } else {
-    	        wordLimitFeedback.style.color = '#999';
-    	      }
-    	    } */
-    	    
-    	    
-    	    
-    	/*     
-    	    
-    	    
-    	    function limitWords(textarea, maxWords) {
-    	        var words = textarea.value.split(/\s+/);
-    	        var wordCount = words.length;
-
-    	        // Get the element to display word count feedback
-    	        var wordLimitFeedback = document.getElementById('wordLimitFeedback1');
-
-    	        // Display word count feedback
-    	        wordLimitFeedback.textContent = wordCount + ' words out of ' + maxWords;
-
-    	        // Trim the text if it exceeds the word limit
-    	        if (wordCount > maxWords) {
-    	          textarea.value = words.slice(0, maxWords).join(' ');
-    	          wordLimitFeedback.style.color = 'red';
-    	        } else {
-    	          wordLimitFeedback.style.color = '#999';
-    	        }
-    	      } */
-    	      
-    	      function limitWords(textarea, maxWords) {
-    	          var words = textarea.value.split(/\s+/);
-    	          var wordCount = words.length;
-
-    	          // Get the element to display word count feedback
-    	          var wordLimitFeedback = document.getElementById('wordLimitFeedback1');
-
-    	          // Display word count feedback
-    	          wordLimitFeedback.textContent = wordCount + ' words out of ' + maxWords;
-
-    	          // Trim the text if it exceeds the word limit
-    	          if (wordCount > maxWords) {
-    	            textarea.value = words.slice(0, maxWords).join(' ');
-    	            wordLimitFeedback.style.color = 'red';
-    	          } else {
-    	            wordLimitFeedback.style.color = '#999';
-    	          }
-
-    	          // Prevent entering a single alphabet after the 10th word
-    	          if (wordCount === maxWords && words[maxWords - 1].length === 1) {
-    	            textarea.value = words.slice(0, maxWords - 1).join(' '); // Remove the last word
-    	            wordLimitFeedback.textContent = (maxWords - 1) + ' words out of ' + maxWords;
-    	            wordLimitFeedback.style.color = 'red';
-    	          }
-    	        }
+   
       </script>
 </body>
 </html>

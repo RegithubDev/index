@@ -473,7 +473,7 @@ z-index: 1000;
     </script>
   </head>
 
-  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+  <body x-data class="is-header-blur is-sidebar-open" x-bind="$store.global.documentBody">
     <!-- App preloader-->
     <div
       class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
@@ -2691,65 +2691,7 @@ z-index: 1000;
                 </ul>
               </div>
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-         <%--  <div class="col-span-12 lg:col-span-8">
-          <div class="card bg-gradient-to-br  to-indigo-600 px-4 pb-4 sm:px-5">
-              <div class="flex items-center justify-between py-3 text-black">
-                <h2 class="text-sm+ font-medium tracking-wide">Welcome <i class="fa-solid fa-flower"></i> <b>${sessionScope.USER_NAME }</b></h2>
-                
-              </div>
-              <div class="flex">
-                <div class=" flex-row justify-between space-x-2" id="iconsCLass">
-            
-              <div class="flex items-center justify-between">
-                <div style="
-    left: -1rem;
-"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
-                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
-				      <div class="container"
-   style="
-    top: -0.5rem;
-    right: -0.5rem;
-    height: 7.2rem;
-
-">
-				    <div class="background">
-				      <div class="Circle1"></div>
-				      <div class="Circle2"></div>
-				      <div class="Circle3"></div>
-				      <div class="content">
-				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
-				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
-				        <h3 class="Temp" id="temperature"></h3>
-				        <h1 class="Time" id="wind-speed"></h1>
-				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
-				      </div>
-				    </div>
-                  </div>
-                  </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-              </div>
-           
-          </div>
-<div class="mr-4 my-1 w-px bg-slate-200 dark:bg-navy-500" id="iconsCLass"></div>
-                <div class="flex col-span-12 lg:col-span-4 h-25 w-full items-center justify-center rounded-lg bg-slate-131 dark:bg-navy-500">
-                  <div class="col-span-12 lg:col-span-8">
-                    <div class="flex flex-1 flex-col justify-between"  id="clock" style="
-    height: 9.5rem;
-">
-            
-            		</div>
-                  </div>
-                  <div class="col-span-12 lg:col-span-4">
-                   <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
-					    margin-top: 2rem;
-					"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
-                   
-                  </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> --%>
+        
           <div class="col-span-12 lg:col-span-8 xl:col-span-5">
            <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
                     <div class="swiper-wrapper" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
@@ -2784,15 +2726,7 @@ z-index: 1000;
                 <h3 class="text-xl dept">
                  Content Box <!-- <span class="font-semibold">Caleb</span> -->
                 </h3>
-               <!--  <p class="mt-2 leading-relaxed">
-                  Your student completed
-                  <span class="font-semibold text-navy-700">85%</span> of tasks
-                </p>
-                <p>Progress is <span class="font-semibold">excellent!</span></p> -->
-<!-- 
-                <button class="btn mt-6 bg-slate-50 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80">
-                  View Lessons
-                </button> -->
+              
               </div>
             </div>
 
@@ -2828,144 +2762,7 @@ z-index: 1000;
             
           </div>
         </div>
-      <%-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 mt-4"> 
-          <div class="card flex-row justify-between space-x-2 ">
-            <div class="flex flex-1 flex-col justify-between"  id="clock">
-            
-            </div>
-            <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <div class=" swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-active" @click="selected = 'slide-8'" role="group" aria-label="1 / 16" style="margin-right: 14px;">
-                  <a id="iconsCLass" href="#"  class="flex flex-col items-center rounded-lg px-2 py-4 text-slate-600 dark:text-navy-100" :class="selected === 'slide-8' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' ">
-                  <img class="h-11 w-1w" src="/index/resources/images/avatar/tropy icon.svg" alt="image" style="
-    margin-top: 1rem;
-">
-                   <p class="text-3xl font-medium text-slate-700 dark:text-navy-100">
-	                                      ${sessionScope.REWARDS }
-	                                    </p>
-	                                    <p class="text-xs text-success">Rewards</p>
-                  </a>
-                
-                </div>
-
-          </div>
-          
-          
-          <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
-            
-              <div class="flex items-center justify-between">
-                <div style="
-    left: -1rem;
-"class=" childs swiper w-64 swiper-cards swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress" x-init="$nextTick(()=>$el._x_swiper = new Swiper($el,{effect: 'cards'}))">
-                  <div class="swiper-wrapper" id="swiper-wrapper-a64f9f8ce979adad" aria-live="polite">
-				      <div class="container"
-   style="
-    top: -0.5rem;
-    right: -0.5rem;
-    height: 7.2rem;
-
-">
-				    <div class="background">
-				      <div class="Circle1"></div>
-				      <div class="Circle2"></div>
-				      <div class="Circle3"></div>
-				      <div class="content">
-				       <img id="weather-icon" src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" alt="Weather Icon">
-				        <h1 class="Condition" id="description"><i class="material-icons sun"></i> </h1>
-				        <h3 class="Temp" id="temperature"></h3>
-				        <h1 class="Time" id="wind-speed"></h1>
-				        <h1 class="Location" id="city"><i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
-				      </div>
-				    </div>
-                  </div>
-                  </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-              </div>
-              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
-    margin-top: 2rem;
-"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
-                   
-                  </a>
-          </div>
-        
-        
-     
     
-          <div class="card px-4 pb-4 sm:px-5 pt-4" id="">
-            
-           <div class="flex">
-          <div class="flex flex-col justify-center" style="
-    width: 18rem;">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 text-center">
-                <p class="text-xlnew">${sessionScope.DEPARTMENT_NAME }</p>
-              </div>
-              
-             <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500">
-                <a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>
-             </div>
-            </div>
-           
-              <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500" >
-                <p class="text-xl">${sessionScope.BASE_DEPARTMENT }</p>
-              </button>
-              <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500 text-center" ></div>
-             <button class="flex flex-col  justify-center">
-              <div class="flex w-full items-center justify-center rounded-lg dark:bg-navy-500 " :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xlnew">Happenings @ Information Technology</p>
-              </div>
-              
-              <div class="flex w-full items-center justify-center rounded-lg pt-6 dark:bg-navy-500" :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-                <p class="text-xs text-success">Other Department</p>
-              </div> <br>
-            </button>
-              
-            <!--   <button class="flex h-20 w-full items-center justify-center rounded-lg bg-slate-200 dark:bg-navy-500"  :class="$store.global.isSidebarExpanded && 'active'"
-                @click="$store.global.isSidebarExpanded = !$store.global.isSidebarExpanded">
-                <p class="text-xl">All Functions</p>
-              </button> -->
-            </div>
-                  
-                  
-          </div>  
-        <div class="mx-auto grid w-full max-w-4xl grid-cols-1s gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6s">
-          <div class="card p-4 " id="cardBG"	>
-            
-            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700 dark:text-navy-100">
-           ${sessionScope.DEPARTMENT_NAME }
-            </h2>
-            
-            <div class="mt-5 pb-1 text-center">
-				<a href="<%=request.getContextPath() %>/${sessionScope.BASE_DEPARTMENT }" class="text-xs text-success">My Department</a>            </div>
-          </div>
-          <div class="card p-4 " id="cardBG2"
-         
-           :class="$store.global.isRightSidebarExpanded &amp;&amp; 'active'" @click="$store.global.isRightSidebarExpanded = !$store.global.isRightSidebarExpanded">
-            
-            <h2 class="mt-5 text-base text-center font-medium tracking-wide text-slate-700  dark:text-navy-100">Happenings @ <span class="dept"></span></h2>
-            
-            <div class="mt-5 pb-1 text-center">
-				<p class="text-xs text-success">Other Department</p>            </div>
-          </div>
-          
-          
-          
-          
-          
-          
-
-          
-        </div>
-        </div> --%>
-         
-
-        
-            <!--   	<div class="  mt-4 flex h-8 ">
-              <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-				<span class="text-xl font-semibold  dept"></span> 
-				<span class="text-xl font-semibold ">Dashboard</span> 
-              </h2>
-            </div> 
-             -->
            <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
          
 	          <div class="col-span-12 lg:col-span-8 xl:col-span-8">
@@ -2975,7 +2772,7 @@ z-index: 1000;
 				   
 				   <div class="card"> <div class="flex justify-center p-5"></div>
 		            <div class="px-4 pb-8 text-center sm:px-5">
-		              <h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">
+		              <h4 class=" text-lg font-semibold text-slate-700 dark:text-navy-100">
 		                 ${obj.dm_category }
 		              </h4>
 		              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
@@ -3018,25 +2815,7 @@ z-index: 1000;
              
             <br>
             
-           		<%-- <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 mt-1" id="deptList"> 
-				   <c:forEach var="obj" items="${catagoryList }"  varStatus="index">
-				   <c:if test="${obj.department_code eq 'BD' }">
-				   
-				   <div class="card"> <div class="flex justify-center p-5"></div>
-		            <div class="px-4 pb-8 text-center sm:px-5">
-		              <h4 class="text-lg font-semibold text-slate-700 dark:text-navy-100">
-		                 ${obj.dm_category }
-		              </h4>
-		              <a href="<%=request.getContextPath() %>${obj.dm_category }" class="btn mt-8 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-		                Sub Categories
-		              </a>
-		            </div>
-		          </div>
-		          </c:if>
-		    </c:forEach> 
-        </div>
-             
-              --%>
+        
 
         </div>
 
@@ -3074,21 +2853,6 @@ z-index: 1000;
               </div>
 
 
-     <!--  <div
-        class="fixed right-3 bottom-3 rounded-full bg-white dark:bg-navy-700"
-      >
-        <button
-          @click="$dispatch('show-drawer', { drawerId: 'pos-card-drawer' })"
-          class="btn h-14 w-14 rounded-full bg-warning p-0 font-medium text-white hover:bg-warning-focus focus:bg-warning-focus active:bg-warning-focus/90 sm:hidden"
-        >
-          $60
-        </button>
-      </div> -->
-    </div>
-    <!-- 
-        This is a place for Alpine.js Teleport feature 
-        @see https://alpinejs.dev/directives/teleport
-      -->
     <div id="x-teleport-target"></div>
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
@@ -3310,7 +3074,7 @@ z-index: 1000;
 		                        	var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
 		                        		+'<div class="rounded-xl  p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
-	                                       +'<div class="my-2 grow"><h4 class="truncate text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
+	                                       +'<div class="my-2 grow"><h4 class=" text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
 	                                       +'<div class="truncates" style="max-height: 2.5rem;">'
 	                                    	 +$.trim(val.description)	                           
 	                                        +'</div>'

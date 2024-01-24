@@ -2470,7 +2470,7 @@ z-index: 1000;
                       <input requried class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent
                        px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
                        dark:hover:border-navy-400 dark:focus:border-accent" 
-                       id="sub_category_title" name="sub_category_title" placeholder="title" type="text" value='${sCDetails.sub_category_title }'>
+                    mixlength="50"  maxlength="100"   id="sub_category_title" name="sub_category_title" placeholder="title" type="text" value='${sCDetails.sub_category_title }'>
                    	        <span id="sub_category_titleError" class="requried"></span>
                     </label>
                     
@@ -2498,7 +2498,7 @@ z-index: 1000;
                   <textarea requried rows="4" id="descriptions" name="description" placeholder=" Enter Text" oninput="limitWords(this, 10)"
                   class="form-textarea w-full rounded-lg border border-slate-300 bg-transparent p-2.5 
                   placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
-                  dark:hover:border-navy-400 dark:focus:border-accent" >${sCDetails.description }</textarea>
+                  dark:hover:border-navy-400 dark:focus:border-accent" mixlength="50"  maxlength="100">${sCDetails.description }</textarea>
                 <span id="descriptionsError" class="requried"></span>
                 </label>
                 
@@ -2652,7 +2652,7 @@ z-index: 1000;
            <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $('.select2').select2();
+   
       $(document).ready(function() {
 
 
