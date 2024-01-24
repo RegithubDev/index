@@ -36,6 +36,18 @@
     .cursor{
 	    cursor: pointer;
     }
+     .text-lgre {
+    font-size: .9rem;
+    line-height: 1.25rem;
+	}
+	
+	.text-lgresl {
+    font-size: .8rem;
+    line-height: 1.25rem;
+	}
+    
+    
+    
     .subM{
 	    cursor: pointer;
 	    background-color: lavender;
@@ -3126,8 +3138,8 @@ z-index: 1000;
                          +'</div>'
                        	 +' </div></div>'
                        		   +'<div class="  px-4 pb-5 sm:px-5"><div class="avatar h-18 iconCLass badge  h-18  iconCLass">'+ $.trim(val.icon_text)+'</div>'
-                               +'<div class="my-2 grow"><h3 class="text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
-                               +'<div class="truncate"  style="max-height: 2.5rem">'
+                               +'<div class="my-2 grow"><h3 class="text-lgre text-base font-medium text-slate-700 dark:text-navy-100">'+ $.trim(val.sub_category_title)+'</h3><div></div></div>'
+                               +'<div class="text-lgresl truncate"  style="max-height: 2.5rem">'
                             	 +$.trim(val.description)	                           
                                 +'</div>'
                                +' <div class="mt-3 flex space-x-1 justify-end">' 

@@ -2478,7 +2478,7 @@ z-index: 1000;
 			                    <div class="relative mt-1.5 flex">
 			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
 								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
+								     minlength="25"   maxlength="50"        placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
 			                     
 			                    </div>
 			                  </label>
@@ -2500,7 +2500,7 @@ z-index: 1000;
 					                <span>Content Description</span>
 					                <textarea rows="4" placeholder="`Description" class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
 					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
-					                dark:focus:border-accent" id="description${index.count }" name="description" oninput="limitWords(this, 10)">${CDetails.description}</textarea>
+					                dark:focus:border-accent" id="description${index.count }" mixlength="50"  maxlength="100" name="description" oninput="limitWords(this, 10)">${CDetails.description}</textarea>
 					              </label>
 					               <%-- <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
 					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

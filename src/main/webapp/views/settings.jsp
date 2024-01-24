@@ -39,6 +39,17 @@
 		    grid-template-columns: repeat(5,minmax(0,1fr));
 		}
 	}
+	
+	
+	 .text-lgre {
+    font-size: .9rem;
+    line-height: 1.25rem;
+	}
+	
+	.text-lgresl {
+    font-size: .8rem;
+    line-height: 1.25rem;
+	}
 	 .w-50{
     	    width: 12rem;
     	
@@ -2266,12 +2277,12 @@ z-index: 1000;
 				  <div class="flex ">
 				  <div class="">
 				  <div class="my-2 grow">
-				  <div class=" flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+				  <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
               	 <span> &nbsp;${obj.module_name }</span></div>
 				  <div>
 				  </div>
 				  </div>
-				  <div class="truncate" style="max-height: 2.5rem;">${obj.description }</div>
+				  <div class=" text-lgresl truncate" style="max-height: 2.5rem;">${obj.description }</div>
 				  </div> </div>  
   					<div class="mt-3 flex space-x-1 justify-end">
   					 <a href="<%=request.getContextPath() %>${obj.url}" class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
@@ -2337,12 +2348,12 @@ z-index: 1000;
 				  <div class="flex ">
 				  <div class="">
 				  <div class="my-2 grow">
-				  <div class=" flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
+				  <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
               	 <span> &nbsp;${obj.module_name }</span></div>
 				  <div>
 				  </div>
 				  </div>
-				  <div class="truncate" style="max-height: 2.5rem;">${obj.description }</div>
+				  <div class="text-lgresl truncate" style="max-height: 2.5rem;">${obj.description }</div>
 				  </div> </div>  
   					<div class="mt-3 flex space-x-1 justify-end">
   					 <a href="<%=request.getContextPath() %>${obj.url}" class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">

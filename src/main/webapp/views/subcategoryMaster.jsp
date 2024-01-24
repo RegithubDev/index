@@ -37,6 +37,16 @@
      /* .text-reone a{
     	color: #e21e26!important;
     } */
+    
+     .text-lgre {
+    font-size: .9rem;
+    line-height: 1.25rem;
+	}
+	
+	.text-lgresl {
+    font-size: .8rem;
+    line-height: 1.25rem;
+	}
     .text-reone{
     	color: #e21e26!important;
     }
@@ -50,12 +60,12 @@
     font-size: 4em;
 }
     .truncate {
+     white-space: nowrap;
       overflow: hidden;
-     /*  white-space: nowrap; */
       text-overflow: ellipsis;
+      max-width: 100%; 
     }
     
-
  @media (min-width: 640px){
 		.sm\:grid-cols-4 {
 		    grid-template-columns: repeat(5,minmax(0,1fr));
@@ -2420,10 +2430,10 @@ z-index: 1000;
                 </div>
                 
               </div>
-              <h3 class="pt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
+              <h3 class="text-lgre pt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
                ${obj.content_title }
               </h3>
-              <p class="text-xs truncate" style="max-height: 2rem"> ${obj.description}	</p>
+              <p class="text-lgresl text-xs truncate" style="max-height: 2rem"> ${obj.description}	</p>
               <div class="flex items-center space-x-4 pt-2">
                 
                 
