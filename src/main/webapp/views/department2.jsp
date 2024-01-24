@@ -2589,7 +2589,7 @@ button.disabled {
                 Update Department
               </p>
               <div class="mt-4 space-y-4">
-        <form id="updateDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/update-department-master" method="post" class="form-horizontal" role="form" >
+        <form id="updateDepartmentForm" class="row gy-1 pt-75"  method="post" class="form-horizontal" role="form" >
                  
                  <input type="hidden" id="id" name="id" />
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -2652,7 +2652,7 @@ button.disabled {
                   </label>
               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <a class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <a class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="updateDepartment();">
                     <span>update </span>
                    
                   </a>
