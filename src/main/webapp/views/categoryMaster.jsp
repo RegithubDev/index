@@ -33,6 +33,19 @@
       rel="stylesheet"
     />
     <style>   
+    .w-half{
+    	width: 75%;
+    }
+    .text-lgre {
+    font-size: .9rem;
+    line-height: 1.25rem;
+	}
+	
+	.text-lgresl {
+    font-size: .8rem;
+    line-height: 1.25rem;
+	}
+
     .scrollable-div {
        /* Set a height for the div */
   overflow-y: auto;  /* Enable vertical scrolling */
@@ -2691,44 +2704,35 @@ z-index: 1000;
                 </ul>
               </div>
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-        
-          <div class="col-span-12 lg:col-span-8 xl:col-span-5">
-           <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
+ 
+           <div class="col-span-12 lg:col-span-8 xl:col-span-8">
+            <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" 
+            style=" height: 10.7rem;"
+            class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-2 sm:mt-0 sm:flex-row via-purple-300">
+             <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true},
+              navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper w-half rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
                     <div class="swiper-wrapper" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
                       <div class="swiper-slide" role="group" aria-label="1 / 4" style="width: 439px;">
-                        <img class="h-full w-full object-cover" src="/index/resources/images/object/object-5.jpg" alt="">
+                        <img class="object-cover" src="/index/resources/images/object/object-5.jpg" alt="">
                       </div>
                       <div class="swiper-slide swiper-slide-prev" role="group" aria-label="2 / 4" style="width: 439px;">
-                        <img class="h-full w-full object-cover object-top" src="/index/resources/images/object/object-1.jpg" alt="">
+                        <img class="object-cover object-top" src="/index/resources/images/object/object-1.jpg" alt="">
                       </div>
                       <div class="swiper-slide swiper-slide-active" role="group" aria-label="3 / 4" style="width: 439px;">
-                        <img class="h-full w-full object-cover object-center" src="/index/resources/images/object/object-2.jpg" alt="">
+                        <img class="object-cover object-center" src="/index/resources/images/object/object-2.jpg" alt="">
                       </div>
                       <div class="swiper-slide swiper-slide-next" role="group" aria-label="4 / 4" style="width: 439px;">
-                        <img class="h-full w-full object-cover object-center" src="/index/resources/images/object/object-9.jpg" alt="">
+                        <img class="object-cover object-center" src="/index/resources/images/object/object-9.jpg" alt="">
                       </div>
                     </div>
                     <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(215px, 0px, 0px); width: 107.5px; transition-duration: 0ms;"></div></div>
                     <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
                     <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
                   <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-
-            
-          </div>
-           <div class="col-span-12 lg:col-span-8 xl:col-span-3">
-            <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" 
-            style=" height: 9.7rem;"
-            class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-5 sm:mt-0 sm:flex-row via-purple-300">
-              <div class="flex justify-center sm:order-last">
-                <img class="-mt-16 h-40 sm:mt-0" src="images/illustrations/teacher.svg" alt="">
-              </div>
-              <div class="mt-2 flex-1 pt-2 text-center text-white sm:mt-0 sm:text-left">
-                <h3 class="text-xl dept">
-                 Content Box <!-- <span class="font-semibold">Caleb</span> -->
-                </h3>
-              
-              </div>
-            </div>
+                  <div class="mt-2 flex-1 pt-2 text-center text-white">
+	                	News
+	              </div>
+	            </div>
 
             
 
@@ -3074,8 +3078,8 @@ z-index: 1000;
 		                        	var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
 		                        		+'<div class="rounded-xl  p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
-	                                       +'<div class="my-2 grow"><h4 class=" text-lg font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
-	                                       +'<div class="truncates" style="max-height: 2.5rem;">'
+	                                       +'<div class="my-2 grow"><h4 class=" text-lgre font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
+	                                       +'<div class="truncates text-lgresl" style="max-height: 2.5rem;">'
 	                                    	 +$.trim(val.description)	                           
 	                                        +'</div>'
 	                                        +'</div> ' +'</div> '
