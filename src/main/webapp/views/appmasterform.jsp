@@ -2445,8 +2445,21 @@ z-index: 1000;
 		           
 		            
 		             <div class="space-y-4" id="addNewRow">
-		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                  <label class="block">
+		             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            
+  <label class="block">
+	                  <span>Department</span><span class="requried">*</span> 
+	                  <select class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;"
+	                  name="department_code" id="department_code">
+	                    <option value="">Select Department</option>
+	                     <c:forEach var="obj" items="${departmentsList}">
+	                     	<option value="${obj.department_code }" <c:if test="${AMDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
+						  </c:forEach>
+	                  </select>
+	                   <span id="department_codeError" class="requried"></span>
+	                </label>
+	                     <label class="block">
                     <span>App Name</span><span class="requried">*</span> 
                     
     <input id="app_name"
@@ -2457,29 +2470,11 @@ z-index: 1000;
     />
     <span id="app_nameError" class="requried"></span> 
   </label>
-  <label class="block">
-	                  <span>Department</span><span class="requried">*</span> 
-	                  <select class="select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 
-	                  focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent select2-hidden-accessible"
-	                  name="department_code" id="department_code">
-	                    <option value="">Select Department</option>
-	                     <c:forEach var="obj" items="${departmentsList}">
-	                     	<option value="${obj.department_code }" <c:if test="${AMDetails.department_code eq obj.department_code}">selected</c:if>>[${obj.department_code }] - ${obj.department_name }</option>
-						  </c:forEach>
-	                  </select>
-	                   <span id="department_codeError" class="requried"></span>
-	                </label>
-    <label class="block">
-                    <span>Priority</span><span class="requried">*</span> 
-                  
-    <input id="priority"
-            name="priority" value="${AMDetails.priority }" 
-      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-      placeholder="Priority "
-      type="text"
-    />
-   <span id="priorityError" class="requried"></span>
-                  </label>
+	                
+	                
+                </div>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                
                  <input type="hidden" name="id" id="ids" value="${AMDetails.id }"/>
                   <label class="block">
                     <span>URL</span><span   class="requried">*</span> 
@@ -2493,10 +2488,37 @@ z-index: 1000;
     <span id="urlError" class="requried"></span>
     
   </label>
-                
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                     <label class="block">
+                    <span>Priority</span><span class="requried">*</span> 
+                  
+    <input id="priority"
+            name="priority" value="${AMDetails.priority }" 
+      class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+      placeholder="Priority "
+      type="text"
+    />
+   <span id="priorityError" class="requried"></span>
+                  </label>
+                 <label class="block">
+    <span>Status</span><span class="requried">*</span> 
+    <select id="status"
+            name="status"
+      class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
+    >
+       <option value="Active" <c:if test="${AMDetails.priority eq 'Active' }">selected</c:if>>Active</option>
+       <option value="Inactive" <c:if test="${AMDetails.priority eq 'Inactive' }">selected</c:if>>Inactive</option>
+     
+    </select>
+    <span id="statusError" class="requried"></span>
+  </label>
                 </div>
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <label class="block">
+
+  
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                
+
+                 <label class="block">
                     <span>logo</span><span class="requried">*</span> 
 				    <input     <c:if test="${empty AMDetails.id}"> id="logo"  name="logos"</c:if>
 				     <c:if test="${not empty AMDetails.id}"> id="logos"  name="logoss"</c:if>
@@ -2513,23 +2535,20 @@ z-index: 1000;
             name="description"
       rows="4"
       placeholder=" Enter Text"
-      class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+      class="form-textarea w-full resize-none rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" style="
+    width: 54rem;
+"
     >${AMDetails.description }</textarea>
      <span id="descriptionError" class="requried"></span>
   </label>
   </label>
-     <label class="block">
-    <span>Status</span><span class="requried">*</span> 
-    <select id="status"
-            name="status"
-      class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
-    >
-       <option value="Active" <c:if test="${AMDetails.priority eq 'Active' }">selected</c:if>>Active</option>
-       <option value="Inactive" <c:if test="${AMDetails.priority eq 'Inactive' }">selected</c:if>>Inactive</option>
-     
-    </select>
-    <span id="statusError" class="requried"></span>
-  </label>
+   
+                
+                
+                
+                 </div>
+                
+                 
       </div>
                  
 		             
