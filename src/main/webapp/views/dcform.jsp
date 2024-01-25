@@ -1316,7 +1316,7 @@ keyframes enlarge { 50%{
                 </svg>
 						</button>
 						<!-- Notification-->
-						<div
+					<!-- 	<div
 							x-effect="if($store.global.isSearchbarActive) isShowPopper = false"
 							x-data="usePopper({placement:'bottom-end',offset:12})"
 							@click.outside="isShowPopper &amp;&amp; (isShowPopper = false)"
@@ -1472,7 +1472,7 @@ keyframes enlarge { 50%{
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- Monochrome Mode Toggle -->
 						<button
 							@click="$store.global.isMonochromeModeEnabled = !$store.global.isMonochromeModeEnabled"
