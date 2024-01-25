@@ -2993,7 +2993,7 @@ button.disabled {
                    id="select2-status_edit-container"
               name="status"
                    class="form-select3  select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                     <option value="">Select Status</option>
+                    
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
                   </select>
@@ -3001,13 +3001,13 @@ button.disabled {
                 </div>
               
                 <div class="flex justify-center space-x-2 pt-4">
-                 <a class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
+                 <button class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" id="addBtn" onclick="addCompany();">
                     <span>update </span>
                    
-                  </a>
-                  <button  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                  </button>
+                  <a  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
-                        </button>
+                        </a>
                  
                 </div>
                   </form>
