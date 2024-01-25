@@ -2149,7 +2149,7 @@ keyframes enlarge { 50%{
 												name="description" rows="4" placeholder=" Enter Text"
 												class="form-textarea w-full 
                   rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 
-                  focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" mixlength="50"  maxlength="100">${DCFromDetails.description}</textarea>
+                  focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" minlength="50"  maxlength="150">${DCFromDetails.description}</textarea>
     <span id="descriptionError" class="required"></span>
    
   </label>

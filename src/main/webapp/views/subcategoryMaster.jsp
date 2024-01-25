@@ -2487,7 +2487,7 @@ z-index: 1000;
             <div x-data="{showModal:false}" class="flex divide-x divide-slate-150 border-t border-slate-150 dark:divide-navy-500 dark:border-navy-500"style="margin-top: auto;">
             <c:if test="${obj.document_type eq 'Link' }">
            <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
-                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
+                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">Published on <br><br> ${obj.created_date}</span>
                 </div>
                <a href="${obj.link }" target="_blank" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                  Link &nbsp <i class="fa-solid fa-chevron-right"></i>
@@ -2495,7 +2495,7 @@ z-index: 1000;
             </c:if> 
              <c:if test="${obj.document_type ne 'Link' && obj.document_type ne 'Gallery' }">
              <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
-                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">${obj.created_date}</span>
+                  <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100">  Published on <br><br>${obj.created_date}</span>
                 </div>
               <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}" target="_blank" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                  View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
