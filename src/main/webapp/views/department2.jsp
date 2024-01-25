@@ -2262,7 +2262,7 @@ button.disabled {
                        <div class="col-span-12 sm:col-span-8">
             <div class="card p-4 sm:p-5">
               <p class="text-base font-medium text-slate-700 dark:text-navy-100">
-                Add Company
+                Add Department
               </p>
               <div class="mt-4 space-y-4">
                <form id="addDepartmentForm" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/add-department" method="post" class="form-horizontal" role="form" >
