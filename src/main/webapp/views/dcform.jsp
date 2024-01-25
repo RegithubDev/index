@@ -1936,7 +1936,7 @@ keyframes enlarge { 50%{
 									<span class="requried">*</span> 
 										<input id="Attachments"
 										name="mediaList" type="file" class="mt-2" accept="image/*"
-										multiple /> <span id="AttachmentsError" class="requried"></span>
+										multiple onchange="validateImages()" /> <span id="AttachmentsError" class="requried"></span>
 									</label>
 								</div>
 
@@ -2964,6 +2964,31 @@ keyframes enlarge { 50%{
     			   $('#inputSec').css('display','none');
     		   }
     	   }
+       }
+       function validateImages() {
+           var input = document.getElementById('Attachments');
+           var errors = document.getElementById('AttachmentsError');
+           errors.innerHTML = "";
+
+           for (var i = 0; i < input.files.length; i++) {
+               var img = new Image();
+
+               img.onload = function() {
+                   if (img.width !== 790 || img.height !== 155) {
+                       errors.innerHTML = 'Please upload images with dimensions 790x155 pixels.';
+                       // You can reset the input or perform other actions based on your requirements.
+                       input.value = ""; // Clear the selected files
+                   }
+               };
+
+               if (input.files && input.files[i]) {
+                   var reader = new FileReader();
+                   reader.onload = function(e) {
+                       img.src = e.target.result;
+                   };
+                   reader.readAsDataURL(input.files[i]);
+               }
+           }
        }
    
       </script>
