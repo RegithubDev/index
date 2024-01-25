@@ -2713,6 +2713,9 @@ z-index: 1000;
             <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" 
             style=" height: 10.7rem;"
             class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-2 sm:mt-0 sm:flex-row via-purple-300">
+             <h3 class="text-xl text-white">
+                  <span class="dept"></span>
+                </h3>
              <!-- <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true},
               navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
                     <div class="swiper-wrapper" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
@@ -2734,7 +2737,7 @@ z-index: 1000;
                     <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
                     <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
                   <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div> -->
-                  <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
+                  <!-- <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
                     <div class="swiper-wrapper" id="swiper-wrapper-731071873e14f4314" aria-live="off" style="transition-duration: 300ms; transform: translate3d(-439px, 0px, 0px);">
                       
                       <div class="swiper-slide swiper-slide-active" role="group" aria-label="2 / 4" style="width: 439px;">
@@ -2748,7 +2751,7 @@ z-index: 1000;
                     <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(107.5px, 0px, 0px); width: 107.5px; transition-duration: 300ms;"></div></div>
                     <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-731071873e14f4314" aria-disabled="false"></div>
                     <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-731071873e14f4314" aria-disabled="false"></div>
-                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div> -->
             </div>
 
             
