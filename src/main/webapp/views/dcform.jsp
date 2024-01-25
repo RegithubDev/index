@@ -1932,7 +1932,7 @@ keyframes enlarge { 50%{
 							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
 								<div class="" id="imgSec" name="Attachments"
 									style="display: none">
-									<label class="block mb-4"> <span> Upload Images</span>            
+									<label class="block mb-4"> <span> Upload Image with 790*155 pixels</span>            
 									<span class="requried">*</span> 
 										<input id="Attachments"
 										name="mediaList" type="file" class="mt-2" accept="image/*"
@@ -1941,7 +1941,7 @@ keyframes enlarge { 50%{
 								</div>
 
 								<div class="" id="docSec" style="display: none">
-									<label class="block mb-4"> <span>Upload Document</span><span
+									<label class="block mb-4"> <span>Upload Document<br>(Only doc,docx,pdf are accepted)</span><span
 										class="requried">*</span> <input id="Attachments"
 										name="mediaList" type="file" class="mt-2"
 										accept=".doc, .docx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" />
