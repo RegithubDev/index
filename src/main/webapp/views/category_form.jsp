@@ -412,7 +412,7 @@ z-index: 1000;
       id="root"
       class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       x-cloak
-    >
+>
       <!-- Sidebar -->
       <div class="sidebar print:hidden">
         <!-- Main Sidebar -->
