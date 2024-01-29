@@ -2582,7 +2582,7 @@ z-index: 1000;
                       alt="image"
                     />
                     <h3 class="pt-2 font-medium tracking-wide line-clamp-1">
-                    Protect
+                    Aayush
                     </h3>
                   </a>
                 </div>
