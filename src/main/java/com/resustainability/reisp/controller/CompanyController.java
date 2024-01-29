@@ -134,6 +134,23 @@ public class CompanyController {
 		return objList;
 	}
 	
+	@RequestMapping(value = "/ajax/getCompanies", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Company> getCompanies(@ModelAttribute Company obj,HttpSession session) {
+		List<Company> objList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			objList = service.getCompaniesList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getStatusfilterInCat : " + e.getMessage());
+		}
+		return objList;
+	}
+	
 	
 	@RequestMapping(value = "/ajax/getStatusfilterInCat", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
