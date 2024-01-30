@@ -2369,8 +2369,7 @@ z-index: 1000;
 			                        <img class="h-full m-7 w-half object-cover" src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj1}" alt="">
 			                      </div> 
 								</c:forEach>
-					         </c:when>
-					         
+					         </c:when>         
 					      </c:choose>
 			      </c:when>
 			       <c:otherwise>
@@ -2503,7 +2502,7 @@ z-index: 1000;
              </c:if>
              
              <c:if test="${obj.document_type ne 'Link' && obj.document_type eq 'Gallery' }">
-   <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium ">
+   <div class="btn h-11 w-full rounded-none rounded-br-lg font-medium " href="<%=request.getContextPath() %>/gallery">
                   <span class="badge space-x-2.5 text-slate-800 dark:text-navy-100" > Published on <br><br> ${obj.created_date}</span>
                 </div>
  

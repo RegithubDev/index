@@ -101,6 +101,7 @@ public class PageConstants {
 		public static final String helpCenter = "helpCenter";
 		public static final String appmaster = "appmaster";
 		public static final String appmasterform = "appmasterform";
+		public static final String gallery = "gallery";
 		
 	
 

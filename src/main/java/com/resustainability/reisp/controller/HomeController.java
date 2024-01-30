@@ -164,6 +164,25 @@ public class HomeController {
 		} 
 		return model; 
 	}
+	
+	@RequestMapping(value = "/gallery", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView gallery(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.gallery);
+	try {
+		List <User> departmentsList = service.getDepartmentsList(user);
+		model.addObject("departmentsList", departmentsList);
+		List <User> catagoryList = service.getCatagoryList(user);
+        model.addObject("catagoryList", catagoryList);
+		} catch (Exception e) { 
+			e.printStackTrace();  
+		} 
+		return model; 
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/msw", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView msw(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.msw);

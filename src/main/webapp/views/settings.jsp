@@ -2285,7 +2285,7 @@ z-index: 1000;
 			<div class="card px-4 py-4 sm:px-5">
             <div>
               <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-              	 <span> &nbsp;${obj.module_name }</span></div>
+              	 <span>${obj.module_name }</span></div>
             </div>
             <div class="pt-2 ">
               <p>${obj.description }</p>
@@ -2355,7 +2355,7 @@ z-index: 1000;
                <div class="card px-4 py-4 sm:px-5">
             <div>
               <div class=" text-lgre flex cursor-pointer flex  tracking-wide text-slate-800 outline-none transition-all  pt-2 text-base font-medium tracking-wide text-base font-medium text-slate-700 dark:text-accent-light">
-              	 <span> &nbsp;${obj.module_name }</span></div>
+              	 <span>${obj.module_name }</span></div>
             </div>
             <div class="pt-2 ">
               <p>${obj.description }</p>

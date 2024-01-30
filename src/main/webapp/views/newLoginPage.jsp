@@ -402,7 +402,7 @@ img, video {
                  	<hr class="m-b-10 fr-text m-t-0">
                  	<p class=" fr-text">Signing up in this Enterprise Portal confirms your acceptance to ReSL IT Application Usage Policy </p>
                    <div class="m-t-30 mt-5 container1" style=" margin-left: 33%;"><span class="font-10 fr-text text">Powered by</span>  <img src="<c:url value="/resources/images/favicoan.png"/>" href="#"  style="max-width: 18% !important;" alt="logo" class="mb-2 ms-2"></div>
-             <div class="m-t-30 mt-5"><p class="font-10 fr-text">Re Sustainability Ltd © 2023. ReSL, All Rights Reserved.</p></div>
+             <div class="m-t-30 mt-5"><p class="font-10 fr-text">Re Sustainability Ltd © 2024. ReSL, All Rights Reserved.</p></div>
                 </div>
                 	
               </div>
