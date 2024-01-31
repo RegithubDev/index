@@ -56,47 +56,7 @@ public class Schedular {
 	 */
 	/**********************************************************************************/	
 	
-	@Scheduled(cron = "${cron.expression.daily.safety.alert}")
-	public void userLoginTimeout(){	
-		if(is_cron_jobs_enabled || is_cron_jobs_enabled_in_qa) {
-		     logger.error("userLoginTimeout : Method executed every day. Current time is :"+ new Date());	    
-		     try {
-		    	 System.out.println("cronJob egegeg!!!!"); 
-		    	 boolean flag = true;
-		    		List<IRM>  list = service.getIRMListAlert();
-		    		System.out.println(list);
-		    		 if(is_cron_jobs_enabled || is_cron_jobs_enabled_in_qa) {
-		    			 System.out.println("cronJob wwwwwwwwwwwwwwwwwwwwwwwwwwwwww!!!!"); 
-					    	 //service.getIRMListAlert();
-							logger.error("getIRMListAlert >> Sent mails : "+ flag); 
-				    	}
-			 } catch (Exception e) {
-				 e.printStackTrace();
-				logger.error("userLoginTimeout() : "+e.getMessage());
-			 }
-		}
-	}
 	
-	@Scheduled(cron = "${cron.expression.safety.moonthly.alerts}")
-	public void monthlyAlerts(){	
-		if(is_cron_jobs_enabled || is_cron_jobs_enabled_in_qa) {
-		     logger.error("userLoginTimeout : Method executed every day. Current time is :"+ new Date());	    
-		     try {
-		    	 System.out.println("cronJob egegeg!!!!"); 
-		    	 boolean flag = true;
-		    		List<IRM>  list = service.getIRMListAlertMonthly();
-		    		System.out.println(list);
-		    		 if(is_cron_jobs_enabled || is_cron_jobs_enabled_in_qa) {
-		    			 System.out.println("cronJob wwwwwwwwwwwwwwwwwwwwwwwwwwwwww!!!!"); 
-					    	 //service.getIRMListAlert();
-							logger.error("getIRMListAlert >> Sent mails : "+ flag); 
-				    	}
-			 } catch (Exception e) {
-				 e.printStackTrace();
-				logger.error("monthlyAlerts() : "+e.getMessage());
-			 }
-		}
-	}
 
 /*	@Scheduled(cron = "${cron.expression.user.login.timeout}")
 	public void UserActivityCheck(){	
