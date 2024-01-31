@@ -1847,26 +1847,7 @@ public class IRMDao {
 			
 			EMailSender emailSender = new EMailSender();
 			Set<String> nameSet = new HashSet<>();
-			if(alerts != null && alerts.size() > 0) {
-				SimpleDateFormat monthFormat = new SimpleDateFormat("dd-MMM-YYYY");
-	            String today_date = monthFormat.format(new Date()).toUpperCase();
-	          
-	            monthFormat = new SimpleDateFormat("dd-MMM-YYYY");
-	            String yesterday_date = monthFormat.format(yesterday()).toUpperCase();
-	            System.out.println(yesterday_date);
-	            SimpleDateFormat yearFormat = new SimpleDateFormat("YYYY");
-	            String current_year = yearFormat.format(new Date()).toUpperCase();
-	            
-				String emailSubject = "Daily Safety Report | PROTECT";
-				String emailSubjectName = "Protect - Safety First";
-				Mail mail = new Mail();
-				mail.setMailTo("amarnathreddy@resustainability.com,rameshreddy.g@resustainability.com,drksrinivas@resustainability.com"); 
-				mail.setMailBcc("businessapps.appworks@resustainability.com");
-				mail.setMailSubject(emailSubject);
-				mail.setTemplateName("SafetyDaily.vm");
-				
-				emailSender.sendIRMEmailAlerts(mail,alerts,today_date,yesterday_date,current_year,emailSubjectName); 
-			}
+			
 				
 			Thread.sleep(1000*10);//time is in ms (1000 ms = 1 second)
 			
