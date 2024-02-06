@@ -2509,42 +2509,29 @@ z-index: 1000;
      <a  @click="showModal = true" class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                  View &nbsp<i class="fa fa-eye" aria-hidden="true"></i>
               </a>
-    <template x-teleport="#x-teleport-target" >
-      <div
-        class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
-        x-show="showModal"
-        role="dialog"
-        @keydown.window.escape="showModal = false"
-      >
-        <div
-          class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
-          @click="showModal = false"
-          x-show="showModal"
-          x-transition:enter="ease-out"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="ease-in"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-        ></div>
-        <div
-          class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
-          x-show="showModal"
-          x-transition:enter="ease-out"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="ease-in"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-        >
-
-          <div class="mt-4">
-            <div
-    x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))"
-    class="swiper rounded-lg"
-  >
-    <div class="swiper-wrapper">
-     <c:choose>
+  <div class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5" x-show="showModal" role="dialog" @keydown.window.escape="showModal = false" data-teleport-target="true" style="">
+                      <div class="absolute inset-0 bg-slate-900/60 transition-opacity duration-300" @click="showModal = false" x-show="showModal" x-transition:enter="ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" style=""></div>
+                      <div class="relative flex w-full max-w-lg origin-top flex-col overflow-hidden rounded-lg bg-white transition-all duration-300 dark:bg-navy-700" x-show="showModal" x-transition:enter="easy-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="easy-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+                        <div class="flex justify-between rounded-t-lg  px-4 py-3 dark:bg-navy-800 sm:px-5">
+                        <button @click="showModal = !showModal" class="btn -mr-1.5 h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" style="
+    margin-bottom: -4rem;
+   margin-left: 95%; 
+">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                          </button>
+                          <h3 class="text-base font-medium text-slate-700 dark:text-navy-100">
+                           
+                          </h3>
+                          <button @click="showModal = !showModal" class="btn -mr-1.5 size-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="flex flex-col overflow-y-auto px-4 py-4 sm:px-5">
+                            <c:choose>
   					 <c:when test="${  fn:contains( obj.attachments, ',' ) }">
 		  	                <c:set var="filesList" value="${fn:split(obj.attachments, ',')}" />
 			                 <c:choose>
@@ -2569,7 +2556,7 @@ z-index: 1000;
 			       <c:otherwise>
 			       <c:if test="${ not empty fn:trim(obj.attachments) }">
 			        <div class="swiper-slide">
-			         <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}"><i class="fa fa-download" aria-hidden="true"></i></a>
+			         <a download href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}"></a>
 		        		 <img
 				          class="h-full w-full object-cover"
 				          src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${obj.department_code }/${obj.catID }/${obj.subCatId }/${obj.attachments}"
@@ -2582,21 +2569,12 @@ z-index: 1000;
 			        </c:if>
 			         </c:otherwise>
 			       </c:choose>
-    </div>
-    <div class="swiper-scrollbar"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-            <button
-              @click="showModal = false"
-              class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </template>
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
              </c:if>
              <!--  <button class="btn h-11 w-full rounded-none rounded-br-lg font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                 Chat
