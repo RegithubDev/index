@@ -280,7 +280,12 @@ img, video {
                               <div class="absolute bottom-0 right-0 -m-3 h-24 w-24 rounded-full bg-white/20"></div>
                           <!--    <div class="swiper-slide-shadow" style="opacity: 1; transition-duration: 0ms;"></div> --></div>
                             
-                            
+                             <div class="swiper-slide relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br  to-rose-500 p-5 swiper-slide-next" 
+                            role="group" aria-label="2 / 5" style="width: 901px; z-index: 2; transform: translate3d(calc(-901px + 7.25%), 0px, -100px) rotateZ(2deg) scale(1); transition-duration: 0ms;">
+                               <img src="<c:url value="/resources/images/800X464_PLANTS-021.jpg"/>" href="https://resustainability.com/"  alt="logo" class="mb-2 ms-2 rounded-full" style="margin-left: 1rem;max-width: 96%!important;"> 
+                             
+                              <div class="absolute bottom-0 right-0 -m-3 h-24 w-24 rounded-full bg-white/20"></div>
+                          <!--    <div class="swiper-slide-shadow" style="opacity: 1; transition-duration: 0ms;"></div> --></div>
                             
                             <div class="swiper-slide relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br to-info-focus p-5" role="group" 
                             aria-label="3 / 5" style="width: 901px; z-index: 1; transform: translate3d(calc(-901px + 13%), 0px, -200px) rotateZ(4deg) scale(1); 

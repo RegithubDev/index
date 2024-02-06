@@ -202,7 +202,7 @@ mdl-cell mdl-cell--6-col{
 
 </style>
     <title>Company</title>
-        <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/protect-favicon.png" >
+        <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/AAYUSH-favicon.png" >
 
 	<script src="<c:url value="/resources/js/jQuery-v.3.5.min.js"  />"></script>
     <!-- BEGIN: Vendor CSS-->

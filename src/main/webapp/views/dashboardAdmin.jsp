@@ -2578,7 +2578,7 @@ z-index: 1000;
                   >
                     <img
                       class="w-12"
-                      src="/index/resources/images/icons/protect-01.svg"
+                      src="/index/resources/images/icons/AAYUSH-01.svg"
                       alt="image"
                     />
                     <h3 class="pt-2 font-medium tracking-wide line-clamp-1">

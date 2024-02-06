@@ -72,7 +72,7 @@ body {
     <meta name="keywords" content="admin template,Company, Safety admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
   <title>Company</title>
-        <link rel="icon" type="image/png" sizes="96x96" href="/index/resources/images/protect-favicon.png" >
+        <link rel="icon" type="image/png" sizes="96x96" href="/index/resources/images/AAYUSH-favicon.png" >
 
 	<script src="/index/resources/js/jQuery-v.3.5.min.js"  ></script>
     <!-- BEGIN: Vendor CSS-->

@@ -93,7 +93,7 @@ tr td:last-child {
     <meta name="keywords" content="admin template,IRM, Safety admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
   <title>IRM - Report</title>
-        <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/protect-favicon.png" >
+        <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/AAYUSH-favicon.png" >
 
 	<script src="/reirm/resources/js/jQuery-v.3.5.min.js"  ></script>
     <!-- BEGIN: Vendor CSS-->

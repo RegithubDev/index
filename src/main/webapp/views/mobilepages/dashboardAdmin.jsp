@@ -27,7 +27,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="author" content="PIXINVENT">
     <title>Dashboard analytics - reirm</title>
     <link rel="apple-touch-icon" href="/reirm/resources/images/ico/apple-icon-120.html">
-   <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/protect-favicon.png" >
+   <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/AAYUSH-favicon.png" >
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 	    <meta name="google-signin-client_id" content="46521935412-0pl18k3a2mq7fs8nrl1853qcie9h5fjb.apps.googleusercontent.com">

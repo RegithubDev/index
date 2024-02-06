@@ -141,7 +141,7 @@ h1{
     <meta name="keywords" content="admin template,IRM, Safety admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
   <title>IRM - Action</title>
-       <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/protect-favicon.png" >
+       <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/AAYUSH-favicon.png" >
 	<script src="/reirm/resources/js/jQuery-v.3.5.min.js"  ></script>
     <!-- BEGIN: Vendor CSS-->
       <link rel="apple-touch-icon" href="/reirm/resources/images/ico/apple-icon-120.html">
@@ -573,7 +573,7 @@ h1{
 	              <option value="Inadequate guarding of hazards" <c:if test="${  fn:contains( fObj.uc_type, 'Inadequate guarding of hazards' ) }"> selected</c:if>>Inadequate guarding of hazards</option>
 	              <option value="Defective tools/ equipment" <c:if test="${  fn:contains( fObj.uc_type, 'Defective tools/ equipment' ) }"> selected</c:if>> Defective tools/ equipment</option>
 	              <option value="Insufficient lighting" <c:if test="${  fn:contains( fObj.uc_type, 'Insufficient lighting' ) }"> selected</c:if>>Insufficient lighting</option>
-	              <option value="Inadequate fall protection" <c:if test="${  fn:contains( fObj.uc_type, 'Inadequate fall protection' ) }"> selected</c:if>>Inadequate fall protection</option>
+	              <option value="Inadequate fall AAYUSHion" <c:if test="${  fn:contains( fObj.uc_type, 'Inadequate fall AAYUSHion' ) }"> selected</c:if>>Inadequate fall AAYUSHion</option>
 	            </select>
 	             <span id="select2-uc_dp-containerError" class="error-msg" ></span>
                 </div>

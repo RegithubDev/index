@@ -366,9 +366,9 @@ public class UserDao {
 				String login_url = CommonConstants.HOME ;
 				Mail mail = new Mail();
 				mail.setMailTo(obj.getEmail_id());
-				mail.setMailSubject("Welcome to PROTECT | Safety First Application!");
+				mail.setMailSubject("Welcome to AAYUSH | Safety First Application!");
 				String body = "Dear "+obj.getUser_name()+"<br>"
-						+ "We are thrilled to welcome you to <b>PROTECT - Safety First</b> Application, You are now Rewarded with <b>100 Reward PSoints</b>."
+						+ "We are thrilled to welcome you to <b>AAYUSH - Safety First</b> Application, You are now Rewarded with <b>100 Reward PSoints</b>."
 						+ "<br>the leading platform for safety incident reporting and resolution. Our mission is to keep communities and workplaces safe,"
 						+ " and we believe that by working together, we can achieve this goal"
 						+ "With our rewards program, you will earn points for registering and reporting safety incidents"
@@ -378,14 +378,14 @@ public class UserDao {
 						+ "and to be an active participant in the resolution process. Together, we can make a real "
 						+ "difference in promoting safety and reducing the risk of harm to others."
 						
-						+ "<br>Thank you for joining <b>PROTECT - Safety First</b> Application, "
+						+ "<br>Thank you for joining <b>AAYUSH - Safety First</b> Application, "
 						+ "and we look forward to working with you to promote safety in your community and workplace."
 						+ "<br>To explore more Please follow the link <a href="+login_url+"><button>Get Started</button></a>"
 						+ "<br><br>"
 						+ "Best regards,"
-						+ "<p style='color : red'><b>PROTECT | Safety First</b></p>"
+						+ "<p style='color : red'><b>AAYUSH | Safety First</b></p>"
 						+ "<b>Re Sustainability</b>";
-				String subject = "Thank You for Registering in PROTECT";
+				String subject = "Thank You for Registering in AAYUSH";
 				emailSender.send(mail.getMailTo(), mail.getMailSubject(), body,obj,subject);
 			}
 			transactionManager.commit(status);

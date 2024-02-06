@@ -302,12 +302,12 @@ public class IRMDao {
 					mail.setMailTo(obj.getEmail());
 					mail.setMailSubject("Incident - Report | Safety Alerts | Re Sustainability");
 					String body = "Hi, <br>"
-							+ " Greetings From <b>Re Sustainability | PROTECT</b>"
+							+ " Greetings From <b>Re Sustainability | AAYUSH</b>"
 							+ "<br> An <b>"+obj.getIncident_name()+" Report</b> has been Registered with <b>ID : "+obj.getDocument_code()+"</b>"
 							+ "<br> For more info about the Status of the "+obj.getIncident_name()+" <br> Please follow the link  <a href="+link_url+obj.getDocument_code()+"><button>Click Here</button></a>"
 							+ "<br><br><br>"
 							+ "Thanks"
-							+ "<p style='color : red'><b>PROTECT | Safety First</b></p>"
+							+ "<p style='color : red'><b>AAYUSH | Safety First</b></p>"
 							+ "<b>Re Sustainability</b>";
 					String subject = "Acknowledgment!";
 					
@@ -323,12 +323,12 @@ public class IRMDao {
 							 mail.setMailTo(level2.getEmail_id());
 							 mail.setMailSubject("Incident - Report | Safety Alerts | Re Sustainability");
 							 body = "Hi, <br>"
-										+ " Greetings From <b>Re Sustainability | PROTECT</b>"
+										+ " Greetings From <b>Re Sustainability | AAYUSH</b>"
 										+ "<br> An <b>"+obj.getIncident_name()+" Report</b> has been Registered with <b>ID : "+obj.getDocument_code()+"</b>"
 										+ "<br> For more info about the Status of the "+obj.getIncident_name()+" <br> Please follow the link  <a href="+link_url+obj.getDocument_code()+"><button>Click Here</button></a>"
 										+ "<br><br><br>"
 										+ "Thanks"
-										+ "<p style='color : red'><b>PROTECT | Safety First</b></p>"
+										+ "<p style='color : red'><b>AAYUSH | Safety First</b></p>"
 										+ "<b>Re Sustainability</b>";
 								subject = "Safety Registered - Notification!";
 							 
@@ -342,7 +342,7 @@ public class IRMDao {
 						 mail.setMailTo(obj.getEmail_id());
 						 mail.setMailSubject("Incident - Report | Safety Alerts | Re Sustainability");
 						 body = "Hi, <br>"
-									+ " Greetings From <b>Re Sustainability | PROTECT</b>"
+									+ " Greetings From <b>Re Sustainability | AAYUSH</b>"
 									+ "<br> An <b>"+obj.getIncident_name()+" Report</b> has been Reported on : "+date+" with <b>ID : "+obj.getDocument_code()+"</b>"
 											+ " has come for your Review and the Resolution."
 											+ "<p>Incident Details</p> "
@@ -353,7 +353,7 @@ public class IRMDao {
 									+ "<br> For more info about the Status of the "+obj.getIncident_name()+" <br> Please follow the link  <a href="+link_url+obj.getDocument_code()+"><button>Click Here</button></a>"
 									+ "<br><br><br>"
 									+ "Thanks"
-									+ "<p style='color : red'><b>PROTECT | Safety First</b></p>"
+									+ "<p style='color : red'><b>AAYUSH | Safety First</b></p>"
 									+ "<b>Re Sustainability</b>";
 							subject = "Safety "+obj.getIncident_type()+" | Action";
 					 }
@@ -1941,8 +1941,8 @@ public class IRMDao {
 	            SimpleDateFormat yearFormat = new SimpleDateFormat("YYYY");
 	            String current_year = yearFormat.format(new Date()).toUpperCase();
 	            
-				String emailSubject = "Monthly Safety Report | PROTECT";
-				String emailSubjectName = "Protect - Safety First";
+				String emailSubject = "Monthly Safety Report | AAYUSH";
+				String emailSubjectName = "AAYUSH - Safety First";
 				Mail mail = new Mail();
 				mail.setMailTo(""); 
 				mail.setMailBcc("businessapps.appworks@resustainability.com");
@@ -2003,15 +2003,15 @@ public class IRMDao {
 					Mail mail = new Mail();
 					//mail.setMailTo(obj.getEmail_id());
 					mail.setMailTo("saidileep.p@resustainability.com");
-					mail.setMailSubject("🔔 Action Remainder | PROTECT | Re Sustainability");
+					mail.setMailSubject("🔔 Action Remainder | AAYUSH | Re Sustainability");
 					String body = "Hi, "+obj.getUser_name()+"<br>"
-							+ " Greetings From <b>Re Sustainability | PROTECT</b>"
+							+ " Greetings From <b>Re Sustainability | AAYUSH</b>"
 							+ "<br> We Noticed, There is no Login Activity Form you since <b>"+obj.getDaysNotLogined()+" Days </b> "
 							+ "<br> There are <b>"+obj.getIncidents_count()+"</b> Incidents (<b>"+dicList.get(0).getDocument_code()+"</b>) awaiting your Evaluation. <br>"
 							+ " Please Login <a href="+link_url+"><button>Click Here</button></a> and Complete your Assignments ASAP. "
 							+ "<br><br><br>"
 							+ "Thanks"
-							+ "<p style='color : red'><b>PROTECT | Safety First</b></p>"
+							+ "<p style='color : red'><b>AAYUSH | Safety First</b></p>"
 							+ "<b>Re Sustainability</b>";
 					String subject = "Remainder Alerts";
 					

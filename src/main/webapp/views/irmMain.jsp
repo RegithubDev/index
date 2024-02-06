@@ -28,7 +28,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="keywords" content="admin template,IRM, Safety admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
   <title>IRM</title>
-       <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/protect-favicon.png" >
+       <link rel="icon" type="image/png" sizes="96x96" href="/reirm/resources/images/AAYUSH-favicon.png" >
 	<script src="/reirm/resources/js/jQuery-v.3.5.min.js"  ></script>
     <!-- BEGIN: Vendor CSS-->
       <link rel="apple-touch-icon" href="/reirm/resources/images/ico/apple-icon-120.html">

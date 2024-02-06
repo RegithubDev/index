@@ -399,9 +399,9 @@ public class RoleMappingDao {
 									+ "<br>For more details Please follow the link <a href="+link_url+"><button>Click Here</button></a>"
 									+ "<br><br>"
 									+ "<br> Kind regards,"
-									+ "<p style='color : red'><b>PROTECT</b></p>"
+									+ "<p style='color : red'><b>AAYUSH</b></p>"
 									+ "<b>Re Sustainability</b>";
-							String subject = "PROTECT | IRM ";
+							String subject = "AAYUSH | IRM ";
 							emailSender.sendAdd(mail.getMailTo(), mail.getMailSubject(), body,obj,subject);
 						}
 					}

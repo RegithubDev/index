@@ -17,7 +17,7 @@
 	<meta http-equiv="Expires" content="0" />
     <meta name="google-signin-client_id" content="46521935412-0pl18k3a2mq7fs8nrl1853qcie9h5fjb.apps.googleusercontent.com">
     <title>Login Page - Project Name</title>
-     <link rel="icon" type="image/png" sizes="96x96" href="<c:url value="/resources/images/protect-favicon.png"/>" >
+     <link rel="icon" type="image/png" sizes="96x96" href="<c:url value="/resources/images/AAYUSH-favicon.png"/>" >
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
