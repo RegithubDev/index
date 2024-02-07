@@ -2512,59 +2512,7 @@ z-index: 1000;
 	                  </select>
 	                	 <span id="status_filterError" class="requried"></span>
 	                </label>
-              <!--  <input type="file"  x-init="$el._x_filepond = FilePond.create($el)" accept="image/*" multiple /> -->
-       <!--  <div class="filepond fp-grid fp-bordered [--fp-grid:4] mt-4">
-					    <input type="file"name="mediaList" id="mediaList"  accept="image/*" multiple />
-					  </div> -->
-				  <label class="block">
-            	</label>
-				  <%-- <c:if test="${not empty sCDetails.documants}">
-			    <div class="inline-space mt-5">
-			    <div class="badge bg-navy-700 text-white dark:bg-navy-900">
-                  Attachments :
-                </div>
-			    
-			     <c:choose>
-  					 <c:when test="${  fn:contains( sCDetails.documants, ',' ) }">
-		  	                <c:set var="filesList" value="${fn:split(sCDetails.documants, ',')}" />
-			                 <c:choose>
-					         <c:when test ="${fn:length(filesList) gt 0}" >
-					             <c:forEach var="obj" items="${filesList}">
-									<input type="hidden" id="design_file_ids" value="${obj}"/>
-									 <div class="badge space-x-2.5 text-slate-800 dark:text-navy-100">
-	                 				 <div class="h-2 w-2 rounded-full bg-current"></div>
-							       		 <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${sCDetails.department_code }/${sCDetails.category }/${obj }" class="filevalue" download ="${obj}"><i class="fa fa-arrow-down"></i>
-				                 
-				                  <span class="fw-bold">${obj }</span></a>
-								<div class="badge space-x-2 bg-error text-white">
-				                  
-				                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-				                  </svg>
-				                </div>
-								</div>
-								</c:forEach>
-					         </c:when>
-					         <c:otherwise>
-					          <p >   <i class="fa-solid fa-file"></i> No Attachments Found!</p>
-					         </c:otherwise>
-					      </c:choose>
-			      </c:when>
-			       <c:otherwise>
-			       <c:if test="${ not empty fn:trim(sCDetails.documants) }">
-		        		<input type="hidden" id="design_file_ids" value="${sCDetails.documants}"/>
-		        		 <div class="badge space-x-2.5 text-slate-800 dark:text-navy-100">
-	                 				 <div class="h-2 w-2 rounded-full bg-current"></div>
-				        <a href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${sCDetails.department_code }/${sCDetails.category }/${sCDetails.documants }" class="filevalue" download ="${sCDetails.documants}"><i class="fa fa-arrow-down"></i>
-	                    <span class="fw-bold">${sCDetails.documants }</span></a></div>
-			       </c:if>
-			        <c:if test="${ empty fn:trim(sCDetails.documants) }">
-			         <p >   <i class="fa-solid fa-file"></i> No Attachments Found!</p>
-			        </c:if>
-			         </c:otherwise>
-			       </c:choose>
-              	</div>
-              	</c:if> --%>
+            
                 </div>
                 
                 

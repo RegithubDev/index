@@ -262,11 +262,7 @@
     <artifactId>spring-security-core</artifactId>
     <version>3.0.7.RELEASE</version>
 </dependency>
-    <dependency>
-    	<groupId>com.resustainability.reisp</groupId>
-    	<artifactId>reirm</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
+  
    </dependencies>
   <repositories>
     <repository>

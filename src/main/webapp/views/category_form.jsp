@@ -2496,121 +2496,59 @@ z-index: 1000;
 			                  </label>
 			                </div>
 			                
-					              <label class="block mt-2">
+			
+					              
+					                  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                 
+                 <div class="max-w-xl">
+              
+              <div >
+               <label class="block mt-2">
 					                <span>Content Description</span>
 					                <textarea rows="4" placeholder="`Description" class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
 					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
 					                dark:focus:border-accent" id="description${index.count }" minlength="50"  maxlength="150" name="description" >${CDetails.description}</textarea>
 					              </label>
-					               <%-- <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
-					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-					                  </svg>
-					                  
-					                </a> --%>
-					             </div>
-		              <%-- <c:choose>
-					         <c:when test ="${fn:length(CDetails.categoryList) gt 0}" >
-					             <c:forEach var="obj" items="${CDetails.categoryList}" varStatus="index">
-					             <div id="row${index.count }">
-					                
-		           					 <input name="id"  value="${obj.id}"  type="hidden" />
-					              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
-			                  <label class="block sm:col-span-8">
-			                    <span>Category Title</span>
-			                    <div class="relative mt-1.5 flex">
-			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
-								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${obj.dm_category}">
-			                     
-			                    </div>
-			                  </label>
-			                  <label class="block sm:col-span-4">
-			                    <span>Status</span>
-			                    <div class="relative mt-1.5 flex">
-			                      <select
-					                   id="select2-status_add-container"
-					              		name="status"
-					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-					                    <option value="Active" <c:if test="${obj.status eq 'Active'}">selected</c:if>>Active</option>
-					                    <option value="Inactive" <c:if test="${obj.status eq 'Inactive'}">selected</c:if>>Inactive</option>
-					                  </select>
-			                    </div>
-			                  </label>
-			                </div>
-			                
-					              <label class="block mt-2">
-					                <span>Content Description</span>
-					                <textarea rows="4" placeholder="`Description" class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
-					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
-					                dark:focus:border-accent" id="description${index.count }" name="description">${obj.description}</textarea>
-					              </label>
-					               <a  onclick="removeRow('${index.count }');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
-					                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-					                  </svg>
-					                  
-					                </a>
-					             </div>
-					              <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
-								</c:forEach>
-					         </c:when>
-					         <c:otherwise>
-					         <div id="row0">
-				               <input name="id"  value="new"  type="hidden" />
-				              <div class="grid grid-cols-1 gap-4 sm:grid-cols-12">
-			                  <label class="block sm:col-span-8">
-			                    <span>Category Title</span>
-			                    <div class="relative mt-1.5 flex">
-			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
-								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								                placeholder="Title" type="text" id="dm_category0" name="dm_category">
-			                     
-			                    </div>
-			                  </label>
-			                  <label class="block sm:col-span-4">
-			                    <span>Status</span>
-			                    <div class="relative mt-1.5 flex">
-			                      <select
-					                   id="select2-status_add-container"
-					              		name="status"
-					                   class="  form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-					                    <option value="Active">Active</option>
-					                    <option value="Inactive">Inactive</option>
-					                  </select>
-			                    </div>
-			                  </label>
-			                </div>
                 
-                
-				              <label class="block mt-2">
-				                <span>Content Description</span>
-				                <textarea rows="4" placeholder="Content Description...." class="mt-2 form-textarea w-full rounded-lg border border-slate-300 
-				                bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 
-				                dark:hover:border-navy-400 dark:focus:border-accent" id="description0" name="description"></textarea>
-				              </label>
-				               <a  onclick="removeRow('0');" class="mt-2 btn space-x-2 border border-secondary font-medium text-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white active:bg-secondary/90 dark:text-secondary-light dark:hover:bg-secondary dark:hover:text-white dark:focus:bg-secondary dark:focus:text-white dark:active:bg-secondary/90">
-				                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-				                  </svg>
-				                  
-				                </a>
-				                </div>
-				                 <div class="my-4 h-px bg-slate-200 dark:bg-navy-500"></div>
-					         </c:otherwise>
-					      </c:choose> --%>
-					      
-		       
-		             
-		            </div>
-		            <!--  <div class="flex justify-center space-x-2 pt-4">
-				          <a  onclick="addNewRow();" class="btn space-x-2 bg-warning font-medium text-white shadow-lg shadow-warning/50 hover:bg-warning-focus focus:bg-warning-focus active:bg-warning-focus/90">
-		                  <span>Add New Row</span>
-		                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-		                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
-		                  </svg>
-		                </a>
-		              </div> -->
+              </div>
+            </div>
+       <div class=" px-4 pb-4 sm:px-5">
+            <div class="my-3 flex h-8 items-center justify-between">
+              
+              <label class="flex items-center space-x-2">
+                <span class="text-xs text-slate-400 dark:text-navy-300">Note:If you don't need further Categories then check </span>
+                <input id="toggle_checkbox" @change="helpers.toggleCode" class="form-switch h-5 w-10 rounded-full bg-slate-300 before:rounded-full before:bg-slate-50 checked:bg-primary checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-accent dark:checked:before:bg-white" type="checkbox">
+              </label>
+            </div>
+
+            <div class="max-w-xl" id="hide_input">
+              
+              <div class="mt-5">
+                <label class="block">
+                  <input class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Link" type="text">
+                </label>
+              </div>
+            </div>
+
+          </div>
+	                
+            
+                </div>
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
+					              
 		          </div>
 		        </div>            
             </form>
@@ -2689,10 +2627,10 @@ z-index: 1000;
 		src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $('.select2').select2();
+   
       $(document).ready(function() {
-
-
+    	  $("#hide_input").hide();
+    	  
         });
     	  
      
@@ -2797,6 +2735,17 @@ z-index: 1000;
 				   	    	//form.submit();
 				   	    }
 		   	}); 
+       
+       $('#toggle_checkbox').change(function() {
+           if(this.checked) {
+       
+        	    	  $("#hide_input").show();
+        	    	
+        	    	  
+           }else{
+        	   $("#hide_input").hide();
+           }
+       });
       </script>
   </body>
 </html>
