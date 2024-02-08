@@ -2735,7 +2735,7 @@ z-index: 1000;
 				           },submitHandler:function(form){
 				   	    	//form.submit();
 				   	    }
-		   	}); 
+		          	}); 
        
        $('#toggle_checkbox').change(function() {
            if(this.checked) {
