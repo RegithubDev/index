@@ -1632,27 +1632,7 @@
 
             <!-- Right: Header buttons -->
             <div class="-mr-1.5 flex items-center space-x-2">
-              <!-- Mobile Search Toggle -->
-              <button
-                @click="$store.global.isSearchbarActive = !$store.global.isSearchbarActive"
-                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5.5 w-5.5 text-slate-500 dark:text-navy-100"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#e21e26"
-                  stroke-width="1.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </button>
-
+             
               <!-- Main Searchbar -->
               <template x-if="$store.breakpoints.smAndUp">
               </template>
@@ -2923,16 +2903,7 @@
         </div>
       </div>
 
-      <div
-        class="fixed right-3 bottom-3 rounded-full bg-white dark:bg-navy-700"
-      >
-        <button
-          @click="$dispatch('show-drawer', { drawerId: 'pos-card-drawer' })"
-          class="btn h-14 w-14 rounded-full bg-warning p-0 font-medium text-white hover:bg-warning-focus focus:bg-warning-focus active:bg-warning-focus/90 sm:hidden"
-        >
-          $60
-        </button>
-      </div>
+    
     </div>
     <!-- 
         This is a place for Alpine.js Teleport feature 
