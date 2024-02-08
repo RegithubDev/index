@@ -3095,7 +3095,19 @@ z-index: 1000;
 	                        	 $(".dept").html( $.trim(val.department_name));
 	                        	 var url = 'href="<%=request.getContextPath() %>'
 		                                url = url+'/subcat1/'+$.trim(val.department_code)+'/'+$.trim(val.department_name)+'/'+$.trim(val.dm_category)+'/'+$.trim(val.catID)+'"';
-		                        	var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
+	                        	 var buttonLink = '<a '
+                                     +url
+                                     +' class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">'
+                                     +'<i class="fa fa-arrow-right text-re" aria-hidden="true"></i> '
+                                  +' </a>';
+                                  if($.trim(val.no_further_categories) == 'true'){
+                                	  buttonLink = '<a target="_blank"'
+                                          +'href="'+$.trim(val.link)+'"'
+                                          +' class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">'
+                                          +'<i class="fa fa-arrow-right text-re" aria-hidden="true"></i> '
+                                       +' </a>';
+									}
+	                        	 var html='   <div class=" card rounded-xl bg-gradient-to-br  pp-1 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/50 dark:bg-accent dark:shadow-accent/50 dark:hover:shadow-accent/50">'
 		                        		+'<div class="rounded-xl  p-4  dark:bg-navy-900 sm:p-5"><div class="flex ">'
 		                        		 +'<div class="">'
 	                                       +'<div class="my-2 grow"><h4 class=" text-lgre font-semibold text-slate-700 dark:text-navy-100">'+ $.trim(val.dm_category)+'</h4><div></div></div>'
@@ -3105,13 +3117,11 @@ z-index: 1000;
 	                                        +'</div> ' +'</div> '
 	                                       +' <div class="mt-3 flex space-x-1 justify-end">' 
 	                                    
-	                                       +'<a '
-	                                       +url
-	                                       +' class="btn h-9 w-9 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">'
-	                                       +'<i class="fa fa-arrow-right text-re" aria-hidden="true"></i> '
-	                                    
-	                                    +' </a>'
+	                                      
+	                                       +buttonLink
 	                                     +' </div></div></div>';
+	                                    
+	                                    
 	                                     $("#deptList").append(html);
 	                                     
 	                                     

@@ -2517,6 +2517,7 @@ z-index: 1000;
               
               <label class="flex items-center space-x-2">
                 <span class="text-xs text-slate-400 dark:text-navy-300">Note:If you don't need further Categories then check </span>
+                <input type="hidden" id="no_further_categories" name="no_further_categories" />
                 <input id="toggle_checkbox" @change="helpers.toggleCode" class="form-switch h-5 w-10 rounded-full bg-slate-300 before:rounded-full before:bg-slate-50 checked:bg-primary checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-accent dark:checked:before:bg-white" type="checkbox">
               </label>
             </div>
@@ -2525,7 +2526,7 @@ z-index: 1000;
               
               <div class="mt-5">
                 <label class="block">
-                  <input class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Link" type="text">
+                  <input name="link" class="form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Link" type="text">
                 </label>
               </div>
             </div>
@@ -2738,11 +2739,10 @@ z-index: 1000;
        
        $('#toggle_checkbox').change(function() {
            if(this.checked) {
-       
-        	    	  $("#hide_input").show();
-        	    	
-        	    	  
+        	   $("#no_further_categories").val("true");
+        	   $("#hide_input").show();
            }else{
+        	   $("#no_further_categories").val("false");
         	   $("#hide_input").hide();
            }
        });

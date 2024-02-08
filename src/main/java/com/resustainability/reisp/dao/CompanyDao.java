@@ -331,7 +331,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id as catID,c.department_code,dm.department_name,dm_category,c.status,dm.status as dept_status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id as catID,c.department_code,dm.department_name,dm_category,c.status,dm.status as dept_status,no_further_categories,c.link,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -370,9 +370,9 @@ public class CompanyDao {
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			
-			String insertQry = "INSERT INTO [department_category] (department_code,description,dm_category,status,created_by,created_date) "
+			String insertQry = "INSERT INTO [department_category] (department_code,description,dm_category,no_further_categories,link,status,created_by,created_date) "
 					+ "VALUES "
-					+ "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
+					+ "(:department_code,:description,:dm_category,:no_further_categories,:link,:status,:created_by,getdate())";
 			//String [] categorys = obj.getDm_category().split(",");
 			//String [] description = obj.getDescription().split(",");
 			//String [] statuss = obj.getStatus().split(",");
@@ -414,7 +414,7 @@ public class CompanyDao {
 			 * + "VALUES " +
 			 * "(:department_code,:description,:dm_category,:status,:created_by,getdate())";
 			 */
-			String updateQry = "UPDATE [department_category] SET dm_category = :dm_category,description = :description, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
+			String updateQry = "UPDATE [department_category] SET no_further_categories= :no_further_categories,link= :link,dm_category = :dm_category,description = :description, status = :status, modified_by = :modified_by,modified_date = getdate() WHERE id = :id";
 			/*
 			 * String [] categorys = obj.getDm_category().split(","); String [] description
 			 * = obj.getDescription().split(","); String [] statuss =
@@ -455,7 +455,7 @@ public class CompanyDao {
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		User obj = null;
 		try {
-			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,dm.department_name,dm_category,c.status,c.description,no_further_categories,c.link,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -500,7 +500,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id as subCatId, dc.id as catID,c.department_code,dm.status as dept_status ,dc.status as cat_status, c.icon_text,dm.department_name,c.category,c.sub_category_title,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id as subCatId, dc.id as catID,c.department_code,dm.status as dept_status ,no_further_categories,dc.link,dc.status as cat_status, c.icon_text,dm.department_name,c.category,c.sub_category_title,dm_category,c.status,c.description,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [sub_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -633,7 +633,7 @@ public class CompanyDao {
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		User obj = null;
 		try {
-			String qry = "SELECT  c.id,c.department_code,c.description,dm.department_name,category,dm_category,sub_category_title,icon_text,documants,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id,c.department_code,c.description,dm.department_name,category,dm_category,no_further_categories,dc.link,sub_category_title,icon_text,documants,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [sub_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
@@ -665,7 +665,7 @@ public class CompanyDao {
 		List<User> objsList = new ArrayList<User>();
 		List<User> employeesDistinctByName = new ArrayList<User>();
 		try {
-			String qry = "SELECT  c.id  as catID,c.department_code,dm.status as dept_status,dm.department_name,dm_category,c.status,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
+			String qry = "SELECT  c.id  as catID,c.department_code,dm.status as dept_status,dm.department_name,dm_category,c.status,no_further_categories,c.link,	FORMAT (c.created_date, 'dd-MMM-yy') as created_date,"
 					+ "up.user_name as created_by,FORMAT	(c.modified_date, 'dd-MMM-yy') as modified_date,"
 					+ "up1.user_name as  modified_by FROM [department_category] c "
 					+ " left join [department_master] dm on c.department_code = dm.department_code "
