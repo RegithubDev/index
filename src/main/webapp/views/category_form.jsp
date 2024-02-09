@@ -33,6 +33,8 @@
       rel="stylesheet"
     />
     <style>
+    .my-error-class{    color: red!important;}
+    
     .requried {
 		color: red;
 	} 
