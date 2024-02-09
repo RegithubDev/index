@@ -191,5 +191,9 @@ public class UserService {
 	public List<User> getDepartmentfilterappmaster(User obj) throws Exception {
 		return dao.getDepartmentfilterappmaster(obj);
 	}
+
+	public List<User> getBannerList(User user) throws Exception {
+		return dao.getBannerList(user);
+	}
 		
 }

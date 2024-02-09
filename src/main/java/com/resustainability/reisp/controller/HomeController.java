@@ -219,6 +219,9 @@ public class HomeController {
 		model.addObject("departmentsList", departmentsList);
 		List <User> catagoryList = service.getCatagoryList(user);
         model.addObject("catagoryList", catagoryList);
+        
+        List <User> bannerList = service.getBannerList(user);
+        model.addObject("bannerList", bannerList);
 		} catch (Exception e) { 
 			e.printStackTrace();  
 		} 
