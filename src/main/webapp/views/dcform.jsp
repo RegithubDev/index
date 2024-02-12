@@ -1933,7 +1933,7 @@ keyframes enlarge { 50%{
 							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
 								<div class="" id="imgSec" name="Attachments"
 									style="display: none">
-									<label class="block mb-4"> <span> Upload Image with 790*155 pixels</span>            
+									<label class="block mb-4"> <span> Upload Image with 630*156 pixels</span>            
 									<span class="requried">*</span> 
 										<input id="Attachments"
 										name="mediaList" type="file" class="mt-2" accept="image/*"
