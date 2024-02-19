@@ -1926,18 +1926,19 @@ keyframes enlarge { 50%{
 							<c:if test="${not empty DCFromDetails.link }"><label class="block mb-4"> <span> Link</span><span
 										class="requried">*</span> <input id="link"
 										value="${DCFromDetails.link}" name="link"
-										class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+										class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 
+										placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
 										placeholder="textfileld" type="text"> <span
 										id="inputSecError" class="requried"></span>
 									</label></c:if>
 							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
 								<div class="" id="imgSec" name="Attachments"
 									style="display: none">
-									<label class="block mb-4"> <span> Upload Image with 630*156 pixels</span>            
+									<label class="block mb-4"> <span> Upload Image with 790x155 pixels</span>            
 									<span class="requried">*</span> 
 										<input id="Attachments"
 										name="mediaList" type="file" class="mt-2" accept="image/*"
-										multiple onchange="validateImages()" /> <span id="AttachmentsError" class="requried"></span>
+										 onchange="validateImages()" /> <span id="AttachmentsError" class="requried"></span>
 									</label>
 								</div>
 

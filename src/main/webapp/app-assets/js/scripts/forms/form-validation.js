@@ -74,6 +74,9 @@ $(function () {
         'basic-default-name': {
           required: true
         },
+		'basic-default-lname': {
+          required: true
+        },
         'basic-default-email': {
           required: true,
           email: true

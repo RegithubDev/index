@@ -2719,7 +2719,7 @@ z-index: 1000;
 				
              <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true},
               navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
-                    <div class="swiper-wrapper" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
+                    <div class="swiper-wrapper emptyDiv" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
                      
                      <c:forEach var="value" items="${bannerList}">
 				   		<div class="swiper-slide swiper-slide-prev" role="group" aria-label="1 / 4" style="width: 212px;">
@@ -3069,6 +3069,7 @@ z-index: 1000;
 	        if ($.trim(department_code) != "") {
 	        	 $("#deptList div").remove();
 	        	 $("#depUsersList div").remove();
+	        	 $(".emptyDiv div").remove();
                  $("#deptListLi li").remove();
                  $("#deptListLi").text('');
                  $("#deptListERR p").remove();
@@ -3184,6 +3185,28 @@ z-index: 1000;
 		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
 		                        +'</p>';
 	                        $("#usertdeptListERR").append(html);
+	                    }
+	                },error: function (jqXHR, exception) {
+	    	   			      $(".page-loader").hide();
+	       	          	  getErrorMessage(jqXHR, exception);
+	       	     	  }
+	            });
+	            $.ajax({
+	                url: "<%=request.getContextPath()%>/ajax/getGallaryByDept",
+	                data: myParams, cache: false,async: false,
+	                success: function (data) {
+	                    if (data.length > 0) {
+	                        $.each(data, function (i, val) {
+		                    var html= '<div class="swiper-slide swiper-slide-prev" role="group" aria-label="1 / 4" style="width: 212px;">'
+                        	+'<img class="object-cover object-top" src="/index/resources/gallery/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category)+'/'+$.trim(val.attachments)+'"  alt="">'
+                        	+' </div>'
+					        $(".emptyDiv").append(html);
+	                        });
+	                    }else{
+	                    	 var html =	'<div><p class="pt-4 text-xxl  dark:text-navy-50">'
+		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+		                        +'</p></div>';
+	                        $(".emptyDiv").append(html);
 	                    }
 	                },error: function (jqXHR, exception) {
 	    	   			      $(".page-loader").hide();

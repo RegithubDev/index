@@ -2455,13 +2455,13 @@ button.disabled {
                 </div>
                
                 <div class="flex justify-center space-x-2 pt-4">
-                 <button type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" onclick="addCompany();">
+                 <a type="button" class="btn mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90" onclick="addCompany();">
                     <span>Add </span>
                    
-                  </button>
-                  <a @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                  </a>
+                  <button @click="showModal = false" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
-                        </a>
+                        </button>
                  
                 </div>
                  </form>
@@ -2972,6 +2972,21 @@ button.disabled {
                   
                   </label>
                    <label class="block  text-left">
+                    <span>Project</span><span class="required"> *</span>
+                  <select
+                   id="select2-base_project_add-container"
+              name="base_project"
+                   class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
+    color: black;">
+                    <option value="">Select Project</option>
+             	<c:forEach var="obj" items="${projectsList}">
+					<option value="${obj.project_code }"   >[${obj.project_code }] - ${obj.project_name }</option>
+				</c:forEach>
+                  </select>
+                   <span id="select2-base_project_add-containerError" class="error-msg" ></span>
+                  
+                  </label>
+                   <label class="block  text-left">
                     <span>User Role</span><span class="required"> *</span>
                   <select
                    id="select2-base_role_edit-container"
@@ -3005,7 +3020,7 @@ button.disabled {
                     <span>update </span>
                    
                   </button>
-                  <a  id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
+                  <a id="toggleElementButton" class="btn mt-6 bg-slate-150 font-medium text-slate-800 hover:bg-slate-800-focus focus:bg-slate-150-focus active:bg-slate-800-focus/90">
                           Discard
                         </a>
                  

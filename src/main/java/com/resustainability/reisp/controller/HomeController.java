@@ -31,7 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import com.resustainability.reisp.common.DateParser;
 import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.SBU;
@@ -208,6 +208,26 @@ public class HomeController {
 			e.printStackTrace();  
 		} 
 		return model; 
+	}
+	
+	@RequestMapping(value = "/ajax/getGallaryByDept", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getIRMHistoryList(@ModelAttribute User obj,HttpSession session) {
+		List<User> bannerList = null;
+		String userId = null;
+		String userName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			
+			bannerList = service.getBannerList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getIRMHistoryList : " + e.getMessage());
+		}
+		return bannerList;
 	}
 	
 	@RequestMapping(value = "/re-curls/{department_code}/{department_name}", method = {RequestMethod.POST, RequestMethod.GET})
