@@ -32,6 +32,32 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
       rel="stylesheet"
     />
+    <style>
+    #imageContainer {
+        height: 155px;
+        overflow: hidden;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        position: relative;
+    }
+    .scrollingImages {
+        display: flex;
+        height:!1rem
+        position: absolute;
+    }
+    .scrollingImages img {
+        margin-right: 10px;
+        height: 100%;
+        flex-shrink: 0;
+        object-fit: cover;
+        object-position: center;
+       animation: scroll 10s linear infinite;
+    }
+  @keyframes scroll {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
     <style> 
      @media (max-width: 640px){
 		.w-half{
@@ -2710,42 +2736,14 @@ z-index: 1000;
       <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
  
            <div class="col-span-12 lg:col-span-8 xl:col-span-8">
+
             <div :class="$store.breakpoints.smAndUp &amp;&amp; 'via-purple-300'" 
-            style=" height: 10.7rem;"
+            style=" height: 10.7rem;" id="imageContainer"
             class="card mt-12 bg-gradient-to-l from-pink-300 to-indigo-400 p-2 sm:mt-0 sm:flex-row via-purple-300">
-             <h3 class="text-xl text-white">
-                <!--  <span class="dept"></span> -->
-                </h3>
-				
-             <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true},
-              navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
-                    <div class="swiper-wrapper emptyDiv" id="swiper-wrapper-fda64e10e9fb93442" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-878px, 0px, 0px);">
-                     
-                     <c:forEach var="value" items="${bannerList}">
-				   		<div class="swiper-slide swiper-slide-prev" role="group" aria-label="1 / 4" style="width: 212px;">
-                        	<img class="object-cover object-top" src="/index/resources/gallery/${value.department_code}/${value.category}/${value.sub_category}/${value.attachments}" alt="">
-                       </div>
-				    </c:forEach> 
-                    </div>
-                    <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(215px, 0px, 0px); width: 107.5px; transition-duration: 0ms;"></div></div>
-                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
-                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-fda64e10e9fb93442" aria-disabled="false"></div>
-                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                  <!-- <div x-init="$nextTick(()=>$el._x_swiper = new Swiper($el, {scrollbar: {el: '.swiper-scrollbar',draggable: true}, navigation: {prevEl: '.swiper-button-prev',nextEl: '.swiper-button-next'},autoplay: {delay: 2000}}))" class="swiper rounded-lg swiper-initialized swiper-horizontal swiper-backface-hidden">
-                    <div class="swiper-wrapper" id="swiper-wrapper-731071873e14f4314" aria-live="off" style="transition-duration: 300ms; transform: translate3d(-439px, 0px, 0px);">
-                      
-                      <div class="swiper-slide swiper-slide-active" role="group" aria-label="2 / 4" style="width: 439px;">
-                        <img class="h-full w-full object-cover object-top w-half" src="/index/resources/images/icons/Comp 1.jpg" alt="">
-                      </div>
-                      <div class="swiper-slide swiper-slide-next" role="group" aria-label="3 / 4" style="width: 439px;">
-                        <img class="h-full w-full object-cover object-top w-half" src="/index/resources/images/icons/Comp 2.jpg" alt="">
-                      </div>
-                     
-                    </div>
-                    <div class="swiper-scrollbar swiper-scrollbar-horizontal"><div class="swiper-scrollbar-drag" style="transform: translate3d(107.5px, 0px, 0px); width: 107.5px; transition-duration: 300ms;"></div></div>
-                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-731071873e14f4314" aria-disabled="false"></div>
-                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-731071873e14f4314" aria-disabled="false"></div>
-                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div> -->
+               <div class="scrollingImages">
+      
+		    </div>
+       
             </div>
 
             
@@ -3069,7 +3067,7 @@ z-index: 1000;
 	        if ($.trim(department_code) != "") {
 	        	 $("#deptList div").remove();
 	        	 $("#depUsersList div").remove();
-	        	 $(".emptyDiv div").remove();
+	        	 $(".scrollingImages img").remove();
                  $("#deptListLi li").remove();
                  $("#deptListLi").text('');
                  $("#deptListERR p").remove();
@@ -3197,21 +3195,22 @@ z-index: 1000;
 	                success: function (data) {
 	                    if (data.length > 0) {
 	                        $.each(data, function (i, val) {
-		                    var html= '<div class="swiper-slide swiper-slide-prev" role="group" aria-label="1 / 4" style="width: 212px;">'
+		                    var html= ''
                         	+'<img class="object-cover object-top" src="/index/resources/gallery/'+$.trim(val.department_code)+'/'+$.trim(val.category)+'/'+$.trim(val.sub_category)+'/'+$.trim(val.attachments)+'"  alt="">'
-                        	+' </div>'
-					        $(".emptyDiv").append(html);
+                        	+' '
+					        $(".scrollingImages").append(html);
 	                        });
 	                    }else{
 	                    	 var html =	'<div><p class="pt-4 text-xxl  dark:text-navy-50">'
 		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
 		                        +'</p></div>';
-	                        $(".emptyDiv").append(html);
+	                        $(".scrollingImages").append(html);
 	                    }
 	                },error: function (jqXHR, exception) {
 	    	   			      $(".page-loader").hide();
 	       	          	  getErrorMessage(jqXHR, exception);
 	       	     	  }
+	                
 	            });
 	        }
        }

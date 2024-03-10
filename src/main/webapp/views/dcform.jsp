@@ -1934,11 +1934,11 @@ keyframes enlarge { 50%{
 							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
 								<div class="" id="imgSec" name="Attachments"
 									style="display: none">
-									<label class="block mb-4"> <span> Upload Image with 790x155 pixels</span>            
+									<label class="block mb-4">           
 									<span class="requried">*</span> 
 										<input id="Attachments"
-										name="mediaList" type="file" class="mt-2" accept="image/*"
-										 onchange="validateImages()" /> <span id="AttachmentsError" class="requried"></span>
+										name="mediaList" type="file" class="mt-2" accept="image/*"   multiple
+										  /> <span id="AttachmentsError" class="requried"></span><!--  onchange="validateImages()" -->
 									</label>
 								</div>
 
