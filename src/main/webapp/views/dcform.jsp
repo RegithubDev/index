@@ -2640,7 +2640,7 @@ keyframes enlarge { 50%{
 	</form>
 	<script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      $('select').select2();
+      $('select').select2(); 
       $(document).ready(function() {
 
 

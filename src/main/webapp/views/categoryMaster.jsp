@@ -3063,6 +3063,22 @@ z-index: 1000;
            // Move the child content to the top
            childContent.style.transform = 'translateY(0)';
        });
+       document.getElementById('searchInput').addEventListener('input', function(event) {
+    	    const searchTerm = event.target.value.toLowerCase();
+    	    const selectOptions = document.querySelectorAll('#optionsSelect option');
+    	    
+    	    // Iterate through options and show/hide based on search term
+    	    selectOptions.forEach(function(option) {
+    	        const optionText = option.textContent.toLowerCase();
+    	        if (optionText.includes(searchTerm)) {
+    	            option.style.display = '';
+    	        } else {
+    	            option.style.display = 'none';
+    	        }
+    	    });
+    	});
+
+       
        
        function ChangeCategoryForDept(department_code,department_name){
     	   		$(".dept").html( $.trim(department_name));

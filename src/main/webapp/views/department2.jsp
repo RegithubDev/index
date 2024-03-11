@@ -2718,6 +2718,7 @@ button.disabled {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       $(window).on("load",(function(){
+    	  $('select').select2(); 
     	  $('.form-select2').select2();
     	// $("#x-teleport-target").hide();
           getDepartmentList();

@@ -2221,6 +2221,7 @@ button.disabled {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
  $(window).on("load",(function(){
+	 $('select').select2(); 
 	 $('.form-selects').select2();
           getCatList();
          }));

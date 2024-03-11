@@ -2693,7 +2693,7 @@ button.disabled {
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
   $(window).on("load",(function(){
-	  /* $('select').select2(); */
+	  $('select').select2(); 
           getSBUList();
          }));
       
