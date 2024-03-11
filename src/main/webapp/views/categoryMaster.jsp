@@ -33,30 +33,34 @@
       rel="stylesheet"
     />
     <style>
-    #imageContainer {
-        height: 155px;
-        overflow: hidden;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        position: relative;
-    }
-    .scrollingImages {
-        display: flex;
-        height:!1rem
-        position: absolute;
-    }
-    .scrollingImages img {
-        margin-right: 10px;
-        height: 100%;
-        flex-shrink: 0;
-        object-fit: cover;
-        object-position: center;
-       animation: scroll 10s linear infinite;
-    }
-  @keyframes scroll {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-    }
+   #imageContainer {
+    height: 155px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
+}
+
+.scrollingImages {
+height:11rem;
+    display: flex;
+    position: absolute;
+    animation: scrollImages 10s linear infinite; /* Apply animation to the container */
+}
+
+.scrollingImages img {
+    margin-right: 10px;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+@keyframes scrollImages {
+    0% { transform: translateX(0%); } /* Start position */
+    100% { transform: translateX(-100%); } /* Move the container by its full width */
+}
+
 </style>
     <style> 
      @media (max-width: 640px){
