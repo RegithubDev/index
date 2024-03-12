@@ -2387,21 +2387,24 @@ button.disabled {
                     <span id="select2-base_department_add-containerError" class="error-msg" ></span>
                   
                   </label>
+                  
                 
-                  <label class="block  text-left">
+               <label class="block  text-left">
                     <span>Project</span><span class="required"> *</span>
                   <select
                    id="select2-base_project_add-container"
               name="base_project"
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
     color: black;">
-                    <option value="">Select Project</option>
+    
+      <option value="">Select Project</option>
              	<c:forEach var="obj" items="${projectsList}">
 					<option value="${obj.project_code }"   >[${obj.project_code }] - ${obj.project_name }</option>
 				</c:forEach>
+				
                   </select>
-                   <span id="select2-base_project_add-containerError" class="error-msg" ></span>
-                  
+      <span id="select2-base_project_add-containerError" class="error-msg" ></span>                  
+    
                   </label>
                  
                  
@@ -2438,20 +2441,23 @@ button.disabled {
                      <span id="select2-base_role_add-containerError" class="error-msg" ></span>
                   
                   </label>
-                 <label class="block  text-left">
+                   <label class="block  text-left">
                     <span>Status</span><span class="required"> *</span>
                   <select
-                   id="select2-status_add-container"
+                  
+                  id="select2-status_add-container"
               name="status"
+                   
                    class=" select2 form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"style="
     color: black;">
-                 <option value="">Select Status</option>
+                   <option value="">Select Status</option>
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
                   </select>
-                   <span id="select2-status_add-containerError" class="error-msg" ></span>
-    
+                                     <span id="select2-status_add-containerError" class="error-msg" ></span>
+                  
                   </label>
+               
                 </div>
                
                 <div class="flex justify-center space-x-2 pt-4">
