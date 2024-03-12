@@ -26,7 +26,7 @@ public class CommonConstants {
 	//////////////////////// GET SAVE FILES PATH
 	
 	public final static String SAFETY_FILE_SAVING_PATH_LOC = "/"+context_path+"/resources/gallery/";
-	public final static String FILE_SAVING_PATH_LOC = "/"+context_path+"/resources/gallery/";
+	public final static String FILE_SAVING_PATH_LOC = "D:/reone/gallery/index/resources/gallery/";
 	
 //////////////////////////////// Production ////////////////////////////////////////////////////////////
 	

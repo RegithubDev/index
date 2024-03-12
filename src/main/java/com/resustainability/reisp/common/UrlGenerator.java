@@ -57,7 +57,7 @@ public class UrlGenerator {
 	}
 
 	private static final String SERVER_PATH = "C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/";
-	private static final String LOCAL_PATH = "C:/Users/saishree.s/git/index/src/main/webapp/";
+	private static final String LOCAL_PATH = "C:/Users/saidileep.s/git/index/src/main/webapp/";
   //C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\brainbox\resources\gallery
 	public String getNGINXFilesBasePath(){
 		String base_path = "";
