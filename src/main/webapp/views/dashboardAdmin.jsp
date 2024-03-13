@@ -2589,11 +2589,11 @@ z-index: 1000;
 				<c:if test="${sessionScope.USER_ID == '22011073' || sessionScope.USER_ID == '22011586' || sessionScope.USER_ID == '22014182'}">
 				 <div
                   class="card swiper-slide w-24 shrink-0 cursor-pointer"
-                  @click="selected = 'slide-2'"
+                  @click="selected = 'slide-2121'"
                 >
                  <a href="https://internal.resustainability.com/reirm/login/${sessionScope.USER_EMAIL }https://drive.google.com/drive/folders/10kWGFLcqQnwH0d975ya2_jkDsXh39UaN?usp=sharing" target="_blank"
                     class="flex flex-col items-center rounded-lg px-2 py-4"
-                    :class="selected === 'slide-2' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
+                    :class="selected === 'slide-2121' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
                   >
                     <img
                       class="w-12"
