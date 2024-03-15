@@ -2480,7 +2480,7 @@ z-index: 1000;
 			                    <div class="relative mt-1.5 flex">
 			  						<input class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 
 								                hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" 
-								     minlength="25"   maxlength="50"        placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
+								        placeholder="Title" type="text"  id="dm_category${index.count }" name="dm_category" value="${CDetails.dm_category}">
 			                     
 			                    </div>
 			                  </label>
@@ -2509,7 +2509,7 @@ z-index: 1000;
 					                <span>Content Description</span>
 					                <textarea rows="4" placeholder="`Description" class="mt-2 form-textarea w-full rounded-lg border border-slate-300 bg-transparent 
 					                p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
-					                dark:focus:border-accent" id="description${index.count }" minlength="50"  maxlength="150" name="description" >${CDetails.description}</textarea>
+					                dark:focus:border-accent" id="description${index.count }" name="description" >${CDetails.description}</textarea>
 					              </label>
                 
               </div>
