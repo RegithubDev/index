@@ -12,7 +12,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
 
-    <title>ReOne - Re Sustainability ONE</title>
+    <title>ReOne - SBU</title>
     <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
 
     <!-- CSS Assets -->

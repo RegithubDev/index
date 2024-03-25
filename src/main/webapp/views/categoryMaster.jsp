@@ -3172,10 +3172,12 @@ z-index: 1000;
 	                        });
 	                    }else{
 	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
-		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
-		                        +'</p>';
-	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
-	                        $("#deptListLi").append(html2); $("#deptListERR").append(html);
+/* 		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+ */		                        
+                              +'</p>';
+/* 	                        var html2 =	'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.';
+ */	                      
+ $("#deptListLi").append(html2); $("#deptListERR").append(html);
 	                    }
 	                    $(".dept").html( $.trim(department_name));
 	                    
@@ -3200,8 +3202,9 @@ z-index: 1000;
 	                        });
 	                    }else{
 	                    	 var html =	'<p class="pt-4 text-xxl  dark:text-navy-50">'
-		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
-		                        +'</p>';
+/* 		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+ */		                       
+ +'</p>';
 	                        $("#usertdeptListERR").append(html);
 	                    }
 	                },error: function (jqXHR, exception) {
@@ -3222,8 +3225,9 @@ z-index: 1000;
 	                        });
 	                    }else{
 	                    	 var html =	'<div><p class="pt-4 text-xxl  dark:text-navy-50">'
-		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
-		                        +'</p></div>';
+/* 		                         +'<i class="fa-solid fa-face-frown"></i> Oops. No Content Found in <b><span class="dept"></span></b>, Please Add (or) Contact Admin.'
+ */		                    
+ +'</p></div>';
 	                        $(".scrollingImages").append(html);
 	                    }
 	                },error: function (jqXHR, exception) {
