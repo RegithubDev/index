@@ -173,11 +173,6 @@ button.disabled {
   /* Add any other styles as needed */
 }
 
-
-
-
-
-
   </style>
     <script>
       /**
@@ -228,12 +223,7 @@ button.disabled {
                 </svg>
               </button>
             </div>
-            
-            
-          
-            
-
-            <!-- Sidebar Panel Body -->
+         <!-- Sidebar Panel Body -->
             <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
               <div class="is-scrollbar-hidden grow overflow-y-auto">
                 <div class="mt-2 px-4">
@@ -628,7 +618,7 @@ button.disabled {
               </div>
             </div>
           </div>
-              </div>
+            
       </main>
      <div x-data="{showModal:false}">
        <button style="display : none"; @click="showModal = true" id="updateModal" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent 

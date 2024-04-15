@@ -2491,7 +2491,7 @@ z-index: 1000;
                  
                  <div class="max-w-xl">
               <p>
-                Description<span class="requried">*</span> 
+                Description 
               </p>
               <div >
                 <label class="block">
@@ -2745,7 +2745,7 @@ z-index: 1000;
 						 	  },"icon_text": {										
 						 			required: true
 						 	  },"description": {										
-						 			required: true
+						 			required: false
 						 	  },"status": {										
 						 			required: true
 						 	  }

@@ -1943,13 +1943,14 @@ keyframes enlarge { 50%{
 								</div>
 
 								<div class="" id="docSec" style="display: none">
-									<label class="block mb-4"> <span>Upload Document<br>(Only doc,docx,pdf are accepted)</span><span
-										class="requried">*</span> <input id="Attachments"
-										name="mediaList" type="file" class="mt-2"
-										accept=".doc, .docx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" />
-										<span id="docSecError" class="requried"></span>
-									</label>
-								</div>
+    <label class="block mb-4">
+        <span>Upload Document<br>(Only doc, docx, xls, xlsx, pdf are accepted)</span>
+        <span class="requried">*</span>
+        <input id="Attachments" name="mediaList" type="file" class="mt-2" accept=".doc, .docx, .xls, .xlsx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf" />
+        <span id="docSecError" class="requried"></span>
+    </label>
+</div>
+
 								<c:if test="${empty DCFromDetails.link }">
 								<div class="row" id="inputSec" style="display: none">
 									<label class="block mb-4"> <span> Add Link</span><span
