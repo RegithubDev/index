@@ -1759,11 +1759,11 @@ public class UserDao {
             		+ " where dc.[department_code] is not null ";
             int arrSize = 0;
             if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
-				qry = qry + " and dc.department_code = ?";
+				qry = qry + " and dc.department_code = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory())) {
-				qry = qry + " and dc.category = ?";
+				qry = qry + " and dc.category = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSub_category_title())) {
