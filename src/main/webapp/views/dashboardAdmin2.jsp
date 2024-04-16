@@ -3794,7 +3794,7 @@
                 </div>
               </div>
             </div>
-            <div class="mt-4 grid grid-cols-12 gap-4  py-5 dark:bg-navy-800 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+          <!--   <div class="mt-4 grid grid-cols-12 gap-4  py-5 dark:bg-navy-800 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
             <div class="is-scrollbar-hidden col-span-12 reimagining reimaginingIMG space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:col-span-3 lg:pl-0">
               <div class="mt-2">
                 <div class="mt-1.5 flex items-center space-x-2">
@@ -3875,13 +3875,11 @@
           </div>
           
           
-        </div>
+        </div> -->
   
         <div class="mt-4 grid grid-cols-12 gap-4  py-5 dark:bg-navy-800 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
         <div class="is-scrollbar-hidden col-span-12 reimagining space-x-4 overflow-x-auto p-6 transition-all duration-[.25s] lg:col-span-3 lg:pl-0">
-          <p class="mt-2 grow" style="
-    width: 14rem;
-">
+          <p class="mt-2 grow" style="width: 14rem;">
             Reimagining <button
             class="btn bg-error font-medium text-white hover:bg-error-focus focus:bg-error-focus active:bg-error-focus/90"
           > The Future </button> <br>with Smart Sustainability Solutions
