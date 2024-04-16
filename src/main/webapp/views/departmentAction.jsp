@@ -2211,14 +2211,14 @@ button.disabled {
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           <label class="block">
-                  <select id="select2-department_filter-container"  onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-department_filter-container"  onchange="getDepartmentFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Department</option>
                    	
                   </select>
                 </label>
      
                   <label class="block">
-                  <select  id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-status_filter-container" onchange="getStatusFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2268,9 +2268,9 @@ button.disabled {
                     <span>Department Code </span><span class="required"> *</span>
                     <span class="relative mt-1.5 ">
                       <input  
-                    type="text"
-              id="department_code_add"
-              name="department_code"
+	                    type="text"
+			              id="department_code_add"
+			              name="departmeJnt_code"
                       class="form-control form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="eg : RE" onkeyup="checkUniqueId();"  type="text">
                       
                     </span>
@@ -2343,9 +2343,9 @@ button.disabled {
           </div>
             </template>
                 </div>
-                  <a onclick="exportDepartment();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
+                 <!--  <a onclick="exportDepartment();" x-tooltip.placement.top-end.success="'Export Data'" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important; background-color: green !important; width: 100%;">
                   <i class="fas fa-file-export"></i>  &nbsp;Export
-                </a>   
+                </a>   --> 
               
               
             </div>
