@@ -42,7 +42,7 @@ public class User {
 	
 	private String [] docs;
 	
-	private MultipartFile[] mediaList;
+	private MultipartFile[] mediaList,mediaListUpdate;
 	
 	private MultipartFile logos,logoss;
 	
@@ -50,6 +50,14 @@ public class User {
 	
 	private List<User> depContentList;
 	
+	public MultipartFile[] getMediaListUpdate() {
+		return mediaListUpdate;
+	}
+
+	public void setMediaListUpdate(MultipartFile[] mediaListUpdate) {
+		this.mediaListUpdate = mediaListUpdate;
+	}
+
 	public MultipartFile getLogoss() {
 		return logoss;
 	}

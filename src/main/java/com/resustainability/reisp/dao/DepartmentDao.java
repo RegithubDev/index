@@ -606,6 +606,28 @@ public class DepartmentDao {
 		    count = namedParamJdbcTemplate.update(updateQry, paramSource);
 			if(count > 0) {
 				flag = true;
+				 String fileName  = "";
+				 String file_Name  = "";
+				    for(int i =0; i < obj.getMediaListUpdate().length; i++) {
+				    	MultipartFile multipartFile = obj.getMediaListUpdate()[i];
+						if (null != multipartFile && !multipartFile.isEmpty() || !StringUtils.isEmpty(obj.getDocs()) && obj.getDocs().length > 0) {
+							if(null != multipartFile && !multipartFile.isEmpty()) {
+								String saveDirectory = CommonConstants.FILE_SAVING_PATH +
+										obj.getDepartment_code() + File.separator+ obj.getCategory() + File.separator+ obj.getSub_category() + File.separator;
+								fileName = multipartFile.getOriginalFilename();
+								if (null != multipartFile && !multipartFile.isEmpty()) {
+									FileUploads.singleFileSaving(multipartFile, saveDirectory, fileName);
+								}
+							}
+							file_Name = file_Name+fileName+",";
+							//file_Name = removeLastComma(file_Name);
+							fileName = file_Name;
+							obj.setAttachments(removeLastComma(fileName));
+						}
+						updateQry = "UPDATE [dept_content] set Attachments= :Attachments where id= :id ";
+						paramSource = new BeanPropertySqlParameterSource(obj);		 
+					    count = namedParamJdbcTemplate.update(updateQry, paramSource);
+				    }
 			}
 			transactionManager.commit(status);
 		}catch (Exception e) {

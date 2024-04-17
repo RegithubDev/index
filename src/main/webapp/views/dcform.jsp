@@ -1999,57 +1999,10 @@ keyframes enlarge { 50%{
 																	class="btn font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
 																	${obj} </a>
 
-																<div x-data="{showModal:false}">
-																	<a @click="showModal = true"
-																		class="btn bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-																		<i class="fa fa-eye" aria-hidden="true"></i>
-																	</a>
-																	<template x-teleport="#x-teleport-target">
-																		<div
-																			class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
-																			x-show="showModal" role="dialog"
-																			@keydown.window.escape="showModal = false">
-																			<div
-																				class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
-																				@click="showModal = false" x-show="showModal"
-																				x-transition:enter="ease-out"
-																				x-transition:enter-start="opacity-0"
-																				x-transition:enter-end="opacity-100"
-																				x-transition:leave="ease-in"
-																				x-transition:leave-start="opacity-100"
-																				x-transition:leave-end="opacity-0"></div>
-																			<div
-																				class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
-																				x-show="showModal" x-transition:enter="ease-out"
-																				x-transition:enter-start="opacity-0"
-																				x-transition:enter-end="opacity-100"
-																				x-transition:leave="ease-in"
-																				x-transition:leave-start="opacity-100"
-																				x-transition:leave-end="opacity-0">
-
-
-																				<div class="mt-4">
-																					<img
-																						src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${obj}"
-																						alt="Document" width="500" height="600">
-
-																					<button @click="showModal = false"
-																						class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
-																						Close</button>
-																				</div>
-																			</div>
-																		</div>
-																	</template>
-																</div>
 																<a
-																	class="btn h-9 w-9 p-0 font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
-																	onclick="deleteDocRow('${index.count }');"> <svg
-																		xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-																		fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-																			stroke-width="2"
-																			d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                  </svg>
+																	href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${obj}"
+																	class="btn h-9 w-9 bg-success p-0 font-medium text-white hover:bg-success-focus hover:shadow-lg hover:shadow-success/50 focus:bg-success-focus focus:shadow-lg focus:shadow-success/50 active:bg-success-focus/90">
+																	<i class="fa fa-arrow-up"></i>
 																</a>
 															</div>
 
@@ -2083,52 +2036,19 @@ keyframes enlarge { 50%{
 																	class="btn font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
 																	${DCFromDetails.attachments} </a> <input name="attachments"
 																	value="${DCFromDetails.department_code}" type="hidden" />
-																<div x-data="{showModal:false}">
-																	<a @click="showModal = true"
-																		class="btn bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-																		<i class="fa fa-eye" aria-hidden="true"></i>
-																	</a>
-																	<template x-teleport="#x-teleport-target">
-																		<div
-																			class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
-																			x-show="showModal" role="dialog"
-																			@keydown.window.escape="showModal = false">
-																			<div
-																				class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
-																				@click="showModal = false" x-show="showModal"
-																				x-transition:enter="ease-out"
-																				x-transition:enter-start="opacity-0"
-																				x-transition:enter-end="opacity-100"
-																				x-transition:leave="ease-in"
-																				x-transition:leave-start="opacity-100"
-																				x-transition:leave-end="opacity-0"></div>
-																			<div
-																				class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
-																				x-show="showModal" x-transition:enter="ease-out"
-																				x-transition:enter-start="opacity-0"
-																				x-transition:enter-end="opacity-100"
-																				x-transition:leave="ease-in"
-																				x-transition:leave-start="opacity-100"
-																				x-transition:leave-end="opacity-0">
-
-
-																				<div class="mt-4">
-																					<img
-																						src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${DCFromDetails.attachments}"
-																						alt="Document" width="500" height="600">
-
-																					<button @click="showModal = false"
-																						class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
-																						Close</button>
-																				</div>
-																			</div>
-																		</div>
-																	</template>
+																<input type="hidden" name="department_code"  value="${DCFromDetails.department_code }"/>
+																<input type="hidden" name="category" value="${DCFromDetails.category }"/>
+																<input type="hidden" name="sub_category" value="${DCFromDetails.sub_category }"/>
+																<div class="" id="docSec" style="display: block">
+																	<label class="block mb-4"> <span>Update
+																			Document<br>(Only doc, docx, xls, xlsx, pdf are
+																			accepted)
+																	</span> <span class="requried">*</span> <input id="mediaListUpdate"
+																		name="mediaListUpdate" type="file" class="mt-2"
+																		accept=".doc, .docx, .xls, .xlsx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf" />
+																		<span id="docSecError" class="requried"></span>
+																	</label>
 																</div>
-																<a
-																	class="btn h-9 w-9 p-0 font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
-																	onclick="deleteDocRow('0');"> <i class="fa fa-exchange" aria-hidden="true"></i>
-																</a>
 															</div>
 
 														</div>
