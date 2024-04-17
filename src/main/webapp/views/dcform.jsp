@@ -13,7 +13,6 @@
 	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 <title>ReOne - Re Sustainability ONE</title>
 <link rel="icon" type="image/png"
-
 	href="/index/resources/images/favicon.svg" />
 <!-- CSS Assets -->
 <link rel="stylesheet" href="/index/resources/css/app.css" />
@@ -32,11 +31,11 @@
 <style>
 .select2-container {
 	display: none;
-} 
+}
 
 .requried {
 	color: red;
-} 
+}
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b
 	{
@@ -255,8 +254,8 @@
 }
 
 a {
-  color: blue;
-  text-decoration: inherit;
+	color: blue;
+	text-decoration: inherit;
 }
 
 .container {
@@ -296,18 +295,35 @@ keyframes loading { 0% {
 }
 
 33
+
+
 %
 {
 content
+
+
 :
-". . ";
+
+
+".
+.
+";
 }
 66
+
+
 %
 {
 content
+
+
 :
-". . . ";
+
+
+".
+.
+.
+";
 }
 }
 /*  BACKGROUND  */
@@ -603,7 +619,8 @@ keyframes enlarge { 50%{
 											<li><a
 												class="group flex space-x-2 rounded-lg p-2 tracking-wide text-slate-800 outline-none transition-all hover:bg-slate-100 focus:bg-slate-100 dark:text-navy-100 dark:hover:bg-navy-600 dark:focus:bg-navy-600"
 												href="<%=request.getContextPath() %>${obj.common_url}/${obj.department_code}/${obj.department_name}">
-													<div class="h-2 w-2 mt-1.5 rounded-full bg-current " style="color:#e21e26;"></div> <span>${obj.department_name }</span>
+													<div class="h-2 w-2 mt-1.5 rounded-full bg-current "
+														style="color: #e21e26;"></div> <span>${obj.department_name }</span>
 											</a></li>
 										</c:forEach>
 									</ul>
@@ -1317,7 +1334,7 @@ keyframes enlarge { 50%{
                 </svg>
 						</button>
 						<!-- Notification-->
-					<!-- 	<div
+						<!-- 	<div
 							x-effect="if($store.global.isSearchbarActive) isShowPopper = false"
 							x-data="usePopper({placement:'bottom-end',offset:12})"
 							@click.outside="isShowPopper &amp;&amp; (isShowPopper = false)"
@@ -1674,8 +1691,7 @@ keyframes enlarge { 50%{
 				<div class="mt-1 font-inter font-medium">
 					<a
 						class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-						href="apps-chat.html"> <svg
-							xmlns="http://www.w3.org/2000/svg"
+						href="apps-chat.html"> <svg xmlns="http://www.w3.org/2000/svg"
 							class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
 							fill="none" viewBox="0 0 24 24" stroke="#e21e26"
 							stroke-width="1.5">
@@ -1694,8 +1710,7 @@ keyframes enlarge { 50%{
               </svg> <span>File Manager App</span>
 					</a> <a
 						class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-						href="404-3.html"> <svg
-							xmlns="http://www.w3.org/2000/svg"
+						href="404-3.html"> <svg xmlns="http://www.w3.org/2000/svg"
 							class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
 							fill="none" viewBox="0 0 24 24" stroke="#e21e26"
 							stroke-width="1.5">
@@ -1714,8 +1729,7 @@ keyframes enlarge { 50%{
               </svg> <span>Kanban Board</span>
 					</a> <a
 						class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-						href="apps-todo.html"> <svg
-							xmlns="http://www.w3.org/2000/svg"
+						href="apps-todo.html"> <svg xmlns="http://www.w3.org/2000/svg"
 							class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
 							fill="none" viewBox="0 0 24 24" stroke="#e21e26"
 							stroke-width="1.5">
@@ -1805,12 +1819,12 @@ keyframes enlarge { 50%{
 					action="<%=request.getContextPath()%>/add-dcform" method="post"
 					class="form-horizontal" role="form" enctype="multipart/form-data">
 			</c:if>
-			
+
 			<div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
-          <div class="col-span-12 lg:col-span-4">
-          
-            <div class="card p-4 sm:p-5">
-              <div class="mt-4 space-y-4">
+				<div class="col-span-12 lg:col-span-4">
+
+					<div class="card p-4 sm:p-5">
+						<div class="mt-4 space-y-4">
 
 							<div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
 								<label class="block "> <span>company</span> <span
@@ -1838,9 +1852,9 @@ keyframes enlarge { 50%{
 												- ${obj.sbu_name }</option>
 										</c:forEach>
 								</select> <span id="sbu_codeError" class="requried"></span>
-								</label> <label class="block"> <span>Department</span>  <span
-									class="requried">*</span>
-								<select onchange="setCategoryList();" id="department_code"
+								</label> <label class="block"> <span>Department</span> <span
+									class="requried">*</span> <select onchange="setCategoryList();"
+									id="department_code"
 									<c:if test="${action eq 'edit'}"> disabled </c:if>
 									name="department_code"
 									class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
@@ -1862,8 +1876,7 @@ keyframes enlarge { 50%{
 												<c:if test="${DCFromDetails.category eq obj.catID }">selected</c:if>>${obj.dm_category }</option>
 										</c:forEach>
 								</select> <span id="categoryError" class="requried"></span>
-								</label>
-									<label class="block"> <span>Sub Category</span><span
+								</label> <label class="block"> <span>Sub Category</span><span
 									class="requried">*</span> <select id="sub_category"
 									name="sub_category"
 									<c:if test="${action eq 'edit'}"> disabled </c:if>
@@ -1878,328 +1891,326 @@ keyframes enlarge { 50%{
 							</div>
 							<div class="flex justify-end space-x-2"></div>
 						</div>
-              
-            </div>
-          </div>
-          <div class="col-span-12 lg:col-span-8">
-            <div class="card">
-              
-              <div class="p-4 sm:p-5">
-                <label class="block mb-4"> <span> Title</span><span
-									class="requried">*</span> <input id="content_title"
-									name="content_title"
-									class="form-input  mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 
+
+					</div>
+				</div>
+				<div class="col-span-12 lg:col-span-8">
+					<div class="card">
+
+						<div class="p-4 sm:p-5">
+							<label class="block mb-4"> <span> Title</span><span
+								class="requried">*</span> <input id="content_title"
+								name="content_title"
+								class="form-input  mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 
                       py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 
                       dark:focus:border-accent"
-									 placeholder="Title" type="text"
-									value="${DCFromDetails.content_title}"> <span
-									id="content_titleError" class="requried"></span>
-								</label> 
-								<label class="block mb-4"> <span> Icon</span><span
-									class="requried">*</span> <input id="title_icon"
-									name="title_icon"
-									class="form-input mt-1.5 w-full rounded-lg border 
+								placeholder="Title" type="text"
+								value="${DCFromDetails.content_title}"> <span
+								id="content_titleError" class="requried"></span>
+							</label> <label class="block mb-4"> <span> Icon</span><span
+								class="requried">*</span> <input id="title_icon"
+								name="title_icon"
+								class="form-input mt-1.5 w-full rounded-lg border 
                       border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 
                       focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-									placeholder=" Icon" type="text"
-									value="${DCFromDetails.title_icon}"> 
-									
-									<span id="title_iconError" class="requried"></span>
-								</label> <label class="block mb-4"> <span>Document Type</span><span
-									class="requried">*</span> <select id="document_type"
-									name="document_type"
-									<c:if test="${action eq 'edit'}"> disabled </c:if>
-									onchange="setDocType(this.value)" id="document_type"
-									name="document_type"
-									class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-										<option value="">Select Type</option>
-										<option value="Document"
-											<c:if test="${DCFromDetails.document_type eq 'Document' }">selected</c:if>>Document</option>
-										<option value="Link"
-											<c:if test="${DCFromDetails.document_type eq 'Link' }">selected</c:if>>Link</option>
-										<option value="Gallery"
-											<c:if test="${DCFromDetails.document_type eq 'Gallery' }">selected</c:if>>Gallery</option>
-										<!--  <option value="Form">Form</option> -->
-								</select> <span id="document_typeError" class="requried"></span>
-								</label>
-								<div class="">
-							<c:if test="${not empty DCFromDetails.link }"><label class="block mb-4"> <span> Link</span><span
+								placeholder=" Icon" type="text"
+								value="${DCFromDetails.title_icon}"> <span
+								id="title_iconError" class="requried"></span>
+							</label> <label class="block mb-4"> <span>Document Type</span><span
+								class="requried">*</span> <select id="document_type"
+								name="document_type"
+								<c:if test="${action eq 'edit'}"> disabled </c:if>
+								onchange="setDocType(this.value)" id="document_type"
+								name="document_type"
+								class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+									<option value="">Select Type</option>
+									<option value="Document"
+										<c:if test="${DCFromDetails.document_type eq 'Document' }">selected</c:if>>Document</option>
+									<option value="Link"
+										<c:if test="${DCFromDetails.document_type eq 'Link' }">selected</c:if>>Link</option>
+									<option value="Gallery"
+										<c:if test="${DCFromDetails.document_type eq 'Gallery' }">selected</c:if>>Gallery</option>
+									<!--  <option value="Form">Form</option> -->
+							</select> <span id="document_typeError" class="requried"></span>
+							</label>
+							<div class="">
+								<c:if test="${not empty DCFromDetails.link }">
+									<label class="block mb-4"> <span> Link</span><span
 										class="requried">*</span> <input id="link"
 										value="${DCFromDetails.link}" name="link"
 										class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 
 										placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
 										placeholder="textfileld" type="text"> <span
 										id="inputSecError" class="requried"></span>
-									</label></c:if>
-							<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
-								<div class="" id="imgSec" name="Attachments"
-									style="display: none">
-									<label class="block mb-4">           
-									<span class="requried">*</span> 
-										<input id="Attachments"
-										name="mediaList" type="file" class="mt-2" accept="image/*"   multiple
-										  /> <span id="AttachmentsError" class="requried"></span><!--  onchange="validateImages()" -->
 									</label>
-								</div>
-
-								<div class="" id="docSec" style="display: none">
-    <label class="block mb-4">
-        <span>Upload Document<br>(Only doc, docx, xls, xlsx, pdf are accepted)</span>
-        <span class="requried">*</span>
-        <input id="Attachments" name="mediaList" type="file" class="mt-2" accept=".doc, .docx, .xls, .xlsx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf" />
-        <span id="docSecError" class="requried"></span>
-    </label>
-</div>
-
-								<c:if test="${empty DCFromDetails.link }">
-								<div class="row" id="inputSec" style="display: none">
-									<label class="block mb-4"> <span> Add Link</span><span
-										class="requried">*</span> <input id="link"
-										value="${DCFromDetails.link}" name="link"
-										class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-										placeholder="textfileld" type="text"> <span
-										id="inputSecError" class="requried"></span>
-									</label>
-								</div>
 								</c:if>
-								<c:choose>
-									<c:when
-										test="${  fn:contains( DCFromDetails.attachments, ',' ) }">
-										<c:set var="filesList"
-											value="${fn:split(DCFromDetails.attachments, ',')}" />
-										<c:forEach var="obj" items="${filesList}" varStatus="index">
-											<div class="control-group" id="fields${index.count }">
-												<div class="controls">
-													<div class="entry input-group upload-input-group">
-
-														<div class="inline-space mt-5 flex flex-wrap items-end">
-
-
-															<input name="attachments" value="${obj}" type="hidden" />
-															<a
-																href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${obj}"
-																class="btn h-9 w-9 bg-success p-0 font-medium text-white hover:bg-success-focus hover:shadow-lg hover:shadow-success/50 focus:bg-success-focus focus:shadow-lg focus:shadow-success/50 active:bg-success-focus/90">
-																<i class="fa fa-arrow-down"></i>
-															</a> <a
-																class="btn font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
-																${obj} </a>
-
-															<div x-data="{showModal:false}">
-																<a @click="showModal = true"
-																	class="btn bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-																	<i class="fa fa-eye" aria-hidden="true"></i>
-																</a>
-																<template x-teleport="#x-teleport-target">
-																	<div
-																		class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
-																		x-show="showModal" role="dialog"
-																		@keydown.window.escape="showModal = false">
-																		<div
-																			class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
-																			@click="showModal = false" x-show="showModal"
-																			x-transition:enter="ease-out"
-																			x-transition:enter-start="opacity-0"
-																			x-transition:enter-end="opacity-100"
-																			x-transition:leave="ease-in"
-																			x-transition:leave-start="opacity-100"
-																			x-transition:leave-end="opacity-0"></div>
-																		<div
-																			class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
-																			x-show="showModal" x-transition:enter="ease-out"
-																			x-transition:enter-start="opacity-0"
-																			x-transition:enter-end="opacity-100"
-																			x-transition:leave="ease-in"
-																			x-transition:leave-start="opacity-100"
-																			x-transition:leave-end="opacity-0">
-
-
-																			<div class="mt-4">
-																				<img
-																					src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${obj}"
-																					alt="Document" width="500" height="600">
-
-																				<button @click="showModal = false"
-																					class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
-																					Close</button>
-																			</div>
-																		</div>
-																	</div>
-																</template>
-															</div>
-															<a
-																class="btn h-9 w-9 p-0 font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
-																onclick="deleteDocRow('${index.count }');"> <svg
-																	xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-																	fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-																		stroke-width="2"
-																		d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                  </svg>
-															</a>
-														</div>
-
-													</div>
-
-												</div>
-											</div>
-
-										</c:forEach>
-
-
-									</c:when>
-									<c:otherwise>
-										<c:if test="${ not empty fn:trim(DCFromDetails.attachments) }">
-
-											<div class="control-group" id="fields0">
-												<div class="controls">
-													<div class="entry input-group upload-input-group">
-														<input type="hidden" id="docs"
-															value="${DCFromDetails.attachments}" />
-														<div class="inline-space mt-5 flex flex-wrap items-end">
-
-
-
-															<a
-																href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${DCFromDetails.attachments}"
-																class="btn h-9 w-9 bg-success p-0 font-medium text-white hover:bg-success-focus hover:shadow-lg hover:shadow-success/50 focus:bg-success-focus focus:shadow-lg focus:shadow-success/50 active:bg-success-focus/90">
-																<i class="fa fa-arrow-down"></i>
-															</a> <a
-																class="btn font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
-																${DCFromDetails.attachments} </a> <input name="attachments"
-																value="${DCFromDetails.department_code}" type="hidden" />
-															<div x-data="{showModal:false}">
-																<a @click="showModal = true"
-																	class="btn bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-																	<i class="fa fa-eye" aria-hidden="true"></i>
-																</a>
-																<template x-teleport="#x-teleport-target">
-																	<div
-																		class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
-																		x-show="showModal" role="dialog"
-																		@keydown.window.escape="showModal = false">
-																		<div
-																			class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
-																			@click="showModal = false" x-show="showModal"
-																			x-transition:enter="ease-out"
-																			x-transition:enter-start="opacity-0"
-																			x-transition:enter-end="opacity-100"
-																			x-transition:leave="ease-in"
-																			x-transition:leave-start="opacity-100"
-																			x-transition:leave-end="opacity-0"></div>
-																		<div
-																			class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
-																			x-show="showModal" x-transition:enter="ease-out"
-																			x-transition:enter-start="opacity-0"
-																			x-transition:enter-end="opacity-100"
-																			x-transition:leave="ease-in"
-																			x-transition:leave-start="opacity-100"
-																			x-transition:leave-end="opacity-0">
-
-
-																			<div class="mt-4">
-																				<img
-																					src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${DCFromDetails.attachments}"
-																					alt="Document" width="500" height="600">
-
-																				<button @click="showModal = false"
-																					class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
-																					Close</button>
-																			</div>
-																		</div>
-																	</div>
-																</template>
-															</div>
-															<a
-																class="btn h-9 w-9 p-0 font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
-																onclick="deleteDocRow('0');"> <svg
-																	xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-																	fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-																		stroke-width="2"
-																		d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                  </svg>
-															</a>
-														</div>
-
-													</div>
-												</div>
-
-											</div>
-										</c:if>
-										<c:if
-											test="${fn:length(DCFromDetails.attachments) ne 0 &&  empty fn:trim(DCFromDetails.attachments) }">
-											<div class="control-group" id="fields">
-												<div class="controls">
-													<div class="entry input-group upload-input-group">No
-														Media Found</div>
-												</div>
-											</div>
-										</c:if>
-									</c:otherwise>
-								</c:choose>
-							</div>
-							<div class="flex justify-end space-x-2"></div>
-						</div>
-						<div class="mt-4 space-y-4">
-
-							<div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-								<div class="max-w-xl">
-									<p>
-									Description 
-									</p>
-									<div class="mt-5">
-										<label class="block mb-4"> <textarea id="description1"
-												name="description" rows="4" placeholder=" Enter Text"
-												class="form-textarea w-full 
-                  rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 
-                  focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" >${DCFromDetails.description}</textarea>
-    <span id="descriptionError" class="required"></span>
-   
-  </label>
-
+								<div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-1">
+									<div class="" id="imgSec" name="Attachments"
+										style="display: none">
+										<label class="block mb-4"> <span class="requried">*</span>
+											<input id="Attachments" name="mediaList" type="file"
+											class="mt-2" accept="image/*" multiple /> <span
+											id="AttachmentsError" class="requried"></span>
+										<!--  onchange="validateImages()" -->
+										</label>
 									</div>
-								</div>
 
-							</div>
-							<c:if test="${action eq 'edit'}">
-								<div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
-									<label class="block mb-4"> <span>Status</span> <select
-										id="status" name="status"
-										class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-											<option>Select Status</option>
-											<option value="Active"
-												<c:if test="${DCFromDetails.status eq 'Active' }">selected</c:if>>Active</option>
-											<option value="Inactive"
-												<c:if test="${DCFromDetails.status eq 'Inactive' }">selected</c:if>>Inactive</option>
-									</select>
-									</label>
+									<div class="" id="docSec" style="display: none">
+										<label class="block mb-4"> <span>Upload
+												Document<br>(Only doc, docx, xls, xlsx, pdf are
+												accepted)
+										</span> <span class="requried">*</span> <input id="Attachments"
+											name="mediaList" type="file" class="mt-2"
+											accept=".doc, .docx, .xls, .xlsx, .pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf" />
+											<span id="docSecError" class="requried"></span>
+										</label>
+									</div>
+
+									<c:if test="${empty DCFromDetails.link }">
+										<div class="row" id="inputSec" style="display: none">
+											<label class="block mb-4"> <span> Add Link</span><span
+												class="requried">*</span> <input id="link"
+												value="${DCFromDetails.link}" name="link"
+												class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+												placeholder="textfileld" type="text"> <span
+												id="inputSecError" class="requried"></span>
+											</label>
+										</div>
+									</c:if>
+									<c:choose>
+										<c:when
+											test="${  fn:contains( DCFromDetails.attachments, ',' ) }">
+											<c:set var="filesList"
+												value="${fn:split(DCFromDetails.attachments, ',')}" />
+											<c:forEach var="obj" items="${filesList}" varStatus="index">
+												<div class="control-group" id="fields${index.count }">
+													<div class="controls">
+														<div class="entry input-group upload-input-group">
+
+															<div class="inline-space mt-5 flex flex-wrap items-end">
+
+
+																<input name="attachments" value="${obj}" type="hidden" />
+																<a
+																	href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${obj}"
+																	class="btn h-9 w-9 bg-success p-0 font-medium text-white hover:bg-success-focus hover:shadow-lg hover:shadow-success/50 focus:bg-success-focus focus:shadow-lg focus:shadow-success/50 active:bg-success-focus/90">
+																	<i class="fa fa-arrow-down"></i>
+																</a> <a
+																	class="btn font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+																	${obj} </a>
+
+																<div x-data="{showModal:false}">
+																	<a @click="showModal = true"
+																		class="btn bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
+																		<i class="fa fa-eye" aria-hidden="true"></i>
+																	</a>
+																	<template x-teleport="#x-teleport-target">
+																		<div
+																			class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
+																			x-show="showModal" role="dialog"
+																			@keydown.window.escape="showModal = false">
+																			<div
+																				class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
+																				@click="showModal = false" x-show="showModal"
+																				x-transition:enter="ease-out"
+																				x-transition:enter-start="opacity-0"
+																				x-transition:enter-end="opacity-100"
+																				x-transition:leave="ease-in"
+																				x-transition:leave-start="opacity-100"
+																				x-transition:leave-end="opacity-0"></div>
+																			<div
+																				class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
+																				x-show="showModal" x-transition:enter="ease-out"
+																				x-transition:enter-start="opacity-0"
+																				x-transition:enter-end="opacity-100"
+																				x-transition:leave="ease-in"
+																				x-transition:leave-start="opacity-100"
+																				x-transition:leave-end="opacity-0">
+
+
+																				<div class="mt-4">
+																					<img
+																						src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${obj}"
+																						alt="Document" width="500" height="600">
+
+																					<button @click="showModal = false"
+																						class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
+																						Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</template>
+																</div>
+																<a
+																	class="btn h-9 w-9 p-0 font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
+																	onclick="deleteDocRow('${index.count }');"> <svg
+																		xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+																		fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+																			stroke-width="2"
+																			d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                  </svg>
+																</a>
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+
+											</c:forEach>
+
+
+										</c:when>
+										<c:otherwise>
+											<c:if
+												test="${ not empty fn:trim(DCFromDetails.attachments) }">
+
+												<div class="control-group" id="fields0">
+													<div class="controls">
+														<div class="entry input-group upload-input-group">
+															<input type="hidden" id="docs"
+																value="${DCFromDetails.attachments}" />
+															<div class="inline-space mt-5 flex flex-wrap items-end">
+
+
+
+																<a
+																	href="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${DCFromDetails.attachments}"
+																	class="btn h-9 w-9 bg-success p-0 font-medium text-white hover:bg-success-focus hover:shadow-lg hover:shadow-success/50 focus:bg-success-focus focus:shadow-lg focus:shadow-success/50 active:bg-success-focus/90">
+																	<i class="fa fa-arrow-down"></i>
+																</a> <a
+																	class="btn font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
+																	${DCFromDetails.attachments} </a> <input name="attachments"
+																	value="${DCFromDetails.department_code}" type="hidden" />
+																<div x-data="{showModal:false}">
+																	<a @click="showModal = true"
+																		class="btn bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
+																		<i class="fa fa-eye" aria-hidden="true"></i>
+																	</a>
+																	<template x-teleport="#x-teleport-target">
+																		<div
+																			class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
+																			x-show="showModal" role="dialog"
+																			@keydown.window.escape="showModal = false">
+																			<div
+																				class="absolute inset-0 bg-slate-900/60 backdrop-blur transition-opacity duration-300"
+																				@click="showModal = false" x-show="showModal"
+																				x-transition:enter="ease-out"
+																				x-transition:enter-start="opacity-0"
+																				x-transition:enter-end="opacity-100"
+																				x-transition:leave="ease-in"
+																				x-transition:leave-start="opacity-100"
+																				x-transition:leave-end="opacity-0"></div>
+																			<div
+																				class="relative max-w-lg rounded-lg bg-white px-4 py-10 text-center transition-opacity duration-300 dark:bg-navy-700 sm:px-5"
+																				x-show="showModal" x-transition:enter="ease-out"
+																				x-transition:enter-start="opacity-0"
+																				x-transition:enter-end="opacity-100"
+																				x-transition:leave="ease-in"
+																				x-transition:leave-start="opacity-100"
+																				x-transition:leave-end="opacity-0">
+
+
+																				<div class="mt-4">
+																					<img
+																						src="<%=CommonConstants.FILE_SAVING_PATH_LOC%>${DCFromDetails.department_code }/${DCFromDetails.category }/${DCFromDetails.sub_category }/${DCFromDetails.attachments}"
+																						alt="Document" width="500" height="600">
+
+																					<button @click="showModal = false"
+																						class="btn mt-6 bg-success font-medium text-white hover:bg-success-focus focus:bg-success-focus active:bg-success-focus/90">
+																						Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</template>
+																</div>
+																<a
+																	class="btn h-9 w-9 p-0 font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
+																	onclick="deleteDocRow('0');"> <i class="fa fa-exchange" aria-hidden="true"></i>
+																</a>
+															</div>
+
+														</div>
+													</div>
+
+												</div>
+											</c:if>
+											<c:if
+												test="${fn:length(DCFromDetails.attachments) ne 0 &&  empty fn:trim(DCFromDetails.attachments) }">
+												<div class="control-group" id="fields">
+													<div class="controls">
+														<div class="entry input-group upload-input-group">No
+															Media Found</div>
+													</div>
+												</div>
+											</c:if>
+										</c:otherwise>
+									</c:choose>
 								</div>
-							</c:if>
-              </div>
+								<div class="flex justify-end space-x-2"></div>
 							</div>
+							<div class="mt-4 space-y-4">
+
+								<div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+									<div class="max-w-xl">
+										<p>Description</p>
+										<div class="mt-5">
+											<label class="block mb-4"> <textarea
+													id="description1" name="description" rows="4"
+													placeholder=" Enter Text"
+													class="form-textarea w-full 
+                  rounded-lg border border-slate-300 bg-transparent p-2.5 placeholder:text-slate-400/70 hover:border-slate-400 
+                  focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">${DCFromDetails.description}</textarea>
+												<span id="descriptionError" class="required"></span>
+
+											</label>
+
+										</div>
+									</div>
+
+								</div>
+								<c:if test="${action eq 'edit'}">
+									<div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+										<label class="block mb-4"> <span>Status</span> <select
+											id="status" name="status"
+											class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+												<option>Select Status</option>
+												<option value="Active"
+													<c:if test="${DCFromDetails.status eq 'Active' }">selected</c:if>>Active</option>
+												<option value="Inactive"
+													<c:if test="${DCFromDetails.status eq 'Inactive' }">selected</c:if>>Inactive</option>
+										</select>
+										</label>
+									</div>
+								</c:if>
+							</div>
+						</div>
 						<input name="id" value="${DCFromDetails.id}" type="hidden" />
-					<div class="flex flex-col items-center space-y-4 border-b border-slate-200 p-4 dark:border-navy-500 sm:flex-row sm:justify-between sm:space-y-0 sm:px-5">
-                <h2 class="text-lg font-medium tracking-wide text-slate-700 dark:text-navy-100">
-                
-                </h2>
-                <div class="flex justify-center space-x-2">
-                  <a  class="btn min-w-[7rem] rounded-full border border-slate-300 font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90" href="<%=request.getContextPath() %>/dep-content">
-                    Cancel
-                  </a>
-                 
-                  <a onclick="submit();"
-								class="btn min-w-[7rem] rounded-full bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-								Submit </a>
-                </div>
-              </div>	
-						
-            </div>
-            </div>
-          </div>
-        </div>
-			
-		</form>
-		</main>
+						<div
+							class="flex flex-col items-center space-y-4 border-b border-slate-200 p-4 dark:border-navy-500 sm:flex-row sm:justify-between sm:space-y-0 sm:px-5">
+							<h2
+								class="text-lg font-medium tracking-wide text-slate-700 dark:text-navy-100">
+
+							</h2>
+							<div class="flex justify-center space-x-2">
+								<a
+									class="btn min-w-[7rem] rounded-full border border-slate-300 font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
+									href="<%=request.getContextPath() %>/dep-content"> Cancel </a>
+
+								<a onclick="submit();"
+									class="btn min-w-[7rem] rounded-full bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+									Submit </a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	</div>
+
+	</form>
+	</main>
 	</div>
 	<div class="mt-5" x-data="{showModal:false}">
 
