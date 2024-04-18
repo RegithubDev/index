@@ -1773,7 +1773,7 @@ public class UserDao {
 				qry = qry + " and dc.status = ? ";
 				arrSize++;
 			}
-			qry = qry + "order by dc.category desc";
+			qry = qry + "order by dc.created_date desc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDepartment_code())) {
