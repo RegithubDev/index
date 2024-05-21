@@ -30,6 +30,145 @@
       rel="stylesheet"
     />
      <style>
+      .chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    backdrop-filter: blur(10px); /* For modern browsers */
+    -webkit-backdrop-filter: blur(10px); /* For older versions of Safari */
+   /* background-color: rgba(255, 255, 255, 0.6);  Adjust the alpha value to control the opacity */
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Add a border for better visibility */
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.chat-message.received {
+    text-align: left;
+}
+
+.chat-message.sent {
+    text-align: right;
+}
+
+.chat-message .message {
+    word-wrap: break-word; /* Allow long messages to wrap */
+}
+    
+    .chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 402px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+}
+
+.chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.chat-message.sent {
+    text-align: right;
+}
+
+.chat-input {
+    padding: 10px;
+    display: flex;
+    background-color: #f9f9f9;
+}
+
+.chat-input input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+.minimized-chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+     /*border: 2px solid red; Add red border */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+   /* animation: changeColor 16s infinite;  Transition colors every 4 seconds */
+}
+
+@keyframes changeColor {
+    0% { background-color: #fr0000; } /* Red */
+    25% { background-color: #00ff00; } /* Green */
+    50% { background-color: #0000ff; } /* Blue */
+    75% { background-color: #ffff00; } /* Yellow */
+    100% { background-color: #ff00ff; } /* Magenta */
+}
+
+    
+    .pt-8{
+    	    padding-top: 9%;
+    	    padding-left: 3.25rem!important;
+    }
+    @media (min-width: 640px){
+    .max-w-lg2{
+    	max-width: 65rem;
+    }
+    .slm {
+		    padding-left: 2.25rem!important;
+		    padding-right: 1.25rem!important;
+		}
+	}
+	  @media (max-width: 767px) {
+    .sld {
+		    padding: 2rem!important;
+		}
+	}
      
      th,td{
     	text-align:left;
@@ -2215,14 +2354,14 @@ button.disabled {
           <div class="col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           <label class="block">
-                  <select id="select2-department_filter-container" onchange="getDepartmentfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select id="select2-department_filter-container" onchange="getDepartmentFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Department</option>
                    	
                   </select>
                 </label>
      
                   <label class="block">
-                  <select  id="select2-status_filter-container" onchange="getStatusfilter();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                  <select  id="select2-status_filter-container" onchange="getStatusFilterList();" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                     <option value="">Select Status</option>
                     
                   </select>
@@ -2231,7 +2370,7 @@ button.disabled {
                 </label>
                  -->
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            <button onclick="getCompanyList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+            <button onclick="getDepartmentList();" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="margin-top: 17px; color: white !important;">
                   <i class="fa fa-search" aria-hidden="true"></i> &nbsp;<span class="hidden sm:flex">Search </span>
                 </button>
@@ -2359,7 +2498,7 @@ button.disabled {
                   </select>
                 </label>
                     <div class="header-navbar flex justify-center gap-4 navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow hides fixed-top">
-                    <button onclick="getCompanyList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
+                    <button onclick="getDepartmentList();"  class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus
                      active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                      style="margin-top: 17px; width: 42%;     !important;color: white !important;" >
                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search
@@ -2569,8 +2708,7 @@ button.disabled {
    
                 
               </div>
-         
-        
+           
       </main>
        
      <div x-data="{showModal:false}">
@@ -3105,6 +3243,27 @@ button.disabled {
 	   	}
 	   	
 	
+	    function getErrorMessage(jqXHR, exception) {
+	  	    var msg = '';
+	  	    if (jqXHR.assigned_to_sbu === 0) {
+	  	        msg = 'Not connect.\n Verify Network.';
+	  	    } else if (jqXHR.assigned_to_sbu == 404) {
+	  	        msg = 'Requested page not found. [404]';
+	  	    } else if (jqXHR.assigned_to_sbu == 500) {
+	  	        msg = 'Internal Server Error [500].';
+	  	    } else if (exception === 'parsererror') {
+	  	        msg = 'Requested JSON parse failed.';
+	  	    } else if (exception === 'timeout') {
+	  	        msg = 'Time out error.';
+	  	    } else if (exception === 'abort') {
+	  	        msg = 'Ajax request aborted.';
+	  	    } else {
+	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+	  	    }
+	  	    console.log(msg);
+      }
+
+    
       </script>
   </body>
 </html>

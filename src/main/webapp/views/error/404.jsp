@@ -24,7 +24,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="/index/resources/js/jQuery-v.3.5.min.js"></script>
            <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
          <script src="https://www.youtube.com/iframe_api"></script>
        

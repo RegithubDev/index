@@ -24,7 +24,6 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
            <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
          <script src="https://www.youtube.com/iframe_api"></script>
        
@@ -33,6 +32,127 @@
       rel="stylesheet"
     />
     <style>
+    .chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    backdrop-filter: blur(10px); /* For modern browsers */
+    -webkit-backdrop-filter: blur(10px); /* For older versions of Safari */
+   /* background-color: rgba(255, 255, 255, 0.6);  Adjust the alpha value to control the opacity */
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Add a border for better visibility */
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.chat-message.received {
+    text-align: left;
+}
+
+.chat-message.sent {
+    text-align: right;
+}
+
+.chat-message .message {
+    word-wrap: break-word; /* Allow long messages to wrap */
+}
+    
+    .chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 402px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+}
+
+.chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.chat-message.sent {
+    text-align: right;
+}
+
+.chat-input {
+    padding: 10px;
+    display: flex;
+    background-color: #f9f9f9;
+}
+
+.chat-input input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+.minimized-chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+     /*border: 2px solid red; Add red border */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+   /* animation: changeColor 16s infinite;  Transition colors every 4 seconds */
+}
+
+@keyframes changeColor {
+    0% { background-color: #fr0000; } /* Red */
+    25% { background-color: #00ff00; } /* Green */
+    50% { background-color: #0000ff; } /* Blue */
+    75% { background-color: #ffff00; } /* Yellow */
+    100% { background-color: #ff00ff; } /* Magenta */
+}
+
+    
     .pt-8{
     	    padding-top: 9%;
     	    padding-left: 3.25rem!important;
@@ -955,7 +1075,7 @@ z-index: 1000;
             class="card swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-next"
             @click="selected = 'slide-00'"
           >
-            <a href="https://appmint.resustainability.com/reweighbridges/" target="_blank"
+            <a href="https://appmint.resustainability.com/reelweighbridges/" target="_blank"
               class="flex flex-col items-center rounded-lg px-2 py-4"
               :class="selected === 'slide-00' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' "
             >
@@ -1404,7 +1524,7 @@ z-index: 1000;
           </div>
         </div>
 
-
+<jsp:include page="../views/layout/ChatBot.jsp"></jsp:include> 
   </main>
       <div class="mt-5" x-data="{showModal:false}">
                
@@ -1446,6 +1566,20 @@ z-index: 1000;
     <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
+		 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+ <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+      <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
+     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
+       <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
+         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
+      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
+        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
+           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       
@@ -1519,6 +1653,26 @@ z-index: 1000;
       
           
       });
+      
+      function getErrorMessage(jqXHR, exception) {
+	  	    var msg = '';
+	  	    if (jqXHR.assigned_to_sbu === 0) {
+	  	        msg = 'Not connect.\n Verify Network.';
+	  	    } else if (jqXHR.assigned_to_sbu == 404) {
+	  	        msg = 'Requested page not found. [404]';
+	  	    } else if (jqXHR.assigned_to_sbu == 500) {
+	  	        msg = 'Internal Server Error [500].';
+	  	    } else if (exception === 'parsererror') {
+	  	        msg = 'Requested JSON parse failed.';
+	  	    } else if (exception === 'timeout') {
+	  	        msg = 'Time out error.';
+	  	    } else if (exception === 'abort') {
+	  	        msg = 'Ajax request aborted.';
+	  	    } else {
+	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+	  	    }
+	  	    console.log(msg);
+      }
      function getWeather(cityNplace){
     	    
           const apiKey = 'd0f0b62e939d9341794ce5b3bb3d09cb';
@@ -1558,20 +1712,7 @@ z-index: 1000;
        $("#email").val('');
  		$("#logoutForm").submit();
      }
-    // https://www.youtube.com/watch?v=zJkS24mEBbU&pp=ygUQcmVzdXN0YWluYWJpbGl0eQ%3D%3D
-    /*  function onYouTubeIframeAPIReady() {
-         // Create an instance of the YouTube player
-         new YT.Player('player', {
-           videoId: 'z8-Ghz4YSMY',
-           playerVars: {
-             autoplay: 0, // Autoplay the video
-             controls: 1, // Show video controls
-             modestbranding: 1, // Hide YouTube logo
-             fs: 1, // Show fullscreen button
-           },
-         });
-       } */
-   
+
       </script>
   </body>
 </html>

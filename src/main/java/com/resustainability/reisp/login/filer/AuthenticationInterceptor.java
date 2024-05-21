@@ -48,6 +48,11 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 				 try {
 					// session_count =  checkUserLoginDetails(userData);
 				 	} finally {
+				 		
+			 		  if(userData == null && requestURI.equals("/index/reone/ajax/getoDataInChat")){
+			 			 return true;
+			 			  
+			 		  }
 				 	   if(userData == null && !requestURI.equals("/courses/add-user")){
 					    	if(request.getRequestURI().contains("/"+context_path+"/")){
 					    		request.getSession().invalidate();
