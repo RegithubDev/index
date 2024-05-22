@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
      
            <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
+         <script src="https://www.youtube.com/iframe_api"></script>
        
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
@@ -44,6 +44,7 @@
   --page-background: white;
 }
     .chat-messages {
+    max-height: 200px;
     overflow-y: auto;
     padding: 10px;
     backdrop-filter: blur(10px); /* For modern browsers */
@@ -72,7 +73,7 @@
     background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
     backdrop-filter: blur(5px); /* Apply a blur effect */
     overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 340px; /* Set maximum height to enable scrolling */
+    max-height: 300px; /* Set maximum height to enable scrolling */
 }
 
 .chat-message .message {
@@ -82,7 +83,6 @@
     .chat-container {
     position: fixed;
         z-index: 1;
-     height: 25rem;
     bottom: 2px;
     right: 20px;
     width: 402px;
@@ -106,7 +106,7 @@
 }
 
 .chat-messages {
-   
+    max-height: 200px;
     overflow-y: auto;
     padding: 10px;
 }
@@ -230,7 +230,7 @@
   #chat-messages {
     border: 1px solid #ccc;
     padding: 10px;
-    height: 320px;
+    height: 300px;
     overflow-y: scroll;
     
   }
@@ -361,37 +361,7 @@ div .chat-message{
 .scroll-btn:hover {
     opacity: 1;
 }
-.clear-btn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-}
 
-.clear-btn:hover {
-    background-color: #d32f2f;
-}
-/* Bubble animation */
-.bubble-animation {
-    opacity: 0;
-    transform: scale(0.5);
-    animation: bubble 0.5s forwards;
-}
-
-@keyframes bubble {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-.message-time {
-    font-size: 0.8em;
-    color: #666;
-    margin-right: 5px;
-}
   </style>
     <script>
       /**
@@ -406,13 +376,12 @@ div .chat-message{
    
   <div class="chat-container">
     <div class="chat-header" onclick="minimizeChat()">
-        <i class="fa-solid fa-robot"></i>
+        <i class="fa-solid fa-robot"></i> 
         <span class="close-btn" onclick="minimizeChat()"><i class="fa-solid fa-minimize"></i></span>
     </div>
     <div id="chat-messages" class="chat-messages">
-       <div class="chat-message received bubble-animation">
-         <div id="lottie-animation"></div>
-           <b> <span class="message" id="first-message">Welcome to ReOne Chat bot</span></b><p id ="message-time-first" class="message-time"></p>
+        <div class="chat-message received">
+            <span class="message"><b>Enter PO no </b>:</span>
         </div>
         <!-- Previous chat messages go here -->
     </div>
@@ -424,11 +393,8 @@ div .chat-message{
         <input type="text" id="user-input" placeholder="Type Here...">
         <div id="odata-data"></div>
         <button onclick="sendMessage()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
     </div>
 </div>
-
-
 
 
     <div id="x-teleport-target"></div>
@@ -452,21 +418,6 @@ div .chat-message{
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
       
-      document.addEventListener('DOMContentLoaded', () => {
-    	    const firstMessageElement = document.getElementById('first-message');
-    	    const text = firstMessageElement.innerHTML;
-    	    firstMessageElement.innerHTML = '';
-    	    typeText(firstMessageElement, text);
-    	    const currentTime = new Date().toLocaleTimeString();
-    	    $('#message-time-first').text(currentTime);
-    	});
-
-    	function typeText(element, text, index = 0) {
-    	    if (index < text.length) {
-    	        element.innerHTML += text.charAt(index);
-    	        setTimeout(() => typeText(element, text, index + 1), 50);
-    	    }
-    	}
       function getErrorMessage(jqXHR, exception) {
 	  	    var msg = '';
 	  	    if (jqXHR.assigned_to_sbu === 0) {
@@ -509,13 +460,10 @@ div .chat-message{
      function sendMessage() {
     	    var userInput = document.getElementById('user-input').value;
     	    if (userInput.trim() !== '') {
-    	    	const currentTime = new Date().toLocaleTimeString();
     	        var chatMessages = document.getElementById('chat-messages');
     	        var newMessage = document.createElement('div'); 
     	        newMessage.className = 'chat-message sent';
-    	        newMessage.innerHTML = '<span class="message" style="float: left;">PR Number : ' + userInput + '</span><p class="message-time" style="color:#ddc8c8">' + currentTime + '</p>';
-    	      
-    	       
+    	        newMessage.innerHTML = '<span class="message">' + userInput + '</span>';
     	        chatMessages.appendChild(newMessage);
     	        document.getElementById('user-input').value = '';
 
@@ -527,48 +475,40 @@ div .chat-message{
     	}
 
      function receiveMessage(val) {
-    	    var PR_Number = val;
-    	    var chatMessages = document.getElementById('chat-messages');
-    	    var newMessage = document.createElement('div');
-    	    newMessage.className = 'chat-message received';
-    	    const currentTime = new Date().toLocaleTimeString();
-    	    newMessage.innerHTML = `<span class="message-time">${currentTime}</span><span class="message">${val}</span>`;
-    	    if ($.trim(PR_Number) !== "") {
-    	        var myParams = { PR_Number: PR_Number };
-    	        $.ajax({
-    	            url: "<%=request.getContextPath()%>/reone/ajax/getoDataInChat",
-    	            data: myParams,
-    	            success: function (data) {
-    	                if (data.length > 0) {
-    	                    formatDates(data); // Convert dates before highlighting
-    	                    $.each(data, function (i, val) {
-    	                    	 var messageElement = document.createElement('div');
-    	    	                    messageElement.className = 'chat-message received';
-    	    	                    const messageWithTime = '<span class="message-time">${currentTime}</span>${formattedJson}';
-    	    	                    messageElement.innerHTML = '<pre>' + val.PO_LineItem_Number + '<p class="message-time">' + currentTime + '</p></pre>';
-    	    	                    chatMessages.appendChild(messageElement);
-    	                    })
-    	                   // var formattedJson = syntaxHighlight(data);
-    	                   
-    	                } else {
-    	                    var messageElement = document.createElement('div');
-    	                    messageElement.className = 'chat-message received';
-    	                    messageElement.innerHTML = '<pre> [' + val + '] is not a valid PR Number, Please enter a valid one </pre><p class="message-time">' + currentTime + '</p>';
-    	                    chatMessages.appendChild(messageElement);
-    	                }
-    	            },
-    	            error: function (jqXHR, exception) {
-    	                $(".page-loader").hide();
-    	                getErrorMessage(jqXHR, exception);
-    	            }
-    	        });
-    	    }
-    	}
+    	 var PR_Number = val;
+    	 var chatMessages = document.getElementById('chat-messages');
+    	 var newMessage = document.createElement('div');
+    	 newMessage.className = 'chat-message received';
+    	 newMessage.innerHTML = '<span class="message">' + val + '</span>';
 
-     function clearChat() {
-    	    const chatMessages = document.getElementById('chat-messages');
-    	    chatMessages.innerHTML = "";
-    	}
+    	 if ($.trim(PR_Number) !== "") {
+    	   var myParams = { PR_Number: PR_Number };
+    	   $.ajax({
+    	     url: "<%=request.getContextPath()%>/reone/ajax/getoDataInChat",
+    	     data: myParams,
+    	     success: function (data) {
+    	    	 if (data.length > 0) {
+		    	       formatDates(data); // Convert dates before highlighting
+		    	       var formattedJson = syntaxHighlight(data);
+		    	       var messageElement = document.createElement('div');
+		    	       messageElement.className = 'chat-message received';
+		    	       messageElement.innerHTML = '<pre>' + formattedJson + '</pre>';
+		    	       chatMessages.appendChild(messageElement);
+    	    	 }else{
+    	    		 
+    	    		 var messageElement = document.createElement('div');
+    	    		 messageElement.className = 'chat-message received';
+    	    	     messageElement.innerHTML = '<pre> ['+val+'] is not a valid PO Number, Please enter a valid one </pre>';
+    	    	     chatMessages.appendChild(messageElement);
+                 }
+    	     },
+    	     error: function (jqXHR, exception) {
+    	       $(".page-loader").hide();
+    	       getErrorMessage(jqXHR, exception);
+    	     }
+    	   });
+    	 }
+	    }
      
      function syntaxHighlight(json) {
     	  if (typeof json !== 'string') {

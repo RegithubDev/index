@@ -717,7 +717,7 @@ z-index: 1000;
             <div class="ax-transparent-gridline mt-2 px-2"></div>
           </div>
         </div>
-       
+       <jsp:include page="../views/layout/ChatBot2.jsp"></jsp:include> 
       </main>
       <div class="mt-5" x-data="{showModal:false}">
                
