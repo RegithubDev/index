@@ -524,7 +524,7 @@ div .chat-message{
     	            receiveMessage(userInput);
     	        }, 1000);
     	    }
-    	}
+    	} 
 
      function receiveMessage(val) {
     	    var PR_Number = val;
