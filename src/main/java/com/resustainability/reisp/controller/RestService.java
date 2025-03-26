@@ -40,7 +40,9 @@ import com.google.gson.GsonBuilder;
 import com.resustainability.reisp.common.DateParser;
 import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.IWM;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 @Controller
 @RequestMapping("/reone")
@@ -181,7 +183,18 @@ public class RestService {
 	        return jsonBody;
 		     }
 	
-	
+	public static String convertJsonDate(String jsonDate) {
+        // Extract timestamp from /Date(1712102400000)/
+        String timestampStr = jsonDate.replaceAll("[^0-9]", ""); // Remove non-numeric characters
+        long timestamp = Long.parseLong(timestampStr); // Convert to long
+        
+        // Convert to readable date format
+        Date date = new Date(timestamp);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Change format as needed
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata")); // Adjust timezone if required
+
+        return sdf.format(date);
+    }
 	
 	
 }

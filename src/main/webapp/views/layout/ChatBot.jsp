@@ -35,6 +35,25 @@
     />
     <style>
     @use postcss-nested;
+.typing .message {
+    display: inline-block;
+    font-style: italic;
+    color: gray;
+}
+
+.typing .dot1, .typing .dot2, .typing .dot3 {
+    animation: blink 1.5s infinite;
+}
+
+.typing .dot1 { animation-delay: 0s; }
+.typing .dot2 { animation-delay: 0.3s; }
+.typing .dot3 { animation-delay: 0.6s; }
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
 
 :root {
   --send-bg: #0B93F6;
@@ -513,7 +532,7 @@ div .chat-message{
     	        var chatMessages = document.getElementById('chat-messages');
     	        var newMessage = document.createElement('div'); 
     	        newMessage.className = 'chat-message sent';
-    	        newMessage.innerHTML = '<span class="message" style="float: left;">PR Number : ' + userInput + '</span><p class="message-time" style="color:#ddc8c8">' + currentTime + '</p>';
+    	        newMessage.innerHTML = '<span class="message" >PR Number : ' + userInput + '</span><p class="message-time" style="color:#ddc8c8">' + currentTime + '</p>';
     	      
     	       
     	        chatMessages.appendChild(newMessage);
@@ -533,37 +552,46 @@ div .chat-message{
     	    newMessage.className = 'chat-message received';
     	    const currentTime = new Date().toLocaleTimeString();
     	    newMessage.innerHTML = `<span class="message-time">${currentTime}</span><span class="message">${val}</span>`;
+    	    
     	    if ($.trim(PR_Number) !== "") {
     	        var myParams = { PR_Number: PR_Number };
+    	        
+    	        // Create Typing Animation Element
+    	        var typingIndicator = document.createElement('div');
+    	        typingIndicator.className = 'chat-message received typing';
+    	        typingIndicator.innerHTML = `<span class="message">Typing<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></span>`;
+    	        chatMessages.appendChild(typingIndicator);
+
     	        $.ajax({
     	            url: "<%=request.getContextPath()%>/reone/ajax/getoDataInChat",
     	            data: myParams,
     	            success: function (data) {
+    	                chatMessages.removeChild(typingIndicator); // Remove Typing Indicator
+
     	                if (data.length > 0) {
     	                    formatDates(data); // Convert dates before highlighting
     	                    $.each(data, function (i, val) {
-    	                    	 var messageElement = document.createElement('div');
-    	    	                    messageElement.className = 'chat-message received';
-    	    	                    const messageWithTime = '<span class="message-time">${currentTime}</span>${formattedJson}';
-    	    	                    messageElement.innerHTML = '<pre>' + val.ENFA_Number + '<p class="message-time">' + val.ENFA_approval + '</p></pre>';
-    	    	                    chatMessages.appendChild(messageElement);
-    	                    })
-    	                   // var formattedJson = syntaxHighlight(data);
-    	                   
+    	                        var messageElement = document.createElement('div');
+    	                        messageElement.className = 'chat-message received';
+    	                        messageElement.innerHTML = '<pre> ENFA No: '+val.ENFA_Number+' <br> Created Date: '+val.ENFA_Creation+'<p class="message-time">'+currentTime+'</p></pre>';
+    	                        chatMessages.appendChild(messageElement);
+    	                    });
     	                } else {
     	                    var messageElement = document.createElement('div');
     	                    messageElement.className = 'chat-message received';
-    	                    messageElement.innerHTML = '<pre> [' + val + '] is not a valid PR Number, Please enter a valid one </pre><p class="message-time">' + currentTime + '</p>';
+    	                    messageElement.innerHTML = `<pre> Not a valid PR Number, Please enter a valid one </pre><p class="message-time">${currentTime}</p>`;
     	                    chatMessages.appendChild(messageElement);
     	                }
     	            },
     	            error: function (jqXHR, exception) {
+    	                chatMessages.removeChild(typingIndicator); // Remove Typing Indicator
     	                $(".page-loader").hide();
     	                getErrorMessage(jqXHR, exception);
     	            }
     	        });
     	    }
     	}
+
 
      function clearChat() {
     	    const chatMessages = document.getElementById('chat-messages');
