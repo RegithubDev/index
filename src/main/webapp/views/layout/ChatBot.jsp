@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -412,7 +412,7 @@ div .chat-message{
     <div id="chat-messages" class="chat-messages">
        <div class="chat-message received bubble-animation">
          <div id="lottie-animation"></div>
-           <b> <span class="message" id="first-message">Welcome to ReOne Chat bot</span></b><p id ="message-time-first" class="message-time"></p>
+           <b> <span class="message" id="first-message">Enter PR Number : </span></b><p id ="message-time-first" class="message-time"></p>
         </div>
         <!-- Previous chat messages go here -->
     </div>
@@ -545,7 +545,7 @@ div .chat-message{
     	                    	 var messageElement = document.createElement('div');
     	    	                    messageElement.className = 'chat-message received';
     	    	                    const messageWithTime = '<span class="message-time">${currentTime}</span>${formattedJson}';
-    	    	                    messageElement.innerHTML = '<pre>' + val.PO_LineItem_Number + '<p class="message-time">' + currentTime + '</p></pre>';
+    	    	                    messageElement.innerHTML = '<pre>' + val.ENFA_Number + '<p class="message-time">' + val.ENFA_approval + '</p></pre>';
     	    	                    chatMessages.appendChild(messageElement);
     	                    })
     	                   // var formattedJson = syntaxHighlight(data);
@@ -637,4 +637,4 @@ div .chat-message{
 
       </script>
   </body>
-</html>
+</html> 

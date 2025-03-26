@@ -79,5 +79,17 @@ public class SBUService {
 	public List<User> getDepartmentFilterListForDeptContnt(User obj)throws Exception {
 		return dao. getDepartmentFilterListForDeptContnt(obj);
 	}
+
+	public List<SBU> getbiList(SBU obj) throws Exception {
+		return dao. getbiList(obj);
+	}
+
+	public boolean addBI(SBU obj) throws Exception {
+		return dao. addBI(obj);
+	}
+
+	public boolean updateBI(SBU obj)throws Exception {
+		return dao. updateBI(obj);
+	}
 	
 }

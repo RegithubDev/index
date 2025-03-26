@@ -101,6 +101,85 @@ public class SBUController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/bi", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView bi(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.bi);
+		SBU obj = null;
+		try {
+           List <User> userList = serviceU.getUsersList(null);
+			model.addObject("userList", userList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/ajax/getbiList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<SBU> getbiList(@ModelAttribute SBU obj,HttpSession session) {
+		List<SBU> companiesList = null;
+		String userId = null;
+		String userName = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			companiesList = service.getbiList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getbiList : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
+	@RequestMapping(value = "/add-bi", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addBI(@ModelAttribute SBU obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/bi");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			flag = service.addBI(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Dashboard Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Dashboard is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Adding Dashboard is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-bi", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateBI(@ModelAttribute SBU obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/bi");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			flag = service.updateBI(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "SBU Dashboard Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Dashboard SBU is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error","Updating Dashboard is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
 	
 	
 	@RequestMapping(value = "/ajax/getSBUList", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)

@@ -11,9 +11,33 @@ public class User {
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,create_date,reward_points,last_sync_time,description,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
 	module_name,module_url,timePeriod,dm_category,sub_category_title,category,documants,icon_text,document_type,
-	sub_category,	content_title,	title_icon,Attachments,no_further_categories,	link,dept_status,cat_status,subcat_status,catID,subCatId,app_name,logo,logoExi;
+	sub_category,	content_title,bi_name,owner,bi_link,	title_icon,Attachments,no_further_categories,	link,dept_status,cat_status,subcat_status,catID,subCatId,app_name,logo,logoExi;
 	
 	
+	public String getBi_name() {
+		return bi_name;
+	}
+
+	public void setBi_name(String bi_name) {
+		this.bi_name = bi_name;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public String getBi_link() {
+		return bi_link;
+	}
+
+	public void setBi_link(String bi_link) {
+		this.bi_link = bi_link;
+	}
+
 	public String getNo_further_categories() {
 		return no_further_categories;
 	}

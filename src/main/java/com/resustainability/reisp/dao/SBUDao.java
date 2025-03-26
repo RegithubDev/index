@@ -707,6 +707,57 @@ public class SBUDao {
 		}
 		return objsList;
 	}
+
+	public List<SBU> getbiList(SBU obj) throws Exception {
+		List<SBU> objsList = new ArrayList<SBU>();
+		try {
+			String qry = "ELECT [id]\r\n"
+					+ "      ,[bi_name]\r\n"
+					+ "      ,u.user_name as user_name, u.user_id as [owner]\r\n"
+					+ "      ,[bi_link]\r\n"
+					+ "      ,[status]\r\n"
+					+ "      ,u1.user_name as [created_by]\r\n"
+					+ "      ,[created_date]\r\n"
+					+ "      ,[madified_by]\r\n"
+					+ "      ,[modified_date]\r\n"
+					+ "  FROM [safetyDB].[dbo].[api_bi_table] bi "
+					+ "left join user u on bi.owner = u.user_id "
+					+ "left join user u1 on bi.created_by = u1.user_id  "; 
+			
+			objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<SBU>(SBU.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public boolean addBI(SBU obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [api_bi_table] (bi_name,owner,bi_link,status) VALUES (:bi_name,:owner,:bi_link,:status)";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean updateBI(SBU obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	
