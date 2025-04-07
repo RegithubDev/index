@@ -1,668 +1,806 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags  -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-
-    <title>ReOne - Home</title>
-    <link rel="icon" type="image/png" href="/index/resources/images/favicon.svg" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- CSS Assets -->
-    <link rel="stylesheet" href="/index/resources/css/app.css" />
-
-    <!-- Javascript Assets -->
-    <script src="/index/resources/js/app.js" defer></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-     
-           <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
-       
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReOne - AI Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-    @use postcss-nested;
-.typing .message {
-    display: inline-block;
-    font-style: italic;
-    color: gray;
-}
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #0d47a1;
+            --accent-color: #00bcd4;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --light-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --text-secondary: #b0b0b0;
+            --success-color: #4caf50;
+            --error-color: #f44336;
+            --warning-color: #ff9800;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-.typing .dot1, .typing .dot2, .typing .dot3 {
-    animation: blink 1.5s infinite;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-.typing .dot1 { animation-delay: 0s; }
-.typing .dot2 { animation-delay: 0.3s; }
-.typing .dot3 { animation-delay: 0.6s; }
+        /* Document type selector */
+        .document-selector {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background: var(--light-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-@keyframes blink {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-}
+        .document-option {
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-align: center;
+            background: var(--dark-bg);
+            color: var(--text-secondary);
+        }
 
-:root {
-  --send-bg: #0B93F6;
-  --send-color: white;
-  --receive-bg: #E5E5EA;
-  --receive-text: black;
-  --page-background: white;
-}
-    .chat-messages {
-    overflow-y: auto;
-    padding: 10px;
-    backdrop-filter: blur(10px); /* For modern browsers */
-    -webkit-backdrop-filter: blur(10px); /* For older versions of Safari */
-   /* background-color: rgba(255, 255, 255, 0.6);  Adjust the alpha value to control the opacity */
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Add a border for better visibility */
-}
+        .document-option.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 2px 10px rgba(30, 136, 229, 0.5);
+        }
 
-.chat-message {
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
+        .document-option i {
+            margin-right: 5px;
+        }
 
-.chat-message.received {
-    text-align: left;
-}
+        /* Input prompt */
+        .input-prompt {
+            padding: 15px;
+            background: var(--darker-bg);
+            text-align: center;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: none;
+        }
 
-.chat-message.sent {
-    text-align: right;
-    left: 4rem;
-}
-.chat-messages {
-    background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
-    backdrop-filter: blur(5px); /* Apply a blur effect */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 340px; /* Set maximum height to enable scrolling */
-}
+        /* Rest of your existing styles... */
+        /* [Previous CSS styles remain exactly the same] */
+        /* ... */
+        
+        /* Chat container */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            background: var(--dark-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.chat-message .message {
-    word-wrap: break-word; /* Allow long messages to wrap */
-}
-    
-    .chat-container {
-    position: fixed;
-        z-index: 1;
-     height: 25rem;
-    bottom: 2px;
-    right: 20px;
-    width: 402px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        .chat-container.minimized {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
 
-.chat-header {
-    background-color: #008489;
-    color: #fff;
-    height:3rem;
-    padding: 10px;
-    cursor: pointer;
-}
+        /* Chat header */
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
 
-.close-btn {
-    float: right;
-    cursor: pointer;
-}
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.chat-messages {
-   
-    overflow-y: auto;
-    padding: 10px;
-}
+        .chat-header .controls {
+            display: flex;
+            gap: 15px;
+        }
 
-.chat-message {
-    margin-bottom: 10px;
-}
+        .chat-header .controls i {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
 
-.chat-message.sent {
-    text-align: right;
-}
+        .chat-header .controls i:hover {
+            transform: scale(1.1);
+        }
 
-.chat-input {
-    padding: 10px;
-    display: flex;
-    background-color: #f9f9f9;
-}
+        /* Chat messages area */
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: var(--darker-bg);
+            scroll-behavior: smooth;
+        }
 
-.chat-input input[type="text"] {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    outline: none;
-}
+        /* Message bubbles */
+        .message {
+            max-width: 80%;
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 18px;
+            position: relative;
+            animation: messageAppear 0.3s ease-out;
+            word-wrap: break-word;
+            line-height: 1.4;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-.chat-input button {
-    padding: 8px 15px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    outline: none;
-}
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.chat-input button:hover {
-    background-color: #0056b3;
-}
+        .received {
+            background: var(--light-bg);
+            color: var(--text-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
 
-.minimized-chat-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-     /*border: 2px solid red; Add red border */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    cursor: pointer;
-   /* animation: changeColor 16s infinite;  Transition colors every 4 seconds */
-}
+        .sent {
+            background: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
 
-@keyframes changeColor {
-    0% { background-color: #fr0000; } /* Red */
-    25% { background-color: #00ff00; } /* Green */
-    50% { background-color: #0000ff; } /* Blue */
-    75% { background-color: #ffff00; } /* Yellow */
-    100% { background-color: #ff00ff; } /* Magenta */
-}
+        .message-time {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            text-align: right;
+        }
 
-    
-    .pt-8{
-    	    padding-top: 9%;
-    	    padding-left: 3.25rem!important;
-    }
-    @media (min-width: 640px){
-    .max-w-lg2{
-    	max-width: 65rem;
-    }
-    .slm {
-		    padding-left: 2.25rem!important;
-		    padding-right: 1.25rem!important;
-		}
-	}
-	  @media (max-width: 767px) {
-    .sld {
-		    padding: 2rem!important;
-		}
-	}
-  .chat-message {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
+        /* Chat input area */
+        .chat-input-area {
+            padding: 15px;
+            background: var(--light-bg);
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none; /* Initially hidden */
+        }
 
-  .json-key {
-    color: orange;
-  }
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 25px;
+            background: var(--dark-bg);
+            color: var(--text-color);
+            font-size: 0.9rem;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
 
-  .json-string,
-  .json-number,
-  .json-null,
-  .json-boolean {
-    color: green;
-  }
+        .chat-input:focus {
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
 
-  .json-special-key {
-    color: orange;
-  }
+        .send-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
-  .json-special-value {
-    color: green;
-  }
+        .send-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
 
-  pre {
-    white-space: pre-wrap; /* Allows wrapping of long lines */
-    word-wrap: break-word; /* Allows breaking of long words */
-  }
-#chat-container {
-    width: 50%;
-    margin: 0 auto;
-  }
+        .send-btn:active {
+            transform: scale(0.95);
+        }
 
-  #chat-messages {
-    border: 1px solid #ccc;
-    padding: 10px;
-    height: 320px;
-    overflow-y: scroll;
-    
-  }
+        /* Scroll buttons */
+        .scroll-buttons {
+            position: absolute;
+            right: 15px;
+            top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 10;
+        }
 
-  .chat-message {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-  }
+        .scroll-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(30, 136, 229, 0.7);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.2s;
+        }
 
-  .received {
-    background-color: #d0ffd0;
-  }
+        .scroll-btn:hover {
+            opacity: 1;
+            background: var(--primary-color);
+        }
 
-  .json-key {
-    color: orange;
-  }
+        /* Data cards */
+        .data-card {
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--primary-color);
+            animation: cardAppear 0.4s ease-out;
+        }
 
-  .json-string {
-    color: green;
-  }
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-  .json-special-key {
-    color: orange;
-  }
+        .data-card h4 {
+            margin: 0 0 8px 0;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
 
-  .json-special-value {
-    color: green;
-  }
+        .data-card p {
+            margin: 5px 0;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
 
-  .scroll-btn {
-    margin: 5px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+        .data-card .field {
+            display: flex;
+            justify-content: space-between;
+        }
 
-  button:hover {
-    background-color: #0056b3;
-  }
+        .data-card .field-name {
+            color: var(--text-secondary);
+        }
 
-.chat-container{
-font-family: "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 15px;
-	font-weight: normal;
-	margin: 1px auto;
-  display: flex;
-  flex-direction: column;
-  }
-div .chat-message{
-  max-width: 255px;
-  word-wrap: break-word;
-  margin-bottom: 12px;
-  line-height: 24px;
-  position: relative;
-	padding: 10px 20px;
-  border-radius: 25px;
-  
-  &:before, &:after {
-    content: "";
-		position: absolute;
-    bottom: 0;
-    height: 25px;
-  }
-}
-.sent {
-   	color: var(--send-color); 
-	background: var(--send-bg);
-	align-self: flex-end;
-		
-	&:before {
-		right: -7px;
-    width: 20px;
-    background-color: var(--send-bg);
-		border-bottom-left-radius: 16px 14px;
-	}
+        /* Minimized state */
+        .minimized-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
 
-	&:after {
-		right: -26px;
-    width: 26px;
-    background-color: var(--page-background);
-		border-bottom-left-radius: 10px;
-	}
-}
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
 
-.received {
-  background: var(--receive-bg);
-	color: black;
-  align-self: flex-start;
-		
-	&:before {
-		left: -7px;
-    width: 20px;
-    background-color: var(--receive-bg);
-		border-bottom-right-radius: 16px 14px;
-	}
+        .minimized-chat i {
+            color: white;
+            font-size: 1.5rem;
+        }
 
-	&:after {
-		left: -26px;
-    width: 26px;
-    background-color: var(--page-background);
-		border-bottom-right-radius: 10px;
-	}
-}
+        /* Notification badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--error-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
 
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .chat-container {
+                width: 100%;
+                height: 28rem;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+            
+            .minimized-chat {
+                bottom: 15px;
+                right: 15px;
+            }
+        }
 
-.scroll-btn-container {
-      position: absolute;
-    top: 91px;
-    right: 18px;
-    display: flex;
-    flex-direction: inherit;
-    justify-content: space-between;
-}
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-.scroll-btn {
-       opacity: 0.5;
-    background-color: #453a3a;
-    border: none;
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
 
-.scroll-btn:hover {
-    opacity: 1;
-}
-.clear-btn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-}
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
 
-.clear-btn:hover {
-    background-color: #d32f2f;
-}
-/* Bubble animation */
-.bubble-animation {
-    opacity: 0;
-    transform: scale(0.5);
-    animation: bubble 0.5s forwards;
-}
-
-@keyframes bubble {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-.message-time {
-    font-size: 0.8em;
-    color: #666;
-    margin-right: 5px;
-}
-  </style>
-    <script>
-      /**
-       * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
-       */
-      localStorage.getItem("_x_darkMode_on") === "true" &&
-        document.documentElement.classList.add("dark");
-    </script>
-  </head>
-
-  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
-   
-  <div class="chat-container">
-    <div class="chat-header" onclick="minimizeChat()">
-        <i class="fa-solid fa-robot"></i>
-        <span class="close-btn" onclick="minimizeChat()"><i class="fa-solid fa-minimize"></i></span>
-    </div>
-    <div id="chat-messages" class="chat-messages">
-       <div class="chat-message received bubble-animation">
-         <div id="lottie-animation"></div>
-           <b> <span class="message" id="first-message">Enter PR Number : </span></b><p id ="message-time-first" class="message-time"></p>
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+         /* Enhanced typing animation */
+        .typing-animation {
+            display: flex;
+            padding: 10px 15px;
+            background: var(--light-bg);
+            border-radius: 20px;
+            width: fit-content;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-secondary);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+        
+        .typing-text {
+            margin-left: 10px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        @keyframes typingAnimation {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Main Chat Container -->
+    <div id="chat-container" class="chat-container">
+        <div class="chat-header" onclick="toggleChatMinimize()">
+            <h3>
+                <i class="fas fa-robot"></i> Re.ai Assistant
+            </h3>
+            <div class="controls">
+                <i class="fas fa-times" title="Close" onclick="closeChat()"></i>
+            </div>
         </div>
-        <!-- Previous chat messages go here -->
+
+        <!-- Document Type Selector -->
+        <div class="document-selector">
+            <div class="document-option active" data-type="pr" onclick="selectDocumentType('pr')">
+                <i class="fas fa-file-invoice"></i> PR
+            </div>
+            <div class="document-option" data-type="po" onclick="selectDocumentType('po')">
+                <i class="fas fa-file-purchase"></i> PO
+            </div>
+            <div class="document-option" data-type="enfa" onclick="selectDocumentType('enfa')">
+                <i class="fas fa-file-contract"></i> ENFA
+            </div>
+        </div>
+
+        <!-- Input Prompt -->
+        <div id="input-prompt" class="input-prompt">
+            Please enter the <span id="document-type-label">PR</span> number:
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div id="chat-messages" class="chat-messages">
+            <div class="message received">
+                <div class="message-content">Hello! I'm your ReOne assistant. Please select a document type to search.</div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+
+        <!-- Scroll Buttons -->
+        <div class="scroll-buttons">
+            <button class="scroll-btn" onclick="scrollToTop()" title="Scroll to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <button class="scroll-btn" onclick="scrollToBottom()" title="Scroll to bottom">
+                <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type the document number here..." />
+            <button class="send-btn" onclick="sendMessage()" title="Send message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
-    <div class="scroll-btn-container">
-        <button class="scroll-btn top" onclick="scrollToTop()"><i class="fa fa-chevron-up"></i></button>
-        <button class="scroll-btn bottom" onclick="scrollToBottom()"><i class="fa fa-chevron-down"></i></button>
+
+    <!-- Minimized Chat Button -->
+    <div id="minimized-chat" class="minimized-chat" style="display: none;" onclick="toggleChatMinimize()">
+        <i class="fas fa-comment-dots"></i>
+        <div id="notification-badge" class="notification-badge" style="display: none;">0</div>
     </div>
-    <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Type Here...">
-        <div id="odata-data"></div>
-        <button onclick="sendMessage()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
-    </div>
-</div>
 
-
-
-
-    <div id="x-teleport-target"></div>
-    <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
-		<input type="hidden" name="email" id="email"/>
-	</form>
-		 <script src="/index/resources/vendors/js/extensions/moment.min.js"></script>
-    <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
- <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
-     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
-       <script src="/index/resources/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-    <script src="/index/resources/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="/index/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-      <script src="/index/resources/js/jquery.dataTables-v.1.10.min.js"  ></script>
-     <script src="/index/resources/js/datetime-moment-v1.10.12.js"  ></script>
-       <script src="/index/resources/js/jquery-validation-1.19.1.min.js"  ></script>
-         <script src="/index/resources/js/dataTables.material.min.js"  ></script>
-      <script src="/index/resources/js/moment-v2.8.4.min.js"  ></script>
-        <script src="/index/resources/vendors/js/forms/select/select2.full.min.js"></script>
-           <script src="/index/resources/js/scripts/forms/form-select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script>
-      window.addEventListener("DOMContentLoaded", () => Alpine.start());
-      
-      document.addEventListener('DOMContentLoaded', () => {
-    	    const firstMessageElement = document.getElementById('first-message');
-    	    const text = firstMessageElement.innerHTML;
-    	    firstMessageElement.innerHTML = '';
-    	    typeText(firstMessageElement, text);
-    	    const currentTime = new Date().toLocaleTimeString();
-    	    $('#message-time-first').text(currentTime);
-    	});
+        // Global variables
+        let isMinimized = false;
+        let currentDocumentType = 'pr'; // 'pr', 'po', or 'enfa'
+        let messageCount = 0;
 
-    	function typeText(element, text, index = 0) {
-    	    if (index < text.length) {
-    	        element.innerHTML += text.charAt(index);
-    	        setTimeout(() => typeText(element, text, index + 1), 50);
-    	    }
+        let unreadMessages = 0;
+        let typingInterval;
+        let currentTypingText = "Checking document details";
+        
+        // Initialize the chat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listener for Enter key
+            document.getElementById("user-input").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+        });
+        window.onload = function () {
+        	selectDocumentType(currentDocumentType) 
+          };
+        // Select document type (PR, PO, or ENFA)
+        function selectDocumentType(type) {
+            currentDocumentType = type;
+            $('.message-appear').remove();
+
+            // Update UI
+            document.querySelectorAll('.document-option').forEach(option => {
+                option.classList.remove('active');
+                if(option.dataset.type === type) {
+                    option.classList.add('active');
+                }
+            });
+            
+            // Update prompt label
+            const typeLabels = {
+                'pr': 'PR',
+                'po': 'PO',
+                'enfa': 'ENFA'
+            };
+            document.getElementById('document-type-label').textContent = typeLabels[type];
+            var ty = typeLabels[type];
+            // Show input prompt and input area
+            document.getElementById('input-prompt').style.display = 'block';
+            document.querySelector('.chat-input-area').style.display = 'flex';
+            
+            // Focus on input field
+            document.getElementById('user-input').focus();
+            
+            // Add message about selected type
+            addMessage('You selected ' + ty + ' search. Please enter the ' +ty + ' number.', "received");
+
+        }
+
+        // Add a message to the chat
+        function addMessage(text, type) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            const now = new Date();
+            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            messageDiv.className = 'message '+type;
+            messageDiv.innerHTML = 
+                '<div class="message-content">'+text+'</div><div class="message-time">'+time+'</div>';
+            
+            // Add animation class for new messages
+            messageDiv.classList.add('message-appear');
+            
+            chatMessages.appendChild(messageDiv);
+            
+            // If chat is minimized and this is a received message, increment unread counter
+            if(isMinimized && type === 'received') {
+                unreadMessages++;
+                updateNotificationBadge();
+            }
+            
+            scrollToBottom();
+        }
+
+        // Send a message from the user
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const documentNumber = userInput.value.trim();
+            
+            if(documentNumber === '') return;
+            
+            // Add user message to chat
+            addMessage(currentDocumentType.toUpperCase()+' :'+documentNumber, 'sent');
+            userInput.value = '';
+            
+            // Process the document number
+            processDocumentNumber(currentDocumentType, documentNumber);
+        }
+        // Hide typing animation
+        function hideTypingAnimation() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if(typingIndicator) {
+                typingIndicator.remove();
+            }
+            if(typingInterval) {
+                clearInterval(typingInterval);
+            }
+        }
+        function showTypingAnimation() {
+            const chatMessages = document.getElementById('chat-messages');
+            
+            // Remove existing typing indicator if any
+            hideTypingAnimation();
+            
+            // Create typing animation element
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-animation';
+            typingDiv.id = 'typing-indicator';
+            
+            // Create dots
+            typingDiv.innerHTML = '<div class="typing-dot"></div>'
+                +'<div class="typing-dot"></div>'
+                +'<div class="typing-dot"></div>'
+                +'<span class="typing-text">'+currentTypingText+'</span>';
+            
+            chatMessages.appendChild(typingDiv);
+            scrollToBottom();
+            
+            // Animate text changes
+            const typingTexts = [
+                "Searching our records",
+                "Checking document details",
+                "Almost there",
+                "Just a moment"
+            ];
+            let textIndex = 0;
+            
+            typingInterval = setInterval(() => {
+                textIndex = (textIndex + 1) % typingTexts.length;
+                currentTypingText = typingTexts[textIndex];
+                document.querySelector('#typing-indicator .typing-text').textContent = currentTypingText;
+            }, 3000);
+        }
+        
+        // Process the entered document number
+        function processDocumentNumber(docType, docNumber) {
+            // Show typing indicator
+            showTypingAnimation();
+            
+            // Call the appropriate backend API based on document type
+            fetchDocumentDetails(docType, docNumber);
+        }
+
+        // Fetch document details from backend
+        function fetchDocumentDetails(docType, docNumber) {
+            const typingIndicator = document.getElementById('typing-indicator');
+            const currentTime = new Date().toLocaleTimeString();
+            
+            // Prepare parameters based on document type
+            const params = {};
+            if(docType === 'pr') {
+                params.PR_Number = docNumber;
+            } else if(docType === 'po') {
+                params.PO_Number = docNumber;
+            } else if(docType === 'enfa') {
+                params.ENFA_Number = docNumber;
+            }
+            
+            // Call backend API
+            $.ajax({
+                url: "<%=request.getContextPath()%>/reone/ajax/getoDataInChat",
+                data: params,
+                method: "GET",
+                success: function(data) {
+                	 hideTypingAnimation();
+                    
+                    if(data && data.length > 0) {
+                        // Process the response data
+                        displayDocumentDetails(data, docType, currentTime);
+                    } else {
+                    	var dataa  = docType.toUpperCase()+' : '+docNumber;
+                        addMessage('No details found for ' +dataa+'. Please check the number and try again.', "received");
+                    }
+                },
+                error: function(jqXHR, exception) {
+                	hideTypingAnimation();
+                    addMessage("An error occurred while fetching document details. Please try again later.", "received");
+                    console.error("Error fetching document details:", exception);
+                }
+            });
+        }
+
+        // Display document details from backend response
+     function displayDocumentDetails(data, docType, currentTime) {
+    data.forEach(item => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'data-card';
+
+        let cardContent = '<h4>' + docType.toUpperCase() + ' Details</h4>';
+        const fields = [];
+
+        for (const [key, value] of Object.entries(item)) {
+            if (value && value.toString().trim() !== '') {
+                const label = formatLabel(key);
+                let displayText = '';
+
+                // Check for SAP-style date format
+                if (typeof value === 'string' && /^\/Date\(\d+\)\/$/.test(value)) {
+                    const dateObj = convertSAPDate(value);
+                    if (dateObj instanceof Date && !isNaN(dateObj)) {
+                        const formattedDate = formatDateReadable(dateObj);
+                        displayText = label + ' on ' + formattedDate;
+                        fields.push({ text: displayText, sortDate: dateObj, isDate: true });
+                    }
+                } else {
+                    // Regular text field
+                    displayText = label + ' is ' + value;
+                    fields.push({ text: displayText, isDate: false });
+                }
+            }
+        }
+
+        // Sort: all date fields (ascending), then non-date fields
+        fields.sort((a, b) => {
+            if (a.isDate && b.isDate) return a.sortDate - b.sortDate;
+            if (a.isDate) return -1;
+            if (b.isDate) return 1;
+            return 0;
+        });
+
+        fields.forEach(field => {
+            cardContent += '<div class="field">' + field.text + '</div>';
+        });
+
+        cardContent += '<div class="message-time">' + currentTime + '</div>';
+        cardDiv.innerHTML = cardContent;
+        document.getElementById('chat-messages').appendChild(cardDiv);
+    });
+
+    scrollToBottom();
+}
+
+     function formatLabel(key) {
+    	    return key.replace(/_/g, ' ')
+    	              .replace(/([a-z])([A-Z])/g, '$1 $2')
+    	              .replace(/\b\w/g, char => char.toUpperCase());
     	}
-      function getErrorMessage(jqXHR, exception) {
-	  	    var msg = '';
-	  	    if (jqXHR.assigned_to_sbu === 0) {
-	  	        msg = 'Not connect.\n Verify Network.';
-	  	    } else if (jqXHR.assigned_to_sbu == 404) {
-	  	        msg = 'Requested page not found. [404]';
-	  	    } else if (jqXHR.assigned_to_sbu == 500) {
-	  	        msg = 'Internal Server Error [500].';
-	  	    } else if (exception === 'parsererror') {
-	  	        msg = 'Requested JSON parse failed.';
-	  	    } else if (exception === 'timeout') {
-	  	        msg = 'Time out error.';
-	  	    } else if (exception === 'abort') {
-	  	        msg = 'Ajax request aborted.';
-	  	    } else {
-	  	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-	  	    }
-	  	    console.log(msg);
-      }
 
-   
-
-    	function minimizeChat() {
-    	    var chatContainer = document.querySelector('.chat-container');
-    	    chatContainer.style.display = 'none';
-
-    	    var minimizedContainer = document.createElement('div');
-    	    minimizedContainer.className = 'minimized-chat-container';
-    	    minimizedContainer.innerHTML = '<span onclick="restoreChat()"><img class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]" src="https://www.pngitem.com/pimgs/m/148-1489584_chat-png-icon-free-download-searchpng-blue-chat.png" alt="logo"></span>';
-    	    document.body.appendChild(minimizedContainer);
+    	function isValidDate(str) {
+    	    // Check if it's a recognizable date format (excluding strings like "00010")
+    	    const d = new Date(str);
+    	    return !isNaN(d.getTime());
     	}
+    	   function convertSAPDate(rawDate) {
+               if (typeof rawDate === 'string' && rawDate.includes('/Date')) {
+                   const match = rawDate.match(/\/Date\((\d+)\)\//);
+                   if (match) {
+                       const timestamp = parseInt(match[1], 10);
+                       const dateObj = new Date(timestamp);
+                       return dateObj.toLocaleDateString(); // e.g., "4/4/2025"
+                   }
+               }
+               return rawDate; // If it's not a .NET date, just return as-is
+           }
 
-    	function restoreChat() {
-    	    var chatContainer = document.querySelector('.chat-container');
-    	    var minimizedContainer = document.querySelector('.minimized-chat-container');
-    	    document.body.removeChild(minimizedContainer);
-    	    chatContainer.style.display = 'block';
-    	}
-
-     function sendMessage() {
-    	    var userInput = document.getElementById('user-input').value;
-    	    if (userInput.trim() !== '') {
-    	    	const currentTime = new Date().toLocaleTimeString();
-    	        var chatMessages = document.getElementById('chat-messages');
-    	        var newMessage = document.createElement('div'); 
-    	        newMessage.className = 'chat-message sent';
-    	        newMessage.innerHTML = '<span class="message" >PR Number : ' + userInput + '</span><p class="message-time" style="color:#ddc8c8">' + currentTime + '</p>';
-    	      
-    	       
-    	        chatMessages.appendChild(newMessage);
-    	        document.getElementById('user-input').value = '';
-
-    	        // Simulate reply from server
-    	        setTimeout(function() {
-    	            receiveMessage(userInput);
-    	        }, 1000);
-    	    }
-    	} 
-
-     function receiveMessage(val) {
-    	    var PR_Number = val;
-    	    var chatMessages = document.getElementById('chat-messages');
-    	    var newMessage = document.createElement('div');
-    	    newMessage.className = 'chat-message received';
-    	    const currentTime = new Date().toLocaleTimeString();
-    	    newMessage.innerHTML = `<span class="message-time">${currentTime}</span><span class="message">${val}</span>`;
-    	    
-    	    if ($.trim(PR_Number) !== "") {
-    	        var myParams = { PR_Number: PR_Number };
-    	        
-    	        // Create Typing Animation Element
-    	        var typingIndicator = document.createElement('div');
-    	        typingIndicator.className = 'chat-message received typing';
-    	        typingIndicator.innerHTML = `<span class="message">Typing<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></span>`;
-    	        chatMessages.appendChild(typingIndicator);
-
-    	        $.ajax({
-    	            url: "<%=request.getContextPath()%>/reone/ajax/getoDataInChat",
-    	            data: myParams,
-    	            success: function (data) {
-    	                chatMessages.removeChild(typingIndicator); // Remove Typing Indicator
-
-    	                if (data.length > 0) {
-    	                    formatDates(data); // Convert dates before highlighting
-    	                    $.each(data, function (i, val) {
-    	                        var messageElement = document.createElement('div');
-    	                        messageElement.className = 'chat-message received';
-    	                        messageElement.innerHTML = '<pre> ENFA No: '+val.ENFA_Number+' <br> Created Date: '+val.ENFA_Creation+'<p class="message-time">'+currentTime+'</p></pre>';
-    	                        chatMessages.appendChild(messageElement);
-    	                    });
-    	                } else {
-    	                    var messageElement = document.createElement('div');
-    	                    messageElement.className = 'chat-message received';
-    	                    messageElement.innerHTML = `<pre> Not a valid PR Number, Please enter a valid one </pre><p class="message-time">${currentTime}</p>`;
-    	                    chatMessages.appendChild(messageElement);
-    	                }
-    	            },
-    	            error: function (jqXHR, exception) {
-    	                chatMessages.removeChild(typingIndicator); // Remove Typing Indicator
-    	                $(".page-loader").hide();
-    	                getErrorMessage(jqXHR, exception);
-    	            }
-    	        });
-    	    }
+    	function formatDateReadable(date) {
+    	    const options = { year: 'numeric', month: 'short', day: '2-digit' };
+    	    return date.toLocaleDateString('en-US', options);
     	}
 
 
-     function clearChat() {
-    	    const chatMessages = document.getElementById('chat-messages');
-    	    chatMessages.innerHTML = "";
-    	}
-     
-     function syntaxHighlight(json) {
-    	  if (typeof json !== 'string') {
-    	    json = JSON.stringify(json, undefined, 2);
-    	  }
-    	  json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    	  json = json.replace(/[\[\]{}]/g, ''); // Remove square brackets and curly braces
-    	  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|\b-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-    	    var cls = 'json-number';
-    	    if (/^"/.test(match)) {
-    	      if (/:$/.test(match)) {
-    	        cls = 'json-key';
-    	        if (match === '"Buyer_Acceptedon":') {
-    	          cls = 'json-special-key';
-    	        }
-    	      } else {
-    	        cls = 'json-string';
-    	        if (match.includes('"08-04-2023"')) {
-    	          cls = 'json-special-value';
-    	        }
-    	      }
-    	    } else if (/true|false/.test(match)) {
-    	      cls = 'json-boolean';
-    	    } else if (/null/.test(match)) {
-    	      cls = 'json-null';
-    	    }
-    	    return '<span class="' + cls + '">' + match + '</span>';
-    	  });
-    	}
+        // Toggle chat between minimized and expanded states
+        function toggleChatMinimize() {
+            const chatContainer = document.getElementById('chat-container');
+            const minimizedChat = document.getElementById('minimized-chat');
+            
+            isMinimized = !isMinimized;
+            
+            if(isMinimized) {
+                chatContainer.style.display = 'none';
+                minimizedChat.style.display = 'flex';
+            } else {
+                chatContainer.style.display = 'flex';
+                minimizedChat.style.display = 'none';
+                // Reset unread counter when chat is opened
+                unreadMessages = 0;
+                updateNotificationBadge();
+                scrollToBottom();
+            }
+        }
 
-    	function convertSAPDateFormat(sapDate) {
-    	  var timestamp = parseInt(sapDate.match(/\/Date\((\d+)\)\//)[1], 10);
-    	  var date = new Date(timestamp);
-    	  var month = ('0' + (date.getMonth() + 1)).slice(-2);
-    	  var day = ('0' + date.getDate()).slice(-2);
-    	  var year = date.getFullYear();
-    	  return month + '-' + day + '-' + year;
-    	}
+        // Close the chat completely
+        function closeChat() {
+            document.getElementById('chat-container').style.display = 'none';
+            document.getElementById('minimized-chat').style.display = 'none';
+        }
 
-    	function formatDates(obj) {
-    	  for (var key in obj) {
-    	    if (obj.hasOwnProperty(key) && typeof obj[key] === 'string' && obj[key].startsWith('/Date(')) {
-    	      obj[key] = convertSAPDateFormat(obj[key]);
-    	    } else if (typeof obj[key] === 'object') {
-    	      formatDates(obj[key]);
-    	    }
-    	  }
-    	}
-    	
-    	function scrollToTop() {
-    	    var chatMessages = document.getElementById('chat-messages');
-    	    chatMessages.scrollTop = 0;
-    	}
+        // Scroll to top of chat
+        function scrollToTop() {
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.scrollTop = 0;
+        }
 
-    	// Function to scroll to the bottom of the chat container
-    	function scrollToBottom() {
-    	    var chatMessages = document.getElementById('chat-messages');
-    	    chatMessages.scrollTop = chatMessages.scrollHeight;
-    	}
-    	document.getElementById("user-input").addEventListener("keypress", function(event) {
-    	    if (event.keyCode === 13) {
-    	        event.preventDefault(); // Prevent the default Enter key behavior (e.g., new line)
-    	        sendMessage();
-    	    }
-    	}); 
+        // Scroll to bottom of chat
+        function scrollToBottom() {
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-      </script>
-  </body>
-</html> 
+        // Update notification badge
+        function updateNotificationBadge() {
+            const badge = document.getElementById('notification-badge');
+            if(unreadMessages > 0) {
+                badge.style.display = 'flex';
+                badge.textContent = unreadMessages > 9 ? '9+' : unreadMessages;
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

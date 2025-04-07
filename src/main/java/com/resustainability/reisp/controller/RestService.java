@@ -75,6 +75,8 @@ public class RestService {
                 baseUrl = baseUrl + URLEncoder.encode("PO_Number eq '" + obj.getPO_Number() + "'", "UTF-8");
             } else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getPR_Number())) {
                 baseUrl = baseUrl + URLEncoder.encode("PR_Number eq '" + obj.getPR_Number() + "'", "UTF-8");
+            } else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getENFA_Number())) {
+                baseUrl = baseUrl + URLEncoder.encode("ENFA_Number eq '" + obj.getENFA_Number() + "'", "UTF-8");
             }
 	        String username = "90008234";
 	        String password = "Resus@21";
