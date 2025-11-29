@@ -820,23 +820,17 @@ z-index: 1000;
             
             </div>
             <div class="mx-4 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
-            <div class=" swiper-slide w-24 shrink-0 cursor-pointer swiper-slide-active" @click="selected = 'slide-8'" role="group" aria-label="1 / 16" style="margin-right: 14px;">
-                  <a id="iconsCLass" href="#"  class="flex flex-col items-center rounded-lg px-2 py-4 text-slate-600 dark:text-navy-100" :class="selected === 'slide-8' ? 'text-secondary bg-secondary/10  dark:bg-secondary-light/10 dark:text-secondary-light' : 'text-slate-600 dark:text-navy-100' ">
-                  <img class="h-11 w-1w" src="/index/resources/images/avatar/tropy icon.svg" alt="image" style="
-    margin-top: 1rem;
-">
-                   <p class="text-3xl font-medium text-slate-700 dark:text-navy-100">
-	                                      ${sessionScope.REWARDS }
-	                                    </p>
-	                                    <p class="text-xs text-success">Rewards</p>
+                 <a href="https://heyzine.com/flip-book/8baf82e225.html" target="_blank" style="
+    margin-top: 2rem;
+"> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
+                   
                   </a>
                 
-                </div>
 
           </div>
           
           
-          <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
+         <!--  <div class="card flex-row justify-between space-x-2 p-2.5" id="iconsCLass">
             
               <div class="flex items-center justify-between">
                 <div style="
@@ -872,7 +866,7 @@ z-index: 1000;
 "> <img class="h-20 w-1w" src="/index/resources/images/avatar/get-newsletter-updates.svg" alt="image">
                    
                   </a>
-          </div>
+          </div> -->
         
         
         
